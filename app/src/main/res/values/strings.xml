@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mybrary</string>
+
+    <!--ReadActivity-->
+    <string name="request_button">REQUEST</string>
+    <string name="isbn_edit_text">Input an ISBN</string>
+
+    <!--BookPostActivity-->
+    <string name="on_success">success</string>
+    <string name="on_failure">failure</string>
+    <string name="title_edit_hint">Title</string>
+    <string name="author_edit_hint">Author</string>
+    <string name="total_page_edit_hint">Pages</string>
+    <string name="description_edit_hint">Description</string>
+    <string name="add_button">ADD</string>
+</resources>
