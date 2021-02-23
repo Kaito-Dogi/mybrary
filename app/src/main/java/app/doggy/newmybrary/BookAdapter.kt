@@ -33,7 +33,7 @@ class BookAdapter(
         } else {
             holder.imageView.load(book.imageId)
         }
-        holder.percentTextView.text = (book.currentPage/book.pageCount).toString()
+        holder.percentTextView.text = "${(book.currentPage/book.pageCount).toString()}%"
 
     }
 

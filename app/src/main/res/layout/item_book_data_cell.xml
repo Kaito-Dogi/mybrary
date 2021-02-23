@@ -28,7 +28,7 @@
             android:id="@+id/percentTextInBookCell"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#99FFFFFF"
+            android:background="#BCFFFFFF"
             android:gravity="center"
             android:text="0%"
             android:textColor="@color/black"
