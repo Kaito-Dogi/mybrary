@@ -8,7 +8,7 @@
     tools:context=".BookPostActivity">
 
     <ImageView
-        android:id="@+id/bookImage"
+        android:id="@+id/bookImageInPost"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_gravity="center"
@@ -111,7 +111,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/addbutton"
+        android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

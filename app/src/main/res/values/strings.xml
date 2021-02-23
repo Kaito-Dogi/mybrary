@@ -13,4 +13,10 @@
     <string name="total_page_edit_hint">Pages</string>
     <string name="description_edit_hint">Description</string>
     <string name="add_button">ADD</string>
+
+    <!--RecordActivity-->
+    <string name="title_text">Title</string>
+    <string name="author_text">Author</string>
+    <string name="total_page_text">p0</string>
+    <string name="description_text">Description</string>
 </resources>

@@ -33,6 +33,8 @@ class ReadActivity : AppCompatActivity() {
             postIntent.putExtra("isbn", isbn)
 
             startActivity(postIntent)
+
+            finish()
         }
     }
 
