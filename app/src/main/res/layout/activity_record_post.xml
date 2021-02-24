@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     android:orientation="vertical"
     tools:context=".RecordPostActivity">
 
@@ -15,7 +16,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/current_page_edit_hint">
+        android:hint="@string/current_page_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/currentPageEditText"
@@ -36,7 +38,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/comment1_edit_hint">
+        android:hint="@string/comment1_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/comment1EditText"
@@ -57,7 +60,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/comment2_edit_hint">
+        android:hint="@string/comment2_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/comment2EditText"
@@ -78,7 +82,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/comment3_edit_hint">
+        android:hint="@string/comment3_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/comment3EditText"

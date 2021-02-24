@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     android:orientation="vertical"
     tools:context=".BookPostActivity">
 
@@ -27,7 +28,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/title_edit_hint">
+        android:hint="@string/title_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
@@ -55,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="0.65"
-            android:hint="@string/author_edit_hint">
+            android:hint="@string/author_edit_hint"
+            app:boxBackgroundColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/authorEditText"
@@ -73,7 +76,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.35"
-            android:hint="@string/total_page_edit_hint">
+            android:hint="@string/total_page_edit_hint"
+            app:boxBackgroundColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pageCountEditText"
@@ -97,7 +101,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
-        android:hint="@string/description_edit_hint">
+        android:hint="@string/description_edit_hint"
+        app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/descriptionEditText"
