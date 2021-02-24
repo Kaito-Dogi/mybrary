@@ -12,11 +12,26 @@
     <string name="author_edit_hint">Author</string>
     <string name="total_page_edit_hint">Pages</string>
     <string name="description_edit_hint">Description</string>
-    <string name="add_button">ADD</string>
+    <string name="book_add_button">ADD</string>
 
     <!--RecordActivity-->
     <string name="title_text">Title</string>
     <string name="author_text">Author</string>
-    <string name="total_page_text">p0</string>
+    <string name="total_page_text">pp.</string>
     <string name="description_text">Description</string>
+    
+    <!--Item Cell-->
+    <string name="current_page_text">Current p. </string>
+    <string name="percent_text_before">Achieve </string>
+    <string name="percent_text_after">%</string>
+    <string name="comment_1_text">Comment1</string>
+    <string name="comment_2_text">Comment2</string>
+    <string name="comment_3_text">Comment3</string>
+
+    <!--RecordPostActivity-->
+    <string name="current_page_edit_hint">Number of Current Pages</string>
+    <string name="comment1_edit_hint">Comment1</string>
+    <string name="comment2_edit_hint">Comment2</string>
+    <string name="comment3_edit_hint">Comment3</string>
+    <string name="record_add_button">ADD</string>
 </resources>

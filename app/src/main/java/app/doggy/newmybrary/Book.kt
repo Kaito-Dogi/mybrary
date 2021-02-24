@@ -5,7 +5,7 @@ import io.realm.annotations.PrimaryKey
 import java.util.*
 
 open class Book(
-    @PrimaryKey open var bookId: String = UUID.randomUUID().toString(),
+    @PrimaryKey open var id: String = UUID.randomUUID().toString(),
     open var imageId: String = "",
     open var title: String = "",
     open var author: String = "",

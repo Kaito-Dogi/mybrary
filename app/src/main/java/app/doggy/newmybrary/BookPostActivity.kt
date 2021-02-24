@@ -55,7 +55,7 @@ class BookPostActivity : AppCompatActivity() {
             }
         }
 
-        addButton.setOnClickListener {
+        bookAddButton.setOnClickListener {
             create(
                 imageId,
                 titleEditText.text.toString(),

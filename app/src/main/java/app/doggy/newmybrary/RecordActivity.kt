@@ -18,30 +18,31 @@ class RecordActivity : AppCompatActivity() {
         Realm.getDefaultInstance()
     }
 
-    var bookTitle = ""
+    var bookId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record)
 
-        val bookId = intent.getStringExtra("bookId")
-        val book = realm.where(Book::class.java).equalTo("bookId", bookId).findFirst()
-        bookImageInRecord.load(book?.imageId)
+        bookId = intent.getStringExtra("bookId") as String
+        val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
 
-        bookTitle = book?.title as String
-        titleText.text = bookTitle
+        if (book?.imageId == "") {
+            bookImageInRecord.setImageResource(R.drawable.book_black)
+        } else {
+            bookImageInRecord.load(book?.imageId)
+        }
 
+        titleText.text = book?.title
         authorText.text = book?.author
-        pageCountText.text = "p${book?.pageCount.toString()}"
+        pageCountText.text = "${book?.pageCount}" + getText(R.string.total_page_text)
         descriptionText.text = book?.description
 
         val recordList = readAll()
 
         val adapter = RecordAdapter(this, recordList, object: RecordAdapter.OnItemClickListener {
             override fun onItemClick(item: Record) {
-                // クリック時の処理
-                Toast.makeText(applicationContext, item.comment1 + "を削除しました", Toast.LENGTH_SHORT).show()
-                delete(item.id)
+
             }
         },true)
 
@@ -51,7 +52,8 @@ class RecordActivity : AppCompatActivity() {
 
         recordPostFab.setOnClickListener {
             val postIntent = Intent(baseContext, RecordPostActivity::class.java)
-            postIntent.putExtra("bookTitle", book?.title)
+            postIntent.putExtra("bookId", book?.id)
+            postIntent.putExtra("bookPageCount", book?.pageCount)
             startActivity(postIntent)
         }
     }
@@ -63,17 +65,9 @@ class RecordActivity : AppCompatActivity() {
 
     private fun readAll(): RealmResults<Record> {
         return realm.where(Record::class.java)
-            .equalTo("bookTitle", bookTitle)
+            .equalTo("bookId", bookId)
             .findAll()
             .sort("createdAt", Sort.DESCENDING)
-    }
-
-    fun delete(id: String) {
-        realm.executeTransaction {
-            val task = realm.where(Record::class.java).equalTo("id", id).findFirst()
-                ?: return@executeTransaction
-            task.deleteFromRealm()
-        }
     }
 
 }

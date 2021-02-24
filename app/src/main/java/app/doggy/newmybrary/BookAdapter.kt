@@ -28,12 +28,15 @@ class BookAdapter(
         holder.bookContainer.setOnClickListener{
             listener.onItemClick(book)
         }
+
         if (book.imageId == "") {
-            holder.imageView.setImageResource(R.drawable.book_black)
+            holder.bookImage.setImageResource(R.drawable.book_black)
         } else {
-            holder.imageView.load(book.imageId)
+            holder.bookImage.load(book.imageId)
         }
-        holder.percentTextView.text = "${(book.currentPage/book.pageCount).toString()}%"
+
+        val percent: Int = book.currentPage * 100 / book.pageCount
+        holder.percentTextView.text = "${percent}%"
 
     }
 
@@ -44,8 +47,8 @@ class BookAdapter(
 
     class BookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val bookContainer : ConstraintLayout = view.bookContainer
-        val imageView: ImageView = view.bookImageInCell
-        val percentTextView: TextView = view.percentTextInBookCell
+        val bookImage: ImageView = view.bookImageInCell
+        val percentTextView: TextView = view.percentTextInBook
     }
 
     interface OnItemClickListener {

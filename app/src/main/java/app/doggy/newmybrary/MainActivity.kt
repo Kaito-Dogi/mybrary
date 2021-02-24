@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = BookAdapter(baseContext, bookList, object: BookAdapter.OnItemClickListener {
             override fun onItemClick(item: Book) {
                 val recordIntent = Intent(baseContext, RecordActivity::class.java)
-                recordIntent.putExtra("bookId", item.bookId)
+                recordIntent.putExtra("bookId", item.id)
                 startActivity(recordIntent)
             }
         }, true)

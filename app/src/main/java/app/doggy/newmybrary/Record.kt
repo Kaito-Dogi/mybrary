@@ -6,7 +6,8 @@ import java.util.*
 
 open class Record(
     @PrimaryKey open var id: String = UUID.randomUUID().toString(),
-    open var bookTitle: String = "",
+    open var bookId: String = "",
+    open var bookPageCount: Int = 1,
     open var currentPage: Int = 0,
     open var comment1: String = "",
     open var comment2: String = "",

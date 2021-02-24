@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Mybrary</string>
+
+    <!--ReadActivity-->
+    <string name="request_button">送信</string>
+    <string name="isbn_edit_text">ISBNを入力してください</string>
+
+    <!--BookPostActivity-->
+    <string name="on_success">成功</string>
+    <string name="on_failure">失敗</string>
+    <string name="title_edit_hint">タイトル</string>
+    <string name="author_edit_hint">著者</string>
+    <string name="total_page_edit_hint">ページ数</string>
+    <string name="description_edit_hint">説明</string>
+    <string name="book_add_button">追加</string>
+
+    <!--RecordActivity-->
+    <string name="title_text">タイトル</string>
+    <string name="author_text">著者</string>
+    <string name="total_page_text">pp.</string>
+    <string name="description_text">説明</string>
+
+    <!--Item Cell-->
+    <string name="current_page_text">現在 p. </string>
+    <string name="percent_text_before">読破率 </string>
+    <string name="percent_text_after">%</string>
+    <string name="comment_1_text">コメント1</string>
+    <string name="comment_2_text">コメント2</string>
+    <string name="comment_3_text">コメント3</string>
+
+    <!--RecordPostActivity-->
+    <string name="current_page_edit_hint">現在のページ数</string>
+    <string name="comment1_edit_hint">コメント1</string>
+    <string name="comment2_edit_hint">コメント2</string>
+    <string name="comment3_edit_hint">コメント3</string>
+    <string name="record_add_button">記録</string>
+</resources>

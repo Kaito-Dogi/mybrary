@@ -26,9 +26,19 @@ class RecordAdapter(
         holder.recordContainer.setOnClickListener{
             listener.onItemClick(record)
         }
-        holder.comment1Text.text = record.comment1
-        holder.comment2Text.text = record.comment2
-        holder.comment3Text.text = record.comment3
+
+        holder.currentPageText.setText(R.string.current_page_text)
+        val currentPageText = holder.currentPageText.text.toString() + record.currentPage
+        holder.currentPageText.text = currentPageText
+
+        val percent: Int = record.currentPage * 100 / record.bookPageCount
+        holder.percentText.setText(R.string.percent_text_before)
+        val percentText = holder.percentText.text.toString() + percent + "%"
+        holder.percentText.text = percentText
+
+        holder.comment1Text.text = "・${record.comment1}"
+        holder.comment2Text.text = "・${record.comment2}"
+        holder.comment3Text.text = "・${record.comment3}"
 
     }
 
@@ -39,9 +49,11 @@ class RecordAdapter(
 
     class RecordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recordContainer : LinearLayout = view.recordContainer
+        val percentText: TextView = view.percentTextInRecord
+        val currentPageText: TextView = view.correntPageText
         val comment1Text: TextView = view.comment1Text
-        val comment2Text: TextView = view.comment1Text
-        val comment3Text: TextView = view.comment1Text
+        val comment2Text: TextView = view.comment2Text
+        val comment3Text: TextView = view.comment3Text
     }
 
     interface OnItemClickListener {

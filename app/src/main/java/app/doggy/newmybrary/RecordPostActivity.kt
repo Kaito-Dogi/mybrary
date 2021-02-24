@@ -16,13 +16,19 @@ class RecordPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record_post)
 
-        val bookTitle = intent.getStringExtra("bookTitle")
+        val bookId = intent.getStringExtra("bookId")
+        val bookPageCount = intent.getIntExtra("bookPageCount", 1)
 
-        addRecordButton.setOnClickListener {
+        recordAddButton.setOnClickListener {
             create(
-                bookTitle as String,
+                bookId as String,
+                bookPageCount,
+                currentPageEditText.text.toString().toInt(),
+                comment1EditText.text.toString(),
+                comment2EditText.text.toString(),
                 comment3EditText.text.toString()
             )
+            updateCurrentPage(bookId, currentPageEditText.text.toString().toInt())
             finish()
         }
     }
@@ -32,11 +38,30 @@ class RecordPostActivity : AppCompatActivity() {
         realm.close()
     }
 
-    fun create(bookTitle: String, content: String) {
+    private fun create(
+        bookId: String,
+        bookPageCount: Int,
+        currentPage: Int,
+        comment1: String,
+        comment2: String,
+        comment3: String
+    ) {
         realm.executeTransaction {
             val record = it.createObject(Record::class.java, UUID.randomUUID().toString())
-            record.bookTitle = bookTitle
-            record.comment1 = content
+            record.bookId = bookId
+            record.bookPageCount = bookPageCount
+            record.currentPage = currentPage
+            record.comment1 = comment1
+            record.comment2 = comment2
+            record.comment3 = comment3
+        }
+    }
+
+    private fun updateCurrentPage(bookId: String, currentPage: Int) {
+        realm.executeTransaction {
+            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
+                ?: return@executeTransaction
+            book.currentPage = currentPage
         }
     }
 }
