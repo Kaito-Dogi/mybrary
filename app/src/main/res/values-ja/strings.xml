@@ -14,17 +14,20 @@
     <string name="description_edit_hint">説明</string>
     <string name="book_add_button">追加</string>
     <string name="book_update_button">更新</string>
+    <string name="post_toast_text">データを入力してください</string>
 
     <!--RecordActivity-->
     <string name="title_text">タイトル</string>
     <string name="author_text">著者</string>
     <string name="total_page_text">pp.</string>
     <string name="description_text">説明</string>
-    <string name="delete_dialog_message">この本を削除しますか？</string>
+    <string name="delete_book_dialog_message">この本を削除しますか？</string>
     <string name="delete_dialog_positive_button">削除する</string>
     <string name="delete_dialog_negative_button">削除しない</string>
     <string name="delete_toast_text_before">「</string>
-    <string name="delete_toast_text_after">」は削除されました</string>
+    <string name="delete_toast_text_after">」を削除しました</string>
+    <string name="delete_record_dialog_message">この記録を削除しますか？</string>
+    <string name="delete_record_toast_text">削除しました</string>
 
     <!--Item Cell-->
     <string name="current_page_text">現在 p. </string>

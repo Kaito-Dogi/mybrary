@@ -47,15 +47,19 @@ class BookPostActivity : AppCompatActivity() {
                     bookFromIsbnService.getBook("isbn:$isbn")
                 }
             }.onSuccess {
-                imageId = it.items[0].volumeInfo.imageLinks.thumbnail
-                bookImageInPost.load(imageId)
-                titleEditText.setText(it.items[0].volumeInfo.title)
-                authorEditText.setText(it.items[0].volumeInfo.authors[0])
-                descriptionEditText.setText(it.items[0].volumeInfo.description)
-                pageCountEditText.setText(it.items[0].volumeInfo.pageCount.toString())
-                Toast.makeText(applicationContext, getText(R.string.on_success), Toast.LENGTH_SHORT).show()
+                if (it.items != null) {
+                    imageId = it.items[0].volumeInfo.imageLinks.thumbnail
+                    bookImageInPost.load(imageId)
+                    titleEditText.setText(it.items[0].volumeInfo.title)
+                    authorEditText.setText(it.items[0].volumeInfo.authors[0])
+                    pageCountEditText.setText(it.items[0].volumeInfo.pageCount.toString())
+                    descriptionEditText.setText(it.items[0].volumeInfo.description)
+                    Toast.makeText(baseContext, getText(R.string.on_success), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(baseContext, getText(R.string.on_failure), Toast.LENGTH_SHORT).show()
+                }
             }.onFailure {
-                Toast.makeText(applicationContext, getText(R.string.on_failure), Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, getText(R.string.on_failure), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -72,31 +76,36 @@ class BookPostActivity : AppCompatActivity() {
             }
             titleEditText.setText(book.title)
             authorEditText.setText(book.author)
-            descriptionEditText.setText(book.description)
             pageCountEditText.setText(book.pageCount.toString())
+            descriptionEditText.setText(book.description)
         }
 
         bookAddButton.setOnClickListener {
-
-            if (id == null) {
-                create(
-                        imageId,
-                        titleEditText.text.toString(),
-                        authorEditText.text.toString(),
-                        pageCountEditText.text.toString().toInt(),
-                        descriptionEditText.text.toString()
-                )
+            if (pageCountEditText.text.toString() != ""
+                    && pageCountEditText.text.toString().toInt() > 0
+                    && titleEditText.text.toString() != ""
+            ) { if (id == null) {
+                    create(
+                            imageId,
+                            titleEditText.text.toString(),
+                            authorEditText.text.toString(),
+                            pageCountEditText.text.toString().toInt(),
+                            descriptionEditText.text.toString()
+                    )
+                } else {
+                    update(
+                            id,
+                            imageId,
+                            titleEditText.text.toString(),
+                            authorEditText.text.toString(),
+                            pageCountEditText.text.toString().toInt(),
+                            descriptionEditText.text.toString()
+                    )
+                }
+                finish()
             } else {
-                update(
-                        id,
-                        imageId,
-                        titleEditText.text.toString(),
-                        authorEditText.text.toString(),
-                        pageCountEditText.text.toString().toInt(),
-                        descriptionEditText.text.toString()
-                )
+                Toast.makeText(baseContext, getText(R.string.post_toast_text), Toast.LENGTH_SHORT).show()
             }
-            finish()
 
         }
 
@@ -121,11 +130,12 @@ class BookPostActivity : AppCompatActivity() {
     private fun update(id: String, imageId: String, title: String, author: String, pageCount: Int, description: String) {
         realm.executeTransaction {
             val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
-            book?.imageId = imageId
-            book?.title = title
-            book?.author = author
-            book?.pageCount = pageCount
-            book?.description = description
+                    ?: return@executeTransaction
+            book.imageId = imageId
+            book.title = title
+            book.author = author
+            book.pageCount = pageCount
+            book.description = description
         }
     }
 
