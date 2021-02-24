@@ -15,6 +15,7 @@ class RecordAdapter(
     private val context: Context,
     private var recordList: OrderedRealmCollection<Record>?,
     private var listener: OnItemClickListener,
+    private var longListener: OnItemLongClickListener,
     private val autoUpdate: Boolean
 ): RealmRecyclerViewAdapter<Record, RecordAdapter.RecordViewHolder>(recordList, autoUpdate) {
 
@@ -25,6 +26,11 @@ class RecordAdapter(
 
         holder.recordContainer.setOnClickListener{
             listener.onItemClick(record)
+        }
+
+        holder.recordContainer.setOnLongClickListener {
+            longListener.onItemLongClick(record)
+            true
         }
 
         holder.currentPageText.setText(R.string.current_page_text)
@@ -58,6 +64,10 @@ class RecordAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(item: Record)
+    }
+
+    interface OnItemLongClickListener {
+        fun onItemLongClick(item: Record)
     }
 
 }

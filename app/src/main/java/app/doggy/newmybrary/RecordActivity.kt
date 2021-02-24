@@ -48,11 +48,20 @@ class RecordActivity : AppCompatActivity() {
 
         val recordList = readAll()
 
-        val adapter = RecordAdapter(this, recordList, object: RecordAdapter.OnItemClickListener {
-            override fun onItemClick(item: Record) {
-
-            }
-        },true)
+        val adapter =
+                RecordAdapter(
+                        this,
+                        recordList,
+                        object: RecordAdapter.OnItemClickListener {
+                            override fun onItemClick(item: Record) {
+                                Toast.makeText(baseContext, "短い", Toast.LENGTH_SHORT).show()
+                            }},
+                        object: RecordAdapter.OnItemLongClickListener {
+                            override fun onItemLongClick(item: Record) {
+                                Toast.makeText(baseContext, "長い", Toast.LENGTH_SHORT).show()
+                            }},
+                        true
+                )
 
         recordRecyclerView.setHasFixedSize(true)
         recordRecyclerView.layoutManager = LinearLayoutManager(this)
