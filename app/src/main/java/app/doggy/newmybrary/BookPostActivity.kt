@@ -2,6 +2,7 @@ package app.doggy.newmybrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import coil.api.load
 import com.google.gson.FieldNamingPolicy
@@ -24,6 +25,9 @@ class BookPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_post)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val isbn: String? = intent.getStringExtra("isbn")
 
@@ -55,15 +59,45 @@ class BookPostActivity : AppCompatActivity() {
             }
         }
 
+        val id = intent.getStringExtra("id")
+
+        if (id != null) {
+
+            bookAddButton.setText(R.string.book_update_button)
+
+            val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
+            if (book?.imageId != "") {
+                imageId = book?.imageId as String
+                bookImageInPost.load(imageId)
+            }
+            titleEditText.setText(book.title)
+            authorEditText.setText(book.author)
+            descriptionEditText.setText(book.description)
+            pageCountEditText.setText(book.pageCount.toString())
+        }
+
         bookAddButton.setOnClickListener {
-            create(
-                imageId,
-                titleEditText.text.toString(),
-                authorEditText.text.toString(),
-                pageCountEditText.text.toString().toInt(),
-                descriptionEditText.text.toString()
-            )
+
+            if (id == null) {
+                create(
+                        imageId,
+                        titleEditText.text.toString(),
+                        authorEditText.text.toString(),
+                        pageCountEditText.text.toString().toInt(),
+                        descriptionEditText.text.toString()
+                )
+            } else {
+                update(
+                        id,
+                        imageId,
+                        titleEditText.text.toString(),
+                        authorEditText.text.toString(),
+                        pageCountEditText.text.toString().toInt(),
+                        descriptionEditText.text.toString()
+                )
+            }
             finish()
+
         }
 
     }
@@ -82,5 +116,23 @@ class BookPostActivity : AppCompatActivity() {
             book.pageCount = pageCount
             book.description = description
         }
+    }
+
+    private fun update(id: String, imageId: String, title: String, author: String, pageCount: Int, description: String) {
+        realm.executeTransaction {
+            val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
+            book?.imageId = imageId
+            book?.title = title
+            book?.author = author
+            book?.pageCount = pageCount
+            book?.description = description
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

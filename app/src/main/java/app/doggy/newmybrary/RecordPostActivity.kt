@@ -2,6 +2,7 @@ package app.doggy.newmybrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_record_post.*
 import java.util.*
@@ -15,6 +16,9 @@ class RecordPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record_post)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val bookId = intent.getStringExtra("bookId")
         val bookPageCount = intent.getIntExtra("bookPageCount", 1)
@@ -63,5 +67,12 @@ class RecordPostActivity : AppCompatActivity() {
                 ?: return@executeTransaction
             book.currentPage = currentPage
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

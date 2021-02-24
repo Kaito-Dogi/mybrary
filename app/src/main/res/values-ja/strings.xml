@@ -13,12 +13,18 @@
     <string name="total_page_edit_hint">ページ数</string>
     <string name="description_edit_hint">説明</string>
     <string name="book_add_button">追加</string>
+    <string name="book_update_button">更新</string>
 
     <!--RecordActivity-->
     <string name="title_text">タイトル</string>
     <string name="author_text">著者</string>
     <string name="total_page_text">pp.</string>
     <string name="description_text">説明</string>
+    <string name="delete_dialog_message">この本を削除しますか？</string>
+    <string name="delete_dialog_positive_button">削除する</string>
+    <string name="delete_dialog_negative_button">削除しない</string>
+    <string name="delete_toast_text_before">「</string>
+    <string name="delete_toast_text_after">」は削除されました</string>
 
     <!--Item Cell-->
     <string name="current_page_text">現在 p. </string>
@@ -34,4 +40,8 @@
     <string name="comment2_edit_hint">コメント2</string>
     <string name="comment3_edit_hint">コメント3</string>
     <string name="record_add_button">記録</string>
+
+    <!--App Bar-->
+    <string name="edit_app_bar">編集</string>
+    <string name="delete_app_bar">削除</string>
 </resources>

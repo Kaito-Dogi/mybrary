@@ -1,9 +1,11 @@
 package app.doggy.newmybrary
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import io.realm.Realm
@@ -24,6 +26,12 @@ class RecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record)
 
+        supportActionBar?.hide()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         bookId = intent.getStringExtra("bookId") as String
         val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
 
@@ -55,6 +63,37 @@ class RecordActivity : AppCompatActivity() {
             postIntent.putExtra("bookId", book?.id)
             postIntent.putExtra("bookPageCount", book?.pageCount)
             startActivity(postIntent)
+        }
+
+        recordAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.edit -> {
+                    val postIntent = Intent(baseContext, BookPostActivity::class.java)
+                    postIntent.putExtra("id", book?.id)
+                    startActivity(postIntent)
+                    true
+                }
+                R.id.delete -> {
+                    AlertDialog
+                            .Builder(this@RecordActivity)
+                            .setMessage(R.string.delete_dialog_message)
+                            .setPositiveButton(getText(R.string.delete_dialog_positive_button)) { dialog, which ->
+                                Toast.makeText(baseContext, getText(R.string.delete_toast_text_before).toString() + book?.title + getText(R.string.delete_toast_text_after), Toast.LENGTH_SHORT).show()
+                                realm.executeTransaction {
+                                    val records = realm.where(Record::class.java).equalTo("bookId", bookId).findAll()
+                                            ?: return@executeTransaction
+                                    records.deleteAllFromRealm()
+                                    book?.deleteFromRealm()
+                                }
+                                finish()
+                            }
+                            .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
+                            }
+                            .show()
+                    true
+                }
+                else -> false
+            }
         }
     }
 
