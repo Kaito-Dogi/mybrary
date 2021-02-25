@@ -48,8 +48,6 @@ class RecordPostActivity : AppCompatActivity() {
                             comment3EditText.text.toString()
                     )
 
-                    updateCurrentPage(bookId, currentPageEditText.text.toString().toInt())
-
                 } else if (id != null) {
                     update(
                             id,
@@ -105,14 +103,6 @@ class RecordPostActivity : AppCompatActivity() {
             record.comment1 = comment1
             record.comment2 = comment2
             record.comment3 = comment3
-        }
-    }
-
-    private fun updateCurrentPage(bookId: String, currentPage: Int) {
-        realm.executeTransaction {
-            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
-                    ?: return@executeTransaction
-            book.currentPage = currentPage
         }
     }
 

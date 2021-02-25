@@ -57,6 +57,7 @@ class RecordActivity : AppCompatActivity() {
                                         .setPositiveButton(getText(R.string.delete_dialog_positive_button)) { dialog, which ->
                                             Toast.makeText(baseContext, getText(R.string.delete_record_toast_text), Toast.LENGTH_SHORT).show()
                                             deleteRecord(item.id)
+                                            updateCurrentPage(bookId, book)
                                         }
                                         .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
                                         }
@@ -105,12 +106,11 @@ class RecordActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         titleText.text = book.title
         authorText.text = book.author
         pageCountText.text = "${book.pageCount}" + getText(R.string.total_page_text)
         descriptionText.text = book.description
-
+        updateCurrentPage(bookId, book)
     }
 
     override fun onDestroy() {
@@ -142,12 +142,15 @@ class RecordActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateCurrentPage(bookId: String) {
-        val record = realm.where(Record::class.java).equalTo("bookId", bookId).sort("createdAt", Sort.DESCENDING).findFirst()
+    private fun updateCurrentPage(bookId: String, book: Book) {
         realm.executeTransaction {
-            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
+            val record = realm
+                    .where(Record::class.java)
+                    .equalTo("bookId", bookId)
+                    .sort("createdAt", Sort.DESCENDING)
+                    .findFirst()
                     ?: return@executeTransaction
-            book.currentPage = record?.currentPage as Int
+            book.currentPage = record.currentPage
         }
     }
 

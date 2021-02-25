@@ -3,6 +3,8 @@ package app.doggy.newmybrary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
@@ -15,11 +17,13 @@ class MainActivity : AppCompatActivity() {
         Realm.getDefaultInstance()
     }
 
+    lateinit var bookList: RealmResults<Book>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bookList = readAll()
+        bookList = readAll()
 
         val adapter = BookAdapter(baseContext, bookList, object: BookAdapter.OnItemClickListener {
             override fun onItemClick(item: Book) {
@@ -43,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(postIntent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+            emptyText.isVisible = bookList.isEmpty()
     }
 
     override fun onDestroy() {

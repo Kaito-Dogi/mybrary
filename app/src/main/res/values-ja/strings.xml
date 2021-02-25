@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Mybrary</string>
 
+    <!--MainActivity-->
+    <string name="empty_text">本を追加しましょう！</string>
+
     <!--ReadActivity-->
     <string name="request_button">送信</string>
     <string name="isbn_edit_text">ISBNを入力してください</string>
