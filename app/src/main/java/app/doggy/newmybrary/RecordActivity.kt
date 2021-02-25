@@ -19,39 +19,33 @@ class RecordActivity : AppCompatActivity() {
         Realm.getDefaultInstance()
     }
 
+    lateinit var bookId: String
+    lateinit var book: Book
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record)
 
         supportActionBar?.hide()
 
-    }
+        bookId = intent.getStringExtra("bookId") as String
+        book = realm.where(Book::class.java).equalTo("id", bookId).findFirst() as Book
 
-    override fun onResume() {
-        super.onResume()
-        val bookId = intent.getStringExtra("bookId") as String
-        val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
-
-        if (book?.imageId == "") {
+        if (book.imageId == "") {
             bookImageInRecord.setImageResource(R.drawable.book_black)
         } else {
-            bookImageInRecord.load(book?.imageId)
+            bookImageInRecord.load(book.imageId)
         }
-
-        titleText.text = book?.title
-        authorText.text = book?.author
-        pageCountText.text = "${book?.pageCount}" + getText(R.string.total_page_text)
-        descriptionText.text = book?.description
 
         val recordList = readAll(bookId)
 
-        if (recordList.size == 0) {
-            realm.executeTransaction {
-                book?.currentPage = 0
-            }
-        } else {
-            updateCurrentPage(bookId)
-        }
+//        if (recordList.size == 0) {
+//            realm.executeTransaction {
+//                book?.currentPage = 0
+//            }
+//        } else {
+//            updateCurrentPage(bookId)
+//        }
 
         val adapter =
                 RecordAdapter(
@@ -72,13 +66,13 @@ class RecordActivity : AppCompatActivity() {
                                             Toast.makeText(baseContext, getText(R.string.delete_record_toast_text), Toast.LENGTH_SHORT).show()
                                             deleteRecord(item.id)
 
-                                            if (recordList.size == 0) {
-                                                realm.executeTransaction {
-                                                    book?.currentPage = 0
-                                                }
-                                            } else {
-                                                updateCurrentPage(bookId)
-                                            }
+//                                            if (recordList.size == 0) {
+//                                                realm.executeTransaction {
+//                                                    book?.currentPage = 0
+//                                                }
+//                                            } else {
+//                                                updateCurrentPage(bookId)
+//                                            }
                                         }
                                         .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
                                         }
@@ -93,8 +87,8 @@ class RecordActivity : AppCompatActivity() {
 
         recordPostFab.setOnClickListener {
             val postIntent = Intent(baseContext, RecordPostActivity::class.java)
-            postIntent.putExtra("bookId", book?.id)
-            postIntent.putExtra("bookPageCount", book?.pageCount)
+            postIntent.putExtra("bookId", book.id)
+            postIntent.putExtra("bookPageCount", book.pageCount)
             startActivity(postIntent)
         }
 
@@ -102,7 +96,7 @@ class RecordActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.edit -> {
                     val postIntent = Intent(baseContext, BookPostActivity::class.java)
-                    postIntent.putExtra("id", book?.id)
+                    postIntent.putExtra("id", book.id)
                     startActivity(postIntent)
                     true
                 }
@@ -123,6 +117,16 @@ class RecordActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        titleText.text = book.title
+        authorText.text = book.author
+        pageCountText.text = "${book.pageCount}" + getText(R.string.total_page_text)
+        descriptionText.text = book.description
+
     }
 
     override fun onDestroy() {
@@ -154,13 +158,13 @@ class RecordActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateCurrentPage(bookId: String) {
-        realm.executeTransaction {
-            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
-                    ?: return@executeTransaction
-            val record = realm.where(Record::class.java).equalTo("bookId", bookId).sort("createdAt", Sort.DESCENDING).findFirst()
-            book.currentPage = record?.currentPage as Int
-        }
-    }
+//    private fun updateCurrentPage(bookId: String) {
+//        realm.executeTransaction {
+//            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
+//                    ?: return@executeTransaction
+//            val record = realm.where(Record::class.java).equalTo("bookId", bookId).sort("createdAt", Sort.DESCENDING).findFirst()
+//            book.currentPage = record?.currentPage as Int
+//        }
+//    }
 
 }
