@@ -39,14 +39,6 @@ class RecordActivity : AppCompatActivity() {
 
         val recordList = readAll(bookId)
 
-//        if (recordList.size == 0) {
-//            realm.executeTransaction {
-//                book?.currentPage = 0
-//            }
-//        } else {
-//            updateCurrentPage(bookId)
-//        }
-
         val adapter =
                 RecordAdapter(
                         this,
@@ -65,14 +57,6 @@ class RecordActivity : AppCompatActivity() {
                                         .setPositiveButton(getText(R.string.delete_dialog_positive_button)) { dialog, which ->
                                             Toast.makeText(baseContext, getText(R.string.delete_record_toast_text), Toast.LENGTH_SHORT).show()
                                             deleteRecord(item.id)
-
-//                                            if (recordList.size == 0) {
-//                                                realm.executeTransaction {
-//                                                    book?.currentPage = 0
-//                                                }
-//                                            } else {
-//                                                updateCurrentPage(bookId)
-//                                            }
                                         }
                                         .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
                                         }
@@ -158,13 +142,13 @@ class RecordActivity : AppCompatActivity() {
         }
     }
 
-//    private fun updateCurrentPage(bookId: String) {
-//        realm.executeTransaction {
-//            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
-//                    ?: return@executeTransaction
-//            val record = realm.where(Record::class.java).equalTo("bookId", bookId).sort("createdAt", Sort.DESCENDING).findFirst()
-//            book.currentPage = record?.currentPage as Int
-//        }
-//    }
+    private fun updateCurrentPage(bookId: String) {
+        val record = realm.where(Record::class.java).equalTo("bookId", bookId).sort("createdAt", Sort.DESCENDING).findFirst()
+        realm.executeTransaction {
+            val book = realm.where(Book::class.java).equalTo("id", bookId).findFirst()
+                    ?: return@executeTransaction
+            book.currentPage = record?.currentPage as Int
+        }
+    }
 
 }
