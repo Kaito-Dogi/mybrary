@@ -48,7 +48,9 @@ class BookPostActivity : AppCompatActivity() {
                 }
             }.onSuccess {
                 if (it.items != null) {
-                    imageId = it.items[0].volumeInfo.imageLinks.thumbnail
+                    if (it.items[0].volumeInfo.imageLinks != null) {
+                        imageId = it.items[0].volumeInfo.imageLinks.thumbnail
+                    }
                     bookImageInPost.load(imageId)
                     titleEditText.setText(it.items[0].volumeInfo.title)
                     authorEditText.setText(it.items[0].volumeInfo.authors[0])
