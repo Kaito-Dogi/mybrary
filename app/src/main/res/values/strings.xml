@@ -50,4 +50,7 @@
     <!--App Bar-->
     <string name="edit_app_bar">Edit</string>
     <string name="delete_app_bar">Delete</string>
+
+    <!--暫定-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
