@@ -7,7 +7,7 @@
     tools:context=".ui.ListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bookRecyclerView"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/purple_200"
@@ -17,36 +17,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/readFab"
+        android:id="@+id/read_qr_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/bookPostFab"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/post_book_fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_camera_alt_24"
         app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bookPostFab"
+        android:id="@+id/post_book_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_margin="16dp"
         android:layout_marginBottom="24dp"
-        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24"
         app:tint="@color/white" />
 
     <TextView
-        android:id="@+id/emptyText"
+        android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/empty_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/bookRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bookRecyclerView" />
+        app:layout_constraintTop_toTopOf="@+id/recycler_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

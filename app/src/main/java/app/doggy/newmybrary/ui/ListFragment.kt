@@ -53,16 +53,16 @@ class ListFragment : Fragment() {
                 }
             }, true)
 
-        bookRecyclerView.setHasFixedSize(true)
-        bookRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
-        bookRecyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.recyclerView.adapter = adapter
 
-        readFab.setOnClickListener {
+        binding.readQrFab.setOnClickListener {
             val readIntent = Intent(requireContext(), ReadActivity::class.java)
             startActivity(readIntent)
         }
 
-        bookPostFab.setOnClickListener {
+        binding.postBookFab.setOnClickListener {
             val postIntent = Intent(requireContext(), BookPostActivity::class.java)
             startActivity(postIntent)
         }
@@ -70,7 +70,7 @@ class ListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        emptyText.isVisible = bookList.isEmpty()
+        binding.emptyView.isVisible = bookList.isEmpty()
     }
 
     override fun onDestroy() {
