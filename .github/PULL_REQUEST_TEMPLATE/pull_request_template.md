@@ -11,4 +11,3 @@
 | <img src="" width="300px" /> | <img src="" width="300px" /> |
 
 ## :link: 関連リンク
-- `記入する`
