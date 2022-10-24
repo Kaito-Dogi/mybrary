@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.api.load
+import coil.load
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_record.*
-import java.util.*
 
 class RecordActivity : AppCompatActivity() {
 
