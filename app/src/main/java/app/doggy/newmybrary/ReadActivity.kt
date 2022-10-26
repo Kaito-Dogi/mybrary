@@ -1,64 +1,64 @@
 package app.doggy.newmybrary
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import app.doggy.newmybrary.databinding.ActivityReadBinding
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.activity_read.*
 
 class ReadActivity : AppCompatActivity() {
 
-    private var qrScanIntegrator: IntentIntegrator? = null
+  private lateinit var binding: ActivityReadBinding
 
-    lateinit var isbnEditText: EditText
+  private var qrScanIntegrator: IntentIntegrator? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_read)
+  lateinit var isbnEditText: EditText
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityReadBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-        isbnEditText = findViewById(R.id.isbnEditText)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        //バーコードリーダーを起動。
-        qrScanIntegrator = IntentIntegrator(this)
-        qrScanIntegrator?.setOrientationLocked(false)
-        qrScanIntegrator?.setBeepEnabled(false)
-        qrScanIntegrator?.initiateScan()
+    isbnEditText = findViewById(R.id.isbnEditText)
 
-        requestButton.setOnClickListener {
+    // バーコードリーダーを起動。
+    qrScanIntegrator = IntentIntegrator(this)
+    qrScanIntegrator?.setOrientationLocked(false)
+    qrScanIntegrator?.setBeepEnabled(false)
+    qrScanIntegrator?.initiateScan()
 
-            val postIntent = Intent(baseContext, BookPostActivity::class.java)
+    binding.requestButton.setOnClickListener {
+      val postIntent = Intent(baseContext, BookPostActivity::class.java)
 
-            val isbn = isbnEditText.text.toString()
-            postIntent.putExtra("isbn", isbn)
+      val isbn = isbnEditText.text.toString()
+      postIntent.putExtra("isbn", isbn)
 
-            startActivity(postIntent)
+      startActivity(postIntent)
 
-            finish()
-        }
+      finish()
     }
+  }
 
-    //バーコード読み取り後に呼ばれるメソッド。
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+  // バーコード読み取り後に呼ばれるメソッド。
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
 
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-
-        if (result != null) {
-            isbnEditText.setText(result.contents)
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
-
+    if (result != null) {
+      isbnEditText.setText(result.contents)
+    } else {
+      super.onActivityResult(requestCode, resultCode, data)
     }
+  }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
-        }
-        return super.onOptionsItemSelected(item)
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    if (item.itemId == android.R.id.home) {
+      finish()
     }
+    return super.onOptionsItemSelected(item)
+  }
 }

@@ -1,66 +1,70 @@
 package app.doggy.newmybrary
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import app.doggy.newmybrary.databinding.ActivityMainBinding
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val realm: Realm by lazy {
-        Realm.getDefaultInstance()
-    }
+  private lateinit var binding: ActivityMainBinding
 
-    lateinit var bookList: RealmResults<Book>
+  private val realm: Realm by lazy {
+    Realm.getDefaultInstance()
+  }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+  lateinit var bookList: RealmResults<Book>
 
-        bookList = readAll()
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-        val adapter = BookAdapter(baseContext, bookList, object: BookAdapter.OnItemClickListener {
-            override fun onItemClick(item: Book) {
-                val recordIntent = Intent(baseContext, RecordActivity::class.java)
-                recordIntent.putExtra("bookId", item.id)
-                startActivity(recordIntent)
-            }
-        }, true)
+    bookList = readAll()
 
-        bookRecyclerView.setHasFixedSize(true)
-        bookRecyclerView.layoutManager = GridLayoutManager(baseContext, 3)
-        bookRecyclerView.adapter = adapter
-
-        readFab.setOnClickListener {
-            val readIntent = Intent(baseContext, ReadActivity::class.java)
-            startActivity(readIntent)
+    val adapter = BookAdapter(
+      bookList,
+      object : BookAdapter.OnItemClickListener {
+        override fun onItemClick(item: Book) {
+          val recordIntent = Intent(baseContext, RecordActivity::class.java)
+          recordIntent.putExtra("bookId", item.id)
+          startActivity(recordIntent)
         }
+      },
+      true,
+    )
 
-        bookPostFab.setOnClickListener {
-            val postIntent = Intent(baseContext, BookPostActivity::class.java)
-            startActivity(postIntent)
-        }
+    binding.bookRecyclerView.setHasFixedSize(true)
+    binding.bookRecyclerView.layoutManager = GridLayoutManager(baseContext, 3)
+    binding.bookRecyclerView.adapter = adapter
 
+    binding.readFab.setOnClickListener {
+      val readIntent = Intent(baseContext, ReadActivity::class.java)
+      startActivity(readIntent)
     }
 
-    override fun onResume() {
-        super.onResume()
-            emptyText.isVisible = bookList.isEmpty()
+    binding.bookPostFab.setOnClickListener {
+      val postIntent = Intent(baseContext, BookPostActivity::class.java)
+      startActivity(postIntent)
     }
+  }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        realm.close()
-    }
+  override fun onResume() {
+    super.onResume()
+    binding.emptyText.isVisible = bookList.isEmpty()
+  }
 
-    private fun readAll(): RealmResults<Book> {
-        return realm.where(Book::class.java).findAll().sort("createdAt", Sort.DESCENDING)
-    }
+  override fun onDestroy() {
+    super.onDestroy()
+    realm.close()
+  }
 
+  private fun readAll(): RealmResults<Book> {
+    return realm.where(Book::class.java).findAll().sort("createdAt", Sort.DESCENDING)
+  }
 }

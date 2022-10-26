@@ -1,73 +1,59 @@
 package app.doggy.newmybrary
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import app.doggy.newmybrary.databinding.ItemRecordDataCellBinding
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
-import kotlinx.android.synthetic.main.item_record_data_cell.view.*
 
 class RecordAdapter(
-    private val context: Context,
-    private var recordList: OrderedRealmCollection<Record>?,
-    private var listener: OnItemClickListener,
-    private var longListener: OnItemLongClickListener,
-    private val autoUpdate: Boolean
-): RealmRecyclerViewAdapter<Record, RecordAdapter.RecordViewHolder>(recordList, autoUpdate) {
+  private var recordList: OrderedRealmCollection<Record>?,
+  private var listener: OnItemClickListener,
+  private var longListener: OnItemLongClickListener,
+  autoUpdate: Boolean,
+) : RealmRecyclerViewAdapter<Record, RecordAdapter.RecordViewHolder>(recordList, autoUpdate) {
 
-    override fun getItemCount(): Int = recordList?.size ?: 0
+  override fun getItemCount(): Int = recordList?.size ?: 0
 
-    override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
-        val record: Record = recordList?.get(position) ?: return
+  override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
+    val record: Record = recordList?.get(position) ?: return
 
-        holder.recordContainer.setOnClickListener{
-            listener.onItemClick(record)
-        }
-
-        holder.recordContainer.setOnLongClickListener {
-            longListener.onItemLongClick(record)
-            true
-        }
-
-        holder.currentPageText.setText(R.string.current_page_text)
-        val currentPageText = holder.currentPageText.text.toString() + record.currentPage
-        holder.currentPageText.text = currentPageText
-
-        val percent: Int = record.currentPage * 100 / record.bookPageCount
-        holder.percentText.setText(R.string.percent_text_before)
-        val percentText = holder.percentText.text.toString() + percent + "%"
-        holder.percentText.text = percentText
-
-        holder.comment1Text.text = "・${record.comment1}"
-        holder.comment2Text.text = "・${record.comment2}"
-        holder.comment3Text.text = "・${record.comment3}"
-
+    holder.binding.recordContainer.setOnClickListener {
+      listener.onItemClick(record)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecordViewHolder {
-        val v = LayoutInflater.from(context).inflate(R.layout.item_record_data_cell, viewGroup, false)
-        return RecordViewHolder(v)
+    holder.binding.recordContainer.setOnLongClickListener {
+      longListener.onItemLongClick(record)
+      true
     }
 
-    class RecordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val recordContainer : LinearLayout = view.recordContainer
-        val percentText: TextView = view.percentTextInRecord
-        val currentPageText: TextView = view.correntPageText
-        val comment1Text: TextView = view.comment1Text
-        val comment2Text: TextView = view.comment2Text
-        val comment3Text: TextView = view.comment3Text
-    }
+    holder.binding.correntPageText.setText(R.string.current_page_text)
+    val currentPageText = holder.binding.correntPageText.text.toString() + record.currentPage
+    holder.binding.correntPageText.text = currentPageText
 
-    interface OnItemClickListener {
-        fun onItemClick(item: Record)
-    }
+    val percent: Int = record.currentPage * 100 / record.bookPageCount
+    holder.binding.percentTextInRecord.setText(R.string.percent_text_before)
+    val percentText = holder.binding.percentTextInRecord.text.toString() + percent + "%"
+    holder.binding.percentTextInRecord.text = percentText
 
-    interface OnItemLongClickListener {
-        fun onItemLongClick(item: Record)
-    }
+    holder.binding.comment1Text.text = "・${record.comment1}"
+    holder.binding.comment2Text.text = "・${record.comment2}"
+    holder.binding.comment3Text.text = "・${record.comment3}"
+  }
 
+  override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecordViewHolder {
+    val binding = ItemRecordDataCellBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+    return RecordViewHolder(binding)
+  }
+
+  class RecordViewHolder(val binding: ItemRecordDataCellBinding) : RecyclerView.ViewHolder(binding.root)
+
+  interface OnItemClickListener {
+    fun onItemClick(item: Record)
+  }
+
+  interface OnItemLongClickListener {
+    fun onItemLongClick(item: Record)
+  }
 }
