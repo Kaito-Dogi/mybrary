@@ -43,7 +43,6 @@ class RecordActivity : AppCompatActivity() {
 
     val adapter =
       RecordAdapter(
-        this,
         recordList,
         object : RecordAdapter.OnItemClickListener {
           override fun onItemClick(item: Record) {
