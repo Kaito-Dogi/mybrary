@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     bookList = readAll()
 
     val adapter = BookAdapter(
-      baseContext,
       bookList,
       object : BookAdapter.OnItemClickListener {
         override fun onItemClick(item: Book) {
