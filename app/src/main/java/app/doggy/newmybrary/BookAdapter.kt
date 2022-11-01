@@ -9,15 +9,15 @@ import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 
 class BookAdapter(
-  private var bookList: OrderedRealmCollection<Book>?,
+  private var bookList: OrderedRealmCollection<BookEntity>?,
   private var listener: OnItemClickListener,
   autoUpdate: Boolean,
-) : RealmRecyclerViewAdapter<Book, BookAdapter.BookViewHolder>(bookList, autoUpdate) {
+) : RealmRecyclerViewAdapter<BookEntity, BookAdapter.BookViewHolder>(bookList, autoUpdate) {
 
   override fun getItemCount(): Int = bookList?.size ?: 0
 
   override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-    val book: Book = bookList?.get(position) ?: return
+    val book: BookEntity = bookList?.get(position) ?: return
 
     holder.binding.bookContainer.setOnClickListener {
       listener.onItemClick(book)
@@ -41,6 +41,6 @@ class BookAdapter(
   class BookViewHolder(val binding: ItemBookDataCellBinding) : RecyclerView.ViewHolder(binding.root)
 
   interface OnItemClickListener {
-    fun onItemClick(item: Book)
+    fun onItemClick(item: BookEntity)
   }
 }

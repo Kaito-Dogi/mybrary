@@ -23,7 +23,7 @@ class RecordActivity : AppCompatActivity() {
   }
 
   lateinit var bookId: String
-  lateinit var book: Book
+  lateinit var book: BookEntity
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class RecordActivity : AppCompatActivity() {
     supportActionBar?.hide()
 
     bookId = intent.getStringExtra("bookId") as String
-    book = realm.where(Book::class.java).equalTo("id", bookId).findFirst() as Book
+    book = realm.where(BookEntity::class.java).equalTo("id", bookId).findFirst() as BookEntity
 
     if (book.imageId == "") {
       binding.bookImageInRecord.setImageResource(R.drawable.book_black)
@@ -100,7 +100,7 @@ class RecordActivity : AppCompatActivity() {
                 getText(R.string.delete_toast_text_before).toString() + book?.title + getText(R.string.delete_toast_text_after),
                 Toast.LENGTH_SHORT,
               ).show()
-              deleteAll(bookId, book as Book)
+              deleteAll(bookId, book as BookEntity)
               finish()
             }
             .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
@@ -142,7 +142,7 @@ class RecordActivity : AppCompatActivity() {
     }
   }
 
-  private fun deleteAll(bookId: String, book: Book) {
+  private fun deleteAll(bookId: String, book: BookEntity) {
     realm.executeTransaction {
       val records = realm.where(RecordEntity::class.java).equalTo("bookId", bookId).findAll()
         ?: return@executeTransaction
@@ -151,7 +151,7 @@ class RecordActivity : AppCompatActivity() {
     }
   }
 
-  private fun updateCurrentPage(bookId: String, book: Book) {
+  private fun updateCurrentPage(bookId: String, bookEntity: BookEntity) {
     realm.executeTransaction {
       val recordEntity = realm
         .where(RecordEntity::class.java)
@@ -159,7 +159,7 @@ class RecordActivity : AppCompatActivity() {
         .sort("createdAt", Sort.DESCENDING)
         .findFirst()
         ?: return@executeTransaction
-      book.currentPage = recordEntity.currentPage
+      bookEntity.currentPage = recordEntity.currentPage
     }
   }
 }
