@@ -47,14 +47,14 @@ class RecordActivity : AppCompatActivity() {
       RecordAdapter(
         recordList,
         object : RecordAdapter.OnItemClickListener {
-          override fun onItemClick(item: Record) {
+          override fun onItemClick(item: RecordEntity) {
             val postIntent = Intent(baseContext, RecordPostActivity::class.java)
             postIntent.putExtra("id", item.id)
             startActivity(postIntent)
           }
         },
         object : RecordAdapter.OnItemLongClickListener {
-          override fun onItemLongClick(item: Record) {
+          override fun onItemLongClick(item: RecordEntity) {
             AlertDialog
               .Builder(this@RecordActivity)
               .setMessage(R.string.delete_record_dialog_message)
@@ -127,8 +127,8 @@ class RecordActivity : AppCompatActivity() {
     realm.close()
   }
 
-  private fun readAll(bookId: String): RealmResults<Record> {
-    return realm.where(Record::class.java)
+  private fun readAll(bookId: String): RealmResults<RecordEntity> {
+    return realm.where(RecordEntity::class.java)
       .equalTo("bookId", bookId)
       .findAll()
       .sort("createdAt", Sort.DESCENDING)
@@ -136,7 +136,7 @@ class RecordActivity : AppCompatActivity() {
 
   private fun deleteRecord(id: String) {
     realm.executeTransaction {
-      val record = realm.where(Record::class.java).equalTo("id", id).findFirst()
+      val record = realm.where(RecordEntity::class.java).equalTo("id", id).findFirst()
         ?: return@executeTransaction
       record.deleteFromRealm()
     }
@@ -144,7 +144,7 @@ class RecordActivity : AppCompatActivity() {
 
   private fun deleteAll(bookId: String, book: Book) {
     realm.executeTransaction {
-      val records = realm.where(Record::class.java).equalTo("bookId", bookId).findAll()
+      val records = realm.where(RecordEntity::class.java).equalTo("bookId", bookId).findAll()
         ?: return@executeTransaction
       records.deleteAllFromRealm()
       book.deleteFromRealm()
@@ -153,13 +153,13 @@ class RecordActivity : AppCompatActivity() {
 
   private fun updateCurrentPage(bookId: String, book: Book) {
     realm.executeTransaction {
-      val record = realm
-        .where(Record::class.java)
+      val recordEntity = realm
+        .where(RecordEntity::class.java)
         .equalTo("bookId", bookId)
         .sort("createdAt", Sort.DESCENDING)
         .findFirst()
         ?: return@executeTransaction
-      book.currentPage = record.currentPage
+      book.currentPage = recordEntity.currentPage
     }
   }
 }

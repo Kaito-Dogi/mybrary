@@ -8,16 +8,16 @@ import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 
 class RecordAdapter(
-  private var recordList: OrderedRealmCollection<Record>?,
+  private var recordList: OrderedRealmCollection<RecordEntity>?,
   private var listener: OnItemClickListener,
   private var longListener: OnItemLongClickListener,
   autoUpdate: Boolean,
-) : RealmRecyclerViewAdapter<Record, RecordAdapter.RecordViewHolder>(recordList, autoUpdate) {
+) : RealmRecyclerViewAdapter<RecordEntity, RecordAdapter.RecordViewHolder>(recordList, autoUpdate) {
 
   override fun getItemCount(): Int = recordList?.size ?: 0
 
   override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
-    val record: Record = recordList?.get(position) ?: return
+    val record: RecordEntity = recordList?.get(position) ?: return
 
     holder.binding.recordContainer.setOnClickListener {
       listener.onItemClick(record)
@@ -50,10 +50,10 @@ class RecordAdapter(
   class RecordViewHolder(val binding: ItemRecordDataCellBinding) : RecyclerView.ViewHolder(binding.root)
 
   interface OnItemClickListener {
-    fun onItemClick(item: Record)
+    fun onItemClick(item: RecordEntity)
   }
 
   interface OnItemLongClickListener {
-    fun onItemLongClick(item: Record)
+    fun onItemLongClick(item: RecordEntity)
   }
 }
