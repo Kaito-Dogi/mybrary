@@ -33,7 +33,7 @@ class RecordPostActivity : AppCompatActivity() {
     if (id != null) {
       binding.recordAddButton.setText(R.string.book_update_button)
 
-      val record = realm.where(Record::class.java).equalTo("id", id).findFirst()
+      val record = realm.where(RecordEntity::class.java).equalTo("id", id).findFirst()
       binding.currentPageEditText.setText(record?.currentPage.toString())
       binding.comment1EditText.setText(record?.comment1)
       binding.comment2EditText.setText(record?.comment2)
@@ -81,7 +81,7 @@ class RecordPostActivity : AppCompatActivity() {
     comment3: String,
   ) {
     realm.executeTransaction {
-      val record = it.createObject(Record::class.java, UUID.randomUUID().toString())
+      val record = it.createObject(RecordEntity::class.java, UUID.randomUUID().toString())
       record.bookId = bookId
       record.bookPageCount = bookPageCount
       record.currentPage = currentPage
@@ -99,7 +99,7 @@ class RecordPostActivity : AppCompatActivity() {
     comment3: String,
   ) {
     realm.executeTransaction {
-      val record = realm.where(Record::class.java).equalTo("id", id).findFirst()
+      val record = realm.where(RecordEntity::class.java).equalTo("id", id).findFirst()
         ?: return@executeTransaction
       record.currentPage = currentPage
       record.comment1 = comment1

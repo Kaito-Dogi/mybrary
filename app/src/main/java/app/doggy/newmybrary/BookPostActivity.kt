@@ -75,7 +75,7 @@ class BookPostActivity : AppCompatActivity() {
     if (id != null) {
       binding.bookAddButton.setText(R.string.book_update_button)
 
-      val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
+      val book = realm.where(BookEntity::class.java).equalTo("id", id).findFirst()
       if (book?.imageId != "") {
         imageId = book?.imageId as String
         binding.bookImageInPost.load(imageId)
@@ -123,7 +123,7 @@ class BookPostActivity : AppCompatActivity() {
 
   private fun create(imageId: String, title: String, author: String, pageCount: Int, description: String) {
     realm.executeTransaction {
-      val book = it.createObject(Book::class.java, UUID.randomUUID().toString())
+      val book = it.createObject(BookEntity::class.java, UUID.randomUUID().toString())
       book.imageId = imageId
       book.title = title
       book.author = author
@@ -134,7 +134,7 @@ class BookPostActivity : AppCompatActivity() {
 
   private fun update(id: String, imageId: String, title: String, author: String, pageCount: Int, description: String) {
     realm.executeTransaction {
-      val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
+      val book = realm.where(BookEntity::class.java).equalTo("id", id).findFirst()
         ?: return@executeTransaction
       book.imageId = imageId
       book.title = title

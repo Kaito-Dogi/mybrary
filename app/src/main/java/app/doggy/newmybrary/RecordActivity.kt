@@ -23,7 +23,7 @@ class RecordActivity : AppCompatActivity() {
   }
 
   lateinit var bookId: String
-  lateinit var book: Book
+  lateinit var book: BookEntity
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class RecordActivity : AppCompatActivity() {
     supportActionBar?.hide()
 
     bookId = intent.getStringExtra("bookId") as String
-    book = realm.where(Book::class.java).equalTo("id", bookId).findFirst() as Book
+    book = realm.where(BookEntity::class.java).equalTo("id", bookId).findFirst() as BookEntity
 
     if (book.imageId == "") {
       binding.bookImageInRecord.setImageResource(R.drawable.book_black)
@@ -47,14 +47,14 @@ class RecordActivity : AppCompatActivity() {
       RecordAdapter(
         recordList,
         object : RecordAdapter.OnItemClickListener {
-          override fun onItemClick(item: Record) {
+          override fun onItemClick(item: RecordEntity) {
             val postIntent = Intent(baseContext, RecordPostActivity::class.java)
             postIntent.putExtra("id", item.id)
             startActivity(postIntent)
           }
         },
         object : RecordAdapter.OnItemLongClickListener {
-          override fun onItemLongClick(item: Record) {
+          override fun onItemLongClick(item: RecordEntity) {
             AlertDialog
               .Builder(this@RecordActivity)
               .setMessage(R.string.delete_record_dialog_message)
@@ -100,7 +100,7 @@ class RecordActivity : AppCompatActivity() {
                 getText(R.string.delete_toast_text_before).toString() + book?.title + getText(R.string.delete_toast_text_after),
                 Toast.LENGTH_SHORT,
               ).show()
-              deleteAll(bookId, book as Book)
+              deleteAll(bookId, book as BookEntity)
               finish()
             }
             .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
@@ -127,8 +127,8 @@ class RecordActivity : AppCompatActivity() {
     realm.close()
   }
 
-  private fun readAll(bookId: String): RealmResults<Record> {
-    return realm.where(Record::class.java)
+  private fun readAll(bookId: String): RealmResults<RecordEntity> {
+    return realm.where(RecordEntity::class.java)
       .equalTo("bookId", bookId)
       .findAll()
       .sort("createdAt", Sort.DESCENDING)
@@ -136,30 +136,30 @@ class RecordActivity : AppCompatActivity() {
 
   private fun deleteRecord(id: String) {
     realm.executeTransaction {
-      val record = realm.where(Record::class.java).equalTo("id", id).findFirst()
+      val record = realm.where(RecordEntity::class.java).equalTo("id", id).findFirst()
         ?: return@executeTransaction
       record.deleteFromRealm()
     }
   }
 
-  private fun deleteAll(bookId: String, book: Book) {
+  private fun deleteAll(bookId: String, book: BookEntity) {
     realm.executeTransaction {
-      val records = realm.where(Record::class.java).equalTo("bookId", bookId).findAll()
+      val records = realm.where(RecordEntity::class.java).equalTo("bookId", bookId).findAll()
         ?: return@executeTransaction
       records.deleteAllFromRealm()
       book.deleteFromRealm()
     }
   }
 
-  private fun updateCurrentPage(bookId: String, book: Book) {
+  private fun updateCurrentPage(bookId: String, bookEntity: BookEntity) {
     realm.executeTransaction {
-      val record = realm
-        .where(Record::class.java)
+      val recordEntity = realm
+        .where(RecordEntity::class.java)
         .equalTo("bookId", bookId)
         .sort("createdAt", Sort.DESCENDING)
         .findFirst()
         ?: return@executeTransaction
-      book.currentPage = record.currentPage
+      bookEntity.currentPage = recordEntity.currentPage
     }
   }
 }

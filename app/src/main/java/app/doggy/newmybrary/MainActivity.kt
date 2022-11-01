@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     Realm.getDefaultInstance()
   }
 
-  lateinit var bookList: RealmResults<Book>
+  lateinit var bookList: RealmResults<BookEntity>
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     val adapter = BookAdapter(
       bookList,
       object : BookAdapter.OnItemClickListener {
-        override fun onItemClick(item: Book) {
+        override fun onItemClick(item: BookEntity) {
           val recordIntent = Intent(baseContext, RecordActivity::class.java)
           recordIntent.putExtra("bookId", item.id)
           startActivity(recordIntent)
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     realm.close()
   }
 
-  private fun readAll(): RealmResults<Book> {
-    return realm.where(Book::class.java).findAll().sort("createdAt", Sort.DESCENDING)
+  private fun readAll(): RealmResults<BookEntity> {
+    return realm.where(BookEntity::class.java).findAll().sort("createdAt", Sort.DESCENDING)
   }
 }
