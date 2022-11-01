@@ -7,7 +7,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import app.doggy.newmybrary.databinding.ActivityReadBinding
 import com.google.zxing.integration.android.IntentIntegrator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReadActivity : AppCompatActivity() {
 
   private lateinit var binding: ActivityReadBinding
