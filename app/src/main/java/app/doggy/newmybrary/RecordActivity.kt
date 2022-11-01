@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.doggy.newmybrary.databinding.ActivityRecordBinding
 import coil.load
+import dagger.hilt.android.AndroidEntryPoint
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 
+@AndroidEntryPoint
 class RecordActivity : AppCompatActivity() {
 
   private lateinit var binding: ActivityRecordBinding
