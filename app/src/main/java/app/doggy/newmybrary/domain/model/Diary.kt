@@ -1,4 +1,4 @@
-package app.doggy.newmybrary.data.model
+package app.doggy.newmybrary.domain.model
 
 import java.time.LocalDateTime
 
