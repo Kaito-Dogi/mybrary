@@ -76,6 +76,9 @@ dependencies {
   // hilt
   implementation "com.google.dagger:hilt-android:2.44"
   kapt "com.google.dagger:hilt-compiler:2.44"
+
+  // Fragment
+  implementation "androidx.fragment:fragment-ktx:1.5.4"
 }
 
 kapt {
