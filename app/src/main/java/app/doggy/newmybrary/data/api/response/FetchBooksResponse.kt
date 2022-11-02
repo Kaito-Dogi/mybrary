@@ -15,11 +15,11 @@ class FetchBooksResponseItem(
   fun toBook() = Book(
     id = id,
     title = volumeInfo.title,
-    author = volumeInfo.authors,
+    authors = volumeInfo.authors,
     description = volumeInfo.description ?: "",
     totalPage = volumeInfo.pageCount,
     imageUrl = volumeInfo.imageLinks.thumbnail,
-    recordList = listOf(),
+    diaryList = listOf(),
     registeredAt = null,
   )
 }
