@@ -50,4 +50,7 @@
   <!--App Bar-->
   <string name="edit_app_bar">Edit</string>
   <string name="delete_app_bar">Delete</string>
+
+  <!-- Navigation -->
+  <string name="home_fragment">HomeFragment</string>
 </resources>
