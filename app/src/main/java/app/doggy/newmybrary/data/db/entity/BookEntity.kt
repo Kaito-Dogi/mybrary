@@ -11,6 +11,9 @@ data class BookEntity(
   @ColumnInfo(name = "book_id")
   val bookId: Long,
 
+  @ColumnInfo(name = "books_api_id")
+  val booksApiId: String,
+
   val title: String,
 
   val description: String,

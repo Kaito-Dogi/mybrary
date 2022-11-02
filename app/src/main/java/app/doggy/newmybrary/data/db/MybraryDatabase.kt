@@ -18,7 +18,7 @@ import app.doggy.newmybrary.data.db.entity.DiaryEntity
     AuthorEntity::class,
     BookAuthorCrossRef::class,
   ],
-  version = 1,
+  version = 2,
   exportSchema = true,
 )
 @TypeConverters(Converters::class)
