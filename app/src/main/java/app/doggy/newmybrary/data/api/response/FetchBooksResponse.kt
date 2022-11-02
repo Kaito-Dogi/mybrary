@@ -10,7 +10,19 @@ class FetchBooksResponse(
 class FetchBooksResponseItem(
   val id: String,
   val volumeInfo: FetchBooksResponseVolumeInfo,
-)
+) {
+  // FIXME: 変換メソッドの置き場を考える
+  fun toBook() = Book(
+    id = id,
+    title = volumeInfo.title,
+    authors = volumeInfo.authors,
+    description = volumeInfo.description ?: "",
+    totalPage = volumeInfo.pageCount,
+    imageUrl = volumeInfo.imageLinks.thumbnail,
+    diaryList = listOf(),
+    registeredAt = null,
+  )
+}
 
 class FetchBooksResponseVolumeInfo(
   val title: String,
@@ -26,16 +38,4 @@ class FetchBooksResponseVolumeInfo(
 class FetchBooksResponseImageLinks(
   val smallThumbnail: String,
   val thumbnail: String,
-)
-
-// FIXME: 変換メソッドの置き場を考える
-fun FetchBooksResponseItem.toBook() = Book(
-  id = this.id,
-  title = this.volumeInfo.title,
-  author = this.volumeInfo.authors,
-  description = this.volumeInfo.description ?: "",
-  totalPage = this.volumeInfo.pageCount,
-  imageUrl = this.volumeInfo.imageLinks.thumbnail,
-  recordList = listOf(),
-  registeredAt = null,
 )

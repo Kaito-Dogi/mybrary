@@ -1,7 +1,7 @@
 package app.doggy.newmybrary.data.repository
 
-import app.doggy.newmybrary.data.api.response.toBook
 import app.doggy.newmybrary.data.api.service.BookApi
+import app.doggy.newmybrary.data.db.MybraryDatabase
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.Binds
@@ -22,8 +22,13 @@ internal interface BookRepositoryModule {
 
 class BookRepositoryImpl @Inject constructor(
   private val bookApi: BookApi,
+  private val db: MybraryDatabase,
 ) : BookRepository {
   override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = withContext(Dispatchers.IO) {
     bookApi.service.fetchBookByIsbn(isbn).body()?.items?.map { it.toBook() } ?: listOf()
+  }
+
+  override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
+    db.bookDao().getBooks().map { it.toBook() }
   }
 }
