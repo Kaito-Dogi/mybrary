@@ -17,6 +17,6 @@ interface BookDao {
   fun update(book: BookEntity): Long
 
   @Transaction
-  @Query("SELECT * FROM BookEntity")
+  @Query("SELECT * FROM books")
   fun getBookWithDiaries(): List<BookWithDiariesAndAuthors>
 }

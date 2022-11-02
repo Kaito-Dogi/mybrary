@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
 
-@Entity
+@Entity(tableName = "diaries")
 data class DiaryEntity(
   @PrimaryKey val id: Long,
   @ColumnInfo(name = "book_id") val bookId: Long,
