@@ -1,4 +1,4 @@
-package app.doggy.newmybrary.data.repository.interfaces
+package app.doggy.newmybrary.domain.repository
 
 import app.doggy.newmybrary.domain.model.Book
 
