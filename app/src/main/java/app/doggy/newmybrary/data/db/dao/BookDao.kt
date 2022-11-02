@@ -11,10 +11,10 @@ import app.doggy.newmybrary.data.db.entity.BookWithDiariesAndAuthors
 @Dao
 interface BookDao {
   @Insert
-  fun insert(book: BookEntity): Int
+  fun insert(book: BookEntity): Long
 
   @Update
-  fun update(book: BookEntity): Int
+  fun update(book: BookEntity): Long
 
   @Transaction
   @Query("SELECT * FROM BookEntity")

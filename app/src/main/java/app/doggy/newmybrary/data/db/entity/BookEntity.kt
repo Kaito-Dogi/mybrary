@@ -7,7 +7,7 @@ import java.util.Date
 
 @Entity
 data class BookEntity(
-  @PrimaryKey val id: Int,
+  @PrimaryKey val id: Long,
   val title: String,
   val description: String,
   @ColumnInfo(name = "total_page") val totalPage: Int,

@@ -5,6 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class AuthorEntity(
-  @PrimaryKey val id: Int,
+  @PrimaryKey val id: Long,
   val name: String,
 )

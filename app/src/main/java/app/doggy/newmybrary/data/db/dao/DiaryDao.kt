@@ -7,11 +7,11 @@ import app.doggy.newmybrary.data.db.entity.DiaryEntity
 
 interface DiaryDao {
   @Insert
-  fun insert(diary: DiaryEntity): Int
+  fun insert(diary: DiaryEntity): Long
 
   @Update
-  fun update(diary: DiaryEntity): Int
+  fun update(diary: DiaryEntity): Long
 
   @Query("SELECT * FROM DiaryEntity WHERE id = :id")
-  fun getDiary(id: Int): DiaryEntity
+  fun getDiary(id: Long): DiaryEntity
 }
