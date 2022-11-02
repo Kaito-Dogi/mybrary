@@ -7,10 +7,20 @@ import java.util.Date
 
 @Entity(tableName = "books")
 data class BookEntity(
-  @PrimaryKey val id: Long,
+  @PrimaryKey
+  @ColumnInfo(name = "book_id")
+  val bookId: Long,
+
   val title: String,
+
   val description: String,
-  @ColumnInfo(name = "total_page") val totalPage: Int,
-  @ColumnInfo(name = "image_url") val imageUrl: String,
-  @ColumnInfo(name = "created_at") val createdAt: Date,
+
+  @ColumnInfo(name = "total_page")
+  val totalPage: Int,
+
+  @ColumnInfo(name = "image_url")
+  val imageUrl: String,
+
+  @ColumnInfo(name = "created_at")
+  val createdAt: Date,
 )

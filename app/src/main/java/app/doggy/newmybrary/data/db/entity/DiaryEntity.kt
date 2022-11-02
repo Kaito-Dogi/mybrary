@@ -7,9 +7,18 @@ import java.util.Date
 
 @Entity(tableName = "diaries")
 data class DiaryEntity(
-  @PrimaryKey val id: Long,
-  @ColumnInfo(name = "book_id") val bookId: Long,
+  @PrimaryKey
+  @ColumnInfo(name = "diary_id")
+  val diaryId: Long,
+
+  @ColumnInfo(name = "book_id")
+  val bookId: Long,
+
   val content: String,
-  @ColumnInfo(name = "current_page") val currentPage: Int,
-  @ColumnInfo(name = "created_at") val createdAt: Date,
+
+  @ColumnInfo(name = "current_page")
+  val currentPage: Int,
+
+  @ColumnInfo(name = "created_at")
+  val createdAt: Date,
 )
