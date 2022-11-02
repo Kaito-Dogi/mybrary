@@ -14,7 +14,7 @@ interface BookDao {
   fun insert(book: BookEntity): Long
 
   @Update
-  fun update(book: BookEntity): Long
+  fun update(book: BookEntity): Int
 
   @Transaction
   @Query("SELECT * FROM books")
