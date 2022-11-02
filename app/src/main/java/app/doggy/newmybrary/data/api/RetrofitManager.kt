@@ -21,7 +21,7 @@ object RetrofitManager {
 
   val retrofit: Retrofit = Retrofit.Builder()
     .baseUrl(BaseUrl.BOOK_BASE_URL)
-    .client(okHttpClient)
     .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .client(okHttpClient)
     .build()
 }
