@@ -11,10 +11,10 @@ data class BookWithDiariesAndAuthors(
     entityColumn = "author_id",
     associateBy = Junction(BookAuthorCrossRef::class),
   )
-  val authors: List<String>,
+  val authors: List<AuthorEntity>,
   @Relation(
     entity = DiaryEntity::class,
-    parentColumn = "id",
+    parentColumn = "book_id",
     entityColumn = "book_id",
   )
   val diaries: List<DiaryEntity>,
