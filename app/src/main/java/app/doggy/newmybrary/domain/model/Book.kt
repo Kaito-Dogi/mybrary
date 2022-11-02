@@ -5,10 +5,10 @@ import java.util.Date
 data class Book(
   val id: String,
   val title: String,
-  val author: List<String>,
+  val authors: List<String>,
   val description: String,
   val totalPage: Int,
   val imageUrl: String,
-  val recordList: List<Diary>,
+  val diaryList: List<Diary>,
   val registeredAt: Date?,
 )
