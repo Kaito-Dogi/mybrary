@@ -3,6 +3,7 @@ package app.doggy.newmybrary.data.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import app.doggy.newmybrary.domain.model.Diary
 import java.util.Date
 
 @Entity(tableName = "diaries")
@@ -21,4 +22,11 @@ data class DiaryEntity(
 
   @ColumnInfo(name = "created_at")
   val createdAt: Date,
-)
+) {
+  // FIXME: 変換メソッドの置き場を考える
+  fun toDiary() = Diary(
+    content = content,
+    currentPage = currentPage,
+    recordedAt = createdAt,
+  )
+}
