@@ -8,6 +8,7 @@ import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+// FIXME: service の配り方を考える
 class BookApi @Inject constructor(
   private val retrofitManager: RetrofitManager,
 ) {
