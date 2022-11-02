@@ -1,10 +1,10 @@
 package app.doggy.newmybrary.domain.model
 
-import java.time.LocalDateTime
+import java.util.Date
 
 data class Diary(
   val id: Int,
   val content: String,
   val currentPage: Int,
-  val recordedAt: LocalDateTime,
+  val recordedAt: Date,
 )

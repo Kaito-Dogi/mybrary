@@ -1,29 +1,29 @@
 package app.doggy.newmybrary.data.api.response
 
-import java.time.LocalDateTime
+import java.util.Date
 
 class FetchBooksResponse(
   val totalItems: Int,
-  val items: List<FetchBookResponseItem>,
+  val items: List<FetchBooksResponseItem>,
 )
 
-class FetchBookResponseItem(
+class FetchBooksResponseItem(
   val id: String,
-  val volumeInfo: FetchBookResponseVolumeInfo,
+  val volumeInfo: FetchBooksResponseVolumeInfo,
 )
 
-class FetchBookResponseVolumeInfo(
+class FetchBooksResponseVolumeInfo(
   val title: String,
   val authors: List<String>,
   val publisher: String,
-  val publishedDate: LocalDateTime,
+  val publishedDate: Date,
   val description: String,
   val pageCount: Int,
   val categories: List<String>,
-  val imageLinks: FetchBookResponseImageLinks,
+  val imageLinks: FetchBooksResponseImageLinks,
 )
 
-class FetchBookResponseImageLinks(
-  smallThumbnail: String,
-  thumbnail: String,
+class FetchBooksResponseImageLinks(
+  val smallThumbnail: String,
+  val thumbnail: String,
 )
