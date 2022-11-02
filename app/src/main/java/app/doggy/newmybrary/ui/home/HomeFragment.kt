@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.BookAdapter
 import app.doggy.newmybrary.BookEntity
@@ -25,6 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
   private var _binding: FragmentHomeBinding? = null
   private val binding: FragmentHomeBinding
     get() = _binding!!
+
+  private val viewModel: HomeViewModel by viewModels()
 
   // FIXME: Realm の依存を剥がす
   private val realm: Realm by lazy {
