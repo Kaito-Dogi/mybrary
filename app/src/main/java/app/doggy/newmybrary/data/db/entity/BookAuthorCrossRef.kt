@@ -5,6 +5,9 @@ import androidx.room.Entity
 
 @Entity(primaryKeys = ["book_id", "author_id"])
 data class BookAuthorCrossRef(
-  @ColumnInfo(name = "book_id") val bookId: Long,
-  @ColumnInfo(name = "author_id") val authorId: Long,
+  @ColumnInfo(name = "book_id")
+  val bookId: Long,
+
+  @ColumnInfo(name = "author_id", index = true)
+  val authorId: Long,
 )
