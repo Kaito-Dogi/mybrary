@@ -5,7 +5,7 @@ import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.ItemBookBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
-class BookItem(
+data class BookItem(
   private val uiModel: HomeUiModel.BookUiModel,
 ) : BindableItem<ItemBookBinding>(uiModel.hashCode().toLong()) {
   override fun bind(binding: ItemBookBinding, position: Int) {
