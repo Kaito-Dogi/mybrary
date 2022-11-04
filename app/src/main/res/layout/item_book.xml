@@ -5,8 +5,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
+  app:cardCornerRadius="8dp"
   app:cardElevation="2dp"
-  app:cardCornerRadius="16dp"
   >
 
   <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,11 +23,11 @@
       android:padding="16dp"
       android:scaleType="centerInside"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintDimensionRatio="w,3:4"
+      app:layout_constraintDimensionRatio="w,4:3"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:srcCompat="@drawable/book_black"
+      app:srcCompat="@drawable/book_black"
       />
 
     <TextView
