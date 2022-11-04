@@ -1,6 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  ></androidx.constraintlayout.widget.ConstraintLayout>
+  android:background="@color/green_200"
+  android:padding="@dimen/margin_medium"
+  tools:context=".MainActivity"
+  >
+
+  <ImageView
+    android:id="@+id/book_image"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:contentDescription="@string/book_image_content_description"
+    android:scaleType="fitCenter"
+    app:layout_constraintBottom_toTopOf="@id/guideline"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/icon_book"
+    />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.33"
+    />
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/title_text_field"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:hint="@string/title_edit_text_hint"
+    app:layout_constraintBottom_toTopOf="@id/author_text_field"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/guideline"
+    app:layout_constraintVertical_chainStyle="spread"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/title_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="text"
+      />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/author_text_field"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_small"
+    android:hint="@string/author_edit_text_hint"
+    app:layout_constraintBottom_toBottomOf="@id/description_text_field"
+    app:layout_constraintEnd_toStartOf="@id/total_page_text_field"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintHorizontal_weight="0.66"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/title_text_field"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/author_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="text"
+      />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/total_page_text_field"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_small"
+    android:hint="@string/total_page_text_edit_hint"
+    app:layout_constraintBottom_toBottomOf="@id/author_text_field"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_weight="0.33"
+    app:layout_constraintStart_toEndOf="@id/author_text_field"
+    app:layout_constraintTop_toTopOf="@id/author_text_field"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/total_page_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="number"
+      />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/description_text_field"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:hint="@string/description_text_edit_hint"
+    app:layout_constraintBottom_toTopOf="@id/register_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/author_text_field"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/description_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="textMultiLine"
+      />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Button
+    android:id="@+id/register_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/register_button_text"
+    app:cornerRadius="@dimen/corner_radius_button"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/description_text_field"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
