@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Mybrary.TextAppearance" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="Mybrary.TextAppearance.ExtraLarge">
+    <item name="android:textSize">@dimen/text_size_extra_large</item>
+  </style>
+
+  <style name="Mybrary.TextAppearance.Medium">
+    <item name="android:textSize">@dimen/text_size_medium</item>
+  </style>
+
+  <style name="Mybrary.TextAppearance.ExtraLarge.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+</resources>
