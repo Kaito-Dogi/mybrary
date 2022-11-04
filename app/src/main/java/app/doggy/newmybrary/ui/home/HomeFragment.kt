@@ -12,7 +12,6 @@ import app.doggy.newmybrary.BookPostActivity
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
