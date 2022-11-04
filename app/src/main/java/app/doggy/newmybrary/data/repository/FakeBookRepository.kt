@@ -1,15 +1,24 @@
-package app.doggy.newmybrary.data
+package app.doggy.newmybrary.data.repository
 
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.model.Diary
 import app.doggy.newmybrary.domain.repository.BookRepository
 import java.util.Date
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 class FakeBookRepository @Inject constructor() : BookRepository {
-  override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = fakeBookList
+  override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = withContext(Dispatchers.IO) {
+    delay(1000L)
+    fakeBookList
+  }
 
-  override suspend fun getBooks(): List<Book> = fakeBookList
+  override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
+    delay(1000L)
+    fakeBookList
+  }
 }
 
 private val fakeBookList = listOf(
@@ -43,7 +52,7 @@ private val fakeBookList = listOf(
     diaryList = listOf(
       Diary(
         content = "2",
-        currentPage = 0,
+        currentPage = 1,
         recordedAt = Date(),
       ),
     ),
@@ -56,12 +65,12 @@ private val fakeBookList = listOf(
       "3",
     ),
     description = "3",
-    totalPage = 1,
+    totalPage = 3,
     imageUrl = "3",
     diaryList = listOf(
       Diary(
         content = "3",
-        currentPage = 0,
+        currentPage = 2,
         recordedAt = Date(),
       ),
     ),
@@ -74,12 +83,12 @@ private val fakeBookList = listOf(
       "4",
     ),
     description = "4",
-    totalPage = 1,
+    totalPage = 4,
     imageUrl = "4",
     diaryList = listOf(
       Diary(
         content = "4",
-        currentPage = 0,
+        currentPage = 3,
         recordedAt = Date(),
       ),
     ),
@@ -92,12 +101,12 @@ private val fakeBookList = listOf(
       "5",
     ),
     description = "5",
-    totalPage = 1,
+    totalPage = 5,
     imageUrl = "5",
     diaryList = listOf(
       Diary(
         content = "5",
-        currentPage = 0,
+        currentPage = 4,
         recordedAt = Date(),
       ),
     ),
@@ -110,12 +119,12 @@ private val fakeBookList = listOf(
       "6",
     ),
     description = "6",
-    totalPage = 1,
+    totalPage = 6,
     imageUrl = "6",
     diaryList = listOf(
       Diary(
         content = "6",
-        currentPage = 0,
+        currentPage = 5,
         recordedAt = Date(),
       ),
     ),
@@ -128,12 +137,12 @@ private val fakeBookList = listOf(
       "7",
     ),
     description = "7",
-    totalPage = 1,
+    totalPage = 7,
     imageUrl = "",
     diaryList = listOf(
       Diary(
         content = "7",
-        currentPage = 0,
+        currentPage = 6,
         recordedAt = Date(),
       ),
     ),
