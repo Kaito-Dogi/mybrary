@@ -5,15 +5,14 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical"
   tools:context=".MainActivity"
   >
 
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/bookRecyclerView"
+    android:id="@+id/recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/green_200"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -21,39 +20,54 @@
     />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/readFab"
+    android:id="@+id/barcode_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="24dp"
-    android:layout_marginEnd="24dp"
-    android:clickable="true"
-    app:layout_constraintBottom_toTopOf="@+id/bookPostFab"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:contentDescription="@string/barcode_button_content_description"
+    app:layout_constraintBottom_toTopOf="@+id/register_button"
     app:layout_constraintEnd_toEndOf="parent"
-    app:srcCompat="@drawable/ic_baseline_camera_alt_24"
-    app:tint="@color/white"
+    app:srcCompat="@drawable/icon_camera"
     />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/bookPostFab"
+    android:id="@+id/register_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="24dp"
-    android:layout_marginEnd="24dp"
-    android:clickable="true"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:contentDescription="@string/register_button_content_description"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:srcCompat="@drawable/ic_baseline_add_24"
-    app:tint="@color/white"
+    app:srcCompat="@drawable/icon_add"
     />
 
   <TextView
-    android:id="@+id/emptyText"
+    android:id="@+id/empty_text"
+    style="@style/Mybrary.TextAppearance.Medium"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/empty_text"
+    android:textColor="@color/gray"
+    android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/bookRecyclerView"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/bookRecyclerView"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="visible"
+    />
+
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="visible"
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

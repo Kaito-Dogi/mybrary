@@ -16,8 +16,9 @@ import kotlinx.coroutines.withContext
 @InstallIn(SingletonComponent::class)
 @Module
 internal interface BookRepositoryModule {
+  // fun BookRepositoryImpl.bindBookRepository(): BookRepository
   @Binds
-  fun BookRepositoryImpl.bindBookRepository(): BookRepository
+  fun FakeBookRepository.bindBookRepository(): BookRepository
 }
 
 class BookRepositoryImpl @Inject constructor(

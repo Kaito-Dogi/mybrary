@@ -15,7 +15,6 @@ import java.util.UUID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @AndroidEntryPoint
 class BookPostActivity : AppCompatActivity() {
@@ -40,7 +39,7 @@ class BookPostActivity : AppCompatActivity() {
       GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
     val retrofit: Retrofit = Retrofit.Builder()
       .baseUrl("https://www.googleapis.com/books/v1/")
-      .addConverterFactory(GsonConverterFactory.create(gson))
+      // .addConverterFactory(GsonConverterFactory.create(gson))
       .build()
     val bookFromIsbnService: BookDataService = retrofit.create(BookDataService::class.java)
 

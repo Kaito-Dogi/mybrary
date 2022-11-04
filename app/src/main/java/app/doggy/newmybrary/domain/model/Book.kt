@@ -11,4 +11,11 @@ data class Book(
   val imageUrl: String,
   val diaryList: List<Diary>,
   val registeredAt: Date?,
-)
+) {
+  fun getPercent(): Int {
+    val currentPage =
+      if (diaryList.isNotEmpty()) diaryList.last().currentPage
+      else 0
+    return 100 * currentPage / totalPage
+  }
+}

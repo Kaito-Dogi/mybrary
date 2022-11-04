@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Mybrary</string>
+  <string name="home_fragment">HomeFragment</string>
 
-  <!--MainActivity-->
-  <string name="empty_text">Let‘s add a book!</string>
-
+  <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
   <string name="request_button">REQUEST</string>
   <string name="isbn_edit_text">Input an ISBN</string>
@@ -35,7 +35,6 @@
   <!--Item Cell-->
   <string name="current_page_text">Current p. </string>
   <string name="percent_text_before">Achieve </string>
-  <string name="percent_text_after">%</string>
   <string name="comment_1_text">Comment1</string>
   <string name="comment_2_text">Comment2</string>
   <string name="comment_3_text">Comment3</string>
@@ -50,7 +49,4 @@
   <!--App Bar-->
   <string name="edit_app_bar">Edit</string>
   <string name="delete_app_bar">Delete</string>
-
-  <!-- Navigation -->
-  <string name="home_fragment">HomeFragment</string>
 </resources>
