@@ -40,8 +40,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     viewModel.onViewCreated()
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
+  override fun onDestroyView() {
+    super.onDestroyView()
     _binding = null
   }
 

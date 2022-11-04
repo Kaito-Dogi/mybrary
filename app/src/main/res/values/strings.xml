@@ -2,6 +2,7 @@
 <resources>
   <string name="app_name">Mybrary</string>
   <string name="home_fragment">HomeFragment</string>
+  <string name="register_fragment">RegisterFragment</string>
 
   <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
