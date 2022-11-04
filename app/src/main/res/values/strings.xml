@@ -2,7 +2,7 @@
   <string name="app_name">Mybrary</string>
 
   <!--MainActivity-->
-  <string name="empty_text">Let‘s add a book!</string>
+  <string name="empty_text">Register your book!</string>
 
   <!--ReadActivity-->
   <string name="request_button">REQUEST</string>
