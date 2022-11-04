@@ -11,7 +11,7 @@ data class BookItem(
   override fun bind(binding: ItemBookBinding, position: Int) {
     // TODO: 本の画像をセットする処理
     binding.percentText.text = binding.root.context.getString(R.string.percent_text, uiModel.book.getPercent())
-    binding.container.setOnClickListener {
+    binding.root.setOnClickListener {
       // TODO: 詳細画面に遷移する処理
     }
   }

@@ -10,7 +10,6 @@
   >
 
   <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
@@ -20,19 +19,18 @@
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:contentDescription="@string/book_image_content_description"
-      android:padding="@dimen/margin_medium"
-      android:scaleType="centerInside"
+      android:scaleType="centerCrop"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintDimensionRatio="w,4:3"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/book_black"
+      app:srcCompat="@drawable/icon_book"
       />
 
     <TextView
-      style="@style/Mybrary.TextAppearance.ExtraLarge.Bold"
       android:id="@+id/percent_text"
+      style="@style/Mybrary.TextAppearance.ExtraLarge.Bold"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:background="@color/transparent_white"
@@ -43,5 +41,4 @@
       tools:text="@string/percent_text"
       />
   </androidx.constraintlayout.widget.ConstraintLayout>
-
 </com.google.android.material.card.MaterialCardView>
