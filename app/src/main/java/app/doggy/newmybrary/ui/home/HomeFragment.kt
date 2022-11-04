@@ -12,8 +12,10 @@ import app.doggy.newmybrary.BookPostActivity
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
   companion object {
     fun newInstance() = HomeFragment()
@@ -47,12 +49,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     // binding.bookRecyclerView.layoutManager = GridLayoutManager(requireActivity(), 3)
     // binding.bookRecyclerView.adapter = adapter
 
-    binding.readFab.setOnClickListener {
+    binding.barcodeButton.setOnClickListener {
       val readIntent = Intent(requireActivity(), ReadActivity::class.java)
       startActivity(readIntent)
     }
 
-    binding.bookPostFab.setOnClickListener {
+    binding.registerButton.setOnClickListener {
       val postIntent = Intent(requireActivity(), BookPostActivity::class.java)
       startActivity(postIntent)
     }
