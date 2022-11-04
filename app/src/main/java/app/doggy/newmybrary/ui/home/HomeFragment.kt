@@ -73,6 +73,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           binding.progressIndicator.isVisible = uiState.isLoading
+          binding.emptyText.isVisible = !uiState.isLoading && uiState.uiModelList.isEmpty()
           adapter.update(uiState.uiModelList)
         }
       }
