@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="barcode_button_content_description">Transition to the barcode reading screen.</string>
+  <string name="register_button_content_description">Transition to the book registration screen.</string>
+  <string name="empty_text">Register your book!</string>
+  <string name="percent_text">%d%%</string>
+  <string name="book_image_content_description">Image of the book.</string>
+</resources>
