@@ -3,6 +3,7 @@ package app.doggy.newmybrary.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -71,8 +72,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
+          binding.progressIndicator.isVisible = uiState.isLoading
           adapter.update(uiState.uiModelList)
-          // TODO: くるくるのオンオフを切り替える
         }
       }
     }
