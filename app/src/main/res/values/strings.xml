@@ -35,7 +35,7 @@
   <!--Item Cell-->
   <string name="current_page_text">Current p. </string>
   <string name="percent_text_before">Achieve </string>
-  <string name="percent_text_after">%</string>
+  <string name="percent_text">%d％</string>
   <string name="comment_1_text">Comment1</string>
   <string name="comment_2_text">Comment2</string>
   <string name="comment_3_text">Comment3</string>

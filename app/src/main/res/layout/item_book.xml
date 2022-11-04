@@ -31,18 +31,16 @@
       />
 
     <TextView
+      style="@style/Mybrary.TextAppearance.ExtraLarge.Bold"
       android:id="@+id/percent_text"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:background="@color/transparent_white"
-      android:fontFamily="sans-serif-black"
       android:gravity="center"
-      android:textColor="@color/black"
-      android:textSize="32sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      tools:text="@string/percent_text_after"
+      tools:text="@string/percent_text"
       />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
