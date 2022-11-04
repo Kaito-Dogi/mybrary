@@ -12,7 +12,7 @@
     android:id="@+id/recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/green_200"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,6 @@
     app:layout_constraintBottom_toTopOf="@+id/register_button"
     app:layout_constraintEnd_toEndOf="parent"
     app:srcCompat="@drawable/ic_baseline_camera_alt_24"
-    app:tint="@color/white"
     />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -42,7 +41,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:srcCompat="@drawable/ic_baseline_add_24"
-    app:tint="@color/white"
     />
 
   <TextView
