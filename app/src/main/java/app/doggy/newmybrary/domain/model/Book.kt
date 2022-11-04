@@ -16,6 +16,6 @@ data class Book(
     val currentPage =
       if (diaryList.isNotEmpty()) diaryList.last().currentPage
       else 0
-    return currentPage / totalPage
+    return 100 * currentPage / totalPage
   }
 }
