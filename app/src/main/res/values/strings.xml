@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Mybrary</string>
+  <string name="home_fragment">HomeFragment</string>
 
+  <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
   <string name="request_button">REQUEST</string>
   <string name="isbn_edit_text">Input an ISBN</string>
@@ -47,7 +49,4 @@
   <!--App Bar-->
   <string name="edit_app_bar">Edit</string>
   <string name="delete_app_bar">Delete</string>
-
-  <!-- Navigation -->
-  <string name="home_fragment">HomeFragment</string>
 </resources>
