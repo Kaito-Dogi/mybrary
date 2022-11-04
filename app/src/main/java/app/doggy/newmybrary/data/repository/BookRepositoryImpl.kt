@@ -1,5 +1,6 @@
 package app.doggy.newmybrary.data.repository
 
+import app.doggy.newmybrary.data.FakeBookRepository
 import app.doggy.newmybrary.data.api.service.BookApi
 import app.doggy.newmybrary.data.db.MybraryDatabase
 import app.doggy.newmybrary.domain.model.Book
@@ -16,8 +17,9 @@ import kotlinx.coroutines.withContext
 @InstallIn(SingletonComponent::class)
 @Module
 internal interface BookRepositoryModule {
+  // fun BookRepositoryImpl.bindBookRepository(): BookRepository
   @Binds
-  fun BookRepositoryImpl.bindBookRepository(): BookRepository
+  fun FakeBookRepository.bindBookRepository(): BookRepository
 }
 
 class BookRepositoryImpl @Inject constructor(
