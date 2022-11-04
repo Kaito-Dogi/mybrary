@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
     }
   }
 
-  private fun Book.toHomeUiModel() = HomeUiModel.BookCard(
+  private fun Book.toHomeUiModel() = HomeUiModel.BookItem(
     book = this,
   )
 }
