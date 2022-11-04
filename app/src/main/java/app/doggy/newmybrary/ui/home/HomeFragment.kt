@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.BookPostActivity
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.ReadActivity
@@ -30,34 +31,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     _binding = FragmentHomeBinding.bind(view)
-    collectUiState()
+    val adapter = HomeAdapter()
+    setUpRecycler(adapter)
+    setUpButtons()
+    collectUiState(adapter)
+
     viewModel.onViewCreated()
-
-    // val adapter = BookAdapter(
-    //   bookList,
-    //   object : BookAdapter.OnItemClickListener {
-    //     override fun onItemClick(item: BookEntity) {
-    //       val recordIntent = Intent(requireActivity(), RecordActivity::class.java)
-    //       recordIntent.putExtra("bookId", item.id)
-    //       startActivity(recordIntent)
-    //     }
-    //   },
-    //   true,
-    // )
-
-    // binding.bookRecyclerView.setHasFixedSize(true)
-    // binding.bookRecyclerView.layoutManager = GridLayoutManager(requireActivity(), 3)
-    // binding.bookRecyclerView.adapter = adapter
-
-    binding.barcodeButton.setOnClickListener {
-      val readIntent = Intent(requireActivity(), ReadActivity::class.java)
-      startActivity(readIntent)
-    }
-
-    binding.registerButton.setOnClickListener {
-      val postIntent = Intent(requireActivity(), BookPostActivity::class.java)
-      startActivity(postIntent)
-    }
   }
 
   override fun onDestroy() {
@@ -65,11 +44,34 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     _binding = null
   }
 
-  private fun collectUiState() {
+  private fun setUpRecycler(adapter: HomeAdapter) {
+    // TODO: setHasFixedSize って必要？
+    binding.recycler.setHasFixedSize(true)
+    // FIXME: spanCount を変更できるようにしたい
+    binding.recycler.layoutManager = GridLayoutManager(requireActivity(), 3).apply {
+      spanSizeLookup = adapter.spanSizeLookup
+    }
+    binding.recycler.adapter = adapter
+  }
+
+  private fun setUpButtons() {
+    // TODO: バーコード読み取り画面への遷移
+    binding.barcodeButton.setOnClickListener {
+      val readIntent = Intent(requireActivity(), ReadActivity::class.java)
+      startActivity(readIntent)
+    }
+    // TODO: 書籍登録画面への遷移
+    binding.registerButton.setOnClickListener {
+      val postIntent = Intent(requireActivity(), BookPostActivity::class.java)
+      startActivity(postIntent)
+    }
+  }
+
+  private fun collectUiState(adapter: HomeAdapter) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
-          // TODO: Adapter に uiState を渡す
+          adapter.update(uiState.uiModelList)
           // TODO: くるくるのオンオフを切り替える
         }
       }
