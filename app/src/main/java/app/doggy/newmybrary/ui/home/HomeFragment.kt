@@ -36,7 +36,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     setUpRecycler(adapter)
     setUpButtons()
     collectUiState(adapter)
-
     viewModel.onViewCreated()
   }
 

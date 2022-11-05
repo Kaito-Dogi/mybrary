@@ -7,7 +7,8 @@
   <dimen name="margin_extra_small">4dp</dimen>
   <dimen name="corner_radius_button">32dp</dimen>
   <dimen name="corner_radius_card">8dp</dimen>
-  <dimen name="card_elevation">2dp</dimen>
+  <dimen name="elevation_card">2dp</dimen>
+  <dimen name="elevation_progress_indicator">3dp</dimen>
   <dimen name="text_size_extra_large">34sp</dimen>
   <dimen name="text_size_large">20sp</dimen>
   <dimen name="text_size_medium">14sp</dimen>
