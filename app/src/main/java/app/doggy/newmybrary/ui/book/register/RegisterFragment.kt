@@ -54,7 +54,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           binding.registerButton.text =
-            if (uiState.isLoading) String() else requireContext().getString(R.string.register_button_text)
+            if (uiState.isLoading) "" else requireContext().getString(R.string.register_button_text)
           binding.progressIndicator.isVisible = uiState.isLoading
         }
       }
