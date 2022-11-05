@@ -1,14 +1,12 @@
 package app.doggy.newmybrary.data.db.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import app.doggy.newmybrary.data.db.entity.DiaryEntity
 
 @Dao
 interface DiaryDao {
-  @Insert
   fun insert(diary: DiaryEntity): Long
 
   @Update

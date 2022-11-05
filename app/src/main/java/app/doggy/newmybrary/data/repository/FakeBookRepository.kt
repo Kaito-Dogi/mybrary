@@ -19,6 +19,11 @@ class FakeBookRepository @Inject constructor() : BookRepository {
     delay(1000L)
     fakeBookList
   }
+
+  override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
+    delay(1000L)
+    true
+  }
 }
 
 private val fakeBookList = listOf(

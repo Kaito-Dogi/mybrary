@@ -3,11 +3,12 @@ package app.doggy.newmybrary.data.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import app.doggy.newmybrary.domain.model.Book
 import java.util.Date
 
 @Entity(tableName = "books")
 data class BookEntity(
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "book_id")
   val bookId: Long,
 
@@ -26,4 +27,14 @@ data class BookEntity(
 
   @ColumnInfo(name = "created_at")
   val createdAt: Date,
+)
+
+fun Book.toBookEntity() = BookEntity(
+  bookId = 0L,
+  booksApiId = this.id,
+  title = this.title,
+  description = this.description,
+  totalPage = this.totalPage,
+  imageUrl = this.imageUrl,
+  createdAt = Date(),
 )
