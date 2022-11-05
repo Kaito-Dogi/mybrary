@@ -6,12 +6,18 @@ import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
   private val bookRepository: BookRepository,
 ) : ViewModel() {
+  private val _uiState = MutableStateFlow(RegisterState.initial())
+  val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
+
   fun onRegisterButtonClick(book: Book) {
     viewModelScope.launch {
       runCatching {
