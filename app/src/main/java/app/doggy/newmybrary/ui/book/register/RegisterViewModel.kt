@@ -18,6 +18,7 @@ class RegisterViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(RegisterState.initial())
   val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
 
+  // TODO: バリデーション処理を考える
   fun onRegisterButtonClick(book: Book) {
     viewModelScope.launch {
       runCatching {

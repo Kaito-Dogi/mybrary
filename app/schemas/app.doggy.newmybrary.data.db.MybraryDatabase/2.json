@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "9d9f10cfdf036e77d05d524fd28a501d",
+    "identityHash": "66a20327690bc8f245f0223a99e2aef9",
     "entities": [
       {
         "tableName": "books",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `books_api_id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `total_page` INTEGER NOT NULL, `image_url` TEXT NOT NULL, `created_at` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `books_api_id` TEXT, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `total_page` INTEGER NOT NULL, `image_url` TEXT, `created_at` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "bookId",
@@ -18,7 +18,7 @@
             "fieldPath": "booksApiId",
             "columnName": "books_api_id",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "title",
@@ -42,7 +42,7 @@
             "fieldPath": "imageUrl",
             "columnName": "image_url",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "createdAt",
@@ -191,7 +191,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9d9f10cfdf036e77d05d524fd28a501d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '66a20327690bc8f245f0223a99e2aef9')"
     ]
   }
 }

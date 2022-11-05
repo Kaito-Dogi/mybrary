@@ -22,7 +22,8 @@ data class BookWithDiariesAndAuthors(
 ) {
   // FIXME: 変換メソッドの置き場を考える
   fun toBook() = Book(
-    id = book.booksApiId,
+    id = book.bookId,
+    booksApiId = book.booksApiId,
     title = book.title,
     authors = authors.map { it.name },
     description = book.description,

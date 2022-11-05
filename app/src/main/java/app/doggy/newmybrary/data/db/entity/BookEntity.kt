@@ -13,7 +13,7 @@ data class BookEntity(
   val bookId: Long,
 
   @ColumnInfo(name = "books_api_id")
-  val booksApiId: String,
+  val booksApiId: String?,
 
   val title: String,
 
@@ -23,18 +23,18 @@ data class BookEntity(
   val totalPage: Int,
 
   @ColumnInfo(name = "image_url")
-  val imageUrl: String,
+  val imageUrl: String?,
 
   @ColumnInfo(name = "created_at")
   val createdAt: Date,
 )
 
 fun Book.toBookEntity() = BookEntity(
-  bookId = 0L,
-  booksApiId = this.id,
+  bookId = this.id ?: 0L,
+  booksApiId = this.booksApiId,
   title = this.title,
   description = this.description,
   totalPage = this.totalPage,
   imageUrl = this.imageUrl,
-  createdAt = Date(),
+  createdAt = this.registeredAt ?: Date(),
 )
