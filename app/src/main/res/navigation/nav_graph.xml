@@ -12,5 +12,21 @@
     android:name="app.doggy.newmybrary.ui.home.HomeFragment"
     android:label="@string/home_fragment"
     tools:layout="@layout/fragment_home"
+    >
+    <action
+      android:id="@+id/action_homeFragment_to_registerFragment"
+      app:destination="@id/registerFragment"
+      app:enterAnim="@anim/nav_slide_enter_anim"
+      app:exitAnim="@anim/nav_slide_exit_anim"
+      app:popEnterAnim="@anim/nav_slide_pop_enter_anim"
+      app:popExitAnim="@anim/nav_slide_pop_exit_anim"
+      />
+  </fragment>
+
+  <fragment
+    android:id="@+id/registerFragment"
+    android:name="app.doggy.newmybrary.ui.book.register.RegisterFragment"
+    android:label="@string/register_fragment"
+    tools:layout="@layout/fragment_register"
     />
 </navigation>

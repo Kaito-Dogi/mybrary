@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import app.doggy.newmybrary.BookPostActivity
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
@@ -61,10 +61,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       val readIntent = Intent(requireActivity(), ReadActivity::class.java)
       startActivity(readIntent)
     }
-    // TODO: 書籍登録画面への遷移
     binding.registerButton.setOnClickListener {
-      val postIntent = Intent(requireActivity(), BookPostActivity::class.java)
-      startActivity(postIntent)
+      findNavController().navigate(R.id.action_homeFragment_to_registerFragment)
     }
   }
 
