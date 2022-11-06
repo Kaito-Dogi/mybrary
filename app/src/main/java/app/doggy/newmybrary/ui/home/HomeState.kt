@@ -1,12 +1,12 @@
 package app.doggy.newmybrary.ui.home
 
 data class HomeState(
-  val uiModelList: List<HomeUiModel>,
+  val uiModels: List<HomeUiModel>,
   val isLoading: Boolean,
 ) {
   companion object {
     fun initial() = HomeState(
-      uiModelList = listOf(),
+      uiModels = listOf(),
       isLoading = false,
     )
   }

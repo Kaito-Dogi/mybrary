@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteConstraintException
 import app.doggy.newmybrary.data.api.service.BookApi
 import app.doggy.newmybrary.data.db.MybraryDatabase
 import app.doggy.newmybrary.data.db.entity.BookAuthorCrossRef
-import app.doggy.newmybrary.data.db.entity.toAuthorEntityList
+import app.doggy.newmybrary.data.db.entity.toAuthorEntities
 import app.doggy.newmybrary.data.db.entity.toBookEntity
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
@@ -30,7 +30,7 @@ class BookRepositoryImpl @Inject constructor(
   private val db: MybraryDatabase,
 ) : BookRepository {
   override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = withContext(Dispatchers.IO) {
-    bookApi.service.fetchBookByIsbn(isbn).body()?.items?.map { it.toBook() } ?: listOf()
+    bookApi.service.fetchBooksByIsbn(isbn).body()?.items?.map { it.toBook() } ?: listOf()
   }
 
   override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
@@ -40,7 +40,7 @@ class BookRepositoryImpl @Inject constructor(
   override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
     // FIXME: BookEntity, AuthorEntity, BookAuthorCrossRef の保存処理をトランザクションにしたい
     val bookId = db.bookDao().insert(book.toBookEntity())
-    book.toAuthorEntityList().forEach { author ->
+    book.toAuthorEntities().forEach { author ->
       val authorId = try {
         db.authorDao().insert(author)
       } catch (e: SQLiteConstraintException) {

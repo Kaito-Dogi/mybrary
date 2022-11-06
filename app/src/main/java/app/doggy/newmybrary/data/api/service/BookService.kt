@@ -17,5 +17,5 @@ class BookApi @Inject constructor(
 
 interface BookService {
   @GET("volumes")
-  suspend fun fetchBookByIsbn(@Query("q") isbn: String): Response<FetchBooksResponse>
+  suspend fun fetchBooksByIsbn(@Query("q") isbn: String): Response<FetchBooksResponse>
 }

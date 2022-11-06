@@ -11,7 +11,7 @@ class FetchBooksResponse(
 class FetchBooksResponseItem(
   @Json(name = "id")
   val booksApiId: String,
-  val volumeInfo: FetchBooksResponseVolumeInfo,
+  private val volumeInfo: FetchBooksResponseVolumeInfo,
 ) {
   // FIXME: 変換メソッドの置き場を考える
   // TODO: thumnail が取得できなかった場合を考える
@@ -23,7 +23,7 @@ class FetchBooksResponseItem(
     description = volumeInfo.description ?: "",
     totalPage = volumeInfo.pageCount,
     imageUrl = volumeInfo.imageLinks.thumbnail,
-    diaryList = listOf(),
+    diaries = listOf(),
     registeredAt = null,
   )
 }

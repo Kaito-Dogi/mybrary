@@ -10,12 +10,12 @@ data class Book(
   val description: String,
   val totalPage: Int,
   val imageUrl: String?,
-  val diaryList: List<Diary>,
+  val diaries: List<Diary>,
   val registeredAt: Date?,
 ) {
   fun getPercent(): Int {
     val currentPage =
-      if (diaryList.isNotEmpty()) diaryList.last().currentPage
+      if (diaries.isNotEmpty()) diaries.last().currentPage
       else 0
     return 100 * currentPage / totalPage
   }

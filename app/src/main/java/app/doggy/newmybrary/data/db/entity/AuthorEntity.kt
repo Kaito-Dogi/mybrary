@@ -23,7 +23,7 @@ data class AuthorEntity(
   val name: String,
 )
 
-fun Book.toAuthorEntityList() = this.authors.map { authorName ->
+fun Book.toAuthorEntities() = this.authors.map { authorName ->
   AuthorEntity(
     authorId = 0L,
     name = authorName,

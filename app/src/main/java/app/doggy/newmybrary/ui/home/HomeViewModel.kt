@@ -24,10 +24,10 @@ class HomeViewModel @Inject constructor(
       _uiState.update { it.copy(isLoading = true) }
       runCatching {
         bookRepository.getBooks()
-      }.onSuccess { bookList ->
-        _uiState.update { homeState ->
-          homeState.copy(
-            uiModelList = bookList.map { it.toHomeUiModel() },
+      }.onSuccess { books ->
+        _uiState.update { currentState ->
+          currentState.copy(
+            uiModels = books.map { it.toHomeUiModel() },
             isLoading = false,
           )
         }

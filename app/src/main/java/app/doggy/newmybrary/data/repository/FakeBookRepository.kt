@@ -37,7 +37,7 @@ private val fakeBookList = (1..7).map { index ->
     description = index.toString(),
     totalPage = index,
     imageUrl = index.toString(),
-    diaryList = listOf(
+    diaries = listOf(
       Diary(
         content = index.toString(),
         currentPage = index - 1,
