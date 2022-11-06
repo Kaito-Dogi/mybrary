@@ -2,6 +2,8 @@
 <resources>
   <string name="app_name">Mybrary</string>
   <string name="home_fragment">HomeFragment</string>
+  <string name="register_fragment">RegisterFragment</string>
+  <string name="book_image_content_description">Image of the book.</string>
 
   <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
@@ -11,11 +13,6 @@
   <!--BookPostActivity-->
   <string name="on_success">success</string>
   <string name="on_failure">failure</string>
-  <string name="title_edit_hint">Title</string>
-  <string name="author_edit_hint">Author</string>
-  <string name="total_page_edit_hint">Pages</string>
-  <string name="description_edit_hint">Description</string>
-  <string name="book_add_button">ADD</string>
   <string name="book_update_button">UPDATE</string>
   <string name="post_toast_text">Input data</string>
 

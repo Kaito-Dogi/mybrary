@@ -2,6 +2,9 @@ package app.doggy.newmybrary.data.repository
 
 import app.doggy.newmybrary.data.api.service.BookApi
 import app.doggy.newmybrary.data.db.MybraryDatabase
+import app.doggy.newmybrary.data.db.entity.BookAuthorCrossRef
+import app.doggy.newmybrary.data.db.entity.toAuthorEntityList
+import app.doggy.newmybrary.data.db.entity.toBookEntity
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.Binds
@@ -31,5 +34,19 @@ class BookRepositoryImpl @Inject constructor(
 
   override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
     db.bookDao().getBooks().map { it.toBook() }
+  }
+
+  override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
+    val bookId = db.bookDao().insert(book.toBookEntity())
+    book.toAuthorEntityList().forEach { author ->
+      val authorId = db.authorDao().insert(author)
+      db.bookAuthorCrossRefDao().insert(
+        BookAuthorCrossRef(
+          bookId = bookId,
+          authorId = authorId,
+        ),
+      )
+    }
+    true
   }
 }

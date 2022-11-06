@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="title_edit_text_hint">Title</string>
+  <string name="author_edit_text_hint">Author</string>
+  <string name="total_page_text_edit_hint">Page Count</string>
+  <string name="description_text_edit_hint">Description</string>
+  <string name="register_button_text">Register</string>
+  <string name="error_invalid_input">Enter valid information.</string>
+  <string name="error_failed_to_register_book">Failed to register book.</string>
+</resources>

@@ -1,6 +1,7 @@
 package app.doggy.newmybrary.data.api.response
 
 import app.doggy.newmybrary.domain.model.Book
+import com.squareup.moshi.Json
 
 class FetchBooksResponse(
   val totalItems: Int,
@@ -8,12 +9,15 @@ class FetchBooksResponse(
 )
 
 class FetchBooksResponseItem(
-  val id: String,
+  @Json(name = "id")
+  val booksApiId: String,
   val volumeInfo: FetchBooksResponseVolumeInfo,
 ) {
   // FIXME: 変換メソッドの置き場を考える
+  // TODO: thumnail が取得できなかった場合を考える
   fun toBook() = Book(
-    id = id,
+    id = null,
+    booksApiId = booksApiId,
     title = volumeInfo.title,
     authors = volumeInfo.authors,
     description = volumeInfo.description ?: "",

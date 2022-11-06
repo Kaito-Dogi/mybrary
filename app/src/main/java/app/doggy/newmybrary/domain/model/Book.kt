@@ -3,12 +3,13 @@ package app.doggy.newmybrary.domain.model
 import java.util.Date
 
 data class Book(
-  val id: String,
+  val id: Long?,
+  val booksApiId: String?,
   val title: String,
   val authors: List<String>,
   val description: String,
   val totalPage: Int,
-  val imageUrl: String,
+  val imageUrl: String?,
   val diaryList: List<Diary>,
   val registeredAt: Date?,
 ) {

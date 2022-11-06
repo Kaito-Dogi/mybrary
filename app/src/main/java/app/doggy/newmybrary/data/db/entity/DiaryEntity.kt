@@ -8,7 +8,7 @@ import java.util.Date
 
 @Entity(tableName = "diaries")
 data class DiaryEntity(
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "diary_id")
   val diaryId: Long,
 
@@ -30,3 +30,11 @@ data class DiaryEntity(
     recordedAt = createdAt,
   )
 }
+
+fun Diary.toDiaryEntity(bookId: Long) = DiaryEntity(
+  diaryId = 0L,
+  bookId = bookId,
+  content = this.content,
+  currentPage = this.currentPage,
+  createdAt = Date(),
+)

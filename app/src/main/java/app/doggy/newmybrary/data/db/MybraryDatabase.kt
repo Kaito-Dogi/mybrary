@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import app.doggy.newmybrary.data.db.dao.AuthorDao
+import app.doggy.newmybrary.data.db.dao.BookAuthorCrossRefDao
 import app.doggy.newmybrary.data.db.dao.BookDao
 import app.doggy.newmybrary.data.db.dao.DiaryDao
 import app.doggy.newmybrary.data.db.entity.AuthorEntity
@@ -26,4 +27,5 @@ abstract class MybraryDatabase : RoomDatabase() {
   abstract fun bookDao(): BookDao
   abstract fun diaryDao(): DiaryDao
   abstract fun authorDao(): AuthorDao
+  abstract fun bookAuthorCrossRefDao(): BookAuthorCrossRefDao
 }
