@@ -8,8 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentRegisterBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -53,9 +55,15 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
-          binding.registerButton.text =
-            if (uiState.isLoading) "" else requireContext().getString(R.string.register_button_text)
+          binding.registerButton.text = if (uiState.isLoading) "" else requireContext().getString(R.string.register_button_text)
           binding.progressIndicator.isVisible = uiState.isLoading
+
+          if (uiState.isBookRegistered) findNavController().popBackStack()
+
+          uiState.errorMessageRes?.let { errorMessageRes ->
+            Snackbar.make(binding.coordinator, errorMessageRes, Snackbar.LENGTH_SHORT).show()
+            viewModel.onErrorMessageShown()
+          }
         }
       }
     }

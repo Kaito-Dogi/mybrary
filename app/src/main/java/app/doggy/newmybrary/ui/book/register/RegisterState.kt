@@ -1,11 +1,10 @@
 package app.doggy.newmybrary.ui.book.register
 
+import androidx.annotation.StringRes
+
 data class RegisterState(
-  val isLoading: Boolean,
-) {
-  companion object {
-    fun initial() = RegisterState(
-      isLoading = false,
-    )
-  }
-}
+  val isLoading: Boolean = false,
+  val isBookRegistered: Boolean = false,
+  @StringRes
+  val errorMessageRes: Int? = null,
+)

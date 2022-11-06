@@ -129,6 +129,15 @@
 
   </com.google.android.material.textfield.TextInputLayout>
 
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinator"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/register_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
   <Button
     android:id="@+id/register_button"
     android:layout_width="0dp"

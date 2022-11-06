@@ -2,6 +2,7 @@ package app.doggy.newmybrary.ui.book.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.doggy.newmybrary.R
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 class RegisterViewModel @Inject constructor(
   private val bookRepository: BookRepository,
 ) : ViewModel() {
-  private val _uiState = MutableStateFlow(RegisterState.initial())
+  private val _uiState = MutableStateFlow(RegisterState())
   val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
 
   fun onRegisterButtonClick(
@@ -48,12 +49,27 @@ class RegisterViewModel @Inject constructor(
           ),
         )
       }.onSuccess {
-        _uiState.update { it.copy(isLoading = false) }
-        // TODO: 成功した時のイベントを発火する
-      }.onFailure {
-        _uiState.update { it.copy(isLoading = false) }
-        // TODO: エラーハンドリング
+        _uiState.update {
+          it.copy(
+            isLoading = false,
+            isBookRegistered = true,
+          )
+        }
+      }.onFailure { throwable ->
+        _uiState.update { currentState ->
+          currentState.copy(
+            isLoading = false,
+            errorMessageRes = when (throwable) {
+              is IllegalArgumentException -> R.string.error_invalid_input
+              else -> R.string.error_failed_to_register_book
+            },
+          )
+        }
       }
     }
+  }
+
+  fun onErrorMessageShown() {
+    _uiState.update { it.copy(errorMessageRes = null) }
   }
 }
