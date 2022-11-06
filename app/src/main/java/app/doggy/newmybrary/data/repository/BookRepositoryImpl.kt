@@ -1,5 +1,6 @@
 package app.doggy.newmybrary.data.repository
 
+import android.database.sqlite.SQLiteConstraintException
 import app.doggy.newmybrary.data.api.service.BookApi
 import app.doggy.newmybrary.data.db.MybraryDatabase
 import app.doggy.newmybrary.data.db.entity.BookAuthorCrossRef
@@ -33,13 +34,18 @@ class BookRepositoryImpl @Inject constructor(
   }
 
   override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
-    db.bookDao().getBooks().map { it.toBook() }
+    db.bookDao().getAll().map { it.toBook() }
   }
 
   override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
+    // FIXME: BookEntity, AuthorEntity, BookAuthorCrossRef の保存処理をトランザクションにしたい
     val bookId = db.bookDao().insert(book.toBookEntity())
     book.toAuthorEntityList().forEach { author ->
-      val authorId = db.authorDao().insert(author)
+      val authorId = try {
+        db.authorDao().insert(author)
+      } catch (e: SQLiteConstraintException) {
+        db.authorDao().getByName(author.name).authorId
+      }
       db.bookAuthorCrossRefDao().insert(
         BookAuthorCrossRef(
           bookId = bookId,
