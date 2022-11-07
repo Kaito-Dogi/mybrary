@@ -15,5 +15,5 @@ interface DiaryDao {
   fun update(diary: DiaryEntity): Int
 
   @Query("SELECT * FROM diaries WHERE diary_id = :id")
-  fun getDiary(id: Long): DiaryEntity
+  fun getById(id: Long): DiaryEntity
 }

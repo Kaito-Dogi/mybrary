@@ -44,13 +44,13 @@ class RegisterViewModel @Inject constructor(
             description = description,
             totalPage = totalPage.toInt(),
             imageUrl = null,
-            diaryList = listOf(),
+            diaries = listOf(),
             registeredAt = Date(),
           ),
         )
       }.onSuccess {
-        _uiState.update {
-          it.copy(
+        _uiState.update { currentState ->
+          currentState.copy(
             isLoading = false,
             isBookRegistered = true,
           )

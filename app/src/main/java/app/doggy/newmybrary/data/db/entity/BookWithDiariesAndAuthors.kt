@@ -29,7 +29,7 @@ data class BookWithDiariesAndAuthors(
     description = book.description,
     totalPage = book.totalPage,
     imageUrl = book.imageUrl,
-    diaryList = diaries.map { it.toDiary() },
+    diaries = diaries.map { it.toDiary() },
     registeredAt = book.createdAt,
   )
 }

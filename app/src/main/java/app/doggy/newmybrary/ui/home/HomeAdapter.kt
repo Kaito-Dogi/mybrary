@@ -3,9 +3,9 @@ package app.doggy.newmybrary.ui.home
 import com.xwray.groupie.GroupieAdapter
 
 class HomeAdapter : GroupieAdapter() {
-  fun update(uiModelList: List<HomeUiModel>) {
+  fun update(uiModels: List<HomeUiModel>) {
     update(
-      uiModelList.map { uiModel ->
+      uiModels.map { uiModel ->
         when (uiModel) {
           is HomeUiModel.BookUiModel -> BookItem(uiModel)
         }

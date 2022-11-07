@@ -18,5 +18,5 @@ interface BookDao {
 
   @Transaction
   @Query("SELECT * FROM books")
-  fun getBooks(): List<BookWithDiariesAndAuthors>
+  fun getAll(): List<BookWithDiariesAndAuthors>
 }
