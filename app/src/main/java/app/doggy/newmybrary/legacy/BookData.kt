@@ -1,4 +1,4 @@
-package app.doggy.newmybrary
+package app.doggy.newmybrary.legacy
 
 import com.google.gson.annotations.SerializedName
 

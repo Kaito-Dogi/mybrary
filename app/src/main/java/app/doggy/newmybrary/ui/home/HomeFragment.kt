@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.R
-import app.doggy.newmybrary.ReadActivity
+import app.doggy.newmybrary.legacy.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

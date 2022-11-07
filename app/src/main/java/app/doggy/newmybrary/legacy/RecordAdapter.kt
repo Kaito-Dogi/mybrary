@@ -1,8 +1,9 @@
-package app.doggy.newmybrary
+package app.doggy.newmybrary.legacy
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.ItemRecordDataCellBinding
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter

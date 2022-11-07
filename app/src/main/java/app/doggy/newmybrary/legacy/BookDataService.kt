@@ -1,4 +1,4 @@
-package app.doggy.newmybrary
+package app.doggy.newmybrary.legacy
 
 import retrofit2.http.GET
 import retrofit2.http.Query
