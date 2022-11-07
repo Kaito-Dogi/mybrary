@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_200"
     android:orientation="vertical"
-    tools:context=".RecordPostActivity">
+    tools:context=".legacy.RecordPostActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/currentPageField"

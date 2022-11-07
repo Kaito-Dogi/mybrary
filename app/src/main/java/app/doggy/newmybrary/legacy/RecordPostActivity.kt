@@ -1,9 +1,10 @@
-package app.doggy.newmybrary
+package app.doggy.newmybrary.legacy
 
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.ActivityRecordPostBinding
 import dagger.hilt.android.AndroidEntryPoint
 import io.realm.Realm

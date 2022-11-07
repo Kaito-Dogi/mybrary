@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_200"
     android:orientation="vertical"
-    tools:context=".BookPostActivity">
+    tools:context=".legacy.BookPostActivity">
 
     <ImageView
         android:id="@+id/bookImageInPost"

@@ -1,4 +1,4 @@
-package app.doggy.newmybrary
+package app.doggy.newmybrary.legacy
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
