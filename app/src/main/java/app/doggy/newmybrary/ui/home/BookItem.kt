@@ -3,13 +3,16 @@ package app.doggy.newmybrary.ui.home
 import android.view.View
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.ItemBookBinding
+import coil.load
 import com.xwray.groupie.viewbinding.BindableItem
 
 data class BookItem(
   private val uiModel: HomeUiModel.BookUiModel,
 ) : BindableItem<ItemBookBinding>(uiModel.hashCode().toLong()) {
   override fun bind(binding: ItemBookBinding, position: Int) {
-    // TODO: 本の画像をセットする処理
+    uiModel.book.imageUrl?.let {
+      binding.bookImage.load(it)
+    }
     binding.percentText.text = binding.root.context.getString(R.string.percent_text, uiModel.book.getPercent())
     binding.root.setOnClickListener {
       // TODO: 詳細画面に遷移する処理

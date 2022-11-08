@@ -17,6 +17,9 @@ import app.doggy.newmybrary.legacy.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+// FIXME: spanCount を変更できるようにしたい
+private const val SPAN_COUNT = 3
+
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
   companion object {
@@ -46,16 +49,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
   private fun setUpRecycler(adapter: HomeAdapter) {
     binding.recycler.setHasFixedSize(true)
-    // FIXME: spanCount を変更できるようにしたい
-    binding.recycler.layoutManager = GridLayoutManager(requireActivity(), 3).apply {
-      spanSizeLookup = adapter.spanSizeLookup
-    }
-    binding.recycler.addItemDecoration(
-      HomeItemDecoration(
-        bookMarginRes = R.dimen.margin_small,
-        context = requireContext(),
-      ),
-    )
+    binding.recycler.layoutManager =
+      GridLayoutManager(requireActivity(), SPAN_COUNT).apply {
+        spanSizeLookup = adapter.spanSizeLookup
+      }
     binding.recycler.adapter = adapter
   }
 
@@ -74,8 +71,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
+          // FIXME: 初回読み込み時以外は Indicator を表示しないようにする
+          // FIXME: スケルトンスクリーンにする
           binding.progressIndicator.isVisible = uiState.isLoading
           binding.emptyText.isVisible = !uiState.isLoading && uiState.uiModels.isEmpty()
+          binding.recycler.isVisible = !uiState.isLoading
           adapter.update(uiState.uiModels)
         }
       }
