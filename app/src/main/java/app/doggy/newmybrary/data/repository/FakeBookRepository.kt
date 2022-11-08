@@ -26,7 +26,7 @@ class FakeBookRepository @Inject constructor() : BookRepository {
   }
 }
 
-private val fakeBookList = (1..7).map { index ->
+private val fakeBookList = (1..14).map { index ->
   Book(
     id = index.toLong(),
     booksApiId = index.toString(),

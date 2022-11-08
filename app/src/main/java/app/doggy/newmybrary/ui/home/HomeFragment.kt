@@ -12,8 +12,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.R
-import app.doggy.newmybrary.legacy.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
+import app.doggy.newmybrary.legacy.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -45,12 +45,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
   }
 
   private fun setUpRecycler(adapter: HomeAdapter) {
-    // TODO: setHasFixedSize って必要？
     binding.recycler.setHasFixedSize(true)
     // FIXME: spanCount を変更できるようにしたい
     binding.recycler.layoutManager = GridLayoutManager(requireActivity(), 3).apply {
       spanSizeLookup = adapter.spanSizeLookup
     }
+    binding.recycler.addItemDecoration(
+      HomeItemDecoration(
+        bookMarginRes = R.dimen.margin_small,
+        context = requireContext(),
+      ),
+    )
     binding.recycler.adapter = adapter
   }
 
