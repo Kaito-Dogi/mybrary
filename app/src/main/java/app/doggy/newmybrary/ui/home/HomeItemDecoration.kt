@@ -30,7 +30,7 @@ class HomeItemDecoration(
         bookMargin,
       )
       else -> {
-        // do nothing.
+        // Do nothing.
       }
     }
   }
