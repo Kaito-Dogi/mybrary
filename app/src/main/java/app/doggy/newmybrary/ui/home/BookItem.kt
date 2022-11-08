@@ -15,7 +15,9 @@ data class BookItem(
     }
     binding.percentText.text = binding.root.context.getString(R.string.percent_text, uiModel.book.getPercent())
     binding.root.setOnClickListener {
-      // TODO: 詳細画面に遷移する処理
+      uiModel.book.id?.let {
+        uiModel.onClick(it)
+      }
     }
   }
 

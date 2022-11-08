@@ -38,7 +38,11 @@ class HomeViewModel @Inject constructor(
     }
   }
 
+  private fun onBookClick(id: Long) {
+  }
+
   private fun Book.toHomeUiModel() = HomeUiModel.BookUiModel(
     book = this,
+    onClick = ::onBookClick,
   )
 }
