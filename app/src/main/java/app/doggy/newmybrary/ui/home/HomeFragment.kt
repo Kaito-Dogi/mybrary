@@ -50,12 +50,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     binding.recycler.layoutManager = GridLayoutManager(requireActivity(), 3).apply {
       spanSizeLookup = adapter.spanSizeLookup
     }
-    binding.recycler.addItemDecoration(
-      HomeItemDecoration(
-        bookMarginRes = R.dimen.margin_small,
-        context = requireContext(),
-      ),
-    )
     binding.recycler.adapter = adapter
   }
 
