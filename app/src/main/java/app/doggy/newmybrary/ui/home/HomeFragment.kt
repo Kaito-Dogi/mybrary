@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
 import app.doggy.newmybrary.legacy.ReadActivity
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -71,6 +72,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
+          uiState.clickedBookId?.let {
+            // TODO: 詳細画面に遷移
+          }
+          uiState.errorMessageRes?.let { errorMessageRes ->
+            Snackbar.make(binding.coordinator, errorMessageRes, Snackbar.LENGTH_SHORT).show()
+            viewModel.onErrorMessageShown()
+          }
           // FIXME: 初回読み込み時以外は Indicator を表示しないようにする
           // FIXME: スケルトンスクリーンにする
           binding.progressIndicator.isVisible = uiState.isLoading
