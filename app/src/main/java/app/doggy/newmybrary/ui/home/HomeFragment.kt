@@ -12,8 +12,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.R
-import app.doggy.newmybrary.legacy.ReadActivity
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
+import app.doggy.newmybrary.legacy.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -52,6 +52,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       spanSizeLookup = adapter.spanSizeLookup
     }
     binding.recycler.adapter = adapter
+    binding.recycler.addItemDecoration(
+      HomeItemDecoration(
+        bookMarginRes = R.dimen.margin_small,
+        context = requireContext(),
+      ),
+    )
   }
 
   private fun setUpButtons() {
