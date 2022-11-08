@@ -45,19 +45,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
   }
 
   private fun setUpRecycler(adapter: HomeAdapter) {
-    // TODO: setHasFixedSize って必要？
     binding.recycler.setHasFixedSize(true)
     // FIXME: spanCount を変更できるようにしたい
     binding.recycler.layoutManager = GridLayoutManager(requireActivity(), 3).apply {
       spanSizeLookup = adapter.spanSizeLookup
     }
-    binding.recycler.adapter = adapter
     binding.recycler.addItemDecoration(
       HomeItemDecoration(
         bookMarginRes = R.dimen.margin_small,
         context = requireContext(),
       ),
     )
+    binding.recycler.adapter = adapter
   }
 
   private fun setUpButtons() {
