@@ -47,11 +47,12 @@ class HomeViewModel @Inject constructor(
     _uiState.update { it.copy(errorMessageRes = null) }
   }
 
-  private fun onBookClick(id: Long) {
+  private fun onBookClicked(id: Long) {
+    _uiState.update { it.copy(clickedBookId = id) }
   }
 
   private fun Book.toHomeUiModel() = HomeUiModel.BookUiModel(
     book = this,
-    onClick = ::onBookClick,
+    onClick = ::onBookClicked,
   )
 }
