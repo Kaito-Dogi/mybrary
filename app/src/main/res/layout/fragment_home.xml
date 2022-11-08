@@ -21,6 +21,15 @@
     app:layout_constraintTop_toTopOf="parent"
     />
 
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinator"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/barcode_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/barcode_button"
     android:layout_width="wrap_content"

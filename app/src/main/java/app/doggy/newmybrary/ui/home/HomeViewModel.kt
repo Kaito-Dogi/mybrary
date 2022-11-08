@@ -2,6 +2,7 @@ package app.doggy.newmybrary.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.doggy.newmybrary.R
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel @Inject constructor(
   private val bookRepository: BookRepository,
 ) : ViewModel() {
-  private val _uiState = MutableStateFlow(HomeState.initial())
+  private val _uiState = MutableStateFlow(HomeState())
   val uiState: StateFlow<HomeState> = _uiState.asStateFlow()
 
   fun onViewCreated() {
@@ -32,13 +33,26 @@ class HomeViewModel @Inject constructor(
           )
         }
       }.onFailure {
-        // TODO: エラーハンドリング
-        _uiState.update { it.copy(isLoading = false) }
+        _uiState.update {
+          it.copy(
+            isLoading = false,
+            errorMessageRes = R.string.error_failed_to_get_books,
+          )
+        }
       }
     }
   }
 
+  fun onErrorMessageShown() {
+    _uiState.update { it.copy(errorMessageRes = null) }
+  }
+
+  private fun onBookClicked(id: Long) {
+    _uiState.update { it.copy(clickedBookId = id) }
+  }
+
   private fun Book.toHomeUiModel() = HomeUiModel.BookUiModel(
     book = this,
+    onClick = ::onBookClicked,
   )
 }
