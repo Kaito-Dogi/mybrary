@@ -82,11 +82,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Snackbar.make(binding.coordinator, errorMessageRes, Snackbar.LENGTH_SHORT).show()
             viewModel.onErrorMessageShown()
           }
-          // FIXME: 初回読み込み時以外は Indicator を表示しないようにする
-          // FIXME: スケルトンスクリーンにする
-          binding.progressIndicator.isVisible = uiState.isLoading
+          // FIXME: 読み込み時はスケルトンスクリーンにする
+          binding.progressIndicator.isVisible = uiState.isLoading && uiState.uiModels.isEmpty()
           binding.emptyText.isVisible = !uiState.isLoading && uiState.uiModels.isEmpty()
-          binding.recycler.isVisible = !uiState.isLoading
           adapter.update(uiState.uiModels)
         }
       }
