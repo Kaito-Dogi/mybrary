@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +17,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     get() = _binding!!
 
   private val viewModel: DetailViewModel by viewModels()
+
+  private val args: DetailFragmentArgs by navArgs()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)

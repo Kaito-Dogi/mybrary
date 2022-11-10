@@ -24,6 +24,10 @@
     <action
       android:id="@+id/action_home_to_detail"
       app:destination="@id/detailFragment"
+      app:enterAnim="@anim/nav_zoom_enter_anim"
+      app:exitAnim="@anim/nav_zoom_exit_anim"
+      app:popEnterAnim="@anim/nav_zoom_pop_enter_anim"
+      app:popExitAnim="@anim/nav_zoom_pop_exit_anim"
       />
   </fragment>
 
@@ -42,8 +46,7 @@
     >
     <argument
       android:name="bookId"
-      android:defaultValue="0"
-      app:argType="integer"
+      app:argType="long"
       />
   </fragment>
 </navigation>

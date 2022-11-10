@@ -47,6 +47,10 @@ class HomeViewModel @Inject constructor(
     _uiState.update { it.copy(errorMessageRes = null) }
   }
 
+  fun onNavigate() {
+    _uiState.update { it.copy(clickedBookId = null) }
+  }
+
   private fun onBookClicked(id: Long) {
     _uiState.update { it.copy(clickedBookId = id) }
   }
