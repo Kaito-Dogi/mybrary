@@ -14,12 +14,16 @@
     tools:layout="@layout/fragment_home"
     >
     <action
-      android:id="@+id/action_homeFragment_to_registerFragment"
+      android:id="@+id/action_home_to_register"
       app:destination="@id/registerFragment"
       app:enterAnim="@anim/nav_slide_enter_anim"
       app:exitAnim="@anim/nav_slide_exit_anim"
       app:popEnterAnim="@anim/nav_slide_pop_enter_anim"
       app:popExitAnim="@anim/nav_slide_pop_exit_anim"
+      />
+    <action
+      android:id="@+id/action_home_to_detail"
+      app:destination="@id/detailFragment"
       />
   </fragment>
 
@@ -29,4 +33,17 @@
     android:label="@string/register_fragment"
     tools:layout="@layout/fragment_register"
     />
+
+  <fragment
+    android:id="@+id/detailFragment"
+    android:name="app.doggy.newmybrary.ui.book.detail.DetailFragment"
+    android:label="@string/detail_fragment"
+    tools:layout="@layout/fragment_detail"
+    >
+    <argument
+      android:name="bookId"
+      android:defaultValue="0"
+      app:argType="integer"
+      />
+  </fragment>
 </navigation>

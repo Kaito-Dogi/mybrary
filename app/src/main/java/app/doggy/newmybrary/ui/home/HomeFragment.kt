@@ -64,7 +64,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       startActivity(readIntent)
     }
     binding.registerButton.setOnClickListener {
-      findNavController().navigate(R.id.action_homeFragment_to_registerFragment)
+      findNavController().navigate(R.id.action_home_to_register)
     }
   }
 
