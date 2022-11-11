@@ -73,7 +73,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           uiState.clickedBookId?.let {
-            // TODO: 詳細画面に遷移
             val action = HomeFragmentDirections.actionHomeToDetail(it)
             findNavController().navigate(action)
             viewModel.onNavigate()
