@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="@dimen/margin_small"
+  app:cardCornerRadius="@dimen/corner_radius_card"
+  app:cardElevation="@dimen/elevation_card"
+  >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_medium"
+    >
+
+    <TextView
+      android:id="@+id/current_page_and_percent_text"
+      style="@style/Mybrary.TextAppearance.Large"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toStartOf="@id/date_time_text"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="@string/current_page_and_percent"
+      />
+
+    <TextView
+      android:id="@+id/date_time_text"
+      style="@style/Mybrary.TextAppearance.Small"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="end"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/current_page_and_percent_text"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="@string/item_diary_datetime"
+      />
+
+    <TextView
+      android:id="@+id/content_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_small"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/current_page_and_percent_text"
+      tools:text="@string/tools_content_text"
+      />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

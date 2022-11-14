@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="current_page_and_percent">p. %d / %d%%</string>
+  <string name="item_diary_datetime">YYYY/MM/DD HH:mm</string>
+  <string name="tools_content_text">Kotlin の文法を学ぶことで、 Android アプリプログラミングの理解が深まった。</string>
+</resources>
