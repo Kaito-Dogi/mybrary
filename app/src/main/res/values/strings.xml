@@ -5,6 +5,7 @@
   <string name="register_fragment">RegisterFragment</string>
   <string name="detail_fragment">DetailFragment</string>
   <string name="book_image_content_description">Image of the book.</string>
+  <string name="tools_book_title">Kotlinスタートブック</string>
 
   <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
