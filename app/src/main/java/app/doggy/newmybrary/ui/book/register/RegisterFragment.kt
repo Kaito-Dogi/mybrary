@@ -62,7 +62,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             Snackbar.make(binding.coordinator, errorMessageRes, Snackbar.LENGTH_SHORT).show()
             viewModel.onErrorMessageShown()
           }
-          binding.registerButton.text = if (uiState.isLoading) "" else requireContext().getString(R.string.register_button_text)
+          binding.registerButton.text = if (uiState.isLoading) "" else requireContext().getString(R.string.text_register_button)
           binding.progressIndicator.isVisible = uiState.isLoading
         }
       }

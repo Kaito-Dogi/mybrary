@@ -10,7 +10,7 @@
   <fragment
     android:id="@+id/homeFragment"
     android:name="app.doggy.newmybrary.ui.home.HomeFragment"
-    android:label="@string/home_fragment"
+    android:label="@string/fragment_home"
     tools:layout="@layout/fragment_home"
     >
     <action
@@ -34,14 +34,14 @@
   <fragment
     android:id="@+id/registerFragment"
     android:name="app.doggy.newmybrary.ui.book.register.RegisterFragment"
-    android:label="@string/register_fragment"
+    android:label="@string/fragment_register"
     tools:layout="@layout/fragment_register"
     />
 
   <fragment
     android:id="@+id/detailFragment"
     android:name="app.doggy.newmybrary.ui.book.detail.DetailFragment"
-    android:label="@string/detail_fragment"
+    android:label="@string/fragment_detail"
     tools:layout="@layout/fragment_detail"
     >
     <argument

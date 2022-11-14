@@ -21,14 +21,14 @@
       style="@style/Mybrary.TextAppearance.Large"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      app:layout_constraintEnd_toStartOf="@id/date_time_text"
+      app:layout_constraintEnd_toStartOf="@id/datetime_text"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:text="@string/current_page_and_percent"
+      tools:text="@string/text_current_page_and_percent_text"
       />
 
     <TextView
-      android:id="@+id/date_time_text"
+      android:id="@+id/datetime_text"
       style="@style/Mybrary.TextAppearance.Small"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/current_page_and_percent_text"
       app:layout_constraintTop_toTopOf="parent"
-      tools:text="@string/item_diary_datetime"
+      tools:text="@string/text_datetime_text"
       />
 
     <TextView
@@ -49,7 +49,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/current_page_and_percent_text"
-      tools:text="@string/tools_content_text"
+      tools:text="@string/tools_text_content_text"
       />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
