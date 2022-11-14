@@ -91,24 +91,24 @@ class RecordActivity : AppCompatActivity() {
           startActivity(postIntent)
           true
         }
-        R.id.delete -> {
-          AlertDialog
-            .Builder(this@RecordActivity)
-            .setMessage(R.string.delete_book_dialog_message)
-            .setPositiveButton(getText(R.string.delete_dialog_positive_button)) { dialog, which ->
-              Toast.makeText(
-                baseContext,
-                getText(R.string.delete_toast_text_before).toString() + book?.title + getText(R.string.delete_toast_text_after),
-                Toast.LENGTH_SHORT,
-              ).show()
-              deleteAll(bookId, book as BookEntity)
-              finish()
-            }
-            .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
-            }
-            .show()
-          true
-        }
+        // R.id.delete -> {
+        //   AlertDialog
+        //     .Builder(this@RecordActivity)
+        //     .setMessage(R.string.delete_book_dialog_message)
+        //     .setPositiveButton(getText(R.string.delete_dialog_positive_button)) { dialog, which ->
+        //       Toast.makeText(
+        //         baseContext,
+        //         getText(R.string.delete_toast_text_before).toString() + book?.title + getText(R.string.delete_toast_text_after),
+        //         Toast.LENGTH_SHORT,
+        //       ).show()
+        //       deleteAll(bookId, book as BookEntity)
+        //       finish()
+        //     }
+        //     .setNegativeButton(getText(R.string.delete_dialog_negative_button)) { dialog, which ->
+        //     }
+        //     .show()
+        //   true
+        // }
         else -> false
       }
     }
