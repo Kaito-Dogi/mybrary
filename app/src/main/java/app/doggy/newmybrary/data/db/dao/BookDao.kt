@@ -19,4 +19,7 @@ interface BookDao {
   @Transaction
   @Query("SELECT * FROM books")
   fun getAll(): List<BookWithDiariesAndAuthors>
+
+  @Query("SELECT * FROM books WHERE book_id = :id")
+  fun getBook(id: Long): BookWithDiariesAndAuthors
 }

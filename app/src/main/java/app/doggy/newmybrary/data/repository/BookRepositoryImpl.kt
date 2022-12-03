@@ -37,6 +37,10 @@ class BookRepositoryImpl @Inject constructor(
     db.bookDao().getAll().map { it.toBook() }
   }
 
+  override suspend fun getBook(bookId: Long): Book = withContext(Dispatchers.IO) {
+    db.bookDao().getBook(bookId).toBook()
+  }
+
   override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
     // FIXME: BookEntity, AuthorEntity, BookAuthorCrossRef の保存処理をトランザクションにしたい
     val bookId = db.bookDao().insert(book.toBookEntity())

@@ -7,5 +7,7 @@ interface BookRepository {
 
   suspend fun getBooks(): List<Book>
 
+  suspend fun getBook(bookId: Long): Book
+
   suspend fun registerBook(book: Book): Boolean
 }
