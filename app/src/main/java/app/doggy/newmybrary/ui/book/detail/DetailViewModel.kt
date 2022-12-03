@@ -47,6 +47,10 @@ class DetailViewModel @Inject constructor(
     }
   }
 
+  fun onErrorMessageShown() {
+    _uiState.update { it.copy(errorMessageRes = null) }
+  }
+
   private fun createUiModels(book: Book) =
     buildList {
       add(DetailUiModel.BookUiModel(book))
