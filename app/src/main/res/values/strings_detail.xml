@@ -6,4 +6,5 @@
   <string name="title_pin_menu_item">Pin</string>
   <string name="title_info_menu_item">Info</string>
   <string name="tools_text_content_text">Kotlin の文法を学ぶことで、 Android アプリプログラミングの理解が深まった。</string>
+  <string name="error_failed_to_get_book">Failed to retrieve the registered book.</string>
 </resources>
