@@ -4,5 +4,5 @@
   <string name="content_description_register_button">Transition to the book registration screen.</string>
   <string name="text_empty_text">Register your book!</string>
   <string name="text_percent_text">%d%%</string>
-  <string name="error_failed_to_get_books">Failed to retrieve registered books.</string>
+  <string name="error_failed_to_get_books">Failed to get registered books.</string>
 </resources>
