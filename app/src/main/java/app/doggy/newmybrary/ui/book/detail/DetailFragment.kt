@@ -62,8 +62,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
   private fun setUpRecycler(book: Book) {
     // FIXME: totalPage をコンストラクタで渡さなくてはならないので、 Book の情報を取得するのを待つ必要があり、 onViewCreated で Adapter のインスタンスを生成・保持できない
     val adapter = DiaryAdapter(book.totalPage)
-    binding.recycler.adapter = adapter
+    binding.recycler.setHasFixedSize(true)
     binding.recycler.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    binding.recycler.adapter = adapter
     adapter.submitList(book.diaries)
   }
 
