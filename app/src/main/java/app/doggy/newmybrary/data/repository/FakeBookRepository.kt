@@ -33,13 +33,14 @@ class FakeBookRepository @Inject constructor() : BookRepository {
 
 private fun createFakeBook(num: Int) = Book(
   id = num.toLong(),
-  booksApiId = num.toString(),
-  title = num.toString(),
+  booksApiId = "4TKQswEACAAJ",
+  title = "Kotlinイン・アクション",
   authors = listOf(
-    num.toString(),
+    "Dmitry Jemerov",
+    "Svetlana Isakova",
   ),
-  description = num.toString(),
-  totalPage = num,
+  description = "Kotlinの開発者が全てのJavaディベロッパーに向けて、その導入から高度な利用法まで、徹底解説!",
+  totalPage = 439 * num,
   imageUrl = when (num % 8) {
     0 -> "http://books.google.com/books/content?id=cJD9vQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" // Kotlinスタートブック
     1 -> "http://books.google.com/books/content?id=E323DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" // Kotlinイン・アクション
@@ -52,8 +53,18 @@ private fun createFakeBook(num: Int) = Book(
   },
   diaries = listOf(
     Diary(
-      content = num.toString(),
-      currentPage = num - 1,
+      content = "Kotlin の文法を学ぶことで、 Android アプリプログラミングの理解が深まった。",
+      currentPage = 100,
+      recordedAt = Date(),
+    ),
+    Diary(
+      content = "data class は便利だなぁ。",
+      currentPage = 200,
+      recordedAt = Date(),
+    ),
+    Diary(
+      content = "コレクションをもっと使いこなしたい!",
+      currentPage = 300,
       recordedAt = Date(),
     ),
   ),
