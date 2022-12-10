@@ -70,4 +70,16 @@
       android:padding="@dimen/margin_small"
       />
   </androidx.core.widget.NestedScrollView>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/record_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:contentDescription="@string/content_description_record_button"
+    app:srcCompat="@drawable/icon_add"
+    />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
