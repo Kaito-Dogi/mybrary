@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import app.doggy.newmybrary.databinding.ItemDiaryBinding
 import app.doggy.newmybrary.domain.model.Diary
 
+// FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える
 class DiaryAdapter(
   private val totalPage: Int,
 ) : ListAdapter<Diary, DiaryViewHolder>(DIFF_UTIL_ITEM_CALLBACK) {

@@ -7,6 +7,7 @@ import app.doggy.newmybrary.domain.model.Diary
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+// FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える
 class DiaryViewHolder(
   private val binding: ItemDiaryBinding,
   private val totalPage: Int,
