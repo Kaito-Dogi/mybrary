@@ -1,4 +1,4 @@
-package app.doggy.newmybrary.data.repository
+package app.doggy.newmybrary.data.repository.fake
 
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.model.Diary

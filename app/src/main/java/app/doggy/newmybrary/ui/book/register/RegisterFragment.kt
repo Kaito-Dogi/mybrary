@@ -17,10 +17,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
-  companion object {
-    fun newInstance() = RegisterFragment()
-  }
-
   private var _binding: FragmentRegisterBinding? = null
   private val binding: FragmentRegisterBinding
     get() = _binding!!

@@ -1,6 +1,5 @@
 package app.doggy.newmybrary.ui.book.detail
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentDetailBinding
 import app.doggy.newmybrary.domain.model.Book
-import app.doggy.newmybrary.legacy.RecordPostActivity
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +21,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.fragment_detail) {
-
   private var _binding: FragmentDetailBinding? = null
   private val binding: FragmentDetailBinding
     get() = _binding!!
@@ -63,9 +60,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
   private fun setUpButton() {
     binding.recordButton.setOnClickListener {
-      requireActivity().startActivity(
-        Intent(requireContext(), RecordPostActivity::class.java),
-      )
+      val action = DetailFragmentDirections.actionDetailToRecord(args.bookId)
+      findNavController().navigate(action)
     }
   }
 

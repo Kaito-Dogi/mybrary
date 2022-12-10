@@ -23,10 +23,6 @@ private const val SPAN_COUNT = 3
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
-  companion object {
-    fun newInstance() = HomeFragment()
-  }
-
   private var _binding: FragmentHomeBinding? = null
   private val binding: FragmentHomeBinding
     get() = _binding!!
