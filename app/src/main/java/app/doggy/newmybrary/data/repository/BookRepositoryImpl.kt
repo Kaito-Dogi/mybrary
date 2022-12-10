@@ -6,6 +6,7 @@ import app.doggy.newmybrary.data.db.MybraryDatabase
 import app.doggy.newmybrary.data.db.entity.BookAuthorCrossRef
 import app.doggy.newmybrary.data.db.entity.toAuthorEntities
 import app.doggy.newmybrary.data.db.entity.toBookEntity
+import app.doggy.newmybrary.data.repository.fake.FakeBookRepository
 import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.Binds
