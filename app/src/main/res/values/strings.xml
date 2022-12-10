@@ -4,6 +4,7 @@
   <string name="fragment_home">HomeFragment</string>
   <string name="fragment_register">RegisterFragment</string>
   <string name="fragment_detail">DetailFragment</string>
+  <string name="fragment_record">RecordFragment</string>
   <string name="content_description_book_image">Image of the book.</string>
   <string name="tools_book_title">Kotlinスタートブック</string>
 
