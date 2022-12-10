@@ -40,7 +40,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     setUpRecycler(adapter)
     setUpButtons()
     collectUiState(adapter)
-    viewModel.onViewCreated()
   }
 
   override fun onDestroyView() {
@@ -64,7 +63,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       startActivity(readIntent)
     }
     binding.registerButton.setOnClickListener {
-      findNavController().navigate(R.id.action_homeFragment_to_registerFragment)
+      findNavController().navigate(R.id.action_home_to_register)
     }
   }
 
@@ -73,17 +72,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           uiState.clickedBookId?.let {
-            // TODO: 詳細画面に遷移
+            val action = HomeFragmentDirections.actionHomeToDetail(it)
+            findNavController().navigate(action)
+            viewModel.onNavigate()
           }
           uiState.errorMessageRes?.let { errorMessageRes ->
             Snackbar.make(binding.coordinator, errorMessageRes, Snackbar.LENGTH_SHORT).show()
             viewModel.onErrorMessageShown()
           }
-          // FIXME: 初回読み込み時以外は Indicator を表示しないようにする
-          // FIXME: スケルトンスクリーンにする
-          binding.progressIndicator.isVisible = uiState.isLoading
+          // FIXME: 読み込み時はスケルトンスクリーンにする
+          binding.progressIndicator.isVisible = uiState.isLoading && uiState.uiModels.isEmpty()
           binding.emptyText.isVisible = !uiState.isLoading && uiState.uiModels.isEmpty()
-          binding.recycler.isVisible = !uiState.isLoading
           adapter.update(uiState.uiModels)
         }
       }

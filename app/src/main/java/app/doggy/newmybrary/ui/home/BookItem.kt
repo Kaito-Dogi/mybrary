@@ -13,7 +13,7 @@ data class BookItem(
     uiModel.book.imageUrl?.let {
       binding.bookImage.load(it)
     }
-    binding.percentText.text = binding.root.context.getString(R.string.percent_text, uiModel.book.getPercent())
+    binding.percentText.text = binding.root.context.getString(R.string.text_percent_text, uiModel.book.getPercent())
     binding.root.setOnClickListener {
       uiModel.book.id?.let {
         uiModel.onClick(it)

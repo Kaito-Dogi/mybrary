@@ -10,8 +10,16 @@
     <item name="android:textSize">@dimen/text_size_extra_large</item>
   </style>
 
+  <style name="Mybrary.TextAppearance.Large">
+    <item name="android:textSize">@dimen/text_size_large</item>
+  </style>
+
   <style name="Mybrary.TextAppearance.Medium">
     <item name="android:textSize">@dimen/text_size_medium</item>
+  </style>
+
+  <style name="Mybrary.TextAppearance.Small">
+    <item name="android:textSize">@dimen/text_size_small</item>
   </style>
 
   <style name="Mybrary.TextAppearance.ExtraLarge.Bold">

@@ -13,33 +13,43 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/margin_medium"
     >
 
-    <ImageView
-      android:id="@+id/book_image"
+    <TextView
+      android:id="@+id/current_page_and_percent_text"
+      style="@style/Mybrary.TextAppearance.Large"
       android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:contentDescription="@string/content_description_book_image"
-      android:scaleType="centerCrop"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintDimensionRatio="3:4"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toStartOf="@id/datetime_text"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/icon_book"
+      tools:text="@string/text_current_page_and_percent_text"
       />
 
     <TextView
-      android:id="@+id/percent_text"
-      style="@style/Mybrary.TextAppearance.ExtraLarge.Bold"
+      android:id="@+id/datetime_text"
+      style="@style/Mybrary.TextAppearance.Small"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="end"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/current_page_and_percent_text"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="@string/text_datetime_text"
+      />
+
+    <TextView
+      android:id="@+id/content_text"
+      style="@style/Mybrary.TextAppearance.Medium"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:background="@color/transparent_white"
-      android:gravity="center"
+      android:layout_marginTop="@dimen/margin_small"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      tools:text="@string/text_percent_text"
+      app:layout_constraintTop_toBottomOf="@id/current_page_and_percent_text"
+      tools:text="@string/tools_text_content_text"
       />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
