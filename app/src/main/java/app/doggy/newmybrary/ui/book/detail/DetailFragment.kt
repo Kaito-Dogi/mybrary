@@ -72,7 +72,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           binding.toolBar.title = uiState.book.title
-          binding.bookImage.load(uiState.book.imageUrl)
+          val imageUrl = uiState.book.imageUrl
+          if (imageUrl.isNullOrBlank()) binding.bookImage.setImageResource(R.drawable.icon_book)
+          else binding.bookImage.load(uiState.book.imageUrl)
           setUpRecycler(uiState.book)
 
           uiState.errorMessageRes?.let { errorMessageRes ->
