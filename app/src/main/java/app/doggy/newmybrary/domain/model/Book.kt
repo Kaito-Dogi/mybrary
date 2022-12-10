@@ -13,6 +13,20 @@ data class Book(
   val diaries: List<Diary>,
   val registeredAt: Date?,
 ) {
+  companion object {
+    fun createEmpty() = Book(
+      id = null,
+      booksApiId = null,
+      title = "",
+      authors = listOf(),
+      description = "",
+      totalPage = 1,
+      imageUrl = null,
+      diaries = listOf(),
+      registeredAt = null,
+    )
+  }
+
   fun getPercent(): Int {
     val currentPage =
       if (diaries.isNotEmpty()) diaries.last().currentPage

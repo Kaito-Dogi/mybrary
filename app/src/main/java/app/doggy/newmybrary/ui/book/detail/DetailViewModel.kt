@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.newmybrary.R
-import app.doggy.newmybrary.domain.model.Book
 import app.doggy.newmybrary.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,7 +31,7 @@ class DetailViewModel @Inject constructor(
       }.onSuccess { book ->
         _uiState.update { currentState ->
           currentState.copy(
-            uiModels = createUiModels(book),
+            book = book,
             isLoading = false,
           )
         }
@@ -50,10 +49,4 @@ class DetailViewModel @Inject constructor(
   fun onErrorMessageShown() {
     _uiState.update { it.copy(errorMessageRes = null) }
   }
-
-  private fun createUiModels(book: Book) =
-    buildList {
-      add(DetailUiModel.BookUiModel(book))
-      addAll(book.diaries.map { DetailUiModel.DiaryUiModel(it) })
-    }
 }
