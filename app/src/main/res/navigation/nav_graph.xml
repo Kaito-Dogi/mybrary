@@ -48,5 +48,25 @@
       android:name="bookId"
       app:argType="long"
       />
+    <action
+      android:id="@+id/action_detail_to_record"
+      app:destination="@id/recordFragment"
+      app:enterAnim="@anim/nav_slide_enter_anim"
+      app:exitAnim="@anim/nav_slide_exit_anim"
+      app:popEnterAnim="@anim/nav_slide_pop_enter_anim"
+      app:popExitAnim="@anim/nav_slide_pop_exit_anim"
+      />
+  </fragment>
+
+  <fragment
+    android:id="@+id/recordFragment"
+    android:name="app.doggy.newmybrary.ui.diary.record.RecordFragment"
+    android:label="@string/fragment_record"
+    tools:layout="@layout/fragment_record"
+    >
+    <argument
+      android:name="bookId"
+      app:argType="long"
+      />
   </fragment>
 </navigation>
