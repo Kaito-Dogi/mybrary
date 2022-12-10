@@ -49,6 +49,16 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     binding.toolBar.setNavigationOnClickListener {
       findNavController().popBackStack()
     }
+
+    // TODO: オプションメニューをクリックしたときの処理
+    binding.toolBar.setOnMenuItemClickListener { menuItem ->
+      when (menuItem.itemId) {
+        R.id.pin -> true
+        R.id.edit -> true
+        R.id.info -> true
+        else -> false
+      }
+    }
   }
 
   private fun setUpButton() {
@@ -74,6 +84,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         viewModel.uiState.collect { uiState ->
           binding.toolBar.title = uiState.book.title
           val imageUrl = uiState.book.imageUrl
+          // FIXME: 画像の URL が空のときにダミーの画像を表示しなくても良いかも
           if (imageUrl.isNullOrBlank()) binding.bookImage.setImageResource(R.drawable.icon_book)
           else binding.bookImage.load(uiState.book.imageUrl)
           setUpRecycler(uiState.book)
