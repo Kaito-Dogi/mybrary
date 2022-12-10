@@ -50,6 +50,8 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_collapseMode="pin"
         app:menu="@menu/fragment_detail_toolbar"
+        app:navigationIcon="@drawable/icon_back"
+        app:navigationIconTint="@color/white"
         tools:title="@string/tools_book_title"
         />
     </com.google.android.material.appbar.CollapsingToolbarLayout>
