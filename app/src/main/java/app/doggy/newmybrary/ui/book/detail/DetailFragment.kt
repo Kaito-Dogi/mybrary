@@ -9,8 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentDetailBinding
+import app.doggy.newmybrary.domain.model.Book
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,12 +48,21 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     }
   }
 
+  private fun setUpRecycler(book: Book) {
+    val adapter = DiaryAdapter(book.totalPage)
+    binding.recycler.adapter = adapter
+    binding.recycler.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    adapter.submitList(book.diaries)
+  }
+
   private fun collectUiState() {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
           binding.toolBar.title = uiState.book.title
           binding.bookImage.load(uiState.book.imageUrl)
+          setUpRecycler(uiState.book)
+
           uiState.errorMessageRes?.let { errorMessageRes ->
             Snackbar.make(binding.root, errorMessageRes, Snackbar.LENGTH_SHORT).show()
             viewModel.onErrorMessageShown()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="text_current_page_and_percent_text">p. %d / %d%%</string>
-  <string name="text_datetime_text">YYYY/MM/DD HH:mm</string>
+  <string name="text_datetime_text">yyyy/MM/dd hh:mm</string>
   <string name="title_edit_menu_item">Edit</string>
   <string name="title_pin_menu_item">Pin</string>
   <string name="title_info_menu_item">Info</string>
