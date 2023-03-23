@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="text_record_button">Record</string>
+  <string name="hint_current_page_edit_text">Current Page Count</string>
+  <string name="hint_content_edit_text">Diary</string>
+</resources>

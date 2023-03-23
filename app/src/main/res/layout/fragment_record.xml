@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  ></androidx.constraintlayout.widget.ConstraintLayout>
+  android:background="@color/green_200"
+  >
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/current_page_text_field"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:hint="@string/hint_current_page_edit_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/current_page_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="number"
+      />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/content_text_field"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:hint="@string/hint_content_edit_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/current_page_text_field"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/content_edit_text"
+      style="@style/Mybrary.TextAppearance.Medium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="number"
+      />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Button
+    android:id="@+id/record_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:text="@string/text_record_button"
+    app:cornerRadius="@dimen/corner_radius_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/content_text_field"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
