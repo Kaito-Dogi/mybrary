@@ -7,6 +7,20 @@
   android:background="@color/green_200"
   >
 
+  <!--  TODO: 戻るボタンの色を白にする-->
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/tool_bar"
+    style="@style/Mybrary.Toolbar"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/green_500"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:navigationIcon="@drawable/icon_back"
+    app:navigationIconTint="@color/white"
+    />
+
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/current_page_text_field"
     android:layout_width="0dp"
@@ -16,7 +30,7 @@
     android:hint="@string/hint_current_page_edit_text"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tool_bar"
     >
 
     <com.google.android.material.textfield.TextInputEditText
