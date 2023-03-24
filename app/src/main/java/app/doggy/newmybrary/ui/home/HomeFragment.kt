@@ -1,6 +1,5 @@
 package app.doggy.newmybrary.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -13,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.doggy.newmybrary.R
 import app.doggy.newmybrary.databinding.FragmentHomeBinding
-import app.doggy.newmybrary.legacy.ReadActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -45,18 +43,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
   private fun setUpRecycler(adapter: HomeAdapter) {
     binding.recycler.setHasFixedSize(true)
-    binding.recycler.layoutManager =
-      GridLayoutManager(requireActivity(), SPAN_COUNT).apply {
-        spanSizeLookup = adapter.spanSizeLookup
-      }
+    binding.recycler.layoutManager = GridLayoutManager(requireActivity(), SPAN_COUNT).apply {
+      spanSizeLookup = adapter.spanSizeLookup
+    }
     binding.recycler.adapter = adapter
   }
 
   private fun setUpButtons() {
-    // TODO: バーコード読み取り画面への遷移
     binding.barcodeButton.setOnClickListener {
-      val readIntent = Intent(requireActivity(), ReadActivity::class.java)
-      startActivity(readIntent)
+      // TODO: バーコード読み取り画面への遷移
+      // TODO: バーコード読み取り画面の実装
     }
     binding.registerButton.setOnClickListener {
       findNavController().navigate(R.id.action_home_to_register)
