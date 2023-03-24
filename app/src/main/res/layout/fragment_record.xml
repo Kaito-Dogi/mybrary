@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/green_200"
@@ -46,36 +47,61 @@
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/content_text_field"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/margin_medium"
-    android:layout_marginTop="@dimen/margin_medium"
+    android:layout_height="0dp"
+    android:layout_margin="@dimen/margin_medium"
     android:hint="@string/hint_content_edit_text"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/current_page_text_field"
+    app:layout_constraintBottom_toTopOf="@id/record_button"
     >
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/content_edit_text"
       style="@style/Mybrary.TextAppearance.Medium"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:ems="10"
-      android:inputType="number"
+      android:inputType="textMultiLine"
       />
   </com.google.android.material.textfield.TextInputLayout>
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinator"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/record_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
 
   <Button
     android:id="@+id/record_button"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/margin_medium"
-    android:layout_marginTop="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_medium"
     android:text="@string/text_record_button"
     app:cornerRadius="@dimen/corner_radius_button"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/content_text_field"
+    app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress_indicator"
+    style="@style/Widget.Material3.CircularProgressIndicator.Small"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/elevation_progress_indicator"
+    android:indeterminate="true"
+    android:visibility="gone"
+    app:indicatorColor="@color/white"
+    app:layout_constraintBottom_toBottomOf="@id/record_button"
+    app:layout_constraintEnd_toEndOf="@id/record_button"
+    app:layout_constraintStart_toStartOf="@id/record_button"
+    app:layout_constraintTop_toTopOf="@id/record_button"
+    tools:visibility="visible"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
