@@ -21,6 +21,7 @@ class RegisterViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(RegisterState())
   val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
 
+  // TODO: 本の内容を更新する処理の実装
   fun onRegisterButtonClick(
     title: String,
     author: String,

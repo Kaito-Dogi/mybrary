@@ -25,6 +25,7 @@ class RecordViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(RecordState())
   val uiState: StateFlow<RecordState> = _uiState.asStateFlow()
 
+  // TODO: 日記の内容を更新する処理の実装
   fun onRecordButtonClick(
     currentPage: String,
     content: String,
