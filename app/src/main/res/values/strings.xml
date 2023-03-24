@@ -7,6 +7,7 @@
   <string name="fragment_record">RecordFragment</string>
   <string name="content_description_book_image">Image of the book.</string>
   <string name="tools_book_title">Kotlinスタートブック</string>
+  <string name="error_invalid_input">Enter valid information.</string>
 
   <!-- TODO: 文字列リソースのリファクタ -->
   <!--ReadActivity-->
