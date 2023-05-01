@@ -1,3 +1,4 @@
+// https://github.com/android/nowinandroid/blob/main/.github/renovate.json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
