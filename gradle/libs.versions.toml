@@ -1,6 +1,7 @@
 [versions]
-
+androidxCore = "1.10.0"
 
 [libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 
 [plugins]
