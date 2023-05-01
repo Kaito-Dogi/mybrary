@@ -9,6 +9,8 @@ plugins {
 android {
   compileSdk = 33
 
+  namespace = "app.doggy.newmybrary"
+
   defaultConfig {
     applicationId = "app.doggy.newmybrary"
     minSdk = 24
@@ -41,8 +43,6 @@ android {
   buildFeatures {
     viewBinding = true
   }
-
-  namespace = "app.doggy.newmybrary"
 }
 
 dependencies {
