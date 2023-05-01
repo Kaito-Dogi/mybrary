@@ -1,3 +1,3 @@
 # Mybrary
 
-my personal app to try various things.
+My personal app to try various things.
