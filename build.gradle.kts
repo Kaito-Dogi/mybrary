@@ -1,10 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-  repositories {
-    google()
-    mavenCentral()
-  }
-
   dependencies {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin}")
     // FIXME: libs.versions.androidxNavigation を使用するとエラーが発生する
