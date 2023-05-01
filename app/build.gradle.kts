@@ -7,10 +7,10 @@ plugins {
 }
 
 android {
-  compileSdkVersion = 33
+  compileSdk = 33
 
   defaultConfig {
-    applicationId "app.doggy.newmybrary"
+    applicationId = "app.doggy.newmybrary"
     minSdk = 24
     targetSdk = 33
     versionCode = 2
@@ -20,14 +20,14 @@ android {
 
     javaCompileOptions {
       annotationProcessorOptions {
-        arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+        argument("room.schemaLocation", "$projectDir/schemas")
       }
     }
   }
 
   buildTypes {
     release {
-      minifyEnabled false
+      isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
