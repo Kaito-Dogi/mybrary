@@ -23,6 +23,6 @@ allprojects {
   }
 }
 
-// task clean (type: Delete) {
-//   delete = rootProject.buildDir
-// }
+tasks.create<Delete>("clean") {
+  delete(rootProject.buildDir)
+}
