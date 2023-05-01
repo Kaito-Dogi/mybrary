@@ -46,50 +46,32 @@ android {
 }
 
 dependencies {
-  implementation("androidx.core:core-ktx:1.10.0")
-  implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("com.google.android.material:material:1.8.0")
-  implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-  testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+  implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.constraintlayout)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.fragment.ktx)
+  implementation(libs.androidx.navigation.fragment)
+  implementation(libs.androidx.navigation.ui)
+  implementation(libs.coil)
+  implementation(libs.groupie)
+  implementation(libs.groupie.viewbinding)
+  implementation(libs.hilt.android)
+  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.material)
+  implementation(libs.moshi)
+  implementation(libs.okhttp)
+  implementation(libs.okhttp.logging)
+  implementation(libs.retrofit)
+  implementation(libs.retrofit.converter.moshi)
+  implementation(libs.room.runtime)
 
-  // Retrofit
-  implementation("com.squareup.retrofit2:retrofit:2.9.0")
-  implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+  kapt(libs.hilt.compiler)
+  kapt(libs.room.compiler)
 
-  // Okhttp
-  implementation("com.squareup.okhttp3:okhttp:4.10.0")
-  implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+  testImplementation(libs.junit)
 
-  // Moshi
-  implementation("com.squareup.moshi:moshi:1.14.0")
-  implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
-
-  // coroutines
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-
-  // Coil
-  implementation("io.coil-kt:coil:2.2.2")
-
-  // hilt
-  implementation("com.google.dagger:hilt-android:2.45")
-  kapt("com.google.dagger:hilt-compiler:2.45")
-
-  // Fragment
-  implementation("androidx.fragment:fragment-ktx:1.5.7")
-
-  // Navigation
-  implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-  implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-
-  // Room
-  implementation("androidx.room:room-runtime:2.5.1")
-  kapt("androidx.room:room-compiler:2.5.1")
-
-  // Groupie
-  implementation("com.github.lisawray.groupie:groupie:2.10.1")
-  implementation("com.github.lisawray.groupie:groupie-viewbinding:2.10.1")
+  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
+  androidTestImplementation(libs.androidx.test.espresso.core)
 }
 
 kapt {
