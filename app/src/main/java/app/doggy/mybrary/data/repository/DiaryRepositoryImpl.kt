@@ -4,7 +4,7 @@ import app.doggy.mybrary.data.db.MybraryDatabase
 import app.doggy.mybrary.data.db.entity.toDiaryEntity
 import app.doggy.mybrary.data.repository.fake.FakeDiaryRepository
 import app.doggy.mybrary.core.domain.model.Diary
-import app.doggy.mybrary.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.domain.repository.DiaryRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

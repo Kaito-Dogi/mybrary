@@ -1,4 +1,4 @@
-package app.doggy.mybrary.domain.repository
+package app.doggy.mybrary.core.domain.repository
 
 import app.doggy.mybrary.core.domain.model.Diary
 
