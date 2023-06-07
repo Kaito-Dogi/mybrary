@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Mybrary"
 include(":app")
+include(":core:data")
