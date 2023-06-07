@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.newmybrary"
+  namespace = "app.doggy.mybrary"
   compileSdk = 33
 
   defaultConfig {
