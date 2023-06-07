@@ -1,6 +1,6 @@
 package app.doggy.mybrary.domain.repository
 
-import app.doggy.mybrary.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.Diary
 
 interface DiaryRepository {
   suspend fun recordDiary(

@@ -1,6 +1,6 @@
 package app.doggy.mybrary.data.repository.fake
 
-import app.doggy.mybrary.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.Diary
 import app.doggy.mybrary.domain.repository.DiaryRepository
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers

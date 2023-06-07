@@ -1,6 +1,6 @@
 package app.doggy.mybrary.data.api.response
 
-import app.doggy.mybrary.domain.model.Book
+import app.doggy.mybrary.core.domain.model.Book
 import com.squareup.moshi.Json
 
 class FetchBooksResponse(

@@ -3,7 +3,7 @@ package app.doggy.mybrary.data.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import app.doggy.mybrary.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.Diary
 import java.util.Date
 
 @Entity(tableName = "diaries")

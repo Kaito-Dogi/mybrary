@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.Diary
 import app.doggy.mybrary.domain.repository.DiaryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date

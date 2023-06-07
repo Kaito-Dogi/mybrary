@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
 import app.doggy.mybrary.databinding.FragmentDetailBinding
-import app.doggy.mybrary.domain.model.Book
+import app.doggy.mybrary.core.domain.model.Book
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

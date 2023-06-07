@@ -3,7 +3,7 @@ package app.doggy.mybrary.data.db.entity
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import app.doggy.mybrary.domain.model.Book
+import app.doggy.mybrary.core.domain.model.Book
 
 data class BookWithDiariesAndAuthors(
   @Embedded val book: BookEntity,
