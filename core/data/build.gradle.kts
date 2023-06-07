@@ -38,8 +38,9 @@ android {
 }
 
 dependencies {
-  implementation(libs.hilt.android)
+  implementation(project(":core:model"))
 
+  implementation(libs.hilt.android)
   implementation(libs.moshi)
   implementation(libs.okhttp)
   implementation(libs.okhttp.logging)

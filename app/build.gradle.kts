@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:model"))
   implementation(project(":core:data"))
 
   implementation(libs.androidx.appcompat)
