@@ -1,4 +1,4 @@
-package app.doggy.core.network.book.response
+package app.doggy.core.network.api.book.response
 
 import app.doggy.core.common.util.UnixTime
 import app.doggy.mybrary.core.domain.model.book.Author

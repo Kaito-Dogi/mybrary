@@ -1,4 +1,4 @@
-package app.doggy.core.network.book.response
+package app.doggy.core.network.api.book.response
 
 class VolumeInfoResponse(
   val title: String,
