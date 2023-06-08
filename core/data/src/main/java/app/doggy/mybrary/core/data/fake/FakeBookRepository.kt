@@ -7,18 +7,9 @@ import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class FakeBookRepository @Inject constructor() : BookRepository {
-  override suspend fun searchBooksByIsbn(
-    isbn: String,
-    limit: Int,
-    pageIndex: Int,
-  ): Flow<List<app.doggy.mybrary.core.domain.model.book.Book>> {
-    TODO("Not yet implemented")
-  }
-
   override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = withContext(Dispatchers.IO) {
     delay(1000L)
     fakeBookList
