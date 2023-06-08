@@ -1,4 +1,4 @@
-package app.doggy.mybrary
+package app.doggy.feature.home
 
 import org.junit.Test
 

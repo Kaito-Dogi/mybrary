@@ -1,21 +1,15 @@
 plugins {
-  id("com.android.application")
+  id("com.android.library")
   id("kotlin-android")
-  id("kotlin-kapt")
-  id("com.google.dagger.hilt.android")
-  id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
-  namespace = "app.doggy.mybrary"
+  namespace = "app.doggy.feature.home"
   compileSdk = 33
 
   defaultConfig {
-    applicationId = "app.doggy.newmybrary"
     minSdk = 24
     targetSdk = 33
-    versionCode = 2
-    versionName = "2.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -39,13 +33,8 @@ android {
 }
 
 dependencies {
-  implementation(project(":feature:home"))
-
-  // TODO: feature モジュール実装後に削除
   implementation(project(":core:domain"))
-  implementation(project(":core:data"))
 
-  // TODO: feature モジュール実装後に削除
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.constraintlayout)
   implementation(libs.androidx.core.ktx)
@@ -59,10 +48,8 @@ dependencies {
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.material)
 
-  kapt(libs.hilt.compiler)
-}
+  testImplementation(libs.junit)
 
-// TODO: core:data モジュール実装後に削除
-kapt {
-  correctErrorTypes = true
+  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
+  androidTestImplementation(libs.androidx.test.espresso.core)
 }
