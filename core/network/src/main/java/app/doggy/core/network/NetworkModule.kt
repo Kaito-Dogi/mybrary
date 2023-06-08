@@ -10,10 +10,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-
-private const val BASE_URL = "https://www.googleapis.com/books/v1/"
 
 private const val CONNECT_TIME_OUT = 60L
 private const val READ_TIME_OUT = 60L
@@ -40,19 +36,6 @@ object NetworkModule {
             setLevel(HttpLoggingInterceptor.Level.BODY)
           }
         },
-    )
-    .build()
-
-  @Provides
-  @Singleton
-  fun provideRetrofit(
-    moshi: Moshi,
-    okHttpClient: OkHttpClient,
-  ): Retrofit = Retrofit.Builder()
-    .client(okHttpClient)
-    .baseUrl(BASE_URL)
-    .addConverterFactory(
-      MoshiConverterFactory.create(moshi),
     )
     .build()
 }

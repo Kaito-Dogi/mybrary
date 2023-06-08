@@ -1,6 +1,6 @@
-package app.doggy.core.network.book
+package app.doggy.core.network.retrofit.service
 
-import app.doggy.core.network.book.response.GetVolumesResponse
+import app.doggy.core.network.api.book.response.GetVolumesResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
