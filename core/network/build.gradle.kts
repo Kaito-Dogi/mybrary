@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.mybrary.core.data"
+  namespace = "app.doggy.core.network"
   compileSdk = 33
 
   defaultConfig {
@@ -14,12 +14,6 @@ android {
     targetSdk = 33
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-    javaCompileOptions {
-      annotationProcessorOptions {
-        argument("room.schemaLocation", "$projectDir/schemas")
-      }
-    }
   }
 
   buildTypes {
@@ -38,17 +32,20 @@ android {
 }
 
 dependencies {
+  // FIXME: リファクタして依存を消去する
   implementation(project(":core:domain"))
-  implementation(project(":core:network"))
-  implementation(project(":core:database"))
 
   implementation(libs.hilt.android)
+  implementation(libs.moshi)
+  implementation(libs.okhttp)
+  implementation(libs.okhttp.logging)
+  implementation(libs.retrofit)
+  implementation(libs.retrofit.converter.moshi)
 
   kapt(libs.hilt.compiler)
-
-  testImplementation(libs.junit)
 }
 
 kapt {
   correctErrorTypes = true
 }
+

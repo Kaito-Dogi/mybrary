@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.mybrary.core.data"
+  namespace = "app.doggy.core.database"
   compileSdk = 33
 
   defaultConfig {
@@ -38,15 +38,14 @@ android {
 }
 
 dependencies {
+  // FIXME: リファクタして依存を消去する
   implementation(project(":core:domain"))
-  implementation(project(":core:network"))
-  implementation(project(":core:database"))
 
   implementation(libs.hilt.android)
+  implementation(libs.room.runtime)
 
   kapt(libs.hilt.compiler)
-
-  testImplementation(libs.junit)
+  kapt(libs.room.compiler)
 }
 
 kapt {
