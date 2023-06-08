@@ -38,8 +38,8 @@ android {
 }
 
 dependencies {
-
   implementation(project(":core:domain"))
+
   implementation(libs.hilt.android)
   implementation(libs.moshi)
   implementation(libs.okhttp)
