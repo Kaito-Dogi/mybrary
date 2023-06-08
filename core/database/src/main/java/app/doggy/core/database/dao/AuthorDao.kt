@@ -1,10 +1,10 @@
-package app.doggy.mybrary.core.data.db.dao
+package app.doggy.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import app.doggy.mybrary.core.data.db.entity.AuthorEntity
+import app.doggy.core.database.entity.AuthorEntity
 
 @Dao
 interface AuthorDao {

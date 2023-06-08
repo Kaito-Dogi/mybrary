@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.data.db.entity
+package app.doggy.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

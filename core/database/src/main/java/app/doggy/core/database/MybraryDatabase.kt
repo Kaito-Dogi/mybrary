@@ -1,16 +1,16 @@
-package app.doggy.mybrary.core.data.db
+package app.doggy.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import app.doggy.mybrary.core.data.db.dao.AuthorDao
-import app.doggy.mybrary.core.data.db.dao.BookAuthorCrossRefDao
-import app.doggy.mybrary.core.data.db.dao.BookDao
-import app.doggy.mybrary.core.data.db.dao.DiaryDao
-import app.doggy.mybrary.core.data.db.entity.AuthorEntity
-import app.doggy.mybrary.core.data.db.entity.BookAuthorCrossRef
-import app.doggy.mybrary.core.data.db.entity.BookEntity
-import app.doggy.mybrary.core.data.db.entity.DiaryEntity
+import app.doggy.core.database.dao.AuthorDao
+import app.doggy.core.database.dao.BookAuthorCrossRefDao
+import app.doggy.core.database.dao.BookDao
+import app.doggy.core.database.dao.DiaryDao
+import app.doggy.core.database.entity.AuthorEntity
+import app.doggy.core.database.entity.BookAuthorCrossRef
+import app.doggy.core.database.entity.BookEntity
+import app.doggy.core.database.entity.DiaryEntity
 
 @Database(
   entities = [

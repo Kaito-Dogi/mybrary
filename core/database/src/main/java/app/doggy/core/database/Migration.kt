@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.data.db
+package app.doggy.core.database
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
