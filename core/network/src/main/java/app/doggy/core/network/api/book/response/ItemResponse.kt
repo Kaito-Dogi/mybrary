@@ -16,7 +16,7 @@ class ItemResponse(
 
     return Book(
       id = 0,
-      name = volumeInfo.title,
+      title = volumeInfo.title,
       description = volumeInfo.description ?: "",
       totalPage = totalPage,
       imageUrl = volumeInfo.imageLinks?.thumbnail ?: "",

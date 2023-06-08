@@ -4,7 +4,7 @@ import app.doggy.core.common.util.UnixTime
 
 data class Book(
   val id: Int,
-  val name: String,
+  val title: String,
   val description: String,
   val totalPage: BookTotalPage,
   val imageUrl: String,
