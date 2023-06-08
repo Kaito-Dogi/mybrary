@@ -39,17 +39,12 @@ android {
 
 dependencies {
   implementation(project(":core:domain"))
+  implementation(project(":core:network"))
+  implementation(project(":core:database"))
 
   implementation(libs.hilt.android)
-  implementation(libs.moshi)
-  implementation(libs.okhttp)
-  implementation(libs.okhttp.logging)
-  implementation(libs.retrofit)
-  implementation(libs.retrofit.converter.moshi)
-  implementation(libs.room.runtime)
 
   kapt(libs.hilt.compiler)
-  kapt(libs.room.compiler)
 
   testImplementation(libs.junit)
 }
