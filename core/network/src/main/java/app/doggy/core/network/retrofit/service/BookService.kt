@@ -10,7 +10,7 @@ interface BookService {
   @GET("volumes")
   suspend fun getVolumes(
     @Query("q") q: String,
-    @Query("maxResults") maxResult: Int,
+    @Query("maxResults") maxResults: Int,
     @Query("startIndex") startIndex: Int,
   ): Response<GetVolumesResponse>
 }

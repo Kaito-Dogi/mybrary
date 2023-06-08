@@ -18,7 +18,7 @@ internal class BookApiImpl @Inject constructor(
   ): Result<List<Book>> {
     val response = bookService.getVolumes(
       q = isbn,
-      maxResult = limit,
+      maxResults = limit,
       startIndex = pageIndex,
     )
 
