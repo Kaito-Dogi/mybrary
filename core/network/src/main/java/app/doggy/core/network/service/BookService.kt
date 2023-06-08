@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data.api.service
+package app.doggy.core.network.service
 
-import app.doggy.mybrary.core.data.api.RetrofitManager
-import app.doggy.mybrary.core.data.api.response.FetchBooksResponse
+import app.doggy.core.network.RetrofitManager
+import app.doggy.core.network.response.FetchBooksResponse
 import javax.inject.Inject
 import retrofit2.Response
 import retrofit2.create

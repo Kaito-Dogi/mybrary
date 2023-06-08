@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.data.api.response
+package app.doggy.core.network.response
 
 import app.doggy.mybrary.core.domain.model.legacy.Book
 import com.squareup.moshi.Json

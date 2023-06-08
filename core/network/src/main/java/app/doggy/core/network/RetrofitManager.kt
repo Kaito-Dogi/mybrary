@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.data.api
+package app.doggy.core.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
