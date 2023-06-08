@@ -1,6 +1,6 @@
 package app.doggy.core.network.book.response
 
-import app.doggy.core.common.UnixTime
+import app.doggy.core.common.util.UnixTime
 import app.doggy.mybrary.core.domain.model.book.Author
 import app.doggy.mybrary.core.domain.model.book.Book
 import app.doggy.mybrary.core.domain.model.book.BookStatus
