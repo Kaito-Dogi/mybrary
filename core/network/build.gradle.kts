@@ -35,9 +35,6 @@ android {
 }
 
 dependencies {
-  // FIXME: リファクタして依存を消去する
-  implementation(project(":core:domain"))
-
   implementation(libs.hilt.android)
   implementation(libs.moshi)
   implementation(libs.okhttp)
@@ -51,4 +48,3 @@ dependencies {
 kapt {
   correctErrorTypes = true
 }
-
