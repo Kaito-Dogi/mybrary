@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface BookService {
+interface BookApi {
   @GET("volumes")
   suspend fun getVolumes(
     @Query("q") isbn: String,
