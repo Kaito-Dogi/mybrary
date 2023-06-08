@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.domain.model.book
 
 @JvmInline
-value class BookId(val value: Int) {
+value class BookTotalPage(val value: Int) {
   init {
     require(value > 0)
   }
