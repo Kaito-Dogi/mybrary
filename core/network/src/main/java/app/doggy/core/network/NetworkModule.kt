@@ -1,6 +1,5 @@
-package app.doggy.core.network.di
+package app.doggy.core.network
 
-import app.doggy.core.network.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
