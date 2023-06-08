@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import app.doggy.mybrary.databinding.ItemDiaryBinding
-import app.doggy.mybrary.core.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.legacy.Diary
 
 // FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える
 class DiaryAdapter(

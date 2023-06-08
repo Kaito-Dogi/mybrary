@@ -3,7 +3,7 @@ package app.doggy.mybrary.core.data.repository
 import app.doggy.mybrary.core.data.db.MybraryDatabase
 import app.doggy.mybrary.core.data.db.entity.toDiaryEntity
 import app.doggy.mybrary.core.data.repository.fake.FakeDiaryRepository
-import app.doggy.mybrary.core.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.legacy.Diary
 import app.doggy.mybrary.core.domain.repository.DiaryRepository
 import dagger.Binds
 import dagger.Module
