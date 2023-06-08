@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import app.doggy.mybrary.core.domain.model.Book
+import app.doggy.mybrary.core.domain.model.legacy.Book
 
 @Entity(
   tableName = "authors",

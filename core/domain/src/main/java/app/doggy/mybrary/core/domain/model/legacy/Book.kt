@@ -1,5 +1,6 @@
-package app.doggy.mybrary.core.domain.model
+package app.doggy.mybrary.core.domain.model.legacy
 
+import app.doggy.mybrary.core.domain.model.Diary
 import java.util.Date
 
 data class Book(

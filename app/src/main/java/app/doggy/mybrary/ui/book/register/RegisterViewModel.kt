@@ -3,7 +3,7 @@ package app.doggy.mybrary.ui.book.register
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.Book
+import app.doggy.mybrary.core.domain.model.legacy.Book
 import app.doggy.mybrary.core.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
