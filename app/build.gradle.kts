@@ -18,13 +18,6 @@ android {
     versionName = "2.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-    // core:data モジュール実装後に削除
-    javaCompileOptions {
-      annotationProcessorOptions {
-        argument("room.schemaLocation", "$projectDir/schemas")
-      }
-    }
   }
 
   buildTypes {
@@ -46,9 +39,13 @@ android {
 }
 
 dependencies {
+  implementation(project(":feature:home"))
+
+  // TODO: feature モジュール実装後に削除
   implementation(project(":core:domain"))
   implementation(project(":core:data"))
 
+  // TODO: feature モジュール実装後に削除
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.constraintlayout)
   implementation(libs.androidx.core.ktx)
@@ -62,25 +59,10 @@ dependencies {
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.material)
 
-  // core:data モジュール実装後に削除
-  // ===== ここから =====
-  implementation(libs.moshi)
-  implementation(libs.okhttp)
-  implementation(libs.okhttp.logging)
-  implementation(libs.retrofit)
-  implementation(libs.retrofit.converter.moshi)
-  implementation(libs.room.runtime)
   kapt(libs.hilt.compiler)
-  kapt(libs.room.compiler)
-  // ===== ここまで =====
-
-  testImplementation(libs.junit)
-
-  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
-  androidTestImplementation(libs.androidx.test.espresso.core)
 }
 
-// core:data モジュール実装後に削除
+// TODO: core:data モジュール実装後に削除
 kapt {
   correctErrorTypes = true
 }
