@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.mybrary.core.domain"
+  namespace = "app.doggy.core.common"
   compileSdk = 33
 
   defaultConfig {
@@ -27,8 +27,4 @@ android {
   kotlinOptions {
     jvmTarget = "17"
   }
-}
-
-dependencies {
-  implementation(project(":core:common"))
 }

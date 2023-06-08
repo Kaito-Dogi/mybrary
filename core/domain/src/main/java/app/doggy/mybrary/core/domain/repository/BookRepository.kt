@@ -1,6 +1,6 @@
 package app.doggy.mybrary.core.domain.repository
 
-import app.doggy.mybrary.core.domain.model.Book
+import app.doggy.mybrary.core.domain.model.legacy.Book
 
 interface BookRepository {
   suspend fun fetchBooksByIsbn(isbn: String): List<Book>

@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.model
+package app.doggy.mybrary.core.domain.model.legacy
 
 import java.util.Date
 

@@ -3,7 +3,7 @@ package app.doggy.mybrary.ui.book.detail
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
 import app.doggy.mybrary.databinding.ItemDiaryBinding
-import app.doggy.mybrary.core.domain.model.Diary
+import app.doggy.mybrary.core.domain.model.legacy.Diary
 import java.text.SimpleDateFormat
 import java.util.Locale
 
