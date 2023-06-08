@@ -29,10 +29,13 @@ android {
   kotlinOptions {
     jvmTarget = "17"
   }
+  buildFeatures {
+    buildConfig = true
+  }
 }
 
 dependencies {
-  // FIXME: リファクタして依存を消去する
+  implementation(project(":core:common"))
   implementation(project(":core:domain"))
 
   implementation(libs.hilt.android)
@@ -48,4 +51,3 @@ dependencies {
 kapt {
   correctErrorTypes = true
 }
-
