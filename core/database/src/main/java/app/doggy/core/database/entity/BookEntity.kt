@@ -2,6 +2,7 @@ package app.doggy.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import app.doggy.core.common.util.UnixTime
 import app.doggy.mybrary.core.domain.model.book.BookStatus
 
 @Entity(tableName = "books")
@@ -14,7 +15,7 @@ data class BookEntity(
   @ColumnInfo(name = "image_url")
   val imageUrl: String,
   @ColumnInfo(name = "registered_at")
-  val registeredAt: Long,
+  val registeredAt: UnixTime,
   @ColumnInfo(name = "is_pinned")
   val isPinned: Boolean,
   val status: BookStatus,

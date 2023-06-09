@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:common"))
+
   // FIXME: リファクタして依存を消去する
   implementation(project(":core:domain"))
 
