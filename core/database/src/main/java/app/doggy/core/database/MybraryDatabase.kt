@@ -3,6 +3,7 @@ package app.doggy.core.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import app.doggy.core.database.converter.BookStatusConverter
 import app.doggy.core.database.legacy.dao.AuthorDao
 import app.doggy.core.database.legacy.dao.BookAuthorCrossRefDao
 import app.doggy.core.database.legacy.dao.BookDao

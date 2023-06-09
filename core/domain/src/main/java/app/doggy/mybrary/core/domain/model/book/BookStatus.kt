@@ -4,5 +4,4 @@ enum class BookStatus {
   WAITING,
   IN_PROGRESS,
   COMPLETED,
-  UNKNOWN,
 }
