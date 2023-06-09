@@ -22,7 +22,7 @@ import app.doggy.core.database.legacy.entity.DiaryEntity
   version = 2,
   exportSchema = true,
 )
-@TypeConverters(Converters::class)
+@TypeConverters(BookStatusConverter::class)
 abstract class MybraryDatabase : RoomDatabase() {
   abstract fun bookDao(): BookDao
   abstract fun diaryDao(): DiaryDao
