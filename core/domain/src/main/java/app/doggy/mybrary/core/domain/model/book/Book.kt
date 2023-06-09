@@ -3,7 +3,7 @@ package app.doggy.mybrary.core.domain.model.book
 import app.doggy.core.common.util.UnixTime
 
 data class Book(
-  val id: Int,
+  val id: Long,
   val title: String,
   val description: String,
   val totalPage: BookTotalPage,
