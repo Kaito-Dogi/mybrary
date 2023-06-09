@@ -1,12 +1,12 @@
-package app.doggy.core.database.dao
+package app.doggy.core.database.legacy.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import app.doggy.core.database.entity.BookEntity
-import app.doggy.core.database.entity.BookWithDiariesAndAuthors
+import app.doggy.core.database.legacy.entity.BookEntity
+import app.doggy.core.database.legacy.entity.BookWithDiariesAndAuthors
 
 @Dao
 interface BookDao {

@@ -1,8 +1,8 @@
-package app.doggy.core.database.dao
+package app.doggy.core.database.legacy.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
-import app.doggy.core.database.entity.BookAuthorCrossRef
+import app.doggy.core.database.legacy.entity.BookAuthorCrossRef
 
 @Dao
 interface BookAuthorCrossRefDao {

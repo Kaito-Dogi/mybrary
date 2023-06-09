@@ -3,14 +3,14 @@ package app.doggy.core.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import app.doggy.core.database.dao.AuthorDao
-import app.doggy.core.database.dao.BookAuthorCrossRefDao
-import app.doggy.core.database.dao.BookDao
-import app.doggy.core.database.dao.DiaryDao
-import app.doggy.core.database.entity.AuthorEntity
-import app.doggy.core.database.entity.BookAuthorCrossRef
-import app.doggy.core.database.entity.BookEntity
-import app.doggy.core.database.entity.DiaryEntity
+import app.doggy.core.database.legacy.dao.AuthorDao
+import app.doggy.core.database.legacy.dao.BookAuthorCrossRefDao
+import app.doggy.core.database.legacy.dao.BookDao
+import app.doggy.core.database.legacy.dao.DiaryDao
+import app.doggy.core.database.legacy.entity.AuthorEntity
+import app.doggy.core.database.legacy.entity.BookAuthorCrossRef
+import app.doggy.core.database.legacy.entity.BookEntity
+import app.doggy.core.database.legacy.entity.DiaryEntity
 
 @Database(
   entities = [

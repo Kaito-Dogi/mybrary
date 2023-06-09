@@ -1,4 +1,4 @@
-package app.doggy.core.database.entity
+package app.doggy.core.database.legacy.entity
 
 import androidx.room.Embedded
 import androidx.room.Junction

@@ -1,10 +1,10 @@
-package app.doggy.core.database.dao
+package app.doggy.core.database.legacy.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import app.doggy.core.database.entity.DiaryEntity
+import app.doggy.core.database.legacy.entity.DiaryEntity
 
 @Dao
 interface DiaryDao {
