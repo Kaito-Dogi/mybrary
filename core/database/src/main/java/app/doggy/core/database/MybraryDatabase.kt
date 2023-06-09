@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import app.doggy.core.database.converter.BookStatusConverter
+import app.doggy.core.database.converter.UnixTimeConverter
 import app.doggy.core.database.legacy.dao.AuthorDao
 import app.doggy.core.database.legacy.dao.BookAuthorCrossRefDao
 import app.doggy.core.database.legacy.dao.BookDao
@@ -23,7 +24,10 @@ import app.doggy.core.database.legacy.entity.DiaryEntity
   version = 2,
   exportSchema = true,
 )
-@TypeConverters(BookStatusConverter::class)
+@TypeConverters(
+  BookStatusConverter::class,
+  UnixTimeConverter::class,
+)
 abstract class MybraryDatabase : RoomDatabase() {
   abstract fun bookDao(): BookDao
   abstract fun diaryDao(): DiaryDao
