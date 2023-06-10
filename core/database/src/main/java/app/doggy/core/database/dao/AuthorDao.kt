@@ -17,5 +17,5 @@ interface AuthorDao {
   suspend fun deleteAuthors(authors: List<AuthorEntity>)
 
   @Query("SELECT * FROM authors WHERE book_id = :bookId")
-  suspend fun getAuthorsByBookId(bookId: Long): Flow<List<AuthorEntity>>
+  fun getAuthorsByBookId(bookId: Long): Flow<List<AuthorEntity>>
 }
