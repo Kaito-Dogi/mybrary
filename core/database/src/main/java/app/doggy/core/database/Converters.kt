@@ -1,4 +1,4 @@
-package app.doggy.core.database.converter
+package app.doggy.core.database
 
 import androidx.room.TypeConverter
 import app.doggy.mybrary.core.domain.model.book.BookStatus
