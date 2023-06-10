@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data
+package app.doggy.mybrary.core.data.legacy
 
-import app.doggy.mybrary.core.data.fake.FakeBookRepository
-import app.doggy.mybrary.core.domain.repository.BookRepository
+import app.doggy.mybrary.core.data.legacy.fake.FakeLegacyBookRepository
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 internal interface BookRepositoryModule {
   // fun BookRepositoryImpl.bindBookRepository(): BookRepository
   @Binds
-  fun FakeBookRepository.bindBookRepository(): BookRepository
+  fun FakeLegacyBookRepository.bindBookRepository(): LegacyBookRepository
 }
 //
 // class BookRepositoryImpl @Inject constructor(

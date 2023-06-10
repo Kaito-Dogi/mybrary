@@ -1,8 +1,10 @@
 package app.doggy.core.network.api.book.response
 
 import app.doggy.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.model.book.Author
+import app.doggy.mybrary.core.domain.model.author.Author
+import app.doggy.mybrary.core.domain.model.author.AuthorId
 import app.doggy.mybrary.core.domain.model.book.Book
+import app.doggy.mybrary.core.domain.model.book.BookId
 import app.doggy.mybrary.core.domain.model.book.BookStatus
 import app.doggy.mybrary.core.domain.model.book.BookTotalPage
 
@@ -15,14 +17,14 @@ class ItemResponse(
       else BookTotalPage(1)
 
     return Book(
-      id = 0,
+      id = BookId(-1L),
       title = volumeInfo.title,
       description = volumeInfo.description ?: "",
       totalPage = totalPage,
       imageUrl = volumeInfo.imageLinks?.thumbnail ?: "",
       authors = volumeInfo.authors?.map {
         Author(
-          id = 0,
+          id = AuthorId(-1L),
           name = it,
         )
       } ?: listOf(),

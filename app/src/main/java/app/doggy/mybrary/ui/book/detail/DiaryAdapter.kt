@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import app.doggy.mybrary.databinding.ItemDiaryBinding
-import app.doggy.mybrary.core.domain.model.legacy.Diary
+import app.doggy.mybrary.core.domain.model.legacy.LegacyDiary
 
 // FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える
 class DiaryAdapter(
   private val totalPage: Int,
-) : ListAdapter<Diary, DiaryViewHolder>(DIFF_UTIL_ITEM_CALLBACK) {
+) : ListAdapter<LegacyDiary, DiaryViewHolder>(DIFF_UTIL_ITEM_CALLBACK) {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
     val binding = ItemDiaryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return DiaryViewHolder(
@@ -24,12 +24,12 @@ class DiaryAdapter(
   }
 }
 
-private val DIFF_UTIL_ITEM_CALLBACK = object : DiffUtil.ItemCallback<Diary>() {
-  override fun areContentsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+private val DIFF_UTIL_ITEM_CALLBACK = object : DiffUtil.ItemCallback<LegacyDiary>() {
+  override fun areContentsTheSame(oldItem: LegacyDiary, newItem: LegacyDiary): Boolean {
     return oldItem == newItem
   }
 
-  override fun areItemsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+  override fun areItemsTheSame(oldItem: LegacyDiary, newItem: LegacyDiary): Boolean {
     return oldItem.hashCode() == newItem.hashCode()
   }
 }

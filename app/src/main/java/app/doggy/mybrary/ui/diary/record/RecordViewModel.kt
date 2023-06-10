@@ -4,8 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.legacy.Diary
-import app.doggy.mybrary.core.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.domain.model.legacy.LegacyDiary
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyDiaryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
 import javax.inject.Inject
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class RecordViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
-  private val diaryRepository: DiaryRepository,
+  private val legacyDiaryRepository: LegacyDiaryRepository,
 ) : ViewModel() {
   private val args = RecordFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
@@ -36,8 +36,8 @@ class RecordViewModel @Inject constructor(
         val isValid = currentPage.isNotBlank() && currentPage.first() != '0' && content.isNotBlank()
         if (!isValid) throw IllegalArgumentException()
 
-        diaryRepository.recordDiary(
-          diary = Diary(
+        legacyDiaryRepository.recordDiary(
+          legacyDiary = LegacyDiary(
             content = content,
             currentPage = currentPage.toInt(),
             recordedAt = Date(),

@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data
+package app.doggy.mybrary.core.data.legacy
 
-import app.doggy.mybrary.core.data.fake.FakeDiaryRepository
-import app.doggy.mybrary.core.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.data.legacy.fake.FakeLegacyDiaryRepository
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyDiaryRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 internal interface DiaryRepositoryModule {
   // fun DiaryRepositoryImpl.bindDiaryRepository(): DiaryRepository
   @Binds
-  fun FakeDiaryRepository.bindDiaryRepository(): DiaryRepository
+  fun FakeLegacyDiaryRepository.bindDiaryRepository(): LegacyDiaryRepository
 }
 
 // class DiaryRepositoryImpl @Inject constructor(

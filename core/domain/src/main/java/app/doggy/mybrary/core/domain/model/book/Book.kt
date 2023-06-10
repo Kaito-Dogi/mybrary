@@ -1,9 +1,10 @@
 package app.doggy.mybrary.core.domain.model.book
 
 import app.doggy.core.common.util.UnixTime
+import app.doggy.mybrary.core.domain.model.author.Author
 
 data class Book(
-  val id: Long,
+  val id: BookId,
   val title: String,
   val description: String,
   val totalPage: BookTotalPage,

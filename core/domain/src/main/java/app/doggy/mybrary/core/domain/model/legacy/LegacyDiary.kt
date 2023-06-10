@@ -2,7 +2,7 @@ package app.doggy.mybrary.core.domain.model.legacy
 
 import java.util.Date
 
-data class Diary(
+data class LegacyDiary(
   val content: String,
   val currentPage: Int,
   val recordedAt: Date,

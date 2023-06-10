@@ -15,7 +15,7 @@ internal class BookApiImpl @Inject constructor(
     isbn: String,
     limit: Int,
     pageIndex: Int,
-  ): Result<List<Book>> {
+  ): List<Book> {
     val response = bookService.getVolumes(
       q = isbn,
       maxResults = limit,
@@ -23,15 +23,11 @@ internal class BookApiImpl @Inject constructor(
     )
 
     return if (response.isSuccessful) {
-      Result.success(
-        response.body()?.items?.map { it.toBook() } ?: listOf(),
-      )
+      response.body()?.items?.map { it.toBook() } ?: listOf()
     } else {
-      Result.failure(
-        NetworkException(
-          code = response.code(),
-          errorBody = response.errorBody().toString(),
-        ),
+      throw NetworkException(
+        code = response.code(),
+        errorBody = response.errorBody().toString(),
       )
     }
   }

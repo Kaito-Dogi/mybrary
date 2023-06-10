@@ -3,8 +3,8 @@ package app.doggy.mybrary.ui.book.register
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.legacy.Book
-import app.doggy.mybrary.core.domain.repository.BookRepository
+import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-  private val bookRepository: BookRepository,
+  private val legacyBookRepository: LegacyBookRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(RegisterState())
   val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
@@ -34,8 +34,8 @@ class RegisterViewModel @Inject constructor(
         val isValid = title.isNotBlank() && author.isNotBlank() && totalPage.isNotBlank() && totalPage.first() != '0'
         if (!isValid) throw IllegalArgumentException()
 
-        bookRepository.registerBook(
-          book = Book(
+        legacyBookRepository.registerBook(
+          legacyBook = LegacyBook(
             id = 0L,
             booksApiId = null,
             title = title,

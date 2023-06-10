@@ -1,17 +1,23 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "88e196ca3fc503fc5e04f95b6cef08e4",
+    "version": 4,
+    "identityHash": "3c2b0ee261497866116935d9d414a806",
     "entities": [
       {
         "tableName": "authors",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `book_id` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -27,51 +33,15 @@
             "id"
           ]
         },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "book_authors",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_id` INTEGER NOT NULL, `author_id` INTEGER NOT NULL, PRIMARY KEY(`book_id`, `author_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`author_id`) REFERENCES `authors`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "bookId",
-            "columnName": "book_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "authorId",
-            "columnName": "author_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "autoGenerate": false,
-          "columnNames": [
-            "book_id",
-            "author_id"
-          ]
-        },
         "indices": [
           {
-            "name": "index_book_authors_book_id",
+            "name": "index_authors_book_id",
             "unique": false,
             "columnNames": [
               "book_id"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_book_authors_book_id` ON `${TABLE_NAME}` (`book_id`)"
-          },
-          {
-            "name": "index_book_authors_author_id",
-            "unique": false,
-            "columnNames": [
-              "author_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_book_authors_author_id` ON `${TABLE_NAME}` (`author_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_authors_book_id` ON `${TABLE_NAME}` (`book_id`)"
           }
         ],
         "foreignKeys": [
@@ -81,17 +51,6 @@
             "onUpdate": "NO ACTION",
             "columns": [
               "book_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          },
-          {
-            "table": "authors",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "author_id"
             ],
             "referencedColumns": [
               "id"
@@ -208,7 +167,17 @@
             "id"
           ]
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_records_book_id",
+            "unique": false,
+            "columnNames": [
+              "book_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_records_book_id` ON `${TABLE_NAME}` (`book_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "books",
@@ -227,7 +196,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '88e196ca3fc503fc5e04f95b6cef08e4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c2b0ee261497866116935d9d414a806')"
     ]
   }
 }
