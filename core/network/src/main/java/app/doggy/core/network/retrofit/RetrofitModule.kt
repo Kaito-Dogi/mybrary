@@ -16,7 +16,7 @@ private const val BASE_URL = "https://www.googleapis.com/books/v1/"
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RetrofitModule {
+internal object RetrofitModule {
 
   @Provides
   @Singleton

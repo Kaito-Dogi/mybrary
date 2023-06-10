@@ -8,7 +8,7 @@ import app.doggy.mybrary.core.domain.model.book.BookId
 import app.doggy.mybrary.core.domain.model.book.BookStatus
 import app.doggy.mybrary.core.domain.model.book.BookTotalPage
 
-class ItemResponse(
+internal class ItemResponse(
   private val volumeInfo: VolumeInfoResponse,
 ) {
   fun toBook(): Book {
