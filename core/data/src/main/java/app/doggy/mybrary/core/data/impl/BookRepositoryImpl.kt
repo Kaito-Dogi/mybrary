@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.data
+package app.doggy.mybrary.core.data.impl
 
 import app.doggy.core.common.coroutines.dispatcher.Dispatcher
 import app.doggy.core.common.coroutines.dispatcher.MybraryDispatchers
