@@ -38,7 +38,6 @@ android {
 }
 
 dependencies {
-  // FIXME: リファクタして依存を消去する
   implementation(project(":core:domain"))
 
   implementation(libs.hilt.android)
