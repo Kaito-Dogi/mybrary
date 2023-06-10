@@ -25,18 +25,18 @@ class BookRepositoryImpl @Inject constructor(
   @Dispatcher(MybraryDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
 ) : BookRepository {
 
-  override suspend fun registerBook(book: Book) = withContext(ioDispatcher) {
-    val bookWithAuthors = book.toBookWithAuthors()
+  override suspend fun registerBook(book: Book) {
+    withContext(ioDispatcher) {
+      val bookWithAuthors = book.toBookWithAuthors()
 
-    roomTransactionExecutor.execute {
-      bookDao.upsertBook(bookWithAuthors.book)
-      authorDao.upsertAuthors(bookWithAuthors.authors)
+      roomTransactionExecutor.execute {
+        bookDao.upsertBook(bookWithAuthors.book)
+        authorDao.upsertAuthors(bookWithAuthors.authors)
+      }
     }
-
-    return@withContext
   }
 
-  override suspend fun updateBook(book: Book) = withContext(ioDispatcher) {
+  override suspend fun updateBook(book: Book) {
     // author の数が減った場合、元々保存してあった author のうち、減った分を削除する
     authorDao.getAuthorsByBookId(bookId = book.id.value)
       .map { prevAuthorList ->
@@ -49,14 +49,14 @@ class BookRepositoryImpl @Inject constructor(
         authorDao.deleteAuthors(it)
       }
 
-    val bookWithAuthors = book.toBookWithAuthors()
+    withContext(ioDispatcher) {
+      val bookWithAuthors = book.toBookWithAuthors()
 
-    roomTransactionExecutor.execute {
-      bookDao.upsertBook(bookWithAuthors.book)
-      authorDao.upsertAuthors(bookWithAuthors.authors)
+      roomTransactionExecutor.execute {
+        bookDao.upsertBook(bookWithAuthors.book)
+        authorDao.upsertAuthors(bookWithAuthors.authors)
+      }
     }
-
-    return@withContext
   }
 
   override suspend fun deleteBook(bookId: BookId) {
