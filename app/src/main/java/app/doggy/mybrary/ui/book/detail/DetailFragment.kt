@@ -12,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
+import app.doggy.mybrary.core.domain.model.book.Book
 import app.doggy.mybrary.databinding.FragmentDetailBinding
-import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,25 +65,25 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     }
   }
 
-  private fun setUpRecycler(legacyBook: LegacyBook) {
+  private fun setUpRecycler(book: Book) {
     // FIXME: totalPage をコンストラクタで渡さなくてはならないので、 Book の情報を取得するのを待つ必要があり、 onViewCreated で Adapter のインスタンスを生成・保持できない
-    val adapter = DiaryAdapter(legacyBook.totalPage)
+    val adapter = RecordAdapter(book.totalPage)
     binding.recycler.setHasFixedSize(true)
     binding.recycler.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
     binding.recycler.adapter = adapter
-    adapter.submitList(legacyBook.diaries)
+    // adapter.submitList(book.diaries)
   }
 
   private fun collectUiState() {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
-          binding.toolBar.title = uiState.legacyBook.title
-          val imageUrl = uiState.legacyBook.imageUrl
+          binding.toolBar.title = uiState.book.title
+          val imageUrl = uiState.book.imageUrl
           // FIXME: 画像の URL が空のときにダミーの画像を表示しなくても良いかも
-          if (imageUrl.isNullOrBlank()) binding.bookImage.setImageResource(R.drawable.icon_book)
-          else binding.bookImage.load(uiState.legacyBook.imageUrl)
-          setUpRecycler(uiState.legacyBook)
+          if (imageUrl.isBlank()) binding.bookImage.setImageResource(R.drawable.icon_book)
+          else binding.bookImage.load(uiState.book.imageUrl)
+          setUpRecycler(uiState.book)
 
           uiState.errorMessageRes?.let { errorMessageRes ->
             Snackbar.make(binding.root, errorMessageRes, Snackbar.LENGTH_SHORT).show()
