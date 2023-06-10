@@ -14,6 +14,7 @@ import app.doggy.mybrary.core.domain.repository.BookRepository
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -75,7 +76,17 @@ class BookRepositoryImpl @Inject constructor(
     bookDao.getBookWithRecordById(bookId = bookId.value)
       .map { it.toBookWithRecord() }
 
-  override fun searchBooksByIsbn(isbn: String, limit: Int, pageIndex: Int): Flow<List<Book>> {
-    TODO("Not yet implemented")
+  override fun searchBooksByIsbn(
+    isbn: String,
+    limit: Int,
+    pageIndex: Int,
+  ): Flow<List<Book>> = flow {
+    emit(
+      bookApi.searchBooksByIsbn(
+        isbn = isbn,
+        limit = limit,
+        pageIndex = pageIndex,
+      ),
+    )
   }
 }
