@@ -17,7 +17,7 @@ interface BookRepository {
 
   fun getBook(bookId: BookId): Flow<Book>
 
-  fun getBookWithRecords(bookId: BookId): Flow<Map<Book, List<Record>>>
+  fun getBookWithRecords(bookId: BookId): Flow<Pair<Book, List<Record>>>
 
   fun searchBooksByIsbn(
     isbn: String,

@@ -71,9 +71,9 @@ class BookRepositoryImpl @Inject constructor(
   override fun getBook(bookId: BookId): Flow<Book> = bookDao.getBookById(bookId = bookId.value)
     .map { it.toBook() }
 
-  override fun getBookWithRecords(bookId: BookId): Flow<Map<Book, List<Record>>> {
-    TODO("Not yet implemented")
-  }
+  override fun getBookWithRecords(bookId: BookId): Flow<Pair<Book, List<Record>>> =
+    bookDao.getBookWithRecordById(bookId = bookId.value)
+      .map { it.toBookWithRecord() }
 
   override fun searchBooksByIsbn(isbn: String, limit: Int, pageIndex: Int): Flow<List<Book>> {
     TODO("Not yet implemented")
