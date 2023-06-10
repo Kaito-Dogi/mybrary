@@ -13,4 +13,18 @@ data class Book(
   val registeredAt: UnixTime,
   val isPinned: Boolean,
   val status: BookStatus,
-)
+) {
+  companion object {
+    fun createEmpty() = Book(
+      id = BookId(-1),
+      title = "",
+      description = "",
+      totalPage = BookTotalPage(1),
+      imageUrl = "",
+      authors = listOf(),
+      registeredAt = UnixTime(0),
+      isPinned = false,
+      status = BookStatus.WAITING,
+    )
+  }
+}

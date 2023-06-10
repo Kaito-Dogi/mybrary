@@ -1,10 +1,10 @@
 package app.doggy.mybrary.ui.home
 
-import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
+import app.doggy.mybrary.core.domain.model.book.Book
 
 sealed interface HomeUiModel {
   data class BookUiModel(
-    val legacyBook: LegacyBook,
+    val book: Book,
     val onClick: (id: Long) -> Unit,
   ) : HomeUiModel
 }

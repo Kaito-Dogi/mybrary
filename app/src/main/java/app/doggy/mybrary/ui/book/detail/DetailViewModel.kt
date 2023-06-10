@@ -4,19 +4,21 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
+import app.doggy.mybrary.core.domain.model.book.BookId
+import app.doggy.mybrary.core.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
-  private val legacyBookRepository: LegacyBookRepository,
+  private val bookRepository: BookRepository,
 ) : ViewModel() {
   private val args = DetailFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
@@ -27,11 +29,11 @@ class DetailViewModel @Inject constructor(
     viewModelScope.launch {
       _uiState.update { it.copy(isLoading = true) }
       runCatching {
-        legacyBookRepository.getBook(bookId = args.bookId)
+        bookRepository.getBook(bookId = BookId(args.bookId)).first()
       }.onSuccess { book ->
         _uiState.update { currentState ->
           currentState.copy(
-            legacyBook = book,
+            book = book,
             isLoading = false,
           )
         }

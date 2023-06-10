@@ -40,7 +40,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
       viewModel.onRegisterButtonClick(
         // TODO: booksApiId, imageUrl が存在する場合を考える
         title = binding.titleEditText.text.toString(),
-        author = binding.authorEditText.text.toString(),
+        authorName = binding.authorEditText.text.toString(),
         description = binding.descriptionEditText.text.toString(),
         totalPage = binding.totalPageEditText.text.toString(),
       )

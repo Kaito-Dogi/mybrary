@@ -60,7 +60,7 @@
 
   <fragment
     android:id="@+id/recordFragment"
-    android:name="app.doggy.mybrary.ui.diary.record.RecordFragment"
+    android:name="app.doggy.mybrary.ui.record.RecordFragment"
     android:label="@string/fragment_record"
     tools:layout="@layout/fragment_record"
     >

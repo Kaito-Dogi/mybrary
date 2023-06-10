@@ -45,11 +45,11 @@
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/content_text_field"
+    android:id="@+id/memo_text_field"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_margin="@dimen/margin_medium"
-    android:hint="@string/hint_content_edit_text"
+    android:hint="@string/hint_memo_edit_text"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/current_page_text_field"
@@ -57,7 +57,7 @@
     >
 
     <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/content_edit_text"
+      android:id="@+id/memo_edit_text"
       style="@style/Mybrary.TextAppearance.Medium"
       android:layout_width="match_parent"
       android:layout_height="match_parent"

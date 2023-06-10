@@ -1,4 +1,4 @@
-package app.doggy.mybrary.ui.diary.record
+package app.doggy.mybrary.ui.record
 
 import android.os.Bundle
 import android.view.View
@@ -46,7 +46,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     binding.recordButton.setOnClickListener {
       viewModel.onRecordButtonClick(
         currentPage = binding.currentPageEditText.text.toString(),
-        content = binding.contentEditText.text.toString(),
+        memo = binding.memoEditText.text.toString(),
       )
     }
   }
@@ -55,7 +55,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.STARTED) {
         viewModel.uiState.collect { uiState ->
-          if (uiState.isDiaryRecorded) {
+          if (uiState.isRecorded) {
             findNavController().popBackStack()
           }
 
