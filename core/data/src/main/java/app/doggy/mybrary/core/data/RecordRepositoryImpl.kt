@@ -11,6 +11,7 @@ import app.doggy.mybrary.core.domain.repository.RecordRepository
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class RecordRepositoryImpl @Inject constructor(
@@ -43,7 +44,6 @@ class RecordRepositoryImpl @Inject constructor(
     }
   }
 
-  override fun getRecord(recordId: RecordId): Flow<Record> {
-    TODO("Not yet implemented")
-  }
+  override fun getRecord(recordId: RecordId): Flow<Record> =
+    recordDao.getRecordById(recordId = recordId.value).map { it.toRecord() }
 }
