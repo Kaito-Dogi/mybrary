@@ -24,5 +24,9 @@ interface BookDao {
 
   @Transaction
   @Query("SELECT * FROM books WHERE id = :bookId")
-  fun getBookById(bookId: Long): Flow<List<BookWithAuthorsWithRecords>>
+  fun getBookById(bookId: Long): Flow<BookWithAuthors>
+
+  @Transaction
+  @Query("SELECT * FROM books WHERE id = :bookId")
+  fun getBookWithRecordById(bookId: Long): Flow<BookWithAuthorsWithRecords>
 }
