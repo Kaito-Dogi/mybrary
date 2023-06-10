@@ -2,6 +2,7 @@ package app.doggy.core.database.di
 
 import android.content.Context
 import androidx.room.Room
+import app.doggy.core.database.MIGRATION_1_2
 import app.doggy.core.database.MybraryDatabase
 import dagger.Module
 import dagger.Provides
@@ -23,5 +24,8 @@ object DatabaseModule {
     MybraryDatabase::class.java,
     "mybrary_db",
   )
+    .addMigrations(
+      MIGRATION_1_2,
+    )
     .build()
 }

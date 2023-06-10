@@ -3,7 +3,6 @@ package app.doggy.core.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import app.doggy.core.database.converter.BookStatusConverter
 import app.doggy.core.database.dao.AuthorDao
 import app.doggy.core.database.dao.BookAuthorCrossRefDao
 import app.doggy.core.database.dao.BookDao
@@ -20,7 +19,7 @@ import app.doggy.core.database.entity.RecordEntity
     BookEntity::class,
     RecordEntity::class,
   ],
-  version = 1,
+  version = 2,
   exportSchema = true,
 )
 @TypeConverters(
