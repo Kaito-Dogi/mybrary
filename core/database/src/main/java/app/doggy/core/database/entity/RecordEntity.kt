@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import app.doggy.core.common.util.UnixTime
+import app.doggy.mybrary.core.domain.model.book.BookId
 import app.doggy.mybrary.core.domain.model.record.Record
 import app.doggy.mybrary.core.domain.model.record.RecordId
 
@@ -44,3 +45,12 @@ data class RecordEntity(
     recordedAt = UnixTime(recordedAt),
   )
 }
+
+fun Record.toEntity(bookId: BookId) = RecordEntity(
+  id = id.value,
+  bookId = bookId.value,
+  memo = memo,
+  startPage = startPage,
+  endPage = endPage,
+  recordedAt = recordedAt.value,
+)
