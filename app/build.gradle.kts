@@ -42,6 +42,7 @@ dependencies {
   implementation(project(":feature:home"))
 
   // TODO: feature モジュール実装後に削除
+  implementation(project(":core:common"))
   implementation(project(":core:domain"))
   implementation(project(":core:data"))
 
