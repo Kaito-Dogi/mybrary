@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
 import app.doggy.mybrary.core.domain.model.legacy.Diary
-import app.doggy.mybrary.core.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.domain.repository.legacy.DiaryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
 import javax.inject.Inject

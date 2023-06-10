@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.data.fake
 
 import app.doggy.mybrary.core.domain.model.legacy.Diary
-import app.doggy.mybrary.core.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.domain.repository.legacy.DiaryRepository
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

@@ -2,7 +2,7 @@ package app.doggy.mybrary.core.data.fake
 
 import app.doggy.mybrary.core.domain.model.legacy.Book
 import app.doggy.mybrary.core.domain.model.legacy.Diary
-import app.doggy.mybrary.core.domain.repository.BookRepository
+import app.doggy.mybrary.core.domain.repository.legacy.BookRepository
 import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers

@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.data
 
 import app.doggy.mybrary.core.data.fake.FakeDiaryRepository
-import app.doggy.mybrary.core.domain.repository.DiaryRepository
+import app.doggy.mybrary.core.domain.repository.legacy.DiaryRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
