@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface RecordDao {
 
   @Upsert
-  suspend fun upsertRecord(recordEntity: RecordEntity): Long
+  suspend fun upsertRecord(record: RecordEntity): Long
 
   @Query("DELETE FROM records  WHERE id = :recordId")
   suspend fun deleteRecordById(recordId: Long)

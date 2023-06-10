@@ -8,5 +8,5 @@ import app.doggy.core.database.entity.AuthorEntity
 interface AuthorDao {
 
   @Upsert
-  suspend fun upsertAuthor(authorEntity: AuthorEntity): Long
+  suspend fun upsertAuthors(authors: List<AuthorEntity>): List<Long>
 }

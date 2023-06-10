@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 interface BookDao {
 
   @Upsert
-  suspend fun upsertBook(bookEntity: BookEntity): Long
+  suspend fun upsertBook(book: BookEntity): Long
 
   @Query("DELETE FROM books WHERE id = :bookId")
   suspend fun deleteBookById(bookId: Long)
