@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
-class BookRepositoryImpl @Inject constructor(
+internal class BookRepositoryImpl @Inject constructor(
   private val bookApi: BookApi,
   private val bookDao: BookDao,
   private val authorDao: AuthorDao,
