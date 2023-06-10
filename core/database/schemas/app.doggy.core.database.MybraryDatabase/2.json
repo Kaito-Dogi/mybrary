@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "a19f602555a65b1f7415fc8e61c1c1ca",
+    "identityHash": "88e196ca3fc503fc5e04f95b6cef08e4",
     "entities": [
       {
         "tableName": "authors",
@@ -163,7 +163,7 @@
       },
       {
         "tableName": "records",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `book_id` INTEGER NOT NULL, `memo` TEXT NOT NULL, `start_page` INTEGER NOT NULL, `end_page` INTEGER NOT NULL, `recorded_at` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `book_id` INTEGER NOT NULL, `memo` TEXT NOT NULL, `start_page` INTEGER NOT NULL, `end_page` INTEGER NOT NULL, `recorded_at` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -209,13 +209,25 @@
           ]
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a19f602555a65b1f7415fc8e61c1c1ca')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '88e196ca3fc503fc5e04f95b6cef08e4')"
     ]
   }
 }

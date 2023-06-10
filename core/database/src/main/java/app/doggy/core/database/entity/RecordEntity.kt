@@ -2,9 +2,20 @@ package app.doggy.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "records")
+@Entity(
+  tableName = "records",
+  foreignKeys = [
+    ForeignKey(
+      entity = BookEntity::class,
+      parentColumns = ["id"],
+      childColumns = ["book_id"],
+      onDelete = ForeignKey.CASCADE,
+    ),
+  ],
+)
 data class RecordEntity(
   @PrimaryKey
   val id: Long,
