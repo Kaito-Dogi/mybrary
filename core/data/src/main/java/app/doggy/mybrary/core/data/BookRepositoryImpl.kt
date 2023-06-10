@@ -40,7 +40,7 @@ class BookRepositoryImpl @Inject constructor(
   }
 
   override suspend fun deleteBook(bookId: BookId) {
-    TODO("Not yet implemented")
+    bookDao.deleteBookById(bookId = bookId.value)
   }
 
   override fun getBooks(): Flow<List<Book>> {
