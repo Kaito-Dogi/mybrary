@@ -11,14 +11,14 @@ import dagger.hilt.components.SingletonComponent
 object DaoModule {
 
   @Provides
-  fun provideAuthorDao(db: MybraryDatabase) = db.authorDao()
+  fun providesAuthorDao(db: MybraryDatabase) = db.authorDao()
 
   @Provides
-  fun provideBookAuthorCrossRefDao(db: MybraryDatabase) = db.bookAuthorCrossRefDao()
+  fun providesBookAuthorCrossRefDao(db: MybraryDatabase) = db.bookAuthorCrossRefDao()
 
   @Provides
-  fun provideBookDao(db: MybraryDatabase) = db.bookDao()
+  fun providesBookDao(db: MybraryDatabase) = db.bookDao()
 
   @Provides
-  fun provideRecordDao(db: MybraryDatabase) = db.recordDao()
+  fun providesRecordDao(db: MybraryDatabase) = db.recordDao()
 }

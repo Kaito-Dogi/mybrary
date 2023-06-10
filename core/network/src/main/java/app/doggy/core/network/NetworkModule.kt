@@ -20,13 +20,13 @@ object NetworkModule {
 
   @Provides
   @Singleton
-  fun provideMoshi(): Moshi = Moshi.Builder()
+  fun providesMoshi(): Moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
   @Provides
   @Singleton
-  fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+  fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
     .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
     .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
     .addInterceptor(
