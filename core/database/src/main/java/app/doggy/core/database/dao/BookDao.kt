@@ -6,6 +6,7 @@ import androidx.room.Transaction
 import androidx.room.Upsert
 import app.doggy.core.database.entity.BookEntity
 import app.doggy.core.database.entity.BookWithAuthors
+import app.doggy.core.database.entity.BookWithAuthorsWithRecords
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -23,5 +24,5 @@ interface BookDao {
 
   @Transaction
   @Query("SELECT * FROM books WHERE id = :bookId")
-  fun getBookById(bookId: Long): Flow<List<BookWithAuthors>>
+  fun getBookById(bookId: Long): Flow<List<BookWithAuthorsWithRecords>>
 }
