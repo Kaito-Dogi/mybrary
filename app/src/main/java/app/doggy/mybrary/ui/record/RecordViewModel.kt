@@ -1,13 +1,15 @@
-package app.doggy.mybrary.ui.diary.record
+package app.doggy.mybrary.ui.record
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.doggy.core.common.util.UnixTime
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.legacy.LegacyDiary
-import app.doggy.mybrary.core.domain.repository.legacy.LegacyDiaryRepository
+import app.doggy.mybrary.core.domain.model.book.BookId
+import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.core.domain.model.record.RecordId
+import app.doggy.mybrary.core.domain.repository.RecordRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +20,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class RecordViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
-  private val legacyDiaryRepository: LegacyDiaryRepository,
+  private val recordRepository: RecordRepository,
 ) : ViewModel() {
   private val args = RecordFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
@@ -28,27 +30,29 @@ class RecordViewModel @Inject constructor(
   // TODO: 日記の内容を更新する処理の実装
   fun onRecordButtonClick(
     currentPage: String,
-    content: String,
+    memo: String,
   ) {
     viewModelScope.launch {
       _uiState.update { it.copy(isLoading = true) }
       runCatching {
-        val isValid = currentPage.isNotBlank() && currentPage.first() != '0' && content.isNotBlank()
+        val isValid = currentPage.isNotBlank() && currentPage.first() != '0' && memo.isNotBlank()
         if (!isValid) throw IllegalArgumentException()
 
-        legacyDiaryRepository.recordDiary(
-          legacyDiary = LegacyDiary(
-            content = content,
-            currentPage = currentPage.toInt(),
-            recordedAt = Date(),
+        recordRepository.record(
+          record = Record(
+            id = RecordId(-1),
+            memo = memo,
+            startPage = currentPage.toInt(),
+            endPage = currentPage.toInt(),
+            recordedAt = UnixTime(0),
           ),
-          bookId = args.bookId,
+          bookId = BookId(args.bookId),
         )
       }.onSuccess {
         _uiState.update { currentState ->
           currentState.copy(
             isLoading = false,
-            isDiaryRecorded = true,
+            isRecorded = true,
           )
         }
       }.onFailure { throwable ->
@@ -57,7 +61,7 @@ class RecordViewModel @Inject constructor(
             isLoading = false,
             errorMessageRes = when (throwable) {
               is IllegalArgumentException -> R.string.error_invalid_input
-              else -> R.string.error_failed_to_record_diary
+              else -> R.string.error_failed_to_record
             },
           )
         }

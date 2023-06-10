@@ -1,10 +1,10 @@
-package app.doggy.mybrary.ui.diary.record
+package app.doggy.mybrary.ui.record
 
 import androidx.annotation.StringRes
 
 data class RecordState(
   val isLoading: Boolean = false,
-  val isDiaryRecorded: Boolean = false,
+  val isRecorded: Boolean = false,
   @StringRes
   val errorMessageRes: Int? = null,
 )

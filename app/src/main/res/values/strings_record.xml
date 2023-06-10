@@ -2,6 +2,6 @@
 <resources>
   <string name="text_record_button">Record</string>
   <string name="hint_current_page_edit_text">Current Page Count</string>
-  <string name="hint_content_edit_text">Diary</string>
-  <string name="error_failed_to_record_diary">Failed to record diary.</string>
+  <string name="hint_memo_edit_text">Record</string>
+  <string name="error_failed_to_record">Failed to record diary.</string>
 </resources>

@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class DetailViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
-  bookRepository: BookRepository,
+  private val bookRepository: BookRepository,
 ) : ViewModel() {
   private val args = DetailFragmentArgs.fromSavedStateHandle(savedStateHandle)
 

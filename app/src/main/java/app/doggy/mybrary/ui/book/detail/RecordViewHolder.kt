@@ -3,14 +3,14 @@ package app.doggy.mybrary.ui.book.detail
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
 import app.doggy.mybrary.core.domain.model.book.BookTotalPage
-import app.doggy.mybrary.databinding.ItemDiaryBinding
 import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.databinding.ItemRecordBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 // FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える
 class RecordViewHolder(
-  private val binding: ItemDiaryBinding,
+  private val binding: ItemRecordBinding,
   private val totalPage: BookTotalPage,
 ) : RecyclerView.ViewHolder(binding.root) {
   fun bind(record: Record) {
@@ -23,6 +23,6 @@ class RecordViewHolder(
       binding.root.context.getString(R.string.text_datetime_text),
       Locale.JAPAN,
     ).format(record.recordedAt.value)
-    binding.contentText.text = record.memo
+    binding.memoText.text = record.memo
   }
 }
