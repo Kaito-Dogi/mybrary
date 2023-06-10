@@ -1,37 +1,37 @@
-package app.doggy.mybrary.core.data.fake
+package app.doggy.mybrary.core.data.legacy.fake
 
-import app.doggy.mybrary.core.domain.model.legacy.Book
-import app.doggy.mybrary.core.domain.model.legacy.Diary
-import app.doggy.mybrary.core.domain.repository.legacy.BookRepository
+import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
+import app.doggy.mybrary.core.domain.model.legacy.LegacyDiary
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
 import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-class FakeBookRepository @Inject constructor() : BookRepository {
-  override suspend fun fetchBooksByIsbn(isbn: String): List<Book> = withContext(Dispatchers.IO) {
+class FakeLegacyBookRepository @Inject constructor() : LegacyBookRepository {
+  override suspend fun fetchBooksByIsbn(isbn: String): List<LegacyBook> = withContext(Dispatchers.IO) {
     delay(1000L)
     fakeBookList
   }
 
-  override suspend fun getBooks(): List<Book> = withContext(Dispatchers.IO) {
+  override suspend fun getBooks(): List<LegacyBook> = withContext(Dispatchers.IO) {
     delay(1000L)
     fakeBookList
   }
 
-  override suspend fun getBook(bookId: Long): Book = withContext(Dispatchers.IO) {
+  override suspend fun getBook(bookId: Long): LegacyBook = withContext(Dispatchers.IO) {
     delay(1000L)
     createFakeBook(1)
   }
 
-  override suspend fun registerBook(book: Book): Boolean = withContext(Dispatchers.IO) {
+  override suspend fun registerBook(legacyBook: LegacyBook): Boolean = withContext(Dispatchers.IO) {
     delay(1000L)
     true
   }
 }
 
-private fun createFakeBook(num: Int) = Book(
+private fun createFakeBook(num: Int) = LegacyBook(
   id = num.toLong(),
   booksApiId = "4TKQswEACAAJ",
   title = "Kotlinイン・アクション",
@@ -52,17 +52,17 @@ private fun createFakeBook(num: Int) = Book(
     else -> null
   },
   diaries = listOf(
-    Diary(
+    LegacyDiary(
       content = "Kotlin の文法を学ぶことで、 Android アプリプログラミングの理解が深まった。",
       currentPage = 100,
       recordedAt = Date(),
     ),
-    Diary(
+    LegacyDiary(
       content = "data class は便利だなぁ。",
       currentPage = 200,
       recordedAt = Date(),
     ),
-    Diary(
+    LegacyDiary(
       content = "コレクションをもっと使いこなしたい!",
       currentPage = 300,
       recordedAt = Date(),

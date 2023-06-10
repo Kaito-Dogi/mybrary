@@ -2,7 +2,7 @@ package app.doggy.mybrary.core.domain.model.legacy
 
 import java.util.Date
 
-data class Book(
+data class LegacyBook(
   val id: Long?,
   val booksApiId: String?,
   val title: String,
@@ -10,11 +10,11 @@ data class Book(
   val description: String,
   val totalPage: Int,
   val imageUrl: String?,
-  val diaries: List<Diary>,
+  val diaries: List<LegacyDiary>,
   val registeredAt: Date?,
 ) {
   companion object {
-    fun createEmpty() = Book(
+    fun createEmpty() = LegacyBook(
       id = null,
       booksApiId = null,
       title = "",

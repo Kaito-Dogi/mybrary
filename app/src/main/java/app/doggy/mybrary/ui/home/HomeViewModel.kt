@@ -3,8 +3,8 @@ package app.doggy.mybrary.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.legacy.Book
-import app.doggy.mybrary.core.domain.repository.legacy.BookRepository
+import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
+import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-  private val bookRepository: BookRepository,
+  private val legacyBookRepository: LegacyBookRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(HomeState())
   val uiState: StateFlow<HomeState> = _uiState.asStateFlow()
@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     viewModelScope.launch {
       _uiState.update { it.copy(isLoading = true) }
       runCatching {
-        bookRepository.getBooks()
+        legacyBookRepository.getBooks()
       }.onSuccess { books ->
         _uiState.update { currentState ->
           currentState.copy(
@@ -55,8 +55,8 @@ class HomeViewModel @Inject constructor(
     _uiState.update { it.copy(clickedBookId = id) }
   }
 
-  private fun Book.toHomeUiModel() = HomeUiModel.BookUiModel(
-    book = this,
+  private fun LegacyBook.toHomeUiModel() = HomeUiModel.BookUiModel(
+    legacyBook = this,
     onClick = ::onBookClicked,
   )
 }
