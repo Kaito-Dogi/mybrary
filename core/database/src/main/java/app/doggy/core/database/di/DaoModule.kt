@@ -6,15 +6,19 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object DaoModule {
+
+  @Provides
+  fun provideAuthorDao(db: MybraryDatabase) = db.authorDao()
+
+  @Provides
+  fun provideBookAuthorCrossRefDao(db: MybraryDatabase) = db.bookAuthorCrossRefDao()
+
   @Provides
   fun provideBookDao(db: MybraryDatabase) = db.bookDao()
 
   @Provides
-  fun provideDiaryDao(db: MybraryDatabase) = db.diaryDao()
-
-  @Provides
-  fun provideAuthorDao(db: MybraryDatabase) = db.authorDao()
+  fun provideRecordDao(db: MybraryDatabase) = db.recordDao()
 }
