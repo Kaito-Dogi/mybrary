@@ -61,7 +61,9 @@ class BookRepositoryImpl @Inject constructor(
   }
 
   override suspend fun deleteBook(bookId: BookId) {
-    bookDao.deleteBookById(bookId = bookId.value)
+    withContext(ioDispatcher) {
+      bookDao.deleteBookById(bookId = bookId.value)
+    }
   }
 
   override fun getBooks(): Flow<List<Book>> = bookDao.getAllBooks()
