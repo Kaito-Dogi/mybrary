@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
-class RecordRepositoryImpl @Inject constructor(
+internal class RecordRepositoryImpl @Inject constructor(
   private val recordDao: RecordDao,
   @Dispatcher(MybraryDispatchers.IO)
   private val ioDispatcher: CoroutineDispatcher,

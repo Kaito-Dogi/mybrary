@@ -1,5 +1,5 @@
 package app.doggy.core.network.api.book.response
 
-class ImageLinksResponse(
+internal class ImageLinksResponse(
   val thumbnail: String,
 )

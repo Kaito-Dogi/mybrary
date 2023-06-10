@@ -3,7 +3,7 @@ package app.doggy.core.database
 import androidx.room.TypeConverter
 import app.doggy.mybrary.core.domain.model.book.BookStatus
 
-class BookStatusConverter {
+internal class BookStatusConverter {
   @TypeConverter
   fun bookStatusToString(status: BookStatus?): String? = status?.let { status.name }
 

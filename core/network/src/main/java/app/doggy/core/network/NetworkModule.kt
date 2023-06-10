@@ -16,7 +16,7 @@ private const val READ_TIME_OUT = 60L
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+private object NetworkModule {
 
   @Provides
   @Singleton

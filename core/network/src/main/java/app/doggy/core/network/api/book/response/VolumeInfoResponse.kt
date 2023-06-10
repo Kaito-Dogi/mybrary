@@ -1,6 +1,6 @@
 package app.doggy.core.network.api.book.response
 
-class VolumeInfoResponse(
+internal class VolumeInfoResponse(
   val title: String,
   val authors: List<String>?,
   val description: String?,
