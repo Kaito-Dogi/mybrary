@@ -13,7 +13,5 @@ interface RecordRepository {
 
   suspend fun deleteRecord(recordId: RecordId)
 
-  fun getRecords(bookId: BookId): Flow<List<Record>>
-
   fun getRecord(recordId: RecordId): Flow<Record>
 }
