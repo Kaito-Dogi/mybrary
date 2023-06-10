@@ -42,6 +42,7 @@ dependencies {
   implementation(project(":core:domain"))
 
   implementation(libs.hilt.android)
+  implementation(libs.room.ktx)
   implementation(libs.room.runtime)
 
   kapt(libs.hilt.compiler)

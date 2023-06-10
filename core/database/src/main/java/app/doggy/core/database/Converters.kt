@@ -1,12 +1,15 @@
 package app.doggy.core.database
 
 import androidx.room.TypeConverter
-import java.util.Date
+import app.doggy.mybrary.core.domain.model.book.BookStatus
 
-class Converters {
+class BookStatusConverter {
   @TypeConverter
-  fun fromLongToDate(value: Long?): Date? = value?.let { Date(it) }
+  fun bookStatusToString(status: BookStatus?): String? = status?.let { status.name }
 
   @TypeConverter
-  fun fromDateToLong(value: Date?): Long? = value?.time
+  fun stringToBookStatus(value: String?): BookStatus? = when (value) {
+    null -> null
+    else -> BookStatus.values().firstOrNull { it.name == value }
+  }
 }

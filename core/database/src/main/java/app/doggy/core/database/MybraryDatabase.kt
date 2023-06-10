@@ -6,26 +6,28 @@ import androidx.room.TypeConverters
 import app.doggy.core.database.dao.AuthorDao
 import app.doggy.core.database.dao.BookAuthorCrossRefDao
 import app.doggy.core.database.dao.BookDao
-import app.doggy.core.database.dao.DiaryDao
+import app.doggy.core.database.dao.RecordDao
 import app.doggy.core.database.entity.AuthorEntity
 import app.doggy.core.database.entity.BookAuthorCrossRef
 import app.doggy.core.database.entity.BookEntity
-import app.doggy.core.database.entity.DiaryEntity
+import app.doggy.core.database.entity.RecordEntity
 
 @Database(
   entities = [
-    BookEntity::class,
-    DiaryEntity::class,
     AuthorEntity::class,
     BookAuthorCrossRef::class,
+    BookEntity::class,
+    RecordEntity::class,
   ],
   version = 2,
   exportSchema = true,
 )
-@TypeConverters(Converters::class)
+@TypeConverters(
+  BookStatusConverter::class,
+)
 abstract class MybraryDatabase : RoomDatabase() {
-  abstract fun bookDao(): BookDao
-  abstract fun diaryDao(): DiaryDao
   abstract fun authorDao(): AuthorDao
   abstract fun bookAuthorCrossRefDao(): BookAuthorCrossRefDao
+  abstract fun bookDao(): BookDao
+  abstract fun recordDao(): RecordDao
 }
