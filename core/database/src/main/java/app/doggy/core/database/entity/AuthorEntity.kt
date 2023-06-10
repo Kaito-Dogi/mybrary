@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import app.doggy.mybrary.core.domain.model.author.Author
+import app.doggy.mybrary.core.domain.model.author.AuthorId
+import app.doggy.mybrary.core.domain.model.book.BookId
 
 @Entity(
   tableName = "authors",
@@ -25,4 +28,15 @@ data class AuthorEntity(
   @ColumnInfo(name = "book_id")
   val bookId: Long,
   val name: String,
+) {
+  fun toAuthor() = Author(
+    id = AuthorId(id),
+    name = name,
+  )
+}
+
+internal fun Author.toEntity(bookId: BookId) = AuthorEntity(
+  id = id.value,
+  bookId = bookId.value,
+  name = name,
 )
