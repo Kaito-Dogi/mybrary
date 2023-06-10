@@ -14,6 +14,7 @@ import app.doggy.mybrary.core.domain.repository.BookRepository
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class BookRepositoryImpl @Inject constructor(
@@ -35,8 +36,27 @@ class BookRepositoryImpl @Inject constructor(
     return@withContext
   }
 
-  override suspend fun updateBook(book: Book) {
-    TODO("Not yet implemented")
+  override suspend fun updateBook(book: Book) = withContext(ioDispatcher) {
+    // author の数が減った場合、元々保存してあった author のうち、減った分を削除する
+    authorDao.getAuthorsByBookId(bookId = book.id.value)
+      .map { prevAuthorList ->
+        prevAuthorList.filter { prevAuthor ->
+          book.authors.any { author ->
+            author.id.value == prevAuthor.id
+          }
+        }
+      }.collect {
+        authorDao.deleteAuthors(it)
+      }
+
+    val bookWithAuthors = book.toBookWithAuthors()
+
+    roomTransactionExecutor.execute {
+      bookDao.upsertBook(bookWithAuthors.book)
+      authorDao.upsertAuthors(bookWithAuthors.authors)
+    }
+
+    return@withContext
   }
 
   override suspend fun deleteBook(bookId: BookId) {
