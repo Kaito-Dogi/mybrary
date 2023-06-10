@@ -2,11 +2,16 @@ package app.doggy.mybrary.ui.book.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.doggy.core.common.util.UnixTime
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.legacy.LegacyBook
-import app.doggy.mybrary.core.domain.repository.legacy.LegacyBookRepository
+import app.doggy.mybrary.core.domain.model.author.Author
+import app.doggy.mybrary.core.domain.model.author.AuthorId
+import app.doggy.mybrary.core.domain.model.book.Book
+import app.doggy.mybrary.core.domain.model.book.BookId
+import app.doggy.mybrary.core.domain.model.book.BookStatus
+import app.doggy.mybrary.core.domain.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +21,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-  private val legacyBookRepository: LegacyBookRepository,
+  private val bookRepository: BookRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(RegisterState())
   val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
@@ -24,29 +29,32 @@ class RegisterViewModel @Inject constructor(
   // TODO: 本の内容を更新する処理の実装
   fun onRegisterButtonClick(
     title: String,
-    author: String,
+    authorName: String,
     description: String,
     totalPage: String,
   ) {
     viewModelScope.launch {
       _uiState.update { it.copy(isLoading = true) }
       runCatching {
-        val isValid = title.isNotBlank() && author.isNotBlank() && totalPage.isNotBlank() && totalPage.first() != '0'
+        val isValid = title.isNotBlank() && authorName.isNotBlank() && totalPage.isNotBlank() && totalPage.first() != '0'
         if (!isValid) throw IllegalArgumentException()
 
-        legacyBookRepository.registerBook(
-          legacyBook = LegacyBook(
-            id = 0L,
-            booksApiId = null,
+        bookRepository.registerBook(
+          book = Book(
+            id = BookId(-1),
             title = title,
-            authors = listOf(
-              author,
-            ),
             description = description,
-            totalPage = totalPage.toInt(),
-            imageUrl = null,
-            diaries = listOf(),
-            registeredAt = Date(),
+            totalPage = BookTotalPage(totalPage.toInt()),
+            imageUrl = "",
+            authors = listOf(
+              Author(
+                id = AuthorId(-1),
+                name = authorName,
+              ),
+            ),
+            registeredAt = UnixTime(0),
+            isPinned = false,
+            status = BookStatus.WAITING,
           ),
         )
       }.onSuccess {
