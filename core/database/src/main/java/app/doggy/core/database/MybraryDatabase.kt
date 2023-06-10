@@ -26,7 +26,6 @@ import app.doggy.core.database.legacy.entity.DiaryEntity
 )
 @TypeConverters(
   BookStatusConverter::class,
-  UnixTimeConverter::class,
 )
 abstract class MybraryDatabase : RoomDatabase() {
   abstract fun bookDao(): BookDao
