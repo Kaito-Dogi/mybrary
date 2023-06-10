@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DispatcherModule {
+private object DispatcherModule {
 
   @Provides
   @Dispatcher(MybraryDispatchers.DEFAULT)
