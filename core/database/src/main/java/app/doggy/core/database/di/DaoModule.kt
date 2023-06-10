@@ -14,9 +14,6 @@ object DaoModule {
   fun providesAuthorDao(db: MybraryDatabase) = db.authorDao()
 
   @Provides
-  fun providesBookAuthorCrossRefDao(db: MybraryDatabase) = db.bookAuthorCrossRefDao()
-
-  @Provides
   fun providesBookDao(db: MybraryDatabase) = db.bookDao()
 
   @Provides
