@@ -8,5 +8,5 @@ interface BookApi {
     isbn: String,
     limit: Int,
     pageIndex: Int,
-  ): Result<List<Book>>
+  ): List<Book>
 }
