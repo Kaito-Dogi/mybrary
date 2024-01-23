@@ -8,7 +8,7 @@ buildscript {
   dependencies {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin}")
     // FIXME: libs.versions.androidxNavigation を使用するとエラーが発生する
-    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.6.0")
+    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
   }
 }
 
