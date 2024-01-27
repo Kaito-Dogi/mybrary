@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-private interface BookApiModule {
+internal interface BookApiModule {
 
   @Binds
   fun bindBookApi(impl: BookApiImpl): BookApi

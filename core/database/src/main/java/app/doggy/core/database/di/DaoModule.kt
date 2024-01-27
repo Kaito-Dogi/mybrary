@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-private object DaoModule {
+internal object DaoModule {
 
   @Provides
   fun providesAuthorDao(db: MybraryDatabase) = db.authorDao()
