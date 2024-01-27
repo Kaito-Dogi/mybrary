@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-private interface DataModule {
+internal interface DataModule {
 
   @Binds
   fun bindsBookRepository(

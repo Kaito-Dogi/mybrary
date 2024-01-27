@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-private object DatabaseModule {
+internal object DatabaseModule {
 
   @Provides
   @Singleton
