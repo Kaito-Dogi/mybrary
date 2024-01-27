@@ -5,7 +5,7 @@ plugins {
 
 android {
   namespace = "app.doggy.mybrary.core.domain"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     minSdk = 24

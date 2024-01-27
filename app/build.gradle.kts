@@ -8,12 +8,12 @@ plugins {
 
 android {
   namespace = "app.doggy.mybrary"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     applicationId = "app.doggy.newmybrary"
     minSdk = 24
-    targetSdk = 33
+    targetSdk = 34
     versionCode = 2
     versionName = "2.0"
 
