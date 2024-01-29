@@ -6,9 +6,6 @@ on:
   pull_request:
     types: [ opened, ready_for_review ]
 
-env:
-  REVIEWERS: "Kaito-Dogi"
-
 jobs:
   assign:
     runs-on: ubuntu-latest
@@ -16,5 +13,5 @@ jobs:
       - uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
-          reviewers: ${{ env.REVIEWERS }}
+          reviewers: ${{ vars.REVIEWERS }} # リポジトリ変数 REVIEWERS を用意し、レビュアーに設定するアカウントをカンマ区切りで記載
           ready-comment: "Ready for review :rocket:"
