@@ -1,0 +1,53 @@
+# https://github.com/e10dokup/CiSample/blob/master/.github/workflows/run_test.yml
+
+name: Run Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run_test:
+    runs-on: ubuntu-latest
+    env:
+      JVM_OPTS: '-Xmx2048m -Xms512m'
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC" -Dorg.gradle.daemon=false'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Install Danger
+        run: |
+          gem install bundler
+          bundle install
+      - name: Run Test
+        run: ./gradlew test --stacktrace
+      - name: Copy Test Result
+        if: always()
+        run: |
+          mkdir -p ./test-results
+          find . -type f -regex ".*/test-results/.*/.*.xml" | xargs -r cp --parents --target-directory=./test-results
+      - name: Run Danger
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: danger --danger_id=test
