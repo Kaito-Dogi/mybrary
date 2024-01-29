@@ -1,11 +1,13 @@
 package app.doggy.mybrary.ui.home
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.doggy.mybrary.R
 import app.doggy.mybrary.core.domain.model.book.Book
 import app.doggy.mybrary.core.domain.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +19,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class HomeViewModel @Inject constructor(
   private val bookRepository: BookRepository,
+  @ApplicationContext private val context: Context,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(HomeState())
   val uiState: StateFlow<HomeState> = _uiState.asStateFlow()
