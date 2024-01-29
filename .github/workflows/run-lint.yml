@@ -1,6 +1,6 @@
-# https://github.com/e10dokup/CiSample/blob/master/.github/workflows/run_test.yml
+# https://github.com/e10dokup/CiSample/blob/feature/create_lint/.github/workflows/run_lint.yml
 
-name: Run Test
+name: Run Lint
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run_test:
+  run_lint:
     runs-on: ubuntu-latest
     env:
       JVM_OPTS: '-Xmx2048m -Xms512m'
@@ -42,15 +42,16 @@ jobs:
         run: |
           gem install bundler
           bundle install
-      - name: Run Test
-        run: ./gradlew test --stacktrace
-      - name: Copy Test Result
+      - name: Run Lint
+        run: |
+          ./gradlew lintDebug --no-daemon
+      - name: Copy Lint Result
         if: always()
         run: |
-          mkdir -p ./test-results
-          find . -type f -regex ".*/test-results/.*/.*.xml" | xargs -r cp --parents --target-directory=./test-results
+          mkdir -p ./lint
+          find . -type f -regex ".*/build/reports/lint-.*xml" | xargs -r cp --parents --target-directory=./lint
       - name: Run Danger
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: danger --danger_id=test
+        run: danger --danger_id=lint
