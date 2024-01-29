@@ -26,25 +26,42 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
+
   kotlinOptions {
     jvmTarget = "17"
   }
+
   buildFeatures {
     viewBinding = true
+    compose = true
+  }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
   }
 }
 
 dependencies {
-  implementation(project(":feature:home"))
+  implementation(project(":feature:book"))
 
   // TODO: feature モジュール実装後に削除
   implementation(project(":core:common"))
   implementation(project(":core:domain"))
   implementation(project(":core:data"))
+
+  // Jetpack Compose
+  val composeBom = platform(libs.androidx.compose.bom)
+  implementation(composeBom)
+  androidTestImplementation(composeBom)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  debugImplementation(libs.androidx.compose.ui.tooling)
+  implementation(libs.androidx.activity.compose)
 
   // TODO: feature モジュール実装後に削除
   implementation(libs.androidx.appcompat)
