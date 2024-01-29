@@ -42,7 +42,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.8"
+    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
   }
 }
 
@@ -54,6 +54,15 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:domain"))
   implementation(project(":core:data"))
+
+  // Jetpack Compose
+  val composeBom = platform(libs.androidx.compose.bom)
+  implementation(composeBom)
+  androidTestImplementation(composeBom)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  debugImplementation(libs.androidx.compose.ui.tooling)
+  implementation(libs.androidx.activity.compose)
 
   // TODO: feature モジュール実装後に削除
   implementation(libs.androidx.appcompat)
@@ -70,16 +79,6 @@ dependencies {
   implementation(libs.material)
 
   kapt(libs.hilt.compiler)
-
-  val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
-  implementation(composeBom)
-  androidTestImplementation(composeBom)
-
-  implementation("androidx.compose.material3:material3")
-  implementation("androidx.compose.ui:ui-tooling-preview")
-  debugImplementation("androidx.compose.ui:ui-tooling")
-
-  implementation("androidx.activity:activity-compose:1.8.2")
 }
 
 // TODO: core:data モジュール実装後に削除

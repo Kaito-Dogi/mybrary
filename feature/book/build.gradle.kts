@@ -34,27 +34,24 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.8"
+    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
   }
 }
 
 dependencies {
   implementation(project(":core:domain"))
 
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.appcompat)
-  implementation(libs.material)
-
-  testImplementation(libs.junit)
-
-  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
-  androidTestImplementation(libs.androidx.test.espresso.core)
-
-  val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
+  // Jetpack Compose
+  val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
   androidTestImplementation(composeBom)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  debugImplementation(libs.androidx.compose.ui.tooling)
+  implementation(libs.androidx.activity.compose)
 
-  implementation("androidx.compose.material3:material3")
-  implementation("androidx.compose.ui:ui-tooling-preview")
-  debugImplementation("androidx.compose.ui:ui-tooling")
+  // Testing
+  testImplementation(libs.junit)
+  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
+  androidTestImplementation(libs.androidx.test.espresso.core)
 }
