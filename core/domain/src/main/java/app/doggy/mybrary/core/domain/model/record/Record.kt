@@ -1,6 +1,6 @@
 package app.doggy.mybrary.core.domain.model.record
 
-import app.doggy.core.common.util.UnixTime
+import app.doggy.mybrary.core.common.util.UnixTime
 
 data class Record(
   val id: RecordId,

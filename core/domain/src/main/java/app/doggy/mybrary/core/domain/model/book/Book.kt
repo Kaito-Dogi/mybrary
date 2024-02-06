@@ -1,6 +1,6 @@
 package app.doggy.mybrary.core.domain.model.book
 
-import app.doggy.core.common.util.UnixTime
+import app.doggy.mybrary.core.common.util.UnixTime
 import app.doggy.mybrary.core.domain.model.author.Author
 
 data class Book(
