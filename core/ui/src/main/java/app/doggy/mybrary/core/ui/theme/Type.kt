@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 // TODO: 調整する
-internal val MybraryTypography = Typography(
+internal val Typography = Typography(
   displayLarge = TextStyle(
     fontWeight = FontWeight.Normal,
     fontSize = 57.sp,
