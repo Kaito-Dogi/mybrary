@@ -3,7 +3,7 @@ package app.doggy.mybrary.ui.record
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.doggy.core.common.util.UnixTime
+import app.doggy.mybrary.core.common.util.UnixTime
 import app.doggy.mybrary.R
 import app.doggy.mybrary.core.domain.model.book.BookId
 import app.doggy.mybrary.core.domain.model.record.Record

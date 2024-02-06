@@ -1,9 +1,9 @@
 package app.doggy.mybrary.core.data.impl
 
-import app.doggy.core.common.coroutines.dispatcher.Dispatcher
-import app.doggy.core.common.coroutines.dispatcher.MybraryDispatchers
-import app.doggy.core.database.dao.RecordDao
-import app.doggy.core.database.entity.toEntity
+import app.doggy.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.doggy.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.doggy.mybrary.core.database.dao.RecordDao
+import app.doggy.mybrary.core.database.entity.toEntity
 import app.doggy.mybrary.core.domain.model.book.BookId
 import app.doggy.mybrary.core.domain.model.record.Record
 import app.doggy.mybrary.core.domain.model.record.RecordId
