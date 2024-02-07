@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.ui.theme
+package app.doggy.mybrary.core.designsystem.theme
 
 import android.app.Activity
 import android.os.Build
