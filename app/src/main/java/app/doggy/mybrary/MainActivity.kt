@@ -3,7 +3,7 @@ package app.doggy.mybrary
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import app.doggy.mybrary.core.ui.theme.MybraryTheme
+import app.doggy.mybrary.core.designsystem.theme.MybraryTheme
 import app.doggy.mybrary.databinding.ActivityMainBinding
 import app.doggy.mybrary.feature.book.FromBookModule
 import dagger.hilt.android.AndroidEntryPoint

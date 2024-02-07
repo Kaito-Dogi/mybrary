@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.ui.theme
+package app.doggy.mybrary.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
