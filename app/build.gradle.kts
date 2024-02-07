@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:ui"))
   implementation(project(":feature:book"))
 
   // TODO: feature モジュール実装後に削除
