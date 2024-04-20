@@ -5,10 +5,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.record.Record
-import app.doggy.mybrary.core.domain.model.record.RecordId
 
 @Entity(
   tableName = "records",
@@ -36,21 +32,4 @@ data class RecordEntity(
   val endPage: Int,
   @ColumnInfo(name = "recorded_at")
   val recordedAt: Long,
-) {
-  fun toRecord() = Record(
-    id = RecordId(id),
-    memo = memo,
-    startPage = startPage,
-    endPage = endPage,
-    recordedAt = UnixTime(recordedAt),
-  )
-}
-
-fun Record.toEntity(bookId: BookId) = RecordEntity(
-  id = id.value,
-  bookId = bookId.value,
-  memo = memo,
-  startPage = startPage,
-  endPage = endPage,
-  recordedAt = recordedAt.value,
 )

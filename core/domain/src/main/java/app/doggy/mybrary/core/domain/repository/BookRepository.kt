@@ -1,27 +1,30 @@
 package app.doggy.mybrary.core.domain.repository
 
-import app.doggy.mybrary.core.domain.model.book.Book
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.record.Record
-import kotlinx.coroutines.flow.Flow
+import app.doggy.mybrary.core.domain.model.Book
 
 interface BookRepository {
+  suspend fun searchBooks(
+    keyword: String,
+    maxResults: Int,
+    startIndex: Int,
+    orderBy: OrderType,
+    printType: PrintType,
+  ): List<Book>
+}
 
-  suspend fun registerBook(book: Book)
+enum class OrderType(
+  val value: String
+) {
+  NEWEST("newest"),
+  RELEVANCE("relevance"),
+  ;
+}
 
-  suspend fun updateBook(book: Book)
-
-  suspend fun deleteBook(bookId: BookId)
-
-  fun getBooks(): Flow<List<Book>>
-
-  fun getBook(bookId: BookId): Flow<Book>
-
-  fun getBookWithRecords(bookId: BookId): Flow<Pair<Book, List<Record>>>
-
-  fun searchBooksByIsbn(
-    isbn: String,
-    limit: Int,
-    pageIndex: Int,
-  ): Flow<List<Book>>
+enum class PrintType(
+  val value: String
+) {
+  All("all"),
+  BOOKS("books"),
+  MAGAZINES("magazines"),
+  ;
 }

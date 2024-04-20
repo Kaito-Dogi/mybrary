@@ -3,8 +3,6 @@ package app.doggy.mybrary.core.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import app.doggy.mybrary.core.domain.model.book.Book
-import app.doggy.mybrary.core.domain.model.book.BookStatus
 
 @Entity(tableName = "books")
 data class BookEntity(
@@ -23,13 +21,8 @@ data class BookEntity(
   val status: BookStatus,
 )
 
-internal fun Book.toEntity() = BookEntity(
-  id = id.value,
-  title = title,
-  description = description,
-  totalPage = totalPage.value,
-  imageUrl = imageUrl,
-  registeredAt = registeredAt.value,
-  isPinned = isPinned,
-  status = status,
-)
+enum class BookStatus {
+  WAITING,
+  IN_PROGRESS,
+  COMPLETED,
+}

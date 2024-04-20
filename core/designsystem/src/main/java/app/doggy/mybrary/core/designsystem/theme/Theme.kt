@@ -15,32 +15,34 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+// TODO: 調整する
 private val DarkColorScheme = darkColorScheme(
-  primary = Primary,
-  onPrimary = OnPrimary,
-  primaryContainer = PrimaryContainer,
-  background = SurfaceDim,
-  surface = Surface,
-  surfaceVariant = SurfaceContainer,
-  onSurface = OnSurface,
-  onSurfaceVariant = OnSurfaceVariant,
-  inverseSurface = InverseSurface,
-  inverseOnSurface = InverseOnSurface,
-  outline = Outline,
+  // primary = Primary,
+  // onPrimary = OnPrimary,
+  // primaryContainer = PrimaryContainer,
+  // background = SurfaceDim,
+  // surface = Surface,
+  // surfaceVariant = SurfaceContainer,
+  // onSurface = OnSurface,
+  // onSurfaceVariant = OnSurfaceVariant,
+  // inverseSurface = InverseSurface,
+  // inverseOnSurface = InverseOnSurface,
+  // outline = Outline,
 )
 
+// TODO: 調整する
 private val LightColorScheme = lightColorScheme(
-  primary = Primary,
-  onPrimary = OnPrimary,
-  primaryContainer = PrimaryContainer,
-  background = SurfaceDim,
-  surface = Surface,
-  surfaceVariant = SurfaceContainer,
-  onSurface = OnSurface,
-  onSurfaceVariant = OnSurfaceVariant,
-  inverseSurface = InverseSurface,
-  inverseOnSurface = InverseOnSurface,
-  outline = Outline,
+  // primary = Primary,
+  // onPrimary = OnPrimary,
+  // primaryContainer = PrimaryContainer,
+  // background = SurfaceDim,
+  // surface = Surface,
+  // surfaceVariant = SurfaceContainer,
+  // onSurface = OnSurface,
+  // onSurfaceVariant = OnSurfaceVariant,
+  // inverseSurface = InverseSurface,
+  // inverseOnSurface = InverseOnSurface,
+  // outline = Outline,
 )
 
 @Composable

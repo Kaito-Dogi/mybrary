@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.network.api.book
 
 import app.doggy.mybrary.core.common.exception.NetworkException
-import app.doggy.mybrary.core.domain.model.book.Book
+import app.doggy.mybrary.core.domain.model.Book
 import app.doggy.mybrary.core.network.retrofit.service.BookService
 import javax.inject.Inject
 import javax.inject.Singleton
