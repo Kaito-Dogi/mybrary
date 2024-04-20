@@ -1,6 +1,5 @@
 package app.doggy.mybrary.core.data
 
-import app.doggy.mybrary.core.data.repository.MemoRepositoryImpl
 import app.doggy.mybrary.core.domain.repository.MemoRepository
 import dagger.Binds
 import dagger.Module
