@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.repository
+package app.doggy.mybrary.core.domain.repository.legacy
 
 import app.doggy.mybrary.core.domain.legacy.model.book.Book
 import app.doggy.mybrary.core.domain.legacy.model.book.BookId

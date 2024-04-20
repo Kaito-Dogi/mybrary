@@ -8,7 +8,7 @@ import app.doggy.mybrary.R
 import app.doggy.mybrary.core.domain.legacy.model.book.BookId
 import app.doggy.mybrary.core.domain.legacy.model.record.Record
 import app.doggy.mybrary.core.domain.legacy.model.record.RecordId
-import app.doggy.mybrary.core.domain.repository.RecordRepository
+import app.doggy.mybrary.core.domain.repository.legacy.RecordRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

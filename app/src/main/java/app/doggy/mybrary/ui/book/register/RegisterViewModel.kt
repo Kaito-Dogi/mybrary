@@ -10,7 +10,7 @@ import app.doggy.mybrary.core.domain.legacy.model.book.Book
 import app.doggy.mybrary.core.domain.legacy.model.book.BookId
 import app.doggy.mybrary.core.domain.legacy.model.book.BookStatus
 import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
-import app.doggy.mybrary.core.domain.repository.BookRepository
+import app.doggy.mybrary.core.domain.repository.legacy.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
