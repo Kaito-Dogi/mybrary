@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.model.record
+package app.doggy.mybrary.core.domain.legacy.model.record
 
 @JvmInline
 value class RecordId(val value: Long) {

@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.database
 
 import androidx.room.TypeConverter
-import app.doggy.mybrary.core.domain.model.book.BookStatus
+import app.doggy.mybrary.core.domain.legacy.model.book.BookStatus
 
 internal class BookStatusConverter {
   @TypeConverter

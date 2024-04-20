@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.model.record
+package app.doggy.mybrary.core.domain.legacy.model.record
 
 import app.doggy.mybrary.core.common.util.UnixTime
 

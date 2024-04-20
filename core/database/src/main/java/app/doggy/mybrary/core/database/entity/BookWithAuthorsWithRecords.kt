@@ -3,10 +3,10 @@ package app.doggy.mybrary.core.database.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.model.book.Book
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.book.BookTotalPage
-import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.core.domain.legacy.model.book.Book
+import app.doggy.mybrary.core.domain.legacy.model.book.BookId
+import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.legacy.model.record.Record
 
 data class BookWithAuthorsWithRecords(
   @Embedded val book: BookEntity,

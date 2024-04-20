@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import app.doggy.mybrary.core.domain.model.book.BookTotalPage
-import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.legacy.model.record.Record
 import app.doggy.mybrary.databinding.ItemRecordBinding
 
 // FIXME: totalPage をコンストラクタで渡さなくて良い方法を考える

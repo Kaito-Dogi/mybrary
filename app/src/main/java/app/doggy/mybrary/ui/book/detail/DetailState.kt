@@ -1,7 +1,7 @@
 package app.doggy.mybrary.ui.book.detail
 
 import androidx.annotation.StringRes
-import app.doggy.mybrary.core.domain.model.book.Book
+import app.doggy.mybrary.core.domain.legacy.model.book.Book
 
 data class DetailState(
   val book: Book = Book.createEmpty(),

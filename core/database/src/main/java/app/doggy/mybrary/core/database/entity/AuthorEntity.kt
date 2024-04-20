@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import app.doggy.mybrary.core.domain.model.author.Author
-import app.doggy.mybrary.core.domain.model.author.AuthorId
-import app.doggy.mybrary.core.domain.model.book.BookId
+import app.doggy.mybrary.core.domain.legacy.model.author.Author
+import app.doggy.mybrary.core.domain.legacy.model.author.AuthorId
+import app.doggy.mybrary.core.domain.legacy.model.book.BookId
 
 @Entity(
   tableName = "authors",

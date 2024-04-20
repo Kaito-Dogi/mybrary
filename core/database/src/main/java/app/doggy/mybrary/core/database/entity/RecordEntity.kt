@@ -6,9 +6,9 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.record.Record
-import app.doggy.mybrary.core.domain.model.record.RecordId
+import app.doggy.mybrary.core.domain.legacy.model.book.BookId
+import app.doggy.mybrary.core.domain.legacy.model.record.Record
+import app.doggy.mybrary.core.domain.legacy.model.record.RecordId
 
 @Entity(
   tableName = "records",

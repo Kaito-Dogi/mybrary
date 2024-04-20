@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.model.book
+package app.doggy.mybrary.core.domain.legacy.model.book
 
 @JvmInline
 value class BookId(val value: Long = 0) {

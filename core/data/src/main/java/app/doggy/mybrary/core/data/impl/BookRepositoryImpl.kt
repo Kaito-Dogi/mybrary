@@ -6,9 +6,9 @@ import app.doggy.mybrary.core.database.dao.AuthorDao
 import app.doggy.mybrary.core.database.dao.BookDao
 import app.doggy.mybrary.core.database.entity.toBookWithAuthors
 import app.doggy.mybrary.core.database.util.RoomTransactionExecutor
-import app.doggy.mybrary.core.domain.model.book.Book
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.core.domain.legacy.model.book.Book
+import app.doggy.mybrary.core.domain.legacy.model.book.BookId
+import app.doggy.mybrary.core.domain.legacy.model.record.Record
 import app.doggy.mybrary.core.domain.repository.BookRepository
 import app.doggy.mybrary.core.network.api.book.BookApi
 import javax.inject.Inject

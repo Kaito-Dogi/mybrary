@@ -2,8 +2,8 @@ package app.doggy.mybrary.ui.book.detail
 
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.book.BookTotalPage
-import app.doggy.mybrary.core.domain.model.record.Record
+import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.legacy.model.record.Record
 import app.doggy.mybrary.databinding.ItemRecordBinding
 import java.text.SimpleDateFormat
 import java.util.Locale

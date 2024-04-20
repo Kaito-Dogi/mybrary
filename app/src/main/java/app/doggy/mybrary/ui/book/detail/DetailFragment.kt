@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.doggy.mybrary.R
-import app.doggy.mybrary.core.domain.model.book.Book
+import app.doggy.mybrary.core.domain.legacy.model.book.Book
 import app.doggy.mybrary.databinding.FragmentDetailBinding
 import coil.load
 import com.google.android.material.snackbar.Snackbar

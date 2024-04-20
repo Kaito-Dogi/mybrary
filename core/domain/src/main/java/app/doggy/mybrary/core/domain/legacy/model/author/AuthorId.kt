@@ -1,4 +1,4 @@
-package app.doggy.mybrary.core.domain.model.author
+package app.doggy.mybrary.core.domain.legacy.model.author
 
 @JvmInline
 value class AuthorId(val value: Long) {

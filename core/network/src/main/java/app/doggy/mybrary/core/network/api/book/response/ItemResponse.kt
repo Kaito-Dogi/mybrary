@@ -1,12 +1,12 @@
 package app.doggy.mybrary.core.network.api.book.response
 
 import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.model.author.Author
-import app.doggy.mybrary.core.domain.model.author.AuthorId
-import app.doggy.mybrary.core.domain.model.book.Book
-import app.doggy.mybrary.core.domain.model.book.BookId
-import app.doggy.mybrary.core.domain.model.book.BookStatus
-import app.doggy.mybrary.core.domain.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.legacy.model.author.Author
+import app.doggy.mybrary.core.domain.legacy.model.author.AuthorId
+import app.doggy.mybrary.core.domain.legacy.model.book.Book
+import app.doggy.mybrary.core.domain.legacy.model.book.BookId
+import app.doggy.mybrary.core.domain.legacy.model.book.BookStatus
+import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
 
 internal class ItemResponse(
   private val volumeInfo: VolumeInfoResponse,
