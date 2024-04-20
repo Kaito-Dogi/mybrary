@@ -7,7 +7,7 @@ import app.doggy.mybrary.core.domain.repository.OrderType
 import app.doggy.mybrary.core.domain.repository.PrintType
 import javax.inject.Inject
 
-internal class DebugBookRepository @Inject constructor() : BookRepository {
+internal class MockBookRepository @Inject constructor() : BookRepository {
   override suspend fun searchBooks(
     keyword: String,
     maxResults: Int,

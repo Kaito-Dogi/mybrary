@@ -7,12 +7,12 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-@Module
-@InstallIn(SingletonComponent::class)
-internal interface DraftMemoRepositoryModule {
-
-  @Binds
-  fun bindsDraftMemoRepository(
-    draftMemoRepository: DraftMemoRepositoryImpl,
-  ): DraftMemoRepository
-}
+// @Module
+// @InstallIn(SingletonComponent::class)
+// internal interface DraftMemoRepositoryModule {
+//
+//   @Binds
+//   fun bindsDraftMemoRepository(
+//     draftMemoRepository: DraftMemoRepositoryImpl,
+//   ): DraftMemoRepository
+// }

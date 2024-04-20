@@ -7,6 +7,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-internal class DebugDraftMemoRepository @Inject constructor() : DraftMemoRepository {
+internal class MockDraftMemoRepository @Inject constructor() : DraftMemoRepository {
   override val draftMemos: Flow<List<DraftMemo>> = flow { emit(dummyDraftMemos) }
 }

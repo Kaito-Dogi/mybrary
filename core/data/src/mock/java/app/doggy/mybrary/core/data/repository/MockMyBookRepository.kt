@@ -6,7 +6,7 @@ import app.doggy.mybrary.core.domain.model.MyBookId
 import app.doggy.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 
-internal class DebugMyBookRepository @Inject constructor() : MyBookRepository {
+internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   override suspend fun getMyBooks(): List<MyBook> {
     println("あああ: mock")
     return dummyMyBooks

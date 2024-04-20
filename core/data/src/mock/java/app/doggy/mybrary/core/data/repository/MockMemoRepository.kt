@@ -7,7 +7,7 @@ import app.doggy.mybrary.core.domain.repository.MemoRepository
 import java.util.Date
 import javax.inject.Inject
 
-internal class DebugMemoRepository @Inject constructor() : MemoRepository {
+internal class MockMemoRepository @Inject constructor() : MemoRepository {
   override suspend fun createMemo(memo: Memo): Boolean {
     return true
   }
