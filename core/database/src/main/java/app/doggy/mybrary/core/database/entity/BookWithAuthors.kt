@@ -2,10 +2,6 @@ package app.doggy.mybrary.core.database.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.legacy.model.book.Book
-import app.doggy.mybrary.core.domain.legacy.model.book.BookId
-import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
 
 data class BookWithAuthors(
   @Embedded val book: BookEntity,
@@ -14,23 +10,4 @@ data class BookWithAuthors(
     parentColumn = "id",
     entityColumn = "book_id",
   ) val authors: List<AuthorEntity>,
-) {
-  fun toBook() = Book(
-    id = BookId(book.id),
-    title = book.title,
-    description = book.description,
-    totalPage = BookTotalPage(book.totalPage),
-    imageUrl = book.imageUrl,
-    registeredAt = UnixTime(book.registeredAt),
-    isPinned = book.isPinned,
-    authors = authors.map { it.toAuthor() },
-    status = book.status,
-  )
-}
-
-fun Book.toBookWithAuthors() = BookWithAuthors(
-  book = this.toEntity(),
-  authors = this.authors.map {
-    it.toEntity(this.id)
-  },
 )

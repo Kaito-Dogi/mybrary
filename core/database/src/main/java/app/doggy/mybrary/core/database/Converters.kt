@@ -1,7 +1,7 @@
 package app.doggy.mybrary.core.database
 
 import androidx.room.TypeConverter
-import app.doggy.mybrary.core.domain.legacy.model.book.BookStatus
+import app.doggy.mybrary.core.database.entity.BookStatus
 
 internal class BookStatusConverter {
   @TypeConverter
@@ -10,6 +10,6 @@ internal class BookStatusConverter {
   @TypeConverter
   fun stringToBookStatus(value: String?): BookStatus? = when (value) {
     null -> null
-    else -> BookStatus.values().firstOrNull { it.name == value }
+    else -> BookStatus.entries.firstOrNull { it.name == value }
   }
 }

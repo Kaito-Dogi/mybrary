@@ -1,36 +1,16 @@
 package app.doggy.mybrary.core.network.api.book.response
 
-import app.doggy.mybrary.core.common.util.UnixTime
-import app.doggy.mybrary.core.domain.legacy.model.author.Author
-import app.doggy.mybrary.core.domain.legacy.model.author.AuthorId
-import app.doggy.mybrary.core.domain.legacy.model.book.Book
-import app.doggy.mybrary.core.domain.legacy.model.book.BookId
-import app.doggy.mybrary.core.domain.legacy.model.book.BookStatus
-import app.doggy.mybrary.core.domain.legacy.model.book.BookTotalPage
+import app.doggy.mybrary.core.domain.model.Book
 
 internal class ItemResponse(
   private val volumeInfo: VolumeInfoResponse,
 ) {
   fun toBook(): Book {
-    val totalPage =
-      if (volumeInfo.pageCount != null && volumeInfo.pageCount > 0) BookTotalPage(volumeInfo.pageCount)
-      else BookTotalPage(1)
-
     return Book(
-      id = BookId(-1L),
+      id = "",
       title = volumeInfo.title,
-      description = volumeInfo.description ?: "",
-      totalPage = totalPage,
+      author = volumeInfo.authors?.joinToString(", ") ?: "",
       imageUrl = volumeInfo.imageLinks?.thumbnail ?: "",
-      authors = volumeInfo.authors?.map {
-        Author(
-          id = AuthorId(-1L),
-          name = it,
-        )
-      } ?: listOf(),
-      registeredAt = UnixTime(0L),
-      isPinned = false,
-      status = BookStatus.WAITING,
     )
   }
 }

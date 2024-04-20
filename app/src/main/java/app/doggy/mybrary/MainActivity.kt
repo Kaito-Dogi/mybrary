@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +14,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,14 +22,19 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import app.doggy.mybrary.core.designsystem.theme.MybraryTheme
+import app.doggy.mybrary.core.domain.repository.MyBookRepository
 import app.doggy.mybrary.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
   private lateinit var binding: ActivityMainBinding
+
+  @Inject
+  lateinit var myBookRepository: MyBookRepository
 
   @OptIn(ExperimentalMaterial3Api::class)
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +51,14 @@ class MainActivity : AppCompatActivity() {
         val hostState = remember { SnackbarHostState() }
         val scope = rememberCoroutineScope()
         var text by remember { mutableStateOf("") }
+
+        LaunchedEffect(Unit) {
+          scope.launch {
+            myBookRepository.getMyBooks().forEach {
+              println("あああ: ${it.id}")
+            }
+          }
+        }
 
         Scaffold(
           snackbarHost = { SnackbarHost(hostState) },
@@ -83,7 +95,7 @@ class MainActivity : AppCompatActivity() {
               ModalBottomSheet(
                 onDismissRequest = { isModalShown = false },
                 sheetState = sheetState,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
               ) {
                 Text(text = "あああ")
                 TextField(value = text, onValueChange = { text = it })
