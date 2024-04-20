@@ -8,7 +8,6 @@ import javax.inject.Inject
 internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
   // TODO: 実装
   override suspend fun getMyBooks(): List<MyBook> {
-    println("あああ: debug")
     return emptyList()
   }
 

@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   override suspend fun getMyBooks(): List<MyBook> {
-    println("あああ: mock")
     return dummyMyBooks
   }
 
