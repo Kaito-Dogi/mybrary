@@ -1,0 +1,125 @@
+package app.doggy.mybrary.core.designsystem.theme
+
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
+
+private val primaryLight = Color(0xFF2B6A46)
+private val onPrimaryLight = Color(0xFFFFFFFF)
+private val primaryContainerLight = Color(0xFFAFF2C4)
+private val onPrimaryContainerLight = Color(0xFF002110)
+private val secondaryLight = Color(0xFF296A48)
+private val onSecondaryLight = Color(0xFFFFFFFF)
+private val secondaryContainerLight = Color(0xFFADF2C6)
+private val onSecondaryContainerLight = Color(0xFF002111)
+private val tertiaryLight = Color(0xFF725C0C)
+private val onTertiaryLight = Color(0xFFFFFFFF)
+private val tertiaryContainerLight = Color(0xFFFFE086)
+private val onTertiaryContainerLight = Color(0xFF231B00)
+private val errorLight = Color(0xFF904B3A)
+private val onErrorLight = Color(0xFFFFFFFF)
+private val errorContainerLight = Color(0xFFFFDAD2)
+private val onErrorContainerLight = Color(0xFF3A0A02)
+private val backgroundLight = Color(0xFFF6FBF4)
+private val onBackgroundLight = Color(0xFF181D19)
+private val surfaceLight = Color(0xFFF6FBF4)
+private val onSurfaceLight = Color(0xFF181D19)
+private val surfaceVariantLight = Color(0xFFDCE5DB)
+private val onSurfaceVariantLight = Color(0xFF414942)
+private val outlineLight = Color(0xFF717971)
+private val outlineVariantLight = Color(0xFFC0C9C0)
+private val scrimLight = Color(0xFF000000)
+private val inverseSurfaceLight = Color(0xFF2C322D)
+private val inverseOnSurfaceLight = Color(0xFFEDF2EB)
+private val inversePrimaryLight = Color(0xFF94D5A9)
+
+private val primaryDark = Color(0xFF94D5A9)
+private val onPrimaryDark = Color(0xFF00391F)
+private val primaryContainerDark = Color(0xFF0C5130)
+private val onPrimaryContainerDark = Color(0xFFAFF2C4)
+private val secondaryDark = Color(0xFF92D5AB)
+private val onSecondaryDark = Color(0xFF003920)
+private val secondaryContainerDark = Color(0xFF075232)
+private val onSecondaryContainerDark = Color(0xFFADF2C6)
+private val tertiaryDark = Color(0xFFE1C46D)
+private val onTertiaryDark = Color(0xFF3C2F00)
+private val tertiaryContainerDark = Color(0xFF574500)
+private val onTertiaryContainerDark = Color(0xFFFFE086)
+private val errorDark = Color(0xFFFFB4A2)
+private val onErrorDark = Color(0xFF561F11)
+private val errorContainerDark = Color(0xFF723425)
+private val onErrorContainerDark = Color(0xFFFFDAD2)
+private val backgroundDark = Color(0xFF0F1511)
+private val onBackgroundDark = Color(0xFFDFE4DD)
+private val surfaceDark = Color(0xFF0F1511)
+private val onSurfaceDark = Color(0xFFDFE4DD)
+private val surfaceVariantDark = Color(0xFF414942)
+private val onSurfaceVariantDark = Color(0xFFC0C9C0)
+private val outlineDark = Color(0xFF8A938B)
+private val outlineVariantDark = Color(0xFF414942)
+private val scrimDark = Color(0xFF000000)
+private val inverseSurfaceDark = Color(0xFFDFE4DD)
+private val inverseOnSurfaceDark = Color(0xFF2C322D)
+private val inversePrimaryDark = Color(0xFF2B6A46)
+
+internal val mybraryLightColorScheme = lightColorScheme(
+  primary = primaryLight,
+  onPrimary = onPrimaryLight,
+  primaryContainer = primaryContainerLight,
+  onPrimaryContainer = onPrimaryContainerLight,
+  secondary = secondaryLight,
+  onSecondary = onSecondaryLight,
+  secondaryContainer = secondaryContainerLight,
+  onSecondaryContainer = onSecondaryContainerLight,
+  tertiary = tertiaryLight,
+  onTertiary = onTertiaryLight,
+  tertiaryContainer = tertiaryContainerLight,
+  onTertiaryContainer = onTertiaryContainerLight,
+  error = errorLight,
+  onError = onErrorLight,
+  errorContainer = errorContainerLight,
+  onErrorContainer = onErrorContainerLight,
+  background = backgroundLight,
+  onBackground = onBackgroundLight,
+  surface = surfaceLight,
+  onSurface = onSurfaceLight,
+  surfaceVariant = surfaceVariantLight,
+  onSurfaceVariant = onSurfaceVariantLight,
+  outline = outlineLight,
+  outlineVariant = outlineVariantLight,
+  scrim = scrimLight,
+  inverseSurface = inverseSurfaceLight,
+  inverseOnSurface = inverseOnSurfaceLight,
+  inversePrimary = inversePrimaryLight,
+)
+
+internal val mybraryDarkColorScheme = darkColorScheme(
+  primary = primaryDark,
+  onPrimary = onPrimaryDark,
+  primaryContainer = primaryContainerDark,
+  onPrimaryContainer = onPrimaryContainerDark,
+  secondary = secondaryDark,
+  onSecondary = onSecondaryDark,
+  secondaryContainer = secondaryContainerDark,
+  onSecondaryContainer = onSecondaryContainerDark,
+  tertiary = tertiaryDark,
+  onTertiary = onTertiaryDark,
+  tertiaryContainer = tertiaryContainerDark,
+  onTertiaryContainer = onTertiaryContainerDark,
+  error = errorDark,
+  onError = onErrorDark,
+  errorContainer = errorContainerDark,
+  onErrorContainer = onErrorContainerDark,
+  background = backgroundDark,
+  onBackground = onBackgroundDark,
+  surface = surfaceDark,
+  onSurface = onSurfaceDark,
+  surfaceVariant = surfaceVariantDark,
+  onSurfaceVariant = onSurfaceVariantDark,
+  outline = outlineDark,
+  outlineVariant = outlineVariantDark,
+  scrim = scrimDark,
+  inverseSurface = inverseSurfaceDark,
+  inverseOnSurface = inverseOnSurfaceDark,
+  inversePrimary = inversePrimaryDark,
+)
