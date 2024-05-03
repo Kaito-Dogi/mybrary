@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-internal val space = Space(
+internal val mybrarySpace = Space(
   xxxs = 2.dp,
   xxs = 4.dp,
   xs = 8.dp,

@@ -45,11 +45,11 @@ fun MybraryTheme(
   }
 
   CompositionLocalProvider(
-    LocalSpace provides space,
+    LocalSpace provides mybrarySpace,
   ) {
     MaterialTheme(
       colorScheme = colorScheme,
-      typography = Typography,
+      typography = mybraryTypography,
       content = content,
     )
   }
