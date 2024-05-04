@@ -53,6 +53,7 @@ android {
 dependencies {
   implementation(project(":core:designsystem"))
   implementation(project(":feature:mybooklist"))
+  implementation(project(":feature:mybookdetail"))
 
   // TODO: feature モジュール実装後に削除
   implementation(project(":core:common"))
