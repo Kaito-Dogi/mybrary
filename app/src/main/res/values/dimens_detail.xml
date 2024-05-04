@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <dimen name="margin_bottom_collapsing_toolbar_expanded_title">28dp</dimen>
-  <dimen name="margin_start_collapsing_toolbar_expanded_title">72dp</dimen>
-</resources>

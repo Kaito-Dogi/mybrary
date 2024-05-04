@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="text_register_button">Register</string>
-  <string name="hint_title_edit_text">Title</string>
-  <string name="hint_author_edit_text">Author</string>
-  <string name="hint_total_page_edit_text">Page Count</string>
-  <string name="hint_description_edit_text">Description</string>
-  <string name="error_failed_to_register_book">Failed to register book.</string>
-</resources>
