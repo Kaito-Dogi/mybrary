@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.mybrary.core.database"
+  namespace = "app.kaito_dogi.mybrary.core.database"
   compileSdk = 34
 
   defaultConfig {

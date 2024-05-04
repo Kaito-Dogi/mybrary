@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data.model
+package app.kaito_dogi.mybrary.core.data.model
 
-import app.doggy.mybrary.core.domain.model.DraftMemo
-import app.doggy.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 internal val dummyDraftMemos = buildList {
   repeat(20) {

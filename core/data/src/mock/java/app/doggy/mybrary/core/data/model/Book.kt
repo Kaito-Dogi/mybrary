@@ -1,6 +1,6 @@
-package app.doggy.mybrary.core.data.model
+package app.kaito_dogi.mybrary.core.data.model
 
-import app.doggy.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.model.Book
 
 internal val dummyBooks = buildList {
   repeat(20) {
