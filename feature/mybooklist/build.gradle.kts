@@ -40,6 +40,7 @@ android {
 
 dependencies {
   implementation(project(":core:domain"))
+  implementation(project(":core:designsystem"))
 
   // Jetpack Compose
   val composeBom = platform(libs.androidx.compose.bom)
@@ -49,6 +50,7 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
   debugImplementation(libs.androidx.compose.ui.tooling)
   implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.navigation.compose)
 
   // Testing
   testImplementation(libs.junit)
