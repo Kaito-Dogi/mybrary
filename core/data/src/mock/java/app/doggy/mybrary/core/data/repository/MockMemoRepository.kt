@@ -1,9 +1,9 @@
-package app.doggy.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data.repository
 
-import app.doggy.mybrary.core.data.model.dummyMemos
-import app.doggy.mybrary.core.domain.model.Memo
-import app.doggy.mybrary.core.domain.model.MemoId
-import app.doggy.mybrary.core.domain.repository.MemoRepository
+import app.kaito_dogi.mybrary.core.data.model.dummyMemos
+import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.MemoId
+import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import java.util.Date
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data.di
+package app.kaito_dogi.mybrary.core.data.di
 
-import app.doggy.mybrary.core.data.repository.MockMyBookRepository
-import app.doggy.mybrary.core.domain.repository.MyBookRepository
+import app.kaito_dogi.mybrary.core.data.repository.MockMyBookRepository
+import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-  namespace = "app.doggy.mybrary"
+  namespace = "app.kaito_dogi.mybrary"
   compileSdk = 34
 
   defaultConfig {
-    applicationId = "app.doggy.mybrary"
+    applicationId = "app.kaito_dogi.mybrary"
     minSdk = 24
     targetSdk = 34
     versionCode = 1

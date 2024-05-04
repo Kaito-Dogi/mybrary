@@ -1,8 +1,8 @@
-package app.doggy.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data.repository
 
-import app.doggy.mybrary.core.data.model.dummyDraftMemos
-import app.doggy.mybrary.core.domain.model.DraftMemo
-import app.doggy.mybrary.core.domain.repository.DraftMemoRepository
+import app.kaito_dogi.mybrary.core.data.model.dummyDraftMemos
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

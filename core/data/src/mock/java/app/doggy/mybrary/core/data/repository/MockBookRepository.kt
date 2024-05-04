@@ -1,10 +1,10 @@
-package app.doggy.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data.repository
 
-import app.doggy.mybrary.core.data.model.dummyBooks
-import app.doggy.mybrary.core.domain.model.Book
-import app.doggy.mybrary.core.domain.repository.BookRepository
-import app.doggy.mybrary.core.domain.repository.OrderType
-import app.doggy.mybrary.core.domain.repository.PrintType
+import app.kaito_dogi.mybrary.core.data.model.dummyBooks
+import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
+import app.kaito_dogi.mybrary.core.domain.repository.OrderType
+import app.kaito_dogi.mybrary.core.domain.repository.PrintType
 import javax.inject.Inject
 
 internal class MockBookRepository @Inject constructor() : BookRepository {

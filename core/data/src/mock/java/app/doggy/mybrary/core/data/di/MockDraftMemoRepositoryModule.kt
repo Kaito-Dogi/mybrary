@@ -1,7 +1,7 @@
-package app.doggy.mybrary.core.data.di
+package app.kaito_dogi.mybrary.core.data.di
 
-import app.doggy.mybrary.core.data.repository.MockDraftMemoRepository
-import app.doggy.mybrary.core.domain.repository.DraftMemoRepository
+import app.kaito_dogi.mybrary.core.data.repository.MockDraftMemoRepository
+import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
