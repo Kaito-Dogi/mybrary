@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.book
+package app.kaito_dogi.mybrary.feature.mybooklist
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

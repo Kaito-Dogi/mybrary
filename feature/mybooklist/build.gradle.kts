@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.book"
+  namespace = "app.kaito_dogi.mybrary.feature.mybooklist"
   compileSdk = 34
 
   defaultConfig {
