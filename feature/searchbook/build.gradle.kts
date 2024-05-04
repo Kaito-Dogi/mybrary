@@ -1,6 +1,8 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
+  id("kotlin-kapt")
+  alias(libs.plugins.hilt)
 }
 
 android {
@@ -18,17 +20,27 @@ android {
     release {
       isMinifyEnabled = false
       proguardFiles(
-          getDefaultProguardFile("proguard-android-optimize.txt"),
-          "proguard-rules.pro",
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
       )
     }
   }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
   }
+
   kotlinOptions {
     jvmTarget = "1.8"
+  }
+
+  buildFeatures {
+    compose = true
+  }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
   }
 }
 
@@ -50,4 +62,11 @@ dependencies {
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.test.ext.junit.ktx)
   androidTestImplementation(libs.androidx.test.espresso.core)
+
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
+}
+
+kapt {
+  correctErrorTypes = true
 }

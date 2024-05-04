@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.feature.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.feature.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 
 // TODO: destination の管理方法を検討する
@@ -21,11 +22,14 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     myBookListScreen(
-      onAdditionClick = {},
+      onAdditionClick = {
+        navController.navigate("SearchBook")
+      },
       onMyBookClick = {
         navController.navigate("MyBookDetail")
       },
     )
     myBookDetailScreen()
+    searchBookScreen()
   }
 }

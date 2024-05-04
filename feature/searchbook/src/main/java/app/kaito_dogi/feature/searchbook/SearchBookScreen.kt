@@ -1,4 +1,4 @@
-package app.kaito_dogi.feature.mybookdetail
+package app.kaito_dogi.feature.searchbook
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,23 +14,23 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
-fun NavGraphBuilder.myBookDetailScreen() {
+fun NavGraphBuilder.searchBookScreen() {
   composable(
-    route = "MyBookDetail",
+    route = "SearchBook",
   ) {
-    MyBookDetailScreen()
+    SearchBookScreen()
   }
 }
 
 @Composable
-private fun MyBookDetailScreen(
-  viewModel: MyBookDetailViewModel = viewModel(),
+private fun SearchBookScreen(
+  viewModel: SearchBookViewModel = viewModel(),
 ) {
-  MyBookDetailScreen(todo = "")
+  SearchBookScreen(todo = "")
 }
 
 @Composable
-private fun MyBookDetailScreen(
+private fun SearchBookScreen(
 //  uiState
   todo: String,
 ) {
@@ -41,15 +41,15 @@ private fun MyBookDetailScreen(
         .padding(innerPadding),
       contentAlignment = Alignment.Center,
     ) {
-      Text(text = "MyBookDetail")
+      Text(text = "SearchBook")
     }
   }
 }
 
 @Preview
 @Composable
-private fun MyBookDetailScreenPreview() {
+private fun SearchBookScreenPreview() {
   MybraryTheme {
-    MyBookDetailScreen()
+    SearchBookScreen()
   }
 }
