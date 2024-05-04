@@ -23,7 +23,10 @@ android {
   buildTypes {
     release {
       isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
+      )
     }
 
     create("mock") {
@@ -54,6 +57,7 @@ dependencies {
   implementation(project(":core:designsystem"))
   implementation(project(":feature:mybooklist"))
   implementation(project(":feature:mybookdetail"))
+  implementation(project(":feature:searchbook"))
 
   // TODO: feature モジュール実装後に削除
   implementation(project(":core:common"))
