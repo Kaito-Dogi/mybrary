@@ -13,27 +13,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
-fun NavGraphBuilder.myBookListScreen() {
+fun NavGraphBuilder.myBookListScreen(
+  onAdditionClick: () -> Unit,
+  onMyBookClick: () -> Unit,
+) {
   composable(
     route = "MyBookList",
   ) {
-    MyBookListScreen()
+    MyBookListScreen(
+      onAdditionClick = onAdditionClick,
+      onMyBookClick = onMyBookClick,
+    )
   }
 }
 
 @Composable
 private fun MyBookListScreen(
-//  viewModel
-//  onAdditionClick: () -> Unit,
-//  onMyBookClick: () -> Unit,
+  viewModel: MyBookListViewModel = viewModel(),
+  onAdditionClick: () -> Unit,
+  onMyBookClick: () -> Unit,
 ) {
   MyBookListScreen(
-    onAdditionClick = {},
-    onMyBookClick = {},
+    onAdditionClick = onAdditionClick,
+    onMyBookClick = onMyBookClick,
   )
 }
 
