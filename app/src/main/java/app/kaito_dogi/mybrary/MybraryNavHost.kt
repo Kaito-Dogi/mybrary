@@ -13,7 +13,6 @@ import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
 
-// TODO: destination の管理方法を検討する
 @Composable
 internal fun MybraryNavHost(
   modifier: Modifier = Modifier,
@@ -29,8 +28,9 @@ internal fun MybraryNavHost(
       onAdditionClick = {
         navController.navigate(searchBookRoute)
       },
-      onMyBookClick = {
-        navController.navigate("MyBookDetail")
+      onMyBookClick = { myBook ->
+        val arg = MyBookDetailNavArg(myBook.id)
+        navController.navigate(myBookDetailRoute(arg))
       },
     )
     myBookDetailScreen()
