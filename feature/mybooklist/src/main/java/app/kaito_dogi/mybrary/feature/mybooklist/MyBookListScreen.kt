@@ -17,13 +17,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCard
+
+const val myBookListRoute = "myBookList"
 
 fun NavGraphBuilder.myBookListScreen(
   onAdditionClick: () -> Unit,
-  onMyBookClick: () -> Unit,
+  onMyBookClick: (MyBook) -> Unit,
 ) {
   composable(
-    route = "MyBookList",
+    route = myBookListRoute,
   ) {
     MyBookListScreen(
       onAdditionClick = onAdditionClick,
@@ -36,7 +41,7 @@ fun NavGraphBuilder.myBookListScreen(
 private fun MyBookListScreen(
   viewModel: MyBookListViewModel = viewModel(),
   onAdditionClick: () -> Unit,
-  onMyBookClick: () -> Unit,
+  onMyBookClick: (MyBook) -> Unit,
 ) {
   MyBookListScreen(
     onAdditionClick = onAdditionClick,
@@ -48,7 +53,7 @@ private fun MyBookListScreen(
 private fun MyBookListScreen(
 //  uiState
   onAdditionClick: () -> Unit,
-  onMyBookClick: () -> Unit,
+  onMyBookClick: (MyBook) -> Unit,
 ) {
   Scaffold(
     floatingActionButton = {

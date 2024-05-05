@@ -14,9 +14,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
+const val searchBookRoute = "searchBook"
+
 fun NavGraphBuilder.searchBookScreen() {
   composable(
-    route = "SearchBook",
+    route = searchBookRoute,
   ) {
     SearchBookScreen()
   }
