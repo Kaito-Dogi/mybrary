@@ -1,8 +1,8 @@
 plugins {
-  id("com.android.application")
-  id("kotlin-android")
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
   id("kotlin-kapt")
-  id("com.google.dagger.hilt.android")
+  alias(libs.plugins.hilt)
   id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -23,7 +23,10 @@ android {
   buildTypes {
     release {
       isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
+      )
     }
 
     create("mock") {
@@ -52,7 +55,9 @@ android {
 
 dependencies {
   implementation(project(":core:designsystem"))
-  implementation(project(":feature:book"))
+  implementation(project(":feature:mybooklist"))
+  implementation(project(":feature:mybookdetail"))
+  implementation(project(":feature:searchbook"))
 
   // TODO: feature モジュール実装後に削除
   implementation(project(":core:common"))
@@ -67,6 +72,7 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
   debugImplementation(libs.androidx.compose.ui.tooling)
   implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.navigation.compose)
 
   // TODO: feature モジュール実装後に削除
   implementation(libs.androidx.appcompat)
