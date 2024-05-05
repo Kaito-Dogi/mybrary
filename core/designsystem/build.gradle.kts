@@ -1,6 +1,6 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.kotlinAndroid)
 }
 
 android {
@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-  val composeBom = platform(libs.androidx.compose.bom)
+  val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
-  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidxComposeMaterial3)
 }

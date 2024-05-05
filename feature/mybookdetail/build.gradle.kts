@@ -1,10 +1,10 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
   alias(libs.plugins.parcelize)
   alias(libs.plugins.serialization)
+  id("kotlin-kapt")
 }
 
 android {
@@ -54,25 +54,25 @@ dependencies {
   implementation(project(":core:ui"))
 
   // Jetpack Compose
-  val composeBom = platform(libs.androidx.compose.bom)
+  val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
   androidTestImplementation(composeBom)
-  implementation(libs.androidx.compose.material3)
-  implementation(libs.androidx.compose.ui.tooling)
-  implementation(libs.androidx.compose.ui.tooling.preview)
+  implementation(libs.androidxComposeMaterial3)
+  implementation(libs.androidxComposeUiTooling)
+  implementation(libs.androidxComposeUiToolingPreview)
   implementation(libs.androidxHiltNavigationCompose)
-  implementation(libs.androidx.lifecycle.runtime.compose)
-  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidxLifecycleRuntimeCompose)
+  implementation(libs.androidxNavigationCompose)
 
-  implementation(libs.coil.compose)
-  implementation(libs.hilt.android)
+  implementation(libs.coilCompose)
+  implementation(libs.hiltAndroid)
   implementation(libs.serialization)
 
   testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
-  androidTestImplementation(libs.androidx.test.espresso.core)
+  androidTestImplementation(libs.androidxTestExtJunitKtx)
+  androidTestImplementation(libs.androidxTestEspressoCore)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 }
 
 kapt {

@@ -20,35 +20,35 @@ room = "2.6.1"
 serialization = "1.6.3"
 
 [libraries]
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidxHiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
-androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
-androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
-androidx-test-ext-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidxLifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidxTestEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinxCoroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttpLogging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+retrofitConverterMoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

@@ -1,6 +1,6 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.kotlinAndroid)
   alias(libs.plugins.serialization)
 }
 
@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinxCoroutinesAndroid)
   implementation(libs.serialization)
 }

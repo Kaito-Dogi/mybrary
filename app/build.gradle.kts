@@ -1,8 +1,8 @@
 plugins {
-  alias(libs.plugins.android.application)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidApplication)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
+  id("kotlin-kapt")
 }
 
 android {
@@ -61,14 +61,14 @@ dependencies {
   implementation(project(":feature:searchbook"))
 
   // Jetpack Compose
-  val composeBom = platform(libs.androidx.compose.bom)
+  val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
-  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidxNavigationCompose)
 
-  implementation(libs.hilt.android)
+  implementation(libs.hiltAndroid)
   implementation(libs.material)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 }
 
 // TODO: core:data モジュール実装後に削除

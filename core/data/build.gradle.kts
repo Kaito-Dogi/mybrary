@@ -1,8 +1,8 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
+  id("kotlin-kapt")
 }
 
 android {
@@ -47,9 +47,9 @@ dependencies {
   implementation(project(":core:domain"))
   implementation(project(":core:network"))
 
-  implementation(libs.hilt.android)
+  implementation(libs.hiltAndroid)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 
   testImplementation(libs.junit)
 }
