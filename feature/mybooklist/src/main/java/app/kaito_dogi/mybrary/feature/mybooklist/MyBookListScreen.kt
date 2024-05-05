@@ -14,12 +14,13 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -44,11 +45,15 @@ fun NavGraphBuilder.myBookListScreen(
 
 @Composable
 private fun MyBookListScreen(
-  viewModel: MyBookListViewModel = viewModel(),
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
+  viewModel: MyBookListViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+  LaunchedEffect(Unit) {
+    viewModel.init()
+  }
 
   MyBookListScreen(
     uiState = uiState,

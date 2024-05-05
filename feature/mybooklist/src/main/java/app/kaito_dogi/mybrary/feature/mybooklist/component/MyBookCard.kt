@@ -24,7 +24,7 @@ internal fun MyBookCard(
   ElevatedCard(
     onClick = { onClick(myBook) },
     modifier = modifier,
-    shape = MybraryTheme.shapes.extraLarge,
+    shape = MybraryTheme.shapes.extraSmall,
   ) {
     AsyncImage(
       model = myBook.imageUrl,
