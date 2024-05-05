@@ -1,6 +1,7 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.serialization)
 }
 
 android {
@@ -11,6 +12,7 @@ android {
     minSdk = 24
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
   }
 
   buildTypes {
@@ -34,7 +36,6 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:common"))
-
-  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinxCoroutinesAndroid)
+  implementation(libs.serialization)
 }

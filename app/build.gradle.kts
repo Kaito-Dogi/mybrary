@@ -1,9 +1,8 @@
 plugins {
-  alias(libs.plugins.android.application)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidApplication)
   alias(libs.plugins.hilt)
-  id("androidx.navigation.safeargs.kotlin")
+  alias(libs.plugins.kotlinAndroid)
+  id("kotlin-kapt")
 }
 
 android {
@@ -54,41 +53,22 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:data"))
   implementation(project(":core:designsystem"))
+  implementation(project(":core:domain"))
   implementation(project(":feature:mybooklist"))
   implementation(project(":feature:mybookdetail"))
   implementation(project(":feature:searchbook"))
 
-  // TODO: feature モジュール実装後に削除
-  implementation(project(":core:common"))
-  implementation(project(":core:domain"))
-  implementation(project(":core:data"))
-
   // Jetpack Compose
-  val composeBom = platform(libs.androidx.compose.bom)
+  val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
-  androidTestImplementation(composeBom)
-  implementation(libs.androidx.compose.material3)
-  implementation(libs.androidx.compose.ui.tooling.preview)
-  debugImplementation(libs.androidx.compose.ui.tooling)
-  implementation(libs.androidx.activity.compose)
-  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidxNavigationCompose)
 
-  // TODO: feature モジュール実装後に削除
-  implementation(libs.androidx.appcompat)
-  implementation(libs.androidx.constraintlayout)
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.fragment.ktx)
-  implementation(libs.androidx.navigation.fragment)
-  implementation(libs.androidx.navigation.ui)
-  implementation(libs.coil)
-  implementation(libs.groupie)
-  implementation(libs.groupie.viewbinding)
-  implementation(libs.hilt.android)
-  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.hiltAndroid)
   implementation(libs.material)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 }
 
 // TODO: core:data モジュール実装後に削除

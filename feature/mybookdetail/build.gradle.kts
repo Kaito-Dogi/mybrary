@@ -1,13 +1,17 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.parcelize)
+  alias(libs.plugins.serialization)
+  id("kotlin-kapt")
 }
 
 android {
-  namespace = "app.kaito_dogi.feature.mybookdetail"
+  namespace = "app.kaito_dogi.mybrary.feature.mybookdetail"
   compileSdk = 34
+
+  resourcePrefix = "mybookdetail_"
 
   defaultConfig {
     minSdk = 24
@@ -27,12 +31,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
 
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
   }
 
   buildFeatures {
@@ -45,26 +49,30 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:domain"))
   implementation(project(":core:designsystem"))
+  implementation(project(":core:domain"))
+  implementation(project(":core:ui"))
 
   // Jetpack Compose
-  val composeBom = platform(libs.androidx.compose.bom)
+  val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
   androidTestImplementation(composeBom)
-  implementation(libs.androidx.compose.material3)
-  implementation(libs.androidx.compose.ui.tooling.preview)
-  debugImplementation(libs.androidx.compose.ui.tooling)
-  implementation(libs.androidx.activity.compose)
-  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidxComposeMaterial3)
+  implementation(libs.androidxComposeUiTooling)
+  implementation(libs.androidxComposeUiToolingPreview)
+  implementation(libs.androidxHiltNavigationCompose)
+  implementation(libs.androidxLifecycleRuntimeCompose)
+  implementation(libs.androidxNavigationCompose)
 
-  // Testing
+  implementation(libs.coilCompose)
+  implementation(libs.hiltAndroid)
+  implementation(libs.serialization)
+
   testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.test.ext.junit.ktx)
-  androidTestImplementation(libs.androidx.test.espresso.core)
+  androidTestImplementation(libs.androidxTestExtJunitKtx)
+  androidTestImplementation(libs.androidxTestEspressoCore)
 
-  implementation(libs.hilt.android)
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 }
 
 kapt {

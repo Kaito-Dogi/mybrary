@@ -1,8 +1,8 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
+  id("kotlin-kapt")
 }
 
 android {
@@ -13,6 +13,7 @@ android {
     minSdk = 24
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
   }
 
   buildTypes {
@@ -43,14 +44,14 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:domain"))
 
-  implementation(libs.hilt.android)
+  implementation(libs.hiltAndroid)
   implementation(libs.moshi)
   implementation(libs.okhttp)
-  implementation(libs.okhttp.logging)
+  implementation(libs.okhttpLogging)
   implementation(libs.retrofit)
-  implementation(libs.retrofit.converter.moshi)
+  implementation(libs.retrofitConverterMoshi)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 }
 
 kapt {

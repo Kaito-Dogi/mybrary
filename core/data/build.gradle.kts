@@ -1,8 +1,8 @@
 plugins {
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.kotlin.android)
-  id("kotlin-kapt")
+  alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
+  alias(libs.plugins.kotlinAndroid)
+  id("kotlin-kapt")
 }
 
 android {
@@ -13,20 +13,15 @@ android {
     minSdk = 24
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-    javaCompileOptions {
-      annotationProcessorOptions {
-        argument("room.schemaLocation", "$projectDir/schemas")
-      }
-    }
+    consumerProguardFiles("consumer-rules.pro")
   }
 
   buildTypes {
     release {
       isMinifyEnabled = false
       proguardFiles(
-          getDefaultProguardFile("proguard-android-optimize.txt"),
-          "proguard-rules.pro",
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
       )
     }
 
@@ -48,13 +43,13 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
+  implementation(project(":core:database"))
   implementation(project(":core:domain"))
   implementation(project(":core:network"))
-  implementation(project(":core:database"))
 
-  implementation(libs.hilt.android)
+  implementation(libs.hiltAndroid)
 
-  kapt(libs.hilt.compiler)
+  kapt(libs.hiltCompiler)
 
   testImplementation(libs.junit)
 }

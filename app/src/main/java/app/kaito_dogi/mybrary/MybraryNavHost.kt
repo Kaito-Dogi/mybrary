@@ -5,11 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import app.kaito_dogi.feature.mybookdetail.myBookDetailScreen
-import app.kaito_dogi.feature.searchbook.searchBookScreen
+import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
+import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavHelper
+import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybooklist.myBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
+import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
+import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 
-// TODO: destination の管理方法を検討する
 @Composable
 internal fun MybraryNavHost(
   modifier: Modifier = Modifier,
@@ -18,15 +21,16 @@ internal fun MybraryNavHost(
 
   NavHost(
     navController = navController,
-    startDestination = "MyBookList",
+    startDestination = myBookListRoute,
     modifier = modifier.fillMaxSize(),
   ) {
     myBookListScreen(
       onAdditionClick = {
-        navController.navigate("SearchBook")
+        navController.navigate(searchBookRoute)
       },
-      onMyBookClick = {
-        navController.navigate("MyBookDetail")
+      onMyBookClick = { myBook ->
+        val navArg = MyBookDetailNavArg(myBook.id)
+        navController.navigate(MyBookDetailNavHelper.routeWithNavArg(navArg))
       },
     )
     myBookDetailScreen()

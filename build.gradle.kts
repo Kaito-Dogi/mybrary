@@ -7,18 +7,14 @@ buildscript {
 
   dependencies {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin}")
-    // FIXME: libs.versions.androidxNavigation を使用するとエラーが発生する
-    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
   }
 }
 
 plugins {
-  alias(libs.plugins.android.application) apply false
-  alias(libs.plugins.android.library) apply false
+  alias(libs.plugins.androidApplication) apply false
+  alias(libs.plugins.androidLibrary) apply false
   alias(libs.plugins.hilt) apply false
-  alias(libs.plugins.kotlin.android) apply false
-}
-
-tasks.create<Delete>("clean") {
-  delete(rootProject.buildDir)
+  alias(libs.plugins.kotlinAndroid) apply false
+  alias(libs.plugins.parcelize) apply false
+  alias(libs.plugins.serialization) apply false
 }

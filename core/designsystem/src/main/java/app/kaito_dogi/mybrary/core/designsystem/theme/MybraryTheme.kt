@@ -21,6 +21,7 @@ fun MybraryTheme(
   }
 
   CompositionLocalProvider(
+    LocalDimens provides mybraryDimens,
     LocalSpace provides mybrarySpace,
   ) {
     MaterialTheme(
@@ -37,10 +38,10 @@ object MybraryTheme {
     @ReadOnlyComposable
     get() = MaterialTheme.colorScheme
 
-  val typography: Typography
+  val dimens
     @Composable
     @ReadOnlyComposable
-    get() = MaterialTheme.typography
+    get() = LocalDimens.current
 
   val shapes: Shapes
     @Composable
@@ -51,4 +52,9 @@ object MybraryTheme {
     @Composable
     @ReadOnlyComposable
     get() = LocalSpace.current
+
+  val typography: Typography
+    @Composable
+    @ReadOnlyComposable
+    get() = MaterialTheme.typography
 }

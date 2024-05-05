@@ -1,17 +1,13 @@
 [versions]
 androidGradlePlugin = "8.2.2"
-androidxActivity = "1.8.2"
-androidxAppCompat = "1.6.1"
 androidxComposeBom = "2024.01.00"
 androidxComposeCompiler = "1.5.8"
-androidxConstraintlayout = "2.1.4"
-androidxCore = "1.12.0"
 androidxEspresso = "3.5.1"
-androidxFragment = "1.6.2"
+androidxHilt = "1.1.0"
+androidxLifecycle = "2.7.0"
 androidxNavigation = "2.7.6"
 androidxTestExt = "1.1.5"
 coil = "2.5.0"
-groupie = "2.10.1"
 hilt = "2.50"
 junit = "4.13.2"
 kotlin = "1.9.22"
@@ -21,43 +17,38 @@ moshi = "1.15.1"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 room = "2.6.1"
+serialization = "1.6.3"
 
 [libraries]
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
-androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
-androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
-androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "androidxNavigation" }
-androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "androidxNavigation" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
-androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
-androidx-test-ext-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
-groupie = { group = "com.github.lisawray.groupie", name = "groupie", version.ref = "groupie" }
-groupie-viewbinding = { group = "com.github.lisawray.groupie", name = "groupie-viewbinding", version.ref = "groupie" }
-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidxHiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
+androidxLifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidxTestEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinxCoroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttpLogging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+retrofitConverterMoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
