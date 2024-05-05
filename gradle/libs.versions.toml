@@ -3,6 +3,7 @@ androidGradlePlugin = "8.2.2"
 androidxComposeBom = "2024.01.00"
 androidxComposeCompiler = "1.5.8"
 androidxEspresso = "3.5.1"
+androidxLifecycle = "2.7.0"
 androidxNavigation = "2.7.6"
 androidxTestExt = "1.1.5"
 coil = "2.5.0"
@@ -22,6 +23,7 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", versi
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-ext-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
