@@ -4,4 +4,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @JvmInline
-value class MemoId(val value: Long)
+value class UnixMillis(val value: Long)

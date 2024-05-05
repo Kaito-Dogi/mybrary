@@ -37,7 +37,7 @@ private fun MyBookDetailScreen(
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
   MyBookDetailScreen(
-    uiState = uiState
+    uiState = uiState,
   )
 }
 
@@ -52,7 +52,7 @@ private fun MyBookDetailScreen(
         .padding(innerPadding),
       contentAlignment = Alignment.Center,
     ) {
-      Text(text = "MyBookDetail:${uiState.myBookId.value}")
+      Text(text = "MyBookDetail:${uiState.myBook.id.value}")
     }
   }
 }

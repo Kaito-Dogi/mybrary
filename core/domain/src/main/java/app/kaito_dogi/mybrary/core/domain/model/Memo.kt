@@ -1,7 +1,8 @@
 package app.kaito_dogi.mybrary.core.domain.model
 
-import java.util.Date
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Memo(
   val id: MemoId,
   val myBookId: MyBookId,

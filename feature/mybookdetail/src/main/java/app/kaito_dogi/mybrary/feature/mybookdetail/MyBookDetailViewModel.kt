@@ -14,6 +14,6 @@ internal class MyBookDetailViewModel @Inject constructor(
   private val navArg: MyBookDetailNavArg =
     checkNotNull(savedStateHandle[MyBookDetailNavHelper.navArgName])
 
-  private val _uiState = MutableStateFlow(MyBookDetailUiState.createInitialValue(navArg.myBookId))
+  private val _uiState = MutableStateFlow(MyBookDetailUiState.createInitialValue(navArg.myBook))
   val uiState = _uiState.asStateFlow()
 }

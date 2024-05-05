@@ -1,19 +1,15 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import androidx.compose.runtime.Immutable
-import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
 @Immutable
 internal data class MyBookDetailUiState(
-//  val myBook: MyBook,
-  val myBookId: MyBookId,
+  val myBook: MyBook,
 ) {
   companion object {
-    //    fun createInitialValue(myBook: MyBook): MyBookDetailUiState {
-//      return MyBookDetailUiState(myBook = myBook)
-//    }
-    fun createInitialValue(myBookId: MyBookId): MyBookDetailUiState {
-      return MyBookDetailUiState(myBookId = myBookId)
+    fun createInitialValue(myBook: MyBook): MyBookDetailUiState {
+      return MyBookDetailUiState(myBook = myBook)
     }
   }
 }
