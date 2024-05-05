@@ -3,6 +3,8 @@ plugins {
   alias(libs.plugins.kotlin.android)
   id("kotlin-kapt")
   alias(libs.plugins.hilt)
+  alias(libs.plugins.parcelize)
+  alias(libs.plugins.serialization)
 }
 
 android {
@@ -68,6 +70,8 @@ dependencies {
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
+
+  implementation(libs.serialization)
 }
 
 kapt {
