@@ -1,4 +1,4 @@
-package app.kaito_dogi.feature.searchbook
+package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import org.junit.Test
 
