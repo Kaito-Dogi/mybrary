@@ -6,8 +6,10 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.feature.mybookdetail"
+  namespace = "app.kaito_dogi.mybrary.feature.mybookdetail"
   compileSdk = 34
+
+  resourcePrefix = "mybookdetail_"
 
   defaultConfig {
     minSdk = 24
@@ -27,12 +29,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
 
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
   }
 
   buildFeatures {

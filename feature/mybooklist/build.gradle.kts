@@ -9,10 +9,13 @@ android {
   namespace = "app.kaito_dogi.mybrary.feature.mybooklist"
   compileSdk = 34
 
+  resourcePrefix = "mybooklist_"
+
   defaultConfig {
     minSdk = 24
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
   }
 
   buildTypes {
@@ -56,6 +59,7 @@ dependencies {
   debugImplementation(libs.androidx.compose.ui.tooling)
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.navigation.compose)
+  implementation(libs.coil.compose)
 
   // Testing
   testImplementation(libs.junit)

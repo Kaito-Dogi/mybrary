@@ -13,6 +13,7 @@ android {
     minSdk = 24
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
 
     javaCompileOptions {
       annotationProcessorOptions {
