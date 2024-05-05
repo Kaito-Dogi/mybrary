@@ -20,8 +20,8 @@ android {
     release {
       isMinifyEnabled = false
       proguardFiles(
-          getDefaultProguardFile("proguard-android-optimize.txt"),
-          "proguard-rules.pro",
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
       )
     }
 
@@ -43,9 +43,9 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
+  implementation(project(":core:database"))
   implementation(project(":core:domain"))
   implementation(project(":core:network"))
-  implementation(project(":core:database"))
 
   implementation(libs.hilt.android)
 
