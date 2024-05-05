@@ -59,19 +59,17 @@ dependencies {
   androidTestImplementation(composeBom)
   implementation(libs.androidx.compose.material3)
   implementation(libs.androidx.compose.ui.tooling.preview)
-  debugImplementation(libs.androidx.compose.ui.tooling)
-  implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.navigation.compose)
 
-  // Testing
+  implementation(libs.coil.compose)
+  implementation(libs.hilt.android)
+  implementation(libs.serialization)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.test.ext.junit.ktx)
   androidTestImplementation(libs.androidx.test.espresso.core)
 
-  implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
-
-  implementation(libs.serialization)
 }
 
 kapt {
