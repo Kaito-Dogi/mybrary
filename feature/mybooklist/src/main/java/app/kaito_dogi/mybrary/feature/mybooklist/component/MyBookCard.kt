@@ -28,7 +28,7 @@ internal fun MyBookCard(
   ) {
     AsyncImage(
       model = myBook.imageUrl,
-      contentDescription = "${myBook.title}の表紙画像",
+      contentDescription = myBook.title,
       modifier = Modifier.aspectRatio(210f / 297f),
       placeholder = painterResource(id = R.drawable.mybooklist_my_book_card_placeholder),
       error = painterResource(id = R.drawable.mybooklist_my_book_card_placeholder),
