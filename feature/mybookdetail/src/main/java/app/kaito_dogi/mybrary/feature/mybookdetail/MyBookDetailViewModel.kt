@@ -9,5 +9,6 @@ import javax.inject.Inject
 internal class MyBookDetailViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-  val arg: MyBookDetailNavArg = checkNotNull(savedStateHandle[myBookDetailNavArgName])
+  val navArg: MyBookDetailNavArg =
+    checkNotNull(savedStateHandle[MyBookDetailNavHelper.navArgName])
 }
