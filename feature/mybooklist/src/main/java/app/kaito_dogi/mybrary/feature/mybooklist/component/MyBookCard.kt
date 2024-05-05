@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.mybooklist.component
 
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -25,7 +24,7 @@ internal fun MyBookCard(
   ElevatedCard(
     onClick = { onClick(myBook) },
     modifier = modifier,
-    shape = RoundedCornerShape(MybraryTheme.space.xxs),
+    shape = MybraryTheme.shapes.extraLarge,
   ) {
     AsyncImage(
       model = myBook.imageUrl,
