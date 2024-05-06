@@ -7,14 +7,14 @@ plugins {
 
 android {
   namespace = "app.kaito_dogi.mybrary"
-  compileSdk = 34
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
     applicationId = "app.kaito_dogi.mybrary"
-    minSdk = 24
-    targetSdk = 34
-    versionCode = 1
-    versionName = "0.1"
+    minSdk = libs.versions.minSdk.get().toInt()
+    targetSdk = libs.versions.targetSdk.get().toInt()
+    versionCode = libs.versions.versionCode.get().toInt()
+    versionName = libs.versions.versionName.get()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -40,7 +40,7 @@ android {
   }
 
   kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = libs.versions.jvmTarget.get()
   }
 
   buildFeatures {

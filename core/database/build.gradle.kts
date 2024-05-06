@@ -7,10 +7,10 @@ plugins {
 
 android {
   namespace = "app.kaito_dogi.mybrary.core.database"
-  compileSdk = 34
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    minSdk = 24
+    minSdk = libs.versions.minSdk.get().toInt()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
@@ -38,7 +38,7 @@ android {
   }
 
   kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = libs.versions.jvmTarget.get()
   }
 }
 

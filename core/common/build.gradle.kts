@@ -2,15 +2,16 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
   alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.serialization)
   id("kotlin-kapt")
 }
 
 android {
   namespace = "app.kaito_dogi.mybrary.core.common"
-  compileSdk = 34
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    minSdk = 24
+    minSdk = libs.versions.minSdk.get().toInt()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
@@ -32,13 +33,13 @@ android {
   }
 
   kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = libs.versions.jvmTarget.get()
   }
 }
 
 dependencies {
   implementation(libs.hiltAndroid)
-
+  implementation(libs.serialization)
   kapt(libs.hiltCompiler)
 }
 
