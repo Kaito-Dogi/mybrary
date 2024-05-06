@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.core.data.model
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import java.util.Date
+import java.time.LocalDateTime
 
 internal val dummyMemos = buildList {
   repeat(20) { myBookIndex ->
@@ -15,7 +15,7 @@ internal val dummyMemos = buildList {
           content = "Memo$memoIndex",
           fromPage = null,
           toPage = null,
-          createdAt = Date(),
+          createdAt = LocalDateTime.now(),
           isPosted = false,
           postedAt = null,
           likeCount = null,

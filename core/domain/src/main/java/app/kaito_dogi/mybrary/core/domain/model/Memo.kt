@@ -1,5 +1,7 @@
 package app.kaito_dogi.mybrary.core.domain.model
 
+import app.kaito_dogi.mybrary.core.common.serializer.LocalDateTimeSerializer
+import java.time.LocalDateTime
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,8 +11,8 @@ data class Memo(
   val content: String,
   val fromPage: Int?,
   val toPage: Int?,
-  val createdAt: Date,
+  @Serializable(with = LocalDateTimeSerializer::class) val createdAt: LocalDateTime,
   val isPosted: Boolean,
-  val postedAt: Date?,
+  @Serializable(with = LocalDateTimeSerializer::class) val postedAt: LocalDateTime?,
   val likeCount: Int?,
 )

@@ -4,7 +4,7 @@ import app.kaito_dogi.mybrary.core.data.model.dummyMemos
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
-import java.util.Date
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 internal class MockMemoRepository @Inject constructor() : MemoRepository {
@@ -17,7 +17,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       .first { it.id == memoId }
       .copy(
         isPosted = false,
-        postedAt = Date(),
+        postedAt = LocalDateTime.now(),
         likeCount = 0,
       )
   }

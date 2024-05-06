@@ -4,7 +4,7 @@ import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
-import java.util.Date
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
@@ -21,7 +21,7 @@ internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
       content = "Memo",
       fromPage = null,
       toPage = null,
-      createdAt = Date(),
+      createdAt = LocalDateTime.now(),
       isPosted = false,
       postedAt = null,
       likeCount = null,
