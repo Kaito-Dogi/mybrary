@@ -49,6 +49,7 @@ android {
 dependencies {
   implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
+  implementation(project(":core:ui"))
 
   // Jetpack Compose
   val composeBom = platform(libs.androidxComposeBom)

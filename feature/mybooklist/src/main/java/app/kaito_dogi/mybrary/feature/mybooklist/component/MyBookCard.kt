@@ -1,18 +1,14 @@
 package app.kaito_dogi.mybrary.feature.mybooklist.component
 
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.feature.mybooklist.R
-import coil.compose.AsyncImage
+import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,13 +22,9 @@ internal fun MyBookCard(
     modifier = modifier,
     shape = MybraryTheme.shapes.extraSmall,
   ) {
-    AsyncImage(
-      model = myBook.imageUrl,
-      contentDescription = myBook.title,
-      modifier = Modifier.aspectRatio(210f / 297f),
-      placeholder = painterResource(id = R.drawable.mybooklist_my_book_card_placeholder),
-      error = painterResource(id = R.drawable.mybooklist_my_book_card_placeholder),
-      contentScale = ContentScale.Fit,
+    BookImage(
+      imageUrl = myBook.imageUrl,
+      title = myBook.title,
     )
   }
 }
@@ -46,7 +38,7 @@ private fun MyBookCardPreview() {
         id = MyBookId(0L),
         externalId = "MyBook",
         title = "MyBook",
-        author = "MyBook",
+        authors = "MyBook",
         imageUrl = "MyBook",
         isPinned = false,
         isFavorite = false,
