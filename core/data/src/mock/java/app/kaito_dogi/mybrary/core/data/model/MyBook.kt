@@ -10,8 +10,24 @@ internal val dummyMyBooks = buildList {
       MyBook(
         id = myBookId,
         externalId = "MyBook$myBookId",
-        title = "MyBook$myBookId",
-        author = "MyBook$myBookId",
+        title = when (myBookIndex % 7) {
+          0 -> "プリンシプル オブ プログラミング3年目までに身につけたい一生役立つ101の原理原則"
+          1 -> "ハッカーと画家"
+          2 -> "オブジェクト指向UIデザイン使いやすいソフトウェアの原理"
+          3 -> "ユースケース駆動開発実践ガイド"
+          4 -> "Clean Architecture　達人に学ぶソフトウェアの構造と設計"
+          5 -> "Kotlinイン・アクション"
+          else -> ""
+        },
+        authors = when (myBookIndex % 7) {
+          0 -> "上田勲"
+          1 -> ""
+          2 -> "ソシオメディア, 上野学, 藤井幸多"
+          3 -> "ダグ・ローゼンバーグ, マット・ステファン"
+          4 -> "Ｒｏｂｅｒｔ　Ｃ．Ｍａｒｔｉｎ"
+          5 -> "ＤｍｉｔｒｙＪｅｍｅｒｏｖ, ＳｖｅｔｌａｎａＩｓａｋｏｖａ, 長澤太郎, 藤原聖, 山本純平, ｙｙ＿ｙａｎｋ"
+          else -> ""
+        },
         imageUrl = when (myBookIndex % 7) {
           0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
           1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
