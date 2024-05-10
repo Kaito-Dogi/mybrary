@@ -17,7 +17,7 @@ internal val dummyMyBooks = buildList {
           3 -> "ユースケース駆動開発実践ガイド"
           4 -> "Clean Architecture　達人に学ぶソフトウェアの構造と設計"
           5 -> "Kotlinイン・アクション"
-          else -> ""
+          else -> "title"
         },
         authors = when (myBookIndex % 7) {
           0 -> "上田勲"
@@ -26,7 +26,7 @@ internal val dummyMyBooks = buildList {
           3 -> "ダグ・ローゼンバーグ, マット・ステファン"
           4 -> "Ｒｏｂｅｒｔ　Ｃ．Ｍａｒｔｉｎ"
           5 -> "ＤｍｉｔｒｙＪｅｍｅｒｏｖ, ＳｖｅｔｌａｎａＩｓａｋｏｖａ, 長澤太郎, 藤原聖, 山本純平, ｙｙ＿ｙａｎｋ"
-          else -> ""
+          else -> "authos"
         },
         imageUrl = when (myBookIndex % 7) {
           0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
