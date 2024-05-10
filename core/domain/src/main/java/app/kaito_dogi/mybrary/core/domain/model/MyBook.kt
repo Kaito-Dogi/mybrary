@@ -7,7 +7,7 @@ data class MyBook(
   val id: MyBookId,
   val externalId: String,
   val title: String,
-  val author: String,
+  val authors: String,
   val imageUrl: String,
   val isPinned: Boolean,
   val isFavorite: Boolean,

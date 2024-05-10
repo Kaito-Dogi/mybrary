@@ -9,7 +9,7 @@ internal class ItemResponse(
     return Book(
       id = "",
       title = volumeInfo.title,
-      author = volumeInfo.authors?.joinToString(", ") ?: "",
+      authors = volumeInfo.authors?.joinToString(", ") ?: "",
       imageUrl = volumeInfo.imageLinks?.thumbnail ?: "",
     )
   }

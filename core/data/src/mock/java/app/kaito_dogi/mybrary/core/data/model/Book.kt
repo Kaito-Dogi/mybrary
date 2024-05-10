@@ -8,7 +8,7 @@ internal val dummyBooks = buildList {
       Book(
         id = "Book$it",
         title = "Book$it",
-        author = "Book$it",
+        authors = "Book$it",
         imageUrl = "Book$it",
       ),
     )
