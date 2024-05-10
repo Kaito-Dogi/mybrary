@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui
+package app.kaito_dogi.mybrary.core.ui.parceler
 
 import android.os.Parcel
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
