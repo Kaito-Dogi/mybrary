@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 internal val dummyMemos = buildList {
   repeat(20) { myBookIndex ->
-    repeat(10) { memoIndex ->
+    repeat(20) { memoIndex ->
       add(
         Memo(
           id = MemoId(memoIndex.toLong()),
