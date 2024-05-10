@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRow
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
 fun NavGraphBuilder.myBookDetailScreen() {
   composable(
@@ -56,14 +58,19 @@ private fun MyBookDetailScreen(
       .background(MybraryTheme.colorScheme.background),
   ) {
     LazyColumn(
-      modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
-      contentPadding = WindowInsets.systemBars.asPaddingValues(),
+      contentPadding = PaddingValues(
+        bottom = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding(),
+      ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
+      item {
+        MyBookDetailTopAppBar(myBook = uiState.myBook)
+      }
       items(items = uiState.myBook.memos) { memo ->
         MemoRow(
           memo = memo,
           onClick = {},
+          modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
         )
       }
     }
