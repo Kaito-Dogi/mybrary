@@ -66,7 +66,10 @@ private fun MyBookDetailScreen(
       item {
         MyBookDetailTopAppBar(myBook = uiState.myBook)
       }
-      items(items = uiState.myBook.memos) { memo ->
+      items(
+        items = uiState.myBook.memos,
+        key = { memo -> memo.id },
+      ) { memo ->
         MemoRow(
           memo = memo,
           onClick = {},

@@ -72,9 +72,9 @@ private fun MyBookListScreen(
 ) {
   Box(
     modifier = Modifier
-      .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background)
-      .padding(horizontal = MybraryTheme.space.md),
+        .fillMaxSize()
+        .background(MybraryTheme.colorScheme.background)
+        .padding(horizontal = MybraryTheme.space.md),
   ) {
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),
@@ -82,7 +82,10 @@ private fun MyBookListScreen(
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
-      items(items = uiState.myBookList) {
+      items(
+          items = uiState.myBookList,
+          key = { myBook -> myBook.id },
+      ) {
         MyBookCard(
           myBook = it,
           onClick = onMyBookClick,
@@ -93,8 +96,8 @@ private fun MyBookListScreen(
     FloatingActionButton(
       onClick = onAdditionClick,
       modifier = Modifier
-        .padding(MybraryTheme.space.md)
-        .align(Alignment.BottomEnd),
+          .padding(MybraryTheme.space.md)
+          .align(Alignment.BottomEnd),
     ) {
       Icon(imageVector = Icons.Default.Add, contentDescription = "書籍検索画面に遷移")
     }
