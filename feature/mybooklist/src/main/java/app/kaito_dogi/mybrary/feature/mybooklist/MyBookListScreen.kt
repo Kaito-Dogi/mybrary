@@ -84,7 +84,7 @@ private fun MyBookListScreen(
     ) {
       items(
           items = uiState.myBookList,
-          key = { myBook -> myBook.id },
+          key = { myBook -> myBook.id.value },
       ) {
         MyBookCard(
           myBook = it,

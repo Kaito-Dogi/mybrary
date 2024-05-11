@@ -68,7 +68,7 @@ private fun MyBookDetailScreen(
       }
       items(
         items = uiState.myBook.memos,
-        key = { memo -> memo.id },
+        key = { memo -> memo.id.value },
       ) { memo ->
         MemoRow(
           memo = memo,
