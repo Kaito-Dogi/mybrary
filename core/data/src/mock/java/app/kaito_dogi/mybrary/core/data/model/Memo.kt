@@ -12,7 +12,7 @@ internal val dummyMemos = buildList {
         Memo(
           id = MemoId(memoIndex.toLong()),
           myBookId = MyBookId(myBookIndex.toLong()),
-          content = "Memo$memoIndex",
+          content = "content: $memoIndex",
           fromPage = null,
           toPage = null,
           createdAt = LocalDateTime.now(),

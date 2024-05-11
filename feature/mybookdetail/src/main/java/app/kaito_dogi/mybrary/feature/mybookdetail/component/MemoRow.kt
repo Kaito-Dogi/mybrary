@@ -72,7 +72,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "Memo",
+        content = "content",
         fromPage = 1,
         toPage = 100,
         createdAt = LocalDateTime.now(),
@@ -84,7 +84,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "Memo",
+        content = "content",
         fromPage = 50,
         toPage = null,
         createdAt = LocalDateTime.now(),
@@ -96,7 +96,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "Memo",
+        content = "content",
         fromPage = null,
         toPage = null,
         createdAt = LocalDateTime.now(),

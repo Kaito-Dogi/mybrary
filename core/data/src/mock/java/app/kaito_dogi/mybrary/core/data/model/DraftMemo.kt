@@ -8,7 +8,7 @@ internal val dummyDraftMemos = buildList {
     add(
       DraftMemo(
         myBookId = MyBookId(it.toLong()),
-        content = "DraftMemo$it",
+        content = "content: $it",
         fromPage = null,
         toPage = null,
       ),

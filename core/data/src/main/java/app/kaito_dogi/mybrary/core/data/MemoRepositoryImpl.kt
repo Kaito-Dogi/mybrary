@@ -18,7 +18,7 @@ internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
     return Memo(
       id = MemoId(0L),
       myBookId = MyBookId(0L),
-      content = "Memo",
+      content = "content",
       fromPage = null,
       toPage = null,
       createdAt = LocalDateTime.now(),
