@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import coil.compose.AsyncImage
@@ -20,7 +21,7 @@ private const val bookAspectRatio = 210f / 297f
 
 @Composable
 fun BookImage(
-  imageUrl: String,
+  imageUrl: Url.Image,
   title: String,
   modifier: Modifier = Modifier,
   onLoading: ((AsyncImagePainter.State.Loading) -> Unit)? = null,
@@ -32,7 +33,7 @@ fun BookImage(
   filterQuality: FilterQuality = DrawScope.DefaultFilterQuality,
 ) {
   AsyncImage(
-    model = imageUrl,
+    model = imageUrl.value,
     contentDescription = "${title}の表紙",
     modifier = modifier.aspectRatio(bookAspectRatio),
     placeholder = painterResource(id = R.drawable.ui_book_image_placeholder),
@@ -53,7 +54,7 @@ fun BookImage(
 private fun BookImagePreview() {
   MybraryTheme {
     BookImage(
-      imageUrl = "imageUrl",
+      imageUrl = Url.Image(value = "imageUrl"),
       title = "title",
     )
   }

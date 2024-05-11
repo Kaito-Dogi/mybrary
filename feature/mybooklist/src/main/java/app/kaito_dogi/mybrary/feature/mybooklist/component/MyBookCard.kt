@@ -5,6 +5,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -36,10 +37,10 @@ private fun MyBookCardPreview() {
     MyBookCard(
       myBook = MyBook(
         id = MyBookId(0L),
-        externalId = "MyBook",
-        title = "MyBook",
-        authors = "MyBook",
-        imageUrl = "MyBook",
+        externalId = "externalId",
+        title = "title",
+        authors = "authors",
+        imageUrl = Url.Image(value = "imageUrl"),
         isPinned = false,
         isFavorite = false,
         isArchived = false,

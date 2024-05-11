@@ -24,6 +24,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -49,7 +50,7 @@ internal fun MyBookDetailTopAppBar(
     modifier = modifier.height(IntrinsicSize.Min),
   ) {
     AsyncImage(
-      model = myBook.imageUrl,
+      model = myBook.imageUrl.value,
       modifier = Modifier
         .fillMaxHeight()
         .background(MybraryTheme.colorScheme.primary)
@@ -111,10 +112,10 @@ private fun MyBookDetailTopAppBarPreview() {
     MyBookDetailTopAppBar(
       myBook = MyBook(
         id = MyBookId(0L),
-        externalId = "MyBook",
-        title = "MyBook",
-        authors = "MyBook",
-        imageUrl = "MyBook",
+        externalId = "externalId",
+        title = "title",
+        authors = "authors",
+        imageUrl = Url.Image(value = "imageUrl"),
         isPinned = false,
         isFavorite = false,
         isArchived = false,
