@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
-import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavHelper
-import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetail
+import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
@@ -32,10 +32,10 @@ internal fun MybraryNavHost(
         val navArg = MyBookDetailNavArg(
           myBook = myBook,
         )
-        navController.navigate(MyBookDetailNavHelper.routeWithNavArg(navArg))
+        navController.navigate(myBookDetailRouteWithNavArg(navArg))
       },
     )
-    myBookDetailScreen()
+    myBookDetail()
     searchBookScreen()
   }
 }
