@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,8 +45,9 @@ internal fun MyBookDetailPage(
       )
     },
   ) { innerPadding ->
+    // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
-      contentPadding = innerPadding,
+      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       item {
