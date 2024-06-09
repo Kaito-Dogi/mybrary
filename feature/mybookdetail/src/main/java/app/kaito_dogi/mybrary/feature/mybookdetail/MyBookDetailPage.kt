@@ -81,7 +81,6 @@ private fun MyBookDetailPagePreview() {
           isPinned = false,
           isFavorite = false,
           isArchived = false,
-          memos = emptyList(),
         ),
       ),
       onBackClick = {},

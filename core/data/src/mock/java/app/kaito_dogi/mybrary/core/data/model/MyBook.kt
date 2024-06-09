@@ -43,7 +43,6 @@ internal val dummyMyBooks = buildList {
         isPinned = false,
         isFavorite = false,
         isArchived = false,
-        memos = dummyMemos.filter { it.myBookId == myBookId },
       ),
     )
   }

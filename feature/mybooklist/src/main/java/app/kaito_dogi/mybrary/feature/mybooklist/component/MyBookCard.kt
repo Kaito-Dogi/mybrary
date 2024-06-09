@@ -44,7 +44,6 @@ private fun MyBookCardPreview() {
         isPinned = false,
         isFavorite = false,
         isArchived = false,
-        memos = emptyList(),
       ),
       onClick = {},
     )

@@ -13,5 +13,4 @@ data class MyBook(
   val isPinned: Boolean,
   val isFavorite: Boolean,
   val isArchived: Boolean,
-  val memos: List<Memo>,
 )

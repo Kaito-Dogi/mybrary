@@ -25,7 +25,6 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
       isPinned = false,
       isFavorite = false,
       isArchived = false,
-      memos = emptyList(),
     )
   }
 
@@ -49,7 +48,6 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
       isPinned = false,
       isFavorite = false,
       isArchived = false,
-      memos = emptyList(),
     )
   }
 
@@ -66,7 +64,6 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
       isPinned = false,
       isFavorite = false,
       isArchived = false,
-      memos = emptyList(),
     )
   }
 
@@ -83,7 +80,6 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
       isPinned = false,
       isFavorite = false,
       isArchived = false,
-      memos = emptyList(),
     )
   }
 }
