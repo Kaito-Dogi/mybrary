@@ -3,5 +3,6 @@ package app.kaito_dogi.mybrary.core.domain.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-@JvmInline
-value class MemoId(val value: Long)
+data class MemoId(
+  val value: Long,
+)
