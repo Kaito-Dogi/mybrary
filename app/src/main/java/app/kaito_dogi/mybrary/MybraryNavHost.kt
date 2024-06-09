@@ -10,8 +10,8 @@ import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetail
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookList
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListRoute
+import app.kaito_dogi.mybrary.feature.searchbook.searchBook
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
-import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -36,6 +36,6 @@ internal fun MybraryNavHost(
       },
     )
     myBookDetail()
-    searchBookScreen()
+    searchBook()
   }
 }
