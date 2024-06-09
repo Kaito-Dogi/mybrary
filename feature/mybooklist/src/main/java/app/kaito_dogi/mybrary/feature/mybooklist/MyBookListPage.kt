@@ -59,7 +59,10 @@ internal fun MyBookListPage(
         .padding(MybraryTheme.space.md)
         .align(Alignment.BottomEnd),
     ) {
-      Icon(imageVector = Icons.Default.Add, contentDescription = "書籍検索画面に遷移")
+      Icon(
+        imageVector = Icons.Default.Add,
+        contentDescription = "書籍検索画面に遷移",
+      )
     }
   }
 }
