@@ -13,5 +13,9 @@ internal fun MyBookDetailScreen(
 
   MyBookDetailPage(
     uiState = uiState,
+    onBackClick = {},
+    onArchiveClick = {},
+    onFavoriteClick = {},
+    onEditClick = {},
   )
 }
