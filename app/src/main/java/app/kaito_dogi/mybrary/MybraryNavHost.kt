@@ -8,8 +8,8 @@ import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetail
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
+import app.kaito_dogi.mybrary.feature.mybooklist.myBookList
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListRoute
-import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 
@@ -24,7 +24,7 @@ internal fun MybraryNavHost(
     startDestination = myBookListRoute,
     modifier = modifier.fillMaxSize(),
   ) {
-    myBookListScreen(
+    myBookList(
       onAdditionClick = {
         navController.navigate(searchBookRoute)
       },
