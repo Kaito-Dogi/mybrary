@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,6 +61,7 @@ internal fun MyBookDetailPage(
               // 落ちるのでコメントアウト
               // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
 //              CircularProgressIndicator()
+              Text(text = "ローディング中…")
             }
           }
         }
