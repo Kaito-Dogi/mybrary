@@ -21,7 +21,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRow
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
 fun NavGraphBuilder.myBookDetailScreen() {
@@ -70,7 +70,7 @@ private fun MyBookDetailScreen(
         items = uiState.myBook.memos,
         key = { memo -> memo.id.value },
       ) { memo ->
-        MemoRow(
+        MemoCard(
           memo = memo,
           onClick = {},
           modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
