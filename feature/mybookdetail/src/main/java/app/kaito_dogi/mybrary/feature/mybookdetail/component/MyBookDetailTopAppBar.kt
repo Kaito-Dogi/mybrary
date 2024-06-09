@@ -119,7 +119,6 @@ private fun MyBookDetailTopAppBarPreview() {
         isPinned = false,
         isFavorite = false,
         isArchived = false,
-        memos = emptyList(),
       ),
     )
   }

@@ -5,9 +5,11 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 
 internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   override suspend fun getMyBooks(): List<MyBook> {
+    delay(1_000)
     return dummyMyBooks
   }
 

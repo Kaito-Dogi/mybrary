@@ -13,7 +13,7 @@ private const val myBookDetail = "myBookDetail"
 
 internal const val myBookDetailNavArgName = "${myBookDetail}NavArg"
 
-private const val myBookDetailRoute = "${myBookDetail}/${myBookDetailNavArgName}"
+private const val myBookDetailRoute = "${myBookDetail}/{${myBookDetailNavArgName}}"
 
 private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
   isNullableAllowed = false,

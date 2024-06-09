@@ -3,15 +3,17 @@ package app.kaito_dogi.mybrary.feature.mybooklist
 import androidx.compose.runtime.Immutable
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
-@Immutable
-internal data class MyBookListUiState(
-  val myBookList: List<MyBook>,
-  val numberOfColumns: Int,
-) {
-  companion object {
-    val initialValue = MyBookListUiState(
-      myBookList = emptyList(),
-      numberOfColumns = 3,
-    )
-  }
+internal sealed interface MyBookListUiState {
+  val numberOfColumns: Int
+
+  @Immutable
+  data class Loading(
+    override val numberOfColumns: Int,
+  ) : MyBookListUiState
+
+  @Immutable
+  data class Success(
+    override val numberOfColumns: Int,
+    val myBookList: List<MyBook>,
+  ) : MyBookListUiState
 }

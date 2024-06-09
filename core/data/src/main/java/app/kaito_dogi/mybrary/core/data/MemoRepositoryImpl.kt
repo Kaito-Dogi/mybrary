@@ -9,6 +9,11 @@ import javax.inject.Inject
 
 internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
   // TODO: 実装
+  override suspend fun getMemos(myBookId: MyBookId): List<Memo> {
+    return emptyList()
+  }
+
+  // TODO: 実装
   override suspend fun createMemo(memo: Memo): Boolean {
     return true
   }
