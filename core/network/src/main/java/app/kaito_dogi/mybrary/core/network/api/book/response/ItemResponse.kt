@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.network.api.book.response
 
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Book
 
 internal class ItemResponse(
@@ -9,8 +10,8 @@ internal class ItemResponse(
     return Book(
       id = "",
       title = volumeInfo.title,
-      author = volumeInfo.authors?.joinToString(", ") ?: "",
-      imageUrl = volumeInfo.imageLinks?.thumbnail ?: "",
+      authors = volumeInfo.authors?.joinToString(", ") ?: "",
+      imageUrl = Url.Image(value = volumeInfo.imageLinks?.thumbnail ?: ""),
     )
   }
 }

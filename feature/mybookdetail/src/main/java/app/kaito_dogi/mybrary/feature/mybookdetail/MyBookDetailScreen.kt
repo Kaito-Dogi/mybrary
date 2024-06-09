@@ -1,20 +1,28 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
 fun NavGraphBuilder.myBookDetailScreen() {
   composable(
@@ -33,22 +41,41 @@ fun NavGraphBuilder.myBookDetailScreen() {
 private fun MyBookDetailScreen(
   viewModel: MyBookDetailViewModel = viewModel(),
 ) {
-  MyBookDetailScreen(id = viewModel.navArg.myBookId)
+  val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+  MyBookDetailScreen(
+    uiState = uiState,
+  )
 }
 
 @Composable
 private fun MyBookDetailScreen(
-//  uiState
-  id: MyBookId,
+  uiState: MyBookDetailUiState,
 ) {
-  Scaffold { innerPadding ->
-    Box(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(innerPadding),
-      contentAlignment = Alignment.Center,
+  Column(
+    modifier = Modifier
+      .fillMaxSize()
+      .background(MybraryTheme.colorScheme.background),
+  ) {
+    LazyColumn(
+      contentPadding = PaddingValues(
+        bottom = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding(),
+      ),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
-      Text(text = "MyBookDetail:${id.value}")
+      item {
+        MyBookDetailTopAppBar(myBook = uiState.myBook)
+      }
+      items(
+        items = uiState.myBook.memos,
+        key = { memo -> memo.id.value },
+      ) { memo ->
+        MemoCard(
+          memo = memo,
+          onClick = {},
+          modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+        )
+      }
     }
   }
 }

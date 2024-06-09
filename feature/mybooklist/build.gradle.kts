@@ -7,12 +7,12 @@ plugins {
 
 android {
   namespace = "app.kaito_dogi.mybrary.feature.mybooklist"
-  compileSdk = 34
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   resourcePrefix = "mybooklist_"
 
   defaultConfig {
-    minSdk = 24
+    minSdk = libs.versions.minSdk.get().toInt()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
@@ -34,7 +34,7 @@ android {
   }
 
   kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = libs.versions.jvmTarget.get()
   }
 
   buildFeatures {
@@ -47,8 +47,10 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:common"))
   implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
+  implementation(project(":core:ui"))
 
   // Jetpack Compose
   val composeBom = platform(libs.androidxComposeBom)

@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.data
 
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -17,10 +18,10 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
   ): MyBook {
     return MyBook(
       id = MyBookId(0L),
-      externalId = "MyBook",
-      title = "MyBook",
-      author = "MyBook",
-      imageUrl = "MyBook",
+      externalId = "externalId",
+      title = "title",
+      authors = "authors",
+      imageUrl = Url.Image(value = "imageUrl"),
       isPinned = false,
       isFavorite = false,
       isArchived = false,
@@ -41,10 +42,10 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
   ): MyBook {
     return MyBook(
       id = MyBookId(0L),
-      externalId = "MyBook",
-      title = "MyBook",
-      author = "MyBook",
-      imageUrl = "MyBook",
+      externalId = "externalId",
+      title = "title",
+      authors = "authors",
+      imageUrl = Url.Image(value = "imageUrl"),
       isPinned = false,
       isFavorite = false,
       isArchived = false,
@@ -58,10 +59,10 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
   ): MyBook {
     return MyBook(
       id = MyBookId(0L),
-      externalId = "MyBook",
-      title = "MyBook",
-      author = "MyBook",
-      imageUrl = "MyBook",
+      externalId = "externalId",
+      title = "title",
+      authors = "authors",
+      imageUrl = Url.Image(value = "imageUrl"),
       isPinned = false,
       isFavorite = false,
       isArchived = false,
@@ -75,10 +76,10 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
   ): MyBook {
     return MyBook(
       id = MyBookId(0L),
-      externalId = "MyBook",
-      title = "MyBook",
-      author = "MyBook",
-      imageUrl = "MyBook",
+      externalId = "externalId",
+      title = "title",
+      authors = "authors",
+      imageUrl = Url.Image(value = "imageUrl"),
       isPinned = false,
       isFavorite = false,
       isArchived = false,

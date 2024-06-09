@@ -7,10 +7,12 @@ plugins {
 
 android {
   namespace = "app.kaito_dogi.mybrary.core.ui"
-  compileSdk = 34
+  compileSdk = libs.versions.compileSdk.get().toInt()
+
+  resourcePrefix = "ui_"
 
   defaultConfig {
-    minSdk = 24
+    minSdk = libs.versions.minSdk.get().toInt()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
@@ -32,20 +34,34 @@ android {
   }
 
   kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = libs.versions.jvmTarget.get()
   }
 
-//  buildFeatures {
-//    compose = true
-//  }
+  buildFeatures {
+    compose = true
+  }
 
-//  composeOptions {
-//    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-//  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
+  }
 }
 
 dependencies {
+  implementation(project(":core:common"))
+  implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
 
+  // Jetpack Compose
+  val composeBom = platform(libs.androidxComposeBom)
+  implementation(composeBom)
+  androidTestImplementation(composeBom)
+  implementation(libs.androidxComposeMaterial3)
+  implementation(libs.androidxComposeUiTooling)
+  implementation(libs.androidxComposeUiToolingPreview)
+  implementation(libs.androidxHiltNavigationCompose)
+  implementation(libs.androidxLifecycleRuntimeCompose)
+  implementation(libs.androidxNavigationCompose)
+
+  implementation(libs.coilCompose)
   implementation(libs.serialization)
 }

@@ -1,4 +1,10 @@
 [versions]
+compileSdk = "34"
+minSdk = "26"
+targetSdk = "34"
+versionCode = "1"
+versionName = "0.0.1"
+jvmTarget = "17"
 androidGradlePlugin = "8.2.2"
 androidxComposeBom = "2024.01.00"
 androidxComposeCompiler = "1.5.8"

@@ -18,14 +18,14 @@ private const val READ_TIME_OUT = 60L
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
 
-  @Provides
   @Singleton
+  @Provides
   fun providesMoshi(): Moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-  @Provides
   @Singleton
+  @Provides
   fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
     .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
     .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)

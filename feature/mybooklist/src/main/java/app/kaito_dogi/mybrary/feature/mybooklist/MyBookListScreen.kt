@@ -3,9 +3,11 @@ package app.kaito_dogi.mybrary.feature.mybooklist
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -70,21 +72,20 @@ private fun MyBookListScreen(
 ) {
   Box(
     modifier = Modifier
-      .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background),
+        .fillMaxSize()
+        .background(MybraryTheme.colorScheme.background)
+        .padding(horizontal = MybraryTheme.space.md),
   ) {
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),
-      contentPadding = PaddingValues(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.dimens.topAppBarHeight,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.dimens.floatingActionButtonSize.plus(MybraryTheme.space.xl),
-      ),
+      contentPadding = WindowInsets.systemBars.asPaddingValues(),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
-      items(items = uiState.myBookList) {
+      items(
+          items = uiState.myBookList,
+          key = { myBook -> myBook.id.value },
+      ) {
         MyBookCard(
           myBook = it,
           onClick = onMyBookClick,
@@ -95,8 +96,8 @@ private fun MyBookListScreen(
     FloatingActionButton(
       onClick = onAdditionClick,
       modifier = Modifier
-        .padding(MybraryTheme.space.md)
-        .align(Alignment.BottomEnd),
+          .padding(MybraryTheme.space.md)
+          .align(Alignment.BottomEnd),
     ) {
       Icon(imageVector = Icons.Default.Add, contentDescription = "書籍検索画面に遷移")
     }

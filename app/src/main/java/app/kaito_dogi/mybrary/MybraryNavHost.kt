@@ -29,7 +29,9 @@ internal fun MybraryNavHost(
         navController.navigate(searchBookRoute)
       },
       onMyBookClick = { myBook ->
-        val navArg = MyBookDetailNavArg(myBook.id)
+        val navArg = MyBookDetailNavArg(
+          myBook = myBook,
+        )
         navController.navigate(MyBookDetailNavHelper.routeWithNavArg(navArg))
       },
     )
