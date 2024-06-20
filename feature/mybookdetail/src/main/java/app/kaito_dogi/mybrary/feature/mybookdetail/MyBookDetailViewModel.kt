@@ -18,8 +18,8 @@ internal class MyBookDetailViewModel @Inject constructor(
 ) : ViewModel() {
   private val navArg: MyBookDetailNavArg = checkNotNull(savedStateHandle[myBookDetailNavArgName])
 
-  private val _uiState = MutableStateFlow<MyBookDetailUiState>(
-    MyBookDetailUiState.Loading(
+  private val _uiState = MutableStateFlow(
+    MyBookDetailUiState.createInitialValue(
       myBook = navArg.myBook,
     ),
   )
@@ -30,8 +30,7 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         val memos = memoRepository.getMemos(navArg.myBook.id)
         _uiState.update {
-          MyBookDetailUiState.Success(
-            myBook = it.myBook,
+          it.copy(
             memos = memos,
           )
         }

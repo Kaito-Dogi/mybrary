@@ -34,8 +34,8 @@ internal fun MyBookDetailPage(
 ) {
   Scaffold(
     modifier = Modifier
-      .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background),
+        .fillMaxSize()
+        .background(MybraryTheme.colorScheme.background),
     bottomBar = {
       MyBookDetailBottomAppBar(
         onBackClick = onBackClick,
@@ -53,49 +53,44 @@ internal fun MyBookDetailPage(
       item {
         MyBookDetailTopAppBar(myBook = uiState.myBook)
       }
-      when (uiState) {
-        is MyBookDetailUiState.Loading -> {
-          item {
-            Box(
-              modifier = Modifier.fillMaxWidth(),
-              contentAlignment = Alignment.Center,
-            ) {
-              // 落ちるのでコメントアウト
-              // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
+      if (uiState.memos == null) {
+        item {
+          Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center,
+          ) {
+            // 落ちるのでコメントアウト
+            // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
 //              CircularProgressIndicator()
-              Text(text = "ローディング中…")
-            }
+            Text(text = "ローディング中…")
           }
         }
-
-        is MyBookDetailUiState.Success -> {
-          items(
-            items = uiState.memos,
-            key = { memo -> memo.id.value },
-          ) { memo ->
-            MemoCard(
-              memo = memo,
-              onClick = {},
-              modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
-            )
-          }
-          item {
-            // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
-            Spacer(modifier = Modifier.fillMaxWidth())
-          }
+      } else {
+        items(
+          items = uiState.memos,
+          key = { memo -> memo.id.value },
+        ) { memo ->
+          MemoCard(
+            memo = memo,
+            onClick = {},
+            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+          )
+        }
+        item {
+          // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
+          Spacer(modifier = Modifier.fillMaxWidth())
         }
       }
     }
   }
 }
 
-// TODO: Loading, Success 時の Preview を表示する
 @Preview
 @Composable
 private fun MyBookDetailPagePreview() {
   MybraryTheme {
     MyBookDetailPage(
-      uiState = MyBookDetailUiState.Loading(
+      uiState = MyBookDetailUiState.createInitialValue(
         myBook = MyBook(
           id = MyBookId(0L),
           externalId = "externalId",
