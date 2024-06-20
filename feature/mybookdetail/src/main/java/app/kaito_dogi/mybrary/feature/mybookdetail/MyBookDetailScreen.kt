@@ -19,8 +19,8 @@ internal fun MyBookDetailScreen(
   MyBookDetailPage(
     uiState = uiState,
     onBackClick = {},
-    onArchiveClick = {},
-    onFavoriteClick = {},
+    onArchiveClick = viewModel::onArchiveClick,
+    onFavoriteClick = viewModel::onFavoriteClick,
     onEditClick = {},
   )
 }
