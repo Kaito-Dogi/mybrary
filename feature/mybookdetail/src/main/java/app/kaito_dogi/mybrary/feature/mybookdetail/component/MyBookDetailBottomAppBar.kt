@@ -5,9 +5,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -21,6 +22,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
 internal fun MyBookDetailBottomAppBar(
+  isFavorite: Boolean,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
@@ -43,7 +45,7 @@ internal fun MyBookDetailBottomAppBar(
     }
     IconButton(onClick = onArchiveClick) {
       Icon(
-        // TODO: archive アイコンに差し替える
+        // TODO: アイコンを差し替える
         imageVector = Icons.Outlined.Delete,
         contentDescription = "書籍を非表示にする",
       )
@@ -51,7 +53,7 @@ internal fun MyBookDetailBottomAppBar(
     IconButton(onClick = onFavoriteClick) {
       Icon(
         // TODO: アイコンを差し替える
-        imageVector = Icons.Outlined.Favorite,
+        imageVector = if (isFavorite) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
         contentDescription = "書籍をお気に入り登録する",
       )
     }
@@ -79,6 +81,7 @@ internal fun MyBookDetailBottomAppBar(
 private fun MyBookDetailBottomAppBarPreview() {
   MybraryTheme {
     MyBookDetailBottomAppBar(
+      isFavorite = false,
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},

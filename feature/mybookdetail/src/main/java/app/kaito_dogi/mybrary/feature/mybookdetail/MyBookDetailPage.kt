@@ -38,6 +38,7 @@ internal fun MyBookDetailPage(
       .background(MybraryTheme.colorScheme.background),
     bottomBar = {
       MyBookDetailBottomAppBar(
+        isFavorite = uiState.myBook.isFavorite,
         onBackClick = onBackClick,
         onArchiveClick = onArchiveClick,
         onFavoriteClick = onFavoriteClick,
