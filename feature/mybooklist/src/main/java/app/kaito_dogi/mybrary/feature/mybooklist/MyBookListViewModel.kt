@@ -21,11 +21,7 @@ internal class MyBookListViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         val myBookList = myBookRepository.getMyBooks()
-        _uiState.update {
-          it.copy(
-            myBookList = myBookList,
-          )
-        }
+        _uiState.update { it.copy(myBookList = myBookList) }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
