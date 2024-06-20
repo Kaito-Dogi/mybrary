@@ -34,8 +34,8 @@ internal fun MyBookDetailPage(
 ) {
   Scaffold(
     modifier = Modifier
-        .fillMaxSize()
-        .background(MybraryTheme.colorScheme.background),
+      .fillMaxSize()
+      .background(MybraryTheme.colorScheme.background),
     bottomBar = {
       MyBookDetailBottomAppBar(
         onBackClick = onBackClick,
@@ -53,7 +53,7 @@ internal fun MyBookDetailPage(
       item {
         MyBookDetailTopAppBar(myBook = uiState.myBook)
       }
-      if (uiState.memos == null) {
+      if (uiState.memoList == null) {
         item {
           Box(
             modifier = Modifier.fillMaxWidth(),
@@ -67,7 +67,7 @@ internal fun MyBookDetailPage(
         }
       } else {
         items(
-          items = uiState.memos,
+          items = uiState.memoList,
           key = { memo -> memo.id.value },
         ) { memo ->
           MemoCard(

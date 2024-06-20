@@ -28,10 +28,10 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun init() {
     viewModelScope.launch {
       try {
-        val memos = memoRepository.getMemos(navArg.myBook.id)
+        val memoList = memoRepository.getMemos(navArg.myBook.id)
         _uiState.update {
           it.copy(
-            memos = memos,
+            memoList = memoList,
           )
         }
       } catch (e: Exception) {
