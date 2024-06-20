@@ -44,37 +44,33 @@ internal fun MyBookListPage(
       }
     },
   ) { innerPadding ->
-    when (uiState) {
-      is MyBookListUiState.Loading -> {
-        Box(
-          modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding),
-          contentAlignment = Alignment.Center,
-        ) {
-          // 落ちるのでコメントアウト
-          // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
+    if (uiState.myBookList == null) {
+      Box(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(innerPadding),
+        contentAlignment = Alignment.Center,
+      ) {
+        // 落ちるのでコメントアウト
+        // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
 //              CircularProgressIndicator()
-          Text(text = "ローディング中…")
-        }
+        Text(text = "ローディング中…")
       }
-
-      is MyBookListUiState.Success -> {
-        LazyVerticalGrid(
-          columns = GridCells.Fixed(uiState.numberOfColumns),
-          contentPadding = innerPadding,
-          verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-          horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+    } else {
+      LazyVerticalGrid(
+        columns = GridCells.Fixed(uiState.numberOfColumns),
+        contentPadding = innerPadding,
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+        horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+      ) {
+        items(
+          items = uiState.myBookList,
+          key = { myBook -> myBook.id.value },
         ) {
-          items(
-            items = uiState.myBookList,
-            key = { myBook -> myBook.id.value },
-          ) {
-            MyBookCard(
-              myBook = it,
-              onClick = onMyBookClick,
-            )
-          }
+          MyBookCard(
+            myBook = it,
+            onClick = onMyBookClick,
+          )
         }
       }
     }
@@ -87,10 +83,7 @@ internal fun MyBookListPage(
 private fun MyBookListPagePreview() {
   MybraryTheme {
     MyBookListPage(
-      uiState = MyBookListUiState.Success(
-        myBookList = emptyList(),
-        numberOfColumns = 3,
-      ),
+      uiState = MyBookListUiState.InitialValue,
       onAdditionClick = {},
       onMyBookClick = {},
     )

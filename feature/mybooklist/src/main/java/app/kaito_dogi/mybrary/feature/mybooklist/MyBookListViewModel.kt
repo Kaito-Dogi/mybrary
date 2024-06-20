@@ -10,27 +10,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private const val NUMBER_OF_COLUMNS = 3
-
 @HiltViewModel
 internal class MyBookListViewModel @Inject constructor(
   private val myBookRepository: MyBookRepository,
 ) : ViewModel() {
-  private val _uiState = MutableStateFlow<MyBookListUiState>(
-    MyBookListUiState.Loading(
-      numberOfColumns = NUMBER_OF_COLUMNS,
-    ),
-  )
+  private val _uiState = MutableStateFlow(MyBookListUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun init() {
     viewModelScope.launch {
       try {
-        val myBooks = myBookRepository.getMyBooks()
+        val myBookList = myBookRepository.getMyBooks()
         _uiState.update {
-          MyBookListUiState.Success(
-            numberOfColumns = it.numberOfColumns,
-            myBookList = myBooks,
+          it.copy(
+            myBookList = myBookList,
           )
         }
       } catch (e: Exception) {
