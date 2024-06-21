@@ -8,4 +8,13 @@ data class DraftMemo(
   val content: String,
   val fromPage: Int?,
   val toPage: Int?,
-)
+) {
+  companion object {
+    fun createInitialValue(myBookId: MyBookId) = DraftMemo(
+      myBookId = myBookId,
+      content = "",
+      fromPage = null,
+      toPage = null,
+    )
+  }
+}
