@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -28,6 +27,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -100,12 +100,12 @@ internal fun MyBookDetailPage(
         onDismissRequest = onModalBottomSheetDismissRequest,
         sheetState = bottomSheetState,
       ) {
-        Button(
-          onClick = onSaveClick,
-          modifier = Modifier.fillMaxWidth(),
-        ) {
-          Text(text = "閉じる")
-        }
+        MyBookDetailBottomSheetContent(
+          onSaveClick = onSaveClick,
+          modifier = Modifier
+            .padding(horizontal = MybraryTheme.space.md)
+            .fillMaxWidth(),
+        )
       }
     }
   }
