@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.feature.mybooklist
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,7 +30,6 @@ internal fun MyBookListScreen(
   Scaffold(
     modifier = Modifier
       .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background)
       .padding(horizontal = MybraryTheme.space.md),
     floatingActionButton = {
       FloatingActionButton(
