@@ -45,6 +45,10 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
+  fun onMessageShow() {
+    _uiState.update { it.copy(shownMessage = null) }
+  }
+
   fun onArchiveClick() {
     viewModelScope.launch {
       try {
@@ -54,6 +58,7 @@ internal class MyBookDetailViewModel @Inject constructor(
             myBook = archivedMyBook,
             editedMemoId = null,
             draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+            shownMessage = "『${archivedMyBook.title}』をアーカイブしました",
           )
         }
       } catch (e: Exception) {
@@ -71,6 +76,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = removedMyBook,
+              shownMessage = "『${removedMyBook.title}』をお気に入りから削除しました",
             )
           }
         } else {
@@ -78,6 +84,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = addedMyBook,
+              shownMessage = "『${addedMyBook.title}』をお気に入りに追加しました",
             )
           }
         }
@@ -170,6 +177,7 @@ internal class MyBookDetailViewModel @Inject constructor(
               memoList = it.memoList?.plus(createdMemo),
               editedMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              shownMessage = "メモを追加しました",
             )
           }
         } else {
@@ -185,6 +193,7 @@ internal class MyBookDetailViewModel @Inject constructor(
               memoList = newMemoList,
               editedMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              shownMessage = "メモを編集しました",
             )
           }
         }

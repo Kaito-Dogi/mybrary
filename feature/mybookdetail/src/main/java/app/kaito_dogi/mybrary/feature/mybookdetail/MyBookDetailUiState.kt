@@ -13,6 +13,7 @@ internal data class MyBookDetailUiState(
   val isBottomSheetVisible: Boolean,
   val editedMemoId: MemoId?,
   val draftMemo: DraftMemo,
+  val shownMessage: String?,
 ) {
   companion object {
     fun createInitialValue(myBook: MyBook) = MyBookDetailUiState(
@@ -26,6 +27,7 @@ internal data class MyBookDetailUiState(
         fromPage = null,
         toPage = null,
       ),
+      shownMessage = null,
     )
   }
 }

@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SheetState
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
@@ -28,26 +25,24 @@ import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomA
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailScreen(
   uiState: MyBookDetailUiState,
-  bottomSheetState: SheetState,
+  snackbarHost: @Composable () -> Unit,
+  bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
+  showSnackbar: (String) -> Unit,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
-  onModalBottomSheetDismissRequest: () -> Unit,
   onFromPageChange: (String) -> Unit,
   onToPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier
-      .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background),
+    modifier = Modifier.fillMaxSize(),
     bottomBar = {
       MyBookDetailBottomAppBar(
         isFavorite = uiState.myBook.isFavorite,
@@ -57,6 +52,7 @@ internal fun MyBookDetailScreen(
         onAdditionClick = onAdditionClick,
       )
     },
+    snackbarHost = snackbarHost,
   ) { innerPadding ->
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
@@ -115,11 +111,7 @@ internal fun MyBookDetailScreen(
     }
 
     if (uiState.isBottomSheetVisible) {
-      ModalBottomSheet(
-        onDismissRequest = onModalBottomSheetDismissRequest,
-        modifier = Modifier.fillMaxWidth(),
-        sheetState = bottomSheetState,
-      ) {
+      bottomSheet {
         MyBookDetailBottomSheetContent(
           draftMemo = uiState.draftMemo,
           onFromPageChange = onFromPageChange,
@@ -133,9 +125,14 @@ internal fun MyBookDetailScreen(
       }
     }
   }
+
+  uiState.shownMessage?.let {
+    LaunchedEffect(it) {
+      showSnackbar(it)
+    }
+  }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 private fun MyBookDetailScreenPreview() {
@@ -155,13 +152,14 @@ private fun MyBookDetailScreenPreview() {
           isArchived = false,
         ),
       ),
-      bottomSheetState = rememberModalBottomSheetState(),
+      snackbarHost = {},
+      bottomSheet = {},
+      showSnackbar = {},
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
       onAdditionClick = {},
       onMemoClick = {},
-      onModalBottomSheetDismissRequest = {},
       onFromPageChange = {},
       onToPageChange = {},
       onContentChange = {},
