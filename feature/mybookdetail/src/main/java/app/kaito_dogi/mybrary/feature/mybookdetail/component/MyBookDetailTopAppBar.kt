@@ -47,7 +47,9 @@ internal fun MyBookDetailTopAppBar(
   modifier: Modifier = Modifier,
 ) {
   Box(
-    modifier = modifier.height(IntrinsicSize.Min),
+    modifier = modifier
+      .fillMaxWidth()
+      .height(IntrinsicSize.Min),
   ) {
     AsyncImage(
       model = myBook.imageUrl.value,

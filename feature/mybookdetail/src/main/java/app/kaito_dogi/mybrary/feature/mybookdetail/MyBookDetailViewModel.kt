@@ -33,7 +33,11 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         val memoList = memoRepository.getMemoList(navArg.myBook.id)
-        _uiState.update { it.copy(memoList = memoList) }
+        _uiState.update {
+          it.copy(
+            memoList = memoList,
+          )
+        }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -64,10 +68,18 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         if (uiState.value.myBook.isFavorite) {
           val removedMyBook = myBookRepository.removeMyBookFromFavorites(navArg.myBook.id)
-          _uiState.update { it.copy(myBook = removedMyBook) }
+          _uiState.update {
+            it.copy(
+              myBook = removedMyBook,
+            )
+          }
         } else {
           val addedMyBook = myBookRepository.addMyBookToFavorites(navArg.myBook.id)
-          _uiState.update { it.copy(myBook = addedMyBook) }
+          _uiState.update {
+            it.copy(
+              myBook = addedMyBook,
+            )
+          }
         }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
@@ -77,7 +89,11 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onEditClick() {
-    _uiState.update { it.copy(isBottomSheetVisible = true) }
+    _uiState.update {
+      it.copy(
+        isBottomSheetVisible = true,
+      )
+    }
   }
 
   fun onMemoClick(memo: Memo) {

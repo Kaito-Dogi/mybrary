@@ -31,7 +31,7 @@ internal fun MyBookDetailBottomSheetContent(
   onSaveClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  Column(modifier = modifier) {
+  Column(modifier = modifier.fillMaxWidth()) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
         value = if (draftMemo.fromPage == null) "" else draftMemo.fromPage.toString(),
@@ -91,7 +91,9 @@ internal fun MyBookDetailBottomSheetContent(
 private fun MyBookDetailBottomSheetContentPreview() {
   MybraryTheme {
     MyBookDetailBottomSheetContent(
-      draftMemo = DraftMemo.createInitialValue(myBookId = MyBookId(0L)),
+      draftMemo = DraftMemo.createInitialValue(
+        myBookId = MyBookId(0L),
+      ),
       onFromPageChange = {},
       onToPageChange = {},
       onContentChange = {},

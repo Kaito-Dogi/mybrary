@@ -31,7 +31,7 @@ internal fun MemoCard(
 
   Card(
     onClick = { onClick(memo) },
-    modifier = modifier,
+    modifier = modifier.fillMaxWidth(),
     shape = MybraryTheme.shapes.small,
   ) {
     // top の padding を小さくすることで、錯視を調整
@@ -94,7 +94,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "content",
+        content = "メモ",
         fromPage = 1,
         toPage = 100,
         createdAt = LocalDateTime.now(),
@@ -107,7 +107,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "content",
+        content = "メモ",
         fromPage = 50,
         toPage = null,
         createdAt = LocalDateTime.now(),
@@ -120,7 +120,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       Memo(
         id = MemoId(0),
         myBookId = MyBookId(0),
-        content = "content",
+        content = "メモ",
         fromPage = null,
         toPage = null,
         createdAt = LocalDateTime.now(),

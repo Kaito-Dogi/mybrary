@@ -38,9 +38,8 @@ private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
   }
 }
 
-fun myBookDetailRouteWithNavArg(
-  navArg: MyBookDetailNavArg,
-) = "${myBookDetail}/${Uri.encode(Json.encodeToString<MyBookDetailNavArg>(navArg))}"
+fun myBookDetailRouteWithNavArg(navArg: MyBookDetailNavArg) =
+  "${myBookDetail}/${Uri.encode(Json.encodeToString<MyBookDetailNavArg>(navArg))}"
 
 fun NavGraphBuilder.myBookDetail() {
   composable(

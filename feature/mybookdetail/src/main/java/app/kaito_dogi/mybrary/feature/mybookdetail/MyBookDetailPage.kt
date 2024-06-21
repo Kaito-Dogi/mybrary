@@ -55,32 +55,44 @@ internal fun MyBookDetailPage(
         onArchiveClick = onArchiveClick,
         onFavoriteClick = onFavoriteClick,
         onEditClick = onEditClick,
-        modifier = Modifier.fillMaxWidth(),
       )
     },
   ) { innerPadding ->
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
+      contentPadding = PaddingValues(
+        bottom = innerPadding.calculateBottomPadding(),
+      ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       item {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
-          modifier = Modifier.fillMaxWidth(),
         )
       }
       if (uiState.memoList == null) {
         // スケルトン表示
         item {
-          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
+          MemoSkeleton(
+            modifier = Modifier.padding(
+              horizontal = MybraryTheme.space.md,
+            ),
+          )
         }
         item {
-          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
+          MemoSkeleton(
+            modifier = Modifier.padding(
+              horizontal = MybraryTheme.space.md,
+            ),
+          )
         }
         item {
-          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
+          MemoSkeleton(
+            modifier = Modifier.padding(
+              horizontal = MybraryTheme.space.md,
+            ),
+          )
         }
       } else {
         items(
@@ -90,9 +102,9 @@ internal fun MyBookDetailPage(
           MemoCard(
             memo = memo,
             onClick = onMemoClick,
-            modifier = Modifier
-              .padding(horizontal = MybraryTheme.space.md)
-              .fillMaxWidth(),
+            modifier = Modifier.padding(
+              horizontal = MybraryTheme.space.md,
+            ),
           )
         }
         item {
@@ -114,9 +126,9 @@ internal fun MyBookDetailPage(
           onToPageChange = onToPageChange,
           onContentChange = onContentChange,
           onSaveClick = onSaveClick,
-          modifier = Modifier
-            .padding(horizontal = MybraryTheme.space.md)
-            .fillMaxWidth(),
+          modifier = Modifier.padding(
+            horizontal = MybraryTheme.space.md,
+          ),
         )
       }
     }
@@ -133,9 +145,11 @@ private fun MyBookDetailPagePreview() {
         myBook = MyBook(
           id = MyBookId(0L),
           externalId = "externalId",
-          title = "title",
-          authors = "authors",
-          imageUrl = Url.Image(value = "imageUrl"),
+          title = "タイトル",
+          authors = "著者",
+          imageUrl = Url.Image(
+            value = "",
+          ),
           isPinned = false,
           isFavorite = false,
           isArchived = false,
