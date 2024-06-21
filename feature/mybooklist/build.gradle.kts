@@ -9,8 +9,6 @@ android {
   namespace = "app.kaito_dogi.mybrary.feature.mybooklist"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
-  resourcePrefix = "mybooklist_"
-
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
 

@@ -14,7 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.feature.mybookdetail.R
+import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MyBookDetailBottomAppBar(
@@ -34,23 +34,23 @@ internal fun MyBookDetailBottomAppBar(
   ) {
     IconButton(onClick = onBackClick) {
       Icon(
-        painter = painterResource(id = R.drawable.mybookdetail_arrow_back),
+        painter = painterResource(id = R.drawable.icon_arrow_back),
         contentDescription = "書籍一覧画面に戻る",
       )
     }
     IconButton(onClick = onArchiveClick) {
       Icon(
-        painter = painterResource(id = R.drawable.mybookdetail_archive),
+        painter = painterResource(id = R.drawable.icon_archive),
         contentDescription = "書籍を非表示にする",
       )
     }
     IconButton(onClick = onFavoriteClick) {
       Icon(
         painter = if (isFavorite) {
-          painterResource(id = R.drawable.mybookdetail_heart_filled)
-        } else painterResource(
-          id = R.drawable.mybookdetail_heart_outlined,
-        ),
+          painterResource(id = R.drawable.icon_heart_filled)
+        } else {
+          painterResource(id = R.drawable.icon_heart_outlined)
+        },
         contentDescription = "書籍をお気に入り登録する",
       )
     }
@@ -65,7 +65,7 @@ internal fun MyBookDetailBottomAppBar(
       ),
     ) {
       Icon(
-        painter = painterResource(id = R.drawable.mybookdetail_edit),
+        painter = painterResource(id = R.drawable.icon_add),
         contentDescription = "メモを編集",
       )
     }

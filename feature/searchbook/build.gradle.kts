@@ -9,8 +9,6 @@ android {
   namespace = "app.kaito_dogi.mybrary.feature.searchbook"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
-  resourcePrefix = "searchbook_"
-
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
 

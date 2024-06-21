@@ -20,7 +20,7 @@ import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.feature.mybookdetail.R
+import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MyBookDetailBottomSheetContent(
@@ -78,7 +78,7 @@ internal fun MyBookDetailBottomSheetContent(
       )
       IconButton(onClick = onSaveClick) {
         Icon(
-          painter = painterResource(id = R.drawable.mybookdetail_send),
+          painter = painterResource(id = R.drawable.icon_send),
           contentDescription = "メモを保存する",
         )
       }

@@ -11,8 +11,6 @@ android {
   namespace = "app.kaito_dogi.mybrary.feature.mybookdetail"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
-  resourcePrefix = "mybookdetail_"
-
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
 
