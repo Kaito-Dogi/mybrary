@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
@@ -33,6 +33,8 @@ import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppB
 internal fun MyBookDetailScreen(
   uiState: MyBookDetailUiState,
   bottomSheetState: SheetState,
+  snackbarHost: @Composable () -> Unit,
+  showSnackbar: (String) -> Unit,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
@@ -45,9 +47,7 @@ internal fun MyBookDetailScreen(
   onSaveClick: () -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier
-      .fillMaxSize()
-      .background(MybraryTheme.colorScheme.background),
+    modifier = Modifier.fillMaxSize(),
     bottomBar = {
       MyBookDetailBottomAppBar(
         isFavorite = uiState.myBook.isFavorite,
@@ -57,6 +57,7 @@ internal fun MyBookDetailScreen(
         onAdditionClick = onAdditionClick,
       )
     },
+    snackbarHost = snackbarHost,
   ) { innerPadding ->
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
@@ -133,6 +134,12 @@ internal fun MyBookDetailScreen(
       }
     }
   }
+
+  uiState.shownMessage?.let {
+    LaunchedEffect(it) {
+      showSnackbar(it)
+    }
+  }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -156,6 +163,8 @@ private fun MyBookDetailScreenPreview() {
         ),
       ),
       bottomSheetState = rememberModalBottomSheetState(),
+      snackbarHost = {},
+      showSnackbar = {},
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
