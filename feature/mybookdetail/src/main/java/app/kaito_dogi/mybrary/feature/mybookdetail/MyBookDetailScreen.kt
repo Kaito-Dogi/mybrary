@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailScreen(
+  onBackClick: () -> Unit,
   viewModel: MyBookDetailViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -27,7 +28,7 @@ internal fun MyBookDetailScreen(
   MyBookDetailPage(
     uiState = uiState,
     bottomSheetState = bottomSheetState,
-    onBackClick = {},
+    onBackClick = onBackClick,
     onArchiveClick = viewModel::onArchiveClick,
     onFavoriteClick = viewModel::onFavoriteClick,
     onAdditionClick = viewModel::onAdditionClick,
