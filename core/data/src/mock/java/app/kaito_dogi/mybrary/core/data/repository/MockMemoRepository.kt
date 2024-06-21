@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.data.model.dummyMemos
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -15,14 +16,19 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     return dummyMemos.filter { it.myBookId == myBookId }
   }
 
-  override suspend fun createMemo(memo: Memo): Boolean {
+  override suspend fun createMemo(draftMemo: DraftMemo): Boolean {
+    return true
+  }
+
+  override suspend fun editMemo(
+    memoId: MemoId,
+    draftMemo: DraftMemo,
+  ): Boolean {
     return true
   }
 
   override suspend fun postMemo(memoId: MemoId): Memo {
-    return dummyMemos
-      .first { it.id == memoId }
-      .copy(
+    return dummyMemos.first { it.id == memoId }.copy(
         isPosted = false,
         postedAt = LocalDateTime.now(),
         likeCount = 0,
