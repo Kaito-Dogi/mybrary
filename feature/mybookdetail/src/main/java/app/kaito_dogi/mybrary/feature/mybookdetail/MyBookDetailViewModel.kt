@@ -44,7 +44,14 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onArchiveClick() {
     viewModelScope.launch {
       try {
-        myBookRepository.archiveMyBook(navArg.myBook.id)
+        val archivedMyBook = myBookRepository.archiveMyBook(navArg.myBook.id)
+        _uiState.update {
+          it.copy(
+            myBook = archivedMyBook,
+            editedMemoId = null,
+            draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+          )
+        }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -55,8 +62,13 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onFavoriteClick() {
     viewModelScope.launch {
       try {
-        val myBook = myBookRepository.addMyBookToFavorites(navArg.myBook.id)
-        _uiState.update { it.copy(myBook = myBook) }
+        if (uiState.value.myBook.isFavorite) {
+          val removedMyBook = myBookRepository.removeMyBookFromFavorites(navArg.myBook.id)
+          _uiState.update { it.copy(myBook = removedMyBook) }
+        } else {
+          val addedMyBook = myBookRepository.addMyBookToFavorites(navArg.myBook.id)
+          _uiState.update { it.copy(myBook = addedMyBook) }
+        }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -134,12 +146,12 @@ internal class MyBookDetailViewModel @Inject constructor(
         val memoId = uiState.value.editedMemoId
 
         if (memoId == null) {
-          val newMemo = memoRepository.createMemo(
+          val createdMemo = memoRepository.createMemo(
             draftMemo = uiState.value.draftMemo,
           )
           _uiState.update {
             it.copy(
-              memoList = it.memoList?.plus(newMemo),
+              memoList = it.memoList?.plus(createdMemo),
               editedMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
             )
