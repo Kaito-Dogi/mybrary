@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
-  override suspend fun getMemos(myBookId: MyBookId): List<Memo> {
+  override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {
     TODO("Not yet implemented")
   }
 

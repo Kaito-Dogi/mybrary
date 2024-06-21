@@ -32,7 +32,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun init() {
     viewModelScope.launch {
       try {
-        val memoList = memoRepository.getMemos(navArg.myBook.id)
+        val memoList = memoRepository.getMemoList(navArg.myBook.id)
         _uiState.update { it.copy(memoList = memoList) }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する

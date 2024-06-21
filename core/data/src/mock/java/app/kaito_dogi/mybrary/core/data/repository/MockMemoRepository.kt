@@ -14,23 +14,23 @@ import kotlinx.coroutines.flow.update
 
 @Singleton
 internal class MockMemoRepository @Inject constructor() : MemoRepository {
-  private val _mockMemoList = MutableStateFlow<List<Memo>>(emptyList())
+  private val mockMemoList = MutableStateFlow<List<Memo>>(emptyList())
 
-  override suspend fun getMemos(myBookId: MyBookId): List<Memo> {
+  override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {
     delay(1_000)
 
-    _mockMemoList.update {
+    mockMemoList.update {
       createMockMemoList(myBookId = myBookId)
     }
 
-    return _mockMemoList.value
+    return mockMemoList.value
   }
 
   override suspend fun createMemo(draftMemo: DraftMemo): Memo {
     delay(1_000)
 
-    val memo = Memo(
-      id = MemoId(_mockMemoList.value.size.toLong()),
+    val createdMemo = Memo(
+      id = MemoId(mockMemoList.value.size.toLong()),
       myBookId = draftMemo.myBookId,
       content = draftMemo.content,
       fromPage = draftMemo.fromPage,
@@ -41,9 +41,9 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       postedAt = null,
       likeCount = null,
     )
-    _mockMemoList.update { it + memo }
+    mockMemoList.update { it + createdMemo }
 
-    return memo
+    return createdMemo
   }
 
   override suspend fun editMemo(
@@ -52,33 +52,33 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
   ): Memo {
     delay(1_000)
 
-    val memo = _mockMemoList.value.find { it.id == memoId }!!
-    val newMemo = memo.copy(
+    val memo = mockMemoList.value.first { it.id == memoId }
+    val editedMemo = memo.copy(
       content = draftMemo.content,
       fromPage = draftMemo.fromPage,
       toPage = draftMemo.toPage,
       editedAt = LocalDateTime.now(),
     )
-    val newMemoList = _mockMemoList.value.map {
-      if (it.id == memoId) newMemo else it
+    val newMemoList = mockMemoList.value.map {
+      if (it.id == memoId) editedMemo else it
     }
-    _mockMemoList.update { newMemoList }
+    mockMemoList.update { newMemoList }
 
-    return newMemo
+    return editedMemo
   }
 
   override suspend fun postMemo(memoId: MemoId): Memo {
     delay(1_000)
 
-    val memo = _mockMemoList.value.find { it.id == memoId }!!
+    val memo = mockMemoList.value.first { it.id == memoId }
     val postedMemo = memo.copy(
       isPosted = true,
       postedAt = LocalDateTime.now(),
     )
-    val newMemoList = _mockMemoList.value.map {
+    val newMemoList = mockMemoList.value.map {
       if (it.id == memoId) postedMemo else it
     }
-    _mockMemoList.update { newMemoList }
+    mockMemoList.update { newMemoList }
 
     return postedMemo
   }

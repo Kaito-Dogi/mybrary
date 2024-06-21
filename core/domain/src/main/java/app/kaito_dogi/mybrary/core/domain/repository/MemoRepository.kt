@@ -6,7 +6,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 interface MemoRepository {
-  suspend fun getMemos(myBookId: MyBookId): List<Memo>
+  suspend fun getMemoList(myBookId: MyBookId): List<Memo>
 
   suspend fun createMemo(draftMemo: DraftMemo): Memo
 
