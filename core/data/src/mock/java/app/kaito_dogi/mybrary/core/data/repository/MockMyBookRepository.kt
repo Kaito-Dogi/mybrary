@@ -56,13 +56,13 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
-    val madeFavoriteMyBook = myBook.copy(isFavorite = true)
+    val addedMyBook = myBook.copy(isFavorite = true)
     val newMyBookList = mockMyBookList.value.map {
-      if (it.id == myBookId) madeFavoriteMyBook else it
+      if (it.id == myBookId) addedMyBook else it
     }
     mockMyBookList.update { newMyBookList }
 
-    return madeFavoriteMyBook
+    return addedMyBook
   }
 
   override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
