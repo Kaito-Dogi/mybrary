@@ -132,21 +132,33 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         val memoId = uiState.value.editedMemoId
+
         if (memoId == null) {
-          memoRepository.createMemo(
+          val newMemo = memoRepository.createMemo(
             draftMemo = uiState.value.draftMemo,
           )
+          _uiState.update {
+            it.copy(
+              memoList = it.memoList?.plus(newMemo),
+              editedMemoId = null,
+              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+            )
+          }
         } else {
-          memoRepository.editMemo(
+          val editedMemo = memoRepository.editMemo(
             memoId = memoId,
             draftMemo = uiState.value.draftMemo,
           )
-        }
-        _uiState.update {
-          it.copy(
-            editedMemoId = null,
-            draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
-          )
+          val newMemoList = uiState.value.memoList?.map {
+            if (it.id == editedMemo.id) editedMemo else it
+          }
+          _uiState.update {
+            it.copy(
+              memoList = newMemoList,
+              editedMemoId = null,
+              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+            )
+          }
         }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する

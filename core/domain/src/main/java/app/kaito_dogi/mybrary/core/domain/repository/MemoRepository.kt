@@ -8,12 +8,12 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 interface MemoRepository {
   suspend fun getMemos(myBookId: MyBookId): List<Memo>
 
-  suspend fun createMemo(draftMemo: DraftMemo): Boolean
+  suspend fun createMemo(draftMemo: DraftMemo): Memo
 
   suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
-  ): Boolean
+  ): Memo
 
   suspend fun postMemo(memoId: MemoId): Memo
 }
