@@ -88,7 +88,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
-  fun onEditClick() {
+  fun onAdditionClick() {
     _uiState.update {
       it.copy(
         isBottomSheetVisible = true,

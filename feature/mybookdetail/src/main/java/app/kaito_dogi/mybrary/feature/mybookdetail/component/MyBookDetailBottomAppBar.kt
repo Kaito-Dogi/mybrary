@@ -22,7 +22,7 @@ internal fun MyBookDetailBottomAppBar(
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
-  onEditClick: () -> Unit,
+  onAdditionClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   BottomAppBar(
@@ -56,7 +56,7 @@ internal fun MyBookDetailBottomAppBar(
     }
     Spacer(modifier = Modifier.weight(1f))
     FloatingActionButton(
-      onClick = onEditClick,
+      onClick = onAdditionClick,
       elevation = FloatingActionButtonDefaults.elevation(
         defaultElevation = 0.dp,
         pressedElevation = 0.dp,
@@ -81,7 +81,7 @@ private fun MyBookDetailBottomAppBarPreview() {
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
-      onEditClick = {},
+      onAdditionClick = {},
     )
   }
 }

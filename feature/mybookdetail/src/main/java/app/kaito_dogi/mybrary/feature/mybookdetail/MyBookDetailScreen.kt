@@ -30,7 +30,7 @@ internal fun MyBookDetailScreen(
     onBackClick = {},
     onArchiveClick = viewModel::onArchiveClick,
     onFavoriteClick = viewModel::onFavoriteClick,
-    onEditClick = viewModel::onEditClick,
+    onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
     onModalBottomSheetDismissRequest = viewModel::onBottomSheetDismissRequest,
     onFromPageChange = viewModel::onFromPageChange,

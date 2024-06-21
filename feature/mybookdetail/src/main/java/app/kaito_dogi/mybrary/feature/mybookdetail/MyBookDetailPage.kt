@@ -36,7 +36,7 @@ internal fun MyBookDetailPage(
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
-  onEditClick: () -> Unit,
+  onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
   onModalBottomSheetDismissRequest: () -> Unit,
   onFromPageChange: (String) -> Unit,
@@ -54,7 +54,7 @@ internal fun MyBookDetailPage(
         onBackClick = onBackClick,
         onArchiveClick = onArchiveClick,
         onFavoriteClick = onFavoriteClick,
-        onEditClick = onEditClick,
+        onAdditionClick = onAdditionClick,
       )
     },
   ) { innerPadding ->
@@ -159,7 +159,7 @@ private fun MyBookDetailPagePreview() {
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
-      onEditClick = {},
+      onAdditionClick = {},
       onMemoClick = {},
       onModalBottomSheetDismissRequest = {},
       onFromPageChange = {},
