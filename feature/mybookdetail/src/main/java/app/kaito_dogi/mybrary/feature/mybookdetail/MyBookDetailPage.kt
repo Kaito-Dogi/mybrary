@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,10 +13,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetState
-import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
@@ -26,6 +23,7 @@ import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoSkeleton
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
@@ -74,16 +72,15 @@ internal fun MyBookDetailPage(
         )
       }
       if (uiState.memoList == null) {
+        // スケルトン表示
         item {
-          Box(
-            modifier = Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center,
-          ) {
-            // 落ちるのでコメントアウト
-            // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
-//              CircularProgressIndicator()
-            Text(text = "ローディング中…")
-          }
+          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
+        }
+        item {
+          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
+        }
+        item {
+          MemoSkeleton(modifier = Modifier.padding(horizontal = MybraryTheme.space.md))
         }
       } else {
         items(
