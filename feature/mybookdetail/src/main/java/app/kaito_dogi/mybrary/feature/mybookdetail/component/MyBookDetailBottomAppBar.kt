@@ -3,12 +3,6 @@ package app.kaito_dogi.mybrary.feature.mybookdetail.component
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -16,9 +10,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.feature.mybookdetail.R
 
 @Composable
 internal fun MyBookDetailBottomAppBar(
@@ -38,22 +34,23 @@ internal fun MyBookDetailBottomAppBar(
   ) {
     IconButton(onClick = onBackClick) {
       Icon(
-        // TODO: アイコンを差し替える
-        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+        painter = painterResource(id = R.drawable.mybookdetail_arrow_back),
         contentDescription = "書籍一覧画面に戻る",
       )
     }
     IconButton(onClick = onArchiveClick) {
       Icon(
-        // TODO: アイコンを差し替える
-        imageVector = Icons.Outlined.Delete,
+        painter = painterResource(id = R.drawable.mybookdetail_archive),
         contentDescription = "書籍を非表示にする",
       )
     }
     IconButton(onClick = onFavoriteClick) {
       Icon(
-        // TODO: アイコンを差し替える
-        imageVector = if (isFavorite) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
+        painter = if (isFavorite) {
+          painterResource(id = R.drawable.mybookdetail_heart_filled)
+        } else painterResource(
+          id = R.drawable.mybookdetail_heart_outlined,
+        ),
         contentDescription = "書籍をお気に入り登録する",
       )
     }
@@ -68,8 +65,7 @@ internal fun MyBookDetailBottomAppBar(
       ),
     ) {
       Icon(
-        // TODO: アイコンを差し替える
-        imageVector = Icons.Outlined.Edit,
+        painter = painterResource(id = R.drawable.mybookdetail_edit),
         contentDescription = "メモを編集",
       )
     }
