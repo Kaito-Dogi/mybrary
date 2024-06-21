@@ -29,13 +29,13 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   // TODO: 実装
-  override suspend fun registerBook(
+  override suspend fun registerMyBook(
     externalBookId: String,
   ): Boolean {
     return true
   }
 
-  override suspend fun pinBook(
+  override suspend fun pinMyBook(
     myBookId: MyBookId,
   ): MyBook {
     delay(1_000)
@@ -50,7 +50,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return pinedMyBook
   }
 
-  override suspend fun makeBookFavorite(
+  override suspend fun addMyBookToFavorites(
     myBookId: MyBookId,
   ): MyBook {
     delay(1_000)
@@ -78,7 +78,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return removedMyBook
   }
 
-  override suspend fun archiveBook(
+  override suspend fun archiveMyBook(
     myBookId: MyBookId,
   ): MyBook {
     delay(1_000)

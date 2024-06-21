@@ -16,15 +16,15 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun registerBook(externalBookId: String): Boolean {
+  override suspend fun registerMyBook(externalBookId: String): Boolean {
     TODO("Not yet implemented")
   }
 
-  override suspend fun pinBook(myBookId: MyBookId): MyBook {
+  override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
     TODO("Not yet implemented")
   }
 
-  override suspend fun makeBookFavorite(myBookId: MyBookId): MyBook {
+  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
     TODO("Not yet implemented")
   }
 
@@ -32,7 +32,7 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun archiveBook(myBookId: MyBookId): MyBook {
+  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
     TODO("Not yet implemented")
   }
 }

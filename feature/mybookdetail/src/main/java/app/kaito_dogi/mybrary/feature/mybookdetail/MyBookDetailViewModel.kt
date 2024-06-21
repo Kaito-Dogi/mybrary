@@ -44,7 +44,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onArchiveClick() {
     viewModelScope.launch {
       try {
-        myBookRepository.archiveBook(navArg.myBook.id)
+        myBookRepository.archiveMyBook(navArg.myBook.id)
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -55,7 +55,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onFavoriteClick() {
     viewModelScope.launch {
       try {
-        val myBook = myBookRepository.makeBookFavorite(navArg.myBook.id)
+        val myBook = myBookRepository.addMyBookToFavorites(navArg.myBook.id)
         _uiState.update { it.copy(myBook = myBook) }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
