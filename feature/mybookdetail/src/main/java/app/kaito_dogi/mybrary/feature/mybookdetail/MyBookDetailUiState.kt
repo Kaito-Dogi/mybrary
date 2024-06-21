@@ -8,6 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 internal data class MyBookDetailUiState(
   val myBook: MyBook,
   val memoList: List<Memo>?,
+  val isBottomSheetVisible: Boolean,
 ) {
   companion object {
     fun createInitialValue(
@@ -15,6 +16,7 @@ internal data class MyBookDetailUiState(
     ) = MyBookDetailUiState(
       myBook = myBook,
       memoList = null,
+      isBottomSheetVisible = false,
     )
   }
 }

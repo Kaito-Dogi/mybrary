@@ -10,27 +10,38 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailPage(
   uiState: MyBookDetailUiState,
+  bottomSheetState: SheetState,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onFavoriteClick: () -> Unit,
   onEditClick: () -> Unit,
+  onMemoClick: (Memo) -> Unit,
+  onModalBottomSheetDismissRequest: () -> Unit,
+  onSaveClick: () -> Unit,
 ) {
   Scaffold(
     modifier = Modifier
@@ -73,7 +84,7 @@ internal fun MyBookDetailPage(
         ) { memo ->
           MemoCard(
             memo = memo,
-            onClick = {},
+            onClick = { onMemoClick(memo) },
             modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
           )
         }
@@ -83,9 +94,24 @@ internal fun MyBookDetailPage(
         }
       }
     }
+
+    if (uiState.isBottomSheetVisible) {
+      ModalBottomSheet(
+        onDismissRequest = onModalBottomSheetDismissRequest,
+        sheetState = bottomSheetState,
+      ) {
+        Button(
+          onClick = onSaveClick,
+          modifier = Modifier.fillMaxWidth(),
+        ) {
+          Text(text = "閉じる")
+        }
+      }
+    }
   }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 private fun MyBookDetailPagePreview() {
@@ -103,10 +129,14 @@ private fun MyBookDetailPagePreview() {
           isArchived = false,
         ),
       ),
+      bottomSheetState = rememberModalBottomSheetState(),
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
       onEditClick = {},
+      onMemoClick = {},
+      onModalBottomSheetDismissRequest = {},
+      onSaveClick = {},
     )
   }
 }

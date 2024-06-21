@@ -3,14 +3,15 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 internal class MyBookDetailViewModel @Inject constructor(
@@ -60,5 +61,21 @@ internal class MyBookDetailViewModel @Inject constructor(
         println("あああ: ${e.message}")
       }
     }
+  }
+
+  fun onEditClick() {
+    _uiState.update { it.copy(isBottomSheetVisible = true) }
+  }
+
+  fun onMemoClick(memo: Memo) {
+    _uiState.update { it.copy(isBottomSheetVisible = true) }
+  }
+
+  fun onBottomSheetDismissRequest() {
+    _uiState.update { it.copy(isBottomSheetVisible = false) }
+  }
+
+  fun onSaveClick() {
+    println("あああ: onSaveClick")
   }
 }
