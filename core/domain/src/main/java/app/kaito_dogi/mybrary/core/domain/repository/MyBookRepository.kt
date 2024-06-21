@@ -4,7 +4,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 interface MyBookRepository {
-  suspend fun getMyBooks(): List<MyBook>
+  suspend fun getMyBookList(): List<MyBook>
 
   suspend fun getMyBook(myBookId: MyBookId): MyBook
 

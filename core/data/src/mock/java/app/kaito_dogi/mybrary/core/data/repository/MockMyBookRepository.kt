@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   private val mockMyBookList = MutableStateFlow(MockMyBookList)
 
-  override suspend fun getMyBooks(): List<MyBook> {
+  override suspend fun getMyBookList(): List<MyBook> {
     delay(1_000)
 
     return mockMyBookList.value
