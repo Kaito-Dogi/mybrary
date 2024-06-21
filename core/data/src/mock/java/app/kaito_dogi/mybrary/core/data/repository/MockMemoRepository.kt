@@ -37,7 +37,6 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       toPage = draftMemo.toPage,
       createdAt = LocalDateTime.now(),
       editedAt = null,
-      isPosted = false,
       postedAt = null,
       likeCount = null,
     )
@@ -72,7 +71,6 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
 
     val memo = mockMemoList.value.first { it.id == memoId }
     val postedMemo = memo.copy(
-      isPosted = true,
       postedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
@@ -95,7 +93,6 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) {
     toPage = toPage,
     createdAt = LocalDateTime.now(),
     editedAt = null,
-    isPosted = false,
     postedAt = null,
     likeCount = null,
   )
