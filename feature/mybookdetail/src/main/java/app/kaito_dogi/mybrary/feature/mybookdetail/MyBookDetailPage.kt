@@ -104,9 +104,7 @@ internal fun MyBookDetailPage(
         sheetState = bottomSheetState,
       ) {
         MyBookDetailBottomSheetContent(
-          memoFromPage = uiState.memoFromPage,
-          memoToPage = uiState.memoToPage,
-          memoContent = uiState.memoContent,
+          draftMemo = uiState.draftMemo,
           onFromPageChange = onFromPageChange,
           onToPageChange = onToPageChange,
           onContentChange = onContentChange,

@@ -3,12 +3,11 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
-import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.time.LocalDateTime
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -73,50 +72,80 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update {
       it.copy(
         isBottomSheetVisible = true,
-        memoFromPage = memo.fromPage.toString(),
-        memoToPage = memo.toPage.toString(),
-        memoContent = memo.content,
+        editedMemoId = memo.id,
+        draftMemo = it.draftMemo.copy(
+          content = memo.content,
+          fromPage = memo.fromPage,
+          toPage = memo.toPage,
+        ),
       )
     }
   }
 
   fun onBottomSheetDismissRequest() {
-    _uiState.update { it.copy(isBottomSheetVisible = false) }
+    _uiState.update {
+      it.copy(
+        isBottomSheetVisible = false,
+        editedMemoId = null,
+        draftMemo = if (it.editedMemoId == null) {
+          it.draftMemo
+        } else {
+          DraftMemo.createInitialValue(
+            navArg.myBook.id,
+          )
+        },
+      )
+    }
   }
 
   fun onFromPageChange(fromPage: String) {
-    _uiState.update { it.copy(memoFromPage = fromPage) }
+    _uiState.update {
+      it.copy(
+        draftMemo = it.draftMemo.copy(
+          fromPage = if (fromPage.isNotBlank()) fromPage.toInt() else null,
+        ),
+      )
+    }
   }
 
   fun onToPageChange(toPage: String) {
-    _uiState.update { it.copy(memoToPage = toPage) }
+    _uiState.update {
+      it.copy(
+        draftMemo = it.draftMemo.copy(
+          toPage = if (toPage.isNotBlank()) toPage.toInt() else null,
+        ),
+      )
+    }
   }
 
   fun onContentChange(content: String) {
-    _uiState.update { it.copy(memoContent = content) }
+    _uiState.update {
+      it.copy(
+        draftMemo = it.draftMemo.copy(
+          content = content,
+        ),
+      )
+    }
   }
 
   fun onSaveClick() {
     viewModelScope.launch {
       try {
-        memoRepository.createMemo(
-          memo = Memo(
-            id = MemoId(0L),
-            myBookId = navArg.myBook.id,
-            content = uiState.value.memoContent,
-            fromPage = uiState.value.memoFromPage.toInt(),
-            toPage = if (uiState.value.memoToPage.isBlank()) uiState.value.memoToPage.toInt() else null,
-            createdAt = LocalDateTime.now(),
-            isPosted = false,
-            postedAt = null,
-            likeCount = null,
-          ),
-        )
+        val memoId = uiState.value.editedMemoId
+        if (memoId == null) {
+          memoRepository.createMemo(
+            draftMemo = uiState.value.draftMemo,
+          )
+        } else {
+          memoRepository.editMemo(
+            memoId = memoId,
+            draftMemo = uiState.value.draftMemo,
+          )
+        }
         _uiState.update {
           it.copy(
-            memoFromPage = "",
-            memoToPage = "",
-            memoContent = "",
+            editedMemoId = null,
+            draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
           )
         }
       } catch (e: Exception) {

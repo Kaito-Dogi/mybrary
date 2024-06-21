@@ -19,12 +19,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 @Composable
 internal fun MyBookDetailBottomSheetContent(
-  memoFromPage: String,
-  memoToPage: String,
-  memoContent: String,
+  draftMemo: DraftMemo,
   onFromPageChange: (String) -> Unit,
   onToPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
@@ -34,7 +34,7 @@ internal fun MyBookDetailBottomSheetContent(
   Column(modifier = modifier.fillMaxWidth()) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
-        value = memoFromPage,
+        value = if (draftMemo.fromPage == null) "" else draftMemo.fromPage.toString(),
         onValueChange = onFromPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "開始ページ") },
@@ -45,7 +45,7 @@ internal fun MyBookDetailBottomSheetContent(
       )
       Gap(width = MybraryTheme.space.sm)
       TextField(
-        value = memoToPage,
+        value = if (draftMemo.toPage == null) "" else draftMemo.toPage.toString(),
         onValueChange = onToPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "終了ページ") },
@@ -61,7 +61,7 @@ internal fun MyBookDetailBottomSheetContent(
       verticalAlignment = Alignment.Bottom,
     ) {
       TextField(
-        value = memoContent,
+        value = draftMemo.content,
         onValueChange = onContentChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "メモを入力…") },
@@ -91,9 +91,7 @@ internal fun MyBookDetailBottomSheetContent(
 private fun MyBookDetailBottomSheetContentPreview() {
   MybraryTheme {
     MyBookDetailBottomSheetContent(
-      memoFromPage = "",
-      memoToPage = "",
-      memoContent = "",
+      draftMemo = DraftMemo.createInitialValue(myBookId = MyBookId(0L)),
       onFromPageChange = {},
       onToPageChange = {},
       onContentChange = {},
