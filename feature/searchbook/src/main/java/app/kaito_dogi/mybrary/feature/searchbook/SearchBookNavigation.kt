@@ -7,10 +7,10 @@ private const val searchBook = "searchBook"
 
 const val searchBookRoute = searchBook
 
-fun NavGraphBuilder.searchBook() {
+fun NavGraphBuilder.searchBookScreen() {
   composable(
     route = searchBookRoute,
   ) {
-    SearchBookScreen()
+    SearchBookContainer()
   }
 }

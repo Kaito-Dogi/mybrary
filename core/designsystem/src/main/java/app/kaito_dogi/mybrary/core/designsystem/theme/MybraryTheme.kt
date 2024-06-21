@@ -25,7 +25,8 @@ fun MybraryTheme(
     LocalSpace provides mybrarySpace,
   ) {
     MaterialTheme(
-      colorScheme = colorScheme,
+      // FIXME: カラースキーマをカスタムで定義する
+//      colorScheme = colorScheme,
       typography = mybraryTypography,
       content = content,
     )

@@ -8,14 +8,14 @@ private const val myBookList = "myBookList"
 
 const val myBookListRoute = myBookList
 
-fun NavGraphBuilder.myBookList(
+fun NavGraphBuilder.myBookListScreen(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
 ) {
   composable(
     route = myBookListRoute,
   ) {
-    MyBookListScreen(
+    MyBookListContainer(
       onAdditionClick = onAdditionClick,
       onMyBookClick = onMyBookClick,
     )

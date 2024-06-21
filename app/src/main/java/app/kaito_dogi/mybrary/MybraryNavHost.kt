@@ -6,12 +6,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
-import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetail
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
-import app.kaito_dogi.mybrary.feature.mybooklist.myBookList
+import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListRoute
-import app.kaito_dogi.mybrary.feature.searchbook.searchBook
+import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookRoute
+import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -24,7 +24,7 @@ internal fun MybraryNavHost(
     startDestination = myBookListRoute,
     modifier = modifier.fillMaxSize(),
   ) {
-    myBookList(
+    myBookListScreen(
       onAdditionClick = {
         navController.navigate(searchBookRoute)
       },
@@ -35,7 +35,9 @@ internal fun MybraryNavHost(
         navController.navigate(myBookDetailRouteWithNavArg(navArg))
       },
     )
-    myBookDetail()
-    searchBook()
+    myBookDetailScreen(
+      onBackClick = navController::popBackStack,
+    )
+    searchBookScreen()
   }
 }

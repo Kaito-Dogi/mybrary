@@ -13,7 +13,8 @@ data class Memo(
   val toPage: Int?,
   @Serializable(with = LocalDateTimeSerializer::class)
   val createdAt: LocalDateTime,
-  val isPosted: Boolean,
+  @Serializable(with = LocalDateTimeSerializer::class)
+  val editedAt: LocalDateTime?,
   @Serializable(with = LocalDateTimeSerializer::class)
   val postedAt: LocalDateTime?,
   val likeCount: Int?,
