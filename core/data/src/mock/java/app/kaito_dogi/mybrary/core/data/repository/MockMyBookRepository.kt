@@ -84,7 +84,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
-    val archivedMyBook = myBook.copy(isFavorite = true)
+    val archivedMyBook = myBook.copy(isArchived = true)
     val newMyBookList = mockMyBookList.value.map {
       if (it.id == myBookId) archivedMyBook else it
     }
