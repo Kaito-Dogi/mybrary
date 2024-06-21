@@ -64,12 +64,13 @@ internal fun MyBookDetailTopAppBar(
     )
     Column(
       modifier = modifier
-        .fillMaxWidth()
         .padding(MybraryTheme.space.md),
     ) {
       Gap(height = WindowInsets.systemBars.asPaddingValues().calculateTopPadding())
       Row(
-        modifier = Modifier.height(IntrinsicSize.Min),
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(IntrinsicSize.Min),
       ) {
         BookImage(
           imageUrl = myBook.imageUrl,
@@ -82,7 +83,7 @@ internal fun MyBookDetailTopAppBar(
         Column(
           modifier = Modifier
             .fillMaxHeight()
-            .weight(0.75f),
+            .weight(1f),
         ) {
           Text(
             text = myBook.title,

@@ -31,7 +31,7 @@ internal fun MyBookDetailBottomSheetContent(
   onSaveClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  Column(modifier = modifier.fillMaxWidth()) {
+  Column(modifier = modifier) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
         value = if (draftMemo.fromPage == null) "" else draftMemo.fromPage.toString(),

@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -26,7 +25,7 @@ internal fun MyBookDetailBottomAppBar(
   modifier: Modifier = Modifier,
 ) {
   BottomAppBar(
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier,
     contentPadding = PaddingValues(
       start = MybraryTheme.space.xxs,
       end = MybraryTheme.space.md,

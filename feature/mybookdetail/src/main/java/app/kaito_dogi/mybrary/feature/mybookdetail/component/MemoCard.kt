@@ -31,25 +31,29 @@ internal fun MemoCard(
 
   Card(
     onClick = { onClick(memo) },
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier,
     shape = MybraryTheme.shapes.small,
   ) {
     // top の padding を小さくすることで、錯視を調整
     Column(
-      modifier = Modifier.padding(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
-      ),
+      modifier = Modifier
+        .padding(
+          start = MybraryTheme.space.md,
+          top = MybraryTheme.space.sm,
+          end = MybraryTheme.space.md,
+          bottom = MybraryTheme.space.md,
+        )
+        .fillMaxWidth(),
     ) {
       Text(
         text = memo.content,
+        modifier = Modifier.fillMaxWidth(),
         style = MybraryTheme.typography.titleMedium,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
         text = body,
+        modifier = Modifier.fillMaxWidth(),
         style = MybraryTheme.typography.bodyMedium,
       )
     }

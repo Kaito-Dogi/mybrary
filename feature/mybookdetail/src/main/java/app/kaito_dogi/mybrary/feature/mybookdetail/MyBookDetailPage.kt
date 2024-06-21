@@ -57,16 +57,21 @@ internal fun MyBookDetailPage(
         onArchiveClick = onArchiveClick,
         onFavoriteClick = onFavoriteClick,
         onEditClick = onEditClick,
+        modifier = Modifier.fillMaxWidth(),
       )
     },
   ) { innerPadding ->
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
+      modifier = Modifier.fillMaxSize(),
       contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       item {
-        MyBookDetailTopAppBar(myBook = uiState.myBook)
+        MyBookDetailTopAppBar(
+          myBook = uiState.myBook,
+          modifier = Modifier.fillMaxWidth(),
+        )
       }
       if (uiState.memoList == null) {
         item {
@@ -88,7 +93,9 @@ internal fun MyBookDetailPage(
           MemoCard(
             memo = memo,
             onClick = onMemoClick,
-            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+            modifier = Modifier
+              .padding(horizontal = MybraryTheme.space.md)
+              .fillMaxWidth(),
           )
         }
         item {
@@ -101,6 +108,7 @@ internal fun MyBookDetailPage(
     if (uiState.isBottomSheetVisible) {
       ModalBottomSheet(
         onDismissRequest = onModalBottomSheetDismissRequest,
+        modifier = Modifier.fillMaxWidth(),
         sheetState = bottomSheetState,
       ) {
         MyBookDetailBottomSheetContent(
