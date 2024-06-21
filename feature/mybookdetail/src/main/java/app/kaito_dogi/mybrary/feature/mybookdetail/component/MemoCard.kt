@@ -7,6 +7,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -16,6 +17,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,19 +27,21 @@ internal fun MemoCard(
   onClick: (Memo) -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  val body = when {
-    memo.fromPage != null && memo.toPage != null -> "pp.${memo.fromPage}~${memo.toPage} | ${memo.createdAt}"
-    memo.fromPage != null -> "p.${memo.fromPage} | ${memo.createdAt}"
-    else -> "${memo.createdAt}"
-  }
+  val body = remember(memo) { memo.cardBody }
 
   Card(
     onClick = { onClick(memo) },
     modifier = modifier.fillMaxWidth(),
     shape = MybraryTheme.shapes.small,
   ) {
+    // top の padding を小さくすることで、錯視を調整
     Column(
-      modifier = Modifier.padding(MybraryTheme.space.md),
+      modifier = Modifier.padding(
+        start = MybraryTheme.space.md,
+        top = MybraryTheme.space.sm,
+        end = MybraryTheme.space.md,
+        bottom = MybraryTheme.space.md,
+      ),
     ) {
       Text(
         text = memo.content,
@@ -51,6 +55,20 @@ internal fun MemoCard(
     }
   }
 }
+
+val Memo.cardBody
+  get() = run {
+    val page = when {
+      this.fromPage != null && this.toPage != null -> "pp.${this.fromPage}~${this.toPage}"
+      this.fromPage != null || this.toPage != null -> "p.${this.fromPage}"
+      else -> ""
+    }
+    val datetime = when {
+      this.editedAt != null -> "${this.editedAt?.toFormattedString()}（編集済み）"
+      else -> this.createdAt.toFormattedString()
+    }
+    if (page.isNotBlank()) "$page｜$datetime" else datetime
+  }
 
 @Preview
 @Composable
@@ -76,6 +94,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         fromPage = 1,
         toPage = 100,
         createdAt = LocalDateTime.now(),
+        editedAt = LocalDateTime.now(),
         isPosted = false,
         postedAt = null,
         likeCount = null,
@@ -88,6 +107,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         fromPage = 50,
         toPage = null,
         createdAt = LocalDateTime.now(),
+        editedAt = LocalDateTime.now(),
         isPosted = false,
         postedAt = null,
         likeCount = null,
@@ -100,6 +120,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         fromPage = null,
         toPage = null,
         createdAt = LocalDateTime.now(),
+        editedAt = LocalDateTime.now(),
         isPosted = false,
         postedAt = null,
         likeCount = null,
