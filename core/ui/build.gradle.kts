@@ -9,8 +9,6 @@ android {
   namespace = "app.kaito_dogi.mybrary.core.ui"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
-  resourcePrefix = "ui_"
-
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
 
