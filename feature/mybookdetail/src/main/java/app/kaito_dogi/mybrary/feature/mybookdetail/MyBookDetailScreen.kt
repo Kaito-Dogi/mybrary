@@ -33,6 +33,9 @@ internal fun MyBookDetailScreen(
     onEditClick = viewModel::onEditClick,
     onMemoClick = viewModel::onMemoClick,
     onModalBottomSheetDismissRequest = viewModel::onBottomSheetDismissRequest,
+    onFromPageChange = viewModel::onFromPageChange,
+    onToPageChange = viewModel::onToPageChange,
+    onContentChange = viewModel::onContentChange,
     onSaveClick = {
       coroutineScope.launch {
         viewModel.onSaveClick()

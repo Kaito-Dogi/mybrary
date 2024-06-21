@@ -41,6 +41,9 @@ internal fun MyBookDetailPage(
   onEditClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
   onModalBottomSheetDismissRequest: () -> Unit,
+  onFromPageChange: (String) -> Unit,
+  onToPageChange: (String) -> Unit,
+  onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
   Scaffold(
@@ -84,7 +87,7 @@ internal fun MyBookDetailPage(
         ) { memo ->
           MemoCard(
             memo = memo,
-            onClick = { onMemoClick(memo) },
+            onClick = onMemoClick,
             modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
           )
         }
@@ -101,6 +104,12 @@ internal fun MyBookDetailPage(
         sheetState = bottomSheetState,
       ) {
         MyBookDetailBottomSheetContent(
+          memoFromPage = uiState.memoFromPage,
+          memoToPage = uiState.memoToPage,
+          memoContent = uiState.memoContent,
+          onFromPageChange = onFromPageChange,
+          onToPageChange = onToPageChange,
+          onContentChange = onContentChange,
           onSaveClick = onSaveClick,
           modifier = Modifier
             .padding(horizontal = MybraryTheme.space.md)
@@ -136,6 +145,9 @@ private fun MyBookDetailPagePreview() {
       onEditClick = {},
       onMemoClick = {},
       onModalBottomSheetDismissRequest = {},
+      onFromPageChange = {},
+      onToPageChange = {},
+      onContentChange = {},
       onSaveClick = {},
     )
   }

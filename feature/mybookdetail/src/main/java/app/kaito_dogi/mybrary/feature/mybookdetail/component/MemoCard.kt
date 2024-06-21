@@ -22,7 +22,7 @@ import java.time.LocalDateTime
 @Composable
 internal fun MemoCard(
   memo: Memo,
-  onClick: () -> Unit,
+  onClick: (Memo) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val body = when {
@@ -32,7 +32,7 @@ internal fun MemoCard(
   }
 
   Card(
-    onClick = onClick,
+    onClick = { onClick(memo) },
     modifier = modifier.fillMaxWidth(),
     shape = MybraryTheme.shapes.small,
   ) {

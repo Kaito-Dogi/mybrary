@@ -9,6 +9,9 @@ internal data class MyBookDetailUiState(
   val myBook: MyBook,
   val memoList: List<Memo>?,
   val isBottomSheetVisible: Boolean,
+  val memoFromPage: String,
+  val memoToPage: String,
+  val memoContent: String,
 ) {
   companion object {
     fun createInitialValue(
@@ -17,6 +20,9 @@ internal data class MyBookDetailUiState(
       myBook = myBook,
       memoList = null,
       isBottomSheetVisible = false,
+      memoFromPage = "",
+      memoToPage = "",
+      memoContent = "",
     )
   }
 }

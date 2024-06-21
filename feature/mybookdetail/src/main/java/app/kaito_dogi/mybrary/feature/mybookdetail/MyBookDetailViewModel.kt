@@ -4,9 +4,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDateTime
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -68,14 +70,59 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onMemoClick(memo: Memo) {
-    _uiState.update { it.copy(isBottomSheetVisible = true) }
+    _uiState.update {
+      it.copy(
+        isBottomSheetVisible = true,
+        memoFromPage = memo.fromPage.toString(),
+        memoToPage = memo.toPage.toString(),
+        memoContent = memo.content,
+      )
+    }
   }
 
   fun onBottomSheetDismissRequest() {
     _uiState.update { it.copy(isBottomSheetVisible = false) }
   }
 
+  fun onFromPageChange(fromPage: String) {
+    _uiState.update { it.copy(memoFromPage = fromPage) }
+  }
+
+  fun onToPageChange(toPage: String) {
+    _uiState.update { it.copy(memoToPage = toPage) }
+  }
+
+  fun onContentChange(content: String) {
+    _uiState.update { it.copy(memoContent = content) }
+  }
+
   fun onSaveClick() {
-    println("あああ: onSaveClick")
+    viewModelScope.launch {
+      try {
+        memoRepository.createMemo(
+          memo = Memo(
+            id = MemoId(0L),
+            myBookId = navArg.myBook.id,
+            content = uiState.value.memoContent,
+            fromPage = uiState.value.memoFromPage.toInt(),
+            toPage = if (uiState.value.memoToPage.isBlank()) uiState.value.memoToPage.toInt() else null,
+            createdAt = LocalDateTime.now(),
+            isPosted = false,
+            postedAt = null,
+            likeCount = null,
+          ),
+        )
+        _uiState.update {
+          it.copy(
+            memoFromPage = "",
+            memoToPage = "",
+            memoContent = "",
+          )
+        }
+      } catch (e: Exception) {
+        // TODO: デバッグ用のログを実装する
+        println("あああ: ${e.message}")
+      }
+    }
   }
 }
