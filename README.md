@@ -1,6 +1,7 @@
 # Mybrary
 
-A reading note application that allows you to read, take notes, share, and discover new books.
+Take and share your reading notes.<br />
+Discover new books through others’ notes.
 
 ## UI Flow
 
