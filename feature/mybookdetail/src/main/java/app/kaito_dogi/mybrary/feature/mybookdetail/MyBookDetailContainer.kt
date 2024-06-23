@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -12,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,7 +34,7 @@ internal fun MyBookDetailContainer(
     uiState = uiState,
     snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     bottomSheet = {
-      ModalBottomSheet(
+      FullScrimModalBottomSheet(
         onDismissRequest = viewModel::onBottomSheetDismissRequest,
         sheetState = bottomSheetState,
         content = it,
