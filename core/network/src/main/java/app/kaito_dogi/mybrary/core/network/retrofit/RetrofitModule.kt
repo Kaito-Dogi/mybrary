@@ -1,36 +1,33 @@
 package app.kaito_dogi.mybrary.core.network.retrofit
 
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-private const val BASE_URL = "https://www.googleapis.com/books/v1/"
+private const val GoogleBooksBaseUrl = "https://www.googleapis.com/books/v1"
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object RetrofitModule {
-  @Provides
+  @GoogleBooksRetrofit
   @Singleton
-  fun provideRetrofit(
-    moshi: Moshi,
+  @Provides
+  fun providesGoogleBooksRetrofit(
     okHttpClient: OkHttpClient,
-  ): Retrofit = Retrofit.Builder()
-    .client(okHttpClient)
-    .baseUrl(BASE_URL)
-    .addConverterFactory(
-      MoshiConverterFactory.create(moshi),
-    )
-    .build()
-
-//  @Provides
-//  @Singleton
-//  fun provideBookService(
-//    retrofit: Retrofit,
-//  ): BookService = retrofit.create()
+  ): Retrofit {
+    val contentType = "application/json; charset=UTF8".toMediaType()
+    val format = Json { ignoreUnknownKeys = true }
+    return Retrofit.Builder()
+      .client(okHttpClient)
+      .baseUrl(GoogleBooksBaseUrl)
+      .addConverterFactory(format.asConverterFactory(contentType))
+      .build()
+  }
 }
