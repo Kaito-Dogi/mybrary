@@ -5,9 +5,10 @@ import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.OrderType
 import app.kaito_dogi.mybrary.core.domain.repository.PrintType
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 internal class BookRepositoryImpl @Inject constructor() : BookRepository {
-  // TODO: 実装
   override suspend fun searchBooks(
     keyword: String,
     maxResults: Int,
@@ -15,6 +16,6 @@ internal class BookRepositoryImpl @Inject constructor() : BookRepository {
     orderBy: OrderType,
     printType: PrintType,
   ): List<Book> {
-    return emptyList()
+    TODO("Not yet implemented")
   }
 }

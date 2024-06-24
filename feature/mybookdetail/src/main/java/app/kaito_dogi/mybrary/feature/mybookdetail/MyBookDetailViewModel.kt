@@ -20,7 +20,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   private val memoRepository: MemoRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-  private val navArg: MyBookDetailNavArg = checkNotNull(savedStateHandle[myBookDetailNavArgName])
+  private val navArg: MyBookDetailNavArg = checkNotNull(savedStateHandle[MyBookDetailNavArgName])
 
   private val _uiState = MutableStateFlow(
     MyBookDetailUiState.createInitialValue(

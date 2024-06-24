@@ -1,8 +1,14 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.domain.model.Author
+import app.kaito_dogi.mybrary.core.domain.model.AuthorId
+import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.User
+import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -96,8 +102,13 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
 
 private val MockMyBookList = List(10) {
   MyBook(
-    id = MyBookId(it.toLong()),
-    externalId = "externalId$it",
+    id = MyBookId(value = it.toLong()),
+    bookId = BookId(value = it.toLong()),
+    externalId = ExternalBookId(value = "externalId$it"),
+    user = User(
+      id = UserId(value = 0L),
+      name = "name",
+    ),
     title = when (it % 7) {
       0 -> "プリンシプル オブ プログラミング3年目までに身につけたい一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
@@ -106,15 +117,6 @@ private val MockMyBookList = List(10) {
       4 -> "Clean Architecture　達人に学ぶソフトウェアの構造と設計"
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
-    },
-    authors = when (it % 7) {
-      0 -> "上田勲"
-      1 -> ""
-      2 -> "ソシオメディア, 上野学, 藤井幸多"
-      3 -> "ダグ・ローゼンバーグ, マット・ステファン"
-      4 -> "Ｒｏｂｅｒｔ　Ｃ．Ｍａｒｔｉｎ"
-      5 -> "ＤｍｉｔｒｙＪｅｍｅｒｏｖ, ＳｖｅｔｌａｎａＩｓａｋｏｖａ, 長澤太郎, 藤原聖, 山本純平, ｙｙ＿ｙａｎｋ"
-      else -> "著者"
     },
     imageUrl = Url.Image(
       when (it % 7) {
@@ -127,8 +129,40 @@ private val MockMyBookList = List(10) {
         else -> ""
       },
     ),
+    isbn10 = "isbn10",
+    isbn13 = "isbn13",
+    pageCount = it * 100,
+    authors = when (it % 7) {
+      0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
+      1 -> emptyList()
+      2 -> listOf(
+        "ソシオメディア",
+        "上野学",
+        "藤井幸多",
+      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
+
+      3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").mapIndexed { index, name ->
+        Author(
+          id = AuthorId(value = index.toLong()),
+          name = name,
+        )
+      }
+
+      4 -> listOf(Author(id = AuthorId(value = 0L), name = "Ｒｏｂｅｒｔ　Ｃ．Ｍａｒｔｉｎ"))
+      5 -> listOf(
+        "ＤｍｉｔｒｙＪｅｍｅｒｏｖ",
+        "ＳｖｅｔｌａｎａＩｓａｋｏｖａ",
+        "長澤太郎",
+        "藤原聖",
+        "山本純平",
+        "ｙｙ＿ｙａｎｋ",
+      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
+
+      else -> listOf(Author(id = AuthorId(value = 0L), name = "著者"))
+    },
     isPinned = false,
     isFavorite = false,
+    isPublic = false,
     isArchived = false,
   )
 }

@@ -10,10 +10,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface MemoRepositoryModule {
-
   @Singleton
   @Binds
   fun bindsMemoRepository(
-    memoRepository: MemoRepositoryImpl,
+    impl: MemoRepositoryImpl,
   ): MemoRepository
 }

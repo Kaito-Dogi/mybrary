@@ -27,17 +27,21 @@ import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.User
+import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 import coil.compose.AsyncImage
 
-private const val contrast = 0.8f // コントラスト
-private const val brightness = -60f // 明度
-private val colorMatrix = floatArrayOf(
-  contrast, 0f, 0f, 0f, brightness,
-  0f, contrast, 0f, 0f, brightness,
-  0f, 0f, contrast, 0f, brightness,
+private const val Contrast = 0.8f // コントラスト
+private const val Brightness = -60f // 明度
+private val ColorMatrix = floatArrayOf(
+  Contrast, 0f, 0f, 0f, Brightness,
+  0f, Contrast, 0f, 0f, Brightness,
+  0f, 0f, Contrast, 0f, Brightness,
   0f, 0f, 0f, 1f, 0f,
 )
 
@@ -62,7 +66,7 @@ internal fun MyBookDetailTopAppBar(
         ),
       contentDescription = "背景画像",
       contentScale = ContentScale.FillWidth,
-      colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix)),
+      colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
     Column(
       modifier = modifier
@@ -96,7 +100,7 @@ internal fun MyBookDetailTopAppBar(
             maxLines = 4,
           )
           Text(
-            text = myBook.authors,
+            text = myBook.authors.joinToString { it.name },
             color = MybraryTheme.colorScheme.onPrimary,
             style = MybraryTheme.typography.bodyLarge,
             overflow = TextOverflow.Ellipsis,
@@ -114,13 +118,22 @@ private fun MyBookDetailTopAppBarPreview() {
   MybraryTheme {
     MyBookDetailTopAppBar(
       myBook = MyBook(
-        id = MyBookId(0L),
-        externalId = "externalId",
+        id = MyBookId(value = 0L),
+        bookId = BookId(value = 0L),
+        externalId = ExternalBookId(value = "externalId"),
+        user = User(
+          id = UserId(value = 0L),
+          name = "name",
+        ),
         title = "title",
-        authors = "authors",
         imageUrl = Url.Image(value = "imageUrl"),
+        isbn10 = "isbn10",
+        isbn13 = "isbn13",
+        pageCount = 0,
+        authors = emptyList(),
         isPinned = false,
         isFavorite = false,
+        isPublic = false,
         isArchived = false,
       ),
     )

@@ -8,14 +8,15 @@ import kotlinx.serialization.Serializable
 data class Memo(
   val id: MemoId,
   val myBookId: MyBookId,
+  val user: User,
   val content: String,
-  val fromPage: Int?,
-  val toPage: Int?,
+  val fromPage: Int? = null,
+  val toPage: Int? = null,
   @Serializable(with = LocalDateTimeSerializer::class)
   val createdAt: LocalDateTime,
   @Serializable(with = LocalDateTimeSerializer::class)
-  val editedAt: LocalDateTime?,
+  val editedAt: LocalDateTime? = null,
   @Serializable(with = LocalDateTimeSerializer::class)
-  val postedAt: LocalDateTime?,
-  val likeCount: Int?,
+  val postedAt: LocalDateTime? = null,
+  val likeCount: Int? = null,
 )

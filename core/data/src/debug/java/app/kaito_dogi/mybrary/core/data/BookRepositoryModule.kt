@@ -10,10 +10,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface BookRepositoryModule {
-
   @Singleton
   @Binds
   fun bindsBookRepository(
-    bookRepository: BookRepositoryImpl,
+    impl: BookRepositoryImpl,
   ): BookRepository
 }

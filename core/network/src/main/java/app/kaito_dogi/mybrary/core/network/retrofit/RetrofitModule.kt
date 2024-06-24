@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.network.retrofit
 
-import app.kaito_dogi.mybrary.core.network.retrofit.service.BookService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -10,14 +9,12 @@ import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 
 private const val BASE_URL = "https://www.googleapis.com/books/v1/"
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object RetrofitModule {
-
   @Provides
   @Singleton
   fun provideRetrofit(
@@ -31,9 +28,9 @@ internal object RetrofitModule {
     )
     .build()
 
-  @Provides
-  @Singleton
-  fun provideBookService(
-    retrofit: Retrofit,
-  ): BookService = retrofit.create()
+//  @Provides
+//  @Singleton
+//  fun provideBookService(
+//    retrofit: Retrofit,
+//  ): BookService = retrofit.create()
 }

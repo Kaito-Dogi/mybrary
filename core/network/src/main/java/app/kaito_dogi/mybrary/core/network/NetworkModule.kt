@@ -17,7 +17,6 @@ private const val READ_TIME_OUT = 60L
 @Module
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
-
   @Singleton
   @Provides
   fun providesMoshi(): Moshi = Moshi.Builder()

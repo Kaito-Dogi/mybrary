@@ -9,11 +9,11 @@ import androidx.navigation.navArgument
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-private const val myBookDetail = "myBookDetail"
+private const val MyBookDetail = "myBookDetail"
 
-internal const val myBookDetailNavArgName = "${myBookDetail}NavArg"
+internal const val MyBookDetailNavArgName = "${MyBookDetail}NavArg"
 
-private const val myBookDetailRoute = "${myBookDetail}/{${myBookDetailNavArgName}}"
+private const val MyBookDetailRoute = "${MyBookDetail}/{${MyBookDetailNavArgName}}"
 
 private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
   isNullableAllowed = false,
@@ -39,15 +39,15 @@ private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
 }
 
 fun myBookDetailRouteWithNavArg(navArg: MyBookDetailNavArg) =
-  "${myBookDetail}/${Uri.encode(Json.encodeToString<MyBookDetailNavArg>(navArg))}"
+  "${MyBookDetail}/${Uri.encode(Json.encodeToString<MyBookDetailNavArg>(navArg))}"
 
 fun NavGraphBuilder.myBookDetailScreen(
   onBackClick: () -> Unit,
 ) {
   composable(
-    route = myBookDetailRoute,
+    route = MyBookDetailRoute,
     arguments = listOf(
-      navArgument(myBookDetailNavArgName) {
+      navArgument(MyBookDetailNavArgName) {
         type = MyBookDetailNavType
       },
     ),

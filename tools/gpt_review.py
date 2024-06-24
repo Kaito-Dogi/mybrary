@@ -4,18 +4,18 @@ import json
 from openai import OpenAI
 
 # 環境変数を初期化
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-GPT_MODEL = os.getenv("GPT_MODEL")
-REPOSITORY = os.getenv("REPOSITORY")
-PR_NUMBER = int(os.getenv("PR_NUMBER"))
-PR_API_URL = f"https://api.github.com/repos/{REPOSITORY}/pulls/{PR_NUMBER}"
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+GPT_MODEL = os.getenv('GPT_MODEL')
+REPOSITORY = os.getenv('REPOSITORY')
+PR_NUMBER = int(os.getenv('PR_NUMBER'))
+PR_API_URL = f'https://api.github.com/repos/{REPOSITORY}/pulls/{PR_NUMBER}'
 
 # PR の diff を取得する
 def get_pr_diff():
   headers = {
-    "Authorization": f"token {GITHUB_TOKEN}",
-    "Accept": "application/vnd.github.v3.diff"
+    'Authorization': f'token {GITHUB_TOKEN}',
+    'Accept': 'application/vnd.github.v3.diff'
   }
   diff_response = requests.get(PR_API_URL, headers=headers)
   return diff_response.text
@@ -23,16 +23,16 @@ def get_pr_diff():
 # コードレビューを依頼するプロンプトを作成
 def create_review_prompt(code_diff):
   prompt = (f'Review the following code:\n\n{code_diff}\n\n'
+            '- The following json format should be followed.\n'
+            '{"files":[{"fileName":"<file_name>","reviews": [{"lineNumber":<line_number>,"reviewComment":"<review comment>"}]}]}\n'
+            '- If there is no review comment, please answer {"files":[]}\n'
             '- Be sure to comment on areas for improvement.\n'
             '- Please make review comments in Japanese.\n'
             '- Ignore the use of "self." when using variables and functions.\n'
             '- Please prefix your review comments with one of the following labels "[MUST]","[IMO]","[NITS]".\n'
             '  - MUST: must be modified\n'
             '  - IMO: personal opinion or minor proposal\n'
-            '  - NITS: Proposals that do not require modification\n'
-            '- The following json format should be followed.\n'
-            '{"files":[{"fileName":"<file_name>","reviews": [{"lineNumber":<line_number>,"reviewComment":"<review comment>"}]}]}\n'
-            '- If there is no review comment, please answer {"files":[]}\n')
+            '  - NITS: Proposals that do not require modification\n')
   prompt += create_ignore_reviews_prompt()
   return prompt
 
@@ -58,16 +58,16 @@ def get_gpt_review(prompt):
   chat_completion = client.chat.completions.create(
     messages=[
       {
-        "role": "user",
-        "content": prompt,
+        'role': 'user',
+        'content': prompt,
       }
     ],
-    response_format={"type":"json_object"},
+    response_format={'type':'json_object'},
     model=GPT_MODEL,
   )
 
   # デバッグのためにログを出力
-  print("あああ: ", chat_completion)
+  print('あああ: ', chat_completion)
 
   review_result = chat_completion.choices[0].message.content
   return review_result
@@ -82,14 +82,14 @@ def post_review_comments(review_files):
   pr_commits_response = requests.get(url, headers=headers)
   pr_commits = pr_commits_response.json()
   last_commit = pr_commits[-1]['sha']
-  for file in review_files["files"]:
-    for review in file["reviews"]:
+  for file in review_files['files']:
+    for review in file['reviews']:
       comment_url = f'{PR_API_URL}/comments'
       comment_data = {
-        'body': review["reviewComment"],
+        'body': review['reviewComment'],
         'commit_id': last_commit,
-        'path': file["fileName"],
-        'position': review["lineNumber"]
+        'path': file['fileName'],
+        'position': review['lineNumber']
       }
       requests.post(comment_url, headers=headers, data=json.dumps(comment_data))
 

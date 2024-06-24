@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.mybooklist
 import androidx.compose.runtime.Immutable
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
-private const val NUMBER_OF_COLUMNS = 3
+private const val NumberOfColumns = 3
 
 @Immutable
 internal data class MyBookListUiState(
@@ -12,7 +12,7 @@ internal data class MyBookListUiState(
 ) {
   companion object {
     val InitialValue = MyBookListUiState(
-      numberOfColumns = NUMBER_OF_COLUMNS,
+      numberOfColumns = NumberOfColumns,
       myBookList = null,
     )
   }

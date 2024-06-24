@@ -5,8 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Book(
-  val id: String,
+  val id: BookId,
+  val externalId: ExternalBookId,
   val title: String,
-  val authors: String,
   val imageUrl: Url.Image,
+  val isbn10: String,
+  val isbn13: String,
+  val pageCount: Int,
+  val authors: List<Author>,
 )
