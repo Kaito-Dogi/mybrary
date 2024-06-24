@@ -62,7 +62,7 @@ internal fun MemoCard(
   }
 }
 
-val Memo.cardBody
+private val Memo.cardBody
   get() = run {
     val page = when {
       this.fromPage != null && this.toPage != null -> "pp.${this.fromPage}~${this.toPage}"

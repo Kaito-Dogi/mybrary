@@ -36,12 +36,12 @@ import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 import coil.compose.AsyncImage
 
-private const val contrast = 0.8f // コントラスト
-private const val brightness = -60f // 明度
-private val colorMatrix = floatArrayOf(
-  contrast, 0f, 0f, 0f, brightness,
-  0f, contrast, 0f, 0f, brightness,
-  0f, 0f, contrast, 0f, brightness,
+private const val Contrast = 0.8f // コントラスト
+private const val Brightness = -60f // 明度
+private val ColorMatrix = floatArrayOf(
+  Contrast, 0f, 0f, 0f, Brightness,
+  0f, Contrast, 0f, 0f, Brightness,
+  0f, 0f, Contrast, 0f, Brightness,
   0f, 0f, 0f, 1f, 0f,
 )
 
@@ -66,7 +66,7 @@ internal fun MyBookDetailTopAppBar(
         ),
       contentDescription = "背景画像",
       contentScale = ContentScale.FillWidth,
-      colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix)),
+      colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
     Column(
       modifier = modifier

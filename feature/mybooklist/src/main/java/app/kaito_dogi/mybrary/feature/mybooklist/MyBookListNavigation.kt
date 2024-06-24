@@ -4,16 +4,16 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
-private const val myBookList = "myBookList"
+private const val MyBookList = "myBookList"
 
-const val myBookListRoute = myBookList
+const val MyBookListRoute = MyBookList
 
 fun NavGraphBuilder.myBookListScreen(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
 ) {
   composable(
-    route = myBookListRoute,
+    route = MyBookListRoute,
   ) {
     MyBookListContainer(
       onAdditionClick = onAdditionClick,
