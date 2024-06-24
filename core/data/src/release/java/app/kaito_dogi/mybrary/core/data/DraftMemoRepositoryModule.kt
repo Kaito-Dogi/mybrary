@@ -13,6 +13,6 @@ internal interface DraftMemoRepositoryModule {
   @Singleton
   @Binds
   fun bindsDraftMemoRepository(
-    draftMemoRepository: DraftMemoRepositoryImpl,
+    impl: DraftMemoRepositoryImpl,
   ): DraftMemoRepository
 }

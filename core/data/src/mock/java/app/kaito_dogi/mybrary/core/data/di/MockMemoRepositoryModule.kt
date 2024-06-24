@@ -11,10 +11,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface MockMemoRepositoryModule {
-
   @Singleton
   @Binds
   fun bindsMemoRepository(
-    memoRepository: MockMemoRepository,
+    mock: MockMemoRepository,
   ): MemoRepository
 }

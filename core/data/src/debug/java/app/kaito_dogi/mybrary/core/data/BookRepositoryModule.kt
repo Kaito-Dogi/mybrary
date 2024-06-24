@@ -13,6 +13,6 @@ internal interface BookRepositoryModule {
   @Singleton
   @Binds
   fun bindsBookRepository(
-    bookRepository: BookRepositoryImpl,
+    impl: BookRepositoryImpl,
   ): BookRepository
 }

@@ -9,7 +9,6 @@ import javax.inject.Singleton
 
 @Singleton
 internal class BookRepositoryImpl @Inject constructor() : BookRepository {
-  // TODO: 実装
   override suspend fun searchBooks(
     keyword: String,
     maxResults: Int,
@@ -17,6 +16,6 @@ internal class BookRepositoryImpl @Inject constructor() : BookRepository {
     orderBy: OrderType,
     printType: PrintType,
   ): List<Book> {
-    return emptyList()
+    TODO("Not yet implemented")
   }
 }

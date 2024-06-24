@@ -14,6 +14,6 @@ internal interface MockBookRepositoryModule {
   @Singleton
   @Binds
   fun bindsBookRepository(
-    bookRepository: MockBookRepository,
+    mock: MockBookRepository,
   ): BookRepository
 }

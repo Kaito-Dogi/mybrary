@@ -5,7 +5,9 @@ import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.OrderType
 import app.kaito_dogi.mybrary.core.domain.repository.PrintType
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 internal class MockBookRepository @Inject constructor() : BookRepository {
   override suspend fun searchBooks(
     keyword: String,

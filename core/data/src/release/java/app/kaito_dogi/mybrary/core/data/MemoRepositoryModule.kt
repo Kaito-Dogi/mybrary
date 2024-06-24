@@ -13,6 +13,6 @@ internal interface MemoRepositoryModule {
   @Singleton
   @Binds
   fun bindsMemoRepository(
-    memoRepository: MemoRepositoryImpl,
+    impl: MemoRepositoryImpl,
   ): MemoRepository
 }
