@@ -36,5 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GPT_MODEL: ${{ vars.GPT_MODEL }}
+          GPT_REVIEW_PROMPT: ${{ vars.GPT_REVIEW_PROMPT }}
+          GPT_SYSTEM_PROMPT: ${{ vars.GPT_SYSTEM_PROMPT }}
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.number }}
