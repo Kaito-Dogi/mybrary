@@ -7,6 +7,8 @@ from openai import OpenAI
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 GPT_MODEL = os.getenv('GPT_MODEL')
+GPT_REVIEW_PROMPT = os.getenv('GPT_REVIEW_PROMPT')
+GPT_SYSTEM_PROMPT = os.getenv('GPT_SYSTEM_PROMPT')
 REPOSITORY = os.getenv('REPOSITORY')
 PR_NUMBER = int(os.getenv('PR_NUMBER'))
 PR_API_URL = f'https://api.github.com/repos/{REPOSITORY}/pulls/{PR_NUMBER}'
@@ -27,18 +29,7 @@ def get_pr_diff():
 
 # コードレビューを依頼するプロンプトを作成
 def create_review_prompt(code_diff):
-  prompt = (f'Review the following code:\n\n{code_diff}\n\n'
-            '- The following json format should be followed.\n'
-            '{"files":[{"fileName":"<file_name>","reviews": [{"lineNumber":<line_number>,"reviewComment":"<review comment>"}]}]}\n'
-            '- If there is no review comment, please answer {"files":[]}\n'
-            '- Be sure to comment on areas for improvement.\n'
-            '- Please make review comments in Japanese.\n'
-            '- Lines beginning with "-" are removed lines, so review them as deletions.\n'
-            '- Lines beginning with "+" are added lines, so review them as additions.\n'
-            '- Please prefix your review comments with one of the following labels "[MUST]","[IMO]","[NITS]".\n'
-            '  - MUST: must be modified\n'
-            '  - IMO: personal opinion or minor proposal\n'
-            '  - NITS: Proposals that do not require modification\n')
+  prompt = f'Review the following code:\n\n{code_diff}\n\n{GPT_REVIEW_PROMPT}'
   prompt += create_ignore_reviews_prompt()
   return prompt
 
@@ -65,7 +56,7 @@ def get_gpt_review(prompt):
     messages=[
       {
         'role' : 'system',
-        'content': 'You are an experienced Android app developer, well versed in the Android Developers documentation and able to implement and design scalable, high quality, robust, easy to test apps.'
+        'content': GPT_SYSTEM_PROMPT
       },
       {
         'role': 'user',

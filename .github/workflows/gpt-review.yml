@@ -1,6 +1,6 @@
 # https://qiita.com/y-hirakaw/items/f5d90648d4037c77f239
 
-name: GPT PR Review
+name: GPT Review
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
-    # PR に対してコメントするために必要
+    if: contains(github.event.pull_request.labels.*.name, 'GPT Review')
     permissions:
       pull-requests: write
     steps:
@@ -36,5 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GPT_MODEL: ${{ vars.GPT_MODEL }}
+          GPT_REVIEW_PROMPT: ${{ vars.GPT_REVIEW_PROMPT }}
+          GPT_SYSTEM_PROMPT: ${{ vars.GPT_SYSTEM_PROMPT }}
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.number }}
