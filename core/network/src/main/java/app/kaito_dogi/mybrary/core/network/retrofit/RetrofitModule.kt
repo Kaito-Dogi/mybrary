@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-private const val GoogleBooksBaseUrl = "https://www.googleapis.com/books/v1"
+private const val GoogleBooksBaseUrl = "https://www.googleapis.com/"
 
 @Module
 @InstallIn(SingletonComponent::class)
