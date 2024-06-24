@@ -1,8 +1,8 @@
 package app.kaito_dogi.mybrary.core.domain.repository
 
-import app.kaito_dogi.mybrary.core.domain.model.Draft
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import kotlinx.coroutines.flow.Flow
 
 interface DraftMemoRepository {
-  val draftMemos: Flow<List<Draft>>
+  val draftMemoList: Flow<List<DraftMemo>>
 }

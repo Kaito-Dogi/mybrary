@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.domain.model.Draft
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -28,7 +28,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     return mockMemoList.value
   }
 
-  override suspend fun createMemo(draftMemo: Draft): Memo {
+  override suspend fun createMemo(draftMemo: DraftMemo): Memo {
     delay(1_000)
 
     val createdMemo = Memo(
@@ -53,7 +53,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
 
   override suspend fun editMemo(
     memoId: MemoId,
-    draftMemo: Draft,
+    draftMemo: DraftMemo,
   ): Memo {
     delay(1_000)
 

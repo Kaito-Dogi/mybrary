@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data
 
-import app.kaito_dogi.mybrary.core.domain.model.Draft
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -14,11 +14,11 @@ internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun createMemo(draftMemo: Draft): Memo {
+  override suspend fun createMemo(draftMemo: DraftMemo): Memo {
     TODO("Not yet implemented")
   }
 
-  override suspend fun editMemo(memoId: MemoId, draftMemo: Draft): Memo {
+  override suspend fun editMemo(memoId: MemoId, draftMemo: DraftMemo): Memo {
     TODO("Not yet implemented")
   }
 
