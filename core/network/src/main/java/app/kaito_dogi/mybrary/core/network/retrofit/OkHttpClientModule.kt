@@ -25,6 +25,7 @@ internal object OkHttpClientModule {
     .connectTimeout(ConnectTimeOut, TimeUnit.SECONDS)
     .readTimeout(ReadTimeOut, TimeUnit.SECONDS)
     .addInterceptor(
+      // TODO: ここで add するか検討（デバッグ環境のみ add すれば良い）
       HttpLoggingInterceptor()
         .apply {
           if (BuildConfig.DEBUG) {
@@ -32,6 +33,7 @@ internal object OkHttpClientModule {
           }
         },
     )
+    // TODO: API に成功したかどうかを確認するための Interceptor を実装したい
     .apply {
       for (interceptor in interceptorSet) {
         addInterceptor(interceptor)
