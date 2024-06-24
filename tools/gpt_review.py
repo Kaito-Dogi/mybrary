@@ -65,7 +65,6 @@ def get_gpt_review(prompt):
     model="gpt-4-turbo",
   )
   review_result = chat_completion.choices[0].message.content
-  print("あああ: ", review_result)
   return review_result
 
 # レビューコメントを投稿する
@@ -91,5 +90,6 @@ def post_review_comments(review_files):
 
 code_diff = get_pr_diff()
 prompt = create_review_prompt(code_diff)
-review_json = get_gpt_review(prompt)
-post_review_comments(json.loads(review_json))
+review_result = get_gpt_review(prompt)
+print("あああ: ", review_result)
+post_review_comments(json.loads(review_result))
