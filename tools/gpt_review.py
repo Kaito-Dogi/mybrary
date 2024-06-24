@@ -64,6 +64,10 @@ def get_gpt_review(prompt):
   chat_completion = client.chat.completions.create(
     messages=[
       {
+        'role' : 'system',
+        'content': 'You are an experienced Android app developer, well versed in the Android Developers documentation and able to implement and design scalable, high quality, robust, easy to test apps.'
+      },
+      {
         'role': 'user',
         'content': prompt,
       }
