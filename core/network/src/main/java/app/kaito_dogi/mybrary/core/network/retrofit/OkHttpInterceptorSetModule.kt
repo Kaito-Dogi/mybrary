@@ -11,5 +11,5 @@ import okhttp3.Interceptor
 internal interface OkHttpInterceptorSetModule {
   @OkHttpInterceptor
   @Multibinds
-  fun multiBindsInterceptors(): MutableSet<Interceptor>
+  fun bindInterceptorSet(): MutableSet<Interceptor>
 }

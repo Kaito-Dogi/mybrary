@@ -18,7 +18,7 @@ import javax.inject.Singleton
 internal object DatabaseModule {
   @Singleton
   @Provides
-  fun providesMybraryDatabase(
+  fun provideMybraryDatabase(
     @ApplicationContext context: Context,
   ): MybraryDatabase = Room.databaseBuilder(
     context,

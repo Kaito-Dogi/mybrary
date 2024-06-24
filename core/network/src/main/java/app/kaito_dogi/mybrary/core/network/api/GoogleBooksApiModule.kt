@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 internal object GoogleBooksApiModule {
   @Singleton
   @Provides
-  fun providesGoogleBooksApi(
+  fun provideGoogleBooksApi(
     @GoogleBooksRetrofit retrofit: Retrofit,
   ): GoogleBooksApi = retrofit.create(GoogleBooksApi::class.java)
 }

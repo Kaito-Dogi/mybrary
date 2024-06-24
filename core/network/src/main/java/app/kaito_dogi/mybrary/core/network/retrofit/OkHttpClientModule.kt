@@ -19,7 +19,7 @@ private const val ReadTimeOut = 60L
 internal object OkHttpClientModule {
   @Singleton
   @Provides
-  fun providesOkHttpClient(
+  fun provideOkHttpClient(
     @OkHttpInterceptor interceptorSet: MutableSet<Interceptor>,
   ): OkHttpClient = OkHttpClient.Builder()
     .connectTimeout(ConnectTimeOut, TimeUnit.SECONDS)
