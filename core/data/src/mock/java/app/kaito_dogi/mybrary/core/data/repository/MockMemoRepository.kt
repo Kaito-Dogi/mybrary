@@ -32,7 +32,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     delay(1_000)
 
     val createdMemo = Memo(
-      id = MemoId(mockMemoList.value.size.toLong()),
+      id = MemoId(value = mockMemoList.value.size.toLong()),
       myBookId = draftMemo.myBookId,
       user = User(
         id = UserId(value = 0L),
