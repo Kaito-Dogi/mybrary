@@ -18,7 +18,12 @@ def get_pr_diff():
     'Accept': 'application/vnd.github.v3.diff'
   }
   diff_response = requests.get(PR_API_URL, headers=headers)
-  return diff_response.text
+  diff_text = diff_response.text
+
+  # デバッグのために diff を出力
+  print('あああ: ', diff_text)
+
+  return diff_text
 
 # コードレビューを依頼するプロンプトを作成
 def create_review_prompt(code_diff):
@@ -66,7 +71,7 @@ def get_gpt_review(prompt):
     model=GPT_MODEL,
   )
 
-  # デバッグのためにログを出力
+  # デバッグのために GPT からのレスポンスを出力
   print('あああ: ', chat_completion)
 
   review_result = chat_completion.choices[0].message.content
