@@ -8,7 +8,7 @@ interface MyBookRepository {
 
   suspend fun getMyBook(myBookId: MyBookId): MyBook
 
-  suspend fun registerMyBook(externalBookId: String): Boolean
+  suspend fun createMyBook(externalBookId: String): Boolean
 
   suspend fun pinMyBook(myBookId: MyBookId): MyBook
 
