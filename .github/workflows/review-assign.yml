@@ -13,5 +13,6 @@ jobs:
       - uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
-          reviewers: ${{ vars.REVIEWERS }} # リポジトリ変数 REVIEWERS を用意し、レビュアーに設定するアカウントをカンマ区切りで記載
+          # リポジトリ変数 REVIEWERS を用意し、レビュアーに設定するアカウントをカンマ区切りで記載
+          reviewers: ${{ vars.REVIEWERS }}
           ready-comment: "Ready for review :rocket:"
