@@ -4,8 +4,9 @@ import json
 from openai import OpenAI
 
 # 環境変数を初期化
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GPT_MODEL = os.getenv("GPT_MODEL")
 REPOSITORY = os.getenv("REPOSITORY")
 PR_NUMBER = int(os.getenv("PR_NUMBER"))
 PR_API_URL = f"https://api.github.com/repos/{REPOSITORY}/pulls/{PR_NUMBER}"
@@ -35,7 +36,7 @@ def create_review_prompt(code_diff):
   prompt += create_ignore_reviews_prompt()
   return prompt
 
-# 既にされているコメントと同じコメントをしないように依頼するプロンプトを作成
+# 既にされているコメントと同じコメントをしないよう依頼するプロンプトを作成
 def create_ignore_reviews_prompt():
   url = f'{PR_API_URL}/comments'
   headers = {'Authorization': f'token {GITHUB_TOKEN}'}
@@ -62,8 +63,12 @@ def get_gpt_review(prompt):
       }
     ],
     response_format={"type":"json_object"},
-    model="gpt-4-turbo",
+    model=GPT_MODEL,
   )
+
+  # デバッグのためにログを出力
+  print("あああ: ", chat_completion)
+
   review_result = chat_completion.choices[0].message.content
   return review_result
 
@@ -91,5 +96,4 @@ def post_review_comments(review_files):
 code_diff = get_pr_diff()
 prompt = create_review_prompt(code_diff)
 review_result = get_gpt_review(prompt)
-print("あああ: ", review_result)
 post_review_comments(json.loads(review_result))

@@ -35,5 +35,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GPT_MODEL: ${{ vars.GPT_MODEL }}
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.number }}
