@@ -19,9 +19,7 @@ internal object RetrofitModule {
   @GoogleBooksRetrofit
   @Singleton
   @Provides
-  fun providesGoogleBooksRetrofit(
-    okHttpClient: OkHttpClient,
-  ): Retrofit {
+  fun providesGoogleBooksRetrofit(okHttpClient: OkHttpClient): Retrofit {
     val contentType = "application/json; charset=UTF8".toMediaType()
     val format = Json { ignoreUnknownKeys = true }
     return Retrofit.Builder()

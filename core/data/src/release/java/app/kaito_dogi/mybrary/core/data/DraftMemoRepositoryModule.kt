@@ -12,7 +12,5 @@ import javax.inject.Singleton
 internal interface DraftMemoRepositoryModule {
   @Singleton
   @Binds
-  fun bindsDraftMemoRepository(
-    impl: DraftMemoRepositoryImpl,
-  ): DraftMemoRepository
+  fun bindsDraftMemoRepository(impl: DraftMemoRepositoryImpl): DraftMemoRepository
 }

@@ -13,7 +13,5 @@ import javax.inject.Singleton
 internal interface MockDraftMemoRepositoryModule {
   @Singleton
   @Binds
-  fun bindsDraftMemoRepository(
-    mock: MockDraftMemoRepository,
-  ): DraftMemoRepository
+  fun bindsDraftMemoRepository(mock: MockDraftMemoRepository): DraftMemoRepository
 }

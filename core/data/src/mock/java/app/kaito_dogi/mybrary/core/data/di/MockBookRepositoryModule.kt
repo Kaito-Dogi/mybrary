@@ -13,7 +13,5 @@ import javax.inject.Singleton
 internal interface MockBookRepositoryModule {
   @Singleton
   @Binds
-  fun bindsBookRepository(
-    mock: MockBookRepository,
-  ): BookRepository
+  fun bindsBookRepository(mock: MockBookRepository): BookRepository
 }

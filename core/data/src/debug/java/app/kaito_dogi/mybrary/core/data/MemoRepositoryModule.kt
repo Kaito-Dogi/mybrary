@@ -12,7 +12,5 @@ import javax.inject.Singleton
 internal interface MemoRepositoryModule {
   @Singleton
   @Binds
-  fun bindsMemoRepository(
-    impl: MemoRepositoryImpl,
-  ): MemoRepository
+  fun bindsMemoRepository(impl: MemoRepositoryImpl): MemoRepository
 }
