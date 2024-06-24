@@ -32,7 +32,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     delay(1_000)
 
     val createdMemo = Memo(
-      id = MemoId(mockMemoList.value.size.toLong()),
+      id = MemoId(value = mockMemoList.value.size.toLong()),
       myBookId = draftMemo.myBookId,
       user = User(
         id = UserId(value = 0L),
@@ -42,8 +42,8 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       fromPage = draftMemo.fromPage,
       toPage = draftMemo.toPage,
       createdAt = LocalDateTime.now(),
-      editedAt = null,
-      postedAt = null,
+      updatedAt = null,
+      publishedAt = null,
       likeCount = null,
     )
     mockMemoList.update { it + createdMemo }
@@ -51,40 +51,40 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     return createdMemo
   }
 
-  override suspend fun editMemo(
+  override suspend fun updateMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
-    val editedMemo = memo.copy(
+    val updatedMemo = memo.copy(
       content = draftMemo.content,
       fromPage = draftMemo.fromPage,
       toPage = draftMemo.toPage,
-      editedAt = LocalDateTime.now(),
+      updatedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
-      if (it.id == memoId) editedMemo else it
+      if (it.id == memoId) updatedMemo else it
     }
     mockMemoList.update { newMemoList }
 
-    return editedMemo
+    return updatedMemo
   }
 
-  override suspend fun postMemo(memoId: MemoId): Memo {
+  override suspend fun publishMemo(memoId: MemoId): Memo {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
-    val postedMemo = memo.copy(
-      postedAt = LocalDateTime.now(),
+    val publishedMemo = memo.copy(
+      publishedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
-      if (it.id == memoId) postedMemo else it
+      if (it.id == memoId) publishedMemo else it
     }
     mockMemoList.update { newMemoList }
 
-    return postedMemo
+    return publishedMemo
   }
 }
 
@@ -102,8 +102,8 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) {
     fromPage = fromPage,
     toPage = toPage,
     createdAt = LocalDateTime.now(),
-    editedAt = null,
-    postedAt = null,
+    updatedAt = null,
+    publishedAt = null,
     likeCount = null,
   )
 }

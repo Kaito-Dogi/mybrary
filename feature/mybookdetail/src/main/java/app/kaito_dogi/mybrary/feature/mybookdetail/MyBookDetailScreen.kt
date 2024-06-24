@@ -23,7 +23,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoCard
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRow
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoSkeleton
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
@@ -99,7 +99,7 @@ internal fun MyBookDetailScreen(
           items = uiState.memoList,
           key = { memo -> memo.id.value },
         ) { memo ->
-          MemoCard(
+          MemoRow(
             memo = memo,
             onClick = onMemoClick,
             modifier = Modifier.padding(

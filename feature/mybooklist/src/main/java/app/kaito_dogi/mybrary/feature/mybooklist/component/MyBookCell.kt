@@ -17,7 +17,7 @@ import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun MyBookCard(
+internal fun MyBookCell(
   myBook: MyBook,
   onClick: (MyBook) -> Unit,
   modifier: Modifier = Modifier,
@@ -36,9 +36,9 @@ internal fun MyBookCard(
 
 @Preview
 @Composable
-private fun MyBookCardPreview() {
+private fun MyBookCellPreview() {
   MybraryTheme {
-    MyBookCard(
+    MyBookCell(
       myBook = MyBook(
         id = MyBookId(value = 0L),
         bookId = BookId(value = 0L),

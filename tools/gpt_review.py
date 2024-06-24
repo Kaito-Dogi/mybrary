@@ -18,7 +18,12 @@ def get_pr_diff():
     'Accept': 'application/vnd.github.v3.diff'
   }
   diff_response = requests.get(PR_API_URL, headers=headers)
-  return diff_response.text
+  diff_text = diff_response.text
+
+  # デバッグのために diff を出力
+  print('あああ: ', diff_text)
+
+  return diff_text
 
 # コードレビューを依頼するプロンプトを作成
 def create_review_prompt(code_diff):
@@ -28,7 +33,8 @@ def create_review_prompt(code_diff):
             '- If there is no review comment, please answer {"files":[]}\n'
             '- Be sure to comment on areas for improvement.\n'
             '- Please make review comments in Japanese.\n'
-            '- Ignore the use of "self." when using variables and functions.\n'
+            '- Lines beginning with "-" are removed lines, so review them as deletions.\n'
+            '- Lines beginning with "+" are added lines, so review them as additions.\n'
             '- Please prefix your review comments with one of the following labels "[MUST]","[IMO]","[NITS]".\n'
             '  - MUST: must be modified\n'
             '  - IMO: personal opinion or minor proposal\n'
@@ -58,6 +64,10 @@ def get_gpt_review(prompt):
   chat_completion = client.chat.completions.create(
     messages=[
       {
+        'role' : 'system',
+        'content': 'You are an experienced Android app developer, well versed in the Android Developers documentation and able to implement and design scalable, high quality, robust, easy to test apps.'
+      },
+      {
         'role': 'user',
         'content': prompt,
       }
@@ -66,7 +76,7 @@ def get_gpt_review(prompt):
     model=GPT_MODEL,
   )
 
-  # デバッグのためにログを出力
+  # デバッグのために GPT からのレスポンスを出力
   print('あああ: ', chat_completion)
 
   review_result = chat_completion.choices[0].message.content

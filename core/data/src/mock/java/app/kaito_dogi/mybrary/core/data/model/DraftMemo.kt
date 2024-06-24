@@ -7,7 +7,7 @@ internal val dummyDraftMemos = buildList {
   repeat(20) {
     add(
       DraftMemo(
-        myBookId = MyBookId(it.toLong()),
+        myBookId = MyBookId(value = it.toLong()),
         content = "content: $it",
         fromPage = null,
         toPage = null,

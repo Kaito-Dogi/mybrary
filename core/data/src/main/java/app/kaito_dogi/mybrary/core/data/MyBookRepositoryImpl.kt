@@ -16,7 +16,7 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun registerMyBook(externalBookId: String): Boolean {
+  override suspend fun createMyBook(externalBookId: String): Boolean {
     TODO("Not yet implemented")
   }
 

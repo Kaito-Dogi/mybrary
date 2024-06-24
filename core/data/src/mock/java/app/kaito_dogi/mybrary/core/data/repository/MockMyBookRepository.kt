@@ -35,7 +35,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   // TODO: 実装
-  override suspend fun registerMyBook(
+  override suspend fun createMyBook(
     externalBookId: String,
   ): Boolean {
     return true

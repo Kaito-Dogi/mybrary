@@ -15,8 +15,8 @@ data class Memo(
   @Serializable(with = LocalDateTimeSerializer::class)
   val createdAt: LocalDateTime,
   @Serializable(with = LocalDateTimeSerializer::class)
-  val editedAt: LocalDateTime? = null,
+  val updatedAt: LocalDateTime? = null,
   @Serializable(with = LocalDateTimeSerializer::class)
-  val postedAt: LocalDateTime? = null,
+  val publishedAt: LocalDateTime? = null,
   val likeCount: Int? = null,
 )

@@ -56,7 +56,7 @@ internal class MyBookDetailViewModel @Inject constructor(
         _uiState.update {
           it.copy(
             myBook = archivedMyBook,
-            editedMemoId = null,
+            editingMemoId = null,
             draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
             shownMessage = "『${archivedMyBook.title}』をアーカイブしました",
           )
@@ -107,7 +107,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update {
       it.copy(
         isBottomSheetVisible = true,
-        editedMemoId = memo.id,
+        editingMemoId = memo.id,
         draftMemo = it.draftMemo.copy(
           content = memo.content,
           fromPage = memo.fromPage,
@@ -121,8 +121,8 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update {
       it.copy(
         isBottomSheetVisible = false,
-        editedMemoId = null,
-        draftMemo = if (it.editedMemoId == null) {
+        editingMemoId = null,
+        draftMemo = if (it.editingMemoId == null) {
           it.draftMemo
         } else {
           DraftMemo.createInitialValue(
@@ -179,7 +179,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           return@launch
         }
 
-        val memoId = uiState.value.editedMemoId
+        val memoId = uiState.value.editingMemoId
         if (memoId == null) {
           val createdMemo = memoRepository.createMemo(
             draftMemo = uiState.value.draftMemo,
@@ -187,23 +187,23 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               memoList = it.memoList?.plus(createdMemo),
-              editedMemoId = null,
+              editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
               shownMessage = "メモを追加しました",
             )
           }
         } else {
-          val editedMemo = memoRepository.editMemo(
+          val updatedMemo = memoRepository.updateMemo(
             memoId = memoId,
             draftMemo = uiState.value.draftMemo,
           )
           val newMemoList = uiState.value.memoList?.map {
-            if (it.id == editedMemo.id) editedMemo else it
+            if (it.id == updatedMemo.id) updatedMemo else it
           }
           _uiState.update {
             it.copy(
               memoList = newMemoList,
-              editedMemoId = null,
+              editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
               shownMessage = "メモを編集しました",
             )

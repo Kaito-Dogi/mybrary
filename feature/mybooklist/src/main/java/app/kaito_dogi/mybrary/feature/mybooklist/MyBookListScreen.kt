@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCard
+import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
 
 @Composable
 internal fun MyBookListScreen(
@@ -65,7 +65,7 @@ internal fun MyBookListScreen(
           items = uiState.myBookList,
           key = { myBook -> myBook.id.value },
         ) {
-          MyBookCard(
+          MyBookCell(
             myBook = it,
             onClick = onMyBookClick,
           )
