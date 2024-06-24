@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 data class Draft(
   val myBookId: MyBookId,
   val content: String,
-  val fromPage: Int?,
-  val toPage: Int?,
+  val fromPage: Int? = null,
+  val toPage: Int? = null,
 ) {
   companion object {
     fun createInitialValue(myBookId: MyBookId) = Draft(
