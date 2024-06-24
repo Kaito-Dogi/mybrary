@@ -24,7 +24,7 @@ import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun MemoCard(
+internal fun MemoRow(
   memo: Memo,
   onClick: (Memo) -> Unit,
   modifier: Modifier = Modifier,
@@ -78,11 +78,11 @@ private val Memo.cardBody
 
 @Preview
 @Composable
-private fun MemoCardPreview(
+private fun MemoRowPreview(
   @PreviewParameter(PreviewMemoProvider::class) memo: Memo,
 ) {
   MybraryTheme {
-    MemoCard(
+    MemoRow(
       memo = memo,
       onClick = {},
     )
