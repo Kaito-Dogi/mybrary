@@ -13,6 +13,7 @@ internal data class MyBookDetailUiState(
   val isBottomSheetVisible: Boolean,
   val editedMemoId: MemoId?,
   val draftMemo: DraftMemo,
+  val isContentEmptyError: Boolean,
   val shownMessage: String?,
 ) {
   companion object {
@@ -27,6 +28,7 @@ internal data class MyBookDetailUiState(
         fromPage = null,
         toPage = null,
       ),
+      isContentEmptyError = false,
       shownMessage = null,
     )
   }

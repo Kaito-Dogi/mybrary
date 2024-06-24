@@ -25,6 +25,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 @Composable
 internal fun MyBookDetailBottomSheetContent(
   draftMemo: DraftMemo,
+  isContentTextFieldError: Boolean,
   onFromPageChange: (String) -> Unit,
   onToPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
@@ -65,6 +66,7 @@ internal fun MyBookDetailBottomSheetContent(
         onValueChange = onContentChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "メモを入力…") },
+        isError = isContentTextFieldError,
         keyboardOptions = KeyboardOptions.Default.copy(
           keyboardType = KeyboardType.Text,
           imeAction = ImeAction.Send,
@@ -94,6 +96,7 @@ private fun MyBookDetailBottomSheetContentPreview() {
       draftMemo = DraftMemo.createInitialValue(
         myBookId = MyBookId(0L),
       ),
+      isContentTextFieldError = false,
       onFromPageChange = {},
       onToPageChange = {},
       onContentChange = {},

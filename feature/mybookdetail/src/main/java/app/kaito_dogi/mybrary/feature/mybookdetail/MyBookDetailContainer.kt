@@ -55,14 +55,17 @@ internal fun MyBookDetailContainer(
     onToPageChange = viewModel::onToPageChange,
     onContentChange = viewModel::onContentChange,
     onSaveClick = {
-      coroutineScope.launch {
-        viewModel.onSaveClick()
-        bottomSheetState.hide()
-      }.invokeOnCompletion {
-        if (!bottomSheetState.isVisible) {
-          viewModel.onBottomSheetDismissRequest()
-        }
-      }
+      viewModel.onSaveClick(
+        onComplete = {
+          coroutineScope.launch {
+            bottomSheetState.hide()
+          }.invokeOnCompletion {
+            if (!bottomSheetState.isVisible) {
+              viewModel.onBottomSheetDismissRequest()
+            }
+          }
+        },
+      )
     },
   )
 }

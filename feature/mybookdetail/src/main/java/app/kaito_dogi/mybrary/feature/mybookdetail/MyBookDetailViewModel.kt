@@ -159,15 +159,27 @@ internal class MyBookDetailViewModel @Inject constructor(
         draftMemo = it.draftMemo.copy(
           content = content,
         ),
+        isContentEmptyError = false,
       )
     }
   }
 
-  fun onSaveClick() {
+  fun onSaveClick(
+    onComplete: () -> Unit,
+  ) {
     viewModelScope.launch {
       try {
-        val memoId = uiState.value.editedMemoId
+        // メモの内容が空の場合はエラー表示にする
+        if (uiState.value.draftMemo.content.isBlank()) {
+          _uiState.update {
+            it.copy(
+              isContentEmptyError = true,
+            )
+          }
+          return@launch
+        }
 
+        val memoId = uiState.value.editedMemoId
         if (memoId == null) {
           val createdMemo = memoRepository.createMemo(
             draftMemo = uiState.value.draftMemo,
@@ -197,6 +209,9 @@ internal class MyBookDetailViewModel @Inject constructor(
             )
           }
         }
+
+        // BottomSheet を閉じる
+        onComplete()
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
