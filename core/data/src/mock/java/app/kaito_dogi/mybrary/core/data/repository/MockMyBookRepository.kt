@@ -162,6 +162,7 @@ private val MockMyBookList = List(10) {
     },
     isPinned = false,
     isFavorite = false,
+    isPublic = false,
     isArchived = false,
   )
 }

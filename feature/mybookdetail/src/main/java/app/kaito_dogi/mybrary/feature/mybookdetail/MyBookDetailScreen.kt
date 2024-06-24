@@ -160,6 +160,7 @@ private fun MyBookDetailScreenPreview() {
           authors = emptyList(),
           isPinned = false,
           isFavorite = false,
+          isPublic = false,
           isArchived = false,
         ),
       ),

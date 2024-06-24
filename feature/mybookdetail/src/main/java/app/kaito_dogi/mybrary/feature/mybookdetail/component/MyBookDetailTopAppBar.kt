@@ -133,6 +133,7 @@ private fun MyBookDetailTopAppBarPreview() {
         authors = emptyList(),
         isPinned = false,
         isFavorite = false,
+        isPublic = false,
         isArchived = false,
       ),
     )

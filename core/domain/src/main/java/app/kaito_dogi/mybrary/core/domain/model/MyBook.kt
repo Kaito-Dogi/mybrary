@@ -17,5 +17,6 @@ data class MyBook(
   val authors: List<Author>,
   val isPinned: Boolean,
   val isFavorite: Boolean,
+  val isPublic: Boolean,
   val isArchived: Boolean,
 )
