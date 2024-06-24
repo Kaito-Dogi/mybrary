@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 @Module
 @InstallIn(SingletonComponent::class)
 internal object DispatcherModule {
-
   @Provides
   @Dispatcher(MybraryDispatchers.DEFAULT)
   fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default

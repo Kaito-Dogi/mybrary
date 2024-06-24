@@ -10,7 +10,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal object DaoModule {
-
   @Singleton
   @Provides
   fun providesAuthorDao(db: MybraryDatabase) = db.authorDao()

@@ -10,7 +10,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface DraftMemoRepositoryModule {
-
   @Singleton
   @Binds
   fun bindsDraftMemoRepository(
