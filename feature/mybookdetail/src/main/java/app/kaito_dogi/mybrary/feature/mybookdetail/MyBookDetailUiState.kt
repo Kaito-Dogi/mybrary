@@ -11,7 +11,7 @@ internal data class MyBookDetailUiState(
   val myBook: MyBook,
   val memoList: List<Memo>?,
   val isBottomSheetVisible: Boolean,
-  val editedMemoId: MemoId?,
+  val editingMemoId: MemoId?,
   val draftMemo: DraftMemo,
   val isContentEmptyError: Boolean,
   val shownMessage: String?,
@@ -21,7 +21,7 @@ internal data class MyBookDetailUiState(
       myBook = myBook,
       memoList = null,
       isBottomSheetVisible = false,
-      editedMemoId = null,
+      editingMemoId = null,
       draftMemo = DraftMemo(
         myBookId = myBook.id,
         content = "",

@@ -18,11 +18,11 @@ internal class MemoRepositoryImpl @Inject constructor() : MemoRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun editMemo(memoId: MemoId, draftMemo: DraftMemo): Memo {
+  override suspend fun updateMemo(memoId: MemoId, draftMemo: DraftMemo): Memo {
     TODO("Not yet implemented")
   }
 
-  override suspend fun postMemo(memoId: MemoId): Memo {
+  override suspend fun publishMemo(memoId: MemoId): Memo {
     TODO("Not yet implemented")
   }
 }
