@@ -2,6 +2,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
   alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.serialization)
   id("kotlin-kapt")
 }
 
@@ -45,11 +46,11 @@ dependencies {
   implementation(project(":core:domain"))
 
   implementation(libs.hiltAndroid)
-  implementation(libs.moshi)
   implementation(libs.okhttp)
   implementation(libs.okhttpLogging)
   implementation(libs.retrofit)
-  implementation(libs.retrofitConverterMoshi)
+  implementation(libs.retrofitConverterSerialization)
+  implementation(libs.serialization)
 
   kapt(libs.hiltCompiler)
 }

@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data
 
-import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
+import app.kaito_dogi.mybrary.core.domain.repository.SearchBookRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -9,8 +9,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface MemoRepositoryModule {
+internal interface SearchBookRepositoryModule {
   @Singleton
   @Binds
-  fun bindMemoRepository(impl: MemoRepositoryImpl): MemoRepository
+  fun bindSearchBookRepository(impl: SearchBookRepositoryImpl): SearchBookRepository
 }

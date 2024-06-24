@@ -4,6 +4,11 @@ name: GPT Review
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
     branches:
       - main
 
@@ -14,7 +19,7 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'GPT Review')
+    if: ((github.event.action == 'labeled') && (github.event.label.name == 'GPT Review')) || contains(github.event.pull_request.labels.*.name, 'GPT Review')
     permissions:
       pull-requests: write
     steps:

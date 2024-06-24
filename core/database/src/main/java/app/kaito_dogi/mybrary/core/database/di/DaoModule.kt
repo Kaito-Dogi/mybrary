@@ -12,13 +12,13 @@ import javax.inject.Singleton
 internal object DaoModule {
   @Singleton
   @Provides
-  fun providesAuthorDao(db: MybraryDatabase) = db.authorDao()
+  fun provideAuthorDao(db: MybraryDatabase) = db.authorDao()
 
   @Singleton
   @Provides
-  fun providesBookDao(db: MybraryDatabase) = db.bookDao()
+  fun provideBookDao(db: MybraryDatabase) = db.bookDao()
 
   @Singleton
   @Provides
-  fun providesRecordDao(db: MybraryDatabase) = db.recordDao()
+  fun provideRecordDao(db: MybraryDatabase) = db.recordDao()
 }
