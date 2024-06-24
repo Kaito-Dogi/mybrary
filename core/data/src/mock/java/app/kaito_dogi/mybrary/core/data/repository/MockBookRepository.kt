@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.data.model.dummyBookList
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.OrderType
@@ -15,10 +14,6 @@ internal class MockBookRepository @Inject constructor() : BookRepository {
     orderBy: OrderType,
     printType: PrintType,
   ): List<Book> {
-    return dummyBookList
-      .subList(
-        fromIndex = startIndex,
-        toIndex = startIndex + maxResults,
-      )
+    TODO()
   }
 }

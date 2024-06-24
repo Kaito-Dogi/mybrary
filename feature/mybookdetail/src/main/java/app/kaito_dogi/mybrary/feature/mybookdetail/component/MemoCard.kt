@@ -17,6 +17,8 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.User
+import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
 
@@ -92,9 +94,13 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
     get() = sequenceOf(
       // 開始ページ・終了ページが記録されている場合
       Memo(
-        id = MemoId(0),
-        myBookId = MyBookId(0),
-        content = "メモ",
+        id = MemoId(value = 0),
+        myBookId = MyBookId(value = 0),
+        user = User(
+          id = UserId(value = 0L),
+          name = "name",
+        ),
+        content = "content",
         fromPage = 1,
         toPage = 100,
         createdAt = LocalDateTime.now(),
@@ -104,9 +110,13 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // 開始ページのみが記録されている場合
       Memo(
-        id = MemoId(0),
-        myBookId = MyBookId(0),
-        content = "メモ",
+        id = MemoId(value = 0),
+        myBookId = MyBookId(value = 0),
+        user = User(
+          id = UserId(value = 0L),
+          name = "name",
+        ),
+        content = "content",
         fromPage = 50,
         toPage = null,
         createdAt = LocalDateTime.now(),
@@ -116,9 +126,13 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // ページが記録されていない場合
       Memo(
-        id = MemoId(0),
-        myBookId = MyBookId(0),
-        content = "メモ",
+        id = MemoId(value = 0),
+        myBookId = MyBookId(value = 0),
+        user = User(
+          id = UserId(value = 0L),
+          name = "name",
+        ),
+        content = "content",
         fromPage = null,
         toPage = null,
         createdAt = LocalDateTime.now(),

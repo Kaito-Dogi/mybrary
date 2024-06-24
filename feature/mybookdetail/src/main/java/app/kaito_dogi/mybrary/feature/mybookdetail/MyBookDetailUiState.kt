@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import androidx.compose.runtime.Immutable
-import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.model.Draft
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -12,7 +12,7 @@ internal data class MyBookDetailUiState(
   val memoList: List<Memo>?,
   val isBottomSheetVisible: Boolean,
   val editedMemoId: MemoId?,
-  val draftMemo: DraftMemo,
+  val draftMemo: Draft,
   val isContentEmptyError: Boolean,
   val shownMessage: String?,
 ) {
@@ -22,7 +22,7 @@ internal data class MyBookDetailUiState(
       memoList = null,
       isBottomSheetVisible = false,
       editedMemoId = null,
-      draftMemo = DraftMemo(
+      draftMemo = Draft(
         myBookId = myBook.id,
         content = "",
         fromPage = null,

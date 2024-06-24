@@ -6,10 +6,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MyBook(
   val id: MyBookId,
-  val externalId: String,
+  val bookId: BookId,
+  val externalId: ExternalBookId,
+  val user: User,
   val title: String,
-  val authors: String,
   val imageUrl: Url.Image,
+  val isbn10: String,
+  val isbn13: String,
+  val pageCount: Int,
+  val authors: List<Author>,
   val isPinned: Boolean,
   val isFavorite: Boolean,
   val isArchived: Boolean,

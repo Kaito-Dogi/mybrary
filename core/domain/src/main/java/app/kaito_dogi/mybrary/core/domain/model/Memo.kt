@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 data class Memo(
   val id: MemoId,
   val myBookId: MyBookId,
+  val user: User,
   val content: String,
   val fromPage: Int?,
   val toPage: Int?,

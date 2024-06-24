@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.model.Draft
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -57,7 +57,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           it.copy(
             myBook = archivedMyBook,
             editedMemoId = null,
-            draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+            draftMemo = Draft.createInitialValue(navArg.myBook.id),
             shownMessage = "『${archivedMyBook.title}』をアーカイブしました",
           )
         }
@@ -125,7 +125,7 @@ internal class MyBookDetailViewModel @Inject constructor(
         draftMemo = if (it.editedMemoId == null) {
           it.draftMemo
         } else {
-          DraftMemo.createInitialValue(
+          Draft.createInitialValue(
             navArg.myBook.id,
           )
         },
@@ -188,7 +188,7 @@ internal class MyBookDetailViewModel @Inject constructor(
             it.copy(
               memoList = it.memoList?.plus(createdMemo),
               editedMemoId = null,
-              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              draftMemo = Draft.createInitialValue(navArg.myBook.id),
               shownMessage = "メモを追加しました",
             )
           }
@@ -204,7 +204,7 @@ internal class MyBookDetailViewModel @Inject constructor(
             it.copy(
               memoList = newMemoList,
               editedMemoId = null,
-              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              draftMemo = Draft.createInitialValue(navArg.myBook.id),
               shownMessage = "メモを編集しました",
             )
           }
