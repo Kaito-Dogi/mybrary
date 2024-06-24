@@ -54,7 +54,6 @@ def create_ignore_reviews_prompt():
 # Open AI API でコードレビューを行い、結果を json で取得する
 def get_gpt_review(prompt):
   client = OpenAI(api_key=OPENAI_API_KEY)
-
   chat_completion = client.chat.completions.create(
     messages=[
       {
@@ -66,6 +65,7 @@ def get_gpt_review(prompt):
     model="gpt-4-turbo",
   )
   review_result = chat_completion.choices[0].message.content
+  print("あああ: ", review_result)
   return review_result
 
 # レビューコメントを投稿する
