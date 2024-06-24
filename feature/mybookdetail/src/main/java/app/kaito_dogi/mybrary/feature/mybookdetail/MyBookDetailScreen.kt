@@ -114,6 +114,7 @@ internal fun MyBookDetailScreen(
       bottomSheet {
         MyBookDetailBottomSheetContent(
           draftMemo = uiState.draftMemo,
+          isContentTextFieldError = uiState.isContentEmptyError,
           onFromPageChange = onFromPageChange,
           onToPageChange = onToPageChange,
           onContentChange = onContentChange,
