@@ -50,6 +50,7 @@ private fun MyBookCellPreview() {
         isbn10 = "isbn10",
         isbn13 = "isbn13",
         pageCount = 0,
+        publisher = "出版社",
         authors = emptyList(),
         isPinned = false,
         isFavorite = false,

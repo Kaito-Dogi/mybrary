@@ -14,6 +14,7 @@ data class MyBook(
   val isbn10: String,
   val isbn13: String,
   val pageCount: Int,
+  val publisher: String,
   val authors: List<Author>,
   val isPinned: Boolean,
   val isFavorite: Boolean,

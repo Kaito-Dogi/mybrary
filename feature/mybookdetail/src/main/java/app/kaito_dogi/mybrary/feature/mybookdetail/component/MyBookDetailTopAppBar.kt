@@ -136,17 +136,18 @@ private fun MyBookDetailTopAppBarPreview() {
           id = UserId(value = 0L),
           name = "ユーザー名",
         ),
-        title = "タイトル",
+        title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
         pageCount = 100,
-        authors = listOf(
+        publisher = "出版社",
+        authors = List(10) {
           Author(
             id = AuthorId(value = 0L),
-            name = "著者名",
-          ),
-        ),
+            name = "著者$it",
+          )
+        },
         isPinned = false,
         isFavorite = false,
         isPublic = false,

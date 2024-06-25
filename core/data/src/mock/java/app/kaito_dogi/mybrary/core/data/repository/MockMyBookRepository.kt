@@ -140,6 +140,15 @@ private val MockMyBookList = List(10) {
       5 -> 468
       else -> Int.MAX_VALUE
     },
+    publisher = when (it % 7) {
+      0 -> "秀和システム"
+      1 -> "株式会社 オーム社"
+      2 -> ""
+      3 -> "翔泳社"
+      4 -> "ドワンゴ"
+      5 -> "マイナビ出版"
+      else -> "出版社"
+    },
     authors = when (it % 7) {
       0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
       1 -> emptyList()
