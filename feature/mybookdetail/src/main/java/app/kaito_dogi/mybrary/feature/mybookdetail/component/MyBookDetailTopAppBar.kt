@@ -21,12 +21,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.Author
+import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -95,16 +98,24 @@ internal fun MyBookDetailTopAppBar(
             text = myBook.title,
             modifier = Modifier.weight(1f),
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.titleLarge,
+            style = MybraryTheme.typography.titleMedium.copy(
+              fontWeight = FontWeight.SemiBold,
+            ),
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
           )
           Text(
             text = myBook.authors.joinToString { it.name },
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.bodyLarge,
+            style = MybraryTheme.typography.bodyMedium,
             overflow = TextOverflow.Ellipsis,
             maxLines = 2,
+          )
+          Gap(height = MybraryTheme.space.xs)
+          Text(
+            text = "${myBook.pageCount}ページ",
+            color = MybraryTheme.colorScheme.onPrimary,
+            style = MybraryTheme.typography.bodyMedium,
           )
         }
       }
@@ -125,12 +136,17 @@ private fun MyBookDetailTopAppBarPreview() {
           id = UserId(value = 0L),
           name = "name",
         ),
-        title = "title",
+        title = "title\ntitle\ntitle\ntitle\ntitle\n",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
-        pageCount = 0,
-        authors = emptyList(),
+        pageCount = 100,
+        authors = listOf(
+          Author(
+            id = AuthorId(value = 0L),
+            name = "name\nname\nname\n",
+          ),
+        ),
         isPinned = false,
         isFavorite = false,
         isPublic = false,

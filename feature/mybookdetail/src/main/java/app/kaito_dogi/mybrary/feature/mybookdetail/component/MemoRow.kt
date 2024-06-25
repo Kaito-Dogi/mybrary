@@ -48,7 +48,7 @@ internal fun MemoRow(
       Text(
         text = memo.content,
         modifier = Modifier.fillMaxWidth(),
-        style = MybraryTheme.typography.titleMedium,
+        style = MybraryTheme.typography.bodyLarge,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
