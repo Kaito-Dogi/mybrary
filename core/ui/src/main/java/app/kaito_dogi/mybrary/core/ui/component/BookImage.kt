@@ -55,7 +55,7 @@ private fun BookImagePreview() {
   MybraryTheme {
     BookImage(
       imageUrl = Url.Image(value = "imageUrl"),
-      title = "title",
+      title = "タイトル",
     )
   }
 }

@@ -43,9 +43,9 @@ private fun MyBookCellPreview() {
         externalId = ExternalBookId(value = "externalId"),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        title = "title",
+        title = "タイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",

@@ -134,9 +134,9 @@ private fun MyBookDetailTopAppBarPreview() {
         externalId = ExternalBookId(value = "externalId"),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        title = "title\ntitle\ntitle\ntitle\ntitle\n",
+        title = "タイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
@@ -144,7 +144,7 @@ private fun MyBookDetailTopAppBarPreview() {
         authors = listOf(
           Author(
             id = AuthorId(value = 0L),
-            name = "name\nname\nname\n",
+            name = "著者名",
           ),
         ),
         isPinned = false,
