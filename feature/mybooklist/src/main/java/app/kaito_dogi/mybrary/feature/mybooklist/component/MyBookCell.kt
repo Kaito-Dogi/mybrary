@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.mybooklist.component
 
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,7 +14,6 @@ import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookCell(
   myBook: MyBook,
