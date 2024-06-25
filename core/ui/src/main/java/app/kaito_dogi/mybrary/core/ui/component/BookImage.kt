@@ -17,7 +17,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 
-private const val bookAspectRatio = 210f / 297f
+const val bookAspectRatio = 210f / 297f
 
 @Composable
 fun BookImage(
