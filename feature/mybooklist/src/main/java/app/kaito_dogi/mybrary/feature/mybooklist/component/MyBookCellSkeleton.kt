@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.ui.component.BookAspectRatio
 import app.kaito_dogi.mybrary.core.ui.component.SkeletonBox
-import app.kaito_dogi.mybrary.core.ui.component.bookAspectRatio
 
 
 @Composable
@@ -17,7 +17,7 @@ internal fun MyBookCellSkeleton(
   SkeletonBox(
     modifier = modifier
       .clip(shape = MybraryTheme.shapes.extraSmall)
-      .aspectRatio(bookAspectRatio),
+      .aspectRatio(BookAspectRatio),
   ) {
     // 何も表示しない
   }
