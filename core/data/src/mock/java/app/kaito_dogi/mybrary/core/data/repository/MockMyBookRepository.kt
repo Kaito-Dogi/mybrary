@@ -131,7 +131,15 @@ private val MockMyBookList = List(10) {
     ),
     isbn10 = "isbn10",
     isbn13 = "isbn13",
-    pageCount = it * 100,
+    pageCount = when (it % 7) {
+      0 -> 337
+      1 -> 284
+      2 -> 360
+      3 -> 563
+      4 -> 349
+      5 -> 468
+      else -> Int.MAX_VALUE
+    },
     authors = when (it % 7) {
       0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
       1 -> emptyList()
