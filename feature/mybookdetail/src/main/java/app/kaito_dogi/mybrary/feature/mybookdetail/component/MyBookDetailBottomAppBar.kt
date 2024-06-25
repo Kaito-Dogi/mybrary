@@ -18,9 +18,11 @@ import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MyBookDetailBottomAppBar(
+  isPublic: Boolean,
   isFavorite: Boolean,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
+  onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
   onAdditionClick: () -> Unit,
   modifier: Modifier = Modifier,
@@ -42,6 +44,16 @@ internal fun MyBookDetailBottomAppBar(
       Icon(
         painter = painterResource(id = R.drawable.icon_archive),
         contentDescription = "書籍を非表示にする",
+      )
+    }
+    IconButton(onClick = onPublicClick) {
+      Icon(
+        painter = if (isPublic) {
+          painterResource(id = R.drawable.icon_visibility)
+        } else {
+          painterResource(id = R.drawable.icon_visibility_off)
+        },
+        contentDescription = "書籍を他のユーザーに公開する",
       )
     }
     IconButton(onClick = onFavoriteClick) {
@@ -78,9 +90,11 @@ private fun MyBookDetailBottomAppBarPreview() {
   MybraryTheme {
     MyBookDetailBottomAppBar(
       isFavorite = false,
+      isPublic = false,
       onBackClick = {},
       onArchiveClick = {},
       onFavoriteClick = {},
+      onPublicClick = {},
       onAdditionClick = {},
     )
   }

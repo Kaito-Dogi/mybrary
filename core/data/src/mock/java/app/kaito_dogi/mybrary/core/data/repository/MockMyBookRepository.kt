@@ -84,6 +84,32 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return removedMyBook
   }
 
+  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
+    delay(1_000)
+
+    val myBook = mockMyBookList.value.first { it.id == myBookId }
+    val publicMyBook = myBook.copy(isPublic = true)
+    val newMyBookList = mockMyBookList.value.map {
+      if (it.id == myBookId) publicMyBook else it
+    }
+    mockMyBookList.update { newMyBookList }
+
+    return publicMyBook
+  }
+
+  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
+    delay(1_000)
+
+    val myBook = mockMyBookList.value.first { it.id == myBookId }
+    val privateMyBook = myBook.copy(isPublic = false)
+    val newMyBookList = mockMyBookList.value.map {
+      if (it.id == myBookId) privateMyBook else it
+    }
+    mockMyBookList.update { newMyBookList }
+
+    return privateMyBook
+  }
+
   override suspend fun archiveMyBook(
     myBookId: MyBookId,
   ): MyBook {

@@ -48,6 +48,7 @@ internal fun MyBookDetailContainer(
     },
     onBackClick = onBackClick,
     onArchiveClick = viewModel::onArchiveClick,
+    onPublicClick = viewModel::onPublicClick,
     onFavoriteClick = viewModel::onFavoriteClick,
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,

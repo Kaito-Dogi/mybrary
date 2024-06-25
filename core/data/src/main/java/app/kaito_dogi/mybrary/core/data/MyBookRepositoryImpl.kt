@@ -32,6 +32,14 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
     TODO("Not yet implemented")
   }
 
+  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
+    TODO("Not yet implemented")
+  }
+
   override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
     TODO("Not yet implemented")
   }

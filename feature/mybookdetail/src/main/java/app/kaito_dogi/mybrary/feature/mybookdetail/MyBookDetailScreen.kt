@@ -37,6 +37,7 @@ internal fun MyBookDetailScreen(
   showSnackbar: (String) -> Unit,
   onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
+  onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
@@ -49,9 +50,11 @@ internal fun MyBookDetailScreen(
     modifier = Modifier.fillMaxSize(),
     bottomBar = {
       MyBookDetailBottomAppBar(
+        isPublic = uiState.myBook.isPublic,
         isFavorite = uiState.myBook.isFavorite,
         onBackClick = onBackClick,
         onArchiveClick = onArchiveClick,
+        onPublicClick = onPublicClick,
         onFavoriteClick = onFavoriteClick,
         onAdditionClick = onAdditionClick,
       )
@@ -159,6 +162,7 @@ private fun MyBookDetailScreenPreview() {
       showSnackbar = {},
       onBackClick = {},
       onArchiveClick = {},
+      onPublicClick = {},
       onFavoriteClick = {},
       onAdditionClick = {},
       onMemoClick = {},

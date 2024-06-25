@@ -16,5 +16,9 @@ interface MyBookRepository {
 
   suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook
 
+  suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook
+
+  suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook
+
   suspend fun archiveMyBook(myBookId: MyBookId): MyBook
 }
