@@ -14,7 +14,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.component.SkeletonBox
 
 @Composable
-internal fun MemoSkeleton(
+internal fun MemoRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
@@ -51,8 +51,8 @@ internal fun MemoSkeleton(
 
 @Preview
 @Composable
-private fun MemoSkeletonPreview() {
+private fun MemoRowSkeletonPreview() {
   MybraryTheme {
-    MemoSkeleton()
+    MemoRowSkeleton()
   }
 }
