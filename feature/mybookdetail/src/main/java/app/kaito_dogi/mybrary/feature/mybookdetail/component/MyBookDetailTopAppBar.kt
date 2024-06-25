@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -93,6 +94,7 @@ internal fun MyBookDetailTopAppBar(
           modifier = Modifier
             .fillMaxHeight()
             .weight(1f),
+          verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.space.xs),
         ) {
           Text(
             text = myBook.title,
@@ -104,24 +106,40 @@ internal fun MyBookDetailTopAppBar(
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
           )
-          Text(
-            text = myBook.authors.joinToString { it.name },
-            color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.bodyMedium,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 2,
-          )
-          Gap(height = MybraryTheme.space.xs)
-          Text(
-            text = "${myBook.pageCount}ページ",
-            color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.bodyMedium,
-          )
+          if (myBook.authors.isNotEmpty()) {
+            Text(
+              text = myBook.authors.joinToString { it.name },
+              color = MybraryTheme.colorScheme.onPrimary,
+              style = MybraryTheme.typography.bodyMedium,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 2,
+            )
+          }
+          if (myBook.topAppBarBody.isNotBlank()) {
+            Text(
+              text = myBook.topAppBarBody,
+              color = MybraryTheme.colorScheme.onPrimary,
+              style = MybraryTheme.typography.bodyMedium,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 1,
+            )
+          }
         }
       }
     }
   }
 }
+
+private val MyBook.topAppBarBody
+  get() = run {
+    val page = if (this.pageCount > 0) "${this.pageCount}ページ" else ""
+    when {
+      page.isNotBlank() && this.publisher.isNotBlank() -> "$page｜${this.publisher}"
+      page.isNotBlank() && this.publisher.isBlank() -> page
+      page.isBlank() && this.publisher.isNotBlank() -> this.publisher
+      else -> ""
+    }
+  }
 
 @Preview
 @Composable
