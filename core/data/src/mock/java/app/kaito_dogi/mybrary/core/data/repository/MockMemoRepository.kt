@@ -36,7 +36,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       myBookId = draftMemo.myBookId,
       user = User(
         id = UserId(value = 0L),
-        name = "name",
+        name = "ユーザー名",
       ),
       content = draftMemo.content,
       fromPage = draftMemo.fromPage,
@@ -96,9 +96,9 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) {
     myBookId = myBookId,
     user = User(
       id = UserId(value = 0L),
-      name = "name",
+      name = "ユーザー名",
     ),
-    content = "content$it",
+    content = "メモ$it",
     fromPage = fromPage,
     toPage = toPage,
     createdAt = LocalDateTime.now(),

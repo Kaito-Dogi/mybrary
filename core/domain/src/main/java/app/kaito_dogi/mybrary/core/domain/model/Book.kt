@@ -12,5 +12,6 @@ data class Book(
   val isbn10: String,
   val isbn13: String,
   val pageCount: Int,
+  val publisher: String,
   val authors: List<Author>,
 )

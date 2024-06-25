@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -21,12 +22,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.Author
+import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -90,27 +94,52 @@ internal fun MyBookDetailTopAppBar(
           modifier = Modifier
             .fillMaxHeight()
             .weight(1f),
+          verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.space.xs),
         ) {
           Text(
             text = myBook.title,
             modifier = Modifier.weight(1f),
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.titleLarge,
+            style = MybraryTheme.typography.titleMedium.copy(
+              fontWeight = FontWeight.SemiBold,
+            ),
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
           )
-          Text(
-            text = myBook.authors.joinToString { it.name },
-            color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.bodyLarge,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 2,
-          )
+          if (myBook.authors.isNotEmpty()) {
+            Text(
+              text = myBook.authors.joinToString { it.name },
+              color = MybraryTheme.colorScheme.onPrimary,
+              style = MybraryTheme.typography.bodyMedium,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 2,
+            )
+          }
+          if (myBook.topAppBarBody.isNotBlank()) {
+            Text(
+              text = myBook.topAppBarBody,
+              color = MybraryTheme.colorScheme.onPrimary,
+              style = MybraryTheme.typography.bodyMedium,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 1,
+            )
+          }
         }
       }
     }
   }
 }
+
+private val MyBook.topAppBarBody
+  get() = run {
+    val page = if (this.pageCount > 0) "${this.pageCount}ページ" else ""
+    when {
+      page.isNotBlank() && this.publisher.isNotBlank() -> "$page｜${this.publisher}"
+      page.isNotBlank() && this.publisher.isBlank() -> page
+      page.isBlank() && this.publisher.isNotBlank() -> this.publisher
+      else -> ""
+    }
+  }
 
 @Preview
 @Composable
@@ -123,14 +152,20 @@ private fun MyBookDetailTopAppBarPreview() {
         externalId = ExternalBookId(value = "externalId"),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        title = "title",
+        title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
-        pageCount = 0,
-        authors = emptyList(),
+        pageCount = 100,
+        publisher = "出版社",
+        authors = List(10) {
+          Author(
+            id = AuthorId(value = 0L),
+            name = "著者$it",
+          )
+        },
         isPinned = false,
         isFavorite = false,
         isPublic = false,

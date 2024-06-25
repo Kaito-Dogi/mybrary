@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -22,7 +21,6 @@ import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MemoRow(
   memo: Memo,
@@ -50,7 +48,7 @@ internal fun MemoRow(
       Text(
         text = memo.content,
         modifier = Modifier.fillMaxWidth(),
-        style = MybraryTheme.typography.titleMedium,
+        style = MybraryTheme.typography.bodyLarge,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
@@ -98,9 +96,9 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        content = "content",
+        content = "メモ",
         fromPage = 1,
         toPage = 100,
         createdAt = LocalDateTime.now(),
@@ -114,9 +112,9 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        content = "content",
+        content = "メモ",
         fromPage = 50,
         toPage = null,
         createdAt = LocalDateTime.now(),
@@ -130,9 +128,9 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         user = User(
           id = UserId(value = 0L),
-          name = "name",
+          name = "ユーザー名",
         ),
-        content = "content",
+        content = "メモ",
         fromPage = null,
         toPage = null,
         createdAt = LocalDateTime.now(),

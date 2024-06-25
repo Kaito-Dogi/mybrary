@@ -24,7 +24,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRow
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoSkeleton
+import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRowSkeleton
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
 import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
@@ -73,22 +73,11 @@ internal fun MyBookDetailScreen(
       }
       if (uiState.memoList == null) {
         // スケルトン表示
-        item {
-          MemoSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
-          )
-        }
-        item {
-          MemoSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
-          )
-        }
-        item {
-          MemoSkeleton(
+        items(
+          count = 4,
+          key = { "MemoRowSkeleton$it" },
+        ) {
+          MemoRowSkeleton(
             modifier = Modifier.padding(
               horizontal = MybraryTheme.space.md,
             ),
@@ -150,13 +139,14 @@ private fun MyBookDetailScreenPreview() {
           externalId = ExternalBookId(value = "externalId"),
           user = User(
             id = UserId(value = 0L),
-            name = "name",
+            name = "ユーザー名",
           ),
-          title = "title",
+          title = "タイトル",
           imageUrl = Url.Image(value = "imageUrl"),
           isbn10 = "isbn10",
           isbn13 = "isbn13",
           pageCount = 0,
+          publisher = "出版社",
           authors = emptyList(),
           isPinned = false,
           isFavorite = false,

@@ -16,5 +16,6 @@ fun ItemResponse.toSearchResultBook() = SearchResultBook(
   isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.network.response.model.IndustryIdentifierType.Isbn13 }?.identifier
     ?: "",
   pageCount = volumeInfo?.pageCount ?: 0,
+  publisher = volumeInfo?.publisher ?: "",
   authors = volumeInfo?.authors?.map { SearchResultAuthor(name = it) } ?: emptyList(),
 )

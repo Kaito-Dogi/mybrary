@@ -107,7 +107,7 @@ private val MockMyBookList = List(10) {
     externalId = ExternalBookId(value = "externalId$it"),
     user = User(
       id = UserId(value = 0L),
-      name = "name",
+      name = "ユーザー名",
     ),
     title = when (it % 7) {
       0 -> "プリンシプル オブ プログラミング3年目までに身につけたい一生役立つ101の原理原則"
@@ -131,7 +131,24 @@ private val MockMyBookList = List(10) {
     ),
     isbn10 = "isbn10",
     isbn13 = "isbn13",
-    pageCount = it * 100,
+    pageCount = when (it % 7) {
+      0 -> 337
+      1 -> 284
+      2 -> 360
+      3 -> 563
+      4 -> 349
+      5 -> 468
+      else -> Int.MAX_VALUE
+    },
+    publisher = when (it % 7) {
+      0 -> "秀和システム"
+      1 -> "株式会社 オーム社"
+      2 -> ""
+      3 -> "翔泳社"
+      4 -> "ドワンゴ"
+      5 -> "マイナビ出版"
+      else -> "出版社"
+    },
     authors = when (it % 7) {
       0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
       1 -> emptyList()
@@ -158,7 +175,7 @@ private val MockMyBookList = List(10) {
         "ｙｙ＿ｙａｎｋ",
       ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
 
-      else -> listOf(Author(id = AuthorId(value = 0L), name = "著者"))
+      else -> listOf(Author(id = AuthorId(value = 0L), name = "著者名"))
     },
     isPinned = false,
     isFavorite = false,
