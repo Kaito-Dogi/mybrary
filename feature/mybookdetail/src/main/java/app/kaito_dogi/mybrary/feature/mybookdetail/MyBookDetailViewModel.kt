@@ -68,6 +68,33 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
+  fun onPublicClick() {
+    viewModelScope.launch {
+      try {
+        if (uiState.value.myBook.isPublic) {
+          val privateMyBook = myBookRepository.makeMyBookPrivate(navArg.myBook.id)
+          _uiState.update {
+            it.copy(
+              myBook = privateMyBook,
+              shownMessage = "『${privateMyBook.title}』を非公開にしました",
+            )
+          }
+        } else {
+          val publicMyBook = myBookRepository.makeMyBookPublic(navArg.myBook.id)
+          _uiState.update {
+            it.copy(
+              myBook = publicMyBook,
+              shownMessage = "『${publicMyBook.title}』を公開しました",
+            )
+          }
+        }
+      } catch (e: Exception) {
+        // TODO: デバッグ用のログを実装する
+        println("あああ: ${e.message}")
+      }
+    }
+  }
+
   fun onFavoriteClick() {
     viewModelScope.launch {
       try {
