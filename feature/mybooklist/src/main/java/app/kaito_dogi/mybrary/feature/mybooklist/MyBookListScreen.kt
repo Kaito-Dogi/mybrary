@@ -2,7 +2,9 @@ package app.kaito_dogi.mybrary.feature.mybooklist
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -14,8 +16,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -28,9 +30,7 @@ internal fun MyBookListScreen(
   onMyBookClick: (MyBook) -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier
-      .fillMaxSize()
-      .padding(horizontal = MybraryTheme.space.md),
+    modifier = Modifier.fillMaxSize(),
     floatingActionButton = {
       FloatingActionButton(
         onClick = onAdditionClick,
@@ -42,33 +42,37 @@ internal fun MyBookListScreen(
       }
     },
   ) { innerPadding ->
-    if (uiState.myBookList == null) {
-      Box(
-        modifier = Modifier
-          .fillMaxSize()
-          .padding(innerPadding),
-        contentAlignment = Alignment.Center,
-      ) {
+    Box(
+      modifier = Modifier
+        .fillMaxSize()
+        .padding(innerPadding),
+    ) {
+      if (uiState.myBookList == null) {
         // 落ちるのでコメントアウト
         // https://stackoverflow.com/questions/77877363/no-virtual-method-atljava-lang-objectilandroidx-compose-animation-core-keyfra
 //              CircularProgressIndicator()
-        Text(text = "ローディング中…")
-      }
-    } else {
-      LazyVerticalGrid(
-        columns = GridCells.Fixed(uiState.numberOfColumns),
-        contentPadding = innerPadding,
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-        horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-      ) {
-        items(
-          items = uiState.myBookList,
-          key = { myBook -> myBook.id.value },
+        Text(
+          text = "ローディング中…",
+          modifier = Modifier.fillMaxWidth(),
+          textAlign = TextAlign.Center,
+        )
+      } else {
+        LazyVerticalGrid(
+          columns = GridCells.Fixed(uiState.numberOfColumns),
+          modifier = Modifier.fillMaxSize(),
+          contentPadding = PaddingValues(horizontal = MybraryTheme.space.md),
+          verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+          horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
         ) {
-          MyBookCell(
-            myBook = it,
-            onClick = onMyBookClick,
-          )
+          items(
+            items = uiState.myBookList,
+            key = { myBook -> myBook.id.value },
+          ) {
+            MyBookCell(
+              myBook = it,
+              onClick = onMyBookClick,
+            )
+          }
         }
       }
     }
