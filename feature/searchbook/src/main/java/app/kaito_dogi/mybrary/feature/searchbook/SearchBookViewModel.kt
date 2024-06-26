@@ -22,7 +22,7 @@ internal class SearchBookViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         val searchResult = searchBookRepository.searchBooks(
-          keyword = "ハッカーと画家",
+          query = "ハッカーと画家",
           maxResults = 10,
           startIndex = 0,
         )
