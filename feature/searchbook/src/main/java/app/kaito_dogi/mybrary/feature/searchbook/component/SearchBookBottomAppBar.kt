@@ -60,7 +60,7 @@ internal fun SearchBookBottomAppBar(
 
 @Preview
 @Composable
-private fun MyBookDetailBottomAppBarPreview() {
+private fun SearchBookBottomAppBarPreview() {
   MybraryTheme {
     SearchBookBottomAppBar(
       value = "",
