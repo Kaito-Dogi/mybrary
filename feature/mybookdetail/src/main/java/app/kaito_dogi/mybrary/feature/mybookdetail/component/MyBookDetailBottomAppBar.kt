@@ -33,22 +33,23 @@ internal fun MyBookDetailBottomAppBar(
       end = MybraryTheme.space.md,
     ),
   ) {
-    IconButton(onClick = onArchiveClick) {
-      Icon(
-        painter = painterResource(id = R.drawable.icon_archive),
-        contentDescription = "書籍を非表示にする",
-      )
-    }
-    IconButton(onClick = onPublicClick) {
-      Icon(
-        painter = if (isPublic) {
-          painterResource(id = R.drawable.icon_visibility)
-        } else {
-          painterResource(id = R.drawable.icon_visibility_off)
-        },
-        contentDescription = "書籍を他のユーザーに公開する",
-      )
-    }
+    // TODO: v2 以降で実装を復活させる
+//    IconButton(onClick = onArchiveClick) {
+//      Icon(
+//        painter = painterResource(id = R.drawable.icon_archive),
+//        contentDescription = "書籍を非表示にする",
+//      )
+//    }
+//    IconButton(onClick = onPublicClick) {
+//      Icon(
+//        painter = if (isPublic) {
+//          painterResource(id = R.drawable.icon_visibility)
+//        } else {
+//          painterResource(id = R.drawable.icon_visibility_off)
+//        },
+//        contentDescription = "書籍を他のユーザーに公開する",
+//      )
+//    }
     IconButton(onClick = onFavoriteClick) {
       Icon(
         painter = if (isFavorite) {
