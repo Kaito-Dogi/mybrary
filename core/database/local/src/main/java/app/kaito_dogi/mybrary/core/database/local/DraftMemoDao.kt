@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.database
+package app.kaito_dogi.mybrary.core.database.local
 
 import androidx.room.Dao
 import androidx.room.Delete
