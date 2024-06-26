@@ -4,16 +4,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -22,6 +24,7 @@ import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
+// TODO: 長押ししたときの処理も受け取る
 @Composable
 internal fun SearchResultBookRow(
   searchResultBook: SearchResultBook,
@@ -42,7 +45,9 @@ internal fun SearchResultBookRow(
       BookImage(
         imageUrl = searchResultBook.imageUrl,
         title = searchResultBook.title,
-        modifier = Modifier.fillMaxHeight(),
+        modifier = Modifier
+          .width(72.dp) // TODO: 定数にする
+          .clip(shape = MybraryTheme.shapes.extraSmall),
       )
       Gap(width = MybraryTheme.space.xs)
       Column(
@@ -50,8 +55,10 @@ internal fun SearchResultBookRow(
       ) {
         Text(
           text = searchResultBook.title,
-          modifier = Modifier.fillMaxWidth(),
-          style = MybraryTheme.typography.bodyLarge,
+          modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+          style = MybraryTheme.typography.titleMedium,
           maxLines = 2,
         )
         if (searchResultBook.authors.isNotEmpty()) {
@@ -93,7 +100,7 @@ private fun SearchResultBookRowPreview() {
     SearchResultBookRow(
       searchResultBook = SearchResultBook(
         externalId = ExternalBookId(value = "externalId"),
-        title = "タイトル",
+        title = "タイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
