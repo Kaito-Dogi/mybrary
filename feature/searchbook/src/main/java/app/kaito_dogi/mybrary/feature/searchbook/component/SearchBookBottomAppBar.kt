@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.feature.searchbook.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -11,6 +12,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
@@ -39,6 +41,9 @@ internal fun SearchBookBottomAppBar(
           contentDescription = "書籍一覧画面に戻る",
         )
       },
+      keyboardOptions = KeyboardOptions.Default.copy(
+        imeAction = ImeAction.Done,
+      ),
     )
     Gap(width = MybraryTheme.space.sm)
     FloatingActionButton(
