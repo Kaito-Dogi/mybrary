@@ -22,7 +22,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -73,8 +72,7 @@ internal fun MyBookDetailTopAppBar(
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
     Column(
-      modifier = modifier
-        .padding(MybraryTheme.space.md),
+      modifier = modifier.padding(MybraryTheme.space.md),
     ) {
       Gap(height = WindowInsets.systemBars.asPaddingValues().calculateTopPadding())
       Row(
@@ -94,15 +92,13 @@ internal fun MyBookDetailTopAppBar(
           modifier = Modifier
             .fillMaxHeight()
             .weight(1f),
-          verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.space.xs),
+          verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
         ) {
           Text(
             text = myBook.title,
             modifier = Modifier.weight(1f),
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.titleMedium.copy(
-              fontWeight = FontWeight.SemiBold,
-            ),
+            style = MybraryTheme.typography.titleMedium,
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
           )
