@@ -39,8 +39,8 @@ internal fun SearchResultBookRow(
     Row(
       modifier = Modifier
         .padding(MybraryTheme.space.md)
-        .height(IntrinsicSize.Min)
-        .fillMaxWidth(),
+        .fillMaxWidth()
+        .height(IntrinsicSize.Min),
     ) {
       BookImage(
         imageUrl = searchResultBook.imageUrl,
