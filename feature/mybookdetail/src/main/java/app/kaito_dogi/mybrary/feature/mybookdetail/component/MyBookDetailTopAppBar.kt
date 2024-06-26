@@ -22,7 +22,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -73,8 +72,7 @@ internal fun MyBookDetailTopAppBar(
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
     Column(
-      modifier = modifier
-        .padding(MybraryTheme.space.md),
+      modifier = modifier.padding(MybraryTheme.space.md),
     ) {
       Gap(height = WindowInsets.systemBars.asPaddingValues().calculateTopPadding())
       Row(
@@ -86,7 +84,7 @@ internal fun MyBookDetailTopAppBar(
           imageUrl = myBook.imageUrl,
           title = myBook.title,
           modifier = Modifier
-            .width(120.dp)
+            .width(120.dp) // TODO: 定数にする
             .clip(shape = MybraryTheme.shapes.extraSmall),
         )
         Gap(width = MybraryTheme.space.md)
@@ -94,34 +92,36 @@ internal fun MyBookDetailTopAppBar(
           modifier = Modifier
             .fillMaxHeight()
             .weight(1f),
-          verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.space.xs),
+          verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
         ) {
           Text(
             text = myBook.title,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier
+              .fillMaxWidth()
+              .weight(1f),
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.titleMedium.copy(
-              fontWeight = FontWeight.SemiBold,
-            ),
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
+            style = MybraryTheme.typography.titleMedium,
           )
           if (myBook.authors.isNotEmpty()) {
             Text(
               text = myBook.authors.joinToString { it.name },
+              modifier = Modifier.fillMaxWidth(),
               color = MybraryTheme.colorScheme.onPrimary,
-              style = MybraryTheme.typography.bodyMedium,
               overflow = TextOverflow.Ellipsis,
               maxLines = 2,
+              style = MybraryTheme.typography.bodyMedium,
             )
           }
           if (myBook.topAppBarBody.isNotBlank()) {
             Text(
               text = myBook.topAppBarBody,
+              modifier = Modifier.fillMaxWidth(),
               color = MybraryTheme.colorScheme.onPrimary,
-              style = MybraryTheme.typography.bodyMedium,
               overflow = TextOverflow.Ellipsis,
               maxLines = 1,
+              style = MybraryTheme.typography.bodyMedium,
             )
           }
         }
@@ -158,7 +158,7 @@ private fun MyBookDetailTopAppBarPreview() {
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
-        pageCount = 100,
+        pageCount = Int.MAX_VALUE,
         publisher = "出版社",
         authors = List(10) {
           Author(

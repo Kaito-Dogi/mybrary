@@ -7,6 +7,7 @@ import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -35,15 +36,11 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   // TODO: 実装
-  override suspend fun createMyBook(
-    externalBookId: String,
-  ): Boolean {
+  override suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean {
     return true
   }
 
-  override suspend fun pinMyBook(
-    myBookId: MyBookId,
-  ): MyBook {
+  override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -56,9 +53,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return pinedMyBook
   }
 
-  override suspend fun addMyBookToFavorites(
-    myBookId: MyBookId,
-  ): MyBook {
+  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -110,9 +105,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return privateMyBook
   }
 
-  override suspend fun archiveMyBook(
-    myBookId: MyBookId,
-  ): MyBook {
+  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -126,7 +119,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 }
 
-private val MockMyBookList = List(10) {
+private val MockMyBookList = List(20) {
   MyBook(
     id = MyBookId(value = it.toLong()),
     bookId = BookId(value = it.toLong()),

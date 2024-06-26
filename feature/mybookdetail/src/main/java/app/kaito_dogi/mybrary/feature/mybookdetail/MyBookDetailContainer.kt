@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailContainer(
-  onBackClick: () -> Unit,
   viewModel: MyBookDetailViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -46,7 +45,6 @@ internal fun MyBookDetailContainer(
         viewModel.onMessageShow()
       }
     },
-    onBackClick = onBackClick,
     onArchiveClick = viewModel::onArchiveClick,
     onPublicClick = viewModel::onPublicClick,
     onFavoriteClick = viewModel::onFavoriteClick,

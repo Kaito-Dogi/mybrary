@@ -14,12 +14,12 @@ internal class SearchBookRepositoryImpl @Inject constructor(
   private val googleBooksApi: GoogleBooksApi,
 ) : SearchBookRepository {
   override suspend fun searchBooks(
-    keyword: String,
+    query: String,
     maxResults: Int,
     startIndex: Int,
   ): List<SearchResultBook> {
     val response = googleBooksApi.getVolumes(
-      q = keyword,
+      query = query,
       maxResults = maxResults,
       startIndex = startIndex,
     )

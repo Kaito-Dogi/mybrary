@@ -10,7 +10,9 @@ import app.kaito_dogi.mybrary.core.network.response.model.ItemResponse
 fun ItemResponse.toSearchResultBook() = SearchResultBook(
   externalId = ExternalBookId(value = id),
   title = volumeInfo?.title ?: "",
-  imageUrl = Url.Image(value = volumeInfo?.imageLinks?.thumbnail ?: ""),
+  imageUrl = Url.Image(
+    value = volumeInfo?.imageLinks?.thumbnail?.replace("http://", "https://") ?: "",
+  ),
   isbn10 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.network.response.model.IndustryIdentifierType.Isbn10 }?.identifier
     ?: "",
   isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.network.response.model.IndustryIdentifierType.Isbn13 }?.identifier

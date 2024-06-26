@@ -35,7 +35,6 @@ internal fun MyBookDetailScreen(
   snackbarHost: @Composable () -> Unit,
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
   showSnackbar: (String) -> Unit,
-  onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
@@ -52,7 +51,6 @@ internal fun MyBookDetailScreen(
       MyBookDetailBottomAppBar(
         isPublic = uiState.myBook.isPublic,
         isFavorite = uiState.myBook.isFavorite,
-        onBackClick = onBackClick,
         onArchiveClick = onArchiveClick,
         onPublicClick = onPublicClick,
         onFavoriteClick = onFavoriteClick,
@@ -64,9 +62,7 @@ internal fun MyBookDetailScreen(
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
-        bottom = innerPadding.calculateBottomPadding(),
-      ),
+      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       item {
@@ -74,22 +70,10 @@ internal fun MyBookDetailScreen(
           myBook = uiState.myBook,
         )
       }
-      if (uiState.memoList == null) {
-        // スケルトン表示
-        items(
-          count = 4,
-          key = { "MemoRowSkeleton$it" },
-        ) {
-          MemoRowSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
-          )
-        }
-      } else {
+      uiState.memoList?.let {
         items(
           items = uiState.memoList,
-          key = { memo -> memo.id.value },
+          key = { it.id.value },
         ) { memo ->
           MemoRow(
             memo = memo,
@@ -99,10 +83,20 @@ internal fun MyBookDetailScreen(
             ),
           )
         }
+
         item {
           // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
           Spacer(modifier = Modifier.fillMaxWidth())
         }
+      } ?: items(
+        count = 4,
+        key = { "MemoRowSkeleton$it" },
+      ) {
+        MemoRowSkeleton(
+          modifier = Modifier.padding(
+            horizontal = MybraryTheme.space.md,
+          ),
+        )
       }
     }
 
@@ -121,11 +115,11 @@ internal fun MyBookDetailScreen(
         )
       }
     }
-  }
 
-  uiState.shownMessage?.let {
-    LaunchedEffect(it) {
-      showSnackbar(it)
+    uiState.shownMessage?.let {
+      LaunchedEffect(it) {
+        showSnackbar(it)
+      }
     }
   }
 }
@@ -148,7 +142,7 @@ private fun MyBookDetailScreenPreview() {
           imageUrl = Url.Image(value = "imageUrl"),
           isbn10 = "isbn10",
           isbn13 = "isbn13",
-          pageCount = 0,
+          pageCount = Int.MAX_VALUE,
           publisher = "出版社",
           authors = emptyList(),
           isPinned = false,
@@ -160,7 +154,6 @@ private fun MyBookDetailScreenPreview() {
       snackbarHost = {},
       bottomSheet = {},
       showSnackbar = {},
-      onBackClick = {},
       onArchiveClick = {},
       onPublicClick = {},
       onFavoriteClick = {},

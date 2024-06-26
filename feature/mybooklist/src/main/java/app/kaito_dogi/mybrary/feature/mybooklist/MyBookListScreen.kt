@@ -1,10 +1,8 @@
 package app.kaito_dogi.mybrary.feature.mybooklist
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -40,37 +38,33 @@ internal fun MyBookListScreen(
       }
     },
   ) { innerPadding ->
-    Box(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(innerPadding),
+    LazyVerticalGrid(
+      columns = GridCells.Fixed(uiState.numberOfColumns),
+      modifier = Modifier.fillMaxSize(),
+      contentPadding = PaddingValues(
+        start = MybraryTheme.space.md,
+        top = innerPadding.calculateTopPadding(),
+        end = MybraryTheme.space.md,
+        bottom = innerPadding.calculateBottomPadding(),
+      ),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
-      LazyVerticalGrid(
-        columns = GridCells.Fixed(uiState.numberOfColumns),
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(horizontal = MybraryTheme.space.md),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-        horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-      ) {
-        if (uiState.myBookList == null) {
-          // スケルトン表示
-          items(
-            count = 4,
-            key = { "MyBookCellSkeleton$it" },
-          ) {
-            MyBookCellSkeleton()
-          }
-        } else {
-          items(
-            items = uiState.myBookList,
-            key = { myBook -> myBook.id.value },
-          ) {
-            MyBookCell(
-              myBook = it,
-              onClick = onMyBookClick,
-            )
-          }
+      uiState.myBookList?.let {
+        items(
+          items = uiState.myBookList,
+          key = { it.id.value },
+        ) {
+          MyBookCell(
+            myBook = it,
+            onClick = onMyBookClick,
+          )
         }
+      } ?: items(
+        count = 4,
+        key = { "MyBookCellSkeleton$it" },
+      ) {
+        MyBookCellSkeleton()
       }
     }
   }

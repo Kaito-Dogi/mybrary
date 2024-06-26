@@ -33,11 +33,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         val memoList = memoRepository.getMemoList(navArg.myBook.id)
-        _uiState.update {
-          it.copy(
-            memoList = memoList,
-          )
-        }
+        _uiState.update { it.copy(memoList = memoList) }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -123,11 +119,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onAdditionClick() {
-    _uiState.update {
-      it.copy(
-        isBottomSheetVisible = true,
-      )
-    }
+    _uiState.update { it.copy(isBottomSheetVisible = true) }
   }
 
   fun onMemoClick(memo: Memo) {
@@ -198,11 +190,7 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         // メモの内容が空の場合はエラー表示にする
         if (uiState.value.draftMemo.content.isBlank()) {
-          _uiState.update {
-            it.copy(
-              isContentEmptyError = true,
-            )
-          }
+          _uiState.update { it.copy(isContentEmptyError = true) }
           return@launch
         }
 

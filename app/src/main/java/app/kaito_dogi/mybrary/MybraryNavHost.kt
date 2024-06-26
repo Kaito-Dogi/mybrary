@@ -35,9 +35,7 @@ internal fun MybraryNavHost(
         navController.navigate(myBookDetailRouteWithNavArg(navArg))
       },
     )
-    myBookDetailScreen(
-      onBackClick = navController::popBackStack,
-    )
+    myBookDetailScreen()
     searchBookScreen()
   }
 }
