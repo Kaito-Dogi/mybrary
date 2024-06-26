@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.data
+package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
