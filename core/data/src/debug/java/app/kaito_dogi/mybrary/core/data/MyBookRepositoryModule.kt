@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.data
 
+import app.kaito_dogi.mybrary.core.data.repository.MyBookRepositoryImpl
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.Binds
 import dagger.Module
