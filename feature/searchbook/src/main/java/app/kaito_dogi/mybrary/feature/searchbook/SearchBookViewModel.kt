@@ -55,11 +55,9 @@ internal class SearchBookViewModel @Inject constructor(
         if (isSuccess) {
           _uiState.update {
             it.copy(
-              shownMessage = "『${searchResultBook.title}』をMyBookに追加しました",
+              shownMessage = "『${searchResultBook.title}』をMybraryに追加しました",
             )
           }
-          // TODO: 共通のエラーハンドリングを表示
-          println("あああ: onSearchResultBookLongClick")
         }
       } catch (e: Exception) {
         // TODO: 共通のエラーハンドリングを表示
