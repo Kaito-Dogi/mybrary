@@ -126,7 +126,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 }
 
-private val MockMyBookList = List(10) {
+private val MockMyBookList = List(20) {
   MyBook(
     id = MyBookId(value = it.toLong()),
     bookId = BookId(value = it.toLong()),
