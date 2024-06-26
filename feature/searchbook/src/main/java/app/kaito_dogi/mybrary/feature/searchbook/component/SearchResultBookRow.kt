@@ -49,7 +49,7 @@ internal fun SearchResultBookRow(
           .width(72.dp) // TODO: 定数にする
           .clip(shape = MybraryTheme.shapes.extraSmall),
       )
-      Gap(width = MybraryTheme.space.md)
+      Gap(width = MybraryTheme.space.sm)
       Column(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
       ) {
