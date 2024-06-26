@@ -68,9 +68,7 @@ internal fun MyBookDetailScreen(
     // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
-        bottom = innerPadding.calculateBottomPadding(),
-      ),
+      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       item {
@@ -78,19 +76,7 @@ internal fun MyBookDetailScreen(
           myBook = uiState.myBook,
         )
       }
-      if (uiState.memoList == null) {
-        // スケルトン表示
-        items(
-          count = 4,
-          key = { "MemoRowSkeleton$it" },
-        ) {
-          MemoRowSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
-          )
-        }
-      } else {
+      uiState.memoList?.let {
         items(
           items = uiState.memoList,
           key = { it.id.value },
@@ -103,10 +89,20 @@ internal fun MyBookDetailScreen(
             ),
           )
         }
+
         item {
           // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
           Spacer(modifier = Modifier.fillMaxWidth())
         }
+      } ?: items(
+        count = 4,
+        key = { "MemoRowSkeleton$it" },
+      ) {
+        MemoRowSkeleton(
+          modifier = Modifier.padding(
+            horizontal = MybraryTheme.space.md,
+          ),
+        )
       }
     }
 
