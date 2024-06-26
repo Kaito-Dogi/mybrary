@@ -1,13 +1,13 @@
-package app.kaito_dogi.mybrary.core.api.response.model.convertor
+package app.kaito_dogi.mybrary.core.data.convertor
 
+import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
-import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
 
 // TODO: pageCount の undefined 値を定数化する
-fun ItemResponse.toSearchResultBook() = SearchResultBook(
+internal fun ItemResponse.toSearchResultBook() = SearchResultBook(
   externalId = ExternalBookId(value = id),
   title = volumeInfo?.title ?: "",
   imageUrl = Url.Image(
