@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 internal class MyBookDetailViewModel @Inject constructor(
   private val myBookRepository: MyBookRepository,
   private val memoRepository: MemoRepository,
+  private val draftMemoRepository: DraftMemoRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
   private val navArg: MyBookDetailNavArg = checkNotNull(savedStateHandle[MyBookDetailNavArgName])
@@ -32,8 +34,15 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun init() {
     viewModelScope.launch {
       try {
-        val memoList = memoRepository.getMemoList(navArg.myBook.id)
-        _uiState.update { it.copy(memoList = memoList) }
+        val myBookId = navArg.myBook.id
+        val memoList = memoRepository.getMemoList(myBookId = myBookId)
+        val draftMemo = draftMemoRepository.getDraftMemo(myBookId = myBookId)
+        _uiState.update {
+          it.copy(
+            memoList = memoList,
+            draftMemo = draftMemo,
+          )
+        }
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
@@ -137,18 +146,31 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onBottomSheetDismissRequest() {
-    _uiState.update {
-      it.copy(
-        isBottomSheetVisible = false,
-        editingMemoId = null,
-        draftMemo = if (it.editingMemoId == null) {
-          it.draftMemo
+    viewModelScope.launch {
+      try {
+        val draftMemo = uiState.value.draftMemo
+
+        // TODO: 仕様を見直す（現状は新規メモのみ下書き保存する）
+        val newDraftMemo = if (uiState.value.editingMemoId == null) {
+          draftMemoRepository.saveDraftMemo(draftMemo = draftMemo)
+          draftMemo
         } else {
           DraftMemo.createInitialValue(
-            navArg.myBook.id,
+            myBookId = navArg.myBook.id,
           )
-        },
-      )
+        }
+
+        _uiState.update {
+          it.copy(
+            isBottomSheetVisible = false,
+            editingMemoId = null,
+            draftMemo = newDraftMemo,
+          )
+        }
+      } catch (e: Exception) {
+        // TODO: デバッグ用のログを実装する
+        println("あああ: ${e.message}")
+      }
     }
   }
 
@@ -194,11 +216,11 @@ internal class MyBookDetailViewModel @Inject constructor(
           return@launch
         }
 
+        val draftMemo = uiState.value.draftMemo
         val memoId = uiState.value.editingMemoId
         if (memoId == null) {
-          val createdMemo = memoRepository.createMemo(
-            draftMemo = uiState.value.draftMemo,
-          )
+          val createdMemo = memoRepository.createMemo(draftMemo = draftMemo)
+          draftMemoRepository.deleteDraftMemo(draftMemo = draftMemo)
           _uiState.update {
             it.copy(
               memoList = it.memoList?.plus(createdMemo),

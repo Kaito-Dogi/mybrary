@@ -2,17 +2,13 @@ package app.kaito_dogi.mybrary.core.database.local
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
+import androidx.room.Upsert
 
 @Dao
 interface DraftMemoDao {
-  @Insert
-  suspend fun insert(entity: DraftMemoEntity)
-
-  @Update
-  suspend fun update(entity: DraftMemoEntity)
+  @Upsert
+  suspend fun upsert(entity: DraftMemoEntity)
 
   @Delete
   suspend fun delete(entity: DraftMemoEntity)
