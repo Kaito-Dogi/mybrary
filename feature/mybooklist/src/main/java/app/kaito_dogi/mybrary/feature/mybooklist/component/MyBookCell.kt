@@ -49,7 +49,7 @@ private fun MyBookCellPreview() {
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
-        pageCount = 0,
+        pageCount = Int.MAX_VALUE,
         publisher = "出版社",
         authors = emptyList(),
         isPinned = false,
