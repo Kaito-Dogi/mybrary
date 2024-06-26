@@ -31,12 +31,6 @@ internal fun SearchBookScreen(
   onSearchResultClick: (SearchResultBook) -> Unit,
   onSearchResultLongClick: (SearchResultBook) -> Unit,
 ) {
-  uiState.shownMessage?.let {
-    LaunchedEffect(it) {
-      showSnackbar(it)
-    }
-  }
-
   Scaffold(
     bottomBar = {
       SearchBookBottomAppBar(
@@ -83,6 +77,12 @@ internal fun SearchBookScreen(
         ) {
           SearchResultBookRowSkeleton()
         }
+      }
+    }
+
+    uiState.shownMessage?.let {
+      LaunchedEffect(it) {
+        showSnackbar(it)
       }
     }
   }
