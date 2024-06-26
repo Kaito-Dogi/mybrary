@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.core.database"
+  namespace = "app.kaito_dogi.mybrary.core.database.local"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
