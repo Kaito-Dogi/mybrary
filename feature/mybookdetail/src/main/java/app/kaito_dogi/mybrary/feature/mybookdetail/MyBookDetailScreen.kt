@@ -45,6 +45,12 @@ internal fun MyBookDetailScreen(
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
+  uiState.shownMessage?.let {
+    LaunchedEffect(it) {
+      showSnackbar(it)
+    }
+  }
+
   Scaffold(
     modifier = Modifier.fillMaxSize(),
     bottomBar = {
@@ -118,12 +124,6 @@ internal fun MyBookDetailScreen(
           ),
         )
       }
-    }
-  }
-
-  uiState.shownMessage?.let {
-    LaunchedEffect(it) {
-      showSnackbar(it)
     }
   }
 }
