@@ -8,12 +8,14 @@ data class SearchBookUiState(
   val searchResults: List<SearchResultBook>?,
   val searchQuery: String,
   val isSearching: Boolean,
+  val shownMessage: String?,
 ) {
   companion object {
     val InitialValue = SearchBookUiState(
       searchResults = null,
       searchQuery = "",
       isSearching = false,
+      shownMessage = null,
     )
   }
 }

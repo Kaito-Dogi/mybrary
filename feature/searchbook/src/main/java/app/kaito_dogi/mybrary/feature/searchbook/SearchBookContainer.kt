@@ -15,5 +15,7 @@ internal fun SearchBookContainer(
     uiState = uiState,
     onSearchQueryChange = viewModel::onSearchQueryChange,
     onBarcodeScannerClick = {},
+    onSearchResultClick = {},
+    onSearchResultLongClick = viewModel::onSearchResultBookLongClick,
   )
 }

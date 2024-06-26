@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRow
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSkeleton
@@ -24,6 +25,8 @@ internal fun SearchBookScreen(
   uiState: SearchBookUiState,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
+  onSearchResultClick: (SearchResultBook) -> Unit,
+  onSearchResultLongClick: (SearchResultBook) -> Unit,
 ) {
   Scaffold(
     bottomBar = {
@@ -51,7 +54,8 @@ internal fun SearchBookScreen(
           ) {
             SearchResultBookRow(
               searchResultBook = it,
-              onClick = {},
+              onClick = onSearchResultClick,
+              onLongClick = onSearchResultLongClick,
             )
           }
         }
@@ -77,6 +81,8 @@ private fun SearchBookScreenPreview() {
       uiState = SearchBookUiState.InitialValue,
       onSearchQueryChange = {},
       onBarcodeScannerClick = {},
+      onSearchResultClick = {},
+      onSearchResultLongClick = {},
     )
   }
 }

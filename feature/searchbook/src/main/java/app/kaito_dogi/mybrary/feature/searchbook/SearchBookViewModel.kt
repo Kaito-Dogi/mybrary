@@ -2,6 +2,8 @@ package app.kaito_dogi.mybrary.feature.searchbook
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.SearchBookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -13,6 +15,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 internal class SearchBookViewModel @Inject constructor(
   private val searchBookRepository: SearchBookRepository,
+  private val myBookRepository: MyBookRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
@@ -40,6 +43,28 @@ internal class SearchBookViewModel @Inject constructor(
       }
     }.invokeOnCompletion {
       _uiState.update { it.copy(isSearching = false) }
+    }
+  }
+
+  fun onSearchResultBookLongClick(
+    searchResultBook: SearchResultBook,
+  ) {
+    viewModelScope.launch {
+      try {
+        val isSuccess = myBookRepository.registerMyBook(searchResultBook = searchResultBook)
+        if (isSuccess) {
+          _uiState.update {
+            it.copy(
+              shownMessage = "『${searchResultBook.title}』をMyBookに追加しました",
+            )
+          }
+          // TODO: 共通のエラーハンドリングを表示
+          println("あああ: onSearchResultBookLongClick")
+        }
+      } catch (e: Exception) {
+        // TODO: 共通のエラーハンドリングを表示
+        println("あああ: $e")
+      }
     }
   }
 }

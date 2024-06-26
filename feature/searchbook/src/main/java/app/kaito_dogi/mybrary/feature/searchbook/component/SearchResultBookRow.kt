@@ -1,5 +1,7 @@
 package app.kaito_dogi.mybrary.feature.searchbook.component
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -24,16 +26,21 @@ import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
-// TODO: 長押ししたときの処理も受け取る
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun SearchResultBookRow(
   searchResultBook: SearchResultBook,
   onClick: (SearchResultBook) -> Unit,
+  onLongClick: (SearchResultBook) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Card(
-    onClick = { onClick(searchResultBook) },
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier
+      .fillMaxWidth()
+      .combinedClickable(
+        onClick = { onClick(searchResultBook) },
+        onLongClick = { onLongClick(searchResultBook) },
+      ),
     shape = MybraryTheme.shapes.small,
   ) {
     Row(
@@ -112,6 +119,7 @@ private fun SearchResultBookRowPreview() {
         authors = listOf(SearchResultAuthor(name = "著者名")),
       ),
       onClick = {},
+      onLongClick = {},
     )
   }
 }
