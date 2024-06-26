@@ -131,7 +131,25 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onAdditionClick() {
-    _uiState.update { it.copy(isBottomSheetVisible = true) }
+    viewModelScope.launch {
+      try {
+        val myBookId = navArg.myBook.id
+        val draftMemo =
+          draftMemoRepository.getDraftMemo(myBookId = myBookId) ?: DraftMemo.createInitialValue(
+            myBookId = myBookId,
+          )
+
+        _uiState.update {
+          it.copy(
+            isBottomSheetVisible = true,
+            draftMemo = draftMemo,
+          )
+        }
+      } catch (e: Exception) {
+        // TODO: デバッグ用のログを実装する
+        println("あああ: ${e.message}")
+      }
+    }
   }
 
   fun onMemoClick(memo: Memo) {
@@ -154,21 +172,24 @@ internal class MyBookDetailViewModel @Inject constructor(
         val draftMemo = uiState.value.draftMemo
 
         // 新規メモの編集中のみ、下書き保存する
-        val newDraftMemo =
-          if (draftMemo.content.isNotBlank() && uiState.value.editingMemoId == null) {
+        when {
+          uiState.value.editingMemoId == null && draftMemo.content.isNotBlank() -> {
             draftMemoRepository.saveDraftMemo(draftMemo = draftMemo)
-            draftMemo
-          } else {
-            DraftMemo.createInitialValue(
-              myBookId = navArg.myBook.id,
-            )
           }
+
+          uiState.value.editingMemoId == null && draftMemo.content.isBlank() -> {
+            draftMemoRepository.deleteDraftMemo(draftMemo = draftMemo)
+          }
+
+          uiState.value.editingMemoId != null -> {
+            // 何もしない
+          }
+        }
 
         _uiState.update {
           it.copy(
             isBottomSheetVisible = false,
             editingMemoId = null,
-            draftMemo = newDraftMemo,
           )
         }
       } catch (e: Exception) {
