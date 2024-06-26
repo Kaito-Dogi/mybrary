@@ -203,7 +203,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update {
       it.copy(
         draftMemo = it.draftMemo.copy(
-          fromPage = if (fromPage.isNotBlank()) fromPage.toInt() else null,
+          fromPage = fromPage.toIntOrNull(),
         ),
       )
     }
@@ -213,7 +213,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update {
       it.copy(
         draftMemo = it.draftMemo.copy(
-          toPage = if (toPage.isNotBlank()) toPage.toInt() else null,
+          toPage = toPage.toIntOrNull(),
         ),
       )
     }
