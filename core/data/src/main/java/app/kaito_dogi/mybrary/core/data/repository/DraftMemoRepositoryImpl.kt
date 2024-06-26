@@ -26,7 +26,7 @@ internal class DraftMemoRepositoryImpl @Inject constructor(
     draftMemoDao.delete(entity = draftMemo.toEntity())
   }
 
-  override suspend fun getDraftMemo(myBookId: MyBookId): DraftMemo = withContext(dispatcher) {
-    draftMemoDao.getByMyBookId(myBookId = myBookId.value).toDraftMemo()
+  override suspend fun getDraftMemo(myBookId: MyBookId): DraftMemo? = withContext(dispatcher) {
+    draftMemoDao.getByMyBookId(myBookId = myBookId.value)?.toDraftMemo()
   }
 }

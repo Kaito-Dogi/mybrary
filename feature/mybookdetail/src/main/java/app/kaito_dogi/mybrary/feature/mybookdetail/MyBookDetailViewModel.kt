@@ -36,7 +36,10 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         val myBookId = navArg.myBook.id
         val memoList = memoRepository.getMemoList(myBookId = myBookId)
-        val draftMemo = draftMemoRepository.getDraftMemo(myBookId = myBookId)
+        val draftMemo =
+          draftMemoRepository.getDraftMemo(myBookId = myBookId) ?: DraftMemo.createInitialValue(
+            myBookId = myBookId,
+          )
         _uiState.update {
           it.copy(
             memoList = memoList,
@@ -150,15 +153,16 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         val draftMemo = uiState.value.draftMemo
 
-        // TODO: 仕様を見直す（現状は新規メモのみ下書き保存する）
-        val newDraftMemo = if (uiState.value.editingMemoId == null) {
-          draftMemoRepository.saveDraftMemo(draftMemo = draftMemo)
-          draftMemo
-        } else {
-          DraftMemo.createInitialValue(
-            myBookId = navArg.myBook.id,
-          )
-        }
+        // 新規メモの編集中のみ、下書き保存する
+        val newDraftMemo =
+          if (draftMemo.content.isNotBlank() && uiState.value.editingMemoId == null) {
+            draftMemoRepository.saveDraftMemo(draftMemo = draftMemo)
+            draftMemo
+          } else {
+            DraftMemo.createInitialValue(
+              myBookId = navArg.myBook.id,
+            )
+          }
 
         _uiState.update {
           it.copy(

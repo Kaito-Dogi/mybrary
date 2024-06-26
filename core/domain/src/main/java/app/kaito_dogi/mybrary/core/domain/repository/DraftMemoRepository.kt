@@ -8,5 +8,5 @@ interface DraftMemoRepository {
 
   suspend fun deleteDraftMemo(draftMemo: DraftMemo)
 
-  suspend fun getDraftMemo(myBookId: MyBookId): DraftMemo
+  suspend fun getDraftMemo(myBookId: MyBookId): DraftMemo?
 }

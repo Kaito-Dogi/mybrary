@@ -14,5 +14,5 @@ interface DraftMemoDao {
   suspend fun delete(entity: DraftMemoEntity)
 
   @Query("SELECT * FROM draft_memos WHERE my_book_id = :myBookId")
-  fun getByMyBookId(myBookId: Long): DraftMemoEntity
+  fun getByMyBookId(myBookId: Long): DraftMemoEntity?
 }
