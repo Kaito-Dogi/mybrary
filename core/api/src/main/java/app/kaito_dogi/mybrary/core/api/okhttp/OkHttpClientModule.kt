@@ -1,6 +1,6 @@
-package app.kaito_dogi.mybrary.core.network.retrofit
+package app.kaito_dogi.mybrary.core.api.okhttp
 
-import app.kaito_dogi.mybrary.core.network.BuildConfig
+import app.kaito_dogi.mybrary.core.api.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

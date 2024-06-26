@@ -1,10 +1,10 @@
-package app.kaito_dogi.mybrary.core.network.response.model.convertor
+package app.kaito_dogi.mybrary.core.api.response.model.convertor
 
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
-import app.kaito_dogi.mybrary.core.network.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
 
 // TODO: pageCount の undefined 値を定数化する
 fun ItemResponse.toSearchResultBook() = SearchResultBook(
@@ -13,9 +13,9 @@ fun ItemResponse.toSearchResultBook() = SearchResultBook(
   imageUrl = Url.Image(
     value = volumeInfo?.imageLinks?.thumbnail?.replace("http://", "https://") ?: "",
   ),
-  isbn10 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.network.response.model.IndustryIdentifierType.Isbn10 }?.identifier
+  isbn10 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.response.model.IndustryIdentifierType.Isbn10 }?.identifier
     ?: "",
-  isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.network.response.model.IndustryIdentifierType.Isbn13 }?.identifier
+  isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.response.model.IndustryIdentifierType.Isbn13 }?.identifier
     ?: "",
   pageCount = volumeInfo?.pageCount ?: 0,
   publisher = volumeInfo?.publisher ?: "",

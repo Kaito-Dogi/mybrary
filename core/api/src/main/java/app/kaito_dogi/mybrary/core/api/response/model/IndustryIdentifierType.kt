@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.network.response.model
+package app.kaito_dogi.mybrary.core.api.response.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.network.retrofit
+package app.kaito_dogi.mybrary.core.api
 
 import dagger.Module
 import dagger.Provides
@@ -15,11 +15,10 @@ private const val GoogleBooksBaseUrl = "https://www.googleapis.com/"
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object RetrofitModule {
-  @GoogleBooksRetrofit
+internal object GoogleBooksApiModule {
   @Singleton
   @Provides
-  fun provideGoogleBooksRetrofit(okHttpClient: OkHttpClient): Retrofit {
+  fun provideGoogleBooksApi(okHttpClient: OkHttpClient): GoogleBooksApi {
     val contentType = "application/json; charset=UTF8".toMediaType()
     val format = Json { ignoreUnknownKeys = true }
     return Retrofit.Builder()
@@ -27,5 +26,6 @@ internal object RetrofitModule {
       .baseUrl(GoogleBooksBaseUrl)
       .addConverterFactory(format.asConverterFactory(contentType))
       .build()
+      .create(GoogleBooksApi::class.java)
   }
 }
