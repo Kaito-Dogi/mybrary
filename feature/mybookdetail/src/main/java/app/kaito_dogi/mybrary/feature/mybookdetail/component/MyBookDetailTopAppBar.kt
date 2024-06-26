@@ -96,28 +96,32 @@ internal fun MyBookDetailTopAppBar(
         ) {
           Text(
             text = myBook.title,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier
+              .fillMaxWidth()
+              .weight(1f),
             color = MybraryTheme.colorScheme.onPrimary,
-            style = MybraryTheme.typography.titleMedium,
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
+            style = MybraryTheme.typography.titleMedium,
           )
           if (myBook.authors.isNotEmpty()) {
             Text(
               text = myBook.authors.joinToString { it.name },
+              modifier = Modifier.fillMaxWidth(),
               color = MybraryTheme.colorScheme.onPrimary,
-              style = MybraryTheme.typography.bodyMedium,
               overflow = TextOverflow.Ellipsis,
               maxLines = 2,
+              style = MybraryTheme.typography.bodyMedium,
             )
           }
           if (myBook.topAppBarBody.isNotBlank()) {
             Text(
               text = myBook.topAppBarBody,
+              modifier = Modifier.fillMaxWidth(),
               color = MybraryTheme.colorScheme.onPrimary,
-              style = MybraryTheme.typography.bodyMedium,
               overflow = TextOverflow.Ellipsis,
               maxLines = 1,
+              style = MybraryTheme.typography.bodyMedium,
             )
           }
         }

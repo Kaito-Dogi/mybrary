@@ -58,23 +58,26 @@ internal fun SearchResultBookRow(
           modifier = Modifier
             .fillMaxWidth()
             .weight(1f),
-          style = MybraryTheme.typography.titleMedium,
+          overflow = TextOverflow.Ellipsis,
           maxLines = 2,
+          style = MybraryTheme.typography.titleMedium,
         )
         if (searchResultBook.authors.isNotEmpty()) {
           Text(
             text = searchResultBook.authors.joinToString { it.name },
             modifier = Modifier.fillMaxWidth(),
-            style = MybraryTheme.typography.bodyMedium,
+            overflow = TextOverflow.Ellipsis,
             maxLines = 1,
+            style = MybraryTheme.typography.bodyMedium,
           )
         }
         if (searchResultBook.rowBody.isNotBlank()) {
           Text(
             text = searchResultBook.rowBody,
-            style = MybraryTheme.typography.bodyMedium,
+            modifier = Modifier.fillMaxWidth(),
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
+            style = MybraryTheme.typography.bodyMedium,
           )
         }
       }
