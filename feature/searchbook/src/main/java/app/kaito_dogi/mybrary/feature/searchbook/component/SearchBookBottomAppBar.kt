@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -14,8 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
@@ -45,21 +41,22 @@ internal fun SearchBookBottomAppBar(
         imeAction = ImeAction.Done,
       ),
     )
-    Gap(width = MybraryTheme.space.sm)
-    FloatingActionButton(
-      onClick = onBarcodeScannerClick,
-      elevation = FloatingActionButtonDefaults.elevation(
-        defaultElevation = 0.dp,
-        pressedElevation = 0.dp,
-        focusedElevation = 0.dp,
-        hoveredElevation = 0.dp,
-      ),
-    ) {
-      Icon(
-        painter = painterResource(id = R.drawable.icon_barcode_scanner),
-        contentDescription = "バーコードを読み取る",
-      )
-    }
+    // TODO: v2 以降で実装する
+//    Gap(width = MybraryTheme.space.sm)
+//    FloatingActionButton(
+//      onClick = onBarcodeScannerClick,
+//      elevation = FloatingActionButtonDefaults.elevation(
+//        defaultElevation = 0.dp,
+//        pressedElevation = 0.dp,
+//        focusedElevation = 0.dp,
+//        hoveredElevation = 0.dp,
+//      ),
+//    ) {
+//      Icon(
+//        painter = painterResource(id = R.drawable.icon_barcode_scanner),
+//        contentDescription = "バーコードを読み取る",
+//      )
+//    }
   }
 }
 
