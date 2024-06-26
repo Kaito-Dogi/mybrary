@@ -178,7 +178,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           }
 
           uiState.value.editingMemoId == null && draftMemo.content.isBlank() -> {
-            draftMemoRepository.deleteDraftMemo(draftMemo = draftMemo)
+            draftMemoRepository.deleteDraftMemo(myBookId = navArg.myBook.id)
           }
 
           uiState.value.editingMemoId != null -> {
@@ -241,11 +241,10 @@ internal class MyBookDetailViewModel @Inject constructor(
           return@launch
         }
 
-        val draftMemo = uiState.value.draftMemo
         val memoId = uiState.value.editingMemoId
         if (memoId == null) {
-          val createdMemo = memoRepository.createMemo(draftMemo = draftMemo)
-          draftMemoRepository.deleteDraftMemo(draftMemo = draftMemo)
+          val createdMemo = memoRepository.createMemo(draftMemo = uiState.value.draftMemo)
+          draftMemoRepository.deleteDraftMemo(myBookId = navArg.myBook.id)
           _uiState.update {
             it.copy(
               memoList = it.memoList?.plus(createdMemo),
