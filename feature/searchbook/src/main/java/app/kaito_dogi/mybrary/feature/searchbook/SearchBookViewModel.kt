@@ -23,6 +23,7 @@ internal class SearchBookViewModel @Inject constructor(
         it.copy(
           searchResults = null,
           searchQuery = searchQuery,
+          isSearching = true,
         )
       }
       if (searchQuery.isNotBlank()) {
@@ -31,16 +32,14 @@ internal class SearchBookViewModel @Inject constructor(
             query = searchQuery,
             startIndex = 0,
           )
-          _uiState.update {
-            it.copy(
-              searchResults = searchResult,
-            )
-          }
+          _uiState.update { it.copy(searchResults = searchResult) }
         } catch (e: Exception) {
           // TODO: 共通のエラーハンドリングを表示
           println("あああ: $e")
         }
       }
+    }.invokeOnCompletion {
+      _uiState.update { it.copy(isSearching = false) }
     }
   }
 }

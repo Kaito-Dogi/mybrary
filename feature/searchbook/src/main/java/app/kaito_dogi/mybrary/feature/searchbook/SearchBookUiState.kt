@@ -7,11 +7,13 @@ import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 data class SearchBookUiState(
   val searchResults: List<SearchResultBook>?,
   val searchQuery: String,
+  val isSearching: Boolean,
 ) {
   companion object {
     val InitialValue = SearchBookUiState(
       searchResults = null,
       searchQuery = "",
+      isSearching = false,
     )
   }
 }

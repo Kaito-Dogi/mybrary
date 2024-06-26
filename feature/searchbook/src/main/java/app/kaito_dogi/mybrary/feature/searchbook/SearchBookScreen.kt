@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRow
+import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSkeleton
 
 @Composable
 internal fun SearchBookScreen(
@@ -52,6 +53,15 @@ internal fun SearchBookScreen(
               searchResultBook = it,
               onClick = {},
             )
+          }
+        }
+
+        if (uiState.isSearching) {
+          items(
+            count = 4,
+            key = { "SearchResultBookRowSkeleton$it" },
+          ) {
+            SearchResultBookRowSkeleton()
           }
         }
       }
