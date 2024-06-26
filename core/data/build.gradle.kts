@@ -45,7 +45,7 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:database:local"))
   implementation(project(":core:domain"))
-  implementation(project(":core:network"))
+  implementation(project(":core:api"))
 
   implementation(libs.hiltAndroid)
 

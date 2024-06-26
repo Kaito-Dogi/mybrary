@@ -1,7 +1,7 @@
-package app.kaito_dogi.mybrary.core.network.api
+package app.kaito_dogi.mybrary.core.api
 
-import app.kaito_dogi.mybrary.core.network.response.GetVolumeResponse
-import app.kaito_dogi.mybrary.core.network.response.GetVolumesResponse
+import app.kaito_dogi.mybrary.core.api.response.GetVolumeResponse
+import app.kaito_dogi.mybrary.core.api.response.GetVolumesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,6 +1,6 @@
-package app.kaito_dogi.mybrary.core.network.response
+package app.kaito_dogi.mybrary.core.api.response
 
-import app.kaito_dogi.mybrary.core.network.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
 import kotlinx.serialization.Serializable
 
 @Serializable

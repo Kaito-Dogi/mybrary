@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.core.network"
+  namespace = "app.kaito_dogi.mybrary.core.api"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -43,7 +43,6 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
-  implementation(project(":core:domain"))
 
   implementation(libs.hiltAndroid)
   implementation(libs.okhttp)
