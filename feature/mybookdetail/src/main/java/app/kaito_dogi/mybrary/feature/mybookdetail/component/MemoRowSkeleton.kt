@@ -36,7 +36,7 @@ internal fun MemoRowSkeleton(
         text = "あ",
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
-        style = MybraryTheme.typography.bodyLarge,
+        style = MybraryTheme.typography.titleMedium,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
