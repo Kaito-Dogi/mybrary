@@ -1,11 +1,7 @@
-package app.kaito_dogi.mybrary.core.database.di
+package app.kaito_dogi.mybrary.core.database
 
 import android.content.Context
 import androidx.room.Room
-import app.kaito_dogi.mybrary.core.database.MIGRATION_1_2
-import app.kaito_dogi.mybrary.core.database.MIGRATION_2_3
-import app.kaito_dogi.mybrary.core.database.MIGRATION_3_4
-import app.kaito_dogi.mybrary.core.database.MybraryDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,14 +17,9 @@ internal object DatabaseModule {
   fun provideMybraryDatabase(
     @ApplicationContext context: Context,
   ): MybraryDatabase = Room.databaseBuilder(
-    context,
-    MybraryDatabase::class.java,
-    "mybrary_db",
+    context = context,
+    klass = MybraryDatabase::class.java,
+    name = "MybraryDatabase",
   )
-    .addMigrations(
-      MIGRATION_1_2,
-      MIGRATION_2_3,
-      MIGRATION_3_4,
-    )
     .build()
 }
