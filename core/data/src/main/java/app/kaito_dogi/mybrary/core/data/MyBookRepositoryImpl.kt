@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.core.data
 
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,7 +17,7 @@ internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
     TODO("Not yet implemented")
   }
 
-  override suspend fun createMyBook(externalBookId: String): Boolean {
+  override suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean {
     TODO("Not yet implemented")
   }
 
