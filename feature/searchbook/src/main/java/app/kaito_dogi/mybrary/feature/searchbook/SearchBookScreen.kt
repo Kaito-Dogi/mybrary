@@ -21,13 +21,15 @@ import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRow
 @Composable
 internal fun SearchBookScreen(
   uiState: SearchBookUiState,
+  onSearchQueryChange: (String) -> Unit,
+  onBarcodeScannerClick: () -> Unit,
 ) {
   Scaffold(
     bottomBar = {
       SearchBookBottomAppBar(
-        value = "",
-        onValueChange = {},
-        onBarcodeScannerClick = { println("あああ: barcode_scanner") },
+        value = uiState.searchQuery,
+        onValueChange = onSearchQueryChange,
+        onBarcodeScannerClick = onBarcodeScannerClick,
         modifier = Modifier.windowInsetsPadding(WindowInsets.ime),
       )
     },
@@ -61,6 +63,10 @@ internal fun SearchBookScreen(
 @Composable
 private fun SearchBookScreenPreview() {
   MybraryTheme {
-    SearchBookContainer()
+    SearchBookScreen(
+      uiState = SearchBookUiState.InitialValue,
+      onSearchQueryChange = {},
+      onBarcodeScannerClick = {},
+    )
   }
 }

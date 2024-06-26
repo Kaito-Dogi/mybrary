@@ -17,23 +17,29 @@ internal class SearchBookViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
-  // FIXME: 暫定的に API 呼び出し
-  fun init() {
+  fun onSearchQueryChange(searchQuery: String) {
     viewModelScope.launch {
-      try {
-        val searchResult = searchBookRepository.searchBooks(
-          query = "ハッカーと画家",
-          maxResults = 10,
-          startIndex = 0,
+      _uiState.update {
+        it.copy(
+          searchResults = null,
+          searchQuery = searchQuery,
         )
-        _uiState.update {
-          it.copy(
-            searchResults = searchResult,
+      }
+      if (searchQuery.isNotBlank()) {
+        try {
+          val searchResult = searchBookRepository.searchBooks(
+            query = searchQuery,
+            startIndex = 0,
           )
+          _uiState.update {
+            it.copy(
+              searchResults = searchResult,
+            )
+          }
+        } catch (e: Exception) {
+          // TODO: 共通のエラーハンドリングを表示
+          println("あああ: $e")
         }
-      } catch (e: Exception) {
-        // TODO: 共通のエラーハンドリングを表示
-        println("あああ: $e")
       }
     }
   }
