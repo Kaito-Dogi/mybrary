@@ -86,7 +86,7 @@ internal fun MyBookDetailTopAppBar(
           imageUrl = myBook.imageUrl,
           title = myBook.title,
           modifier = Modifier
-            .width(120.dp)
+            .width(120.dp) // TODO: 定数にする
             .clip(shape = MybraryTheme.shapes.extraSmall),
         )
         Gap(width = MybraryTheme.space.md)
