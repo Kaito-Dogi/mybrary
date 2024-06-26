@@ -67,4 +67,12 @@ internal class SearchBookViewModel @Inject constructor(
       }
     }
   }
+
+  fun onMessageShown() {
+    _uiState.update {
+      it.copy(
+        shownMessage = null,
+      )
+    }
+  }
 }

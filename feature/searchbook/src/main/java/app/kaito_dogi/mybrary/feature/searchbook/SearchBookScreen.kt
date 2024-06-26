@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -23,11 +24,19 @@ import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSk
 @Composable
 internal fun SearchBookScreen(
   uiState: SearchBookUiState,
+  snackbarHost: @Composable () -> Unit,
+  showSnackbar: (String) -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
   onSearchResultClick: (SearchResultBook) -> Unit,
   onSearchResultLongClick: (SearchResultBook) -> Unit,
 ) {
+  uiState.shownMessage?.let {
+    LaunchedEffect(it) {
+      showSnackbar(it)
+    }
+  }
+
   Scaffold(
     bottomBar = {
       SearchBookBottomAppBar(
@@ -37,6 +46,7 @@ internal fun SearchBookScreen(
         modifier = Modifier.windowInsetsPadding(WindowInsets.ime),
       )
     },
+    snackbarHost = snackbarHost,
   ) { innerPadding ->
     Box(
       modifier = Modifier
@@ -79,6 +89,8 @@ private fun SearchBookScreenPreview() {
   MybraryTheme {
     SearchBookScreen(
       uiState = SearchBookUiState.InitialValue,
+      snackbarHost = {},
+      showSnackbar = {},
       onSearchQueryChange = {},
       onBarcodeScannerClick = {},
       onSearchResultClick = {},
