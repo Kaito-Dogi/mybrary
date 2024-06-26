@@ -1,8 +1,12 @@
 package app.kaito_dogi.mybrary.core.domain.repository
 
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
-import kotlinx.coroutines.flow.Flow
+import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 interface DraftMemoRepository {
-  val draftMemoList: Flow<List<DraftMemo>>
+  suspend fun saveDraftMemo(draftMemo: DraftMemo)
+
+  suspend fun deleteDraftMemo(myBookId: MyBookId)
+
+  suspend fun getDraftMemo(myBookId: MyBookId): DraftMemo?
 }

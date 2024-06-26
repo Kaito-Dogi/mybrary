@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.core.data"
+  namespace = "app.kaito_dogi.mybrary.core.database.local"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -14,6 +14,12 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
+
+    javaCompileOptions {
+      annotationProcessorOptions {
+        argument("room.schemaLocation", "$projectDir/schemas")
+      }
+    }
   }
 
   buildTypes {
@@ -23,11 +29,6 @@ android {
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro",
       )
-    }
-
-    create("mock") {
-      initWith(getByName("debug"))
-      matchingFallbacks += listOf("debug")
     }
   }
 
@@ -43,15 +44,13 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
-  implementation(project(":core:database:local"))
-  implementation(project(":core:domain"))
-  implementation(project(":core:network"))
 
   implementation(libs.hiltAndroid)
+  implementation(libs.roomKtx)
+  implementation(libs.roomRuntime)
 
   kapt(libs.hiltCompiler)
-
-  testImplementation(libs.junit)
+  kapt(libs.roomCompiler)
 }
 
 kapt {
