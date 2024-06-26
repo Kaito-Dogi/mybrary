@@ -35,7 +35,6 @@ internal fun MyBookDetailScreen(
   snackbarHost: @Composable () -> Unit,
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
   showSnackbar: (String) -> Unit,
-  onBackClick: () -> Unit,
   onArchiveClick: () -> Unit,
   onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
@@ -52,7 +51,6 @@ internal fun MyBookDetailScreen(
       MyBookDetailBottomAppBar(
         isPublic = uiState.myBook.isPublic,
         isFavorite = uiState.myBook.isFavorite,
-        onBackClick = onBackClick,
         onArchiveClick = onArchiveClick,
         onPublicClick = onPublicClick,
         onFavoriteClick = onFavoriteClick,
@@ -160,7 +158,6 @@ private fun MyBookDetailScreenPreview() {
       snackbarHost = {},
       bottomSheet = {},
       showSnackbar = {},
-      onBackClick = {},
       onArchiveClick = {},
       onPublicClick = {},
       onFavoriteClick = {},

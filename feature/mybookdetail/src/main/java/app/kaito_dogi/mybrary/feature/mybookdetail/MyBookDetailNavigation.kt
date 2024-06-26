@@ -41,9 +41,7 @@ private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
 fun myBookDetailRouteWithNavArg(navArg: MyBookDetailNavArg) =
   "${MyBookDetail}/${Uri.encode(Json.encodeToString<MyBookDetailNavArg>(navArg))}"
 
-fun NavGraphBuilder.myBookDetailScreen(
-  onBackClick: () -> Unit,
-) {
+fun NavGraphBuilder.myBookDetailScreen() {
   composable(
     route = MyBookDetailRoute,
     arguments = listOf(
@@ -52,8 +50,6 @@ fun NavGraphBuilder.myBookDetailScreen(
       },
     ),
   ) {
-    MyBookDetailContainer(
-      onBackClick = onBackClick,
-    )
+    MyBookDetailContainer()
   }
 }
