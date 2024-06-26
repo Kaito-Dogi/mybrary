@@ -89,7 +89,7 @@ internal fun MyBookDetailScreen(
       } else {
         items(
           items = uiState.memoList,
-          key = { memo -> memo.id.value },
+          key = { it.id.value },
         ) { memo ->
           MemoRow(
             memo = memo,

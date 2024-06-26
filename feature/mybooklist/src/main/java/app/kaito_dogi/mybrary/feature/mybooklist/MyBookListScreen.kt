@@ -63,7 +63,7 @@ internal fun MyBookListScreen(
         } else {
           items(
             items = uiState.myBookList,
-            key = { myBook -> myBook.id.value },
+            key = { it.id.value },
           ) {
             MyBookCell(
               myBook = it,
