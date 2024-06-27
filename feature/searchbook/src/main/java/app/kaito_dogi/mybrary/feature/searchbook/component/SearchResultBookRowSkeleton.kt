@@ -39,10 +39,7 @@ fun SearchResultBookRowSkeleton(
           .aspectRatio(BookAspectRatio)
           .width(72.dp),
       )
-      Column(
-        modifier = Modifier.weight(1f),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
-      ) {
+      Column(verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs)) {
         Text(
           text = "あ\nあ",
           modifier = Modifier.fillMaxWidth(),

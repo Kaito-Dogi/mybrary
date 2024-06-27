@@ -41,8 +41,8 @@ fun BookImage(
     modifier = modifier
       .clip(shape = shape)
       .aspectRatio(BookAspectRatio),
-    placeholder = painterResource(id = R.drawable.img_book_placeholder),
-    error = painterResource(id = R.drawable.img_book_placeholder),
+    placeholder = painterResource(R.drawable.img_book_placeholder),
+    error = painterResource(R.drawable.img_book_placeholder),
     onLoading = onLoading,
     onSuccess = onSuccess,
     onError = onError,

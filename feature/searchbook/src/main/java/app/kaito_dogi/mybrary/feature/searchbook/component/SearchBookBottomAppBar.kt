@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.searchbook.component
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -23,7 +22,7 @@ internal fun SearchBookBottomAppBar(
   modifier: Modifier = Modifier,
 ) {
   BottomAppBar(
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier,
     contentPadding = PaddingValues(horizontal = MybraryTheme.space.md),
   ) {
     TextField(
@@ -33,13 +32,11 @@ internal fun SearchBookBottomAppBar(
       placeholder = { Text(text = "検索ワードを入力…") },
       leadingIcon = {
         Icon(
-          painter = painterResource(id = R.drawable.icon_search),
+          painter = painterResource(R.drawable.icon_search),
           contentDescription = "書籍一覧画面に戻る",
         )
       },
-      keyboardOptions = KeyboardOptions.Default.copy(
-        imeAction = ImeAction.Done,
-      ),
+      keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
     )
     // TODO: v2 以降で実装する
 //    Gap(width = MybraryTheme.space.sm)
@@ -53,7 +50,7 @@ internal fun SearchBookBottomAppBar(
 //      ),
 //    ) {
 //      Icon(
-//        painter = painterResource(id = R.drawable.icon_barcode_scanner),
+//        painter = painterResource(R.drawable.icon_barcode_scanner),
 //        contentDescription = "バーコードを読み取る",
 //      )
 //    }

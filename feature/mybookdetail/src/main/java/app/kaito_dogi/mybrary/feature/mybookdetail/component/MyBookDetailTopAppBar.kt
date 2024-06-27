@@ -68,7 +68,6 @@ internal fun MyBookDetailTopAppBar(
     )
     Row(
       modifier = Modifier
-        .fillMaxWidth()
         .height(IntrinsicSize.Min)
         .padding(
           start = MybraryTheme.space.md,
@@ -86,10 +85,7 @@ internal fun MyBookDetailTopAppBar(
         modifier = Modifier.width(120.dp),
       )
       Gap(width = MybraryTheme.space.md)
-      Column(
-        modifier = Modifier.weight(1f),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
-      ) {
+      Column(verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs)) {
         Text(
           text = myBook.title,
           modifier = Modifier
