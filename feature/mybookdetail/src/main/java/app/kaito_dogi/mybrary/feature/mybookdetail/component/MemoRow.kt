@@ -138,5 +138,37 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         publishedAt = null,
         likeCount = null,
       ),
+      // 編集済みの場合
+      Memo(
+        id = MemoId(value = 0),
+        myBookId = MyBookId(value = 0),
+        user = User(
+          id = UserId(value = 0L),
+          name = "ユーザー名",
+        ),
+        content = "メモ",
+        fromPage = 1,
+        toPage = 100,
+        createdAt = LocalDateTime.now(),
+        updatedAt = LocalDateTime.now(),
+        publishedAt = null,
+        likeCount = null,
+      ),
+      // 複数行の場合
+      Memo(
+        id = MemoId(value = 0),
+        myBookId = MyBookId(value = 0),
+        user = User(
+          id = UserId(value = 0L),
+          name = "ユーザー名",
+        ),
+        content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
+        fromPage = 1,
+        toPage = 100,
+        createdAt = LocalDateTime.now(),
+        updatedAt = null,
+        publishedAt = null,
+        likeCount = null,
+      ),
     )
 }
