@@ -46,7 +46,7 @@ internal fun SearchBookScreen(
       modifier = Modifier.fillMaxSize(),
       contentPadding = PaddingValues(
         start = MybraryTheme.space.md,
-        top = innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.md + innerPadding.calculateTopPadding(),
         end = MybraryTheme.space.md,
         bottom = innerPadding.calculateBottomPadding(),
       ),

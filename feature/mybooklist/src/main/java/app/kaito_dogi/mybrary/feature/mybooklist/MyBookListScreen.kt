@@ -43,7 +43,7 @@ internal fun MyBookListScreen(
       modifier = Modifier.fillMaxSize(),
       contentPadding = PaddingValues(
         start = MybraryTheme.space.md,
-        top = innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.sm + innerPadding.calculateTopPadding(),
         end = MybraryTheme.space.md,
         bottom = innerPadding.calculateBottomPadding(),
       ),
