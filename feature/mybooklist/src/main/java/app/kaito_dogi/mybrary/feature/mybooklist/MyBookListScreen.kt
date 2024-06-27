@@ -33,7 +33,6 @@ internal fun MyBookListScreen(
   onMyBookClick: (MyBook) -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier.fillMaxSize(),
     floatingActionButton = {
       FloatingActionButton(
         onClick = onAdditionClick,
@@ -52,7 +51,7 @@ internal fun MyBookListScreen(
         start = MybraryTheme.space.md,
         top = MybraryTheme.space.sm + innerPadding.calculateTopPadding(),
         end = MybraryTheme.space.md,
-        bottom = innerPadding.calculateBottomPadding(),
+        bottom = MybraryTheme.space.md + innerPadding.calculateBottomPadding(),
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
@@ -62,7 +61,7 @@ internal fun MyBookListScreen(
         if (favoriteMyBookList.isNotEmpty()) {
           item(
             span = { GridItemSpan(uiState.numberOfColumns) },
-            key = "MyBookListHeader:お気に入りの本",
+            key = "MyBookListHeader:favorite",
           ) {
             MyBookListHeader(title = "お気に入りの本")
           }
@@ -78,7 +77,7 @@ internal fun MyBookListScreen(
           }
           item(
             span = { GridItemSpan(uiState.numberOfColumns) },
-            key = "Spacer:お気に入りの本",
+            key = "Spacer:favorite",
           ) {
             Spacer(modifier = Modifier.height(MybraryTheme.space.xxl))
           }
@@ -86,21 +85,27 @@ internal fun MyBookListScreen(
       }
 
       // その他の本
-      uiState.otherMyBookList?.let { unfavoriteMyBookList ->
-        if (unfavoriteMyBookList.isNotEmpty() && !uiState.areAllMyBooksInOtherList) {
+      uiState.otherMyBookList?.let { otherMyBookList ->
+        if (otherMyBookList.isNotEmpty()) {
           item(
             span = { GridItemSpan(uiState.numberOfColumns) },
-            key = "MyBookListHeader:その他の本",
+            key = "MyBookListHeader:other",
           ) {
-            MyBookListHeader(title = "その他の本")
+            MyBookListHeader(
+              title = if (uiState.areAllMyBooksInOtherList) {
+                "すべての本"
+              } else {
+                "その他の本"
+              },
+            )
           }
         }
         items(
-          items = unfavoriteMyBookList,
+          items = otherMyBookList,
           key = { it.id.value },
-        ) { unfavoriteMyBook ->
+        ) { otherMyBook ->
           MyBookCell(
-            myBook = unfavoriteMyBook,
+            myBook = otherMyBook,
             onClick = onMyBookClick,
             modifier = Modifier.animateItemPlacement(),
           )
