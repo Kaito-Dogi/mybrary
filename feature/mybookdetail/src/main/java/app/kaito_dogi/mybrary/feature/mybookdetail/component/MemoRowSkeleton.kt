@@ -23,27 +23,25 @@ internal fun MemoRowSkeleton(
       .fillMaxWidth(),
   ) {
     Column(
-      modifier = modifier
-        .padding(
-          start = MybraryTheme.space.md,
-          top = MybraryTheme.space.sm,
-          end = MybraryTheme.space.md,
-          bottom = MybraryTheme.space.md,
-        )
-        .fillMaxWidth(),
+      modifier = modifier.padding(
+        start = MybraryTheme.space.md,
+        top = MybraryTheme.space.sm,
+        end = MybraryTheme.space.md,
+        bottom = MybraryTheme.space.md,
+      ),
     ) {
       Text(
         text = "あ",
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
-        style = MybraryTheme.typography.titleMedium,
+        style = MybraryTheme.typography.bodyLarge,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
         text = "あ",
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
-        style = MybraryTheme.typography.bodyMedium,
+        style = MybraryTheme.typography.bodySmall,
       )
     }
   }
