@@ -10,6 +10,10 @@ internal data class MyBookListUiState(
   val numberOfColumns: Int,
   val myBookList: List<MyBook>?,
 ) {
+  val favoriteMyBookList: List<MyBook>? = myBookList?.filter { it.isFavorite }
+  val otherMyBookList: List<MyBook>? = myBookList?.filterNot { it.isFavorite }
+  val areAllMyBooksInOtherList: Boolean = otherMyBookList == myBookList
+
   companion object {
     val InitialValue = MyBookListUiState(
       numberOfColumns = NumberOfColumns,
