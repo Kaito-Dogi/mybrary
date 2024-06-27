@@ -46,4 +46,5 @@ dependencies {
   val composeBom = platform(libs.androidxComposeBom)
   implementation(composeBom)
   implementation(libs.androidxComposeMaterial3)
+  implementation(libs.androidxComposeUiTooling)
 }

@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.component
+package app.kaito_dogi.mybrary.core.designsystem.component
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
