@@ -17,7 +17,7 @@ internal fun MyBookListHeaderSkeleton(
   SkeletonBox(
     modifier = modifier
       .fillMaxWidth()
-      .clip(MybraryTheme.shapes.extraSmall),
+      .clip(shape = MybraryTheme.shapes.extraSmall),
   ) {
     Text(
       text = "あ",
