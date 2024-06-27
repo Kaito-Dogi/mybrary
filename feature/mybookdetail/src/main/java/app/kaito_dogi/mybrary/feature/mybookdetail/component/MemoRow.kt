@@ -32,7 +32,7 @@ internal fun MemoRow(
 
   Card(
     onClick = { onClick(memo) },
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier,
     shape = MybraryTheme.shapes.small,
   ) {
     // top の padding を小さくすることで、錯視を調整
@@ -107,7 +107,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         publishedAt = null,
         likeCount = null,
       ),
-      // 開始ページのみが記録されている場合
+      // 片方のページのみが記録されている場合
       Memo(
         id = MemoId(value = 0),
         myBookId = MyBookId(value = 0),
