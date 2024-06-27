@@ -54,7 +54,9 @@ internal fun SearchResultBookRow(
         modifier = Modifier.width(72.dp),
       )
       Gap(width = MybraryTheme.space.sm)
-      Column(verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs)) {
+      Column(
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+      ) {
         Text(
           text = searchResultBook.title,
           modifier = Modifier

@@ -23,7 +23,7 @@ fun SkeletonBox(
   modifier: Modifier = Modifier,
   content: @Composable BoxScope.() -> Unit,
 ) {
-  val infiniteTransition = rememberInfiniteTransition(label = "")
+  val infiniteTransition = rememberInfiniteTransition(label = "スケルトン表示")
   val alpha by infiniteTransition.animateFloat(
     initialValue = 1.0f,
     targetValue = 0.2f,

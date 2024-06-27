@@ -36,7 +36,9 @@ internal fun SearchBookBottomAppBar(
           contentDescription = "書籍一覧画面に戻る",
         )
       },
-      keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+      keyboardOptions = KeyboardOptions.Default.copy(
+        imeAction = ImeAction.Done,
+      ),
     )
     // TODO: v2 以降で実装する
 //    Gap(width = MybraryTheme.space.sm)

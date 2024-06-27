@@ -85,7 +85,9 @@ internal fun MyBookDetailTopAppBar(
         modifier = Modifier.width(120.dp),
       )
       Gap(width = MybraryTheme.space.md)
-      Column(verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs)) {
+      Column(
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
+      ) {
         Text(
           text = myBook.title,
           modifier = Modifier
