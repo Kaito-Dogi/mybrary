@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.designsystem.extension.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
@@ -62,12 +62,7 @@ internal fun MyBookDetailBottomAppBar(
     Spacer(modifier = Modifier.weight(1f))
     FloatingActionButton(
       onClick = onAdditionClick,
-      elevation = FloatingActionButtonDefaults.elevation(
-        defaultElevation = 0.dp,
-        pressedElevation = 0.dp,
-        focusedElevation = 0.dp,
-        hoveredElevation = 0.dp,
-      ),
+      elevation = FloatingActionButtonDefaults.elevationZero(),
     ) {
       Icon(
         painter = painterResource(R.drawable.icon_add),

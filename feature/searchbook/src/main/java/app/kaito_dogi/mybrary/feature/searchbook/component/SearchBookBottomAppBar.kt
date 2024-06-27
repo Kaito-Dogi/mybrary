@@ -44,12 +44,7 @@ internal fun SearchBookBottomAppBar(
 //    Gap(width = MybraryTheme.space.sm)
 //    FloatingActionButton(
 //      onClick = onBarcodeScannerClick,
-//      elevation = FloatingActionButtonDefaults.elevation(
-//        defaultElevation = 0.dp,
-//        pressedElevation = 0.dp,
-//        focusedElevation = 0.dp,
-//        hoveredElevation = 0.dp,
-//      ),
+//      elevation = FloatingActionButtonDefaults.elevationZero(),
 //    ) {
 //      Icon(
 //        painter = painterResource(R.drawable.icon_barcode_scanner),
