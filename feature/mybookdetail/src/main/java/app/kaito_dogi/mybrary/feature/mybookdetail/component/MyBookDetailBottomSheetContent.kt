@@ -22,6 +22,8 @@ import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.ui.R
 
+private const val Radix = 10
+
 @Composable
 internal fun MyBookDetailBottomSheetContent(
   draftMemo: DraftMemo,
@@ -32,10 +34,10 @@ internal fun MyBookDetailBottomSheetContent(
   onSaveClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  Column(modifier = modifier.fillMaxWidth()) {
+  Column(modifier = modifier) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
-        value = if (draftMemo.fromPage == null) "" else draftMemo.fromPage.toString(),
+        value = draftMemo.fromPage?.toString(radix = Radix) ?: "",
         onValueChange = onFromPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "開始ページ") },
@@ -46,7 +48,7 @@ internal fun MyBookDetailBottomSheetContent(
       )
       Gap(width = MybraryTheme.space.sm)
       TextField(
-        value = if (draftMemo.toPage == null) "" else draftMemo.toPage.toString(),
+        value = draftMemo.toPage?.toString(radix = Radix) ?: "",
         onValueChange = onToPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "終了ページ") },
@@ -67,20 +69,15 @@ internal fun MyBookDetailBottomSheetContent(
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "メモを入力…") },
         isError = isContentTextFieldError,
-        keyboardOptions = KeyboardOptions.Default.copy(
-          keyboardType = KeyboardType.Text,
-          imeAction = ImeAction.Send,
-        ),
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         keyboardActions = KeyboardActions(
-          onSend = {
-            onSaveClick()
-          },
+          onSend = { onSaveClick() },
         ),
         minLines = 2,
       )
       IconButton(onClick = onSaveClick) {
         Icon(
-          painter = painterResource(id = R.drawable.icon_send),
+          painter = painterResource(R.drawable.icon_send),
           contentDescription = "メモを保存する",
         )
       }
@@ -88,7 +85,7 @@ internal fun MyBookDetailBottomSheetContent(
   }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun MyBookDetailBottomSheetContentPreview() {
   MybraryTheme {

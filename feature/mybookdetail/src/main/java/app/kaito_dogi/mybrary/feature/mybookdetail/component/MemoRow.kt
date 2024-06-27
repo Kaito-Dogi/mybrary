@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,8 +27,6 @@ internal fun MemoRow(
   onClick: (Memo) -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  val body = remember(memo) { memo.cardBody }
-
   Card(
     onClick = { onClick(memo) },
     modifier = modifier,
@@ -51,7 +48,7 @@ internal fun MemoRow(
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
-        text = body,
+        text = memo.cardBody,
         modifier = Modifier.fillMaxWidth(),
         // TODO: カラースキーマを整理する
         color = Color.Gray,

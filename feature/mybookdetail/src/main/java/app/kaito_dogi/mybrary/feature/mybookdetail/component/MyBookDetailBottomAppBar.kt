@@ -36,16 +36,16 @@ internal fun MyBookDetailBottomAppBar(
     // TODO: v2 以降で実装を復活させる
 //    IconButton(onClick = onArchiveClick) {
 //      Icon(
-//        painter = painterResource(id = R.drawable.icon_archive),
+//        painter = painterResource(R.drawable.icon_archive),
 //        contentDescription = "書籍を非表示にする",
 //      )
 //    }
 //    IconButton(onClick = onPublicClick) {
 //      Icon(
 //        painter = if (isPublic) {
-//          painterResource(id = R.drawable.icon_visibility)
+//          painterResource(R.drawable.icon_visibility)
 //        } else {
-//          painterResource(id = R.drawable.icon_visibility_off)
+//          painterResource(R.drawable.icon_visibility_off)
 //        },
 //        contentDescription = "書籍を他のユーザーに公開する",
 //      )
@@ -53,9 +53,9 @@ internal fun MyBookDetailBottomAppBar(
     IconButton(onClick = onFavoriteClick) {
       Icon(
         painter = if (isFavorite) {
-          painterResource(id = R.drawable.icon_heart_filled)
+          painterResource(R.drawable.icon_heart_filled)
         } else {
-          painterResource(id = R.drawable.icon_heart_outlined)
+          painterResource(R.drawable.icon_heart_outlined)
         },
         contentDescription = "書籍をお気に入り登録する",
       )
@@ -71,7 +71,7 @@ internal fun MyBookDetailBottomAppBar(
       ),
     ) {
       Icon(
-        painter = painterResource(id = R.drawable.icon_add),
+        painter = painterResource(R.drawable.icon_add),
         contentDescription = "メモを編集",
       )
     }

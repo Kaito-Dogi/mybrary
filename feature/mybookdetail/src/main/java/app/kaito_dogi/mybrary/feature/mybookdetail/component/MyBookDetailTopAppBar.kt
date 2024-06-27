@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,7 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
@@ -53,15 +52,11 @@ internal fun MyBookDetailTopAppBar(
   myBook: MyBook,
   modifier: Modifier = Modifier,
 ) {
-  Box(
-    modifier = modifier
-      .fillMaxWidth()
-      .height(IntrinsicSize.Min),
-  ) {
+  Box(modifier = modifier.height(IntrinsicSize.Min)) {
     AsyncImage(
       model = myBook.imageUrl.value,
       modifier = Modifier
-        .fillMaxHeight()
+        .matchParentSize()
         .background(MybraryTheme.colorScheme.primary)
         .blur(
           radiusX = MybraryTheme.space.md,
@@ -71,59 +66,59 @@ internal fun MyBookDetailTopAppBar(
       contentScale = ContentScale.FillWidth,
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
-    Column(
-      modifier = modifier.padding(MybraryTheme.space.md),
+    Row(
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(IntrinsicSize.Min)
+        .padding(
+          start = MybraryTheme.space.md,
+          top = MybraryTheme.space.md + WindowInsets.systemBars
+            .asPaddingValues()
+            .calculateTopPadding(),
+          end = MybraryTheme.space.md,
+          bottom = MybraryTheme.space.md,
+        ),
     ) {
-      Gap(height = WindowInsets.systemBars.asPaddingValues().calculateTopPadding())
-      Row(
-        modifier = Modifier
-          .fillMaxWidth()
-          .height(IntrinsicSize.Min),
+      // TODO: width を定数にする
+      BookImage(
+        imageUrl = myBook.imageUrl,
+        title = myBook.title,
+        modifier = Modifier.width(120.dp),
+      )
+      Gap(width = MybraryTheme.space.md)
+      Column(
+        modifier = Modifier.weight(1f),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
       ) {
-        BookImage(
-          imageUrl = myBook.imageUrl,
-          title = myBook.title,
+        Text(
+          text = myBook.title,
           modifier = Modifier
-            .width(120.dp) // TODO: 定数にする
-            .clip(shape = MybraryTheme.shapes.extraSmall),
-        )
-        Gap(width = MybraryTheme.space.md)
-        Column(
-          modifier = Modifier
-            .fillMaxHeight()
+            .fillMaxWidth()
             .weight(1f),
-          verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
-        ) {
+          color = Color.White,
+          overflow = TextOverflow.Ellipsis,
+          maxLines = 4,
+          style = MybraryTheme.typography.titleMedium,
+        )
+        if (myBook.authors.isNotEmpty()) {
           Text(
-            text = myBook.title,
-            modifier = Modifier
-              .fillMaxWidth()
-              .weight(1f),
-            color = MybraryTheme.colorScheme.onPrimary,
+            text = myBook.authors.joinToString { it.name },
+            modifier = Modifier.fillMaxWidth(),
+            color = Color.White,
             overflow = TextOverflow.Ellipsis,
-            maxLines = 4,
-            style = MybraryTheme.typography.titleMedium,
+            maxLines = 2,
+            style = MybraryTheme.typography.bodyMedium,
           )
-          if (myBook.authors.isNotEmpty()) {
-            Text(
-              text = myBook.authors.joinToString { it.name },
-              modifier = Modifier.fillMaxWidth(),
-              color = MybraryTheme.colorScheme.onPrimary,
-              overflow = TextOverflow.Ellipsis,
-              maxLines = 2,
-              style = MybraryTheme.typography.bodyMedium,
-            )
-          }
-          if (myBook.topAppBarBody.isNotBlank()) {
-            Text(
-              text = myBook.topAppBarBody,
-              modifier = Modifier.fillMaxWidth(),
-              color = MybraryTheme.colorScheme.onPrimary,
-              overflow = TextOverflow.Ellipsis,
-              maxLines = 1,
-              style = MybraryTheme.typography.bodyMedium,
-            )
-          }
+        }
+        if (myBook.topAppBarBody.isNotBlank()) {
+          Text(
+            text = myBook.topAppBarBody,
+            modifier = Modifier.fillMaxWidth(),
+            color = Color.White,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+            style = MybraryTheme.typography.bodyMedium,
+          )
         }
       }
     }
