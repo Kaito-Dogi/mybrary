@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,6 +26,7 @@ fun BookImage(
   imageUrl: Url.Image,
   title: String,
   modifier: Modifier = Modifier,
+  shape: Shape = MybraryTheme.shapes.extraSmall,
   onLoading: ((AsyncImagePainter.State.Loading) -> Unit)? = null,
   onSuccess: ((AsyncImagePainter.State.Success) -> Unit)? = null,
   onError: ((AsyncImagePainter.State.Error) -> Unit)? = null,
@@ -35,9 +38,11 @@ fun BookImage(
   AsyncImage(
     model = imageUrl.value,
     contentDescription = "${title}の表紙",
-    modifier = modifier.aspectRatio(BookAspectRatio),
-    placeholder = painterResource(id = R.drawable.img_book_placeholder),
-    error = painterResource(id = R.drawable.img_book_placeholder),
+    modifier = modifier
+      .clip(shape = shape)
+      .aspectRatio(BookAspectRatio),
+    placeholder = painterResource(R.drawable.img_book_placeholder),
+    error = painterResource(R.drawable.img_book_placeholder),
     onLoading = onLoading,
     onSuccess = onSuccess,
     onError = onError,

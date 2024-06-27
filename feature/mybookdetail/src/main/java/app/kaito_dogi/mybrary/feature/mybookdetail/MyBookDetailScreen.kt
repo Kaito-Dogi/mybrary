@@ -3,9 +3,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -46,7 +44,6 @@ internal fun MyBookDetailScreen(
   onSaveClick: () -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier.fillMaxSize(),
     bottomBar = {
       MyBookDetailBottomAppBar(
         isPublic = uiState.myBook.isPublic,
@@ -59,17 +56,24 @@ internal fun MyBookDetailScreen(
     },
     snackbarHost = snackbarHost,
   ) { innerPadding ->
-    // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding()),
+      // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
+      contentPadding = PaddingValues(
+        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.space.md,
+      ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
-      item {
+      // ヘッダー
+      item(
+        key = "MyBookDetailTopAppBar",
+      ) {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
         )
       }
+
+      // メモ
       uiState.memoList?.let {
         items(
           items = uiState.memoList,
@@ -83,20 +87,20 @@ internal fun MyBookDetailScreen(
             ),
           )
         }
+      }
 
-        item {
-          // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
-          Spacer(modifier = Modifier.fillMaxWidth())
+      // スケルトン表示
+      if (uiState.memoList == null) {
+        items(
+          count = 4,
+          key = { "MemoRowSkeleton$it" },
+        ) {
+          MemoRowSkeleton(
+            modifier = Modifier.padding(
+              horizontal = MybraryTheme.space.md,
+            ),
+          )
         }
-      } ?: items(
-        count = 4,
-        key = { "MemoRowSkeleton$it" },
-      ) {
-        MemoRowSkeleton(
-          modifier = Modifier.padding(
-            horizontal = MybraryTheme.space.md,
-          ),
-        )
       }
     }
 

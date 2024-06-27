@@ -6,44 +6,40 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
+import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.component.SkeletonBox
 
 @Composable
 internal fun MemoRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    modifier = modifier
-      .clip(shape = MybraryTheme.shapes.small)
-      .fillMaxWidth(),
+    shape = MybraryTheme.shapes.small,
+    modifier = modifier,
   ) {
     Column(
-      modifier = modifier
-        .padding(
-          start = MybraryTheme.space.md,
-          top = MybraryTheme.space.sm,
-          end = MybraryTheme.space.md,
-          bottom = MybraryTheme.space.md,
-        )
-        .fillMaxWidth(),
+      modifier = modifier.padding(
+        start = MybraryTheme.space.md,
+        top = MybraryTheme.space.sm,
+        end = MybraryTheme.space.md,
+        bottom = MybraryTheme.space.md,
+      ),
     ) {
       Text(
         text = "あ",
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
-        style = MybraryTheme.typography.titleMedium,
+        style = MybraryTheme.typography.bodyLarge,
       )
       Gap(height = MybraryTheme.space.xxs)
       Text(
         text = "あ",
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
-        style = MybraryTheme.typography.bodyMedium,
+        style = MybraryTheme.typography.bodySmall,
       )
     }
   }

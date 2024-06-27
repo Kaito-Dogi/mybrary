@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -12,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.designsystem.extension.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
@@ -27,7 +26,7 @@ internal fun MyBookDetailBottomAppBar(
   modifier: Modifier = Modifier,
 ) {
   BottomAppBar(
-    modifier = modifier.fillMaxWidth(),
+    modifier = modifier,
     contentPadding = PaddingValues(
       start = MybraryTheme.space.xxs,
       end = MybraryTheme.space.md,
@@ -36,16 +35,16 @@ internal fun MyBookDetailBottomAppBar(
     // TODO: v2 以降で実装を復活させる
 //    IconButton(onClick = onArchiveClick) {
 //      Icon(
-//        painter = painterResource(id = R.drawable.icon_archive),
+//        painter = painterResource(R.drawable.icon_archive),
 //        contentDescription = "書籍を非表示にする",
 //      )
 //    }
 //    IconButton(onClick = onPublicClick) {
 //      Icon(
 //        painter = if (isPublic) {
-//          painterResource(id = R.drawable.icon_visibility)
+//          painterResource(R.drawable.icon_visibility)
 //        } else {
-//          painterResource(id = R.drawable.icon_visibility_off)
+//          painterResource(R.drawable.icon_visibility_off)
 //        },
 //        contentDescription = "書籍を他のユーザーに公開する",
 //      )
@@ -53,9 +52,9 @@ internal fun MyBookDetailBottomAppBar(
     IconButton(onClick = onFavoriteClick) {
       Icon(
         painter = if (isFavorite) {
-          painterResource(id = R.drawable.icon_heart_filled)
+          painterResource(R.drawable.icon_heart_filled)
         } else {
-          painterResource(id = R.drawable.icon_heart_outlined)
+          painterResource(R.drawable.icon_heart_outlined)
         },
         contentDescription = "書籍をお気に入り登録する",
       )
@@ -63,15 +62,10 @@ internal fun MyBookDetailBottomAppBar(
     Spacer(modifier = Modifier.weight(1f))
     FloatingActionButton(
       onClick = onAdditionClick,
-      elevation = FloatingActionButtonDefaults.elevation(
-        defaultElevation = 0.dp,
-        pressedElevation = 0.dp,
-        focusedElevation = 0.dp,
-        hoveredElevation = 0.dp,
-      ),
+      elevation = FloatingActionButtonDefaults.elevationZero(),
     ) {
       Icon(
-        painter = painterResource(id = R.drawable.icon_add),
+        painter = painterResource(R.drawable.icon_add),
         contentDescription = "メモを編集",
       )
     }

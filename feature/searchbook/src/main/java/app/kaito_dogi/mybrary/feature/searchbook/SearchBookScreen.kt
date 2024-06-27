@@ -1,11 +1,8 @@
 package app.kaito_dogi.mybrary.feature.searchbook
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
@@ -44,11 +42,11 @@ internal fun SearchBookScreen(
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
+      contentPadding = innerPadding.plus(
         start = MybraryTheme.space.md,
-        top = innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.sm,
         end = MybraryTheme.space.md,
-        bottom = innerPadding.calculateBottomPadding(),
+        bottom = MybraryTheme.space.md,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
@@ -62,11 +60,6 @@ internal fun SearchBookScreen(
             onClick = onSearchResultClick,
             onLongClick = onSearchResultLongClick,
           )
-        }
-
-        item {
-          // リストの1番下に Arrangement.spacedBy で余白をもたせるため、高さ0の要素を表示
-          Spacer(modifier = Modifier.fillMaxWidth())
         }
       }
 

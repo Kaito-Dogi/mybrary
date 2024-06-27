@@ -1,9 +1,12 @@
 package app.kaito_dogi.mybrary.feature.mybooklist
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
@@ -14,11 +17,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCellSkeleton
+import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeader
+import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeaderSkeleton
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun MyBookListScreen(
   uiState: MyBookListUiState,
@@ -26,7 +33,6 @@ internal fun MyBookListScreen(
   onMyBookClick: (MyBook) -> Unit,
 ) {
   Scaffold(
-    modifier = Modifier.fillMaxSize(),
     floatingActionButton = {
       FloatingActionButton(
         onClick = onAdditionClick,
@@ -41,30 +47,85 @@ internal fun MyBookListScreen(
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
+      contentPadding = innerPadding.plus(
         start = MybraryTheme.space.md,
-        top = innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.sm,
         end = MybraryTheme.space.md,
-        bottom = innerPadding.calculateBottomPadding(),
+        bottom = MybraryTheme.space.md,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
-      uiState.myBookList?.let {
+      // お気に入りの本
+      uiState.favoriteMyBookList?.let { favoriteMyBookList ->
+        if (favoriteMyBookList.isNotEmpty()) {
+          item(
+            span = { GridItemSpan(uiState.numberOfColumns) },
+            key = "MyBookListHeader:favorite",
+          ) {
+            MyBookListHeader(title = "お気に入りの本")
+          }
+          items(
+            items = favoriteMyBookList,
+            key = { it.id.value },
+          ) { favoriteMyBook ->
+            MyBookCell(
+              myBook = favoriteMyBook,
+              onClick = onMyBookClick,
+              modifier = Modifier.animateItemPlacement(),
+            )
+          }
+          item(
+            span = { GridItemSpan(uiState.numberOfColumns) },
+            key = "Spacer:favorite",
+          ) {
+            Spacer(modifier = Modifier.height(MybraryTheme.space.xxl))
+          }
+        }
+      }
+
+      // その他の本
+      uiState.otherMyBookList?.let { otherMyBookList ->
+        if (otherMyBookList.isNotEmpty()) {
+          item(
+            span = { GridItemSpan(uiState.numberOfColumns) },
+            key = "MyBookListHeader:other",
+          ) {
+            MyBookListHeader(
+              title = if (uiState.areAllMyBooksInOtherList) {
+                "すべての本"
+              } else {
+                "その他の本"
+              },
+            )
+          }
+        }
         items(
-          items = uiState.myBookList,
+          items = otherMyBookList,
           key = { it.id.value },
-        ) {
+        ) { otherMyBook ->
           MyBookCell(
-            myBook = it,
+            myBook = otherMyBook,
             onClick = onMyBookClick,
+            modifier = Modifier.animateItemPlacement(),
           )
         }
-      } ?: items(
-        count = 4,
-        key = { "MyBookCellSkeleton$it" },
-      ) {
-        MyBookCellSkeleton()
+      }
+
+      // スケルトン表示
+      if (uiState.myBookList == null) {
+        item(
+          span = { GridItemSpan(uiState.numberOfColumns) },
+          key = "MyBookListHeaderSkeleton",
+        ) {
+          MyBookListHeaderSkeleton()
+        }
+        items(
+          count = 4,
+          key = { "MyBookCellSkeleton$it" },
+        ) {
+          MyBookCellSkeleton()
+        }
       }
     }
   }
