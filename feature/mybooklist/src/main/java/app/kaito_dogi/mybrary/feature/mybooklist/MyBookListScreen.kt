@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.feature.mybooklist
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -18,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
@@ -47,11 +47,11 @@ internal fun MyBookListScreen(
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
+      contentPadding = innerPadding.plus(
         start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm + innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.sm,
         end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md + innerPadding.calculateBottomPadding(),
+        bottom = MybraryTheme.space.md,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),

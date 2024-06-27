@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.searchbook
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.ime
@@ -13,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
@@ -42,11 +42,11 @@ internal fun SearchBookScreen(
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = PaddingValues(
+      contentPadding = innerPadding.plus(
         start = MybraryTheme.space.md,
-        top = MybraryTheme.space.md + innerPadding.calculateTopPadding(),
+        top = MybraryTheme.space.sm,
         end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md + innerPadding.calculateBottomPadding(),
+        bottom = MybraryTheme.space.md,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
