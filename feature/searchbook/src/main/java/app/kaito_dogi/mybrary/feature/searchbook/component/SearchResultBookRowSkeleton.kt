@@ -13,9 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -27,46 +25,40 @@ fun SearchResultBookRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    modifier = modifier
-      .clip(shape = MybraryTheme.shapes.small)
-      .fillMaxWidth(),
+    shape = MybraryTheme.shapes.small,
+    modifier = modifier,
   ) {
     Row(
       modifier = Modifier
         .padding(MybraryTheme.space.md)
-        .fillMaxWidth()
         .height(IntrinsicSize.Min),
     ) {
+      // TODO: width を定数化する
       Box(
         modifier = Modifier
           .aspectRatio(BookAspectRatio)
           .width(72.dp),
       )
       Column(
+        modifier = Modifier.weight(1f),
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
       ) {
         Text(
           text = "あ\nあ",
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 2,
           style = MybraryTheme.typography.titleMedium,
         )
         Text(
           text = "あ",
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 1,
           style = MybraryTheme.typography.bodyMedium,
         )
         Text(
           text = "あ",
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 1,
           style = MybraryTheme.typography.bodyMedium,
         )
       }

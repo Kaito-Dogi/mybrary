@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
@@ -18,9 +17,8 @@ internal fun MemoRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    modifier = modifier
-      .clip(shape = MybraryTheme.shapes.small)
-      .fillMaxWidth(),
+    shape = MybraryTheme.shapes.small,
+    modifier = modifier,
   ) {
     Column(
       modifier = modifier.padding(

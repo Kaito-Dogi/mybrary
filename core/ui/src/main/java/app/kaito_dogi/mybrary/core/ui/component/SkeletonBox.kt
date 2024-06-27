@@ -8,14 +8,18 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
 fun SkeletonBox(
+  shape: Shape,
   modifier: Modifier = Modifier,
   content: @Composable BoxScope.() -> Unit,
 ) {
@@ -31,7 +35,9 @@ fun SkeletonBox(
   )
 
   Box(
-    modifier = modifier.background(MybraryTheme.colorScheme.surfaceVariant.copy(alpha = alpha)),
+    modifier = modifier
+      .clip(shape = shape)
+      .background(MybraryTheme.colorScheme.surfaceVariant.copy(alpha = alpha)),
     content = content,
   )
 }
@@ -40,6 +46,10 @@ fun SkeletonBox(
 @Composable
 private fun SkeletonBoxPreview() {
   MybraryTheme {
-    SkeletonBox {}
+    SkeletonBox(
+      shape = MybraryTheme.shapes.small,
+    ) {
+      Box(modifier = Modifier.size(MybraryTheme.space.xxxl))
+    }
   }
 }
