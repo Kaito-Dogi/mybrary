@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,7 +13,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
@@ -56,10 +56,12 @@ internal fun MyBookDetailScreen(
     },
     snackbarHost = snackbarHost,
   ) { innerPadding ->
-    // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = innerPadding.plus(bottom = MybraryTheme.space.md),
+      // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
+      contentPadding = PaddingValues(
+        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.space.md,
+      ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       // ヘッダー
