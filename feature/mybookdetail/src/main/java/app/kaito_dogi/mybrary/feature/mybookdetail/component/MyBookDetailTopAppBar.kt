@@ -96,7 +96,7 @@ internal fun MyBookDetailTopAppBar(
           color = Color.White,
           overflow = TextOverflow.Ellipsis,
           maxLines = 4,
-          style = MybraryTheme.typography.titleMedium,
+          style = MybraryTheme.typography.titleLarge,
         )
         if (myBook.authors.isNotEmpty()) {
           Text(
