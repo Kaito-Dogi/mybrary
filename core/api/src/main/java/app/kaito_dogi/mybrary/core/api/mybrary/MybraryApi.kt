@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
+import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -13,7 +14,7 @@ interface MybraryApi {
   @GET("/my-books/{id}")
   suspend fun getMyBook(
     @Path("id") myBookId: Long,
-  ): GetMyBooksResponse
+  ): GetMyBookResponse
 
   @POST("/my-books")
   suspend fun postMyBooks()
