@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.database.local
+package app.kaito_dogi.mybrary.core.database
 
 import android.content.Context
 import androidx.room.Room
@@ -19,7 +19,7 @@ internal object DatabaseModule {
   ): MybraryDatabase = Room.databaseBuilder(
     context = context,
     klass = MybraryDatabase::class.java,
-    name = "MybraryDatabase",
+    name = "mybrary-database",
   )
     .build()
 }

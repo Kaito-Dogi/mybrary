@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.database.local
+package app.kaito_dogi.mybrary.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

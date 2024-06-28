@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.database.local
+package app.kaito_dogi.mybrary.core.database
 
 import dagger.Module
 import dagger.Provides

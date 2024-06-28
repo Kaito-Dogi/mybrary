@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.database.local
+package app.kaito_dogi.mybrary.core.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

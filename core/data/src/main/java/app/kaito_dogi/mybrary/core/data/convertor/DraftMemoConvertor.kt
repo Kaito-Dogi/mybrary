@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.convertor
 
-import app.kaito_dogi.mybrary.core.database.local.DraftMemoEntity
+import app.kaito_dogi.mybrary.core.database.DraftMemoEntity
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 

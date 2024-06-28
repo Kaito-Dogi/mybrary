@@ -43,7 +43,7 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
-  implementation(project(":core:database:local"))
+  implementation(project(":core:database"))
   implementation(project(":core:domain"))
   implementation(project(":core:api"))
 
