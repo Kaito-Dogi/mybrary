@@ -38,9 +38,12 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:api"))
+
   implementation(libs.hiltAndroid)
   implementation(libs.ktor)
   implementation(platform(libs.supabaseBom))
   implementation(libs.supabasePostgrestKt)
+
   kapt(libs.hiltCompiler)
 }

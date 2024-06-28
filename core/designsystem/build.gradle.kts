@@ -43,8 +43,7 @@ android {
 }
 
 dependencies {
-  val composeBom = platform(libs.androidxComposeBom)
-  implementation(composeBom)
+  implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxComposeMaterial3)
   implementation(libs.androidxComposeUiTooling)
 }
