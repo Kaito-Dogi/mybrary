@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.api.response.model
+package app.kaito_dogi.mybrary.core.api.googlebooks.response.model
 
 import kotlinx.serialization.Serializable
 

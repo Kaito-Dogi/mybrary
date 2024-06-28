@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.convertor
 
-import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
@@ -13,9 +13,9 @@ internal fun ItemResponse.toSearchResultBook() = SearchResultBook(
   imageUrl = Url.Image(
     value = volumeInfo?.imageLinks?.thumbnail?.replace("http://", "https://") ?: "",
   ),
-  isbn10 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.response.model.IndustryIdentifierType.Isbn10 }?.identifier
+  isbn10 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.googlebooks.response.model.IndustryIdentifierType.Isbn10 }?.identifier
     ?: "",
-  isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.response.model.IndustryIdentifierType.Isbn13 }?.identifier
+  isbn13 = volumeInfo?.industryIdentifiers?.firstOrNull { it.type == app.kaito_dogi.mybrary.core.api.googlebooks.response.model.IndustryIdentifierType.Isbn13 }?.identifier
     ?: "",
   pageCount = volumeInfo?.pageCount ?: 0,
   publisher = volumeInfo?.publisher ?: "",

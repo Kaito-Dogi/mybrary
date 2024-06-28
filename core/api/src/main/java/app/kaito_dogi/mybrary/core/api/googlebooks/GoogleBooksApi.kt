@@ -1,7 +1,7 @@
-package app.kaito_dogi.mybrary.core.api
+package app.kaito_dogi.mybrary.core.api.googlebooks
 
-import app.kaito_dogi.mybrary.core.api.response.GetVolumeResponse
-import app.kaito_dogi.mybrary.core.api.response.GetVolumesResponse
+import app.kaito_dogi.mybrary.core.api.googlebooks.response.GetVolumeResponse
+import app.kaito_dogi.mybrary.core.api.googlebooks.response.GetVolumesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

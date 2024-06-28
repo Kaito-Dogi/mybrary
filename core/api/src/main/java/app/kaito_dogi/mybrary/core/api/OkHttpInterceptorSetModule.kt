@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.api.okhttp
+package app.kaito_dogi.mybrary.core.api
 
 import dagger.Module
 import dagger.hilt.InstallIn

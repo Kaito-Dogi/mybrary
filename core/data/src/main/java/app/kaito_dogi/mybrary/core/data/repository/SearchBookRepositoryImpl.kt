@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.api.GoogleBooksApi
-import app.kaito_dogi.mybrary.core.api.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.googlebooks.GoogleBooksApi
+import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toSearchResultBook
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook

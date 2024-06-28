@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.api
+package app.kaito_dogi.mybrary.core.api.googlebooks
 
 import dagger.Module
 import dagger.Provides
