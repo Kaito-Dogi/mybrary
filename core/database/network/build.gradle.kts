@@ -2,6 +2,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hilt)
   alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.serialization)
   id("kotlin-kapt")
 }
 
@@ -38,6 +39,8 @@ android {
 
 dependencies {
   implementation(libs.hiltAndroid)
-
+  implementation(libs.ktor)
+  implementation(platform(libs.supabaseBom))
+  implementation(libs.supabasePostgrestKt)
   kapt(libs.hiltCompiler)
 }
