@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
   alias(libs.plugins.androidApplication)
   alias(libs.plugins.hilt)
@@ -28,9 +30,56 @@ android {
       )
     }
 
+    debug {
+      applicationIdSuffix = ".debug"
+      isDebuggable = true
+    }
+
     create("mock") {
       initWith(getByName("debug"))
+      applicationIdSuffix = ".mock"
       matchingFallbacks += listOf("debug")
+    }
+  }
+
+  val properties = Properties()
+  val localProperties = rootProject.file("./secrets.properties")
+  if (localProperties.exists()) {
+    properties.load(localProperties.inputStream())
+  }
+
+  flavorDimensions += "env"
+  productFlavors {
+    create("prod") {
+      dimension = "env"
+
+      buildConfigField(
+        type = "String",
+        name = "SUPABASE_URL",
+        value = properties.getProperty("SUPABSE_URL_PROD", ""),
+      )
+      buildConfigField(
+        type = "String",
+        name = "SUPABASE_KEY",
+        value = properties.getProperty("SUPABASE_KEY_PROD", ""),
+      )
+    }
+
+    create("dev") {
+      applicationIdSuffix = ".dev"
+      dimension = "env"
+      isDefault = true
+
+      buildConfigField(
+        type = "String",
+        name = "SUPABASE_URL",
+        value = properties.getProperty("SUPABASE_URL_DEV", ""),
+      )
+      buildConfigField(
+        type = "String",
+        name = "SUPABASE_KEY",
+        value = properties.getProperty("SUPABASE_KEY_DEV", ""),
+      )
     }
   }
 
@@ -44,6 +93,7 @@ android {
   }
 
   buildFeatures {
+    buildConfig = true
     compose = true
   }
 
@@ -53,18 +103,17 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:config"))
   implementation(project(":core:data"))
   implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
+  implementation(project(":core:supabase"))
   implementation(project(":feature:mybooklist"))
   implementation(project(":feature:mybookdetail"))
   implementation(project(":feature:searchbook"))
 
-  // Jetpack Compose
-  val composeBom = platform(libs.androidxComposeBom)
-  implementation(composeBom)
+  implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)
-
   implementation(libs.hiltAndroid)
   implementation(libs.material)
 
