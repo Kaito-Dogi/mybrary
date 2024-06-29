@@ -18,6 +18,7 @@ rootProject.name = "Mybrary"
 include(":app")
 include(":core:api")
 include(":core:common")
+include(":core:config")
 include(":core:data")
 include(":core:database")
 include(":core:designsystem")
