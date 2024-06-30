@@ -122,12 +122,12 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
 private val MockMyBookList = List(20) {
   MyBook(
     id = MyBookId(value = it.toLong()),
-    bookId = BookId(value = it.toLong()),
-    externalId = ExternalBookId(value = "externalId$it"),
     user = User(
-      id = UserId(value = 0L),
+      id = UserId(value = "userId"),
       name = "ユーザー名",
     ),
+    bookId = BookId(value = it.toLong()),
+    externalId = ExternalBookId(value = "externalId$it"),
     title = when (it % 7) {
       0 -> "プリンシプル オブ プログラミング3年目までに身につけたい一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
