@@ -6,29 +6,29 @@ values
 
 -- Insert into books
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則', 'https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 337, '秀和システム', null, null, current_timestamp, current_timestamp);
+('RuKoDwAAQBAJ', 'プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則', 'https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 337, '秀和システム', null, null, current_timestamp, current_timestamp);
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('ハッカーと画家', 'https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 284, '株式会社 オーム社', '4274065979', '9784274065972', current_timestamp, current_timestamp);
+('SinFRfuTH7IC', 'ハッカーと画家', 'https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 284, '株式会社 オーム社', '4274065979', '9784274065972', current_timestamp, current_timestamp);
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('オブジェクト指向UIデザイン使いやすいソフトウェアの原理', 'https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 360, null, '4297113511', '9784297113513', current_timestamp, current_timestamp);
+('1FGpzQEACAAJ', 'オブジェクト指向UIデザイン使いやすいソフトウェアの原理', 'https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 360, null, '4297113511', '9784297113513', current_timestamp, current_timestamp);
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('ユースケース駆動開発実践ガイド', 'https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 563, '翔泳社', '4798146528', '9784798146522', current_timestamp, current_timestamp);
+('IUp4CwAAQBAJ', 'ユースケース駆動開発実践ガイド', 'https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 563, '翔泳社', '4798146528', '9784798146522', current_timestamp, current_timestamp);
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('Clean Architecture', 'https://books.google.com/books/content?id=GRjUuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 349, null, '4048930656', '9784048930659', current_timestamp, current_timestamp);
+('GRjUuQEACAAJ', 'Clean Architecture', 'https://books.google.com/books/content?id=GRjUuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 349, null, '4048930656', '9784048930659', current_timestamp, current_timestamp);
 
-insert into public.books (title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
+insert into public.books (external_id, title, image_url, page_count, publisher, isbn10, isbn13, created_at, updated_at)
 values
-('Kotlinイン・アクション', 'https://books.google.com/books/content?id=4TKQswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 468, null, null, null, current_timestamp, current_timestamp);
+('4TKQswEACAAJ', 'Kotlinイン・アクション', 'https://books.google.com/books/content?id=4TKQswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 468, null, null, null, current_timestamp, current_timestamp);
 
 -- Insert authors
 
