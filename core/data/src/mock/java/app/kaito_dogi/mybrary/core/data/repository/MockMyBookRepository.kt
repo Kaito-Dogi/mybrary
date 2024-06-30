@@ -129,22 +129,22 @@ private val MockMyBookList = List(20) {
     bookId = BookId(value = it.toLong()),
     externalId = ExternalBookId(value = "externalId$it"),
     title = when (it % 7) {
-      0 -> "プリンシプル オブ プログラミング3年目までに身につけたい一生役立つ101の原理原則"
+      0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
       2 -> "オブジェクト指向UIデザイン使いやすいソフトウェアの原理"
       3 -> "ユースケース駆動開発実践ガイド"
-      4 -> "Clean Architecture　達人に学ぶソフトウェアの構造と設計"
+      4 -> "Clean Architecture"
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
     imageUrl = Url.Image(
       when (it % 7) {
-        0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-        1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         2 -> "https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        3 -> "https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-        4 -> "https://books.google.com/books/content?id=1f9lDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-        5 -> "https://books.google.com/books/content?id=4TKQswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        3 -> "https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        4 -> "https://books.google.com/books/content?id=GRjUuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        5 -> "https://books.google.com/books/content?id=E323DwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         else -> ""
       },
     ),
@@ -164,7 +164,7 @@ private val MockMyBookList = List(20) {
       1 -> "株式会社 オーム社"
       2 -> ""
       3 -> "翔泳社"
-      4 -> "ドワンゴ"
+      4 -> ""
       5 -> "マイナビ出版"
       else -> "出版社"
     },
@@ -184,7 +184,7 @@ private val MockMyBookList = List(20) {
         )
       }
 
-      4 -> listOf(Author(id = AuthorId(value = 0L), name = "Ｒｏｂｅｒｔ　Ｃ．Ｍａｒｔｉｎ"))
+      4 -> listOf(Author(id = AuthorId(value = 0L), name = "ロバート・C. マーチン"))
       5 -> listOf(
         "ＤｍｉｔｒｙＪｅｍｅｒｏｖ",
         "ＳｖｅｔｌａｎａＩｓａｋｏｖａ",
