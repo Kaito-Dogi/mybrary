@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 data class SearchResultBook(
   val externalId: ExternalBookId,
   val title: String,
-  val imageUrl: Url.Image?,
-  val isbn10: String?,
-  val isbn13: String?,
-  val pageCount: Int?,
-  val publisher: String?,
+  val imageUrl: Url.Image? = null,
+  val isbn10: String? = null,
+  val isbn13: String? = null,
+  val pageCount: Int? = null,
+  val publisher: String? = null,
   val authors: List<SearchResultAuthor>,
 )
