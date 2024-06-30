@@ -89,13 +89,12 @@ internal fun SearchResultBookRow(
   }
 }
 
-private val SearchResultBook.rowBody
+private val SearchResultBook.rowBody: String
   get() = run {
-    val page = if (this.pageCount > 0) "${this.pageCount}ページ" else ""
     when {
-      page.isNotBlank() && this.publisher.isNotBlank() -> "$page｜${this.publisher}"
-      page.isNotBlank() && this.publisher.isBlank() -> page
-      page.isBlank() && this.publisher.isNotBlank() -> this.publisher
+      this.pageCount != null && this.publisher != null -> "${this.pageCount}ページ｜${this.publisher}"
+      this.pageCount != null -> "${this.pageCount}ページ"
+      this.publisher != null -> "${this.publisher}"
       else -> ""
     }
   }
