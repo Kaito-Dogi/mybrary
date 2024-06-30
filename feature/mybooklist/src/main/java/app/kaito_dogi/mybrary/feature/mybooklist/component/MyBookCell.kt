@@ -39,12 +39,12 @@ private fun MyBookCellPreview() {
     MyBookCell(
       myBook = MyBook(
         id = MyBookId(value = 0L),
-        bookId = BookId(value = 0L),
-        externalId = ExternalBookId(value = "externalId"),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        bookId = BookId(value = 0L),
+        externalId = ExternalBookId(value = "externalId"),
         title = "タイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
