@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class VolumeInfoResponse(
-  val title: String? = null,
+  val title: String,
   val subtitle: String? = null,
   val authors: List<String>? = null,
   val publisher: String? = null,

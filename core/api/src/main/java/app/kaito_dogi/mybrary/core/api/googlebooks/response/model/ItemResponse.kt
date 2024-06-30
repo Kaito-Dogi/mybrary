@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ItemResponse(
   val id: String,
-  val volumeInfo: VolumeInfoResponse? = null,
+  val volumeInfo: VolumeInfoResponse,
 )

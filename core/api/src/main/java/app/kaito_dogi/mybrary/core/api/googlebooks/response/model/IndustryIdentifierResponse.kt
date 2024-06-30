@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class IndustryIdentifierResponse(
-  val type: IndustryIdentifierType? = null,
-  val identifier: String? = null,
+  val type: IndustryIdentifierType,
+  val identifier: String,
 )
