@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -159,8 +160,7 @@ internal class MyBookDetailViewModel @Inject constructor(
         editingMemoId = memo.id,
         draftMemo = it.draftMemo.copy(
           content = memo.content,
-          fromPage = memo.fromPage,
-          toPage = memo.toPage,
+          pageRange = memo.pageRange,
         ),
       )
     }
@@ -200,20 +200,32 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onFromPageChange(fromPage: String) {
-    _uiState.update {
-      it.copy(
-        draftMemo = it.draftMemo.copy(
-          fromPage = fromPage.toIntOrNull(),
+    // 開始ページが入力された（fromPage が Int に変換できる）場合、pageRange.from を更新する
+    // ただし、開始ページが初めて入力された場合、新しい PageRange インスタンスを作成する
+    _uiState.update { value ->
+      value.copy(
+        draftMemo = value.draftMemo.copy(
+          pageRange = fromPage.toIntOrNull()?.let {
+            value.draftMemo.pageRange?.copy(
+              from = it,
+            ) ?: PageRange(
+              from = it,
+              to = null,
+            )
+          },
         ),
       )
     }
   }
 
   fun onToPageChange(toPage: String) {
-    _uiState.update {
-      it.copy(
-        draftMemo = it.draftMemo.copy(
-          toPage = toPage.toIntOrNull(),
+    // すでに pageRange.from が存在する場合、pageRange.to を更新する
+    _uiState.update { value ->
+      value.copy(
+        draftMemo = value.draftMemo.copy(
+          pageRange = value.draftMemo.pageRange?.copy(
+            to = toPage.toIntOrNull(),
+          ),
         ),
       )
     }

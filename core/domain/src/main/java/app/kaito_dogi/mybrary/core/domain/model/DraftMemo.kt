@@ -6,15 +6,13 @@ import kotlinx.serialization.Serializable
 data class DraftMemo(
   val myBookId: MyBookId,
   val content: String,
-  val fromPage: Int? = null,
-  val toPage: Int? = null,
+  val pageRange: PageRange? = null,
 ) {
   companion object {
     fun createInitialValue(myBookId: MyBookId) = DraftMemo(
       myBookId = myBookId,
       content = "",
-      fromPage = null,
-      toPage = null,
+      pageRange = null,
     )
   }
 }

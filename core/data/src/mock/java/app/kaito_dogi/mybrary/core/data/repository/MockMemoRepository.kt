@@ -4,6 +4,7 @@ import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
@@ -33,18 +34,17 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
 
     val createdMemo = Memo(
       id = MemoId(value = mockMemoList.value.size.toLong()),
-      myBookId = draftMemo.myBookId,
       user = User(
         id = UserId(value = "userId"),
         name = "ユーザー名",
       ),
+      myBookId = draftMemo.myBookId,
       content = draftMemo.content,
-      fromPage = draftMemo.fromPage,
-      toPage = draftMemo.toPage,
+      pageRange = draftMemo.pageRange,
       createdAt = LocalDateTime.now(),
       updatedAt = null,
       publishedAt = null,
-      likeCount = null,
+      likeCount = 0,
     )
     mockMemoList.update { it + createdMemo }
 
@@ -60,8 +60,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     val memo = mockMemoList.value.first { it.id == memoId }
     val updatedMemo = memo.copy(
       content = draftMemo.content,
-      fromPage = draftMemo.fromPage,
-      toPage = draftMemo.toPage,
+      pageRange = draftMemo.pageRange,
       updatedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
@@ -88,22 +87,26 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
   }
 }
 
-private fun createMockMemoList(myBookId: MyBookId) = List(10) {
-  val fromPage = if (it % 2 == 0) it * 100 else null
-  val toPage = if (it % 4 == 0) (it + 1) * 100 else null
+private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
+  val fromPage = if (index % 2 == 0) index * 100 else null
+  val toPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
-    id = MemoId(value = it.toLong()),
+    id = MemoId(value = index.toLong()),
     user = User(
       id = UserId(value = "userId"),
       name = "ユーザー名",
     ),
     myBookId = myBookId,
-    content = "メモ$it",
-    fromPage = fromPage,
-    toPage = toPage,
+    content = "メモ$index",
+    pageRange = fromPage?.let {
+      PageRange(
+        from = it,
+        to = toPage,
+      )
+    },
     createdAt = LocalDateTime.now(),
     updatedAt = null,
     publishedAt = null,
-    likeCount = null,
+    likeCount = 0,
   )
 }

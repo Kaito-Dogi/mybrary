@@ -37,7 +37,7 @@ internal fun MyBookDetailBottomSheetContent(
   Column(modifier = modifier) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
-        value = draftMemo.fromPage?.toString(radix = Radix) ?: "",
+        value = draftMemo.pageRange?.from?.toString(radix = Radix) ?: "",
         onValueChange = onFromPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "開始ページ") },
@@ -48,9 +48,10 @@ internal fun MyBookDetailBottomSheetContent(
       )
       Gap(width = MybraryTheme.space.sm)
       TextField(
-        value = draftMemo.toPage?.toString(radix = Radix) ?: "",
+        value = draftMemo.pageRange?.to?.toString(radix = Radix) ?: "",
         onValueChange = onToPageChange,
         modifier = Modifier.weight(1f),
+        enabled = draftMemo.pageRange?.from != null,
         placeholder = { Text(text = "終了ページ") },
         keyboardOptions = KeyboardOptions.Default.copy(
           keyboardType = KeyboardType.Number,

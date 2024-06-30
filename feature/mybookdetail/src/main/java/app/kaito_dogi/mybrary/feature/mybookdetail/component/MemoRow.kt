@@ -16,6 +16,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
@@ -58,18 +59,18 @@ internal fun MemoRow(
   }
 }
 
-private val Memo.cardBody
+private val Memo.cardBody: String
   get() = run {
     val page = when {
-      this.fromPage != null && this.toPage != null -> "pp.${this.fromPage}~${this.toPage}"
-      this.fromPage != null || this.toPage != null -> "p.${this.fromPage}"
+      this.pageRange?.to != null -> "pp.${this.pageRange?.from}~${this.pageRange?.to}"
+      this.pageRange?.from != null -> "p.${this.pageRange?.from}"
       else -> ""
     }
-    val datetime = when {
+    val datetimeText = when {
       this.updatedAt != null -> "${this.updatedAt?.toFormattedString()}（編集済み）"
       else -> this.createdAt.toFormattedString()
     }
-    if (page.isNotBlank()) "$page｜$datetime" else datetime
+    if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
   }
 
 @Preview
@@ -97,12 +98,14 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          from = 0,
+          to = Int.MAX_VALUE,
+        ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 片方のページのみが記録されている場合
       Memo(
@@ -113,12 +116,14 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 50,
-        toPage = null,
+        pageRange = PageRange(
+          from = Int.MAX_VALUE,
+          to = null,
+        ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // ページが記録されていない場合
       Memo(
@@ -129,12 +134,11 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = null,
-        toPage = null,
+        pageRange = null,
         createdAt = LocalDateTime.now(),
         updatedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 編集済みの場合
       Memo(
@@ -145,12 +149,14 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          from = Int.MAX_VALUE,
+          to = null,
+        ),
         createdAt = LocalDateTime.now(),
         updatedAt = LocalDateTime.now(),
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 複数行の場合
       Memo(
@@ -161,12 +167,14 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         myBookId = MyBookId(value = 0),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          from = Int.MAX_VALUE,
+          to = null,
+        ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
     )
 }
