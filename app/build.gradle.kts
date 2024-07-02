@@ -42,12 +42,10 @@ android {
     }
   }
 
-  val localProperties = rootProject.file("./secrets.properties")
-  val (supabaseUrl, supabaseKey) = if (localProperties.exists()) {
-    val properties = Properties().apply { load(localProperties.inputStream()) }
-    properties.getProperty("SUPABSE_URL_PROD", "") to properties.getProperty("SUPABSE_KEY_PROD", "")
-  } else {
-    System.getenv("SUPABSE_URL_PROD") to System.getenv("SUPABSE_KEY_PROD")
+  val properties = Properties()
+  val secretsProperties = rootProject.file("./secrets.properties")
+  if (secretsProperties.exists()) {
+    properties.load(secretsProperties.inputStream())
   }
 
   flavorDimensions += "env"
@@ -58,12 +56,12 @@ android {
       buildConfigField(
         type = "String",
         name = "SUPABASE_URL",
-        value = supabaseUrl,
+        value = properties.getProperty("supabase.url.prod"),
       )
       buildConfigField(
         type = "String",
         name = "SUPABASE_KEY",
-        value = supabaseKey,
+        value = properties.getProperty("supabase.key.prod"),
       )
     }
 
@@ -75,12 +73,12 @@ android {
       buildConfigField(
         type = "String",
         name = "SUPABASE_URL",
-        value = supabaseUrl,
+        value = properties.getProperty("supabase.url.dev"),
       )
       buildConfigField(
         type = "String",
         name = "SUPABASE_KEY",
-        value = supabaseKey,
+        value = properties.getProperty("supabase.key.dev"),
       )
     }
   }
