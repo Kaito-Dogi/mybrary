@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.core.data.convertor
 
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.AuthorResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -14,7 +13,7 @@ internal fun MyBookResponse.toMyBook() = MyBook(
   bookId = BookId(value = this.bookId),
   externalId = ExternalBookId(value = this.book.externalId),
   title = this.book.title,
-  imageUrl = this.book.imageUrl?.let { Url.Image(value = it) },
+  imageUrl = this.book.imageUrl?.let { app.kaito_dogi.mybrary.core.domain.model.Url.Image(value = it) },
   isbn10 = this.book.isbn10,
   isbn13 = this.book.isbn13,
   pageCount = this.book.pageCount,

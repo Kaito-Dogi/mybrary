@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
@@ -107,7 +106,7 @@ private fun SearchResultBookRowPreview() {
       searchResultBook = SearchResultBook(
         externalId = ExternalBookId(value = "externalId"),
         title = "タイトル\nタイトル\nタイトル",
-        imageUrl = Url.Image(value = "imageUrl"),
+        imageUrl = app.kaito_dogi.mybrary.core.domain.model.Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
         pageCount = Int.MAX_VALUE,

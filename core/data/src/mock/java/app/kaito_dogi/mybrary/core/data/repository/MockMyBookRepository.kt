@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
@@ -137,7 +136,7 @@ private val MockMyBookList = List(20) {
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
-    imageUrl = Url.Image(
+    imageUrl = app.kaito_dogi.mybrary.core.domain.model.Url.Image(
       when (it % 7) {
         0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"

@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.common.serializer
+package app.kaito_dogi.mybrary.core.domain.serializer
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

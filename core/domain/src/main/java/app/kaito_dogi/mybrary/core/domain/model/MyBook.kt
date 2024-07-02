@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.domain.model
 
-import app.kaito_dogi.mybrary.core.common.model.Url
 import kotlinx.serialization.Serializable
 
 @Serializable
