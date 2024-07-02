@@ -56,12 +56,12 @@ android {
       buildConfigField(
         type = "String",
         name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.prod"),
+        value = properties.getProperty("supabase.url.prod") ?: System.getenv("SUPABASE_URL_PROD"),
       )
       buildConfigField(
         type = "String",
         name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.prod"),
+        value = properties.getProperty("supabase.key.prod") ?: System.getenv("SUPABASE_KEY_PROD"),
       )
     }
 
