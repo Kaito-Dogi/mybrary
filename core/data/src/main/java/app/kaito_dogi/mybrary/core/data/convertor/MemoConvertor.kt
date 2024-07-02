@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 
 internal fun MemoResponse.toMemo() = Memo(
   id = MemoId(value = this.id),
-  user = this.myBooks.user.toUser(),
+  user = this.myBook.user.toUser(),
   myBookId = MyBookId(value = this.myBookId),
   content = this.content,
   pageRange = this.startPage?.let {
