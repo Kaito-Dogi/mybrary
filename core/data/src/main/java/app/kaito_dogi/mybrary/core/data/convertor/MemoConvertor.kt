@@ -5,7 +5,6 @@ import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
-import java.time.LocalDateTime
 
 internal fun MemoResponse.toMemo() = Memo(
   id = MemoId(value = this.id),
@@ -18,8 +17,8 @@ internal fun MemoResponse.toMemo() = Memo(
       to = endPage,
     )
   },
-  createdAt = LocalDateTime.now(),
-  updatedAt = null,
-  publishedAt = null,
+  createdAt = this.createdAt.toLocalDateTime(),
+  updatedAt = this.editedAt?.toLocalDateTime(),
+  publishedAt = this.publishedAt?.toLocalDateTime(),
   likeCount = this.likeCount,
 )

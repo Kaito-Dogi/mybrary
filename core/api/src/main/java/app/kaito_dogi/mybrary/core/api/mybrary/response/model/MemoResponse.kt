@@ -10,9 +10,9 @@ data class MemoResponse(
   val content: String,
   @SerialName("start_page") val startPage: Int? = null,
   @SerialName("end_page") val endPage: Int? = null,
-  @SerialName("edited_at") val editedAt: String? = null,
-  @SerialName("published_at") val publishedAt: String? = null,
+  @SerialName("edited_at") val editedAt: TimeStampResponse? = null,
+  @SerialName("published_at") val publishedAt: TimeStampResponse? = null,
   @SerialName("like_count") val likeCount: Int,
-  @SerialName("created_at") val createdAt: String,
+  @SerialName("created_at") val createdAt: TimeStampResponse,
   @SerialName("my_books") val myBook: MyBookUserResponse,
 )
