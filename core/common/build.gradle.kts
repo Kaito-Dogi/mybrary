@@ -40,6 +40,7 @@ android {
 dependencies {
   implementation(libs.hiltAndroid)
   implementation(libs.serialization)
+
   kapt(libs.hiltCompiler)
 }
 

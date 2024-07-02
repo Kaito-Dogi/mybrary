@@ -1,10 +1,4 @@
 [versions]
-compileSdk = "34"
-minSdk = "26"
-targetSdk = "34"
-versionCode = "1"
-versionName = "0.0.1"
-jvmTarget = "17"
 androidGradlePlugin = "8.5.0"
 androidxComposeBom = "2024.06.00"
 androidxComposeCompiler = "1.5.14"
@@ -14,15 +8,24 @@ androidxLifecycle = "2.8.2"
 androidxNavigation = "2.7.7"
 androidxTestExt = "1.2.0"
 coil = "2.6.0"
+compileSdk = "34"
 hilt = "2.51.1"
+jetbrainsKotlinJvm = "1.9.24"
 junit = "4.13.2"
+jvmTarget = "17"
 kotlin = "1.9.24"
 kotlinxCoroutines = "1.8.1"
+ktor = "2.3.12"
 material = "1.12.0"
+minSdk = "26"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 room = "2.6.1"
 serialization = "1.6.3"
+supabase = "2.5.1"
+targetSdk = "34"
+versionCode = "1"
+versionName = "0.0.1"
 
 [libraries]
 androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
@@ -39,6 +42,7 @@ hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref 
 hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinxCoroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+ktor = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttpLogging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
@@ -48,11 +52,15 @@ roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = 
 roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+supabaseBom = { group = "io.github.jan-tennert.supabase", name = "bom", version.ref = "supabase" }
+supabasePostgrestKt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "supabase" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+javaLibrary = { id = "java-library" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

@@ -54,7 +54,7 @@ internal fun MyBookDetailTopAppBar(
 ) {
   Box(modifier = modifier.height(IntrinsicSize.Min)) {
     AsyncImage(
-      model = myBook.imageUrl.value,
+      model = myBook.imageUrl?.value,
       modifier = Modifier
         .matchParentSize()
         .background(MybraryTheme.colorScheme.primary)
@@ -123,13 +123,12 @@ internal fun MyBookDetailTopAppBar(
   }
 }
 
-private val MyBook.topAppBarBody
+private val MyBook.topAppBarBody: String
   get() = run {
-    val page = if (this.pageCount > 0) "${this.pageCount}ページ" else ""
     when {
-      page.isNotBlank() && this.publisher.isNotBlank() -> "$page｜${this.publisher}"
-      page.isNotBlank() && this.publisher.isBlank() -> page
-      page.isBlank() && this.publisher.isNotBlank() -> this.publisher
+      this.pageCount != null && this.publisher != null -> "${this.pageCount}ページ｜${this.publisher}"
+      this.pageCount != null -> "${this.pageCount}ページ"
+      this.publisher != null -> "${this.publisher}"
       else -> ""
     }
   }
@@ -141,12 +140,12 @@ private fun MyBookDetailTopAppBarPreview() {
     MyBookDetailTopAppBar(
       myBook = MyBook(
         id = MyBookId(value = 0L),
-        bookId = BookId(value = 0L),
-        externalId = ExternalBookId(value = "externalId"),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        bookId = BookId(value = 0L),
+        externalId = ExternalBookId(value = "externalId"),
         title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",

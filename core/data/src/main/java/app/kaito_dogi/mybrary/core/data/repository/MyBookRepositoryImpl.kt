@@ -1,16 +1,26 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryApi
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.data.convertor.toMyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 
 @Singleton
-internal class MyBookRepositoryImpl @Inject constructor() : MyBookRepository {
-  override suspend fun getMyBookList(): List<MyBook> {
-    TODO("Not yet implemented")
+internal class MyBookRepositoryImpl @Inject constructor(
+  private val mybraryApi: MybraryApi,
+  @Dispatcher(MybraryDispatcher.IO) private val dispatcher: CoroutineDispatcher,
+) : MyBookRepository {
+  override suspend fun getMyBookList(): List<MyBook> = withContext(dispatcher) {
+    mybraryApi.getMyBooks().map(MyBookResponse::toMyBook)
   }
 
   override suspend fun getMyBook(myBookId: MyBookId): MyBook {

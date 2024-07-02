@@ -4,7 +4,7 @@ import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.data.convertor.toDraftMemo
 import app.kaito_dogi.mybrary.core.data.convertor.toEntity
-import app.kaito_dogi.mybrary.core.database.local.DraftMemoDao
+import app.kaito_dogi.mybrary.core.database.DraftMemoDao
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository

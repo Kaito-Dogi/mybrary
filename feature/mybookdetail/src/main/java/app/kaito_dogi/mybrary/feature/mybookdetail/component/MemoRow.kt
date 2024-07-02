@@ -16,6 +16,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
@@ -58,18 +59,18 @@ internal fun MemoRow(
   }
 }
 
-private val Memo.cardBody
+private val Memo.cardBody: String
   get() = run {
     val page = when {
-      this.fromPage != null && this.toPage != null -> "pp.${this.fromPage}~${this.toPage}"
-      this.fromPage != null || this.toPage != null -> "p.${this.fromPage}"
+      this.pageRange?.end != null -> "pp.${this.pageRange?.start}~${this.pageRange?.end}"
+      this.pageRange?.start != null -> "p.${this.pageRange?.start}"
       else -> ""
     }
-    val datetime = when {
-      this.updatedAt != null -> "${this.updatedAt?.toFormattedString()}（編集済み）"
+    val datetimeText = when {
+      this.editedAt != null -> "${this.editedAt?.toFormattedString()}（編集済み）"
       else -> this.createdAt.toFormattedString()
     }
-    if (page.isNotBlank()) "$page｜$datetime" else datetime
+    if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
   }
 
 @Preview
@@ -91,82 +92,89 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 開始ページ・終了ページが記録されている場合
       Memo(
         id = MemoId(value = 0),
-        myBookId = MyBookId(value = 0),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          start = 0,
+          end = Int.MAX_VALUE,
+        ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 片方のページのみが記録されている場合
       Memo(
         id = MemoId(value = 0),
-        myBookId = MyBookId(value = 0),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 50,
-        toPage = null,
+        pageRange = PageRange(
+          start = Int.MAX_VALUE,
+          end = null,
+        ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // ページが記録されていない場合
       Memo(
         id = MemoId(value = 0),
-        myBookId = MyBookId(value = 0),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = null,
-        toPage = null,
+        pageRange = null,
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 編集済みの場合
       Memo(
         id = MemoId(value = 0),
-        myBookId = MyBookId(value = 0),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        myBookId = MyBookId(value = 0),
         content = "メモ",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          start = Int.MAX_VALUE,
+          end = null,
+        ),
         createdAt = LocalDateTime.now(),
-        updatedAt = LocalDateTime.now(),
+        editedAt = LocalDateTime.now(),
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
       // 複数行の場合
       Memo(
         id = MemoId(value = 0),
-        myBookId = MyBookId(value = 0),
         user = User(
-          id = UserId(value = 0L),
+          id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
+        myBookId = MyBookId(value = 0),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
-        fromPage = 1,
-        toPage = 100,
+        pageRange = PageRange(
+          start = Int.MAX_VALUE,
+          end = null,
+        ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
-        likeCount = null,
+        likeCount = 0,
       ),
     )
 }

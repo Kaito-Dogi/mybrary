@@ -52,22 +52,20 @@ dependencies {
   implementation(project(":core:domain"))
   implementation(project(":core:ui"))
 
-  // Jetpack Compose
-  val composeBom = platform(libs.androidxComposeBom)
-  implementation(composeBom)
-  androidTestImplementation(composeBom)
+  implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxComposeMaterial3)
   implementation(libs.androidxComposeUiTooling)
   implementation(libs.androidxComposeUiToolingPreview)
   implementation(libs.androidxHiltNavigationCompose)
   implementation(libs.androidxLifecycleRuntimeCompose)
   implementation(libs.androidxNavigationCompose)
-
   implementation(libs.coilCompose)
   implementation(libs.hiltAndroid)
   implementation(libs.serialization)
 
   testImplementation(libs.junit)
+
+  androidTestImplementation(platform(libs.androidxComposeBom))
   androidTestImplementation(libs.androidxTestExtJunitKtx)
   androidTestImplementation(libs.androidxTestEspressoCore)
 

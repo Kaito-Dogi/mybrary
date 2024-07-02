@@ -36,7 +36,7 @@ jobs:
           pip install openai
           pip install PyGithub
       - name: Run Script
-        run: python tools/gpt_review.py
+        run: python tools/python/gpt_review.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

@@ -25,8 +25,7 @@ internal data class MyBookDetailUiState(
       draftMemo = DraftMemo(
         myBookId = myBook.id,
         content = "",
-        fromPage = null,
-        toPage = null,
+        pageRange = null,
       ),
       isContentEmptyError = false,
       shownMessage = null,

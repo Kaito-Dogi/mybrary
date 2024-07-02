@@ -4,6 +4,7 @@ import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
@@ -33,43 +34,41 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
 
     val createdMemo = Memo(
       id = MemoId(value = mockMemoList.value.size.toLong()),
-      myBookId = draftMemo.myBookId,
       user = User(
-        id = UserId(value = 0L),
+        id = UserId(value = "userId"),
         name = "ユーザー名",
       ),
+      myBookId = draftMemo.myBookId,
       content = draftMemo.content,
-      fromPage = draftMemo.fromPage,
-      toPage = draftMemo.toPage,
+      pageRange = draftMemo.pageRange,
       createdAt = LocalDateTime.now(),
-      updatedAt = null,
+      editedAt = null,
       publishedAt = null,
-      likeCount = null,
+      likeCount = 0,
     )
     mockMemoList.update { it + createdMemo }
 
     return createdMemo
   }
 
-  override suspend fun updateMemo(
+  override suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
-    val updatedMemo = memo.copy(
+    val editedMemo = memo.copy(
       content = draftMemo.content,
-      fromPage = draftMemo.fromPage,
-      toPage = draftMemo.toPage,
-      updatedAt = LocalDateTime.now(),
+      pageRange = draftMemo.pageRange,
+      editedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
-      if (it.id == memoId) updatedMemo else it
+      if (it.id == memoId) editedMemo else it
     }
     mockMemoList.update { newMemoList }
 
-    return updatedMemo
+    return editedMemo
   }
 
   override suspend fun publishMemo(memoId: MemoId): Memo {
@@ -88,22 +87,26 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
   }
 }
 
-private fun createMockMemoList(myBookId: MyBookId) = List(10) {
-  val fromPage = if (it % 2 == 0) it * 100 else null
-  val toPage = if (it % 4 == 0) (it + 1) * 100 else null
+private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
+  val startPage = if (index % 2 == 0) index * 100 else null
+  val endPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
-    id = MemoId(value = it.toLong()),
-    myBookId = myBookId,
+    id = MemoId(value = index.toLong()),
     user = User(
-      id = UserId(value = 0L),
+      id = UserId(value = "userId"),
       name = "ユーザー名",
     ),
-    content = "メモ$it",
-    fromPage = fromPage,
-    toPage = toPage,
+    myBookId = myBookId,
+    content = "メモ$index",
+    pageRange = startPage?.let {
+      PageRange(
+        start = it,
+        end = endPage,
+      )
+    },
     createdAt = LocalDateTime.now(),
-    updatedAt = null,
+    editedAt = null,
     publishedAt = null,
-    likeCount = null,
+    likeCount = 0,
   )
 }
