@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.ui.R
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
@@ -22,7 +23,7 @@ const val BookAspectRatio = 210f / 297f
 
 @Composable
 fun BookImage(
-  imageUrl: app.kaito_dogi.mybrary.core.domain.model.Url.Image?,
+  imageUrl: Url.Image?,
   title: String,
   modifier: Modifier = Modifier,
   shape: Shape = MybraryTheme.shapes.extraSmall,

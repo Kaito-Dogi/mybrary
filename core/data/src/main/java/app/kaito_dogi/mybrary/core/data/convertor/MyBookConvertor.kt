@@ -6,6 +6,7 @@ import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.Url
 
 internal fun MyBookResponse.toMyBook() = MyBook(
   id = MyBookId(value = this.id),
@@ -13,7 +14,7 @@ internal fun MyBookResponse.toMyBook() = MyBook(
   bookId = BookId(value = this.bookId),
   externalId = ExternalBookId(value = this.book.externalId),
   title = this.book.title,
-  imageUrl = this.book.imageUrl?.let { app.kaito_dogi.mybrary.core.domain.model.Url.Image(value = it) },
+  imageUrl = this.book.imageUrl?.let { Url.Image(value = it) },
   isbn10 = this.book.isbn10,
   isbn13 = this.book.isbn13,
   pageCount = this.book.pageCount,

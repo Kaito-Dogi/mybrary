@@ -22,6 +22,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -106,7 +107,7 @@ private fun SearchResultBookRowPreview() {
       searchResultBook = SearchResultBook(
         externalId = ExternalBookId(value = "externalId"),
         title = "タイトル\nタイトル\nタイトル",
-        imageUrl = app.kaito_dogi.mybrary.core.domain.model.Url.Image(value = "imageUrl"),
+        imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
         pageCount = Int.MAX_VALUE,

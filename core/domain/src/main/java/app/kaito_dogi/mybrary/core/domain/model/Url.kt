@@ -8,5 +8,5 @@ sealed interface Url {
   @Serializable
   data class Image(
     override val value: String,
-  ) : app.kaito_dogi.mybrary.core.domain.model.Url
+  ) : Url
 }

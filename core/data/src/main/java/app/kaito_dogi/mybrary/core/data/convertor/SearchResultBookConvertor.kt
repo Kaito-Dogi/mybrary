@@ -5,12 +5,13 @@ import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Url
 
 internal fun ItemResponse.toSearchResultBook() = SearchResultBook(
   externalId = ExternalBookId(value = id),
   title = volumeInfo.title,
   imageUrl = volumeInfo.imageLinks?.thumbnail?.let {
-    app.kaito_dogi.mybrary.core.domain.model.Url.Image(
+    Url.Image(
       value = it.replace(
         oldValue = "http://",
         newValue = "https://",

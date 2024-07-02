@@ -9,6 +9,7 @@ import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
@@ -45,7 +46,7 @@ private fun MyBookCellPreview() {
         bookId = BookId(value = 0L),
         externalId = ExternalBookId(value = "externalId"),
         title = "タイトル",
-        imageUrl = app.kaito_dogi.mybrary.core.domain.model.Url.Image(value = "imageUrl"),
+        imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",
         pageCount = Int.MAX_VALUE,
