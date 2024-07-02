@@ -2,10 +2,10 @@ package app.kaito_dogi.mybrary.core.data.convertor
 
 import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.IndustryIdentifierType
 import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Url
 
 internal fun ItemResponse.toSearchResultBook() = SearchResultBook(
   externalId = ExternalBookId(value = id),

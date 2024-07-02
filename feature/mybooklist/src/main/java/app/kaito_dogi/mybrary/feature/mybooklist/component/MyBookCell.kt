@@ -4,12 +4,12 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage

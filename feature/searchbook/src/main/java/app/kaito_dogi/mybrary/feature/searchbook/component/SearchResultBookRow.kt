@@ -17,12 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)

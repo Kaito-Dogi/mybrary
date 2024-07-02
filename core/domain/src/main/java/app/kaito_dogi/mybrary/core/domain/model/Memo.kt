@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.domain.model
 
-import app.kaito_dogi.mybrary.core.common.serializer.LocalDateTimeSerializer
+import app.kaito_dogi.mybrary.core.domain.serializer.LocalDateTimeSerializer
 import java.time.LocalDateTime
 import kotlinx.serialization.Serializable
 

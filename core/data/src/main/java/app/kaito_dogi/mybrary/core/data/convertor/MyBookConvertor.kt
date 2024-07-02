@@ -2,11 +2,11 @@ package app.kaito_dogi.mybrary.core.data.convertor
 
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.AuthorResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.model.Url
 
 internal fun MyBookResponse.toMyBook() = MyBook(
   id = MyBookId(value = this.id),

@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.common.model
+package app.kaito_dogi.mybrary.core.domain.model
 
 import kotlinx.serialization.Serializable
 
