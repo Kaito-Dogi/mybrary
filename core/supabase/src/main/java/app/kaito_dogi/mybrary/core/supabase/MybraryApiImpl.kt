@@ -1,8 +1,10 @@
 package app.kaito_dogi.mybrary.core.supabase
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryApi
+import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
@@ -43,8 +45,17 @@ internal class MybraryApiImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun getMemos() {
-    TODO("Not yet implemented")
+  override suspend fun getMemos(myBookId: Long): GetMemos {
+    return supabaseClient.postgrest.from(table = "memos").select(
+      columns = Columns.raw(
+        value = "*,my_books(users:user_id(*))",
+      ),
+      request = {
+        filter {
+          MemoResponse::myBookId eq myBookId
+        }
+      },
+    ).decodeList<MemoResponse>()
   }
 
   override suspend fun postMemos() {
