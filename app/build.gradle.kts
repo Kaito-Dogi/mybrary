@@ -73,12 +73,12 @@ android {
       buildConfigField(
         type = "String",
         name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.dev"),
+        value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
       )
       buildConfigField(
         type = "String",
         name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.dev"),
+        value = properties.getProperty("supabase.key.dev") ?: System.getenv("SUPABASE_KEY_DEV"),
       )
     }
   }

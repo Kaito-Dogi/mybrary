@@ -46,6 +46,8 @@ jobs:
         env:
           SUPABASE_URL_PROD: ${{ secrets.SUPABASE_URL_PROD }}
           SUPABASE_KEY_PROD: ${{ secrets.SUPABASE_KEY_PROD }}
+          SUPABASE_URL_DEV: ${{ secrets.SUPABASE_URL_DEV }}
+          SUPABASE_KEY_DEV: ${{ secrets.SUPABASE_KEY_DEV }}
         run: |
           ./gradlew lintDebug --no-daemon
       - name: Copy Lint Result
