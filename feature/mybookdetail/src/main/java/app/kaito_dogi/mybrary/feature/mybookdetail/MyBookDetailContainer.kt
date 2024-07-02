@@ -50,8 +50,8 @@ internal fun MyBookDetailContainer(
     onFavoriteClick = viewModel::onFavoriteClick,
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
-    onFromPageChange = viewModel::onFromPageChange,
-    onToPageChange = viewModel::onToPageChange,
+    onStartPageChange = viewModel::onStartPageChange,
+    onEndPageChange = viewModel::onEndPageChange,
     onContentChange = viewModel::onContentChange,
     onSaveClick = {
       viewModel.onSaveClick(

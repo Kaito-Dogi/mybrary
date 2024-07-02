@@ -88,8 +88,8 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
 }
 
 private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
-  val fromPage = if (index % 2 == 0) index * 100 else null
-  val toPage = if (index % 4 == 0) (index + 1) * 100 else null
+  val startPage = if (index % 2 == 0) index * 100 else null
+  val endPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
     id = MemoId(value = index.toLong()),
     user = User(
@@ -98,10 +98,10 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
     ),
     myBookId = myBookId,
     content = "メモ$index",
-    pageRange = fromPage?.let {
+    pageRange = startPage?.let {
       PageRange(
-        from = it,
-        to = toPage,
+        start = it,
+        end = endPage,
       )
     },
     createdAt = LocalDateTime.now(),

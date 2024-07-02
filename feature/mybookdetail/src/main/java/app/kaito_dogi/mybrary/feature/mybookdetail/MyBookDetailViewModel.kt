@@ -199,18 +199,18 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
-  fun onFromPageChange(fromPage: String) {
-    // 開始ページが入力された（fromPage が Int に変換できる）場合、pageRange.from を更新する
+  fun onStartPageChange(startPage: String) {
+    // 開始ページが入力された（startPage が Int に変換できる）場合、pageRange.start を更新する
     // ただし、開始ページが初めて入力された場合、新しい PageRange インスタンスを作成する
     _uiState.update { value ->
       value.copy(
         draftMemo = value.draftMemo.copy(
-          pageRange = fromPage.toIntOrNull()?.let {
+          pageRange = startPage.toIntOrNull()?.let {
             value.draftMemo.pageRange?.copy(
-              from = it,
+              start = it,
             ) ?: PageRange(
-              from = it,
-              to = null,
+              start = it,
+              end = null,
             )
           },
         ),
@@ -218,13 +218,13 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
-  fun onToPageChange(toPage: String) {
-    // すでに pageRange.from が存在する場合、pageRange.to を更新する
+  fun onEndPageChange(endPage: String) {
+    // すでに pageRange.start が存在する場合、pageRange.end を更新する
     _uiState.update { value ->
       value.copy(
         draftMemo = value.draftMemo.copy(
           pageRange = value.draftMemo.pageRange?.copy(
-            to = toPage.toIntOrNull(),
+            end = endPage.toIntOrNull(),
           ),
         ),
       )

@@ -62,8 +62,8 @@ internal fun MemoRow(
 private val Memo.cardBody: String
   get() = run {
     val page = when {
-      this.pageRange?.to != null -> "pp.${this.pageRange?.from}~${this.pageRange?.to}"
-      this.pageRange?.from != null -> "p.${this.pageRange?.from}"
+      this.pageRange?.end != null -> "pp.${this.pageRange?.start}~${this.pageRange?.end}"
+      this.pageRange?.start != null -> "p.${this.pageRange?.start}"
       else -> ""
     }
     val datetimeText = when {
@@ -99,8 +99,8 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         content = "メモ",
         pageRange = PageRange(
-          from = 0,
-          to = Int.MAX_VALUE,
+          start = 0,
+          end = Int.MAX_VALUE,
         ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,
@@ -117,8 +117,8 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         content = "メモ",
         pageRange = PageRange(
-          from = Int.MAX_VALUE,
-          to = null,
+          start = Int.MAX_VALUE,
+          end = null,
         ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,
@@ -150,8 +150,8 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         content = "メモ",
         pageRange = PageRange(
-          from = Int.MAX_VALUE,
-          to = null,
+          start = Int.MAX_VALUE,
+          end = null,
         ),
         createdAt = LocalDateTime.now(),
         updatedAt = LocalDateTime.now(),
@@ -168,8 +168,8 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         myBookId = MyBookId(value = 0),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
         pageRange = PageRange(
-          from = Int.MAX_VALUE,
-          to = null,
+          start = Int.MAX_VALUE,
+          end = null,
         ),
         createdAt = LocalDateTime.now(),
         updatedAt = null,

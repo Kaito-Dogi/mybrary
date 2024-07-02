@@ -38,8 +38,8 @@ internal fun MyBookDetailScreen(
   onFavoriteClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
-  onFromPageChange: (String) -> Unit,
-  onToPageChange: (String) -> Unit,
+  onStartPageChange: (String) -> Unit,
+  onEndPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
@@ -109,8 +109,8 @@ internal fun MyBookDetailScreen(
         MyBookDetailBottomSheetContent(
           draftMemo = uiState.draftMemo,
           isContentTextFieldError = uiState.isContentEmptyError,
-          onFromPageChange = onFromPageChange,
-          onToPageChange = onToPageChange,
+          onStartPageChange = onStartPageChange,
+          onEndPageChange = onEndPageChange,
           onContentChange = onContentChange,
           onSaveClick = onSaveClick,
           modifier = Modifier.padding(
@@ -163,8 +163,8 @@ private fun MyBookDetailScreenPreview() {
       onFavoriteClick = {},
       onAdditionClick = {},
       onMemoClick = {},
-      onFromPageChange = {},
-      onToPageChange = {},
+      onStartPageChange = {},
+      onEndPageChange = {},
       onContentChange = {},
       onSaveClick = {},
     )

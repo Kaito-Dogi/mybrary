@@ -13,8 +13,8 @@ internal fun MemoResponse.toMemo() = Memo(
   content = this.content,
   pageRange = this.startPage?.let {
     PageRange(
-      from = it,
-      to = endPage,
+      start = it,
+      end = endPage,
     )
   },
   createdAt = this.createdAt.toLocalDateTime(),

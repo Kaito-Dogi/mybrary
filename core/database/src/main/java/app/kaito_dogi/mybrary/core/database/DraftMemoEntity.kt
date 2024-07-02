@@ -10,8 +10,8 @@ data class DraftMemoEntity(
   @ColumnInfo(name = "my_book_id")
   val myBookId: Long,
   val content: String,
-  @ColumnInfo(name = "from_page")
-  val fromPage: Int?,
-  @ColumnInfo(name = "to_page")
-  val toPage: Int?,
+  @ColumnInfo(name = "start_page")
+  val startPage: Int?,
+  @ColumnInfo(name = "end_page")
+  val endPage: Int?,
 )

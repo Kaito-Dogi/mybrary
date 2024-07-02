@@ -28,8 +28,8 @@ private const val Radix = 10
 internal fun MyBookDetailBottomSheetContent(
   draftMemo: DraftMemo,
   isContentTextFieldError: Boolean,
-  onFromPageChange: (String) -> Unit,
-  onToPageChange: (String) -> Unit,
+  onStartPageChange: (String) -> Unit,
+  onEndPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
   modifier: Modifier = Modifier,
@@ -37,8 +37,8 @@ internal fun MyBookDetailBottomSheetContent(
   Column(modifier = modifier) {
     Row(modifier = Modifier.fillMaxWidth()) {
       TextField(
-        value = draftMemo.pageRange?.from?.toString(radix = Radix) ?: "",
-        onValueChange = onFromPageChange,
+        value = draftMemo.pageRange?.start?.toString(radix = Radix) ?: "",
+        onValueChange = onStartPageChange,
         modifier = Modifier.weight(1f),
         placeholder = { Text(text = "開始ページ") },
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -48,10 +48,10 @@ internal fun MyBookDetailBottomSheetContent(
       )
       Gap(width = MybraryTheme.space.sm)
       TextField(
-        value = draftMemo.pageRange?.to?.toString(radix = Radix) ?: "",
-        onValueChange = onToPageChange,
+        value = draftMemo.pageRange?.end?.toString(radix = Radix) ?: "",
+        onValueChange = onEndPageChange,
         modifier = Modifier.weight(1f),
-        enabled = draftMemo.pageRange?.from != null,
+        enabled = draftMemo.pageRange?.start != null,
         placeholder = { Text(text = "終了ページ") },
         keyboardOptions = KeyboardOptions.Default.copy(
           keyboardType = KeyboardType.Number,
@@ -95,8 +95,8 @@ private fun MyBookDetailBottomSheetContentPreview() {
         myBookId = MyBookId(0L),
       ),
       isContentTextFieldError = false,
-      onFromPageChange = {},
-      onToPageChange = {},
+      onStartPageChange = {},
+      onEndPageChange = {},
       onContentChange = {},
       onSaveClick = {},
     )

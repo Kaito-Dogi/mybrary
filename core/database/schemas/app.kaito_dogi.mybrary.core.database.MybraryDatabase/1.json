@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5d42686ad25d9bb9cc726394c5b48f8c",
+    "identityHash": "0047bede92acf2343c62029876a64c61",
     "entities": [
       {
         "tableName": "draft_memos",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`my_book_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `from_page` INTEGER, `to_page` INTEGER, PRIMARY KEY(`my_book_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`my_book_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `start_page` INTEGER, `end_page` INTEGER, PRIMARY KEY(`my_book_id`))",
         "fields": [
           {
             "fieldPath": "myBookId",
@@ -21,14 +21,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "fromPage",
-            "columnName": "from_page",
+            "fieldPath": "startPage",
+            "columnName": "start_page",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "toPage",
-            "columnName": "to_page",
+            "fieldPath": "endPage",
+            "columnName": "end_page",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -46,7 +46,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5d42686ad25d9bb9cc726394c5b48f8c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0047bede92acf2343c62029876a64c61')"
     ]
   }
 }

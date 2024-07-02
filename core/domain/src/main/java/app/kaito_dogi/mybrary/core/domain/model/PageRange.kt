@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PageRange(
-  val from: Int,
-  val to: Int? = null,
+  val start: Int,
+  val end: Int? = null,
 )
