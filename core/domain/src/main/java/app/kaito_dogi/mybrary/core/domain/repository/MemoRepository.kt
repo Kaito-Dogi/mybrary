@@ -10,7 +10,7 @@ interface MemoRepository {
 
   suspend fun createMemo(draftMemo: DraftMemo): Memo
 
-  suspend fun updateMemo(
+  suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo

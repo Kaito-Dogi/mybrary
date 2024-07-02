@@ -42,7 +42,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       content = draftMemo.content,
       pageRange = draftMemo.pageRange,
       createdAt = LocalDateTime.now(),
-      updatedAt = null,
+      editedAt = null,
       publishedAt = null,
       likeCount = 0,
     )
@@ -51,24 +51,24 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     return createdMemo
   }
 
-  override suspend fun updateMemo(
+  override suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
-    val updatedMemo = memo.copy(
+    val editedMemo = memo.copy(
       content = draftMemo.content,
       pageRange = draftMemo.pageRange,
-      updatedAt = LocalDateTime.now(),
+      editedAt = LocalDateTime.now(),
     )
     val newMemoList = mockMemoList.value.map {
-      if (it.id == memoId) updatedMemo else it
+      if (it.id == memoId) editedMemo else it
     }
     mockMemoList.update { newMemoList }
 
-    return updatedMemo
+    return editedMemo
   }
 
   override suspend fun publishMemo(memoId: MemoId): Memo {
@@ -105,7 +105,7 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
       )
     },
     createdAt = LocalDateTime.now(),
-    updatedAt = null,
+    editedAt = null,
     publishedAt = null,
     likeCount = 0,
   )

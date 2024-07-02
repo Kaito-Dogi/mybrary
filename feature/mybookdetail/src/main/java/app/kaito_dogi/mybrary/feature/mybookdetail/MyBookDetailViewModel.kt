@@ -266,12 +266,12 @@ internal class MyBookDetailViewModel @Inject constructor(
             )
           }
         } else {
-          val updatedMemo = memoRepository.updateMemo(
+          val editedMemo = memoRepository.editMemo(
             memoId = memoId,
             draftMemo = uiState.value.draftMemo,
           )
           val newMemoList = uiState.value.memoList?.map {
-            if (it.id == updatedMemo.id) updatedMemo else it
+            if (it.id == editedMemo.id) editedMemo else it
           }
           _uiState.update {
             it.copy(

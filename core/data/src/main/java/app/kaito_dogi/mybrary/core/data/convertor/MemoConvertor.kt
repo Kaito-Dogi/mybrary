@@ -18,7 +18,7 @@ internal fun MemoResponse.toMemo() = Memo(
     )
   },
   createdAt = this.createdAt.toLocalDateTime(),
-  updatedAt = this.editedAt?.toLocalDateTime(),
+  editedAt = this.editedAt?.toLocalDateTime(),
   publishedAt = this.publishedAt?.toLocalDateTime(),
   likeCount = this.likeCount,
 )

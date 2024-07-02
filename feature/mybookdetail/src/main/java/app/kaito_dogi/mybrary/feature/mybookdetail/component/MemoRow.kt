@@ -67,7 +67,7 @@ private val Memo.cardBody: String
       else -> ""
     }
     val datetimeText = when {
-      this.updatedAt != null -> "${this.updatedAt?.toFormattedString()}（編集済み）"
+      this.editedAt != null -> "${this.editedAt?.toFormattedString()}（編集済み）"
       else -> this.createdAt.toFormattedString()
     }
     if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
@@ -103,7 +103,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
           end = Int.MAX_VALUE,
         ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
         likeCount = 0,
       ),
@@ -121,7 +121,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
           end = null,
         ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
         likeCount = 0,
       ),
@@ -136,7 +136,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         content = "メモ",
         pageRange = null,
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
         likeCount = 0,
       ),
@@ -154,7 +154,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
           end = null,
         ),
         createdAt = LocalDateTime.now(),
-        updatedAt = LocalDateTime.now(),
+        editedAt = LocalDateTime.now(),
         publishedAt = null,
         likeCount = 0,
       ),
@@ -172,7 +172,7 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
           end = null,
         ),
         createdAt = LocalDateTime.now(),
-        updatedAt = null,
+        editedAt = null,
         publishedAt = null,
         likeCount = 0,
       ),
