@@ -15,22 +15,24 @@ internal class MybraryApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryApi {
   override suspend fun getMyBooks(): GetMyBooksResponse {
-    return supabaseClient.postgrest
-      .from(table = "my_books")
-      .select(
-        columns = Columns.raw(
-          value = """
-            *,
-            users:user_id(*),
-            books:book_id(*, authors(*))
-          """.trimIndent(),
-        ),
-      )
-      .decodeList<MyBookResponse>()
+    return supabaseClient.postgrest.from(table = "my_books").select(
+      columns = Columns.raw(
+        value = "*,users:user_id(*),books:book_id(*,authors(*))",
+      ),
+    ).decodeList<MyBookResponse>()
   }
 
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
-    TODO("Not yet implemented")
+    return supabaseClient.postgrest.from(table = "my_books").select(
+      columns = Columns.raw(
+        value = "*,users:user_id(*),books:book_id(*,authors(*))",
+      ),
+      request = {
+        filter {
+          MyBookResponse::id eq myBookId
+        }
+      },
+    ).decodeSingle<MyBookResponse>()
   }
 
   override suspend fun postMyBooks() {
