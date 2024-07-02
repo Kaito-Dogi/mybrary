@@ -43,6 +43,9 @@ jobs:
           gem install bundler
           bundle install
       - name: Run Test
+        env:
+          SUPABASE_URL_PROD: ${{ secrets.SUPABASE_URL_PROD }}
+          SUPABASE_KEY_PROD: ${{ secrets.SUPABASE_KEY_PROD }}
         run: ./gradlew test --stacktrace
       - name: Copy Test Result
         if: always()
