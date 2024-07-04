@@ -1,7 +1,5 @@
--- Create tables
-
 create table public.users (
-  id uuid primary key references auth.users on delete cascade,
+  id uuid not null primary key references auth.users on delete cascade,
   name varchar(255) not null,
   created_at timestamp not null default current_timestamp,
   updated_at timestamp not null default current_timestamp
