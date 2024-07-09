@@ -108,6 +108,7 @@ dependencies {
   implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
+  implementation(project(":feature:login"))
   implementation(project(":feature:mybooklist"))
   implementation(project(":feature:mybookdetail"))
   implementation(project(":feature:searchbook"))
