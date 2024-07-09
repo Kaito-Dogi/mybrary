@@ -13,5 +13,5 @@ data class BookResponse(
   val isbn13: String? = null,
   @SerialName("page_count") val pageCount: Int? = null,
   val publisher: String? = null,
-  val authors: List<AuthorResponse>,
+  @SerialName("author") val authors: List<AuthorResponse>,
 )

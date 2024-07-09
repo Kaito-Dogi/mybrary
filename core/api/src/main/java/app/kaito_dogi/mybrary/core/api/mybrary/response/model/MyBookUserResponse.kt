@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MyBookUserResponse(
-  @SerialName("users") val user: UserResponse,
+  @SerialName("user") val user: UserResponse,
 )

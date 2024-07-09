@@ -12,6 +12,6 @@ data class MyBookResponse(
   @SerialName("is_favorite") val isFavorite: Boolean,
   @SerialName("is_public") val isPublic: Boolean,
   @SerialName("is_archived") val isArchived: Boolean,
-  @SerialName("users") val user: UserResponse,
-  @SerialName("books") val book: BookResponse,
+  @SerialName("user") val user: UserResponse,
+  @SerialName("book") val book: BookResponse,
 )
