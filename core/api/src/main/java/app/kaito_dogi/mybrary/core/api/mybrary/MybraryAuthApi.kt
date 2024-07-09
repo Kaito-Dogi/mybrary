@@ -1,39 +1,34 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
-import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
-import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
-import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
-import retrofit2.http.GET
+import retrofit2.http.DELETE
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface MybraryAuthApi {
-  @GET("/my-books")
-  suspend fun getMyBooks(): GetMyBooksResponse
+  @POST("/my-book")
+  suspend fun postMyBook()
 
-  @GET("/my-books/{id}")
-  suspend fun getMyBook(
-    @Path("id") myBookId: Long,
-  ): GetMyBookResponse
+  @PUT("/my-book/{id}")
+  suspend fun putMyBook(
+    @Path("id") id: Long,
+  )
 
-  @POST("/my-books")
-  suspend fun postMyBooks()
+  @DELETE("/my-book/{id}")
+  suspend fun deleteMyBook(
+    @Path("id") id: Long,
+  )
 
-  @PUT("/my-books")
-  suspend fun putMyBooks()
+  @POST("/memo")
+  suspend fun postMemo()
 
-  @GET("/my-books/{myBookId}/memos")
-  suspend fun getMemos(
-    @Path("myBookId") myBookId: Long,
-  ): GetMemos
+  @PUT("/memo{id}")
+  suspend fun putMemo(
+    @Path("id") id: Long,
+  )
 
-  @POST("/memos")
-  suspend fun postMemos()
-
-  @PUT("/memos")
-  suspend fun putMemos()
-
-  @GET("/users/{user-id}")
-  suspend fun getUser()
+  @DELETE("/memo{id}")
+  suspend fun deleteMemo(
+    @Path("id") id: Long,
+  )
 }
