@@ -1,14 +1,19 @@
 package app.kaito_dogi.mybrary.feature.login
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 @HiltViewModel
-internal class LoginViewModel @Inject constructor() : ViewModel() {
+internal class LoginViewModel @Inject constructor(
+  private val loginRepository: LoginRepository,
+) : ViewModel() {
   private val _uiState = MutableStateFlow(LoginUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
@@ -37,7 +42,18 @@ internal class LoginViewModel @Inject constructor() : ViewModel() {
   }
 
   fun onMailLoginClick() {
-    println("あああ: onMailLoginClick")
+    viewModelScope.launch {
+      try {
+        loginRepository.emailLogin(
+          email = uiState.value.email,
+          password = uiState.value.password,
+        )
+        println("あああ: ログイン成功")
+      } catch (e: Exception) {
+        // FIXME: 共通のエラーハンドリングを実装する
+        println("あああ: ${e.message}")
+      }
+    }
   }
 
   fun onGoogleLoginClick() {
