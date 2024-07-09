@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.gotrue.Auth
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.serializer.KotlinXSerializer
 import javax.inject.Singleton
@@ -25,5 +26,6 @@ internal object SupabaseClientModule {
       json = Json { ignoreUnknownKeys = true },
     )
     install(Postgrest)
+    install(Auth)
   }
 }

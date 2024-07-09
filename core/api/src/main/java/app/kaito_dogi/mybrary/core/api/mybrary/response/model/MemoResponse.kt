@@ -14,5 +14,5 @@ data class MemoResponse(
   @SerialName("published_at") val publishedAt: TimeStampResponse? = null,
   @SerialName("like_count") val likeCount: Int,
   @SerialName("created_at") val createdAt: TimeStampResponse,
-  @SerialName("my_books") val myBook: MyBookUserResponse,
+  @SerialName("my_book") val myBook: MyBookUserResponse,
 )

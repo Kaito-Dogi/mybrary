@@ -1,6 +1,6 @@
 plugins {
   alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.hilt)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   id("kotlin-kapt")
 }
@@ -60,12 +60,6 @@ dependencies {
   implementation(libs.coilCompose)
   implementation(libs.hiltAndroid)
   implementation(libs.serialization)
-
-  testImplementation(libs.junit)
-
-  androidTestImplementation(platform(libs.androidxComposeBom))
-  androidTestImplementation(libs.androidxTestExtJunitKtx)
-  androidTestImplementation(libs.androidxTestEspressoCore)
 
   kapt(libs.hiltCompiler)
 }

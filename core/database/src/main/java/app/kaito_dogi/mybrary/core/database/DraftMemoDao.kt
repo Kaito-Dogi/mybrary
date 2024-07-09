@@ -9,9 +9,9 @@ interface DraftMemoDao {
   @Upsert
   suspend fun upsert(entity: DraftMemoEntity)
 
-  @Query("DELETE FROM draft_memos WHERE my_book_id = :myBookId")
+  @Query("DELETE FROM draft_memo WHERE my_book_id = :myBookId")
   suspend fun deleteByMyBookId(myBookId: Long)
 
-  @Query("SELECT * FROM draft_memos WHERE my_book_id = :myBookId")
+  @Query("SELECT * FROM draft_memo WHERE my_book_id = :myBookId")
   fun getByMyBookId(myBookId: Long): DraftMemoEntity?
 }

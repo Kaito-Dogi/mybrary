@@ -2,7 +2,7 @@ import java.util.Properties
 
 plugins {
   alias(libs.plugins.androidApplication)
-  alias(libs.plugins.hilt)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   id("kotlin-kapt")
 }
@@ -108,6 +108,7 @@ dependencies {
   implementation(project(":core:designsystem"))
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
+  implementation(project(":feature:login"))
   implementation(project(":feature:mybooklist"))
   implementation(project(":feature:mybookdetail"))
   implementation(project(":feature:searchbook"))

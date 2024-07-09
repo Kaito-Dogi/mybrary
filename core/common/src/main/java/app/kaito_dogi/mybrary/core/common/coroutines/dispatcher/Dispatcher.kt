@@ -4,4 +4,4 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class Dispatcher(val mybraryDispatcher: MybraryDispatcher)
+annotation class Dispatcher(val mybraryDispatchers: MybraryDispatchers)
