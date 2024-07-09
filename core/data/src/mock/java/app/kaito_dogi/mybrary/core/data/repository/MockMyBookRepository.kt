@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
+import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
@@ -7,7 +8,6 @@ import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
-import app.kaito_dogi.mybrary.core.domain.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository

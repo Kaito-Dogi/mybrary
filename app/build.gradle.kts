@@ -2,7 +2,7 @@ import java.util.Properties
 
 plugins {
   alias(libs.plugins.androidApplication)
-  alias(libs.plugins.hilt)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   id("kotlin-kapt")
 }

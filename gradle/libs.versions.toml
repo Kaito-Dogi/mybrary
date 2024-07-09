@@ -40,8 +40,9 @@ androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", ver
 coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hiltCore = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinxCoroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinxCoroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 ktor = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
@@ -58,7 +59,7 @@ supabasePostgrestKt = { group = "io.github.jan-tennert.supabase", name = "postgr
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 javaLibrary = { id = "java-library" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

@@ -1,44 +1,18 @@
 plugins {
-  alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.hilt)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.javaLibrary)
+  alias(libs.plugins.jetbrainsKotlinJvm)
   alias(libs.plugins.serialization)
   id("kotlin-kapt")
 }
 
-android {
-  namespace = "app.kaito_dogi.mybrary.core.common"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-
-  defaultConfig {
-    minSdk = libs.versions.minSdk.get().toInt()
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    consumerProguardFiles("consumer-rules.pro")
-  }
-
-  buildTypes {
-    release {
-      isMinifyEnabled = false
-      proguardFiles(
-        getDefaultProguardFile("proguard-android-optimize.txt"),
-        "proguard-rules.pro",
-      )
-    }
-  }
-
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-
-  kotlinOptions {
-    jvmTarget = libs.versions.jvmTarget.get()
-  }
+java {
+  sourceCompatibility = JavaVersion.VERSION_17
+  targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
-  implementation(libs.hiltAndroid)
+  implementation(libs.hiltCore)
+  implementation(libs.kotlinxCoroutinesCore)
   implementation(libs.serialization)
 
   kapt(libs.hiltCompiler)

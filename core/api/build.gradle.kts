@@ -1,6 +1,6 @@
 plugins {
   alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.hilt)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   alias(libs.plugins.serialization)
   id("kotlin-kapt")

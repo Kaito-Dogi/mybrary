@@ -10,5 +10,7 @@ java {
 }
 
 dependencies {
+  implementation(project(":core:common"))
+
   implementation(libs.serialization)
 }
