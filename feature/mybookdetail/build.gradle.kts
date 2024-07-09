@@ -63,12 +63,6 @@ dependencies {
   implementation(libs.hiltAndroid)
   implementation(libs.serialization)
 
-  testImplementation(libs.junit)
-
-  androidTestImplementation(platform(libs.androidxComposeBom))
-  androidTestImplementation(libs.androidxTestExtJunitKtx)
-  androidTestImplementation(libs.androidxTestEspressoCore)
-
   kapt(libs.hiltCompiler)
 }
 
