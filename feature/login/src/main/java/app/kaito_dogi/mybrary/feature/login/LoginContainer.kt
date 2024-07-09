@@ -14,7 +14,7 @@ internal fun LoginContainer(
 
   LoginScreen(
     uiState = uiState,
-    onMailChange = viewModel::onMailChange,
+    onMailChange = viewModel::onEmailChange,
     onPasswordChange = viewModel::onPasswordChange,
     onVisibilityClick = viewModel::onVisibilityChange,
     onMailLoginClick = viewModel::onMailLoginClick,

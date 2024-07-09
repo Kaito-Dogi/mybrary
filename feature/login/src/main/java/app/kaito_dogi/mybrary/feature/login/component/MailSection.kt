@@ -24,8 +24,8 @@ import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MailSection(
-  mail: String,
-  onMailChange: (String) -> Unit,
+  email: String,
+  onEmailChange: (String) -> Unit,
   password: String,
   onPasswordChange: (String) -> Unit,
   isPasswordVisible: Boolean,
@@ -38,8 +38,8 @@ internal fun MailSection(
     verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
   ) {
     TextField(
-      value = mail,
-      onValueChange = onMailChange,
+      value = email,
+      onValueChange = onEmailChange,
       modifier = Modifier.fillMaxWidth(),
       placeholder = {
         Text(text = "メールアドレスを入力…")
@@ -104,8 +104,8 @@ internal fun MailSection(
 private fun MailSectionPreview() {
   MybraryTheme {
     MailSection(
-      mail = "",
-      onMailChange = {},
+      email = "",
+      onEmailChange = {},
       password = "",
       onPasswordChange = {},
       isPasswordVisible = false,

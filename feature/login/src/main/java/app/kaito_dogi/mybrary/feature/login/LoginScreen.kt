@@ -51,8 +51,8 @@ internal fun LoginScreen(
       LogoSection(modifier = Modifier.weight(1f))
       Gap(height = MybraryTheme.space.xl)
       MailSection(
-        mail = uiState.mail,
-        onMailChange = onMailChange,
+        email = uiState.email,
+        onEmailChange = onMailChange,
         password = uiState.password,
         onPasswordChange = onPasswordChange,
         isPasswordVisible = uiState.isPasswordVisible,

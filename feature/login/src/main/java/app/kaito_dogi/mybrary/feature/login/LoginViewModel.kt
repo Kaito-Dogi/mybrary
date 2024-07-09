@@ -12,10 +12,10 @@ internal class LoginViewModel @Inject constructor() : ViewModel() {
   private val _uiState = MutableStateFlow(LoginUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
-  fun onMailChange(mail: String) {
+  fun onEmailChange(email: String) {
     _uiState.update {
       it.copy(
-        mail = mail,
+        email = email,
       )
     }
   }
