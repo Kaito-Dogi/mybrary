@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.api.mybrary.MybraryApi
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -17,11 +17,11 @@ import kotlinx.coroutines.withContext
 
 @Singleton
 internal class MemoRepositoryImpl @Inject constructor(
-  private val mybraryApi: MybraryApi,
+  private val mybraryAuthApi: MybraryAuthApi,
   @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
 ) : MemoRepository {
   override suspend fun getMemoList(myBookId: MyBookId): List<Memo> = withContext(dispatcher) {
-    mybraryApi.getMemos(myBookId = myBookId.value).map(MemoResponse::toMemo)
+    mybraryAuthApi.getMemos(myBookId = myBookId.value).map(MemoResponse::toMemo)
   }
 
   override suspend fun createMemo(draftMemo: DraftMemo): Memo {

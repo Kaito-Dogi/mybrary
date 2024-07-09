@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
-interface MybraryApi {
+interface MybraryAuthApi {
   @GET("/my-books")
   suspend fun getMyBooks(): GetMyBooksResponse
 

@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.supabase
 
-import app.kaito_dogi.mybrary.core.api.mybrary.MybraryApi
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -9,8 +9,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface MybraryApiModule {
+internal interface MybraryAuthApiModule {
   @Singleton
   @Binds
-  fun bindMybraryApi(impl: MybraryApiImpl): MybraryApi
+  fun bindMybraryAuthApi(impl: MybraryAuthApiImpl): MybraryAuthApi
 }

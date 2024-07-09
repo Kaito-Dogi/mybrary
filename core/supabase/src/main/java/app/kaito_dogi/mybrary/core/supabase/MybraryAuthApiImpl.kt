@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.supabase
 
-import app.kaito_dogi.mybrary.core.api.mybrary.MybraryApi
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
@@ -13,9 +13,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class MybraryApiImpl @Inject constructor(
+internal class MybraryAuthApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
-) : MybraryApi {
+) : MybraryAuthApi {
   override suspend fun getMyBooks(): GetMyBooksResponse {
     return supabaseClient.postgrest.from(table = "my_books").select(
       columns = Columns.raw(
