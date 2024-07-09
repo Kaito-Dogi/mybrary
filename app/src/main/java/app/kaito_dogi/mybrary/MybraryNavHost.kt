@@ -25,7 +25,9 @@ internal fun MybraryNavHost(
     startDestination = LoginRoute,
     modifier = modifier.fillMaxSize(),
   ) {
-    loginScreen()
+    loginScreen(
+      onSignUpClick = {},
+    )
     myBookListScreen(
       onAdditionClick = {
         navController.navigate(SearchBookRoute)

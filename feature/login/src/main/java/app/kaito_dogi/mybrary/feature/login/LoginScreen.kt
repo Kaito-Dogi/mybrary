@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.feature.login
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -24,8 +25,18 @@ import app.kaito_dogi.mybrary.feature.login.component.MailSection
 import app.kaito_dogi.mybrary.feature.login.component.SignUpSection
 
 @Composable
-internal fun LoginScreen() {
-  Scaffold { innerPadding ->
+internal fun LoginScreen(
+  uiState: LoginUiState,
+  onMailChange: (String) -> Unit,
+  onPasswordChange: (String) -> Unit,
+  onVisibilityClick: () -> Unit,
+  onMailLoginClick: () -> Unit,
+  onGoogleLoginClick: () -> Unit,
+  onSignUpClick: () -> Unit,
+) {
+  Scaffold(
+    modifier = Modifier.imePadding(),
+  ) { innerPadding ->
     Column(
       modifier = Modifier
         .fillMaxSize()
@@ -40,17 +51,19 @@ internal fun LoginScreen() {
       LogoSection(modifier = Modifier.weight(1f))
       Gap(height = MybraryTheme.space.xl)
       MailSection(
-        mail = "",
-        onMailChange = { /*TODO*/ },
-        password = "",
-        onPasswordChange = { /*TODO*/ },
-        onMailLoginClick = { /*TODO*/ },
+        mail = uiState.mail,
+        onMailChange = onMailChange,
+        password = uiState.password,
+        onPasswordChange = onPasswordChange,
+        isPasswordVisible = uiState.isPasswordVisible,
+        onVisibilityClick = onVisibilityClick,
+        onMailLoginClick = onMailLoginClick,
       )
       Gap(height = MybraryTheme.space.xl)
       DividerSection()
       Gap(height = MybraryTheme.space.xl)
       OutlinedButton(
-        onClick = { /*TODO*/ },
+        onClick = onGoogleLoginClick,
         modifier = Modifier.fillMaxWidth(),
       ) {
         Icon(
@@ -62,7 +75,7 @@ internal fun LoginScreen() {
         Text(text = "Googleでログイン")
       }
       Gap(height = MybraryTheme.space.sm)
-      SignUpSection(onClick = { /*TODO*/ })
+      SignUpSection(onClick = onSignUpClick)
     }
   }
 }
@@ -71,6 +84,14 @@ internal fun LoginScreen() {
 @Composable
 private fun LoginScreenPreview() {
   MybraryTheme {
-    LoginScreen()
+    LoginScreen(
+      uiState = LoginUiState.InitialValue,
+      onMailChange = {},
+      onPasswordChange = {},
+      onVisibilityClick = {},
+      onMailLoginClick = {},
+      onGoogleLoginClick = {},
+      onSignUpClick = {},
+    )
   }
 }

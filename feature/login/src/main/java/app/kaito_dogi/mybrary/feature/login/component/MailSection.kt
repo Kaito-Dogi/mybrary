@@ -11,8 +11,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -30,11 +28,11 @@ internal fun MailSection(
   onMailChange: (String) -> Unit,
   password: String,
   onPasswordChange: (String) -> Unit,
+  isPasswordVisible: Boolean,
+  onVisibilityClick: () -> Unit,
   onMailLoginClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  val (isPasswordVisible, setIsPasswordVisible) = remember { mutableStateOf(false) }
-
   Column(
     modifier = modifier,
     verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
@@ -71,7 +69,7 @@ internal fun MailSection(
         )
       },
       trailingIcon = {
-        IconButton(onClick = { setIsPasswordVisible(!isPasswordVisible) }) {
+        IconButton(onClick = onVisibilityClick) {
           Icon(
             painter = painterResource(id = if (isPasswordVisible) R.drawable.icon_visibility else R.drawable.icon_visibility_off),
             contentDescription = if (isPasswordVisible) "パスワードを非表示にする" else "パスワードを表示する",
@@ -110,6 +108,8 @@ private fun MailSectionPreview() {
       onMailChange = {},
       password = "",
       onPasswordChange = {},
+      isPasswordVisible = false,
+      onVisibilityClick = {},
       onMailLoginClick = {},
     )
   }
