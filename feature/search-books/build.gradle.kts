@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.mybooklist"
+  namespace = "app.kaito_dogi.mybrary.feature.searchbooks"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -46,7 +46,7 @@ android {
 
 dependencies {
   implementation(project(":core:common"))
-  implementation(project(":core:designsystem"))
+  implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
   implementation(project(":core:ui"))
 

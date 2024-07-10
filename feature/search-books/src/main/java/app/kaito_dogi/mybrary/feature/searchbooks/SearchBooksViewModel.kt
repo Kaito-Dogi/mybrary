@@ -1,10 +1,10 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
-import app.kaito_dogi.mybrary.core.domain.repository.SearchBookRepository
+import app.kaito_dogi.mybrary.core.domain.repository.SearchBooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,11 +13,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-internal class SearchBookViewModel @Inject constructor(
-  private val searchBookRepository: SearchBookRepository,
+internal class SearchBooksViewModel @Inject constructor(
+  private val searchBooksRepository: SearchBooksRepository,
   private val myBookRepository: MyBookRepository,
 ) : ViewModel() {
-  private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
+  private val _uiState = MutableStateFlow(SearchBooksUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun onSearchQueryChange(searchQuery: String) {
@@ -31,7 +31,7 @@ internal class SearchBookViewModel @Inject constructor(
       }
       if (searchQuery.isNotBlank()) {
         try {
-          val searchResult = searchBookRepository.searchBooks(
+          val searchResult = searchBooksRepository.searchBooks(
             query = searchQuery,
             startIndex = 0,
           )

@@ -105,13 +105,13 @@ android {
 dependencies {
   implementation(project(":core:config"))
   implementation(project(":core:data"))
-  implementation(project(":core:designsystem"))
+  implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
   implementation(project(":feature:login"))
-  implementation(project(":feature:mybooklist"))
-  implementation(project(":feature:mybookdetail"))
-  implementation(project(":feature:searchbook"))
+  implementation(project(":feature:my-book-list"))
+  implementation(project(":feature:my-book-detail"))
+  implementation(project(":feature:search-books"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)

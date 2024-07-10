@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.core.domain.repository
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 
-interface SearchBookRepository {
+interface SearchBooksRepository {
   // TODO: orderBy を指定できるようにする
   suspend fun searchBooks(
     query: String,
