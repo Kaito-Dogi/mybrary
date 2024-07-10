@@ -111,7 +111,7 @@ dependencies {
   implementation(project(":feature:login"))
   implementation(project(":feature:my-book-list"))
   implementation(project(":feature:my-book-detail"))
-  implementation(project(":feature:searchbook"))
+  implementation(project(":feature:search-books"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)

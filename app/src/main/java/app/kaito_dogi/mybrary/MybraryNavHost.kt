@@ -11,8 +11,8 @@ import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
-import app.kaito_dogi.mybrary.feature.searchbook.SearchBookRoute
-import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
+import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
+import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -30,7 +30,7 @@ internal fun MybraryNavHost(
     )
     myBookListScreen(
       onAdditionClick = {
-        navController.navigate(SearchBookRoute)
+        navController.navigate(SearchBooksRoute)
       },
       onMyBookClick = { myBook ->
         val navArg = MyBookDetailNavArg(
@@ -40,6 +40,6 @@ internal fun MybraryNavHost(
       },
     )
     myBookDetailScreen()
-    searchBookScreen()
+    searchBooksScreen()
   }
 }

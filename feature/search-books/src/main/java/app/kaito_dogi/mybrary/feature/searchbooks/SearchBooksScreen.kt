@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,13 +15,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRow
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSkeleton
+import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchBooksBottomAppBar
+import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchResultBookRow
+import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchResultBookRowSkeleton
 
 @Composable
-internal fun SearchBookScreen(
-  uiState: SearchBookUiState,
+internal fun SearchBooksScreen(
+  uiState: SearchBooksUiState,
   snackbarHost: @Composable () -> Unit,
   showSnackbar: (String) -> Unit,
   onSearchQueryChange: (String) -> Unit,
@@ -31,7 +31,7 @@ internal fun SearchBookScreen(
 ) {
   Scaffold(
     bottomBar = {
-      SearchBookBottomAppBar(
+      SearchBooksBottomAppBar(
         value = uiState.searchQuery,
         onValueChange = onSearchQueryChange,
         onBarcodeScannerClick = onBarcodeScannerClick,
@@ -83,10 +83,10 @@ internal fun SearchBookScreen(
 
 @Preview
 @Composable
-private fun SearchBookScreenPreview() {
+private fun SearchBooksScreenPreview() {
   MybraryTheme {
-    SearchBookScreen(
-      uiState = SearchBookUiState.InitialValue,
+    SearchBooksScreen(
+      uiState = SearchBooksUiState.InitialValue,
       snackbarHost = {},
       showSnackbar = {},
       onSearchQueryChange = {},

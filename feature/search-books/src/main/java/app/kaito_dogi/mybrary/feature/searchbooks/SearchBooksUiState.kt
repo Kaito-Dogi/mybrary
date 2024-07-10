@@ -1,17 +1,17 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.compose.runtime.Immutable
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 
 @Immutable
-data class SearchBookUiState(
+internal data class SearchBooksUiState(
   val searchResults: List<SearchResultBook>?,
   val searchQuery: String,
   val isSearching: Boolean,
   val shownMessage: String?,
 ) {
   companion object {
-    val InitialValue = SearchBookUiState(
+    val InitialValue = SearchBooksUiState(
       searchResults = null,
       searchQuery = "",
       isSearching = false,

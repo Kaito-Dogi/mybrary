@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.searchbook"
+  namespace = "app.kaito_dogi.mybrary.feature.searchbooks"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {

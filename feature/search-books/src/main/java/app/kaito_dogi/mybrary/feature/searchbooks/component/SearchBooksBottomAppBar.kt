@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook.component
+package app.kaito_dogi.mybrary.feature.searchbooks.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.text.KeyboardOptions
@@ -15,7 +15,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
-internal fun SearchBookBottomAppBar(
+internal fun SearchBooksBottomAppBar(
   value: String,
   onValueChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
@@ -56,9 +56,9 @@ internal fun SearchBookBottomAppBar(
 
 @Preview
 @Composable
-private fun SearchBookBottomAppBarPreview() {
+private fun SearchBooksBottomAppBarPreview() {
   MybraryTheme {
-    SearchBookBottomAppBar(
+    SearchBooksBottomAppBar(
       value = "",
       onValueChange = {},
       onBarcodeScannerClick = {},

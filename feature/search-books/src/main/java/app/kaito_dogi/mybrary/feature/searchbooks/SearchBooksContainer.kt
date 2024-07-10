@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -11,15 +11,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun SearchBookContainer(
-  viewModel: SearchBookViewModel = hiltViewModel(),
+internal fun SearchBooksContainer(
+  viewModel: SearchBooksViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
   val coroutineScope = rememberCoroutineScope()
   val snackbarHostState = remember { SnackbarHostState() }
 
-  SearchBookScreen(
+  SearchBooksScreen(
     uiState = uiState,
     snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     showSnackbar = {

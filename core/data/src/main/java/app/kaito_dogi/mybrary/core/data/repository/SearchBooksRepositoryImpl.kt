@@ -5,14 +5,14 @@ import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toSearchResultBook
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
-import app.kaito_dogi.mybrary.core.domain.repository.SearchBookRepository
+import app.kaito_dogi.mybrary.core.domain.repository.SearchBooksRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class SearchBookRepositoryImpl @Inject constructor(
+internal class SearchBooksRepositoryImpl @Inject constructor(
   private val googleBooksApi: GoogleBooksApi,
-) : SearchBookRepository {
+) : SearchBooksRepository {
   override suspend fun searchBooks(
     query: String,
     maxResults: Int,
