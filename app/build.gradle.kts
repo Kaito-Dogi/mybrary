@@ -105,7 +105,7 @@ android {
 dependencies {
   implementation(project(":core:config"))
   implementation(project(":core:data"))
-  implementation(project(":core:designsystem"))
+  implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
   implementation(project(":feature:login"))
