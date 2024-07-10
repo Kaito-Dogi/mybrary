@@ -109,7 +109,7 @@ dependencies {
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
   implementation(project(":feature:login"))
-  implementation(project(":feature:mybooklist"))
+  implementation(project(":feature:my-book-list"))
   implementation(project(":feature:my-book-detail"))
   implementation(project(":feature:searchbook"))
 
