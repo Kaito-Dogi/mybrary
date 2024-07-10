@@ -2,7 +2,7 @@ plugins {
   alias(libs.plugins.javaLibrary)
   alias(libs.plugins.jetbrainsKotlinJvm)
   alias(libs.plugins.serialization)
-  id("kotlin-kapt")
+  alias(libs.plugins.kotlinKapt)
 }
 
 java {

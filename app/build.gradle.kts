@@ -1,10 +1,16 @@
 import java.util.Properties
 
+val properties = Properties()
+val secretsProperties = rootProject.file("./secrets.properties")
+if (secretsProperties.exists()) {
+  properties.load(secretsProperties.inputStream())
+}
+
 plugins {
   alias(libs.plugins.androidApplication)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  id("kotlin-kapt")
+  alias(libs.plugins.kotlinKapt)
 }
 
 android {
@@ -19,6 +25,17 @@ android {
     versionName = libs.versions.versionName.get()
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    buildConfigField(
+      type = "String",
+      name = "SUPABASE_URL",
+      value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
+    )
+    buildConfigField(
+      type = "String",
+      name = "SUPABASE_KEY",
+      value = properties.getProperty("supabase.key.dev") ?: System.getenv("SUPABASE_KEY_DEV"),
+    )
   }
 
   buildTypes {
@@ -34,18 +51,6 @@ android {
       applicationIdSuffix = ".debug"
       isDebuggable = true
     }
-
-    create("mock") {
-      initWith(getByName("debug"))
-      applicationIdSuffix = ".mock"
-      matchingFallbacks += listOf("debug")
-    }
-  }
-
-  val properties = Properties()
-  val secretsProperties = rootProject.file("./secrets.properties")
-  if (secretsProperties.exists()) {
-    properties.load(secretsProperties.inputStream())
   }
 
   flavorDimensions += "env"
@@ -69,17 +74,11 @@ android {
       applicationIdSuffix = ".dev"
       dimension = "env"
       isDefault = true
+    }
 
-      buildConfigField(
-        type = "String",
-        name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
-      )
-      buildConfigField(
-        type = "String",
-        name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.dev") ?: System.getenv("SUPABASE_KEY_DEV"),
-      )
+    create("mock") {
+      applicationIdSuffix = ".mock"
+      dimension = "env"
     }
   }
 

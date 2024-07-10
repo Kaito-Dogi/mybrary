@@ -2,7 +2,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  id("kotlin-kapt")
+  alias(libs.plugins.kotlinKapt)
 }
 
 android {
@@ -24,10 +24,20 @@ android {
         "proguard-rules.pro",
       )
     }
+  }
+
+  flavorDimensions += "env"
+  productFlavors {
+    create("prod") {
+      dimension = "env"
+    }
+
+    create("dev") {
+      dimension = "env"
+    }
 
     create("mock") {
-      initWith(getByName("debug"))
-      matchingFallbacks += listOf("debug")
+      dimension = "env"
     }
   }
 
