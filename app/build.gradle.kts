@@ -110,7 +110,7 @@ dependencies {
   implementation(project(":core:supabase"))
   implementation(project(":feature:login"))
   implementation(project(":feature:mybooklist"))
-  implementation(project(":feature:mybookdetail"))
+  implementation(project(":feature:my-book-detail"))
   implementation(project(":feature:searchbook"))
 
   implementation(platform(libs.androidxComposeBom))
