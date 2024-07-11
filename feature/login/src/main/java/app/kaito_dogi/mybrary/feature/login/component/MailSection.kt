@@ -54,6 +54,7 @@ internal fun MailSection(
         keyboardType = KeyboardType.Email,
         imeAction = ImeAction.Next,
       ),
+      singleLine = true,
     )
     TextField(
       value = password,
@@ -84,6 +85,7 @@ internal fun MailSection(
       keyboardActions = KeyboardActions(
         onSend = { onMailLoginClick() },
       ),
+      singleLine = true,
     )
     Button(
       onClick = onMailLoginClick,

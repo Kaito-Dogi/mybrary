@@ -45,6 +45,7 @@ internal fun MyBookDetailBottomSheetContent(
           keyboardType = KeyboardType.Number,
           imeAction = ImeAction.Next,
         ),
+        singleLine = true,
       )
       Gap(width = MybraryTheme.space.sm)
       TextField(
@@ -57,6 +58,7 @@ internal fun MyBookDetailBottomSheetContent(
           keyboardType = KeyboardType.Number,
           imeAction = ImeAction.Next,
         ),
+        singleLine = true,
       )
     }
     Gap(height = MybraryTheme.space.sm)
