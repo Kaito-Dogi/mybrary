@@ -21,11 +21,13 @@ internal fun DividerSection(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     HorizontalDivider(modifier = Modifier.weight(1f))
+
     Text(
       text = "または",
       color = MybraryTheme.colorScheme.outlineVariant,
       style = MybraryTheme.typography.labelMedium,
     )
+
     HorizontalDivider(modifier = Modifier.weight(1f))
   }
 }

@@ -56,6 +56,7 @@ internal fun MailSection(
       ),
       singleLine = true,
     )
+
     TextField(
       value = password,
       onValueChange = onPasswordChange,
@@ -87,6 +88,7 @@ internal fun MailSection(
       ),
       singleLine = true,
     )
+
     Button(
       onClick = onMailLoginClick,
       modifier = Modifier.fillMaxWidth(),
@@ -95,7 +97,9 @@ internal fun MailSection(
         painter = painterResource(id = R.drawable.icon_mail),
         contentDescription = "メールアドレスでログイン",
       )
+
       Gap(width = MybraryTheme.space.xs)
+
       Text(text = "メールアドレスでログイン")
     }
   }

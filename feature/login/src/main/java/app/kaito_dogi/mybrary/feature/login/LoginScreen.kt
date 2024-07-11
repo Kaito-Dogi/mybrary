@@ -48,8 +48,12 @@ internal fun LoginScreen(
         ),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-      LogoSection(modifier = Modifier.weight(1f))
+      LogoSection(
+        modifier = Modifier.weight(1f),
+      )
+
       Gap(height = MybraryTheme.space.xl)
+
       MailSection(
         email = uiState.email,
         onEmailChange = onMailChange,
@@ -59,9 +63,13 @@ internal fun LoginScreen(
         onVisibilityClick = onVisibilityClick,
         onMailLoginClick = onMailLoginClick,
       )
+
       Gap(height = MybraryTheme.space.xl)
+
       DividerSection()
+
       Gap(height = MybraryTheme.space.xl)
+
       OutlinedButton(
         onClick = onGoogleLoginClick,
         modifier = Modifier.fillMaxWidth(),
@@ -71,10 +79,14 @@ internal fun LoginScreen(
           contentDescription = "メールアドレスでログイン",
           tint = Color.Unspecified,
         )
+
         Gap(width = MybraryTheme.space.xs)
+
         Text(text = "Googleでログイン")
       }
+
       Gap(height = MybraryTheme.space.sm)
+
       SignUpSection(onClick = onSignUpClick)
     }
   }

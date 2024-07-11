@@ -24,6 +24,7 @@ internal fun SignUpSection(
     ) {
       append("アカウント作成は")
     }
+
     withStyle(
       style = SpanStyle(
         textDecoration = TextDecoration.Underline,
@@ -34,7 +35,7 @@ internal fun SignUpSection(
   }
 
   TextButton(
-    onClick = { onClick() },
+    onClick = onClick,
     modifier = modifier,
   ) {
     Text(text = annotatedString)
