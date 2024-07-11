@@ -18,19 +18,11 @@ internal class LoginViewModel @Inject constructor(
   val uiState = _uiState.asStateFlow()
 
   fun onEmailChange(email: String) {
-    _uiState.update {
-      it.copy(
-        email = email,
-      )
-    }
+    _uiState.update { it.copy(email = email) }
   }
 
   fun onPasswordChange(password: String) {
-    _uiState.update {
-      it.copy(
-        password = password,
-      )
-    }
+    _uiState.update { it.copy(password = password) }
   }
 
   fun onVisibilityChange() {
@@ -48,7 +40,7 @@ internal class LoginViewModel @Inject constructor(
           email = uiState.value.email,
           password = uiState.value.password,
         )
-        println("あああ: ログイン成功")
+        _uiState.update { it.copy(isLoggedIn = true) }
       } catch (e: Exception) {
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")

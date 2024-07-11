@@ -11,6 +11,6 @@ fun NavGraphBuilder.searchBooksScreen() {
   composable(
     route = SearchBooksRoute,
   ) {
-    SearchBooksContainer()
+    SearchBooksScreenContainer()
   }
 }

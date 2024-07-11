@@ -10,6 +10,7 @@ import app.kaito_dogi.mybrary.feature.login.loginScreen
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybooklist.MyBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
@@ -26,6 +27,9 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
+      onLoginComplete = {
+        navController.navigate(MyBookListRoute)
+      },
       onSignUpClick = {},
     )
     myBookListScreen(

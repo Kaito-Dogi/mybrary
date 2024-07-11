@@ -15,7 +15,7 @@ fun NavGraphBuilder.myBookListScreen(
   composable(
     route = MyBookListRoute,
   ) {
-    MyBookListContainer(
+    MyBookListScreenContainer(
       onAdditionClick = onAdditionClick,
       onMyBookClick = onMyBookClick,
     )

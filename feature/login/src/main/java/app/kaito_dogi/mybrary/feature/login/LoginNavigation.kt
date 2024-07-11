@@ -8,12 +8,14 @@ private const val Login = "login"
 const val LoginRoute = Login
 
 fun NavGraphBuilder.loginScreen(
+  onLoginComplete: () -> Unit,
   onSignUpClick: () -> Unit,
 ) {
   composable(
     route = LoginRoute,
   ) {
-    LoginContainer(
+    LoginScreenContainer(
+      onLoginComplete = onLoginComplete,
       onSignUpClick = onSignUpClick,
     )
   }

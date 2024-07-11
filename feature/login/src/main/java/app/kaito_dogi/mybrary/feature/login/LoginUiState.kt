@@ -7,12 +7,14 @@ data class LoginUiState(
   val email: String,
   val password: String,
   val isPasswordVisible: Boolean,
+  val isLoggedIn: Boolean,
 ) {
   companion object {
     val InitialValue = LoginUiState(
       email = "",
       password = "",
       isPasswordVisible = false,
+      isLoggedIn = false,
     )
   }
 }
