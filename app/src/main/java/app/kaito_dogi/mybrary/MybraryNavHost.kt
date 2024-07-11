@@ -27,11 +27,15 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
-      onLoginComplete = { navController.navigate(MyBookListRoute) },
+      onLoginComplete = {
+        navController.navigate(MyBookListRoute)
+      },
       onSignUpClick = {},
     )
     myBookListScreen(
-      onAdditionClick = { navController.navigate(SearchBooksRoute) },
+      onAdditionClick = {
+        navController.navigate(SearchBooksRoute)
+      },
       onMyBookClick = { myBook ->
         val navArg = MyBookDetailNavArg(
           myBook = myBook,
