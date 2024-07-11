@@ -8,7 +8,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
 @Composable
-internal fun MyBookListContainer(
+internal fun MyBookListScreenContainer(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
   viewModel: MyBookListViewModel = hiltViewModel(),

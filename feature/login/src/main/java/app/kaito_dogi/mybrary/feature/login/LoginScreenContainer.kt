@@ -11,7 +11,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
 
 @Composable
-internal fun LoginContainer(
+internal fun LoginScreenContainer(
   onLoginComplete: () -> Unit,
   onSignUpClick: () -> Unit,
   viewModel: LoginViewModel = hiltViewModel(),

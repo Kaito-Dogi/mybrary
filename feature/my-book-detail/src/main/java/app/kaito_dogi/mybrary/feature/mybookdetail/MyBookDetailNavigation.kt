@@ -50,6 +50,6 @@ fun NavGraphBuilder.myBookDetailScreen() {
       },
     ),
   ) {
-    MyBookDetailContainer()
+    MyBookDetailScreenContainer()
   }
 }
