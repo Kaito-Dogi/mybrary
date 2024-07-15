@@ -13,6 +13,7 @@ internal data class MyBookDetailUiState(
   val isBottomSheetVisible: Boolean,
   val editingMemoId: MemoId?,
   val draftMemo: DraftMemo,
+  val isMemoSaved: Boolean,
   val isContentEmptyError: Boolean,
   val shownMessage: String?,
 ) {
@@ -27,6 +28,7 @@ internal data class MyBookDetailUiState(
         content = "",
         pageRange = null,
       ),
+      isMemoSaved = false,
       isContentEmptyError = false,
       shownMessage = null,
     )

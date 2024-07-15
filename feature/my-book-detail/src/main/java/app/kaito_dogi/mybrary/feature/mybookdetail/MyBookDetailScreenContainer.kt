@@ -21,9 +21,8 @@ internal fun MyBookDetailScreenContainer(
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-  val coroutineScope = rememberCoroutineScope()
-  val bottomSheetState = rememberModalBottomSheetState()
   val snackbarHostState = remember { SnackbarHostState() }
+  val bottomSheetState = rememberModalBottomSheetState()
 
   LaunchedEffect(Unit) {
     viewModel.init()
@@ -33,6 +32,19 @@ internal fun MyBookDetailScreenContainer(
     LaunchedEffect(it) {
       snackbarHostState.showSnackbar(it)
       viewModel.onMessageShow()
+    }
+  }
+
+  if (uiState.isMemoSaved) {
+    val coroutineScope = rememberCoroutineScope()
+    LaunchedEffect(Unit) {
+      coroutineScope.launch {
+        bottomSheetState.hide()
+      }.invokeOnCompletion {
+        if (!bottomSheetState.isVisible) {
+          viewModel.onBottomSheetDismissRequest()
+        }
+      }
     }
   }
 
@@ -54,18 +66,6 @@ internal fun MyBookDetailScreenContainer(
     onStartPageChange = viewModel::onStartPageChange,
     onEndPageChange = viewModel::onEndPageChange,
     onContentChange = viewModel::onContentChange,
-    onSaveClick = {
-      viewModel.onSaveClick(
-        onComplete = {
-          coroutineScope.launch {
-            bottomSheetState.hide()
-          }.invokeOnCompletion {
-            if (!bottomSheetState.isVisible) {
-              viewModel.onBottomSheetDismissRequest()
-            }
-          }
-        },
-      )
-    },
+    onSaveClick = viewModel::onSaveClick,
   )
 }

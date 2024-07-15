@@ -190,6 +190,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           it.copy(
             isBottomSheetVisible = false,
             editingMemoId = null,
+            isMemoSaved = false,
           )
         }
       } catch (e: Exception) {
@@ -242,9 +243,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
-  fun onSaveClick(
-    onComplete: () -> Unit,
-  ) {
+  fun onSaveClick() {
     viewModelScope.launch {
       try {
         // メモの内容が空の場合はエラー表示にする
@@ -262,6 +261,7 @@ internal class MyBookDetailViewModel @Inject constructor(
               memoList = it.memoList?.plus(createdMemo),
               editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              isMemoSaved = true,
               shownMessage = "メモを追加しました",
             )
           }
@@ -278,13 +278,11 @@ internal class MyBookDetailViewModel @Inject constructor(
               memoList = newMemoList,
               editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              isMemoSaved = true,
               shownMessage = "メモを編集しました",
             )
           }
         }
-
-        // BottomSheet を閉じる
-        onComplete()
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")
