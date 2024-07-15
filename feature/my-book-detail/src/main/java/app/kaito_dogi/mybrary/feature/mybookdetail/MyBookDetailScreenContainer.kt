@@ -29,6 +29,13 @@ internal fun MyBookDetailScreenContainer(
     viewModel.init()
   }
 
+  uiState.shownMessage?.let {
+    LaunchedEffect(it) {
+      snackbarHostState.showSnackbar(it)
+      viewModel.onMessageShow()
+    }
+  }
+
   MyBookDetailScreen(
     uiState = uiState,
     snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -38,12 +45,6 @@ internal fun MyBookDetailScreenContainer(
         sheetState = bottomSheetState,
         content = it,
       )
-    },
-    showSnackbar = {
-      coroutineScope.launch {
-        snackbarHostState.showSnackbar(it)
-        viewModel.onMessageShow()
-      }
     },
     onArchiveClick = viewModel::onArchiveClick,
     onPublicClick = viewModel::onPublicClick,

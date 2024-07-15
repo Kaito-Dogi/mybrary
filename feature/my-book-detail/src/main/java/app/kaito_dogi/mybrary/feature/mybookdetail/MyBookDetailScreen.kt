@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
@@ -32,7 +31,6 @@ internal fun MyBookDetailScreen(
   uiState: MyBookDetailUiState,
   snackbarHost: @Composable () -> Unit,
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
-  showSnackbar: (String) -> Unit,
   onArchiveClick: () -> Unit,
   onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
@@ -119,12 +117,6 @@ internal fun MyBookDetailScreen(
         )
       }
     }
-
-    uiState.shownMessage?.let {
-      LaunchedEffect(it) {
-        showSnackbar(it)
-      }
-    }
   }
 }
 
@@ -157,7 +149,6 @@ private fun MyBookDetailScreenPreview() {
       ),
       snackbarHost = {},
       bottomSheet = {},
-      showSnackbar = {},
       onArchiveClick = {},
       onPublicClick = {},
       onFavoriteClick = {},
