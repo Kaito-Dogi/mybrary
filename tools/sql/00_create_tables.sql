@@ -1,5 +1,5 @@
 create table public.profile (
-  id uuid not null primary key references auth.users on delete cascade,
+  user_id uuid not null primary key references auth.users on delete cascade,
   name varchar(255) not null,
   created_at timestamp not null default current_timestamp,
   updated_at timestamp not null default current_timestamp
@@ -20,7 +20,7 @@ create table public.book (
 
 create table public.my_book (
   id bigint generated always as identity primary key,
-  user_id uuid not null references public.profile(id) on delete cascade,
+  user_id uuid not null references public.profile(user_id) on delete cascade,
   book_id bigint not null references public.book(id) on delete cascade,
   is_pinned boolean not null,
   is_favorite boolean not null,

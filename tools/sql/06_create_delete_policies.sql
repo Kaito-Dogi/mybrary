@@ -1,7 +1,7 @@
 create policy "Authenticated users can delete their own user."
 on profile for delete
 to authenticated
-using ( auth.uid() = id );
+using ( auth.uid() = user_id );
 
 create policy "Authenticated users can delete their own my_book."
 on my_book for delete

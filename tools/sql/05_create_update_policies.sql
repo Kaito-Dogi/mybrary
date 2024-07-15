@@ -1,8 +1,8 @@
 create policy "Authenticated users can update their own user."
 on profile for update
 to authenticated
-using ( auth.uid() = id );
-with check ( auth.uid() = id );
+using ( auth.uid() = user_id );
+with check ( auth.uid() = user_id );
 
 create policy "Authenticated users can update their own my_book."
 on my_book for update

@@ -1,7 +1,7 @@
 create policy "Authenticated users can create a profile."
 on profile for insert
 to authenticated
-with check ( auth.uid() = id );
+with check ( auth.uid() = user_id );
 
 create policy "Authenticated users can create a book."
 on book for insert
