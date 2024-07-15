@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
@@ -76,13 +77,13 @@ internal fun LoginScreen(
       ) {
         Icon(
           painter = painterResource(id = R.drawable.icon_google),
-          contentDescription = "メールアドレスでログイン",
+          contentDescription = stringResource(id = R.string.login_content_description_login_with_google),
           tint = Color.Unspecified,
         )
 
         Gap(width = MybraryTheme.space.xs)
 
-        Text(text = "Googleでログイン")
+        Text(text = stringResource(id = R.string.login_text_login_with_google))
       }
 
       Gap(height = MybraryTheme.space.sm)

@@ -13,6 +13,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -42,12 +43,12 @@ internal fun MailSection(
       onValueChange = onEmailChange,
       modifier = Modifier.fillMaxWidth(),
       placeholder = {
-        Text(text = "メールアドレスを入力…")
+        Text(text = stringResource(id = R.string.login_placeholder_enter_your_email_address))
       },
       leadingIcon = {
         Icon(
           painter = painterResource(id = R.drawable.icon_mail),
-          contentDescription = "メールアドレス",
+          contentDescription = stringResource(id = R.string.login_content_description_email_address),
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
@@ -62,19 +63,19 @@ internal fun MailSection(
       onValueChange = onPasswordChange,
       modifier = Modifier.fillMaxWidth(),
       placeholder = {
-        Text(text = "パスワードを入力…")
+        Text(text = stringResource(id = R.string.login_placeholder_enter_your_password))
       },
       leadingIcon = {
         Icon(
           painter = painterResource(id = R.drawable.icon_key),
-          contentDescription = "パスワード",
+          contentDescription = stringResource(id = R.string.login_content_description_password),
         )
       },
       trailingIcon = {
         IconButton(onClick = onVisibilityClick) {
           Icon(
             painter = painterResource(id = if (isPasswordVisible) R.drawable.icon_visibility else R.drawable.icon_visibility_off),
-            contentDescription = if (isPasswordVisible) "パスワードを非表示にする" else "パスワードを表示する",
+            contentDescription = stringResource(id = if (isPasswordVisible) R.string.login_content_description_hide_password else R.string.login_content_description_show_password),
           )
         }
       },
@@ -95,12 +96,12 @@ internal fun MailSection(
     ) {
       Icon(
         painter = painterResource(id = R.drawable.icon_mail),
-        contentDescription = "メールアドレスでログイン",
+        contentDescription = stringResource(id = R.string.login_content_description_login_with_your_email_address),
       )
 
       Gap(width = MybraryTheme.space.xs)
 
-      Text(text = "メールアドレスでログイン")
+      Text(text = stringResource(id = R.string.login_text_login_with_your_email_address))
     }
   }
 }

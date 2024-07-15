@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="login_content_description_email_address">メールアドレス</string>
+  <string name="login_content_description_hide_password">パスワードを非表示にする</string>
+  <string name="login_content_description_login_with_your_email_address">メールアドレスでログイン</string>
+  <string name="login_content_description_login_with_google">Google でログイン</string>
+  <string name="login_content_description_password">パスワード</string>
+  <string name="login_content_description_show_password">パスワードを表示する</string>
+  <string name="login_placeholder_enter_your_email_address">メールアドレスを入力…</string>
+  <string name="login_placeholder_enter_your_password">パスワードを入力…</string>
+  <string name="login_text_create_an_account">アカウント作成は</string>
+  <string name="login_text_here">こちら</string>
+  <string name="login_text_login_with_your_email_address">メールアドレスでログイン</string>
+  <string name="login_text_login_with_google">Google でログイン</string>
+  <string name="login_text_logo">Mybrary</string>
+  <string name="login_text_or">または</string>
+</resources>

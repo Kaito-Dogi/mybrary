@@ -6,8 +6,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun LogoSection(
@@ -18,7 +20,7 @@ internal fun LogoSection(
     contentAlignment = Alignment.Center,
   ) {
     Text(
-      text = "Mybrary",
+      text = stringResource(id = R.string.login_text_logo),
       style = MybraryTheme.typography.displaySmall,
     )
   }

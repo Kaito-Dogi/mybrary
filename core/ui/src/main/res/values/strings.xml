@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="login_content_description_email_address">Email Address</string>
+  <string name="login_content_description_hide_password">Hide password</string>
+  <string name="login_content_description_login_with_your_email_address">Sign in with your email address</string>
+  <string name="login_content_description_login_with_google">Sign in with Google</string>
+  <string name="login_content_description_password">Password</string>
+  <string name="login_content_description_show_password">Show password</string>
+  <string name="login_placeholder_enter_your_email_address">Email Address</string>
+  <string name="login_placeholder_enter_your_password">Password</string>
+  <string name="login_text_create_an_account">"Create an account "</string>
+  <string name="login_text_here">here</string>
+  <string name="login_text_login_with_your_email_address">Sign in</string>
+  <string name="login_text_login_with_google">Sign in with Google</string>
+  <string name="login_text_logo">Mybrary</string>
+  <string name="login_text_or">or</string>
+</resources>
