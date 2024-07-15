@@ -65,6 +65,7 @@ internal fun MyBookListScreen(
           ) {
             MyBookListHeader(title = "お気に入りの本")
           }
+
           items(
             items = favoriteMyBookList,
             key = { it.id.value },
@@ -75,6 +76,7 @@ internal fun MyBookListScreen(
               modifier = Modifier.animateItemPlacement(),
             )
           }
+
           item(
             span = { GridItemSpan(uiState.numberOfColumns) },
             key = "Spacer:favorite",
@@ -100,6 +102,7 @@ internal fun MyBookListScreen(
             )
           }
         }
+
         items(
           items = otherMyBookList,
           key = { it.id.value },
@@ -120,6 +123,7 @@ internal fun MyBookListScreen(
         ) {
           MyBookListHeaderSkeleton()
         }
+
         items(
           count = 4,
           key = { "MyBookCellSkeleton$it" },
