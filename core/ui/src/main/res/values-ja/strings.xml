@@ -38,5 +38,10 @@
   <string name="my_book_detail_text_page_count">%1$dページ</string>
   <string name="my_book_detail_text_page_count_and_publisher">%1$dページ｜ %2$s</string>
   <string name="my_book_detail_text_pp">pp.%1$d~%2$d</string>
+  <string name="my_book_list_desc_search_for_books">本を検索する</string>
+  <string name="my_book_list_text_a">あ</string>
+  <string name="my_book_list_text_all_my_books">すべての MyBook</string>
+  <string name="my_book_list_text_favorite_my_books">お気に入りの MyBook</string>
+  <string name="my_book_list_text_other_my_books">その他の MyBook</string>
   <string name="ui_desc_book_cover">本の表紙</string>
 </resources>

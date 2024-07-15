@@ -1,13 +1,14 @@
 package app.kaito_dogi.mybrary.feature.mybooklist.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MyBookListHeaderSkeleton(
@@ -18,7 +19,7 @@ internal fun MyBookListHeaderSkeleton(
     modifier = modifier,
   ) {
     Text(
-      text = "あ",
+      textResId = R.string.my_book_list_text_a,
       modifier = Modifier.fillMaxWidth(),
       color = Color.Transparent,
       style = MybraryTheme.typography.headlineMedium,

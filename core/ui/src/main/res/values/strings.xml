@@ -32,11 +32,16 @@
   <string name="my_book_detail_placeholder_end_page">End Page</string>
   <string name="my_book_detail_placeholder_start_page">Start Page</string>
   <string name="my_book_detail_placeholder_enter_a_memo">Enter a note…</string>
-  <string name="my_book_detail_text_a">a</string>
+  <string name="my_book_detail_text_a">A</string>
   <string name="my_book_detail_text_edited">%1$s • edited</string>
   <string name="my_book_detail_text_p">p.%1$d</string>
   <string name="my_book_detail_text_page_count">%1$d pages</string>
   <string name="my_book_detail_text_page_count_and_publisher">%1$d pages｜ %2$s</string>
   <string name="my_book_detail_text_pp">pp.%1$d~%2$d</string>
+  <string name="my_book_list_desc_search_for_books">Search for books</string>
+  <string name="my_book_list_text_a">A</string>
+  <string name="my_book_list_text_all_my_books">All MyBooks</string>
+  <string name="my_book_list_text_favorite_my_books">Favorite MyBooks</string>
+  <string name="my_book_list_text_other_my_books">Other MyBooks</string>
   <string name="ui_desc_book_cover">Book cover</string>
 </resources>

@@ -9,17 +9,16 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCellSkeleton
 import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeader
@@ -38,8 +37,8 @@ internal fun MyBookListScreen(
         onClick = onAdditionClick,
       ) {
         Icon(
-          imageVector = Icons.Default.Add,
-          contentDescription = "書籍検索画面に遷移",
+          iconResId = R.drawable.icon_add,
+          descResId = R.string.my_book_list_desc_search_for_books,
         )
       }
     },
@@ -63,7 +62,9 @@ internal fun MyBookListScreen(
             span = { GridItemSpan(uiState.numberOfColumns) },
             key = "MyBookListHeader:favorite",
           ) {
-            MyBookListHeader(title = "お気に入りの本")
+            MyBookListHeader(
+              titleResId = R.string.my_book_list_text_favorite_my_books,
+            )
           }
 
           items(
@@ -94,11 +95,7 @@ internal fun MyBookListScreen(
             key = "MyBookListHeader:other",
           ) {
             MyBookListHeader(
-              title = if (uiState.areAllMyBooksInOtherList) {
-                "すべての本"
-              } else {
-                "その他の本"
-              },
+              titleResId = if (uiState.areAllMyBooksInOtherList) R.string.my_book_list_text_all_my_books else R.string.my_book_list_text_other_my_books,
             )
           }
         }
