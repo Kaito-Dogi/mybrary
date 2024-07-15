@@ -50,7 +50,6 @@ internal fun SearchResultBookRow(
       // TODO: 定数にする
       BookImage(
         imageUrl = searchResultBook.imageUrl,
-        title = searchResultBook.title,
         modifier = Modifier.width(72.dp),
       )
       Gap(width = MybraryTheme.space.sm)

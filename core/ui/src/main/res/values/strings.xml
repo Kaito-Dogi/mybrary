@@ -38,4 +38,5 @@
   <string name="my_book_detail_text_page_count">%1$d pages</string>
   <string name="my_book_detail_text_page_count_and_publisher">%1$d pages｜ %2$s</string>
   <string name="my_book_detail_text_pp">pp.%1$d~%2$d</string>
+  <string name="ui_desc_book_cover">Book cover</string>
 </resources>

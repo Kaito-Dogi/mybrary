@@ -88,7 +88,6 @@ internal fun MyBookDetailTopAppBar(
       // TODO: width を定数にする
       BookImage(
         imageUrl = myBook.imageUrl,
-        title = myBook.title,
         modifier = Modifier.width(120.dp),
       )
 
