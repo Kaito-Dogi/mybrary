@@ -14,4 +14,11 @@
   <string name="login_text_login_with_google">Sign in with Google</string>
   <string name="login_text_logo">Mybrary</string>
   <string name="login_text_or">or</string>
+  <string name="my_book_detail_message_my_book_added_to_your_favorites">MyBook added to your favorites</string>
+  <string name="my_book_detail_message_my_book_archived">MyBook archived</string>
+  <string name="my_book_detail_message_my_book_is_now_private">MyBook is now private</string>
+  <string name="my_book_detail_message_my_book_is_now_public">MyBook is now public</string>
+  <string name="my_book_detail_message_my_book_removed_from_your_favorites">MyBook removed from your favorites</string>
+  <string name="my_book_detail_message_note_added">Note added</string>
+  <string name="my_book_detail_message_note_edited">Note edited</string>
 </resources>

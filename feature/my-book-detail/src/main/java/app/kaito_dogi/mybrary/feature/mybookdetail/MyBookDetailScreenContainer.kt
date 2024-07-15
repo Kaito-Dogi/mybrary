@@ -9,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
@@ -28,9 +29,10 @@ internal fun MyBookDetailScreenContainer(
     viewModel.init()
   }
 
-  uiState.shownMessage?.let {
+  uiState.messageResId?.let {
+    val context = LocalContext.current
     LaunchedEffect(it) {
-      snackbarHostState.showSnackbar(it)
+      snackbarHostState.showSnackbar(context.getString(it))
       viewModel.onMessageShow()
     }
   }
