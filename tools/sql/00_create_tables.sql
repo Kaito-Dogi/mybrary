@@ -1,13 +1,11 @@
--- Create tables
-
-create table public.users (
-  id uuid primary key references auth.users on delete cascade,
+create table public.profile (
+  user_id uuid not null primary key references auth.users on delete cascade,
   name varchar(255) not null,
   created_at timestamp not null default current_timestamp,
   updated_at timestamp not null default current_timestamp
 );
 
-create table public.books (
+create table public.book (
   id bigint generated always as identity primary key,
   external_id char(12) not null,
   title varchar(255) not null,
@@ -20,10 +18,10 @@ create table public.books (
   updated_at timestamp not null default current_timestamp
 );
 
-create table public.my_books (
+create table public.my_book (
   id bigint generated always as identity primary key,
-  user_id uuid not null references public.users(id) on delete cascade,
-  book_id bigint not null references public.books(id) on delete cascade,
+  user_id uuid not null references public.profile(user_id) on delete cascade,
+  book_id bigint not null references public.book(id) on delete cascade,
   is_pinned boolean not null,
   is_favorite boolean not null,
   is_public boolean not null,
@@ -32,17 +30,17 @@ create table public.my_books (
   updated_at timestamp not null default current_timestamp
 );
 
-create table public.authors (
+create table public.author (
   id bigint generated always as identity primary key,
-  book_id bigint not null references public.books(id) on delete cascade,
+  book_id bigint not null references public.book(id) on delete cascade,
   name varchar(255) not null,
   created_at timestamp not null default current_timestamp,
   updated_at timestamp not null default current_timestamp
 );
 
-create table public.memos (
+create table public.memo (
   id bigint generated always as identity primary key,
-  my_book_id bigint not null references public.my_books(id) on delete cascade,
+  my_book_id bigint not null references public.my_book(id) on delete cascade,
   content text not null,
   start_page int check (start_page > 0),
   end_page int check (end_page > 0),
