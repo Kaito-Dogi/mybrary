@@ -31,7 +31,7 @@
   <string name="my_book_detail_message_memo_edited">Note edited</string>
   <string name="my_book_detail_placeholder_end_page">End Page</string>
   <string name="my_book_detail_placeholder_start_page">Start Page</string>
-  <string name="my_book_detail_placeholder_enter_a_memo">Enter a note…</string>
+  <string name="my_book_detail_placeholder_enter_memo">Note…</string>
   <string name="my_book_detail_text_a">A</string>
   <string name="my_book_detail_text_edited">%1$s • edited</string>
   <string name="my_book_detail_text_p">p.%1$d</string>

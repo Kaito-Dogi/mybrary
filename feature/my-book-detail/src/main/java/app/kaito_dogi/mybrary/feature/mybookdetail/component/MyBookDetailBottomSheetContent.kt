@@ -75,7 +75,7 @@ internal fun MyBookDetailBottomSheetContent(
         value = draftMemo.content,
         onValueChange = onContentChange,
         modifier = Modifier.weight(1f),
-        placeholder = { Text(textResId = R.string.my_book_detail_placeholder_enter_a_memo) },
+        placeholder = { Text(textResId = R.string.my_book_detail_placeholder_enter_memo) },
         isError = isContentTextFieldError,
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         keyboardActions = KeyboardActions(

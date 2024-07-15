@@ -31,7 +31,7 @@
   <string name="my_book_detail_message_memo_edited">メモを編集しました</string>
   <string name="my_book_detail_placeholder_end_page">終了ページ</string>
   <string name="my_book_detail_placeholder_start_page">開始ページ</string>
-  <string name="my_book_detail_placeholder_enter_a_memo">メモを入力…</string>
+  <string name="my_book_detail_placeholder_enter_memo">メモを入力…</string>
   <string name="my_book_detail_text_a">あ</string>
   <string name="my_book_detail_text_edited">%1$s（編集済み）</string>
   <string name="my_book_detail_text_p">p.%1$d</string>
