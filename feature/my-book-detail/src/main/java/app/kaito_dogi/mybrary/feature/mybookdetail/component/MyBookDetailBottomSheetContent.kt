@@ -1,22 +1,21 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
+import app.kaito_dogi.mybrary.core.designsystem.component.Icon
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -34,26 +33,32 @@ internal fun MyBookDetailBottomSheetContent(
   onSaveClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  Column(modifier = modifier) {
-    Row(modifier = Modifier.fillMaxWidth()) {
+  Column(
+    modifier = modifier,
+    verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+  ) {
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+    ) {
       TextField(
         value = draftMemo.pageRange?.start?.toString(radix = Radix) ?: "",
         onValueChange = onStartPageChange,
         modifier = Modifier.weight(1f),
-        placeholder = { Text(text = "開始ページ") },
+        placeholder = { Text(textResId = R.string.my_book_detail_placeholder_start_page) },
         keyboardOptions = KeyboardOptions.Default.copy(
           keyboardType = KeyboardType.Number,
           imeAction = ImeAction.Next,
         ),
         singleLine = true,
       )
-      Gap(width = MybraryTheme.space.sm)
+
       TextField(
         value = draftMemo.pageRange?.end?.toString(radix = Radix) ?: "",
         onValueChange = onEndPageChange,
         modifier = Modifier.weight(1f),
         enabled = draftMemo.pageRange?.start != null,
-        placeholder = { Text(text = "終了ページ") },
+        placeholder = { Text(textResId = R.string.my_book_detail_placeholder_end_page) },
         keyboardOptions = KeyboardOptions.Default.copy(
           keyboardType = KeyboardType.Number,
           imeAction = ImeAction.Next,
@@ -61,7 +66,7 @@ internal fun MyBookDetailBottomSheetContent(
         singleLine = true,
       )
     }
-    Gap(height = MybraryTheme.space.sm)
+
     Row(
       modifier = Modifier.fillMaxWidth(),
       verticalAlignment = Alignment.Bottom,
@@ -70,7 +75,7 @@ internal fun MyBookDetailBottomSheetContent(
         value = draftMemo.content,
         onValueChange = onContentChange,
         modifier = Modifier.weight(1f),
-        placeholder = { Text(text = "メモを入力…") },
+        placeholder = { Text(textResId = R.string.my_book_detail_placeholder_enter_a_memo) },
         isError = isContentTextFieldError,
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         keyboardActions = KeyboardActions(
@@ -78,10 +83,11 @@ internal fun MyBookDetailBottomSheetContent(
         ),
         minLines = 2,
       )
+
       IconButton(onClick = onSaveClick) {
         Icon(
-          painter = painterResource(R.drawable.icon_send),
-          contentDescription = "メモを保存する",
+          iconResId = R.drawable.icon_send,
+          contentDescriptionResId = R.string.my_book_detail_content_description_save_a_memo,
         )
       }
     }

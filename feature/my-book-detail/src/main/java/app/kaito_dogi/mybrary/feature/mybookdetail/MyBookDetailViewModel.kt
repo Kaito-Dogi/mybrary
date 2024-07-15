@@ -263,7 +263,7 @@ internal class MyBookDetailViewModel @Inject constructor(
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
               editingMemoId = null,
               isMemoSaved = true,
-              messageResId = R.string.my_book_detail_message_note_added,
+              messageResId = R.string.my_book_detail_message_memo_created,
             )
           }
         } else {
@@ -280,7 +280,7 @@ internal class MyBookDetailViewModel @Inject constructor(
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
               editingMemoId = null,
               isMemoSaved = true,
-              messageResId = R.string.my_book_detail_message_note_edited,
+              messageResId = R.string.my_book_detail_message_memo_edited,
             )
           }
         }

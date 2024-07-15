@@ -1,16 +1,17 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
 internal fun MemoRowSkeleton(
@@ -27,16 +28,17 @@ internal fun MemoRowSkeleton(
         end = MybraryTheme.space.md,
         bottom = MybraryTheme.space.md,
       ),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
     ) {
       Text(
-        text = "あ",
+        textResId = R.string.my_book_detail_text_a,
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
         style = MybraryTheme.typography.bodyLarge,
       )
-      Gap(height = MybraryTheme.space.xxs)
+
       Text(
-        text = "あ",
+        textResId = R.string.my_book_detail_text_a,
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
         style = MybraryTheme.typography.bodySmall,
