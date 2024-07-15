@@ -25,10 +25,7 @@ internal fun MyBookCell(
     modifier = modifier,
     shape = MybraryTheme.shapes.extraSmall,
   ) {
-    BookImage(
-      imageUrl = myBook.imageUrl,
-      title = myBook.title,
-    )
+    BookImage(imageUrl = myBook.imageUrl)
   }
 }
 

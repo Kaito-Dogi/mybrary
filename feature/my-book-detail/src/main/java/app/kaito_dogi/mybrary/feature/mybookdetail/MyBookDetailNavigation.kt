@@ -9,7 +9,7 @@ import androidx.navigation.navArgument
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-private const val MyBookDetail = "myBookDetail"
+private const val MyBookDetail = "my-book-detail"
 
 internal const val MyBookDetailNavArgName = "${MyBookDetail}NavArg"
 

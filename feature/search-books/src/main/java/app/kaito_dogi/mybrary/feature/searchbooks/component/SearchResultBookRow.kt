@@ -13,16 +13,18 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
 import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -46,14 +48,14 @@ internal fun SearchResultBookRow(
       modifier = Modifier
         .padding(MybraryTheme.space.md)
         .height(IntrinsicSize.Min),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
       // TODO: 定数にする
       BookImage(
         imageUrl = searchResultBook.imageUrl,
-        title = searchResultBook.title,
         modifier = Modifier.width(72.dp),
       )
-      Gap(width = MybraryTheme.space.sm)
+
       Column(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
       ) {
@@ -66,6 +68,7 @@ internal fun SearchResultBookRow(
           maxLines = 2,
           style = MybraryTheme.typography.titleMedium,
         )
+
         if (searchResultBook.authors.isNotEmpty()) {
           Text(
             text = searchResultBook.authors.joinToString { it.name },
@@ -75,9 +78,30 @@ internal fun SearchResultBookRow(
             style = MybraryTheme.typography.bodyMedium,
           )
         }
-        if (searchResultBook.rowBody.isNotBlank()) {
+
+        val context = LocalContext.current
+        val rowBody = remember(searchResultBook, context) {
+          when {
+            searchResultBook.pageCount != null && searchResultBook.publisher != null -> context.getString(
+              R.string.search_books_text_page_count_and_publisher,
+              searchResultBook.pageCount,
+              searchResultBook.publisher,
+            )
+
+            searchResultBook.pageCount != null -> context.getString(
+              R.string.search_books_text_page_count,
+              searchResultBook.pageCount,
+            )
+
+            searchResultBook.publisher != null -> "${searchResultBook.publisher}"
+
+            else -> ""
+          }
+        }
+
+        if (rowBody.isNotBlank()) {
           Text(
-            text = searchResultBook.rowBody,
+            text = rowBody,
             modifier = Modifier.fillMaxWidth(),
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
@@ -88,16 +112,6 @@ internal fun SearchResultBookRow(
     }
   }
 }
-
-private val SearchResultBook.rowBody: String
-  get() = run {
-    when {
-      this.pageCount != null && this.publisher != null -> "${this.pageCount}ページ｜${this.publisher}"
-      this.pageCount != null -> "${this.pageCount}ページ"
-      this.publisher != null -> "${this.publisher}"
-      else -> ""
-    }
-  }
 
 @Preview
 @Composable

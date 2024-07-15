@@ -1,17 +1,19 @@
 package app.kaito_dogi.mybrary.feature.mybookdetail.component
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
@@ -19,6 +21,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
 
@@ -41,15 +44,44 @@ internal fun MemoRow(
         end = MybraryTheme.space.md,
         bottom = MybraryTheme.space.md,
       ),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
     ) {
       Text(
         text = memo.content,
         modifier = Modifier.fillMaxWidth(),
         style = MybraryTheme.typography.bodyLarge,
       )
-      Gap(height = MybraryTheme.space.xxs)
+
+      val context = LocalContext.current
+      val rowBody = remember(memo, context) {
+        val page = when {
+          memo.pageRange?.end != null -> context.getString(
+            R.string.my_book_detail_text_pp,
+            memo.pageRange?.start,
+            memo.pageRange?.end,
+          )
+
+          memo.pageRange?.start != null -> context.getString(
+            R.string.my_book_detail_text_p,
+            memo.pageRange?.start,
+          )
+
+          else -> ""
+        }
+
+        val datetimeText = when {
+          memo.editedAt != null -> context.getString(
+            R.string.my_book_detail_text_edited,
+            memo.editedAt?.toFormattedString(),
+          )
+
+          else -> memo.createdAt.toFormattedString()
+        }
+
+        if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
+      }
       Text(
-        text = memo.cardBody,
+        text = rowBody,
         modifier = Modifier.fillMaxWidth(),
         // TODO: カラースキーマを整理する
         color = Color.Gray,
@@ -58,20 +90,6 @@ internal fun MemoRow(
     }
   }
 }
-
-private val Memo.cardBody: String
-  get() = run {
-    val page = when {
-      this.pageRange?.end != null -> "pp.${this.pageRange?.start}~${this.pageRange?.end}"
-      this.pageRange?.start != null -> "p.${this.pageRange?.start}"
-      else -> ""
-    }
-    val datetimeText = when {
-      this.editedAt != null -> "${this.editedAt?.toFormattedString()}（編集済み）"
-      else -> this.createdAt.toFormattedString()
-    }
-    if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
-  }
 
 @Preview
 @Composable

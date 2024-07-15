@@ -9,6 +9,7 @@ import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
+import app.kaito_dogi.mybrary.core.ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -55,7 +56,7 @@ internal class MyBookDetailViewModel @Inject constructor(
   }
 
   fun onMessageShow() {
-    _uiState.update { it.copy(shownMessage = null) }
+    _uiState.update { it.copy(messageResId = null) }
   }
 
   fun onArchiveClick() {
@@ -65,9 +66,9 @@ internal class MyBookDetailViewModel @Inject constructor(
         _uiState.update {
           it.copy(
             myBook = archivedMyBook,
-            editingMemoId = null,
             draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
-            shownMessage = "『${archivedMyBook.title}』をアーカイブしました",
+            editingMemoId = null,
+            messageResId = R.string.my_book_detail_message_my_book_archived,
           )
         }
       } catch (e: Exception) {
@@ -85,7 +86,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = privateMyBook,
-              shownMessage = "『${privateMyBook.title}』を非公開にしました",
+              messageResId = R.string.my_book_detail_message_my_book_is_now_private,
             )
           }
         } else {
@@ -93,7 +94,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = publicMyBook,
-              shownMessage = "『${publicMyBook.title}』を公開しました",
+              messageResId = R.string.my_book_detail_message_my_book_is_now_public,
             )
           }
         }
@@ -112,7 +113,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = removedMyBook,
-              shownMessage = "『${removedMyBook.title}』をお気に入りから削除しました",
+              messageResId = R.string.my_book_detail_message_my_book_removed_from_your_favorites,
             )
           }
         } else {
@@ -120,7 +121,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               myBook = addedMyBook,
-              shownMessage = "『${addedMyBook.title}』をお気に入りに追加しました",
+              messageResId = R.string.my_book_detail_message_my_book_added_to_your_favorites,
             )
           }
         }
@@ -142,8 +143,8 @@ internal class MyBookDetailViewModel @Inject constructor(
 
         _uiState.update {
           it.copy(
-            isBottomSheetVisible = true,
             draftMemo = draftMemo,
+            isBottomSheetVisible = true,
           )
         }
       } catch (e: Exception) {
@@ -156,12 +157,12 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onMemoClick(memo: Memo) {
     _uiState.update {
       it.copy(
-        isBottomSheetVisible = true,
-        editingMemoId = memo.id,
         draftMemo = it.draftMemo.copy(
           content = memo.content,
           pageRange = memo.pageRange,
         ),
+        editingMemoId = memo.id,
+        isBottomSheetVisible = true,
       )
     }
   }
@@ -188,8 +189,9 @@ internal class MyBookDetailViewModel @Inject constructor(
 
         _uiState.update {
           it.copy(
-            isBottomSheetVisible = false,
             editingMemoId = null,
+            isMemoSaved = false,
+            isBottomSheetVisible = false,
           )
         }
       } catch (e: Exception) {
@@ -242,9 +244,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     }
   }
 
-  fun onSaveClick(
-    onComplete: () -> Unit,
-  ) {
+  fun onSaveClick() {
     viewModelScope.launch {
       try {
         // メモの内容が空の場合はエラー表示にする
@@ -260,9 +260,10 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               memoList = it.memoList?.plus(createdMemo),
-              editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
-              shownMessage = "メモを追加しました",
+              editingMemoId = null,
+              isMemoSaved = true,
+              messageResId = R.string.my_book_detail_message_memo_created,
             )
           }
         } else {
@@ -276,15 +277,13 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               memoList = newMemoList,
-              editingMemoId = null,
               draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
-              shownMessage = "メモを編集しました",
+              editingMemoId = null,
+              isMemoSaved = true,
+              messageResId = R.string.my_book_detail_message_memo_edited,
             )
           }
         }
-
-        // BottomSheet を閉じる
-        onComplete()
       } catch (e: Exception) {
         // TODO: デバッグ用のログを実装する
         println("あああ: ${e.message}")

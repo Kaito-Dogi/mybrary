@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
@@ -23,7 +22,6 @@ import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchResultBookRowS
 internal fun SearchBooksScreen(
   uiState: SearchBooksUiState,
   snackbarHost: @Composable () -> Unit,
-  showSnackbar: (String) -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
   onSearchResultClick: (SearchResultBook) -> Unit,
@@ -72,12 +70,6 @@ internal fun SearchBooksScreen(
         }
       }
     }
-
-    uiState.shownMessage?.let {
-      LaunchedEffect(it) {
-        showSnackbar(it)
-      }
-    }
   }
 }
 
@@ -88,7 +80,6 @@ private fun SearchBooksScreenPreview() {
     SearchBooksScreen(
       uiState = SearchBooksUiState.InitialValue,
       snackbarHost = {},
-      showSnackbar = {},
       onSearchQueryChange = {},
       onBarcodeScannerClick = {},
       onSearchResultClick = {},

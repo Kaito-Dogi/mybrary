@@ -5,17 +5,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
+import app.kaito_dogi.mybrary.core.designsystem.component.Icon
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
@@ -48,8 +47,12 @@ internal fun LoginScreen(
         ),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-      LogoSection(modifier = Modifier.weight(1f))
+      LogoSection(
+        modifier = Modifier.weight(1f),
+      )
+
       Gap(height = MybraryTheme.space.xl)
+
       MailSection(
         email = uiState.email,
         onEmailChange = onMailChange,
@@ -59,22 +62,30 @@ internal fun LoginScreen(
         onVisibilityClick = onVisibilityClick,
         onMailLoginClick = onMailLoginClick,
       )
+
       Gap(height = MybraryTheme.space.xl)
+
       DividerSection()
+
       Gap(height = MybraryTheme.space.xl)
+
       OutlinedButton(
         onClick = onGoogleLoginClick,
         modifier = Modifier.fillMaxWidth(),
       ) {
         Icon(
-          painter = painterResource(id = R.drawable.icon_google),
-          contentDescription = "メールアドレスでログイン",
+          iconResId = R.drawable.icon_google,
+          descResId = R.string.login_desc_login_with_google,
           tint = Color.Unspecified,
         )
+
         Gap(width = MybraryTheme.space.xs)
-        Text(text = "Googleでログイン")
+
+        Text(textResId = R.string.login_text_login_with_google)
       }
+
       Gap(height = MybraryTheme.space.sm)
+
       SignUpSection(onClick = onSignUpClick)
     }
   }

@@ -15,17 +15,19 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
@@ -35,6 +37,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 import coil.compose.AsyncImage
 
@@ -52,7 +55,9 @@ internal fun MyBookDetailTopAppBar(
   myBook: MyBook,
   modifier: Modifier = Modifier,
 ) {
-  Box(modifier = modifier.height(IntrinsicSize.Min)) {
+  Box(
+    modifier = modifier.height(IntrinsicSize.Min),
+  ) {
     AsyncImage(
       model = myBook.imageUrl?.value,
       modifier = Modifier
@@ -62,10 +67,11 @@ internal fun MyBookDetailTopAppBar(
           radiusX = MybraryTheme.space.md,
           radiusY = MybraryTheme.space.md,
         ),
-      contentDescription = "背景画像",
+      contentDescription = stringResource(id = R.string.my_book_detail_desc_background_image),
       contentScale = ContentScale.FillWidth,
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
+
     Row(
       modifier = Modifier
         .height(IntrinsicSize.Min)
@@ -77,14 +83,14 @@ internal fun MyBookDetailTopAppBar(
           end = MybraryTheme.space.md,
           bottom = MybraryTheme.space.md,
         ),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       // TODO: width を定数にする
       BookImage(
         imageUrl = myBook.imageUrl,
-        title = myBook.title,
         modifier = Modifier.width(120.dp),
       )
-      Gap(width = MybraryTheme.space.md)
+
       Column(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
       ) {
@@ -98,6 +104,7 @@ internal fun MyBookDetailTopAppBar(
           maxLines = 4,
           style = MybraryTheme.typography.titleLarge,
         )
+
         if (myBook.authors.isNotEmpty()) {
           Text(
             text = myBook.authors.joinToString { it.name },
@@ -108,9 +115,29 @@ internal fun MyBookDetailTopAppBar(
             style = MybraryTheme.typography.bodyMedium,
           )
         }
-        if (myBook.topAppBarBody.isNotBlank()) {
+
+        val context = LocalContext.current
+        val topAppBarBody = remember(myBook, context) {
+          when {
+            myBook.pageCount != null && myBook.publisher != null -> context.getString(
+              R.string.my_book_detail_text_page_count_and_publisher,
+              myBook.pageCount,
+              myBook.publisher,
+            )
+
+            myBook.pageCount != null -> context.getString(
+              R.string.my_book_detail_text_page_count,
+              myBook.pageCount,
+            )
+
+            myBook.publisher != null -> "${myBook.publisher}"
+
+            else -> ""
+          }
+        }
+        if (topAppBarBody.isNotBlank()) {
           Text(
-            text = myBook.topAppBarBody,
+            text = topAppBarBody,
             modifier = Modifier.fillMaxWidth(),
             color = Color.White,
             overflow = TextOverflow.Ellipsis,
@@ -122,16 +149,6 @@ internal fun MyBookDetailTopAppBar(
     }
   }
 }
-
-private val MyBook.topAppBarBody: String
-  get() = run {
-    when {
-      this.pageCount != null && this.publisher != null -> "${this.pageCount}ページ｜${this.publisher}"
-      this.pageCount != null -> "${this.pageCount}ページ"
-      this.publisher != null -> "${this.publisher}"
-      else -> ""
-    }
-  }
 
 @Preview
 @Composable

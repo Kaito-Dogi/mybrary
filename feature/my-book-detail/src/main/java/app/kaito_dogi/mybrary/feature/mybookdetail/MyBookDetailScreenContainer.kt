@@ -9,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
@@ -21,12 +22,32 @@ internal fun MyBookDetailScreenContainer(
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-  val coroutineScope = rememberCoroutineScope()
-  val bottomSheetState = rememberModalBottomSheetState()
   val snackbarHostState = remember { SnackbarHostState() }
+  val bottomSheetState = rememberModalBottomSheetState()
 
   LaunchedEffect(Unit) {
     viewModel.init()
+  }
+
+  uiState.messageResId?.let {
+    val context = LocalContext.current
+    LaunchedEffect(it) {
+      snackbarHostState.showSnackbar(context.getString(it))
+      viewModel.onMessageShow()
+    }
+  }
+
+  if (uiState.isMemoSaved) {
+    val coroutineScope = rememberCoroutineScope()
+    LaunchedEffect(Unit) {
+      coroutineScope.launch {
+        bottomSheetState.hide()
+      }.invokeOnCompletion {
+        if (!bottomSheetState.isVisible) {
+          viewModel.onBottomSheetDismissRequest()
+        }
+      }
+    }
   }
 
   MyBookDetailScreen(
@@ -39,12 +60,6 @@ internal fun MyBookDetailScreenContainer(
         content = it,
       )
     },
-    showSnackbar = {
-      coroutineScope.launch {
-        snackbarHostState.showSnackbar(it)
-        viewModel.onMessageShow()
-      }
-    },
     onArchiveClick = viewModel::onArchiveClick,
     onPublicClick = viewModel::onPublicClick,
     onFavoriteClick = viewModel::onFavoriteClick,
@@ -53,18 +68,6 @@ internal fun MyBookDetailScreenContainer(
     onStartPageChange = viewModel::onStartPageChange,
     onEndPageChange = viewModel::onEndPageChange,
     onContentChange = viewModel::onContentChange,
-    onSaveClick = {
-      viewModel.onSaveClick(
-        onComplete = {
-          coroutineScope.launch {
-            bottomSheetState.hide()
-          }.invokeOnCompletion {
-            if (!bottomSheetState.isVisible) {
-              viewModel.onBottomSheetDismissRequest()
-            }
-          }
-        },
-      )
-    },
+    onSaveClick = viewModel::onSaveClick,
   )
 }

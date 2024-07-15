@@ -4,7 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
-private const val MyBookList = "myBookList"
+private const val MyBookList = "my-book-list"
 
 const val MyBookListRoute = MyBookList
 

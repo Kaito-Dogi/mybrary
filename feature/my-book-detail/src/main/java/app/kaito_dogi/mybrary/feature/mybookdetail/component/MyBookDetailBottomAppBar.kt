@@ -5,12 +5,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.extension.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
@@ -35,38 +34,34 @@ internal fun MyBookDetailBottomAppBar(
     // TODO: v2 以降で実装を復活させる
 //    IconButton(onClick = onArchiveClick) {
 //      Icon(
-//        painter = painterResource(R.drawable.icon_archive),
-//        contentDescription = "書籍を非表示にする",
+//        iconResId = R.drawable.icon_archive,
+//        descResId = R.string.my_book_detail_desc_archive_my_book,
 //      )
 //    }
+//
 //    IconButton(onClick = onPublicClick) {
 //      Icon(
-//        painter = if (isPublic) {
-//          painterResource(R.drawable.icon_visibility)
-//        } else {
-//          painterResource(R.drawable.icon_visibility_off)
-//        },
-//        contentDescription = "書籍を他のユーザーに公開する",
+//        iconResId = if (isPublic) R.drawable.icon_visibility else R.drawable.icon_visibility_off,
+//        descResId = if (isPublic) R.string.my_book_detail_desc_make_my_book_private else R.string.my_book_detail_desc_make_my_book_public,
 //      )
 //    }
+
     IconButton(onClick = onFavoriteClick) {
       Icon(
-        painter = if (isFavorite) {
-          painterResource(R.drawable.icon_heart_filled)
-        } else {
-          painterResource(R.drawable.icon_heart_outlined)
-        },
-        contentDescription = "書籍をお気に入り登録する",
+        iconResId = if (isFavorite) R.drawable.icon_heart_filled else R.drawable.icon_heart_outlined,
+        descResId = if (isFavorite) R.string.my_book_detail_desc_remove_my_book_from_favorites else R.string.my_book_detail_desc_add_my_book_to_favorites,
       )
     }
+
     Spacer(modifier = Modifier.weight(1f))
+
     FloatingActionButton(
       onClick = onAdditionClick,
       elevation = FloatingActionButtonDefaults.elevationZero(),
     ) {
       Icon(
-        painter = painterResource(R.drawable.icon_add),
-        contentDescription = "メモを編集",
+        iconResId = R.drawable.icon_add,
+        descResId = R.string.my_book_detail_desc_create_a_memo,
       )
     }
   }
