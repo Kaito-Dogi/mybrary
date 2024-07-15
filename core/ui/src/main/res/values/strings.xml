@@ -43,5 +43,12 @@
   <string name="my_book_list_text_all_my_books">All MyBooks</string>
   <string name="my_book_list_text_favorite_my_books">Favorite MyBooks</string>
   <string name="my_book_list_text_other_my_books">Other MyBooks</string>
+  <string name="search_books_desc_scan_book_barcode">Scan book barcode</string>
+  <string name="search_books_desc_search_for_books">Search for books</string>
+  <string name="search_books_placeholder_enter_search_keywords">Search…</string>
+  <string name="search_books_text_a">A</string>
+  <string name="search_books_text_a_a">A\nA</string>
+  <string name="search_books_text_page_count">%1$d pages</string>
+  <string name="search_books_text_page_count_and_publisher">%1$d pages｜ %2$s</string>
   <string name="ui_desc_book_cover">Book cover</string>
 </resources>
