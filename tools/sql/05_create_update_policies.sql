@@ -1,4 +1,4 @@
-create policy "Authenticated users can update their own user."
+create policy "Authenticated users can update their own profile."
 on profile for update
 to authenticated
 using ( auth.uid() = user_id );

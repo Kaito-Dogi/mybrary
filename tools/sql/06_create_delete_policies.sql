@@ -1,4 +1,4 @@
-create policy "Authenticated users can delete their own user."
+create policy "Authenticated users can delete their own profile."
 on profile for delete
 to authenticated
 using ( auth.uid() = user_id );
