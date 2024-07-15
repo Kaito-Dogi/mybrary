@@ -75,7 +75,7 @@ internal fun LoginScreen(
       ) {
         Icon(
           iconResId = R.drawable.icon_google,
-          contentDescriptionResId = R.string.login_content_description_login_with_google,
+          descResId = R.string.login_desc_login_with_google,
           tint = Color.Unspecified,
         )
 

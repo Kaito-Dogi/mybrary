@@ -35,21 +35,21 @@ internal fun MyBookDetailBottomAppBar(
 //    IconButton(onClick = onArchiveClick) {
 //      Icon(
 //        iconResId = R.drawable.icon_archive,
-//        contentDescriptionResId = R.string.my_book_detail_content_description_archive_my_book,
+//        descResId = R.string.my_book_detail_desc_archive_my_book,
 //      )
 //    }
 //
 //    IconButton(onClick = onPublicClick) {
 //      Icon(
 //        iconResId = if (isPublic) R.drawable.icon_visibility else R.drawable.icon_visibility_off,
-//        contentDescriptionResId = if (isPublic) R.string.my_book_detail_content_description_make_my_book_private else R.string.my_book_detail_content_description_make_my_book_public,
+//        descResId = if (isPublic) R.string.my_book_detail_desc_make_my_book_private else R.string.my_book_detail_desc_make_my_book_public,
 //      )
 //    }
 
     IconButton(onClick = onFavoriteClick) {
       Icon(
         iconResId = if (isFavorite) R.drawable.icon_heart_filled else R.drawable.icon_heart_outlined,
-        contentDescriptionResId = if (isFavorite) R.string.my_book_detail_content_description_remove_my_book_from_favorites else R.string.my_book_detail_content_description_add_my_book_to_favorites,
+        descResId = if (isFavorite) R.string.my_book_detail_desc_remove_my_book_from_favorites else R.string.my_book_detail_desc_add_my_book_to_favorites,
       )
     }
 
@@ -61,7 +61,7 @@ internal fun MyBookDetailBottomAppBar(
     ) {
       Icon(
         iconResId = R.drawable.icon_add,
-        contentDescriptionResId = R.string.my_book_detail_content_description_create_a_memo,
+        descResId = R.string.my_book_detail_desc_create_a_memo,
       )
     }
   }

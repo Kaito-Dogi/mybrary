@@ -46,7 +46,7 @@ internal fun MailSection(
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_mail,
-          contentDescriptionResId = R.string.login_content_description_email_address,
+          descResId = R.string.login_desc_email_address,
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
@@ -66,14 +66,14 @@ internal fun MailSection(
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_key,
-          contentDescriptionResId = R.string.login_content_description_password,
+          descResId = R.string.login_desc_password,
         )
       },
       trailingIcon = {
         IconButton(onClick = onVisibilityClick) {
           Icon(
             iconResId = if (isPasswordVisible) R.drawable.icon_visibility else R.drawable.icon_visibility_off,
-            contentDescriptionResId = if (isPasswordVisible) R.string.login_content_description_hide_password else R.string.login_content_description_show_password,
+            descResId = if (isPasswordVisible) R.string.login_desc_hide_password else R.string.login_desc_show_password,
           )
         }
       },
@@ -94,7 +94,7 @@ internal fun MailSection(
     ) {
       Icon(
         iconResId = R.drawable.icon_mail,
-        contentDescriptionResId = R.string.login_content_description_login_with_your_email_address,
+        descResId = R.string.login_desc_login_with_your_email_address,
       )
 
       Gap(width = MybraryTheme.space.xs)

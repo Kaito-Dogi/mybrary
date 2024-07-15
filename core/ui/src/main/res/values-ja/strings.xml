@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="login_content_description_email_address">メールアドレス</string>
-  <string name="login_content_description_hide_password">パスワードを非表示にする</string>
-  <string name="login_content_description_login_with_your_email_address">メールアドレスでログイン</string>
-  <string name="login_content_description_login_with_google">Google でログイン</string>
-  <string name="login_content_description_password">パスワード</string>
-  <string name="login_content_description_show_password">パスワードを表示する</string>
+  <string name="login_desc_email_address">メールアドレス</string>
+  <string name="login_desc_hide_password">パスワードを非表示にする</string>
+  <string name="login_desc_login_with_your_email_address">メールアドレスでログイン</string>
+  <string name="login_desc_login_with_google">Google でログイン</string>
+  <string name="login_desc_password">パスワード</string>
+  <string name="login_desc_show_password">パスワードを表示する</string>
   <string name="login_placeholder_enter_your_email_address">メールアドレスを入力…</string>
   <string name="login_placeholder_enter_your_password">パスワードを入力…</string>
   <string name="login_text_create_an_account">アカウント作成は</string>
@@ -14,14 +14,14 @@
   <string name="login_text_login_with_google">Google でログイン</string>
   <string name="login_text_logo">Mybrary</string>
   <string name="login_text_or">または</string>
-  <string name="my_book_detail_content_description_add_my_book_to_favorites">MyBook をお気に入りに追加する</string>
-  <string name="my_book_detail_content_description_archive_my_book">MyBook をアーカイブする</string>
-  <string name="my_book_detail_content_description_background_image">背景画像</string>
-  <string name="my_book_detail_content_description_create_a_memo">メモを作成する</string>
-  <string name="my_book_detail_content_description_make_my_book_private">MyBook を非公開にする</string>
-  <string name="my_book_detail_content_description_make_my_book_public">MyBook を公開する</string>
-  <string name="my_book_detail_content_description_remove_my_book_from_favorites">MyBook をお気に入りから削除する</string>
-  <string name="my_book_detail_content_description_save_a_memo">メモを保存する</string>
+  <string name="my_book_detail_desc_add_my_book_to_favorites">MyBook をお気に入りに追加する</string>
+  <string name="my_book_detail_desc_archive_my_book">MyBook をアーカイブする</string>
+  <string name="my_book_detail_desc_background_image">背景画像</string>
+  <string name="my_book_detail_desc_create_a_memo">メモを作成する</string>
+  <string name="my_book_detail_desc_make_my_book_private">MyBook を非公開にする</string>
+  <string name="my_book_detail_desc_make_my_book_public">MyBook を公開する</string>
+  <string name="my_book_detail_desc_remove_my_book_from_favorites">MyBook をお気に入りから削除する</string>
+  <string name="my_book_detail_desc_save_a_memo">メモを保存する</string>
   <string name="my_book_detail_message_my_book_added_to_your_favorites">MyBook をお気に入りに追加しました</string>
   <string name="my_book_detail_message_my_book_archived">MyBook をアーカイブしました</string>
   <string name="my_book_detail_message_my_book_is_now_private">MyBook を公開しました</string>

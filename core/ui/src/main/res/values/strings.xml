@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="login_content_description_email_address">Email Address</string>
-  <string name="login_content_description_hide_password">Hide password</string>
-  <string name="login_content_description_login_with_your_email_address">Sign in with your email address</string>
-  <string name="login_content_description_login_with_google">Sign in with Google</string>
-  <string name="login_content_description_password">Password</string>
-  <string name="login_content_description_show_password">Show password</string>
+  <string name="login_desc_email_address">Email Address</string>
+  <string name="login_desc_hide_password">Hide password</string>
+  <string name="login_desc_login_with_your_email_address">Sign in with your email address</string>
+  <string name="login_desc_login_with_google">Sign in with Google</string>
+  <string name="login_desc_password">Password</string>
+  <string name="login_desc_show_password">Show password</string>
   <string name="login_placeholder_enter_your_email_address">Email Address</string>
   <string name="login_placeholder_enter_your_password">Password</string>
   <string name="login_text_create_an_account">"Create an account "</string>
@@ -14,14 +14,14 @@
   <string name="login_text_login_with_google">Sign in with Google</string>
   <string name="login_text_logo">Mybrary</string>
   <string name="login_text_or">or</string>
-  <string name="my_book_detail_content_description_add_my_book_to_favorites">Add MyBook to favorites</string>
-  <string name="my_book_detail_content_description_archive_my_book">Archive MyBook</string>
-  <string name="my_book_detail_content_description_background_image">Background image</string>
-  <string name="my_book_detail_content_description_create_a_memo">Create a note</string>
-  <string name="my_book_detail_content_description_make_my_book_private">Make MyBook private</string>
-  <string name="my_book_detail_content_description_make_my_book_public">Make MyBook public</string>
-  <string name="my_book_detail_content_description_remove_my_book_from_favorites">Remove MyBook from favorites</string>
-  <string name="my_book_detail_content_description_save_a_memo">Save a note</string>
+  <string name="my_book_detail_desc_add_my_book_to_favorites">Add MyBook to favorites</string>
+  <string name="my_book_detail_desc_archive_my_book">Archive MyBook</string>
+  <string name="my_book_detail_desc_background_image">Background image</string>
+  <string name="my_book_detail_desc_create_a_memo">Create a note</string>
+  <string name="my_book_detail_desc_make_my_book_private">Make MyBook private</string>
+  <string name="my_book_detail_desc_make_my_book_public">Make MyBook public</string>
+  <string name="my_book_detail_desc_remove_my_book_from_favorites">Remove MyBook from favorites</string>
+  <string name="my_book_detail_desc_save_a_memo">Save a note</string>
   <string name="my_book_detail_message_my_book_added_to_your_favorites">MyBook added to your favorites</string>
   <string name="my_book_detail_message_my_book_archived">MyBook archived</string>
   <string name="my_book_detail_message_my_book_is_now_private">MyBook is now private</string>

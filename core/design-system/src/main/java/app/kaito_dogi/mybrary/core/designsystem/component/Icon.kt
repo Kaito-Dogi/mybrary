@@ -12,12 +12,12 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun Icon(
   @DrawableRes iconResId: Int,
-  @StringRes contentDescriptionResId: Int?,
+  @StringRes descResId: Int?,
   modifier: Modifier = Modifier,
   tint: Color = LocalContentColor.current,
 ) = androidx.compose.material3.Icon(
   painter = painterResource(id = iconResId),
-  contentDescription = contentDescriptionResId?.let { stringResource(id = it) },
+  contentDescription = descResId?.let { stringResource(id = it) },
   modifier = modifier,
   tint = tint,
 )
