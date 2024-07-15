@@ -1,29 +1,29 @@
-create policy "Authenticated users can create a user."
-on users for insert
+create policy "Authenticated users can create a profile."
+on profile for insert
 to authenticated
 with check ( auth.uid() = id );
 
 create policy "Authenticated users can create a book."
-on books for insert
+on book for insert
 to authenticated
 with check ( auth.uid() is not null );
 
 create policy "Authenticated users can create a my_book."
-on my_books for insert
+on my_book for insert
 to authenticated
 with check ( auth.uid() = user_id );
 
 create policy "Authenticated users can create a author."
-on authors for insert
+on author for insert
 to authenticated
 with check ( auth.uid() is not null );
 
 create policy "Authenticated users can create a memo."
-on memos for insert
+on memo for insert
 to authenticated
 with check (
   auth.uid() = (
-    select user_id from my_books
-    where my_books.id = memos.my_book_id
+    select user_id from my_book
+    where my_book.id = memo.my_book_id
   )
 );

@@ -29,7 +29,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
   override suspend fun getMyBooks(): GetMyBooksResponse {
     return supabaseClient.postgrest.from(table = "my_book").select(
       columns = Columns.raw(
-        value = "*,user:user_id(*),book:book_id(*,author(*))",
+        value = "*,profile:user_id(*),book:book_id(*,author(*))",
       ),
     ).decodeList<MyBookResponse>()
   }
@@ -37,7 +37,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
     return supabaseClient.postgrest.from(table = "my_book").select(
       columns = Columns.raw(
-        value = "*,user:user_id(*),book:book_id(*,author(*))",
+        value = "*,profile:user_id(*),book:book_id(*,author(*))",
       ),
       request = {
         filter {
@@ -50,7 +50,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
   override suspend fun getMemos(myBookId: Long): GetMemos {
     return supabaseClient.postgrest.from(table = "memo").select(
       columns = Columns.raw(
-        value = "*,my_book(user:user_id(*))",
+        value = "*,my_book(profile:user_id(*))",
       ),
       request = {
         filter {
