@@ -131,7 +131,6 @@ internal fun MyBookListScreen(
   }
 }
 
-// TODO: Loading, Success 時の Preview を表示する
 @Preview
 @Composable
 private fun MyBookListScreenPreview() {
