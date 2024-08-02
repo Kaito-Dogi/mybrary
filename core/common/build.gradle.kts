@@ -1,8 +1,8 @@
 plugins {
   alias(libs.plugins.javaLibrary)
   alias(libs.plugins.jetbrainsKotlinJvm)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
-  alias(libs.plugins.kotlinKapt)
 }
 
 java {
@@ -15,9 +15,5 @@ dependencies {
   implementation(libs.kotlinxCoroutinesCore)
   implementation(libs.serialization)
 
-  kapt(libs.hiltCompiler)
-}
-
-kapt {
-  correctErrorTypes = true
+  ksp(libs.hiltCompiler)
 }
