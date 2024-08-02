@@ -3,7 +3,7 @@ plugins {
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   alias(libs.plugins.serialization)
-  alias(libs.plugins.kotlinKapt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -46,5 +46,5 @@ dependencies {
   implementation(platform(libs.supabaseBom))
   implementation(libs.supabasePostgrestKt)
 
-  kapt(libs.hiltCompiler)
+  ksp(libs.hiltCompiler)
 }

@@ -10,7 +10,7 @@ plugins {
   alias(libs.plugins.androidApplication)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  alias(libs.plugins.kotlinKapt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -117,10 +117,5 @@ dependencies {
   implementation(libs.hiltAndroid)
   implementation(libs.material)
 
-  kapt(libs.hiltCompiler)
-}
-
-// TODO: core:data モジュール実装後に削除
-kapt {
-  correctErrorTypes = true
+  ksp(libs.hiltCompiler)
 }

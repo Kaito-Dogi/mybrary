@@ -2,7 +2,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  alias(libs.plugins.kotlinKapt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -47,10 +47,6 @@ dependencies {
   implementation(libs.roomKtx)
   implementation(libs.roomRuntime)
 
-  kapt(libs.hiltCompiler)
-  kapt(libs.roomCompiler)
-}
-
-kapt {
-  correctErrorTypes = true
+  ksp(libs.hiltCompiler)
+  ksp(libs.roomCompiler)
 }

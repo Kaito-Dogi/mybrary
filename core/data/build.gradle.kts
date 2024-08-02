@@ -2,7 +2,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  alias(libs.plugins.kotlinKapt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -59,11 +59,7 @@ dependencies {
 
   implementation(libs.hiltAndroid)
 
-  kapt(libs.hiltCompiler)
+  ksp(libs.hiltCompiler)
 
   testImplementation(libs.junit)
-}
-
-kapt {
-  correctErrorTypes = true
 }

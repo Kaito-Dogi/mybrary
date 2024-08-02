@@ -3,7 +3,7 @@ plugins {
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
   alias(libs.plugins.serialization)
-  alias(libs.plugins.kotlinKapt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -51,9 +51,5 @@ dependencies {
   implementation(libs.retrofitConverterSerialization)
   implementation(libs.serialization)
 
-  kapt(libs.hiltCompiler)
-}
-
-kapt {
-  correctErrorTypes = true
+  ksp(libs.hiltCompiler)
 }
