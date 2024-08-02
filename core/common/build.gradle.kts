@@ -1,8 +1,8 @@
 plugins {
   alias(libs.plugins.javaLibrary)
   alias(libs.plugins.jetbrainsKotlinJvm)
-  alias(libs.plugins.serialization)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.serialization)
 }
 
 java {
