@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.feature.mybookdetail
 
 import android.net.Uri
 import android.os.Bundle
+import androidx.core.os.BundleCompat
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -22,7 +23,7 @@ private object MyBookDetailNavType : NavType<MyBookDetailNavArg>(
     bundle: Bundle,
     key: String,
   ): MyBookDetailNavArg {
-    return bundle.getParcelable(key)!!
+    return BundleCompat.getParcelable(bundle, key, MyBookDetailNavArg::class.java)!!
   }
 
   override fun parseValue(value: String): MyBookDetailNavArg {
