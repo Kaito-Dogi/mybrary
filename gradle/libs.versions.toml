@@ -64,7 +64,6 @@ hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 javaLibrary = { id = "java-library" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlinKapt = { id = "kotlin-kapt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
