@@ -8,6 +8,7 @@ private const val Login = "login"
 const val LoginRoute = Login
 
 fun NavGraphBuilder.loginScreen(
+  onSendOneTimePasswordComplete: () -> Unit,
   onLoginComplete: () -> Unit,
   onSignUpClick: () -> Unit,
 ) {
@@ -15,6 +16,7 @@ fun NavGraphBuilder.loginScreen(
     route = LoginRoute,
   ) {
     LoginScreenContainer(
+      onSendOneTimePasswordComplete = onSendOneTimePasswordComplete,
       onLoginComplete = onLoginComplete,
       onSignUpClick = onSignUpClick,
     )

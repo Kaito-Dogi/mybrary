@@ -27,6 +27,7 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
+      onSendOneTimePasswordComplete = {},
       onLoginComplete = {
         navController.navigate(MyBookListRoute)
       },
