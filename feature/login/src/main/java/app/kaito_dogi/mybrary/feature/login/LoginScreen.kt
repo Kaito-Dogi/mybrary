@@ -38,15 +38,15 @@ internal fun LoginScreen(
       modifier = Modifier
         .fillMaxSize()
         .padding(
-          innerPadding.plus(
-            horizontal = MybraryTheme.space.xl,
-            vertical = MybraryTheme.space.xxxl,
-          ),
+          innerPadding.plus(horizontal = MybraryTheme.space.xl),
         ),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       LogoSection(
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.padding(
+          top = MybraryTheme.space.xxxl,
+          bottom = MybraryTheme.space.xxl,
+        ),
       )
 
       Gap(height = MybraryTheme.space.xl)
