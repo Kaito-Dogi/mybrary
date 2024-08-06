@@ -19,14 +19,14 @@ import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.login.component.DividerSection
+import app.kaito_dogi.mybrary.feature.login.component.EmailSection
 import app.kaito_dogi.mybrary.feature.login.component.LogoSection
-import app.kaito_dogi.mybrary.feature.login.component.MailSection
 import app.kaito_dogi.mybrary.feature.login.component.SignUpSection
 
 @Composable
 internal fun LoginScreen(
   uiState: LoginUiState,
-  onMailChange: (String) -> Unit,
+  onEmailChange: (String) -> Unit,
   onSendOtpClick: () -> Unit,
   onGoogleLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
@@ -51,9 +51,9 @@ internal fun LoginScreen(
 
       Gap(height = MybraryTheme.space.xl)
 
-      MailSection(
+      EmailSection(
         email = uiState.email,
-        onEmailChange = onMailChange,
+        onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
       )
 
@@ -91,7 +91,7 @@ private fun LoginScreenPreview() {
   MybraryTheme {
     LoginScreen(
       uiState = LoginUiState.InitialValue,
-      onMailChange = {},
+      onEmailChange = {},
       onSendOtpClick = {},
       onGoogleLoginClick = {},
       onSignUpClick = {},
