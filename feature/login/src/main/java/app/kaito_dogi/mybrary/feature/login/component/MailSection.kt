@@ -22,7 +22,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 internal fun MailSection(
   email: String,
   onEmailChange: (String) -> Unit,
-  onSendOneTimePasswordClick: () -> Unit,
+  onSendOtpClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Column(
@@ -47,23 +47,23 @@ internal fun MailSection(
         imeAction = ImeAction.Send,
       ),
       keyboardActions = KeyboardActions(
-        onSend = { onSendOneTimePasswordClick() },
+        onSend = { onSendOtpClick() },
       ),
       singleLine = true,
     )
 
     Button(
-      onClick = onSendOneTimePasswordClick,
+      onClick = onSendOtpClick,
       modifier = Modifier.fillMaxWidth(),
     ) {
       Icon(
         iconResId = R.drawable.icon_send,
-        descResId = R.string.login_desc_send_one_time_password,
+        descResId = R.string.login_desc_send_otp,
       )
 
       Gap(width = MybraryTheme.space.xs)
 
-      Text(textResId = R.string.login_text_send_one_time_password)
+      Text(textResId = R.string.login_text_send_otp)
     }
   }
 }
@@ -75,7 +75,7 @@ private fun MailSectionPreview() {
     MailSection(
       email = "",
       onEmailChange = {},
-      onSendOneTimePasswordClick = {},
+      onSendOtpClick = {},
     )
   }
 }

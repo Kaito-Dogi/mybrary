@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.supabase
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOneTimePasswordRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAnonApi {
-  override suspend fun postSendOneTimePassword(request: PostSendOneTimePasswordRequest) {
+  override suspend fun postSendOtp(request: PostSendOtpRequest) {
     supabaseClient.auth.signInWith(OTP) {
       email = request.email
     }

@@ -2,14 +2,14 @@
 <resources>
   <string name="login_desc_email_address">Email Address</string>
   <string name="login_desc_login_with_google">Sign in with Google</string>
-  <string name="login_desc_send_one_time_password">Send One-Time Password</string>
+  <string name="login_desc_send_otp">Send One-Time Password</string>
   <string name="login_placeholder_enter_your_email_address">Email Address</string>
   <string name="login_text_create_an_account">"Create an account "</string>
   <string name="login_text_here">here</string>
   <string name="login_text_login_with_google">Sign in with Google</string>
   <string name="login_text_logo">Mybrary</string>
   <string name="login_text_or">or</string>
-  <string name="login_text_send_one_time_password">Send One-Time Password</string>
+  <string name="login_text_send_otp">Send One-Time Password</string>
   <string name="my_book_detail_desc_add_my_book_to_favorites">Add MyBook to favorites</string>
   <string name="my_book_detail_desc_archive_my_book">Archive MyBook</string>
   <string name="my_book_detail_desc_background_image">Background image</string>

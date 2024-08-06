@@ -21,13 +21,13 @@ internal class LoginViewModel @Inject constructor(
     _uiState.update { it.copy(email = email) }
   }
 
-  fun onSendOneTimePasswordClick() {
+  fun onSendOtpClick() {
     viewModelScope.launch {
       try {
-        loginRepository.sendOneTimePassword(
+        loginRepository.sendOtp(
           email = uiState.value.email,
         )
-        _uiState.update { it.copy(isOneTimePasswordSent = true) }
+        _uiState.update { it.copy(isOtpSent = true) }
       } catch (e: Exception) {
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")

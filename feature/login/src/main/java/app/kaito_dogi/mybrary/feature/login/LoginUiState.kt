@@ -5,13 +5,13 @@ import androidx.compose.runtime.Immutable
 @Immutable
 data class LoginUiState(
   val email: String,
-  val isOneTimePasswordSent: Boolean,
+  val isOtpSent: Boolean,
   val isLoggedIn: Boolean,
 ) {
   companion object {
     val InitialValue = LoginUiState(
       email = "",
-      isOneTimePasswordSent = false,
+      isOtpSent = false,
       isLoggedIn = false,
     )
   }

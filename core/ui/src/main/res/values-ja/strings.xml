@@ -2,14 +2,14 @@
 <resources>
   <string name="login_desc_email_address">メールアドレス</string>
   <string name="login_desc_login_with_google">Google でログイン</string>
-  <string name="login_desc_send_one_time_password">ワンタイムパスワードを送信</string>
+  <string name="login_desc_send_otp">ワンタイムパスワードを送信</string>
   <string name="login_placeholder_enter_your_email_address">メールアドレスを入力…</string>
   <string name="login_text_create_an_account">アカウント作成は</string>
   <string name="login_text_here">こちら</string>
   <string name="login_text_login_with_google">Google でログイン</string>
   <string name="login_text_logo">Mybrary</string>
   <string name="login_text_or">または</string>
-  <string name="login_text_send_one_time_password">ワンタイムパスワードを送信</string>
+  <string name="login_text_send_otp">ワンタイムパスワードを送信</string>
   <string name="my_book_detail_desc_add_my_book_to_favorites">MyBook をお気に入りに追加する</string>
   <string name="my_book_detail_desc_archive_my_book">MyBook をアーカイブする</string>
   <string name="my_book_detail_desc_background_image">背景画像</string>

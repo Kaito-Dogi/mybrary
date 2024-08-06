@@ -27,7 +27,7 @@ import app.kaito_dogi.mybrary.feature.login.component.SignUpSection
 internal fun LoginScreen(
   uiState: LoginUiState,
   onMailChange: (String) -> Unit,
-  onSendOneTimePasswordClick: () -> Unit,
+  onSendOtpClick: () -> Unit,
   onGoogleLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
 ) {
@@ -54,7 +54,7 @@ internal fun LoginScreen(
       MailSection(
         email = uiState.email,
         onEmailChange = onMailChange,
-        onSendOneTimePasswordClick = onSendOneTimePasswordClick,
+        onSendOtpClick = onSendOtpClick,
       )
 
       Gap(height = MybraryTheme.space.xl)
@@ -92,7 +92,7 @@ private fun LoginScreenPreview() {
     LoginScreen(
       uiState = LoginUiState.InitialValue,
       onMailChange = {},
-      onSendOneTimePasswordClick = {},
+      onSendOtpClick = {},
       onGoogleLoginClick = {},
       onSignUpClick = {},
     )
