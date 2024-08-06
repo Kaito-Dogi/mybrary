@@ -4,12 +4,12 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class VerifyOtpUiState(
-  val source: VerifyOtpSource,
+  val source: VerifyOtpNavArg.Source,
   val otp: String,
   val isOtpVerified: Boolean,
 ) {
   companion object {
-    fun createInitialValue(source: VerifyOtpSource) = VerifyOtpUiState(
+    fun createInitialValue(source: VerifyOtpNavArg.Source) = VerifyOtpUiState(
       source = source,
       otp = "",
       isOtpVerified = false,

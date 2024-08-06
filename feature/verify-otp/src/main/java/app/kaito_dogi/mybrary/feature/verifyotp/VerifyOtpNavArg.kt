@@ -7,10 +7,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Parcelize
 data class VerifyOtpNavArg(
-  val source: VerifyOtpSource,
-) : Parcelable
-
-enum class VerifyOtpSource {
-  Login,
-  SignUp,
+  val email: String,
+  val source: Source,
+) : Parcelable {
+  enum class Source {
+    Login,
+    SignUp,
+  }
 }

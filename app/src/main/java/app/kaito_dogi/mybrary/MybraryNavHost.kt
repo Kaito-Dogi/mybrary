@@ -15,7 +15,6 @@ import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
 import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpNavArg
-import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpSource
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
@@ -31,8 +30,11 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
-      onSendOtpComplete = {
-        val navArg = VerifyOtpNavArg(source = VerifyOtpSource.Login)
+      onSendOtpComplete = { email ->
+        val navArg = VerifyOtpNavArg(
+          email = email,
+          source = VerifyOtpNavArg.Source.Login,
+        )
         navController.navigate(verifyOtpRouteWithNavArg(navArg))
       },
       onLoginComplete = {

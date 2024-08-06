@@ -21,8 +21,7 @@ internal fun VerifyOtpScreenContainer(
 
   VerifyOtpScreen(
     uiState = uiState,
-    onOtpChange = {},
-    onLoginClick = {},
-    onSignUpClick = {},
+    onOtpChange = viewModel::onOtpChange,
+    onVerifyOtpClick = viewModel::onVerifyOtpClick,
   )
 }

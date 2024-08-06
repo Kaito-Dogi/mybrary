@@ -28,8 +28,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 internal fun VerifyOtpScreen(
   uiState: VerifyOtpUiState,
   onOtpChange: (String) -> Unit,
-  onLoginClick: () -> Unit,
-  onSignUpClick: () -> Unit,
+  onVerifyOtpClick: () -> Unit,
 ) {
   Scaffold(
     topBar = {
@@ -67,16 +66,19 @@ internal fun VerifyOtpScreen(
           imeAction = ImeAction.Send,
         ),
         keyboardActions = KeyboardActions(
-          onSend = { onLoginClick() },
+          onSend = { onVerifyOtpClick() },
         ),
         singleLine = true,
       )
 
       Button(
-        onClick = onLoginClick,
+        onClick = onVerifyOtpClick,
         modifier = Modifier.fillMaxWidth(),
       ) {
-        Text("Login")
+        when (uiState.source) {
+          VerifyOtpNavArg.Source.Login -> Text("Login")
+          VerifyOtpNavArg.Source.SignUp -> Text("Sign Up")
+        }
       }
     }
   }
@@ -88,11 +90,10 @@ private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
-        source = VerifyOtpSource.Login,
+        source = VerifyOtpNavArg.Source.Login,
       ),
       onOtpChange = {},
-      onLoginClick = {},
-      onSignUpClick = {},
+      onVerifyOtpClick = {},
     )
   }
 }

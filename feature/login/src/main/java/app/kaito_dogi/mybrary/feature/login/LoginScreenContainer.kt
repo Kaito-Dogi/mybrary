@@ -8,7 +8,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 internal fun LoginScreenContainer(
-  onSendOtpComplete: () -> Unit,
+  onSendOtpComplete: (email: String) -> Unit,
   onLoginComplete: () -> Unit,
   onSignUpClick: () -> Unit,
   viewModel: LoginViewModel = hiltViewModel(),
@@ -23,7 +23,7 @@ internal fun LoginScreenContainer(
 
   if (uiState.isOtpSent) {
     LaunchedEffect(Unit) {
-      onSendOtpComplete()
+      onSendOtpComplete(uiState.email)
     }
   }
 
