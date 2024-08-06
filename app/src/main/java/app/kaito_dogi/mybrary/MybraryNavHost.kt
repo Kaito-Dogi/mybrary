@@ -14,6 +14,8 @@ import app.kaito_dogi.mybrary.feature.mybooklist.MyBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
+import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpRoute
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -27,11 +29,19 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
-      onSendOtpComplete = {},
+      onSendOtpComplete = {
+        navController.navigate(VerifyOtpRoute)
+      },
       onLoginComplete = {
         navController.navigate(MyBookListRoute)
       },
       onSignUpClick = {},
+    )
+    // TODO: 他の画面から遷移できないようにする
+    verifyOtpScreen(
+      onVerifyOtpComplete = {
+        navController.navigate(MyBookListRoute)
+      },
     )
     myBookListScreen(
       onAdditionClick = {
