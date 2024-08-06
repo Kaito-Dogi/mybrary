@@ -6,14 +6,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
@@ -25,11 +22,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 internal fun MailSection(
   email: String,
   onEmailChange: (String) -> Unit,
-  password: String,
-  onPasswordChange: (String) -> Unit,
-  isPasswordVisible: Boolean,
-  onVisibilityClick: () -> Unit,
-  onMailLoginClick: () -> Unit,
+  onSendOneTimePasswordClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Column(
@@ -51,55 +44,26 @@ internal fun MailSection(
       },
       keyboardOptions = KeyboardOptions.Default.copy(
         keyboardType = KeyboardType.Email,
-        imeAction = ImeAction.Next,
-      ),
-      singleLine = true,
-    )
-
-    TextField(
-      value = password,
-      onValueChange = onPasswordChange,
-      modifier = Modifier.fillMaxWidth(),
-      placeholder = {
-        Text(textResId = R.string.login_placeholder_enter_your_password)
-      },
-      leadingIcon = {
-        Icon(
-          iconResId = R.drawable.icon_key,
-          descResId = R.string.login_desc_password,
-        )
-      },
-      trailingIcon = {
-        IconButton(onClick = onVisibilityClick) {
-          Icon(
-            iconResId = if (isPasswordVisible) R.drawable.icon_visibility else R.drawable.icon_visibility_off,
-            descResId = if (isPasswordVisible) R.string.login_desc_hide_password else R.string.login_desc_show_password,
-          )
-        }
-      },
-      visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-      keyboardOptions = KeyboardOptions.Default.copy(
-        keyboardType = KeyboardType.Password,
         imeAction = ImeAction.Send,
       ),
       keyboardActions = KeyboardActions(
-        onSend = { onMailLoginClick() },
+        onSend = { onSendOneTimePasswordClick() },
       ),
       singleLine = true,
     )
 
     Button(
-      onClick = onMailLoginClick,
+      onClick = onSendOneTimePasswordClick,
       modifier = Modifier.fillMaxWidth(),
     ) {
       Icon(
-        iconResId = R.drawable.icon_mail,
-        descResId = R.string.login_desc_login_with_your_email_address,
+        iconResId = R.drawable.icon_send,
+        descResId = R.string.login_desc_send_one_time_password,
       )
 
       Gap(width = MybraryTheme.space.xs)
 
-      Text(textResId = R.string.login_text_login_with_your_email_address)
+      Text(textResId = R.string.login_text_send_one_time_password)
     }
   }
 }
@@ -111,11 +75,7 @@ private fun MailSectionPreview() {
     MailSection(
       email = "",
       onEmailChange = {},
-      password = "",
-      onPasswordChange = {},
-      isPasswordVisible = false,
-      onVisibilityClick = {},
-      onMailLoginClick = {},
+      onSendOneTimePasswordClick = {},
     )
   }
 }

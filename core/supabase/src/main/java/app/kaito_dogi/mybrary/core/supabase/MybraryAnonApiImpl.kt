@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.supabase
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostEmailLoginRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOneTimePasswordRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
@@ -9,7 +9,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
-import io.github.jan.supabase.gotrue.providers.builtin.Email
+import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
 import javax.inject.Inject
@@ -19,10 +19,9 @@ import javax.inject.Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAnonApi {
-  override suspend fun postEmailLogin(request: PostEmailLoginRequest) {
-    supabaseClient.auth.signInWith(Email) {
+  override suspend fun postSendOneTimePassword(request: PostSendOneTimePasswordRequest) {
+    supabaseClient.auth.signInWith(OTP) {
       email = request.email
-      password = request.password
     }
   }
 

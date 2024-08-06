@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostEmailLoginRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOneTimePasswordRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
@@ -10,9 +10,9 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MybraryAnonApi {
-  @POST("/email-login")
-  suspend fun postEmailLogin(
-    @Body request: PostEmailLoginRequest,
+  @POST("/send-one-time-password")
+  suspend fun postSendOneTimePassword(
+    @Body request: PostSendOneTimePasswordRequest,
   )
 
   @GET("/my-books")

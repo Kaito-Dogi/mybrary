@@ -23,9 +23,7 @@ internal fun LoginScreenContainer(
   LoginScreen(
     uiState = uiState,
     onMailChange = viewModel::onEmailChange,
-    onPasswordChange = viewModel::onPasswordChange,
-    onVisibilityClick = viewModel::onVisibilityChange,
-    onMailLoginClick = viewModel::onMailLoginClick,
+    onSendOneTimePasswordClick = viewModel::onSendOneTimePasswordClick,
     onGoogleLoginClick = viewModel::onGoogleLoginClick,
     onSignUpClick = onSignUpClick,
   )
