@@ -26,7 +26,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun VerifyOtpScreen(
-  otp: String,
+  uiState: VerifyOtpUiState,
   onOtpChange: (String) -> Unit,
   onLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
@@ -49,7 +49,7 @@ internal fun VerifyOtpScreen(
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       TextField(
-        value = otp,
+        value = uiState.otp,
         onValueChange = onOtpChange,
         modifier = Modifier.fillMaxWidth(),
         placeholder = {
@@ -87,7 +87,9 @@ internal fun VerifyOtpScreen(
 private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
-      otp = "",
+      uiState = VerifyOtpUiState.createInitialValue(
+        source = VerifyOtpSource.Login,
+      ),
       onOtpChange = {},
       onLoginClick = {},
       onSignUpClick = {},

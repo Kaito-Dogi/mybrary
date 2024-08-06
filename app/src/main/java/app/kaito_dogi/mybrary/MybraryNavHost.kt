@@ -14,7 +14,9 @@ import app.kaito_dogi.mybrary.feature.mybooklist.MyBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
-import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpRoute
+import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpNavArg
+import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpSource
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpRouteWithNavArg
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
 @Composable
@@ -30,7 +32,8 @@ internal fun MybraryNavHost(
   ) {
     loginScreen(
       onSendOtpComplete = {
-        navController.navigate(VerifyOtpRoute)
+        val navArg = VerifyOtpNavArg(source = VerifyOtpSource.Login)
+        navController.navigate(verifyOtpRouteWithNavArg(navArg))
       },
       onLoginComplete = {
         navController.navigate(MyBookListRoute)
@@ -48,9 +51,7 @@ internal fun MybraryNavHost(
         navController.navigate(SearchBooksRoute)
       },
       onMyBookClick = { myBook ->
-        val navArg = MyBookDetailNavArg(
-          myBook = myBook,
-        )
+        val navArg = MyBookDetailNavArg(myBook = myBook)
         navController.navigate(myBookDetailRouteWithNavArg(navArg))
       },
     )
