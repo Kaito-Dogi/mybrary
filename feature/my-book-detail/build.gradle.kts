@@ -2,9 +2,9 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.parcelize)
   alias(libs.plugins.serialization)
-  alias(libs.plugins.ksp)
 }
 
 android {
