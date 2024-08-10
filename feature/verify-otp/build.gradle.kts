@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.mybookdetail"
+  namespace = "app.kaito_dogi.mybrary.feature.verifyotp"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {

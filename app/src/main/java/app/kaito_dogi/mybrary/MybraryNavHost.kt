@@ -14,6 +14,9 @@ import app.kaito_dogi.mybrary.feature.mybooklist.MyBookListRoute
 import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
+import app.kaito_dogi.mybrary.feature.verifyotp.VerifyOtpNavArg
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpRouteWithNavArg
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -27,19 +30,30 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
     loginScreen(
+      onSendOtpComplete = { email ->
+        val navArg = VerifyOtpNavArg(
+          email = email,
+          source = VerifyOtpNavArg.Source.Login,
+        )
+        navController.navigate(verifyOtpRouteWithNavArg(navArg))
+      },
       onLoginComplete = {
         navController.navigate(MyBookListRoute)
       },
       onSignUpClick = {},
+    )
+    // TODO: 他の画面から遷移できないようにする
+    verifyOtpScreen(
+      onVerifyOtpComplete = {
+        navController.navigate(MyBookListRoute)
+      },
     )
     myBookListScreen(
       onAdditionClick = {
         navController.navigate(SearchBooksRoute)
       },
       onMyBookClick = { myBook ->
-        val navArg = MyBookDetailNavArg(
-          myBook = myBook,
-        )
+        val navArg = MyBookDetailNavArg(myBook = myBook)
         navController.navigate(myBookDetailRouteWithNavArg(navArg))
       },
     )

@@ -21,26 +21,13 @@ internal class LoginViewModel @Inject constructor(
     _uiState.update { it.copy(email = email) }
   }
 
-  fun onPasswordChange(password: String) {
-    _uiState.update { it.copy(password = password) }
-  }
-
-  fun onVisibilityChange() {
-    _uiState.update {
-      it.copy(
-        isPasswordVisible = !it.isPasswordVisible,
-      )
-    }
-  }
-
-  fun onMailLoginClick() {
+  fun onSendOtpClick() {
     viewModelScope.launch {
       try {
-        loginRepository.emailLogin(
+        loginRepository.sendOtp(
           email = uiState.value.email,
-          password = uiState.value.password,
         )
-        _uiState.update { it.copy(isLoggedIn = true) }
+        _uiState.update { it.copy(isOtpSent = true) }
       } catch (e: Exception) {
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")
@@ -49,6 +36,6 @@ internal class LoginViewModel @Inject constructor(
   }
 
   fun onGoogleLoginClick() {
-    println("あああ: onMailLoginClick")
+    println("あああ: onGoogleLoginClick")
   }
 }

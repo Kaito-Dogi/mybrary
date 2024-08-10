@@ -1,27 +1,29 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostVerifyOtpRequest
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
-import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
+import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 @Singleton
-internal class LoginRepositoryImpl @Inject constructor(
+internal class OtpRepositoryImpl @Inject constructor(
   private val mybraryAnonApi: MybraryAnonApi,
   @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
-) : LoginRepository {
-  override suspend fun sendOtp(email: String) = withContext(dispatcher) {
-    mybraryAnonApi.postSendOtp(
-      request = PostSendOtpRequest(email = email),
+) : OtpRepository {
+  override suspend fun verifyOtp(
+    email: String,
+    otp: String,
+  ) = withContext(dispatcher) {
+    mybraryAnonApi.postVerifyOtp(
+      request = PostVerifyOtpRequest(
+        email = email,
+        otp = otp,
+      ),
     )
-  }
-
-  override suspend fun googleLogin() {
-    TODO("Not yet implemented")
   }
 }

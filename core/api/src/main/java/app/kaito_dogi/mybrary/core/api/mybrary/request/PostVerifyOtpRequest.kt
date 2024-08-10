@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.core.api.mybrary.request
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PostEmailLoginRequest(
+data class PostVerifyOtpRequest(
   val email: String,
-  val password: String,
+  val otp: String,
 )

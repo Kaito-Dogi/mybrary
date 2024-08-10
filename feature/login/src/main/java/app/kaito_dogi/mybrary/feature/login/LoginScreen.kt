@@ -19,17 +19,15 @@ import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.login.component.DividerSection
+import app.kaito_dogi.mybrary.feature.login.component.EmailSection
 import app.kaito_dogi.mybrary.feature.login.component.LogoSection
-import app.kaito_dogi.mybrary.feature.login.component.MailSection
 import app.kaito_dogi.mybrary.feature.login.component.SignUpSection
 
 @Composable
 internal fun LoginScreen(
   uiState: LoginUiState,
-  onMailChange: (String) -> Unit,
-  onPasswordChange: (String) -> Unit,
-  onVisibilityClick: () -> Unit,
-  onMailLoginClick: () -> Unit,
+  onEmailChange: (String) -> Unit,
+  onSendOtpClick: () -> Unit,
   onGoogleLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
 ) {
@@ -40,27 +38,23 @@ internal fun LoginScreen(
       modifier = Modifier
         .fillMaxSize()
         .padding(
-          innerPadding.plus(
-            horizontal = MybraryTheme.space.xl,
-            vertical = MybraryTheme.space.xxxl,
-          ),
+          innerPadding.plus(horizontal = MybraryTheme.space.xl),
         ),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       LogoSection(
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.padding(
+          top = MybraryTheme.space.xxxl,
+          bottom = MybraryTheme.space.xxl,
+        ),
       )
 
       Gap(height = MybraryTheme.space.xl)
 
-      MailSection(
+      EmailSection(
         email = uiState.email,
-        onEmailChange = onMailChange,
-        password = uiState.password,
-        onPasswordChange = onPasswordChange,
-        isPasswordVisible = uiState.isPasswordVisible,
-        onVisibilityClick = onVisibilityClick,
-        onMailLoginClick = onMailLoginClick,
+        onEmailChange = onEmailChange,
+        onSendOtpClick = onSendOtpClick,
       )
 
       Gap(height = MybraryTheme.space.xl)
@@ -97,10 +91,8 @@ private fun LoginScreenPreview() {
   MybraryTheme {
     LoginScreen(
       uiState = LoginUiState.InitialValue,
-      onMailChange = {},
-      onPasswordChange = {},
-      onVisibilityClick = {},
-      onMailLoginClick = {},
+      onEmailChange = {},
+      onSendOtpClick = {},
       onGoogleLoginClick = {},
       onSignUpClick = {},
     )

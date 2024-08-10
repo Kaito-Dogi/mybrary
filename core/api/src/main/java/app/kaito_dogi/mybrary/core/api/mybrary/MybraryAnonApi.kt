@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostEmailLoginRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostVerifyOtpRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
@@ -10,9 +11,14 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MybraryAnonApi {
-  @POST("/email-login")
-  suspend fun postEmailLogin(
-    @Body request: PostEmailLoginRequest,
+  @POST("/send-otp")
+  suspend fun postSendOtp(
+    @Body request: PostSendOtpRequest,
+  )
+
+  @POST("/verify-otp")
+  suspend fun postVerifyOtp(
+    @Body request: PostVerifyOtpRequest,
   )
 
   @GET("/my-books")
