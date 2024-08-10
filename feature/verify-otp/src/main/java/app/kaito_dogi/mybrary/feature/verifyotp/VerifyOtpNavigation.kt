@@ -14,7 +14,7 @@ private const val VerifyOtp = "verify-otp"
 
 internal const val VerifyOtpNavArgName = "${VerifyOtp}NavArg"
 
-private const val VerifyOtpRoute = "${VerifyOtp}/${VerifyOtpNavArgName}"
+private const val VerifyOtpRoute = "${VerifyOtp}/{${VerifyOtpNavArgName}}"
 
 private object VerifyOtpNavType : NavType<VerifyOtpNavArg>(
   isNullableAllowed = false,
