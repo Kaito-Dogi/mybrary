@@ -46,5 +46,10 @@
   <string name="search_books_text_a_a">あ\nあ</string>
   <string name="search_books_text_page_count">%1$dページ</string>
   <string name="search_books_text_page_count_and_publisher">%1$dページ｜ %2$s</string>
+  <string name="verify_otp_desc_otp">ワンタイムパスワード</string>
+  <string name="verify_otp_placeholder_enter_otp">123456</string>
+  <string name="verify_otp_text_login">ログイン</string>
+  <string name="verify_otp_text_sign_up">サインアップ</string>
+  <string name="verify_otp_text_enter_otp">ワンタイムパスワードの入力</string>
   <string name="ui_desc_book_cover">本の表紙</string>
 </resources>

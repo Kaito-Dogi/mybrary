@@ -10,7 +10,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
@@ -34,9 +34,7 @@ internal fun VerifyOtpScreen(
     topBar = {
       TopAppBar(
         title = {
-          Text(
-            text = "Enter One-Time Password",
-          )
+          Text(textResId = R.string.verify_otp_text_enter_otp)
         },
       )
     },
@@ -52,13 +50,12 @@ internal fun VerifyOtpScreen(
         onValueChange = onOtpChange,
         modifier = Modifier.fillMaxWidth(),
         placeholder = {
-          Text("123456")
+          Text(textResId = R.string.verify_otp_placeholder_enter_otp)
         },
         leadingIcon = {
           Icon(
             iconResId = R.drawable.icon_key,
-            // FIXME: 文言
-            descResId = R.string.my_book_list_desc_search_for_books,
+            descResId = R.string.verify_otp_desc_otp,
           )
         },
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -76,8 +73,8 @@ internal fun VerifyOtpScreen(
         modifier = Modifier.fillMaxWidth(),
       ) {
         when (uiState.source) {
-          VerifyOtpNavArg.Source.Login -> Text("Login")
-          VerifyOtpNavArg.Source.SignUp -> Text("Sign Up")
+          VerifyOtpNavArg.Source.Login -> Text(textResId = R.string.verify_otp_text_login)
+          VerifyOtpNavArg.Source.SignUp -> Text(textResId = R.string.verify_otp_text_sign_up)
         }
       }
     }
