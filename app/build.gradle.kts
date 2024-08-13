@@ -110,7 +110,6 @@ dependencies {
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:auth"))
-  implementation(project(":feature:login"))
   implementation(project(":feature:my-book-list"))
   implementation(project(":feature:my-book-detail"))
   implementation(project(":feature:search-books"))
