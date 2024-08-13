@@ -55,7 +55,6 @@ dependencies {
   implementation(libs.androidxComposeUiToolingPreview)
   implementation(libs.androidxHiltNavigationCompose)
   implementation(libs.androidxLifecycleRuntimeCompose)
-  implementation(libs.androidxNavigationCompose)
   implementation(libs.coilCompose)
   implementation(libs.serialization)
 }
