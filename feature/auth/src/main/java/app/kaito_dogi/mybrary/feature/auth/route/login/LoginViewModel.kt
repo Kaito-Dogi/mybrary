@@ -2,7 +2,7 @@ package app.kaito_dogi.mybrary.feature.auth.route.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
+import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class LoginViewModel @Inject constructor(
-  private val loginRepository: LoginRepository,
+  private val authRepository: AuthRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(LoginUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
@@ -24,7 +24,7 @@ internal class LoginViewModel @Inject constructor(
   fun onSendOtpClick() {
     viewModelScope.launch {
       try {
-        loginRepository.sendOtp(
+        authRepository.sendOtp(
           email = uiState.value.email,
         )
         _uiState.update { it.copy(isOtpSent = true) }

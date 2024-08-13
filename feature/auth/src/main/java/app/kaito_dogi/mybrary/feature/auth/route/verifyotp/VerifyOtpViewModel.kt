@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
+import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class VerifyOtpViewModel @Inject constructor(
-  private val otpRepository: OtpRepository,
+  private val authRepository: AuthRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 //  private val navArg: VerifyOtpNavArg = checkNotNull(savedStateHandle[VerifyOtpNavArgName])
@@ -32,7 +32,7 @@ internal class VerifyOtpViewModel @Inject constructor(
   fun onVerifyOtpClick() {
     viewModelScope.launch {
       try {
-        otpRepository.verifyOtp(
+        authRepository.verifyOtp(
 //          email = navArg.email,
           email = "",
           otp = uiState.value.otp,
