@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.verifyotp
+package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -16,11 +16,11 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val otpRepository: OtpRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-  private val navArg: VerifyOtpNavArg = checkNotNull(savedStateHandle[VerifyOtpNavArgName])
+//  private val navArg: VerifyOtpNavArg = checkNotNull(savedStateHandle[VerifyOtpNavArgName])
 
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
-      source = navArg.source,
+//      source = navArg.source,
     ),
   )
   val uiState = _uiState.asStateFlow()
@@ -33,7 +33,8 @@ internal class VerifyOtpViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         otpRepository.verifyOtp(
-          email = navArg.email,
+//          email = navArg.email,
+          email = "",
           otp = uiState.value.otp,
         )
         _uiState.update { it.copy(isOtpVerified = true) }

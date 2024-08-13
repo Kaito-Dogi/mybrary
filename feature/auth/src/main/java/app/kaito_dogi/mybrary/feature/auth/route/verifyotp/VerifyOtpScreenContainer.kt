@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.verifyotp
+package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

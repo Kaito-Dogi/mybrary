@@ -113,7 +113,6 @@ dependencies {
   implementation(project(":feature:my-book-list"))
   implementation(project(":feature:my-book-detail"))
   implementation(project(":feature:search-books"))
-  implementation(project(":feature:verify-otp"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)

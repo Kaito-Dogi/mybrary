@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.verifyotp
+package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -72,10 +72,10 @@ internal fun VerifyOtpScreen(
         onClick = onVerifyOtpClick,
         modifier = Modifier.fillMaxWidth(),
       ) {
-        when (uiState.source) {
-          VerifyOtpNavArg.Source.Login -> Text(textResId = R.string.verify_otp_text_login)
-          VerifyOtpNavArg.Source.SignUp -> Text(textResId = R.string.verify_otp_text_sign_up)
-        }
+//        when (uiState.source) {
+//          VerifyOtpNavArg.Source.Login -> Text(textResId = R.string.verify_otp_text_login)
+//          VerifyOtpNavArg.Source.SignUp -> Text(textResId = R.string.verify_otp_text_sign_up)
+//        }
       }
     }
   }
@@ -87,7 +87,7 @@ private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
-        source = VerifyOtpNavArg.Source.Login,
+//        source = VerifyOtpNavArg.Source.Login,
       ),
       onOtpChange = {},
       onVerifyOtpClick = {},
