@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import app.kaito_dogi.mybrary.feature.auth.authNavigation
 import app.kaito_dogi.mybrary.feature.login.LoginRoute
 import app.kaito_dogi.mybrary.feature.login.loginScreen
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
@@ -29,6 +30,10 @@ internal fun MybraryNavHost(
     startDestination = LoginRoute,
     modifier = modifier.fillMaxSize(),
   ) {
+    authNavigation { childNavController ->
+      // TODO: screen の追加
+    }
+
     loginScreen(
       onSendOtpComplete = { email ->
         val navArg = VerifyOtpNavArg(
