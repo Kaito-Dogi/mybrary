@@ -1,12 +1,13 @@
 plugins {
   alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
-  alias(libs.plugins.parcelize)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.core.ui"
+  namespace = "app.kaito_dogi.mybrary.feature.auth"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -48,6 +49,8 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
+  implementation(project(":core:navigation"))
+  implementation(project(":core:ui"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxComposeMaterial3)
@@ -55,6 +58,10 @@ dependencies {
   implementation(libs.androidxComposeUiToolingPreview)
   implementation(libs.androidxHiltNavigationCompose)
   implementation(libs.androidxLifecycleRuntimeCompose)
+  implementation(libs.androidxNavigationCompose)
   implementation(libs.coilCompose)
+  implementation(libs.hiltAndroid)
   implementation(libs.serialization)
+
+  ksp(libs.hiltCompiler)
 }

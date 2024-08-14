@@ -1,12 +1,11 @@
 plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.kotlinAndroid)
-  alias(libs.plugins.parcelize)
   alias(libs.plugins.serialization)
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.core.ui"
+  namespace = "app.kaito_dogi.mybrary.core.navigation"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -45,16 +44,6 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:common"))
-  implementation(project(":core:design-system"))
-  implementation(project(":core:domain"))
-
-  implementation(platform(libs.androidxComposeBom))
-  implementation(libs.androidxComposeMaterial3)
-  implementation(libs.androidxComposeUiTooling)
-  implementation(libs.androidxComposeUiToolingPreview)
-  implementation(libs.androidxHiltNavigationCompose)
-  implementation(libs.androidxLifecycleRuntimeCompose)
-  implementation(libs.coilCompose)
+  implementation(libs.androidxNavigationCompose)
   implementation(libs.serialization)
 }

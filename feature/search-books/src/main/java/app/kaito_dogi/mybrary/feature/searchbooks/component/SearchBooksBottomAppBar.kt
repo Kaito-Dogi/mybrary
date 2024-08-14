@@ -32,7 +32,7 @@ internal fun SearchBooksBottomAppBar(
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_search,
-          descResId = R.string.search_books_desc_search_for_books,
+          altResId = R.string.search_books_desc_search_for_books,
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
@@ -50,7 +50,7 @@ internal fun SearchBooksBottomAppBar(
 //    ) {
 //      Icon(
 //        iconResId = R.drawable.icon_barcode_scanner,
-//        descResId = R.string.search_books_desc_scan_book_barcode,
+//        altResId = R.string.search_books_desc_scan_book_barcode,
 //      )
 //    }
   }
