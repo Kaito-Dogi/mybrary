@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.feature.auth
 
+import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
 import kotlinx.serialization.Serializable
 
 sealed interface AuthRoute {
@@ -12,5 +13,6 @@ sealed interface AuthRoute {
   @Serializable
   data class VerifyOtp(
     val email: String,
+    val page: VerifyOtpUiState.Page,
   ) : AuthRoute
 }

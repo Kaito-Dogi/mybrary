@@ -3,7 +3,9 @@ package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
+import app.kaito_dogi.mybrary.feature.auth.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,11 +18,11 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val authRepository: AuthRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-//  private val navArg: VerifyOtpNavArg = checkNotNull(savedStateHandle[VerifyOtpNavArgName])
+  private val navArg: AuthRoute.VerifyOtp = savedStateHandle.toRoute()
 
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
-//      source = navArg.source,
+      page = navArg.page,
     ),
   )
   val uiState = _uiState.asStateFlow()
@@ -33,8 +35,7 @@ internal class VerifyOtpViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         authRepository.verifyOtp(
-//          email = navArg.email,
-          email = "",
+          email = navArg.email,
           otp = uiState.value.otp,
         )
         _uiState.update { it.copy(isOtpVerified = true) }

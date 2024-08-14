@@ -9,6 +9,7 @@ import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.feature.auth.AuthRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavigation
 import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
+import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
 import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
@@ -32,7 +33,10 @@ internal fun MybraryNavHost(
     authNavigation { childNavController ->
       loginScreen(
         onSendOtpComplete = { email ->
-          val route = AuthRoute.VerifyOtp(email = email)
+          val route = AuthRoute.VerifyOtp(
+            email = email,
+            page = VerifyOtpUiState.Page.Login,
+          )
           childNavController.navigate(route)
         },
         onLoginComplete = {
