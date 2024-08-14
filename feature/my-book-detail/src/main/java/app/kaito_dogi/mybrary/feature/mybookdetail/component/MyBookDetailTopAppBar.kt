@@ -67,7 +67,7 @@ internal fun MyBookDetailTopAppBar(
           radiusX = MybraryTheme.space.md,
           radiusY = MybraryTheme.space.md,
         ),
-      contentDescription = stringResource(id = R.string.my_book_detail_desc_background_image),
+      contentDescription = stringResource(id = R.string.my_book_detail_alt_background_image),
       contentScale = ContentScale.FillWidth,
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )

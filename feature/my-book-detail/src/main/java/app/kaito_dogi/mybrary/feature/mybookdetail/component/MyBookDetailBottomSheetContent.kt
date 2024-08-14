@@ -87,7 +87,7 @@ internal fun MyBookDetailBottomSheetContent(
       IconButton(onClick = onSaveClick) {
         Icon(
           iconResId = R.drawable.icon_send,
-          altResId = R.string.my_book_detail_desc_save_a_memo,
+          altResId = R.string.my_book_detail_alt_save_a_memo,
         )
       }
     }

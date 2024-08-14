@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.auth.route.signup
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -38,17 +39,18 @@ internal fun SignUpScreen(
       modifier = Modifier
         .fillMaxSize()
         .padding(
-          innerPadding.plus(horizontal = MybraryTheme.space.xl),
+          innerPadding.plus(
+            start = MybraryTheme.space.xl,
+            top = MybraryTheme.space.xxxl,
+            end = MybraryTheme.space.xl,
+            bottom = MybraryTheme.space.xl,
+          ),
         ),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-      LogoSection(
-        modifier = Modifier.padding(
-          top = MybraryTheme.space.xxxl,
-          bottom = MybraryTheme.space.xxl,
-        ),
-      )
+      LogoSection()
 
+      Gap(height = MybraryTheme.space.xxl)
       Gap(height = MybraryTheme.space.xl)
 
       EmailSection(
@@ -78,7 +80,7 @@ internal fun SignUpScreen(
         Text(textResId = R.string.auth_text_sign_up_with_google)
       }
 
-      Gap(height = MybraryTheme.space.sm)
+      Spacer(modifier = Modifier.weight(1f))
 
       LoginSection(onClick = onLoginClick)
     }

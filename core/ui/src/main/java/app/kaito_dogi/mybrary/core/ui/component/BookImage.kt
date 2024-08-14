@@ -37,7 +37,7 @@ fun BookImage(
 ) {
   AsyncImage(
     model = imageUrl?.value,
-    contentDescription = stringResource(id = R.string.ui_desc_book_cover),
+    contentDescription = stringResource(id = R.string.ui_alt_book_cover),
     modifier = modifier
       .clip(shape = shape)
       .aspectRatio(BookAspectRatio),

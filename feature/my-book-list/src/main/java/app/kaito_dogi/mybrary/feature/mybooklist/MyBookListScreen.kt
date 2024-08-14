@@ -38,7 +38,7 @@ internal fun MyBookListScreen(
       ) {
         Icon(
           iconResId = R.drawable.icon_add,
-          altResId = R.string.my_book_list_desc_search_for_books,
+          altResId = R.string.my_book_list_alt_search_for_books,
         )
       }
     },

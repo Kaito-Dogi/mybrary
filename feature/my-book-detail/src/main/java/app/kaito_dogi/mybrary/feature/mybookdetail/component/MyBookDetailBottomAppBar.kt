@@ -49,7 +49,7 @@ internal fun MyBookDetailBottomAppBar(
     IconButton(onClick = onFavoriteClick) {
       Icon(
         iconResId = if (isFavorite) R.drawable.icon_heart_filled else R.drawable.icon_heart_outlined,
-        altResId = if (isFavorite) R.string.my_book_detail_desc_remove_my_book_from_favorites else R.string.my_book_detail_desc_add_my_book_to_favorites,
+        altResId = if (isFavorite) R.string.my_book_detail_alt_remove_my_book_from_favorites else R.string.my_book_detail_alt_add_my_book_to_favorites,
       )
     }
 
@@ -61,7 +61,7 @@ internal fun MyBookDetailBottomAppBar(
     ) {
       Icon(
         iconResId = R.drawable.icon_add,
-        altResId = R.string.my_book_detail_desc_create_a_memo,
+        altResId = R.string.my_book_detail_alt_create_a_memo,
       )
     }
   }

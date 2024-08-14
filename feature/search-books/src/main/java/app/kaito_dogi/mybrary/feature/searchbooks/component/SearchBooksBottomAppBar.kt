@@ -32,7 +32,7 @@ internal fun SearchBooksBottomAppBar(
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_search,
-          altResId = R.string.search_books_desc_search_for_books,
+          altResId = R.string.search_books_alt_search_for_books,
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
