@@ -24,7 +24,7 @@ internal fun DividerSection(
     HorizontalDivider(modifier = Modifier.weight(1f))
 
     Text(
-      textResId = R.string.login_text_or,
+      textResId = R.string.auth_text_or,
       color = MybraryTheme.colorScheme.outlineVariant,
       style = MybraryTheme.typography.labelMedium,
     )

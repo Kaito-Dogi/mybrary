@@ -34,7 +34,7 @@ internal fun VerifyOtpScreen(
     topBar = {
       TopAppBar(
         title = {
-          Text(textResId = R.string.verify_otp_text_enter_otp)
+          Text(textResId = R.string.auth_text_enter_otp)
         },
       )
     },
@@ -50,12 +50,12 @@ internal fun VerifyOtpScreen(
         onValueChange = onOtpChange,
         modifier = Modifier.fillMaxWidth(),
         placeholder = {
-          Text(textResId = R.string.verify_otp_placeholder_enter_otp)
+          Text(textResId = R.string.auth_placeholder_enter_otp)
         },
         leadingIcon = {
           Icon(
             iconResId = R.drawable.icon_key,
-            descResId = R.string.verify_otp_desc_otp,
+            descResId = R.string.auth_alt_otp,
           )
         },
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -73,8 +73,8 @@ internal fun VerifyOtpScreen(
         modifier = Modifier.fillMaxWidth(),
       ) {
         when (uiState.page) {
-          VerifyOtpUiState.Page.Login -> Text(textResId = R.string.verify_otp_text_login)
-          VerifyOtpUiState.Page.SignUp -> Text(textResId = R.string.verify_otp_text_sign_up)
+          VerifyOtpUiState.Page.Login -> Text(textResId = R.string.auth_text_login)
+          VerifyOtpUiState.Page.SignUp -> Text(textResId = R.string.auth_text_sign_up)
         }
       }
     }

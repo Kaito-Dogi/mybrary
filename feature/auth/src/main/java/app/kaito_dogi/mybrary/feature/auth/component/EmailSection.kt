@@ -34,12 +34,12 @@ internal fun EmailSection(
       onValueChange = onEmailChange,
       modifier = Modifier.fillMaxWidth(),
       placeholder = {
-        Text(textResId = R.string.login_placeholder_enter_your_email_address)
+        Text(textResId = R.string.auth_placeholder_enter_your_email_address)
       },
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_mail,
-          descResId = R.string.login_desc_email_address,
+          descResId = R.string.auth_alt_email_address,
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
@@ -58,12 +58,12 @@ internal fun EmailSection(
     ) {
       Icon(
         iconResId = R.drawable.icon_send,
-        descResId = R.string.login_desc_send_otp,
+        descResId = R.string.auth_alt_send_otp,
       )
 
       Gap(width = MybraryTheme.space.xs)
 
-      Text(textResId = R.string.login_text_send_otp)
+      Text(textResId = R.string.auth_text_send_otp)
     }
   }
 }

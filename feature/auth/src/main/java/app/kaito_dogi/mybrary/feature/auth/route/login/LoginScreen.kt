@@ -69,13 +69,13 @@ internal fun LoginScreen(
       ) {
         Icon(
           iconResId = R.drawable.icon_google,
-          descResId = R.string.login_desc_login_with_google,
+          descResId = R.string.auth_alt_login_with_google,
           tint = Color.Unspecified,
         )
 
         Gap(width = MybraryTheme.space.xs)
 
-        Text(textResId = R.string.login_text_login_with_google)
+        Text(textResId = R.string.auth_text_login_with_google)
       }
 
       Gap(height = MybraryTheme.space.sm)

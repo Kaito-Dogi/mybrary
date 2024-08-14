@@ -19,7 +19,7 @@ internal fun LogoSection(
     contentAlignment = Alignment.Center,
   ) {
     Text(
-      textResId = R.string.login_text_logo,
+      textResId = R.string.auth_text_logo,
       style = MybraryTheme.typography.displaySmall,
     )
   }
