@@ -9,6 +9,7 @@ import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.feature.auth.AuthRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavigation
 import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
+import app.kaito_dogi.mybrary.feature.auth.route.signup.signUpScreen
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
@@ -49,13 +50,27 @@ internal fun MybraryNavHost(
         },
       )
 
+      signUpScreen(
+        onSendOtpComplete = { email ->
+          val route = AuthRoute.VerifyOtp(
+            email = email,
+            page = VerifyOtpUiState.Page.SignUp,
+          )
+          childNavController.navigate(route)
+        },
+        onSignUpComplete = {
+          navController.navigate(MyBookListRoute)
+        },
+        onLoginClick = {
+          childNavController.navigate(AuthRoute.Login)
+        },
+      )
+
       verifyOtpScreen(
         onVerifyOtpComplete = {
           navController.navigate(MyBookListRoute)
         },
       )
-
-      // TODO: screen の追加
     }
 
     myBookListScreen(

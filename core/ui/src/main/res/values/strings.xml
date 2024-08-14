@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="auth_alt_email_address">Email Address</string>
-  <string name="auth_alt_login_with_google">Sign in with Google</string>
+  <string name="auth_alt_login_with_google">Login with Google</string>
   <string name="auth_alt_otp">One-Time Password</string>
   <string name="auth_alt_send_otp">Send One-Time Password</string>
+  <string name="auth_alt_sign_up_google">Sign up with Google</string>
   <string name="auth_placeholder_enter_otp">123456</string>
   <string name="auth_placeholder_enter_your_email_address">Email Address</string>
+  <string name="auth_text_already_have_an_account_login">"Already have an account? Login "</string>
   <string name="auth_text_create_an_account">"Create an account "</string>
   <string name="auth_text_enter_otp">Enter One-Time Password</string>
   <string name="auth_text_here">here</string>
   <string name="auth_text_login">Login</string>
-  <string name="auth_text_login_with_google">Sign in with Google</string>
+  <string name="auth_text_login_with_google">Login with Google</string>
   <string name="auth_text_logo">Mybrary</string>
   <string name="auth_text_or">or</string>
   <string name="auth_text_send_otp">Send One-Time Password</string>
   <string name="auth_text_sign_up">Sign up</string>
+  <string name="auth_text_sign_up_with_google">Sign up with Google</string>
   <string name="my_book_detail_desc_add_my_book_to_favorites">Add MyBook to favorites</string>
   <string name="my_book_detail_desc_archive_my_book">Archive MyBook</string>
   <string name="my_book_detail_desc_background_image">Background image</string>
