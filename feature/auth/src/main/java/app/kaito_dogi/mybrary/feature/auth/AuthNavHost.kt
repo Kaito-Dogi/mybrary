@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 internal fun AuthNavHost(
+  startDestination: AuthRoute,
   builder: NavGraphBuilder.(NavController) -> Unit,
   modifier: Modifier = Modifier,
 ) {
@@ -17,7 +18,7 @@ internal fun AuthNavHost(
 
   NavHost(
     navController = navController,
-    startDestination = AuthRoute.Login,
+    startDestination = startDestination,
     modifier = modifier.fillMaxSize(),
     builder = { builder(navController) },
   )

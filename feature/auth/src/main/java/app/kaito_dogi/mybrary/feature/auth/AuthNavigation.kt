@@ -6,9 +6,13 @@ import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 
 fun NavGraphBuilder.authNavigation(
+  startDestination: AuthRoute,
   builder: NavGraphBuilder.(NavController) -> Unit,
 ) {
   composable<MybraryRoute.Auth> {
-    AuthNavHost(builder = builder)
+    AuthNavHost(
+      startDestination = startDestination,
+      builder = builder,
+    )
   }
 }

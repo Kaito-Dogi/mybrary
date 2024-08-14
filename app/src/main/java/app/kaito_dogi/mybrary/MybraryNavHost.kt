@@ -30,7 +30,9 @@ internal fun MybraryNavHost(
     startDestination = MybraryRoute.Auth,
     modifier = modifier.fillMaxSize(),
   ) {
-    authNavigation { childNavController ->
+    authNavigation(
+      startDestination = AuthRoute.Login,
+    ) { childNavController ->
       loginScreen(
         onSendOtpComplete = { email ->
           val route = AuthRoute.VerifyOtp(
@@ -55,6 +57,7 @@ internal fun MybraryNavHost(
 
       // TODO: screen の追加
     }
+
     myBookListScreen(
       onAdditionClick = {
         navController.navigate(SearchBooksRoute)
