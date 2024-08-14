@@ -55,7 +55,7 @@ internal fun VerifyOtpScreen(
         leadingIcon = {
           Icon(
             iconResId = R.drawable.icon_key,
-            descResId = R.string.auth_alt_otp,
+            altResId = R.string.auth_alt_otp,
           )
         },
         keyboardOptions = KeyboardOptions.Default.copy(

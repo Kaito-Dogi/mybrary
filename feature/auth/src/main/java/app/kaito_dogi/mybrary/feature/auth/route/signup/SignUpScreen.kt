@@ -69,7 +69,7 @@ internal fun SignUpScreen(
       ) {
         Icon(
           iconResId = R.drawable.icon_google,
-          descResId = R.string.auth_alt_sign_up_google,
+          altResId = R.string.auth_alt_sign_up_google,
           tint = Color.Unspecified,
         )
 

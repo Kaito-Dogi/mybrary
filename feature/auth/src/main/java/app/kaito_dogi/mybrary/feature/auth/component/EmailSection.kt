@@ -39,7 +39,7 @@ internal fun EmailSection(
       leadingIcon = {
         Icon(
           iconResId = R.drawable.icon_mail,
-          descResId = R.string.auth_alt_email_address,
+          altResId = R.string.auth_alt_email_address,
         )
       },
       keyboardOptions = KeyboardOptions.Default.copy(
@@ -58,7 +58,7 @@ internal fun EmailSection(
     ) {
       Icon(
         iconResId = R.drawable.icon_send,
-        descResId = R.string.auth_alt_send_otp,
+        altResId = R.string.auth_alt_send_otp,
       )
 
       Gap(width = MybraryTheme.space.xs)
