@@ -20,4 +20,4 @@ data class MyBook(
   val isFavorite: Boolean,
   val isPublic: Boolean,
   val isArchived: Boolean,
-)
+) : java.io.Serializable

@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybookdetail
+package app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SnackbarHost

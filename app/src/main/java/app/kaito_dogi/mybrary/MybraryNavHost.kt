@@ -14,6 +14,9 @@ import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
 import app.kaito_dogi.mybrary.feature.mybook.myBookNavigation
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.myBookListScreen
+import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
 
 @Composable
@@ -71,21 +74,19 @@ internal fun MybraryNavHost(
 
     myBookNavigation(
       startDestination = MyBookRoute.MyBookList,
-    ) {
-      // TODO: destination を定義
-    }
+    ) { childNavController ->
+      myBookListScreen(
+        onAdditionClick = {
+          childNavController.navigate(SearchBooksRoute)
+        },
+        onMyBookClick = { myBook ->
+          val route = MyBookRoute.MyBookDetail(myBook = myBook)
+          childNavController.navigate(route)
+        },
+      )
 
-    // TODO: モジュール以降後削除
-//    myBookListScreen(
-//      onAdditionClick = {
-//        navController.navigate(SearchBooksRoute)
-//      },
-//      onMyBookClick = { myBook ->
-//        val navArg = MyBookDetailNavArg(myBook = myBook)
-//        navController.navigate(myBookDetailRouteWithNavArg(navArg))
-//      },
-//    )
-//    myBookDetailScreen()
+      myBookDetailScreen()
+    }
 
     searchBooksScreen()
   }

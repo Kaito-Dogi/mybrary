@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybookdetail
+package app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
@@ -20,11 +20,11 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRow
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MemoRowSkeleton
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomAppBar
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailBottomSheetContent
-import app.kaito_dogi.mybrary.feature.mybookdetail.component.MyBookDetailTopAppBar
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.component.MemoRow
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.component.MemoRowSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.component.MyBookDetailBottomAppBar
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.component.MyBookDetailBottomSheetContent
+import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.component.MyBookDetailTopAppBar
 
 @Composable
 internal fun MyBookDetailScreen(

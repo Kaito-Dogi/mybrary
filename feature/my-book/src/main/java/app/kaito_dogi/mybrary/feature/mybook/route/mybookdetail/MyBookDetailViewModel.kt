@@ -1,15 +1,19 @@
-package app.kaito_dogi.mybrary.feature.mybookdetail
+package app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
+import app.kaito_dogi.mybrary.core.navigation.createTypePair
 import app.kaito_dogi.mybrary.core.ui.R
+import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +28,11 @@ internal class MyBookDetailViewModel @Inject constructor(
   private val draftMemoRepository: DraftMemoRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-  private val navArg: MyBookDetailNavArg = checkNotNull(savedStateHandle[MyBookDetailNavArgName])
+  private val navArg: MyBookRoute.MyBookDetail = savedStateHandle.toRoute(
+    typeMap = mapOf(
+      createTypePair<MyBook>(),
+    ),
+  )
 
   private val _uiState = MutableStateFlow(
     MyBookDetailUiState.createInitialValue(
