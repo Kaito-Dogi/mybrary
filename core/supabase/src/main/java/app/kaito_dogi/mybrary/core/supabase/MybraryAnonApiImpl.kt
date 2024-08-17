@@ -8,7 +8,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.supabase.ext.fromSelectColumnsAll
+import app.kaito_dogi.mybrary.core.supabase.ext.select
 import app.kaito_dogi.mybrary.core.supabase.model.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.OtpType
@@ -38,13 +38,13 @@ internal class MybraryAnonApiImpl @Inject constructor(
 
   override suspend fun getMyBooks(): GetMyBooksResponse {
     val result = supabaseClient.postgrest
-      .fromSelectColumnsAll(table = Table.MyBook)
+      .select(table = Table.MyBook)
     return result.decodeList<MyBookResponse>()
   }
 
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
     val result = supabaseClient.postgrest
-      .fromSelectColumnsAll(
+      .select(
         table = Table.MyBook,
         request = {
           filter {
@@ -57,7 +57,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
 
   override suspend fun getMemos(myBookId: Long): GetMemos {
     val result = supabaseClient.postgrest
-      .fromSelectColumnsAll(
+      .select(
         table = Table.Memo,
         request = {
           filter {

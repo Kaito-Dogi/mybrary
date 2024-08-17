@@ -9,7 +9,7 @@ import io.github.jan.supabase.postgrest.query.PostgrestUpdate
 import io.github.jan.supabase.postgrest.query.filter.PostgrestFilterBuilder
 import io.github.jan.supabase.postgrest.result.PostgrestResult
 
-internal suspend fun Postgrest.fromSelectColumnsAll(
+internal suspend fun Postgrest.select(
   table: Table,
   request: @PostgrestFilterDSL PostgrestRequestBuilder.() -> Unit = {},
 ): PostgrestResult = this
@@ -19,7 +19,7 @@ internal suspend fun Postgrest.fromSelectColumnsAll(
     request = request,
   )
 
-internal suspend inline fun <reified T : Any> Postgrest.fromInsertSelectColumnsAll(
+internal suspend inline fun <reified T : Any> Postgrest.insert(
   table: Table,
   value: T,
 ): PostgrestResult = this
@@ -32,7 +32,7 @@ internal suspend inline fun <reified T : Any> Postgrest.fromInsertSelectColumnsA
     )
   }
 
-internal suspend inline fun Postgrest.fromUpdateSelectColumnsAll(
+internal suspend inline fun Postgrest.update(
   table: Table,
   crossinline update: PostgrestUpdate.() -> Unit,
   filter: @PostgrestFilterDSL PostgrestFilterBuilder.() -> Unit,
