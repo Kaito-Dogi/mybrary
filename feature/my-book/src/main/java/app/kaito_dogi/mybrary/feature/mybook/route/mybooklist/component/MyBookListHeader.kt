@@ -1,25 +1,37 @@
 package app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
+
+private val Height = 40.dp
 
 @Composable
 internal fun MyBookListHeader(
   @StringRes titleResId: Int,
   modifier: Modifier = Modifier,
 ) {
-  Text(
-    textResId = titleResId,
-    modifier = modifier.fillMaxWidth(),
-    color = MybraryTheme.colorScheme.onBackground,
-    style = MybraryTheme.typography.headlineMedium,
-  )
+  Column(
+    modifier = modifier
+      .fillMaxWidth()
+      .height(Height),
+    verticalArrangement = Arrangement.Center
+  ) {
+    Text(
+      textResId = titleResId,
+      color = MybraryTheme.colorScheme.onBackground,
+      style = MybraryTheme.typography.titleLarge,
+    )
+  }
 }
 
 @Preview(showBackground = true)

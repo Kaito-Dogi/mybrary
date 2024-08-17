@@ -82,7 +82,7 @@ internal fun MyBookListScreen(
             span = { GridItemSpan(uiState.numberOfColumns) },
             key = "Spacer:favorite",
           ) {
-            Spacer(modifier = Modifier.height(MybraryTheme.space.xxl))
+            Spacer(modifier = Modifier.height(MybraryTheme.space.xl))
           }
         }
       }
