@@ -1,5 +1,8 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -20,7 +23,9 @@ interface MybraryAuthApi {
   )
 
   @POST("/memo")
-  suspend fun postMemo()
+  suspend fun postMemo(
+    @Body request: PostMemoRequest,
+  ): PostMemoResponse
 
   @PUT("/memo{id}")
   suspend fun putMemo(
