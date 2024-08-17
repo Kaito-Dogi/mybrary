@@ -3,6 +3,8 @@ package app.kaito_dogi.mybrary.core.supabase
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
+import app.kaito_dogi.mybrary.core.supabase.ext.fromInsertSelectColumnsAll
+import app.kaito_dogi.mybrary.core.supabase.model.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import javax.inject.Inject
@@ -25,9 +27,12 @@ internal class MybraryAuthApiImpl @Inject constructor(
   }
 
   override suspend fun postMemo(request: PostMemoRequest): PostMemoResponse {
-    val result = supabaseClient.postgrest.from(table = "memo").insert(request)
-    val response = result.decodeSingle<PostMemoResponse>()
-    return response
+    val result = supabaseClient.postgrest
+      .fromInsertSelectColumnsAll(
+        value = request,
+        table = Table.Memo,
+      )
+    return result.decodeSingle<PostMemoResponse>()
   }
 
   override suspend fun putMemo(id: Long) {
