@@ -10,7 +10,7 @@ import io.github.jan.supabase.postgrest.result.PostgrestResult
 internal suspend fun Postgrest.fromSelectColumnsAll(
   table: Table,
   request: @PostgrestFilterDSL PostgrestRequestBuilder.() -> Unit = {},
-) = this
+): PostgrestResult = this
   .from(table = table.value)
   .select(
     columns = Columns.raw(value = table.columnsAll),

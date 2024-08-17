@@ -15,7 +15,6 @@ import io.github.jan.supabase.gotrue.OtpType
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.query.Columns
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,13 +37,13 @@ internal class MybraryAnonApiImpl @Inject constructor(
   }
 
   override suspend fun getMyBooks(): GetMyBooksResponse {
-    return supabaseClient.postgrest
+    val result = supabaseClient.postgrest
       .fromSelectColumnsAll(table = Table.MyBook)
-      .decodeList<MyBookResponse>()
+    return result.decodeList<MyBookResponse>()
   }
 
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
-    return supabaseClient.postgrest
+    val result = supabaseClient.postgrest
       .fromSelectColumnsAll(
         table = Table.MyBook,
         request = {
@@ -53,11 +52,11 @@ internal class MybraryAnonApiImpl @Inject constructor(
           }
         },
       )
-      .decodeSingle<MyBookResponse>()
+    return result.decodeSingle<MyBookResponse>()
   }
 
   override suspend fun getMemos(myBookId: Long): GetMemos {
-    return supabaseClient.postgrest
+    val result = supabaseClient.postgrest
       .fromSelectColumnsAll(
         table = Table.Memo,
         request = {
@@ -66,7 +65,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
           }
         },
       )
-      .decodeList<MemoResponse>()
+    return result.decodeList<MemoResponse>()
   }
 
   override suspend fun getUser() {
