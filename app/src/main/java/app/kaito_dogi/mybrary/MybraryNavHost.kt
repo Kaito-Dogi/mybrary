@@ -12,12 +12,8 @@ import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
 import app.kaito_dogi.mybrary.feature.auth.route.signup.signUpScreen
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
 import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.verifyOtpScreen
-import app.kaito_dogi.mybrary.feature.mybookdetail.MyBookDetailNavArg
-import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailRouteWithNavArg
-import app.kaito_dogi.mybrary.feature.mybookdetail.myBookDetailScreen
-import app.kaito_dogi.mybrary.feature.mybooklist.MyBookListRoute
-import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
-import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
+import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
+import app.kaito_dogi.mybrary.feature.mybook.myBookNavigation
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
 
 @Composable
@@ -43,7 +39,7 @@ internal fun MybraryNavHost(
           childNavController.navigate(route)
         },
         onLoginComplete = {
-          navController.navigate(MyBookListRoute)
+          navController.navigate(MybraryRoute.MyBook)
         },
         onSignUpClick = {
           childNavController.navigate(AuthRoute.SignUp)
@@ -59,7 +55,7 @@ internal fun MybraryNavHost(
           childNavController.navigate(route)
         },
         onSignUpComplete = {
-          navController.navigate(MyBookListRoute)
+          navController.navigate(MybraryRoute.MyBook)
         },
         onLoginClick = {
           childNavController.navigate(AuthRoute.Login)
@@ -68,21 +64,29 @@ internal fun MybraryNavHost(
 
       verifyOtpScreen(
         onVerifyOtpComplete = {
-          navController.navigate(MyBookListRoute)
+          navController.navigate(MybraryRoute.MyBook)
         },
       )
     }
 
-    myBookListScreen(
-      onAdditionClick = {
-        navController.navigate(SearchBooksRoute)
-      },
-      onMyBookClick = { myBook ->
-        val navArg = MyBookDetailNavArg(myBook = myBook)
-        navController.navigate(myBookDetailRouteWithNavArg(navArg))
-      },
-    )
-    myBookDetailScreen()
+    myBookNavigation(
+      startDestination = MyBookRoute.MyBookList,
+    ) {
+      // TODO: destination を定義
+    }
+
+    // TODO: モジュール以降後削除
+//    myBookListScreen(
+//      onAdditionClick = {
+//        navController.navigate(SearchBooksRoute)
+//      },
+//      onMyBookClick = { myBook ->
+//        val navArg = MyBookDetailNavArg(myBook = myBook)
+//        navController.navigate(myBookDetailRouteWithNavArg(navArg))
+//      },
+//    )
+//    myBookDetailScreen()
+
     searchBooksScreen()
   }
 }
