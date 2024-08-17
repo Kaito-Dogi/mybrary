@@ -2,8 +2,12 @@ package app.kaito_dogi.mybrary.core.supabase
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PutMemoResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.fromInsertSelectColumnsAll
+import app.kaito_dogi.mybrary.core.supabase.ext.fromUpdateSelectColumnsAll
 import app.kaito_dogi.mybrary.core.supabase.model.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
@@ -35,8 +39,23 @@ internal class MybraryAuthApiImpl @Inject constructor(
     return result.decodeSingle<PostMemoResponse>()
   }
 
-  override suspend fun putMemo(id: Long) {
-    TODO("Not yet implemented")
+  override suspend fun putMemo(
+    id: Long,
+    request: PutMemoRequest,
+  ): PutMemoResponse {
+    val result = supabaseClient.postgrest
+      .fromUpdateSelectColumnsAll(
+        table = Table.Memo,
+        update = {
+          MemoResponse::content setTo request.content
+          MemoResponse::startPage setTo request.startPage
+          MemoResponse::endPage setTo request.endPage
+        },
+        filter = {
+          MemoResponse::id eq id
+        },
+      )
+    return result.decodeSingle<PutMemoResponse>()
   }
 
   override suspend fun deleteMemo(id: Long) {

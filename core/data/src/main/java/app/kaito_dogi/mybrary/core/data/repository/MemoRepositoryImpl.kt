@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.core.data.repository
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -40,8 +41,19 @@ internal class MemoRepositoryImpl @Inject constructor(
     return@withContext response.toMemo()
   }
 
-  override suspend fun editMemo(memoId: MemoId, draftMemo: DraftMemo): Memo {
-    TODO("Not yet implemented")
+  override suspend fun editMemo(
+    memoId: MemoId,
+    draftMemo: DraftMemo,
+  ): Memo = withContext(dispatcher) {
+    val response = mybraryAuthApi.putMemo(
+      id = memoId.value,
+      request = PutMemoRequest(
+        content = draftMemo.content,
+        startPage = draftMemo.pageRange?.start,
+        endPage = draftMemo.pageRange?.end,
+      ),
+    )
+    return@withContext response.toMemo()
   }
 
   override suspend fun publishMemo(memoId: MemoId): Memo {
