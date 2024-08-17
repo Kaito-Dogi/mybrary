@@ -8,6 +8,8 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
+import app.kaito_dogi.mybrary.core.supabase.ext.fromSelectColumnsAll
+import app.kaito_dogi.mybrary.core.supabase.model.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.OtpType
 import io.github.jan.supabase.gotrue.auth
@@ -36,37 +38,35 @@ internal class MybraryAnonApiImpl @Inject constructor(
   }
 
   override suspend fun getMyBooks(): GetMyBooksResponse {
-    return supabaseClient.postgrest.from(table = "my_book").select(
-      columns = Columns.raw(
-        value = "*,profile:user_id(*),book:book_id(*,author(*))",
-      ),
-    ).decodeList<MyBookResponse>()
+    return supabaseClient.postgrest
+      .fromSelectColumnsAll(table = Table.MyBook)
+      .decodeList<MyBookResponse>()
   }
 
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
-    return supabaseClient.postgrest.from(table = "my_book").select(
-      columns = Columns.raw(
-        value = "*,profile:user_id(*),book:book_id(*,author(*))",
-      ),
-      request = {
-        filter {
-          MyBookResponse::id eq myBookId
-        }
-      },
-    ).decodeSingle<MyBookResponse>()
+    return supabaseClient.postgrest
+      .fromSelectColumnsAll(
+        table = Table.MyBook,
+        request = {
+          filter {
+            MyBookResponse::id eq myBookId
+          }
+        },
+      )
+      .decodeSingle<MyBookResponse>()
   }
 
   override suspend fun getMemos(myBookId: Long): GetMemos {
-    return supabaseClient.postgrest.from(table = "memo").select(
-      columns = Columns.raw(
-        value = "*,my_book(profile:user_id(*))",
-      ),
-      request = {
-        filter {
-          MemoResponse::myBookId eq myBookId
-        }
-      },
-    ).decodeList<MemoResponse>()
+    return supabaseClient.postgrest
+      .fromSelectColumnsAll(
+        table = Table.Memo,
+        request = {
+          filter {
+            MemoResponse::myBookId eq myBookId
+          }
+        },
+      )
+      .decodeList<MemoResponse>()
   }
 
   override suspend fun getUser() {
