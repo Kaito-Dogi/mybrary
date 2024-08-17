@@ -20,8 +20,8 @@ internal suspend fun Postgrest.fromSelectColumnsAll(
   )
 
 internal suspend inline fun <reified T : Any> Postgrest.fromInsertSelectColumnsAll(
-  value: T,
   table: Table,
+  value: T,
 ): PostgrestResult = this
   .from(table = table.value)
   .insert(value) {

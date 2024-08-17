@@ -33,8 +33,8 @@ internal class MybraryAuthApiImpl @Inject constructor(
   override suspend fun postMemo(request: PostMemoRequest): PostMemoResponse {
     val result = supabaseClient.postgrest
       .fromInsertSelectColumnsAll(
-        value = request,
         table = Table.Memo,
+        value = request,
       )
     return result.decodeSingle<PostMemoResponse>()
   }
