@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist.component
+package app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable

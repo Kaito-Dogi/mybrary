@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.route.mybooklist
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

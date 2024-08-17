@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.route.mybooklist
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -19,10 +19,10 @@ import app.kaito_dogi.mybrary.core.designsystem.extension.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.ui.R
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCellSkeleton
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeader
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeaderSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component.MyBookCell
+import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component.MyBookCellSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component.MyBookListHeader
+import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.component.MyBookListHeaderSkeleton
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
