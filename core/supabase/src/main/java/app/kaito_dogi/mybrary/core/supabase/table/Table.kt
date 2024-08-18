@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.table
 
 internal enum class Table(
   val value: String,

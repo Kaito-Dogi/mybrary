@@ -1,8 +1,8 @@
 package app.kaito_dogi.mybrary.core.supabase.ext
 
-import app.kaito_dogi.mybrary.core.supabase.model.Rpc
-import app.kaito_dogi.mybrary.core.supabase.model.RpcParameters
-import app.kaito_dogi.mybrary.core.supabase.model.Table
+import app.kaito_dogi.mybrary.core.supabase.rpc.Rpc
+import app.kaito_dogi.mybrary.core.supabase.rpc.RpcParameters
+import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.gotrue.PostgrestFilterDSL
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.query.Columns

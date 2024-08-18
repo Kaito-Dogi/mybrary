@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase
+package app.kaito_dogi.mybrary.core.supabase.api
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
@@ -9,7 +9,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.select
-import app.kaito_dogi.mybrary.core.supabase.model.Table
+import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.OtpType
 import io.github.jan.supabase.gotrue.auth
@@ -67,13 +67,5 @@ internal class MybraryAnonApiImpl @Inject constructor(
 
   override suspend fun getUser() {
     TODO("Not yet implemented")
-  }
-
-  override suspend fun getSession(): Boolean {
-    val session = supabaseClient.auth.currentSessionOrNull()
-    return session?.let {
-      println("あああ: $it")
-      true
-    } ?: false
   }
 }

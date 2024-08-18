@@ -1,4 +1,6 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.rpc
+
+import app.kaito_dogi.mybrary.core.supabase.table.Table
 
 internal enum class Rpc(
   val value: String,

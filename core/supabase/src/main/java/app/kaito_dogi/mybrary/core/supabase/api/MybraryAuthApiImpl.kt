@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase
+package app.kaito_dogi.mybrary.core.supabase.api
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
@@ -11,9 +11,9 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.insert
 import app.kaito_dogi.mybrary.core.supabase.ext.rpc
 import app.kaito_dogi.mybrary.core.supabase.ext.update
-import app.kaito_dogi.mybrary.core.supabase.model.Rpc
-import app.kaito_dogi.mybrary.core.supabase.model.RpcParameters
-import app.kaito_dogi.mybrary.core.supabase.model.Table
+import app.kaito_dogi.mybrary.core.supabase.rpc.Rpc
+import app.kaito_dogi.mybrary.core.supabase.rpc.RpcParameters
+import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import javax.inject.Inject

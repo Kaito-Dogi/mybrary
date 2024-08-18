@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.rpc
 
 import kotlinx.serialization.Serializable
 

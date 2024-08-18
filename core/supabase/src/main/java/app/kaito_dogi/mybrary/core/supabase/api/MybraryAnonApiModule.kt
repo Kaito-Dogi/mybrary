@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase
+package app.kaito_dogi.mybrary.core.supabase.api
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import dagger.Binds
