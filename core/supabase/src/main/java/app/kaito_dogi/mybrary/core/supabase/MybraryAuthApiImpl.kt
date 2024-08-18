@@ -34,7 +34,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
   override suspend fun patchMyBookFavorite(id: Long): PatchMyBookFavoriteResponse {
     val result = supabaseClient.postgrest.rpc(
       rpc = Rpc.ToggleMyBookIsFavorite,
-      parameters = RpcParameters.ToggleMyBookIsFavoriteParameters(
+      parameters = RpcParameters.ToggleMyBookIsFavorite(
         id = id,
       ),
       filter = {

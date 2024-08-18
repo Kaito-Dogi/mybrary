@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -17,6 +18,7 @@ import kotlinx.coroutines.withContext
 @Singleton
 internal class MyBookRepositoryImpl @Inject constructor(
   private val mybraryAnonApi: MybraryAnonApi,
+  private val mybraryAuthApi: MybraryAuthApi,
   @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
 ) : MyBookRepository {
   override suspend fun getMyBookList(): List<MyBook> = withContext(dispatcher) {
@@ -35,8 +37,9 @@ internal class MyBookRepositoryImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
-    TODO("Not yet implemented")
+  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook = withContext(dispatcher) {
+    val response = mybraryAuthApi.patchMyBookFavorite(id = myBookId.value)
+    return@withContext response.toMyBook()
   }
 
   override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {

@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 internal sealed interface RpcParameters {
   @Serializable
-  data class ToggleMyBookIsFavoriteParameters(
+  data class ToggleMyBookIsFavorite(
     val id: Long,
   ) : RpcParameters
 }

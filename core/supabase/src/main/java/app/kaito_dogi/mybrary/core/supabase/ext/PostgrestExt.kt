@@ -56,7 +56,7 @@ internal suspend fun Postgrest.rpc(
   filter: @PostgrestFilterDSL PostgrestFilterBuilder.() -> Unit,
 ): PostgrestResult = this
   .rpc(
-    function = rpc.name,
+    function = rpc.value,
     parameters = parameters,
     request = {
       select(
