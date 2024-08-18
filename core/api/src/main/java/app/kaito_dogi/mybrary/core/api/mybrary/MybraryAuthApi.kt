@@ -2,10 +2,12 @@ package app.kaito_dogi.mybrary.core.api.mybrary
 
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PutMemoResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -18,6 +20,11 @@ interface MybraryAuthApi {
   suspend fun putMyBook(
     @Path("id") id: Long,
   )
+
+  @PATCH("/my-book/{id}/favorite")
+  suspend fun patchMyBookFavorite(
+    @Path("id") id: Long,
+  ): PatchMyBookFavoriteResponse
 
   @DELETE("/my-book/{id}")
   suspend fun deleteMyBook(

@@ -3,11 +3,16 @@ package app.kaito_dogi.mybrary.core.supabase
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PutMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.insert
+import app.kaito_dogi.mybrary.core.supabase.ext.rpc
 import app.kaito_dogi.mybrary.core.supabase.ext.update
+import app.kaito_dogi.mybrary.core.supabase.model.Rpc
+import app.kaito_dogi.mybrary.core.supabase.model.RpcParameters
 import app.kaito_dogi.mybrary.core.supabase.model.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
@@ -24,6 +29,19 @@ internal class MybraryAuthApiImpl @Inject constructor(
 
   override suspend fun putMyBook(id: Long) {
     TODO("Not yet implemented")
+  }
+
+  override suspend fun patchMyBookFavorite(id: Long): PatchMyBookFavoriteResponse {
+    val result = supabaseClient.postgrest.rpc(
+      rpc = Rpc.ToggleMyBookIsFavorite,
+      parameters = RpcParameters.ToggleMyBookIsFavoriteParameters(
+        id = id,
+      ),
+      filter = {
+        MyBookResponse::id eq id
+      },
+    )
+    return result.decodeSingle<PatchMyBookFavoriteResponse>()
   }
 
   override suspend fun deleteMyBook(id: Long) {
