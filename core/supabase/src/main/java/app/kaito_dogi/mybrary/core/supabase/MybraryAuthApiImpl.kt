@@ -49,11 +49,10 @@ internal class MybraryAuthApiImpl @Inject constructor(
   }
 
   override suspend fun postMemo(request: PostMemoRequest): PostMemoResponse {
-    val result = supabaseClient.postgrest
-      .insert(
-        table = Table.Memo,
-        value = request,
-      )
+    val result = supabaseClient.postgrest.insert(
+      table = Table.Memo,
+      value = request,
+    )
     return result.decodeSingle<PostMemoResponse>()
   }
 
@@ -61,18 +60,17 @@ internal class MybraryAuthApiImpl @Inject constructor(
     id: Long,
     request: PutMemoRequest,
   ): PutMemoResponse {
-    val result = supabaseClient.postgrest
-      .update(
-        table = Table.Memo,
-        update = {
-          MemoResponse::content setTo request.content
-          MemoResponse::startPage setTo request.startPage
-          MemoResponse::endPage setTo request.endPage
-        },
-        filter = {
-          MemoResponse::id eq id
-        },
-      )
+    val result = supabaseClient.postgrest.update(
+      table = Table.Memo,
+      update = {
+        MemoResponse::content setTo request.content
+        MemoResponse::startPage setTo request.startPage
+        MemoResponse::endPage setTo request.endPage
+      },
+      filter = {
+        MemoResponse::id eq id
+      },
+    )
     return result.decodeSingle<PutMemoResponse>()
   }
 

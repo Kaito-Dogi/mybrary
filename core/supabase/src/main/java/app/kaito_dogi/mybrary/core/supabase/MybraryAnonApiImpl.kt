@@ -37,38 +37,43 @@ internal class MybraryAnonApiImpl @Inject constructor(
   }
 
   override suspend fun getMyBooks(): GetMyBooksResponse {
-    val result = supabaseClient.postgrest
-      .select(table = Table.MyBook)
+    val result = supabaseClient.postgrest.select(table = Table.MyBook)
     return result.decodeList<MyBookResponse>()
   }
 
   override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
-    val result = supabaseClient.postgrest
-      .select(
-        table = Table.MyBook,
-        request = {
-          filter {
-            MyBookResponse::id eq myBookId
-          }
-        },
-      )
+    val result = supabaseClient.postgrest.select(
+      table = Table.MyBook,
+      request = {
+        filter {
+          MyBookResponse::id eq myBookId
+        }
+      },
+    )
     return result.decodeSingle<MyBookResponse>()
   }
 
   override suspend fun getMemos(myBookId: Long): GetMemos {
-    val result = supabaseClient.postgrest
-      .select(
-        table = Table.Memo,
-        request = {
-          filter {
-            MemoResponse::myBookId eq myBookId
-          }
-        },
-      )
+    val result = supabaseClient.postgrest.select(
+      table = Table.Memo,
+      request = {
+        filter {
+          MemoResponse::myBookId eq myBookId
+        }
+      },
+    )
     return result.decodeList<MemoResponse>()
   }
 
   override suspend fun getUser() {
     TODO("Not yet implemented")
+  }
+
+  override suspend fun getSession(): Boolean {
+    val session = supabaseClient.auth.currentSessionOrNull()
+    return session?.let {
+      println("あああ: $it")
+      true
+    } ?: false
   }
 }
