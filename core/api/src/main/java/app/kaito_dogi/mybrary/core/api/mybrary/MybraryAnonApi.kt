@@ -36,4 +36,7 @@ interface MybraryAnonApi {
 
   @GET("/user/{user-id}")
   suspend fun getUser()
+
+  // FIXME: 適切な定義箇所に移動する
+  suspend fun getSession(): Boolean
 }

@@ -15,6 +15,17 @@ internal fun LoginScreenContainer(
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+  // FIXME: 適切な実装に変更する
+  val hasSession by viewModel.hasSessionFlow.collectAsStateWithLifecycle()
+  if (hasSession) {
+    LaunchedEffect(Unit) {
+      onLoginComplete()
+    }
+  }
+  LaunchedEffect(Unit) {
+    viewModel.onInit()
+  }
+
   if (uiState.isLoggedIn) {
     LaunchedEffect(Unit) {
       onLoginComplete()

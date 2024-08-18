@@ -68,4 +68,8 @@ internal class MybraryAnonApiImpl @Inject constructor(
   override suspend fun getUser() {
     TODO("Not yet implemented")
   }
+
+  override suspend fun getSession(): Boolean {
+    return supabaseClient.auth.currentSessionOrNull()?.let { true } ?: false
+  }
 }
