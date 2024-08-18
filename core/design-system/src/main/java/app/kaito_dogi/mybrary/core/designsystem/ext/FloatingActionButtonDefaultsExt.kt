@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.designsystem.extension
+package app.kaito_dogi.mybrary.core.designsystem.ext
 
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.runtime.Composable
