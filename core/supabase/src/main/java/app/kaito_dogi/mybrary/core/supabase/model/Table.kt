@@ -12,4 +12,5 @@ internal enum class Table(
     value = "memo",
     columnsAll = "*,my_book(profile:user_id(*))",
   ),
+  ;
 }

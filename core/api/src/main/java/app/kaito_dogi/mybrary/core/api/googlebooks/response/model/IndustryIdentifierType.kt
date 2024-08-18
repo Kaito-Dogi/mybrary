@@ -13,4 +13,5 @@ enum class IndustryIdentifierType {
 
   @SerialName("OTHER")
   Other,
+  ;
 }
