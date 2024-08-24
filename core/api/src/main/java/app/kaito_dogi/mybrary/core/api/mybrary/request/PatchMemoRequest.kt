@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PutMemoRequest(
+data class PatchMemoRequest(
   val content: String,
   @SerialName("start_page")
   val startPage: Int?,

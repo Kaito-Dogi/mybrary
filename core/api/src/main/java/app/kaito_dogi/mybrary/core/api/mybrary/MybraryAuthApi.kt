@@ -1,10 +1,11 @@
 package app.kaito_dogi.mybrary.core.api.mybrary
 
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
-import app.kaito_dogi.mybrary.core.api.mybrary.response.PutMemoResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.PATCH
@@ -16,7 +17,7 @@ interface MybraryAuthApi {
   @POST("/my-book")
   suspend fun postMyBook()
 
-  @PUT("/my-book/{id}")
+  @PATCH("/my-book/{id}")
   suspend fun putMyBook(
     @Path("id") id: Long,
   )
@@ -36,11 +37,11 @@ interface MybraryAuthApi {
     @Body request: PostMemoRequest,
   ): PostMemoResponse
 
-  @PUT("/memo{id}")
-  suspend fun putMemo(
+  @PATCH("/memo/{id}")
+  suspend fun patchMemo(
     @Path("id") id: Long,
-    @Body request: PutMemoRequest,
-  ): PutMemoResponse
+    @Body request: PatchMemoRequest,
+  ): PatchMemoResponse
 
   @DELETE("/memo{id}")
   suspend fun deleteMemo(

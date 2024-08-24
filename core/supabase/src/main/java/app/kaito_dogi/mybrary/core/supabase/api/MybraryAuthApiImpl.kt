@@ -1,11 +1,12 @@
 package app.kaito_dogi.mybrary.core.supabase.api
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
-import app.kaito_dogi.mybrary.core.api.mybrary.response.PutMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.insert
@@ -56,10 +57,10 @@ internal class MybraryAuthApiImpl @Inject constructor(
     return result.decodeSingle<PostMemoResponse>()
   }
 
-  override suspend fun putMemo(
+  override suspend fun patchMemo(
     id: Long,
-    request: PutMemoRequest,
-  ): PutMemoResponse {
+    request: PatchMemoRequest,
+  ): PatchMemoResponse {
     val result = supabaseClient.postgrest.update(
       table = Table.Memo,
       update = {
@@ -71,7 +72,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
         MemoResponse::id eq id
       },
     )
-    return result.decodeSingle<PutMemoResponse>()
+    return result.decodeSingle<PatchMemoResponse>()
   }
 
   override suspend fun deleteMemo(id: Long) {

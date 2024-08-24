@@ -2,8 +2,8 @@ package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PutMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -45,9 +45,9 @@ internal class MemoRepositoryImpl @Inject constructor(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo = withContext(dispatcher) {
-    val response = mybraryAuthApi.putMemo(
+    val response = mybraryAuthApi.patchMemo(
       id = memoId.value,
-      request = PutMemoRequest(
+      request = PatchMemoRequest(
         content = draftMemo.content,
         startPage = draftMemo.pageRange?.start,
         endPage = draftMemo.pageRange?.end,
