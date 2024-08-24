@@ -47,7 +47,9 @@ internal class MyBookDetailViewModel @Inject constructor(
         val myBookId = navArg.myBook.id
         val memoList = memoRepository.getMemoList(myBookId = myBookId)
         val draftMemo =
-          draftMemoRepository.getDraftMemo(myBookId = myBookId) ?: DraftMemo.createInitialValue(
+          draftMemoRepository.getDraftMemo(
+            myBookId = myBookId,
+          ) ?: DraftMemo.createInitialValue(
             myBookId = myBookId,
           )
         _uiState.update {
@@ -70,11 +72,15 @@ internal class MyBookDetailViewModel @Inject constructor(
   fun onArchiveClick() {
     viewModelScope.launch {
       try {
-        val archivedMyBook = myBookRepository.archiveMyBook(navArg.myBook.id)
+        val archivedMyBook = myBookRepository.archiveMyBook(
+          myBookId = navArg.myBook.id,
+        )
         _uiState.update {
           it.copy(
             myBook = archivedMyBook,
-            draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+            draftMemo = DraftMemo.createInitialValue(
+              myBookId = navArg.myBook.id,
+            ),
             editingMemoId = null,
             messageResId = R.string.my_book_detail_message_my_book_archived,
           )
@@ -90,7 +96,9 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         if (uiState.value.myBook.isPublic) {
-          val privateMyBook = myBookRepository.makeMyBookPrivate(navArg.myBook.id)
+          val privateMyBook = myBookRepository.makeMyBookPrivate(
+            myBookId = navArg.myBook.id,
+          )
           _uiState.update {
             it.copy(
               myBook = privateMyBook,
@@ -98,7 +106,9 @@ internal class MyBookDetailViewModel @Inject constructor(
             )
           }
         } else {
-          val publicMyBook = myBookRepository.makeMyBookPublic(navArg.myBook.id)
+          val publicMyBook = myBookRepository.makeMyBookPublic(
+            myBookId = navArg.myBook.id,
+          )
           _uiState.update {
             it.copy(
               myBook = publicMyBook,
@@ -117,7 +127,9 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         if (uiState.value.myBook.isFavorite) {
-          val removedMyBook = myBookRepository.removeMyBookFromFavorites(navArg.myBook.id)
+          val removedMyBook = myBookRepository.removeMyBookFromFavorites(
+            myBookId = navArg.myBook.id,
+          )
           _uiState.update {
             it.copy(
               myBook = removedMyBook,
@@ -125,7 +137,9 @@ internal class MyBookDetailViewModel @Inject constructor(
             )
           }
         } else {
-          val addedMyBook = myBookRepository.addMyBookToFavorites(navArg.myBook.id)
+          val addedMyBook = myBookRepository.addMyBookToFavorites(
+            myBookId = navArg.myBook.id,
+          )
           _uiState.update {
             it.copy(
               myBook = addedMyBook,
@@ -145,7 +159,9 @@ internal class MyBookDetailViewModel @Inject constructor(
       try {
         val myBookId = navArg.myBook.id
         val draftMemo =
-          draftMemoRepository.getDraftMemo(myBookId = myBookId) ?: DraftMemo.createInitialValue(
+          draftMemoRepository.getDraftMemo(
+            myBookId = myBookId,
+          ) ?: DraftMemo.createInitialValue(
             myBookId = myBookId,
           )
 
@@ -268,7 +284,9 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               memoList = it.memoList?.plus(createdMemo),
-              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              draftMemo = DraftMemo.createInitialValue(
+                myBookId = navArg.myBook.id,
+              ),
               editingMemoId = null,
               isMemoSaved = true,
               messageResId = R.string.my_book_detail_message_memo_created,
@@ -285,7 +303,9 @@ internal class MyBookDetailViewModel @Inject constructor(
           _uiState.update {
             it.copy(
               memoList = newMemoList,
-              draftMemo = DraftMemo.createInitialValue(navArg.myBook.id),
+              draftMemo = DraftMemo.createInitialValue(
+                myBookId = navArg.myBook.id,
+              ),
               editingMemoId = null,
               isMemoSaved = true,
               messageResId = R.string.my_book_detail_message_memo_edited,
