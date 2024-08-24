@@ -37,4 +37,8 @@ internal class AuthRepositoryImpl @Inject constructor(
   override suspend fun googleLogin() {
     TODO("Not yet implemented")
   }
+
+  override suspend fun hasSession(): Boolean = withContext(dispatcher) {
+    return@withContext mybraryAnonApi.getSession()
+  }
 }

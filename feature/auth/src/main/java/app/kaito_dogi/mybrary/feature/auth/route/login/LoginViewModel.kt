@@ -38,4 +38,18 @@ internal class LoginViewModel @Inject constructor(
   fun onGoogleLoginClick() {
     println("あああ: onGoogleLoginClick")
   }
+
+  // FIXME: 適切な実装に変更する
+  val hasSessionFlow = MutableStateFlow(value = false)
+  fun onInit() {
+    viewModelScope.launch {
+      try {
+        val session = authRepository.hasSession()
+        hasSessionFlow.update { session }
+      } catch (e: Exception) {
+        // FIXME: 共通のエラーハンドリングを実装する
+        println("あああ: ${e.message}")
+      }
+    }
+  }
 }

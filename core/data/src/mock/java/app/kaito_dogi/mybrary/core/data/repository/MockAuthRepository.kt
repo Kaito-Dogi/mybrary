@@ -18,4 +18,8 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   override suspend fun googleLogin() {
     TODO("Not yet implemented")
   }
+
+  override suspend fun hasSession(): Boolean {
+    TODO("Not yet implemented")
+  }
 }

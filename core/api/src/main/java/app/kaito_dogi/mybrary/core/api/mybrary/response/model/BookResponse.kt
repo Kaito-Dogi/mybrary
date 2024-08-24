@@ -6,12 +6,16 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BookResponse(
   val id: Long,
-  @SerialName("external_id") val externalId: String,
+  @SerialName("external_id")
+  val externalId: String,
   val title: String,
-  @SerialName("image_url") val imageUrl: String? = null,
+  @SerialName("image_url")
+  val imageUrl: String? = null,
   val isbn10: String? = null,
   val isbn13: String? = null,
-  @SerialName("page_count") val pageCount: Int? = null,
+  @SerialName("page_count")
+  val pageCount: Int? = null,
   val publisher: String? = null,
-  @SerialName("author") val authors: List<AuthorResponse>,
+  @SerialName("author")
+  val authors: List<AuthorResponse>,
 )

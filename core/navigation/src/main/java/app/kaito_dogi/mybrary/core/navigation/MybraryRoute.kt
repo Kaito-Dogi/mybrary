@@ -5,4 +5,7 @@ import kotlinx.serialization.Serializable
 sealed interface MybraryRoute {
   @Serializable
   data object Auth : MybraryRoute
+
+  @Serializable
+  data object MyBook : MybraryRoute
 }

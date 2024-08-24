@@ -20,6 +20,7 @@ data class VerifyOtpUiState(
 
   enum class Page {
     Login,
-    SignUp
+    SignUp,
+    ;
   }
 }
