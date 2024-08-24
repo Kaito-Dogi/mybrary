@@ -10,10 +10,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.insert
-import app.kaito_dogi.mybrary.core.supabase.ext.rpc
 import app.kaito_dogi.mybrary.core.supabase.ext.update
-import app.kaito_dogi.mybrary.core.supabase.rpc.Rpc
-import app.kaito_dogi.mybrary.core.supabase.rpc.RpcParameters
 import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
@@ -32,12 +29,15 @@ internal class MybraryAuthApiImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun patchMyBookFavorite(id: Long): PatchMyBookFavoriteResponse {
-    val result = supabaseClient.postgrest.rpc(
-      rpc = Rpc.ToggleMyBookIsFavorite,
-      parameters = RpcParameters.ToggleMyBookIsFavorite(
-        id = id,
-      ),
+  override suspend fun patchMyBookFavorite(
+    id: Long,
+    request: PatchMyBookFavoriteRequest,
+  ): PatchMyBookFavoriteResponse {
+    val result = supabaseClient.postgrest.update(
+      table = Table.MyBook,
+      update = {
+        MyBookResponse::isFavorite setTo request.isFavorite
+      },
       filter = {
         MyBookResponse::id eq id
       },

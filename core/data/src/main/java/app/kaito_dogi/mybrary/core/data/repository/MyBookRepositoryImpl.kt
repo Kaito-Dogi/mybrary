@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -38,13 +39,21 @@ internal class MyBookRepositoryImpl @Inject constructor(
   }
 
   override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    val response = mybraryAuthApi.patchMyBookFavorite(id = myBookId.value)
+    val response = mybraryAuthApi.patchMyBookFavorite(
+      id = myBookId.value,
+      request = PatchMyBookFavoriteRequest(isFavorite = true),
+    )
     return@withContext response.toMyBook()
   }
 
-  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
-    TODO("Not yet implemented")
-  }
+  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook =
+    withContext(dispatcher) {
+      val response = mybraryAuthApi.patchMyBookFavorite(
+        id = myBookId.value,
+        request = PatchMyBookFavoriteRequest(isFavorite = false),
+      )
+      return@withContext response.toMyBook()
+    }
 
   override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
     TODO("Not yet implemented")
