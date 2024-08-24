@@ -43,7 +43,7 @@ interface MybraryAuthApi {
     @Body request: PatchMemoRequest,
   ): PatchMemoResponse
 
-  @DELETE("/memo{id}")
+  @DELETE("/memo/{id}")
   suspend fun deleteMemo(
     @Path("id") id: Long,
   )
