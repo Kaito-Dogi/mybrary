@@ -1,7 +1,5 @@
 package app.kaito_dogi.mybrary.core.supabase.ext
 
-import app.kaito_dogi.mybrary.core.supabase.rpc.Rpc
-import app.kaito_dogi.mybrary.core.supabase.rpc.RpcParameters
 import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.gotrue.PostgrestFilterDSL
 import io.github.jan.supabase.postgrest.Postgrest
@@ -10,7 +8,6 @@ import io.github.jan.supabase.postgrest.query.PostgrestRequestBuilder
 import io.github.jan.supabase.postgrest.query.PostgrestUpdate
 import io.github.jan.supabase.postgrest.query.filter.PostgrestFilterBuilder
 import io.github.jan.supabase.postgrest.result.PostgrestResult
-import io.github.jan.supabase.postgrest.rpc
 
 internal suspend fun Postgrest.select(
   table: Table,
@@ -49,21 +46,3 @@ internal suspend inline fun Postgrest.update(
     )
     filter(filter)
   }
-
-internal suspend fun Postgrest.rpc(
-  rpc: Rpc,
-  parameters: RpcParameters,
-  filter: @PostgrestFilterDSL PostgrestFilterBuilder.() -> Unit,
-): PostgrestResult = this
-  .rpc(
-    function = rpc.value,
-    parameters = parameters,
-    request = {
-      select(
-        columns = Columns.raw(
-          value = rpc.table.columnsAll,
-        ),
-      )
-      filter(filter)
-    },
-  )
