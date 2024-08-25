@@ -35,6 +35,11 @@ fun SecondaryButton(
   onClick = onClick,
   modifier = modifier,
   enabled = isEnabled && !isLoading,
+  colors = ButtonDefaults.outlinedButtonColors().copy(
+    containerColor = MybraryTheme.colorScheme.surface,
+    contentColor = MybraryTheme.colorScheme.onSurfaceVariant,
+    disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor,
+  ),
 ) {
   if (iconResId != null && !isLoading) {
     Icon(
