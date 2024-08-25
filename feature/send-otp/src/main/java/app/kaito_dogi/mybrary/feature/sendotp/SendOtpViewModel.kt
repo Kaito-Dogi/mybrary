@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class SendOtpViewModel @Inject constructor(
+  // FIXME: Otp, Login, SignUp で Repository を分ける
   private val authRepository: AuthRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(SendOtpUiState.InitialValue)
