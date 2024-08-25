@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.component
+package app.kaito_dogi.mybrary.feature.sendotp.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

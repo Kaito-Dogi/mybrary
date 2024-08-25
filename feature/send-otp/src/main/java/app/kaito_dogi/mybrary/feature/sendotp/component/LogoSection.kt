@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.component
+package app.kaito_dogi.mybrary.feature.sendotp.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
