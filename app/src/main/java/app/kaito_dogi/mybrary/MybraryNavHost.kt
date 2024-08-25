@@ -6,8 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
-import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
-import app.kaito_dogi.mybrary.feature.auth.route.signup.signUpScreen
 import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
 import app.kaito_dogi.mybrary.feature.mybook.myBookNavigation
 import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScreen
@@ -25,42 +23,9 @@ internal fun MybraryNavHost(
 
   NavHost(
     navController = navController,
-    startDestination = MybraryRoute.Auth,
+    startDestination = MybraryRoute.SendOtp,
     modifier = modifier.fillMaxSize(),
   ) {
-
-//    loginScreen(
-//      onSendOtpComplete = { email ->
-//        val route = MybraryRoute.VerifyOtp(
-//          email = email,
-//          page = MybraryRoute.VerifyOtp.Page.Login,
-//        )
-//        navController.navigate(route)
-//      },
-//      onLoginComplete = {
-//        navController.navigate(MybraryRoute.MyBook)
-//      },
-//      onSignUpClick = {
-//        navController.navigate(AuthRoute.SignUp)
-//      },
-//    )
-
-//    signUpScreen(
-//      onSendOtpComplete = { email ->
-//        val route = MybraryRoute.VerifyOtp(
-//          email = email,
-//          page = MybraryRoute.VerifyOtp.Page.SignUp,
-//        )
-//        navController.navigate(route)
-//      },
-//      onSignUpComplete = {
-//        navController.navigate(MybraryRoute.MyBook)
-//      },
-//      onLoginClick = {
-//        navController.navigate(AuthRoute.Login)
-//      },
-//    )
-
     myBookNavigation(
       startDestination = MyBookRoute.MyBookList,
     ) { childNavController ->
@@ -79,7 +44,21 @@ internal fun MybraryNavHost(
 
     searchBooksScreen()
 
-    sendOtpScreen()
+    sendOtpScreen(
+      onSendOtpComplete = { email, page ->
+        val route = MybraryRoute.VerifyOtp(
+          email = email,
+          page = page,
+        )
+        navController.navigate(route)
+      },
+      onLoginComplete = {
+        navController.navigate(MybraryRoute.MyBook)
+      },
+      onSignUpComplete = {
+        navController.navigate(MybraryRoute.MyBook)
+      },
+    )
 
     verifyOtpScreen(
       onVerifyOtpComplete = {

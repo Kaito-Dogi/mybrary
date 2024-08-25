@@ -4,8 +4,16 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 
-fun NavGraphBuilder.sendOtpScreen() {
+fun NavGraphBuilder.sendOtpScreen(
+  onSendOtpComplete: (email: String, MybraryRoute.VerifyOtp.Page) -> Unit,
+  onLoginComplete: () -> Unit,
+  onSignUpComplete: () -> Unit,
+) {
   composable<MybraryRoute.SendOtp> {
-    SendOtpScreenContainer()
+    SendOtpScreenContainer(
+      onSendOtpComplete = onSendOtpComplete,
+      onLoginComplete = onLoginComplete,
+      onSignUpComplete = onSignUpComplete,
+    )
   }
 }

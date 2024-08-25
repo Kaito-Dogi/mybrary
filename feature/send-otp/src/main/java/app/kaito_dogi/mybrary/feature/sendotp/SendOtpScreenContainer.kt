@@ -2,34 +2,81 @@ package app.kaito_dogi.mybrary.feature.sendotp
 
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun SendOtpScreenContainer() {
-  val coroutineScope = rememberCoroutineScope()
+internal fun SendOtpScreenContainer(
+  onSendOtpComplete: (email: String, MybraryRoute.VerifyOtp.Page) -> Unit,
+  onLoginComplete: () -> Unit,
+  onSignUpComplete: () -> Unit,
+  viewModel: SendOtpViewModel = hiltViewModel(),
+) {
+  val compositionScope = rememberCoroutineScope()
   val pagerState = rememberPagerState(
     initialPage = MybraryRoute.VerifyOtp.Page.Login.ordinal,
     pageCount = { MybraryRoute.VerifyOtp.Page.entries.size },
   )
 
+  val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+  // FIXME: 適切な実装に変更する
+  val hasSession by viewModel.hasSessionFlow.collectAsStateWithLifecycle()
+  if (hasSession) {
+    LaunchedEffect(Unit) {
+      onLoginComplete()
+    }
+  }
+  LaunchedEffect(Unit) {
+    viewModel.onInit()
+  }
+
+  // FIXME: PageState の保持方法を考える
+  if (uiState.isOtpSent) {
+    LaunchedEffect(Unit) {
+      MybraryRoute.VerifyOtp.Page.entries.find { it.ordinal == pagerState.currentPage }
+        ?.let { page ->
+          onSendOtpComplete(
+            uiState.email,
+            page,
+          )
+        }
+    }
+  }
+
+  if (uiState.isLoggedIn) {
+    LaunchedEffect(Unit) {
+      onLoginComplete()
+    }
+  }
+
+  if (uiState.isSignedUp) {
+    LaunchedEffect(Unit) {
+      onSignUpComplete()
+    }
+  }
+
   SendOtpScreen(
     uiState = SendOtpUiState.InitialValue,
     pagerState = pagerState,
-    onEmailChange = {},
-    onSendOtpClick = {},
-    onGoogleLoginClick = {},
+    onEmailChange = viewModel::onEmailChange,
+    onSendOtpClick = viewModel::onSendOtpClick,
+    onGoogleLoginClick = viewModel::onGoogleLoginClick,
     onSignUpClick = {
-      coroutineScope.launch {
+      compositionScope.launch {
         pagerState.animateScrollToPage(
           page = MybraryRoute.VerifyOtp.Page.SignUp.ordinal,
         )
       }
     },
-    onGoogleSignUpClick = {},
+    onGoogleSignUpClick = viewModel::onGoogleSignUpClick,
     onLoginClick = {
-      coroutineScope.launch {
+      compositionScope.launch {
         pagerState.animateScrollToPage(
           page = MybraryRoute.VerifyOtp.Page.Login.ordinal,
         )
