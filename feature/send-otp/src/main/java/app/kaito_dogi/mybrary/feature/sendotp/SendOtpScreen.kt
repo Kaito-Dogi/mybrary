@@ -20,9 +20,9 @@ import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.feature.sendotp.component.DividerSection
-import app.kaito_dogi.mybrary.feature.sendotp.component.EmailSection
 import app.kaito_dogi.mybrary.feature.sendotp.component.HorizontalPagerIndicator
 import app.kaito_dogi.mybrary.feature.sendotp.component.LogoSection
+import app.kaito_dogi.mybrary.feature.sendotp.component.SendOtpSection
 import app.kaito_dogi.mybrary.feature.sendotp.page.LoginPage
 import app.kaito_dogi.mybrary.feature.sendotp.page.SignUpPage
 
@@ -64,7 +64,7 @@ internal fun SendOtpScreen(
 
       Gap(height = MybraryTheme.space.xxxl)
 
-      EmailSection(
+      SendOtpSection(
         email = uiState.email,
         isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,

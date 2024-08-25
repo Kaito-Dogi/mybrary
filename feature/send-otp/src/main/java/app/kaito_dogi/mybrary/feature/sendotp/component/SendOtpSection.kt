@@ -14,7 +14,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
-internal fun EmailSection(
+internal fun SendOtpSection(
   email: String,
   isSendingOtp: Boolean,
   onEmailChange: (String) -> Unit,
@@ -51,9 +51,9 @@ internal fun EmailSection(
 
 @Preview
 @Composable
-private fun EmailSectionPreview() {
+private fun SendOtpSectionPreview() {
   MybraryTheme {
-    EmailSection(
+    SendOtpSection(
       email = "",
       isSendingOtp = false,
       onEmailChange = {},
