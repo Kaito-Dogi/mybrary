@@ -39,7 +39,7 @@ internal fun LoginScreen(
         .padding(
           innerPadding.plus(
             start = MybraryTheme.space.xl,
-            top = MybraryTheme.space.xxxl,
+            top = MybraryTheme.space.xxxxl,
             end = MybraryTheme.space.xl,
             bottom = MybraryTheme.space.xl,
           ),
@@ -48,8 +48,7 @@ internal fun LoginScreen(
     ) {
       LogoSection()
 
-      Gap(height = MybraryTheme.space.xxl)
-      Gap(height = MybraryTheme.space.xl)
+      Gap(height = MybraryTheme.space.xxxl)
 
       EmailSection(
         email = uiState.email,
