@@ -1,5 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
@@ -13,12 +15,16 @@ import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.withContext
 
 @Singleton
-internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
+internal class MockMyBookRepository @Inject constructor(
+  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+) : MyBookRepository {
   private val mockMyBookList = MutableStateFlow(MockMyBookList)
 
   override suspend fun getMyBookList(): List<MyBook> {
@@ -29,10 +35,10 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
 
   override suspend fun getMyBook(
     myBookId: MyBookId,
-  ): MyBook {
+  ): MyBook = withContext(dispatcher) {
     delay(1_000)
 
-    return mockMyBookList.value.first { it.id == myBookId }
+    return@withContext mockMyBookList.value.first { it.id == myBookId }
   }
 
   // TODO: 実装
@@ -40,7 +46,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return true
   }
 
-  override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
+  override suspend fun pinMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -50,10 +56,10 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     }
     mockMyBookList.update { newMyBookList }
 
-    return pinedMyBook
+    return@withContext pinedMyBook
   }
 
-  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
+  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -63,23 +69,24 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     }
     mockMyBookList.update { newMyBookList }
 
-    return addedMyBook
+    return@withContext addedMyBook
   }
 
-  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
-    delay(1_000)
+  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook =
+    withContext(dispatcher) {
+      delay(1_000)
 
-    val myBook = mockMyBookList.value.first { it.id == myBookId }
-    val removedMyBook = myBook.copy(isFavorite = false)
-    val newMyBookList = mockMyBookList.value.map {
-      if (it.id == myBookId) removedMyBook else it
+      val myBook = mockMyBookList.value.first { it.id == myBookId }
+      val removedMyBook = myBook.copy(isFavorite = false)
+      val newMyBookList = mockMyBookList.value.map {
+        if (it.id == myBookId) removedMyBook else it
+      }
+      mockMyBookList.update { newMyBookList }
+
+      return@withContext removedMyBook
     }
-    mockMyBookList.update { newMyBookList }
 
-    return removedMyBook
-  }
-
-  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
+  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -89,10 +96,10 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     }
     mockMyBookList.update { newMyBookList }
 
-    return publicMyBook
+    return@withContext publicMyBook
   }
 
-  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
+  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -102,10 +109,10 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     }
     mockMyBookList.update { newMyBookList }
 
-    return privateMyBook
+    return@withContext privateMyBook
   }
 
-  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
+  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
@@ -115,7 +122,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     }
     mockMyBookList.update { newMyBookList }
 
-    return archivedMyBook
+    return@withContext archivedMyBook
   }
 }
 
