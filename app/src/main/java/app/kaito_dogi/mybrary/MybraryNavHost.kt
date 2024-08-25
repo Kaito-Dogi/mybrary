@@ -38,7 +38,7 @@ internal fun MybraryNavHost(
             email = email,
             page = MybraryRoute.VerifyOtp.Page.Login,
           )
-          childNavController.navigate(route)
+          navController.navigate(route)
         },
         onLoginComplete = {
           navController.navigate(MybraryRoute.MyBook)
@@ -54,7 +54,7 @@ internal fun MybraryNavHost(
             email = email,
             page = MybraryRoute.VerifyOtp.Page.SignUp,
           )
-          childNavController.navigate(route)
+          navController.navigate(route)
         },
         onSignUpComplete = {
           navController.navigate(MybraryRoute.MyBook)
