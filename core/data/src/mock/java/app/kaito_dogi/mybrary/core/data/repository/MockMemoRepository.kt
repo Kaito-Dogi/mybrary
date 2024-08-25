@@ -1,5 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
@@ -11,25 +13,29 @@ import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import java.time.LocalDateTime
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.withContext
 
 @Singleton
-internal class MockMemoRepository @Inject constructor() : MemoRepository {
+internal class MockMemoRepository @Inject constructor(
+  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+) : MemoRepository {
   private val mockMemoList = MutableStateFlow<List<Memo>>(emptyList())
 
-  override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {
+  override suspend fun getMemoList(myBookId: MyBookId): List<Memo> = withContext(dispatcher) {
     delay(1_000)
 
     mockMemoList.update {
       createMockMemoList(myBookId = myBookId)
     }
 
-    return mockMemoList.value
+    return@withContext mockMemoList.value
   }
 
-  override suspend fun createMemo(draftMemo: DraftMemo): Memo {
+  override suspend fun createMemo(draftMemo: DraftMemo): Memo = withContext(dispatcher) {
     delay(1_000)
 
     val createdMemo = Memo(
@@ -48,13 +54,13 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     )
     mockMemoList.update { it + createdMemo }
 
-    return createdMemo
+    return@withContext createdMemo
   }
 
   override suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
-  ): Memo {
+  ): Memo = withContext(dispatcher) {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
@@ -68,10 +74,10 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     }
     mockMemoList.update { newMemoList }
 
-    return editedMemo
+    return@withContext editedMemo
   }
 
-  override suspend fun publishMemo(memoId: MemoId): Memo {
+  override suspend fun publishMemo(memoId: MemoId): Memo = withContext(dispatcher) {
     delay(1_000)
 
     val memo = mockMemoList.value.first { it.id == memoId }
@@ -83,7 +89,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     }
     mockMemoList.update { newMemoList }
 
-    return publishedMemo
+    return@withContext publishedMemo
   }
 }
 

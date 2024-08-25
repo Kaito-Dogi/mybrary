@@ -72,7 +72,7 @@ private fun SecondaryButtonPreview(
 ) {
   MybraryTheme {
     SecondaryButton(
-      textResId = android.R.string.ok,
+      textResId = android.R.string.unknownName,
       onClick = {},
       modifier = Modifier.fillMaxWidth(),
       isLoading = parameter.isLoading,
