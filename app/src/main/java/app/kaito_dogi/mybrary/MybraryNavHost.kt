@@ -53,16 +53,28 @@ internal fun MybraryNavHost(
         navController.navigate(route)
       },
       onLoginComplete = {
-        navController.navigate(MybraryRoute.MyBook)
+        navController.navigate(MybraryRoute.MyBook) {
+          popUpTo<MybraryRoute.SendOtp> {
+            inclusive = true
+          }
+        }
       },
       onSignUpComplete = {
-        navController.navigate(MybraryRoute.MyBook)
+        navController.navigate(MybraryRoute.MyBook) {
+          popUpTo<MybraryRoute.SendOtp> {
+            inclusive = true
+          }
+        }
       },
     )
 
     verifyOtpScreen(
       onVerifyOtpComplete = {
-        navController.navigate(MybraryRoute.MyBook)
+        navController.navigate(MybraryRoute.MyBook) {
+          popUpTo<MybraryRoute.SendOtp> {
+            inclusive = true
+          }
+        }
       },
     )
   }
