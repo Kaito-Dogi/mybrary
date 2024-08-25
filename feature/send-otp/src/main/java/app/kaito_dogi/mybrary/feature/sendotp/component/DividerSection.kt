@@ -21,15 +21,21 @@ internal fun DividerSection(
     horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
     verticalAlignment = Alignment.CenterVertically,
   ) {
-    HorizontalDivider(modifier = Modifier.weight(1f))
+    HorizontalDivider(
+      modifier = Modifier.weight(1f),
+      color = MybraryTheme.colorScheme.outline,
+    )
 
     Text(
       textResId = R.string.auth_text_or,
-      color = MybraryTheme.colorScheme.outlineVariant,
+      color = MybraryTheme.colorScheme.outline,
       style = MybraryTheme.typography.labelMedium,
     )
 
-    HorizontalDivider(modifier = Modifier.weight(1f))
+    HorizontalDivider(
+      modifier = Modifier.weight(1f),
+      color = MybraryTheme.colorScheme.outline,
+    )
   }
 }
 

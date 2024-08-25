@@ -26,7 +26,7 @@ fun MybraryTheme(
   ) {
     MaterialTheme(
       // FIXME: カラースキーマをカスタムで定義する
-//      colorScheme = colorScheme,
+      colorScheme = colorScheme,
       typography = mybraryTypography,
       content = content,
     )

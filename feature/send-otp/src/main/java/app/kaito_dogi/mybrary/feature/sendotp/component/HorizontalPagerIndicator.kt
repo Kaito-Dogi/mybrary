@@ -36,7 +36,7 @@ internal fun HorizontalPagerIndicator(
           .clip(CircleShape)
           .background(
             if (it.ordinal == currentPage) MybraryTheme.colorScheme.primary
-            else MybraryTheme.colorScheme.outlineVariant,
+            else MybraryTheme.colorScheme.outline,
           ),
       )
     }
