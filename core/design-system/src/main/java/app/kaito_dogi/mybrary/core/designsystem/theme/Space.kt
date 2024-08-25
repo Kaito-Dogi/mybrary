@@ -14,7 +14,8 @@ internal val mybrarySpace = Space(
   lg = 20.dp,
   xl = 24.dp,
   xxl = 32.dp,
-  xxxl = 64.dp,
+  xxxl = 56.dp,
+  xxxxl = 64.dp,
 )
 
 @Immutable
@@ -28,6 +29,7 @@ data class Space(
   val xl: Dp,
   val xxl: Dp,
   val xxxl: Dp,
+  val xxxxl: Dp,
 )
 
 private val defaultSpace = Space(
@@ -40,6 +42,7 @@ private val defaultSpace = Space(
   xl = Dp.Hairline,
   xxl = Dp.Hairline,
   xxxl = Dp.Hairline,
+  xxxxl = Dp.Hairline,
 )
 
 internal val LocalSpace = staticCompositionLocalOf { defaultSpace }

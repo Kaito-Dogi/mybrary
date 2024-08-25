@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,8 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
-import app.kaito_dogi.mybrary.core.designsystem.component.Text
+import app.kaito_dogi.mybrary.core.designsystem.component.button.SecondaryButton
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
@@ -41,7 +39,7 @@ internal fun LoginScreen(
         .padding(
           innerPadding.plus(
             start = MybraryTheme.space.xl,
-            top = MybraryTheme.space.xxxl,
+            top = MybraryTheme.space.xxxxl,
             end = MybraryTheme.space.xl,
             bottom = MybraryTheme.space.xl,
           ),
@@ -50,11 +48,11 @@ internal fun LoginScreen(
     ) {
       LogoSection()
 
-      Gap(height = MybraryTheme.space.xxl)
-      Gap(height = MybraryTheme.space.xl)
+      Gap(height = MybraryTheme.space.xxxl)
 
       EmailSection(
         email = uiState.email,
+        isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
       )
@@ -65,20 +63,15 @@ internal fun LoginScreen(
 
       Gap(height = MybraryTheme.space.xl)
 
-      OutlinedButton(
+      SecondaryButton(
+        textResId = R.string.auth_text_login_with_google,
         onClick = onGoogleLoginClick,
         modifier = Modifier.fillMaxWidth(),
-      ) {
-        Icon(
-          iconResId = R.drawable.icon_google,
-          altResId = R.string.auth_alt_login_with_google,
-          tint = Color.Unspecified,
-        )
-
-        Gap(width = MybraryTheme.space.xs)
-
-        Text(textResId = R.string.auth_text_login_with_google)
-      }
+        iconResId = R.drawable.icon_google,
+        altResId = R.string.auth_alt_login_with_google,
+        iconTint = Color.Unspecified,
+        isLoading = uiState.isLoggingIn,
+      )
 
       Spacer(modifier = Modifier.weight(1f))
 

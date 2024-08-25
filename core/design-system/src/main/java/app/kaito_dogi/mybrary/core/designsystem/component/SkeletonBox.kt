@@ -49,7 +49,7 @@ private fun SkeletonBoxPreview() {
     SkeletonBox(
       shape = MybraryTheme.shapes.small,
     ) {
-      Box(modifier = Modifier.size(MybraryTheme.space.xxxl))
+      Box(modifier = Modifier.size(MybraryTheme.space.xxxxl))
     }
   }
 }
