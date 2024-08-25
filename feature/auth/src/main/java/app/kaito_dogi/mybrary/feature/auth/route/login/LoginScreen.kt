@@ -52,6 +52,7 @@ internal fun LoginScreen(
 
       EmailSection(
         email = uiState.email,
+        isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
       )
@@ -69,6 +70,7 @@ internal fun LoginScreen(
         iconResId = R.drawable.icon_google,
         altResId = R.string.auth_alt_login_with_google,
         iconTint = Color.Unspecified,
+        isLoading = uiState.isLoggingIn,
       )
 
       Spacer(modifier = Modifier.weight(1f))

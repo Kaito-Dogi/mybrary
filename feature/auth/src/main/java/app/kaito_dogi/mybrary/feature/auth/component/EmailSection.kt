@@ -20,6 +20,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 @Composable
 internal fun EmailSection(
   email: String,
+  isSendingOtp: Boolean,
   onEmailChange: (String) -> Unit,
   onSendOtpClick: () -> Unit,
   modifier: Modifier = Modifier,
@@ -57,6 +58,7 @@ internal fun EmailSection(
       modifier = Modifier.fillMaxWidth(),
       iconResId = R.drawable.icon_send,
       altResId = R.string.auth_alt_send_otp,
+      isLoading = isSendingOtp,
     )
   }
 }
@@ -67,6 +69,7 @@ private fun EmailSectionPreview() {
   MybraryTheme {
     EmailSection(
       email = "",
+      isSendingOtp = false,
       onEmailChange = {},
       onSendOtpClick = {},
     )

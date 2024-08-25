@@ -52,6 +52,7 @@ internal fun SignUpScreen(
 
       EmailSection(
         email = uiState.email,
+        isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
       )
@@ -69,6 +70,7 @@ internal fun SignUpScreen(
         iconResId = R.drawable.icon_google,
         altResId = R.string.auth_alt_sign_up_google,
         iconTint = Color.Unspecified,
+        isLoading = uiState.isSigningUp,
       )
 
       Spacer(modifier = Modifier.weight(1f))

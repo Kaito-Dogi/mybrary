@@ -24,6 +24,7 @@ internal class SignUpViewModel @Inject constructor(
   fun onSendOtpClick() {
     viewModelScope.launch {
       try {
+        _uiState.update { it.copy(isOtpSending = true) }
         authRepository.sendOtp(
           email = uiState.value.email,
         )
@@ -31,6 +32,13 @@ internal class SignUpViewModel @Inject constructor(
       } catch (e: Exception) {
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")
+      } finally {
+        _uiState.update {
+          it.copy(
+            isOtpSending = false,
+            isOtpSent = false,
+          )
+        }
       }
     }
   }
