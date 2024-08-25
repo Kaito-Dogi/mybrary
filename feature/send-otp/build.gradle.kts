@@ -53,6 +53,7 @@ dependencies {
   implementation(project(":core:ui"))
 
   implementation(platform(libs.androidxComposeBom))
+  implementation(libs.androidxComposeMaterial3)
   implementation(libs.androidxComposeUiTooling)
   implementation(libs.androidxComposeUiToolingPreview)
   implementation(libs.androidxHiltNavigationCompose)
