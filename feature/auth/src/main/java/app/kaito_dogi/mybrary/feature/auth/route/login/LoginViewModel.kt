@@ -33,12 +33,7 @@ internal class LoginViewModel @Inject constructor(
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")
       } finally {
-        _uiState.update {
-          it.copy(
-            isOtpSending = false,
-            isOtpSent = false,
-          )
-        }
+        _uiState.update { it.copy(isOtpSending = false) }
       }
     }
   }

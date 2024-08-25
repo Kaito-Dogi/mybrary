@@ -46,12 +46,7 @@ internal class VerifyOtpViewModel @Inject constructor(
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")
       } finally {
-        _uiState.update {
-          it.copy(
-            isOtpVerifying = false,
-            isOtpVerified = false,
-          )
-        }
+        _uiState.update { it.copy(isOtpVerifying = false) }
       }
     }
   }
