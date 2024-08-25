@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.route.login.component
+package app.kaito_dogi.mybrary.feature.sendotp.component
 
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -14,7 +14,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
-internal fun SignUpSection(
+internal fun LoginSection(
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
@@ -25,7 +25,7 @@ internal fun SignUpSection(
         color = MybraryTheme.colorScheme.onBackground,
       ),
     ) {
-      append(context.getString(R.string.auth_text_create_an_account))
+      append(context.getString(R.string.auth_text_already_have_an_account_login))
     }
 
     withStyle(
@@ -47,8 +47,8 @@ internal fun SignUpSection(
 
 @Preview
 @Composable
-private fun SignUpSectionPreview() {
+private fun LoginSectionPreview() {
   MybraryTheme {
-    SignUpSection(onClick = {})
+    LoginSection(onClick = {})
   }
 }

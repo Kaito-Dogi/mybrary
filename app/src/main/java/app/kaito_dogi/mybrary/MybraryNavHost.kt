@@ -29,37 +29,37 @@ internal fun MybraryNavHost(
     modifier = modifier.fillMaxSize(),
   ) {
 
-    loginScreen(
-      onSendOtpComplete = { email ->
-        val route = MybraryRoute.VerifyOtp(
-          email = email,
-          page = MybraryRoute.VerifyOtp.Page.Login,
-        )
-        navController.navigate(route)
-      },
-      onLoginComplete = {
-        navController.navigate(MybraryRoute.MyBook)
-      },
-      onSignUpClick = {
+//    loginScreen(
+//      onSendOtpComplete = { email ->
+//        val route = MybraryRoute.VerifyOtp(
+//          email = email,
+//          page = MybraryRoute.VerifyOtp.Page.Login,
+//        )
+//        navController.navigate(route)
+//      },
+//      onLoginComplete = {
+//        navController.navigate(MybraryRoute.MyBook)
+//      },
+//      onSignUpClick = {
 //        navController.navigate(AuthRoute.SignUp)
-      },
-    )
+//      },
+//    )
 
-    signUpScreen(
-      onSendOtpComplete = { email ->
-        val route = MybraryRoute.VerifyOtp(
-          email = email,
-          page = MybraryRoute.VerifyOtp.Page.SignUp,
-        )
-        navController.navigate(route)
-      },
-      onSignUpComplete = {
-        navController.navigate(MybraryRoute.MyBook)
-      },
-      onLoginClick = {
+//    signUpScreen(
+//      onSendOtpComplete = { email ->
+//        val route = MybraryRoute.VerifyOtp(
+//          email = email,
+//          page = MybraryRoute.VerifyOtp.Page.SignUp,
+//        )
+//        navController.navigate(route)
+//      },
+//      onSignUpComplete = {
+//        navController.navigate(MybraryRoute.MyBook)
+//      },
+//      onLoginClick = {
 //        navController.navigate(AuthRoute.Login)
-      },
-    )
+//      },
+//    )
 
     myBookNavigation(
       startDestination = MyBookRoute.MyBookList,
