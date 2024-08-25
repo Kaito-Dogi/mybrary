@@ -53,6 +53,7 @@ fun TextField(
   ),
   singleLine = singleLine,
   minLines = minLines,
+  shape = MybraryTheme.shapes.small,
   colors = OutlinedTextFieldDefaults.colors().copy(
     focusedContainerColor = MybraryTheme.colorScheme.surface,
     unfocusedContainerColor = MybraryTheme.colorScheme.surface,
