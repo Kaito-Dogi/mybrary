@@ -5,19 +5,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
+import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.component.button.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -49,23 +46,13 @@ internal fun VerifyOtpScreen(
       TextField(
         value = uiState.otp,
         onValueChange = onOtpChange,
+        placeholderResId = R.string.auth_placeholder_enter_otp,
         modifier = Modifier.fillMaxWidth(),
-        placeholder = {
-          Text(textResId = R.string.auth_placeholder_enter_otp)
-        },
-        leadingIcon = {
-          Icon(
-            iconResId = R.drawable.icon_key,
-            altResId = R.string.auth_alt_otp,
-          )
-        },
-        keyboardOptions = KeyboardOptions.Default.copy(
-          keyboardType = KeyboardType.NumberPassword,
-          imeAction = ImeAction.Send,
-        ),
-        keyboardActions = KeyboardActions(
-          onSend = { onVerifyOtpClick() },
-        ),
+        leadingIconResId = R.drawable.icon_key,
+        leadingIconAltResId = R.string.auth_alt_otp,
+        keyboardType = KeyboardType.NumberPassword,
+        imeAction = ImeAction.Send,
+        onSend = onVerifyOtpClick,
         singleLine = true,
       )
 
