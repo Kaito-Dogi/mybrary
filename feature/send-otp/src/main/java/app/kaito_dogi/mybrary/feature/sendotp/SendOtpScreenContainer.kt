@@ -65,7 +65,7 @@ internal fun SendOtpScreenContainer(
   }
 
   SendOtpScreen(
-    uiState = SendOtpUiState.InitialValue,
+    uiState = uiState,
     pagerState = pagerState,
     onEmailChange = viewModel::onEmailChange,
     onSendOtpClick = viewModel::onSendOtpClick,
