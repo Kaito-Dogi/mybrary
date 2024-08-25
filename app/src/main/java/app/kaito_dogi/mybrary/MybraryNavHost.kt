@@ -6,8 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
-import app.kaito_dogi.mybrary.feature.auth.AuthRoute
-import app.kaito_dogi.mybrary.feature.auth.authNavigation
 import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
 import app.kaito_dogi.mybrary.feature.auth.route.signup.signUpScreen
 import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
@@ -16,6 +14,7 @@ import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScre
 import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
+import app.kaito_dogi.mybrary.feature.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
 @Composable
@@ -29,41 +28,38 @@ internal fun MybraryNavHost(
     startDestination = MybraryRoute.Auth,
     modifier = modifier.fillMaxSize(),
   ) {
-    authNavigation(
-      startDestination = AuthRoute.Login,
-    ) { childNavController ->
-      loginScreen(
-        onSendOtpComplete = { email ->
-          val route = MybraryRoute.VerifyOtp(
-            email = email,
-            page = MybraryRoute.VerifyOtp.Page.Login,
-          )
-          navController.navigate(route)
-        },
-        onLoginComplete = {
-          navController.navigate(MybraryRoute.MyBook)
-        },
-        onSignUpClick = {
-          childNavController.navigate(AuthRoute.SignUp)
-        },
-      )
 
-      signUpScreen(
-        onSendOtpComplete = { email ->
-          val route = MybraryRoute.VerifyOtp(
-            email = email,
-            page = MybraryRoute.VerifyOtp.Page.SignUp,
-          )
-          navController.navigate(route)
-        },
-        onSignUpComplete = {
-          navController.navigate(MybraryRoute.MyBook)
-        },
-        onLoginClick = {
-          childNavController.navigate(AuthRoute.Login)
-        },
-      )
-    }
+    loginScreen(
+      onSendOtpComplete = { email ->
+        val route = MybraryRoute.VerifyOtp(
+          email = email,
+          page = MybraryRoute.VerifyOtp.Page.Login,
+        )
+        navController.navigate(route)
+      },
+      onLoginComplete = {
+        navController.navigate(MybraryRoute.MyBook)
+      },
+      onSignUpClick = {
+//        navController.navigate(AuthRoute.SignUp)
+      },
+    )
+
+    signUpScreen(
+      onSendOtpComplete = { email ->
+        val route = MybraryRoute.VerifyOtp(
+          email = email,
+          page = MybraryRoute.VerifyOtp.Page.SignUp,
+        )
+        navController.navigate(route)
+      },
+      onSignUpComplete = {
+        navController.navigate(MybraryRoute.MyBook)
+      },
+      onLoginClick = {
+//        navController.navigate(AuthRoute.Login)
+      },
+    )
 
     myBookNavigation(
       startDestination = MyBookRoute.MyBookList,
@@ -82,6 +78,8 @@ internal fun MybraryNavHost(
     }
 
     searchBooksScreen()
+
+    sendOtpScreen()
 
     verifyOtpScreen(
       onVerifyOtpComplete = {

@@ -10,6 +10,9 @@ sealed interface MybraryRoute {
   data object MyBook : MybraryRoute
 
   @Serializable
+  data object SendOtp : MybraryRoute
+
+  @Serializable
   data class VerifyOtp(
     val email: String,
     val page: Page,
