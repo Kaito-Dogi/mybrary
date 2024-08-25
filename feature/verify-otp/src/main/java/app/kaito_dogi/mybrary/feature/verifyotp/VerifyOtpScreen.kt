@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,6 +21,7 @@ import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,8 +74,8 @@ internal fun VerifyOtpScreen(
         modifier = Modifier.fillMaxWidth(),
       ) {
         when (uiState.page) {
-          VerifyOtpUiState.Page.Login -> Text(textResId = R.string.auth_text_login)
-          VerifyOtpUiState.Page.SignUp -> Text(textResId = R.string.auth_text_sign_up)
+          MybraryRoute.VerifyOtp.Page.Login -> Text(textResId = R.string.auth_text_login)
+          MybraryRoute.VerifyOtp.Page.SignUp -> Text(textResId = R.string.auth_text_sign_up)
         }
       }
     }
@@ -87,7 +88,7 @@ private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
-        page = VerifyOtpUiState.Page.Login,
+        page = MybraryRoute.VerifyOtp.Page.Login,
       ),
       onOtpChange = {},
       onVerifyOtpClick = {},

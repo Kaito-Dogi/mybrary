@@ -8,4 +8,16 @@ sealed interface MybraryRoute {
 
   @Serializable
   data object MyBook : MybraryRoute
+
+  @Serializable
+  data class VerifyOtp(
+    val email: String,
+    val page: Page,
+  ) : MybraryRoute {
+    enum class Page {
+      Login,
+      SignUp,
+      ;
+    }
+  }
 }

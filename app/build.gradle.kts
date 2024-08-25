@@ -112,6 +112,7 @@ dependencies {
   implementation(project(":feature:auth"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-books"))
+  implementation(project(":feature:verify-otp"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)

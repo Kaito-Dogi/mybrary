@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavType
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
-import app.kaito_dogi.mybrary.feature.auth.AuthRoute
+import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.reflect.typeOf
@@ -44,10 +44,17 @@ internal class VerifyOtpViewModel @Inject constructor(
           email = navArg.email,
           otp = uiState.value.otp,
         )
+
         _uiState.update { it.copy(isOtpVerified = true) }
       } catch (e: Exception) {
         // FIXME: 共通のエラーハンドリングを実装する
         println("あああ: ${e.message}")
+      } finally {
+        _uiState.update {
+          it.copy(
+            isOtpVerified = false,
+          )
+        }
       }
     }
   }

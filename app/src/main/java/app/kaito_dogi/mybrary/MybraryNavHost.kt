@@ -10,14 +10,13 @@ import app.kaito_dogi.mybrary.feature.auth.AuthRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavigation
 import app.kaito_dogi.mybrary.feature.auth.route.login.loginScreen
 import app.kaito_dogi.mybrary.feature.auth.route.signup.signUpScreen
-import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.VerifyOtpUiState
-import app.kaito_dogi.mybrary.feature.auth.route.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
 import app.kaito_dogi.mybrary.feature.mybook.myBookNavigation
 import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
 import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
 @Composable
 internal fun MybraryNavHost(
@@ -35,9 +34,9 @@ internal fun MybraryNavHost(
     ) { childNavController ->
       loginScreen(
         onSendOtpComplete = { email ->
-          val route = AuthRoute.VerifyOtp(
+          val route = MybraryRoute.VerifyOtp(
             email = email,
-            page = VerifyOtpUiState.Page.Login,
+            page = MybraryRoute.VerifyOtp.Page.Login,
           )
           childNavController.navigate(route)
         },
@@ -51,9 +50,9 @@ internal fun MybraryNavHost(
 
       signUpScreen(
         onSendOtpComplete = { email ->
-          val route = AuthRoute.VerifyOtp(
+          val route = MybraryRoute.VerifyOtp(
             email = email,
-            page = VerifyOtpUiState.Page.SignUp,
+            page = MybraryRoute.VerifyOtp.Page.SignUp,
           )
           childNavController.navigate(route)
         },
@@ -62,12 +61,6 @@ internal fun MybraryNavHost(
         },
         onLoginClick = {
           childNavController.navigate(AuthRoute.Login)
-        },
-      )
-
-      verifyOtpScreen(
-        onVerifyOtpComplete = {
-          navController.navigate(MybraryRoute.MyBook)
         },
       )
     }
@@ -89,5 +82,11 @@ internal fun MybraryNavHost(
     }
 
     searchBooksScreen()
+
+    verifyOtpScreen(
+      onVerifyOtpComplete = {
+        navController.navigate(MybraryRoute.MyBook)
+      },
+    )
   }
 }

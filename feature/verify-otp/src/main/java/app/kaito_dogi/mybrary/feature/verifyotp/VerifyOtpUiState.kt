@@ -1,26 +1,21 @@
-package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.runtime.Immutable
+import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 
 @Immutable
-data class VerifyOtpUiState(
-  val page: Page,
+internal data class VerifyOtpUiState(
+  val page: MybraryRoute.VerifyOtp.Page,
   val otp: String,
   val isOtpVerified: Boolean,
 ) {
   companion object {
     fun createInitialValue(
-      page: Page,
+      page: MybraryRoute.VerifyOtp.Page,
     ) = VerifyOtpUiState(
       page = page,
       otp = "",
       isOtpVerified = false,
     )
-  }
-
-  enum class Page {
-    Login,
-    SignUp,
-    ;
   }
 }
