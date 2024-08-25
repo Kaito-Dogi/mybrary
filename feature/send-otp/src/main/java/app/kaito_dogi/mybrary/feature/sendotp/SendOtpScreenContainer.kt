@@ -46,18 +46,21 @@ internal fun SendOtpScreenContainer(
             page,
           )
         }
+      viewModel.onUiEventConsume()
     }
   }
 
   if (uiState.isLoggedIn) {
     LaunchedEffect(Unit) {
       onLoginComplete()
+      viewModel.onUiEventConsume()
     }
   }
 
   if (uiState.isSignedUp) {
     LaunchedEffect(Unit) {
       onSignUpComplete()
+      viewModel.onUiEventConsume()
     }
   }
 

@@ -46,6 +46,17 @@ internal class SendOtpViewModel @Inject constructor(
     println("あああ: onGoogleSignUpClick")
   }
 
+  // FIXME: UI Event の定義を考える
+  fun onUiEventConsume() {
+    _uiState.update {
+      it.copy(
+        isOtpSent = false,
+        isLoggedIn = false,
+        isSignedUp = false,
+      )
+    }
+  }
+
   // FIXME: 適切な実装に変更する
   val hasSessionFlow = MutableStateFlow(value = false)
   fun onInit() {
