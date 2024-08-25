@@ -6,14 +6,15 @@ import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import kotlin.reflect.typeOf
 
+internal val verifyOtpTypeMap = mapOf(
+  typeOf<MybraryRoute.VerifyOtp.Page>() to NavType.EnumType(MybraryRoute.VerifyOtp.Page::class.java),
+)
+
 fun NavGraphBuilder.verifyOtpScreen(
   onVerifyOtpComplete: () -> Unit,
 ) {
-  composable<AuthRoute.VerifyOtp>(
-    typeMap = mapOf(
-      typeOf<VerifyOtpUiState.Page>() to NavType.EnumType(VerifyOtpUiState.Page::class.java),
-    ),
   composable<MybraryRoute.VerifyOtp>(
+    typeMap = verifyOtpTypeMap,
   ) {
     VerifyOtpScreenContainer(
       onVerifyOtpComplete = onVerifyOtpComplete,

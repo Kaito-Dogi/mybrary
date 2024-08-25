@@ -7,6 +7,7 @@ import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 internal data class VerifyOtpUiState(
   val page: MybraryRoute.VerifyOtp.Page,
   val otp: String,
+  val isOtpVerifying: Boolean,
   val isOtpVerified: Boolean,
 ) {
   companion object {
@@ -15,6 +16,7 @@ internal data class VerifyOtpUiState(
     ) = VerifyOtpUiState(
       page = page,
       otp = "",
+      isOtpVerifying = false,
       isOtpVerified = false,
     )
   }

@@ -1,15 +1,13 @@
-package app.kaito_dogi.mybrary.feature.auth.route.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavType
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlin.reflect.typeOf
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -20,11 +18,7 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val authRepository: AuthRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-  private val navArg: AuthRoute.VerifyOtp = savedStateHandle.toRoute(
-    typeMap = mapOf(
-      typeOf<VerifyOtpUiState.Page>() to NavType.EnumType(VerifyOtpUiState.Page::class.java),
-    ),
-  )
+  private val navArg: MybraryRoute.VerifyOtp = savedStateHandle.toRoute(typeMap = verifyOtpTypeMap)
 
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
@@ -40,6 +34,8 @@ internal class VerifyOtpViewModel @Inject constructor(
   fun onVerifyOtpClick() {
     viewModelScope.launch {
       try {
+        _uiState.update { it.copy(isOtpVerifying = true) }
+
         authRepository.verifyOtp(
           email = navArg.email,
           otp = uiState.value.otp,
@@ -52,6 +48,7 @@ internal class VerifyOtpViewModel @Inject constructor(
       } finally {
         _uiState.update {
           it.copy(
+            isOtpVerifying = false,
             isOtpVerified = false,
           )
         }

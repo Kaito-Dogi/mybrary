@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextField
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
+import app.kaito_dogi.mybrary.core.designsystem.component.button.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
@@ -69,15 +69,15 @@ internal fun VerifyOtpScreen(
         singleLine = true,
       )
 
-      Button(
+      PrimaryButton(
+        textResId = when (uiState.page) {
+          MybraryRoute.VerifyOtp.Page.Login -> R.string.auth_text_login
+          MybraryRoute.VerifyOtp.Page.SignUp -> R.string.auth_text_sign_up
+        },
         onClick = onVerifyOtpClick,
         modifier = Modifier.fillMaxWidth(),
-      ) {
-        when (uiState.page) {
-          MybraryRoute.VerifyOtp.Page.Login -> Text(textResId = R.string.auth_text_login)
-          MybraryRoute.VerifyOtp.Page.SignUp -> Text(textResId = R.string.auth_text_sign_up)
-        }
-      }
+        isLoading = uiState.isOtpVerifying,
+      )
     }
   }
 }
