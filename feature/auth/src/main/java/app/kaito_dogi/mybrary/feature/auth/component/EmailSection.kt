@@ -5,16 +5,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
+import app.kaito_dogi.mybrary.core.designsystem.component.button.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
@@ -52,19 +51,13 @@ internal fun EmailSection(
       singleLine = true,
     )
 
-    Button(
+    PrimaryButton(
+      textResId = R.string.auth_text_send_otp,
       onClick = onSendOtpClick,
       modifier = Modifier.fillMaxWidth(),
-    ) {
-      Icon(
-        iconResId = R.drawable.icon_send,
-        altResId = R.string.auth_alt_send_otp,
-      )
-
-      Gap(width = MybraryTheme.space.xs)
-
-      Text(textResId = R.string.auth_text_send_otp)
-    }
+      iconResId = R.drawable.icon_send,
+      altResId = R.string.auth_alt_send_otp,
+    )
   }
 }
 
