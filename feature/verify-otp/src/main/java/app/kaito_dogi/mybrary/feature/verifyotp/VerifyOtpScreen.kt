@@ -5,23 +5,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
+import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.component.button.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun VerifyOtpScreen(
   uiState: VerifyOtpUiState,
@@ -29,13 +26,7 @@ internal fun VerifyOtpScreen(
   onVerifyOtpClick: () -> Unit,
 ) {
   Scaffold(
-    topBar = {
-      TopAppBar(
-        title = {
-          Text(textResId = R.string.auth_text_enter_otp)
-        },
-      )
-    },
+    topBar = { TopAppBar(textResId = R.string.auth_text_enter_otp) },
   ) { innerPadding ->
     Column(
       modifier = Modifier
