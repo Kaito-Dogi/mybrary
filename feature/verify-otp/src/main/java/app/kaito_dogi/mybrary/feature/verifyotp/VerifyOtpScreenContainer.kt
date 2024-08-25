@@ -16,6 +16,7 @@ internal fun VerifyOtpScreenContainer(
   if (uiState.isOtpVerified) {
     LaunchedEffect(Unit) {
       onVerifyOtpComplete()
+      viewModel.onUiEventConsume()
     }
   }
 

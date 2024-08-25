@@ -50,4 +50,8 @@ internal class VerifyOtpViewModel @Inject constructor(
       }
     }
   }
+
+  fun onUiEventConsume() {
+    _uiState.update { it.copy(isOtpVerified = false) }
+  }
 }
