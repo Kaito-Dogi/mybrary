@@ -58,9 +58,9 @@ internal fun MyBookDetailScreen(
       modifier = Modifier.fillMaxSize(),
       // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
       contentPadding = PaddingValues(
-        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.space.md,
+        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.md,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       // ヘッダー
       item(key = "MyBookDetailTopAppBar") {
@@ -78,7 +78,7 @@ internal fun MyBookDetailScreen(
           MemoRow(
             memo = memo,
             onClick = onMemoClick,
-            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+            modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
       }
@@ -90,7 +90,7 @@ internal fun MyBookDetailScreen(
           key = { "MemoRowSkeleton$it" },
         ) {
           MemoRowSkeleton(
-            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+            modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
       }
@@ -105,7 +105,7 @@ internal fun MyBookDetailScreen(
           onEndPageChange = onEndPageChange,
           onContentChange = onContentChange,
           onSaveClick = onSaveClick,
-          modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
+          modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
         )
       }
     }

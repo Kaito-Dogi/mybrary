@@ -19,7 +19,7 @@ internal fun SearchBookBottomAppBar(
 ) {
   BottomAppBar(
     modifier = modifier,
-    contentPadding = PaddingValues(horizontal = MybraryTheme.space.md),
+    contentPadding = PaddingValues(horizontal = MybraryTheme.spaces.md),
   ) {
     TextField(
       value = value,

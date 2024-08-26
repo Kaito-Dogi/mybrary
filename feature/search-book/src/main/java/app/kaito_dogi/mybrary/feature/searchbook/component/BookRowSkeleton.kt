@@ -30,7 +30,7 @@ fun BookRowSkeleton(
   ) {
     Row(
       modifier = Modifier
-        .padding(MybraryTheme.space.xs)
+        .padding(MybraryTheme.spaces.xs)
         .height(IntrinsicSize.Min),
     ) {
       Box(
@@ -40,7 +40,7 @@ fun BookRowSkeleton(
       )
 
       Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
           textResId = R.string.search_books_text_a_a,

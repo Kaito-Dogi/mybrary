@@ -38,8 +38,8 @@ internal fun SearchBookScreen(
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
-      contentPadding = innerPadding.plus(all = MybraryTheme.space.md),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+      contentPadding = innerPadding.plus(all = MybraryTheme.spaces.md),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       uiState.bookList?.let {
         items(

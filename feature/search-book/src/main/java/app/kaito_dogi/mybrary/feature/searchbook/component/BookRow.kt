@@ -47,9 +47,9 @@ internal fun BookRow(
   ) {
     Row(
       modifier = Modifier
-        .padding(MybraryTheme.space.xs)
+        .padding(MybraryTheme.spaces.xs)
         .height(IntrinsicSize.Min),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
     ) {
       BookImage(
         imageUrl = book.imageUrl,
@@ -57,7 +57,7 @@ internal fun BookRow(
       )
 
       Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
           text = book.title,

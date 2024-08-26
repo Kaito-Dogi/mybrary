@@ -31,8 +31,8 @@ internal fun VerifyOtpScreen(
     Column(
       modifier = Modifier
         .fillMaxSize()
-        .padding(innerPadding.plus(horizontal = MybraryTheme.space.md)),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+        .padding(innerPadding.plus(horizontal = MybraryTheme.spaces.md)),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       TextField(
         value = uiState.otp,

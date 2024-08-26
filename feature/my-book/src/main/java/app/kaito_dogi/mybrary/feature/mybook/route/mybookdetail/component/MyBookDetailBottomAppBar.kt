@@ -27,8 +27,8 @@ internal fun MyBookDetailBottomAppBar(
   BottomAppBar(
     modifier = modifier,
     contentPadding = PaddingValues(
-      start = MybraryTheme.space.xxs,
-      end = MybraryTheme.space.md,
+      start = MybraryTheme.spaces.xxs,
+      end = MybraryTheme.spaces.md,
     ),
   ) {
     // TODO: v2 以降で実装を復活させる

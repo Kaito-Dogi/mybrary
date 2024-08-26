@@ -23,7 +23,7 @@ internal fun SendOtpSection(
 ) {
   Column(
     modifier = modifier,
-    verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+    verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
   ) {
     TextField(
       value = email,

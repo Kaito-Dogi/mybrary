@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-internal val mybrarySpace = Space(
+internal val mybrarySpaces = Spaces(
   xxxs = 2.dp,
   xxs = 4.dp,
   xs = 8.dp,
@@ -18,7 +18,7 @@ internal val mybrarySpace = Space(
 )
 
 @Immutable
-data class Space(
+data class Spaces(
   val xxxs: Dp,
   val xxs: Dp,
   val xs: Dp,
@@ -30,7 +30,7 @@ data class Space(
   val xxxl: Dp,
 )
 
-private val defaultSpace = Space(
+private val defaultSpaces = Spaces(
   xxxs = Dp.Hairline,
   xxs = Dp.Hairline,
   xs = Dp.Hairline,
@@ -42,4 +42,4 @@ private val defaultSpace = Space(
   xxxl = Dp.Hairline,
 )
 
-internal val LocalSpace = staticCompositionLocalOf { defaultSpace }
+internal val LocalSpaces = staticCompositionLocalOf { defaultSpaces }

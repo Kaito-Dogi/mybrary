@@ -47,13 +47,13 @@ internal fun MyBookListScreen(
       columns = GridCells.Fixed(uiState.numberOfColumns),
       modifier = Modifier.fillMaxSize(),
       contentPadding = innerPadding.plus(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
+        start = MybraryTheme.spaces.md,
+        top = MybraryTheme.spaces.sm,
+        end = MybraryTheme.spaces.md,
+        bottom = MybraryTheme.spaces.md,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
     ) {
       // お気に入りの本
       uiState.favoriteMyBookList?.let { favoriteMyBookList ->
@@ -82,7 +82,7 @@ internal fun MyBookListScreen(
             span = { GridItemSpan(uiState.numberOfColumns) },
             key = "Spacer:favorite",
           ) {
-            Spacer(modifier = Modifier.height(MybraryTheme.space.xl))
+            Spacer(modifier = Modifier.height(MybraryTheme.spaces.xl))
           }
         }
       }

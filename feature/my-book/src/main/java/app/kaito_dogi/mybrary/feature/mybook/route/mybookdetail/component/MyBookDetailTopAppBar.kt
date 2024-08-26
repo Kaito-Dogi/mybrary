@@ -63,8 +63,8 @@ internal fun MyBookDetailTopAppBar(
         .matchParentSize()
         .background(MybraryTheme.colorScheme.primary)
         .blur(
-          radiusX = MybraryTheme.space.md,
-          radiusY = MybraryTheme.space.md,
+          radiusX = MybraryTheme.spaces.md,
+          radiusY = MybraryTheme.spaces.md,
         ),
       contentDescription = stringResource(id = R.string.my_book_detail_alt_background_image),
       contentScale = ContentScale.FillWidth,
@@ -75,14 +75,14 @@ internal fun MyBookDetailTopAppBar(
       modifier = Modifier
         .height(IntrinsicSize.Min)
         .padding(
-          start = MybraryTheme.space.md,
-          top = MybraryTheme.space.md + WindowInsets.systemBars
+          start = MybraryTheme.spaces.md,
+          top = MybraryTheme.spaces.md + WindowInsets.systemBars
             .asPaddingValues()
             .calculateTopPadding(),
-          end = MybraryTheme.space.md,
-          bottom = MybraryTheme.space.md,
+          end = MybraryTheme.spaces.md,
+          bottom = MybraryTheme.spaces.md,
         ),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       BookImage(
         imageUrl = myBook.imageUrl,
@@ -90,7 +90,7 @@ internal fun MyBookDetailTopAppBar(
       )
 
       Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
       ) {
         Text(
           text = myBook.title,

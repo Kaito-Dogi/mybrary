@@ -22,7 +22,7 @@ fun MybraryTheme(
 
   CompositionLocalProvider(
     LocalDimens provides mybraryDimens,
-    LocalSpace provides mybrarySpace,
+    LocalSpaces provides mybrarySpaces,
   ) {
     MaterialTheme(
       // FIXME: カラースキーマをカスタムで定義する
@@ -49,10 +49,10 @@ object MybraryTheme {
     @ReadOnlyComposable
     get() = MaterialTheme.shapes
 
-  val space
+  val spaces
     @Composable
     @ReadOnlyComposable
-    get() = LocalSpace.current
+    get() = LocalSpaces.current
 
   val typography: Typography
     @Composable

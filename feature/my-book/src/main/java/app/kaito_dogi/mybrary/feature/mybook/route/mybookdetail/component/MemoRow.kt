@@ -38,12 +38,12 @@ internal fun MemoRow(
     // top の padding を小さくすることで、錯視を調整
     Column(
       modifier = Modifier.padding(
-        start = MybraryTheme.space.sm,
-        top = MybraryTheme.space.xs,
-        end = MybraryTheme.space.sm,
-        bottom = MybraryTheme.space.sm,
+        start = MybraryTheme.spaces.sm,
+        top = MybraryTheme.spaces.xs,
+        end = MybraryTheme.spaces.sm,
+        bottom = MybraryTheme.spaces.sm,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
     ) {
       Text(
         text = memo.content,

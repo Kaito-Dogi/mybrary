@@ -39,7 +39,7 @@ fun PrimaryButton(
       altResId = altResId,
     )
 
-    Gap(width = MybraryTheme.space.xs)
+    Gap(width = MybraryTheme.spaces.xs)
   }
 
   if (isLoading) {
@@ -50,7 +50,7 @@ fun PrimaryButton(
       strokeCap = StrokeCap.Round,
     )
 
-    Gap(width = MybraryTheme.space.xs)
+    Gap(width = MybraryTheme.spaces.xs)
   }
 
   Text(textResId = textResId)

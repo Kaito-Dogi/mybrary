@@ -18,7 +18,7 @@ internal fun DividerSection(
 ) {
   Row(
     modifier = modifier.fillMaxWidth(),
-    horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.xs),
+    horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
     verticalAlignment = Alignment.CenterVertically,
   ) {
     HorizontalDivider(
