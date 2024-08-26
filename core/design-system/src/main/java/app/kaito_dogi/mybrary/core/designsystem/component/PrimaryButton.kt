@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.designsystem.component.button
+package app.kaito_dogi.mybrary.core.designsystem.component
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -14,9 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import app.kaito_dogi.mybrary.core.designsystem.component.Gap
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
-import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
