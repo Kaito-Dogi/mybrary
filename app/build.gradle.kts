@@ -110,7 +110,7 @@ dependencies {
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book"))
-  implementation(project(":feature:search-books"))
+  implementation(project(":feature:search-book"))
   implementation(project(":feature:send-otp"))
   implementation(project(":feature:verify-otp"))
 

@@ -10,6 +10,9 @@ sealed interface MybraryRoute {
   data object MyBook : MybraryRoute
 
   @Serializable
+  data object SearchBook : MybraryRoute
+
+  @Serializable
   data object SendOtp : MybraryRoute
 
   @Serializable
