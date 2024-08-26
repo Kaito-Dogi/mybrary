@@ -34,20 +34,21 @@ fun PrimaryButton(
     Icon(
       iconResId = iconResId,
       altResId = altResId,
+      modifier = Modifier.size(ButtonDefaults.IconSize),
     )
 
-    Gap(width = MybraryTheme.spaces.xs)
+    Gap(width = ButtonDefaults.IconSpacing)
   }
 
   if (isLoading) {
     CircularProgressIndicator(
-      modifier = Modifier.size(24.dp),
+      modifier = Modifier.size(ButtonDefaults.IconSize),
       color = ButtonDefaults.buttonColors().disabledContentColor,
-      strokeWidth = 3.dp,
+      strokeWidth = 2.dp,
       strokeCap = StrokeCap.Round,
     )
 
-    Gap(width = MybraryTheme.spaces.xs)
+    Gap(width = ButtonDefaults.IconSpacing)
   }
 
   Text(textResId = textResId)
