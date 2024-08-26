@@ -9,9 +9,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.searchbook.component.BookRow
 import app.kaito_dogi.mybrary.feature.searchbook.component.BookRowSkeleton
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
@@ -24,6 +26,8 @@ internal fun SearchBookScreen(
   onBarcodeScannerClick: () -> Unit,
   onBookClick: (Book) -> Unit,
   onBookLongClick: (Book) -> Unit,
+  onConfirmClick: () -> Unit,
+  onDismissRequest: () -> Unit,
 ) {
   Scaffold(
     bottomBar = {
@@ -63,6 +67,20 @@ internal fun SearchBookScreen(
         }
       }
     }
+
+    if (uiState.isDialogShown && uiState.selectedBook != null) {
+      // FIXME: 文言を差し替える
+      AlertDialog(
+        titleResId = R.string.search_books_text_a,
+        contentResId = R.string.search_books_text_a,
+        onConfirmClick = onConfirmClick,
+        confirmTextResId = R.string.search_books_text_a,
+        onDismissRequest = onDismissRequest,
+        dismissTextResId = R.string.search_books_text_a,
+        onDismissClick = onDismissRequest,
+        isConfirmLoading = uiState.isBookRegistering,
+      )
+    }
   }
 }
 
@@ -77,6 +95,8 @@ private fun SearchBookScreenPreview() {
       onBarcodeScannerClick = {},
       onBookClick = {},
       onBookLongClick = {},
+      onConfirmClick = {},
+      onDismissRequest = {},
     )
   }
 }

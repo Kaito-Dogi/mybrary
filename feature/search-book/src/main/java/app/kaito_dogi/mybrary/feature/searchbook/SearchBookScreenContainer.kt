@@ -32,5 +32,7 @@ internal fun SearchBookScreenContainer(
     // TODO: v2 以降で Click の実装を差し替える
     onBookClick = viewModel::onBookLongClick,
     onBookLongClick = viewModel::onBookLongClick,
+    onConfirmClick = viewModel::onConfirmClick,
+    onDismissRequest = viewModel::onDismissClick,
   )
 }

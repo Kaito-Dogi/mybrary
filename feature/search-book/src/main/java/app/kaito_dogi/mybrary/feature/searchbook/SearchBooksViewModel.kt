@@ -46,18 +46,42 @@ internal class SearchBooksViewModel @Inject constructor(
     }
   }
 
-  fun onBookLongClick(
-    book: Book,
-  ) {
+  fun onBookLongClick(book: Book) {
+    _uiState.update {
+      it.copy(
+        selectedBook = book,
+        isDialogShown = true,
+      )
+    }
+  }
+
+  fun onConfirmClick() {
     viewModelScope.launch {
-      try {
-        myBookRepository.registerMyBook(book = book)
-        _uiState.update { it.copy(shownMessage = "『${book.title}』をMybraryに追加しました") }
-      } catch (e: Exception) {
-        // TODO: 共通のエラーハンドリングを表示
-        println("あああ: $e")
+      uiState.value.selectedBook?.let { selectedBook ->
+        try {
+          _uiState.update { it.copy(isBookRegistering = true) }
+
+          myBookRepository.registerMyBook(book = selectedBook)
+
+          _uiState.update {
+            // FIXME: String Resources を渡すようにする
+            it.copy(
+              shownMessage = "『${selectedBook.title}』をMybraryに追加しました",
+              isDialogShown = false,
+            )
+          }
+        } catch (e: Exception) {
+          // TODO: 共通のエラーハンドリングを表示
+          println("あああ: $e")
+        } finally {
+          _uiState.update { it.copy(isBookRegistering = false) }
+        }
       }
     }
+  }
+
+  fun onDismissClick() {
+    _uiState.update { it.copy(isDialogShown = false) }
   }
 
   fun onMessageShown() {
