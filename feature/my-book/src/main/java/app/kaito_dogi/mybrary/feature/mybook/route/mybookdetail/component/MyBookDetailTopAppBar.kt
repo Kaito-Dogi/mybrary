@@ -26,7 +26,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
@@ -85,10 +84,9 @@ internal fun MyBookDetailTopAppBar(
         ),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
-      // TODO: width を定数にする
       BookImage(
         imageUrl = myBook.imageUrl,
-        modifier = Modifier.width(120.dp),
+        modifier = Modifier.width(MybraryTheme.dimens.bookWidthMd),
       )
 
       Column(

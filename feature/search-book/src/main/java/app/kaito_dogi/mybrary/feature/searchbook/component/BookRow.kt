@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
@@ -52,10 +51,9 @@ internal fun BookRow(
         .height(IntrinsicSize.Min),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
-      // TODO: 定数にする
       BookImage(
         imageUrl = book.imageUrl,
-        modifier = Modifier.width(72.dp),
+        modifier = Modifier.width(MybraryTheme.dimens.bookWidthSm),
       )
 
       Column(

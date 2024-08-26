@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -34,11 +33,10 @@ fun BookRowSkeleton(
         .padding(MybraryTheme.space.md)
         .height(IntrinsicSize.Min),
     ) {
-      // TODO: width を定数化する
       Box(
         modifier = Modifier
           .aspectRatio(BookAspectRatio)
-          .width(72.dp),
+          .width(MybraryTheme.dimens.bookWidthSm),
       )
 
       Column(
