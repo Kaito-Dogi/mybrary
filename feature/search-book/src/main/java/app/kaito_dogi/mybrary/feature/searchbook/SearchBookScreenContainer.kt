@@ -10,7 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-internal fun SearchBooksScreenContainer(
+internal fun SearchBookScreenContainer(
   viewModel: SearchBooksViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -24,7 +24,7 @@ internal fun SearchBooksScreenContainer(
     }
   }
 
-  SearchBooksScreen(
+  SearchBookScreen(
     uiState = uiState,
     snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     onSearchQueryChange = viewModel::onSearchQueryChange,

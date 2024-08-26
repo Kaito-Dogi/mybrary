@@ -11,7 +11,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
 @Composable
-internal fun SearchBooksBottomAppBar(
+internal fun SearchBookBottomAppBar(
   value: String,
   onValueChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
@@ -49,9 +49,9 @@ internal fun SearchBooksBottomAppBar(
 
 @Preview
 @Composable
-private fun SearchBooksBottomAppBarPreview() {
+private fun SearchBookBottomAppBarPreview() {
   MybraryTheme {
-    SearchBooksBottomAppBar(
+    SearchBookBottomAppBar(
       value = "",
       onValueChange = {},
       onBarcodeScannerClick = {},

@@ -6,6 +6,6 @@ import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
 
 fun NavGraphBuilder.searchBookScreen() {
   composable<MybraryRoute.SearchBook> {
-    SearchBooksScreenContainer()
+    SearchBookScreenContainer()
   }
 }

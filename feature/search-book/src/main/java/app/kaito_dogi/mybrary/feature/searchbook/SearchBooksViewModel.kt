@@ -17,7 +17,7 @@ internal class SearchBooksViewModel @Inject constructor(
   private val searchBooksRepository: SearchBooksRepository,
   private val myBookRepository: MyBookRepository,
 ) : ViewModel() {
-  private val _uiState = MutableStateFlow(SearchBooksUiState.InitialValue)
+  private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun onSearchQueryChange(searchQuery: String) {

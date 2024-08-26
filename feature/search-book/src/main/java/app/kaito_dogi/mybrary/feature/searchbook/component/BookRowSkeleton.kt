@@ -22,7 +22,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookAspectRatio
 
 @Composable
-fun SearchResultBookRowSkeleton(
+fun BookRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
@@ -71,8 +71,8 @@ fun SearchResultBookRowSkeleton(
 
 @Preview
 @Composable
-private fun SearchResultBookRowSkeletonPreview() {
+private fun BookRowSkeletonPreview() {
   MybraryTheme {
-    SearchResultBookRowSkeleton()
+    BookRowSkeleton()
   }
 }

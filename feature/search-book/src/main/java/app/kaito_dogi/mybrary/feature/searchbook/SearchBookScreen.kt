@@ -15,12 +15,12 @@ import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.feature.searchbook.component.BookRow
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBooksBottomAppBar
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSkeleton
+import app.kaito_dogi.mybrary.feature.searchbook.component.BookRowSkeleton
+import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
 
 @Composable
-internal fun SearchBooksScreen(
-  uiState: SearchBooksUiState,
+internal fun SearchBookScreen(
+  uiState: SearchBookUiState,
   snackbarHost: @Composable () -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
@@ -29,7 +29,7 @@ internal fun SearchBooksScreen(
 ) {
   Scaffold(
     bottomBar = {
-      SearchBooksBottomAppBar(
+      SearchBookBottomAppBar(
         value = uiState.searchQuery,
         onValueChange = onSearchQueryChange,
         onBarcodeScannerClick = onBarcodeScannerClick,
@@ -66,7 +66,7 @@ internal fun SearchBooksScreen(
           count = 4,
           key = { "SearchResultBookRowSkeleton$it" },
         ) {
-          SearchResultBookRowSkeleton()
+          BookRowSkeleton()
         }
       }
     }
@@ -75,10 +75,10 @@ internal fun SearchBooksScreen(
 
 @Preview
 @Composable
-private fun SearchBooksScreenPreview() {
+private fun SearchBookScreenPreview() {
   MybraryTheme {
-    SearchBooksScreen(
-      uiState = SearchBooksUiState.InitialValue,
+    SearchBookScreen(
+      uiState = SearchBookUiState.InitialValue,
       snackbarHost = {},
       onSearchQueryChange = {},
       onBarcodeScannerClick = {},
