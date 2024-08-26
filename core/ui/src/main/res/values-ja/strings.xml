@@ -44,9 +44,9 @@
   <string name="my_book_detail_text_pp">pp.%1$d~%2$d</string>
   <string name="my_book_list_alt_search_for_books">本を検索する</string>
   <string name="my_book_list_text_a">あ</string>
-  <string name="my_book_list_text_all_my_books">すべての MyBook</string>
-  <string name="my_book_list_text_favorite_my_books">お気に入りの MyBook</string>
-  <string name="my_book_list_text_other_my_books">その他の MyBook</string>
+  <string name="my_book_list_text_all_my_books">すべて</string>
+  <string name="my_book_list_text_favorite_my_books">お気に入り</string>
+  <string name="my_book_list_text_other_my_books">その他</string>
   <string name="search_books_alt_scan_book_barcode">バーコードを読み取る</string>
   <string name="search_books_alt_search_for_books">本を検索する</string>
   <string name="search_books_placeholder_enter_search_keywords">検索ワードを入力…</string>
