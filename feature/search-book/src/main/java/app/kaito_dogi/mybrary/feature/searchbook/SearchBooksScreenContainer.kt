@@ -30,7 +30,7 @@ internal fun SearchBooksScreenContainer(
     onSearchQueryChange = viewModel::onSearchQueryChange,
     onBarcodeScannerClick = {},
     // TODO: v2 以降で Click の実装を差し替える
-    onSearchResultClick = viewModel::onSearchResultBookLongClick,
-    onSearchResultLongClick = viewModel::onSearchResultBookLongClick,
+    onBookClick = viewModel::onBookLongClick,
+    onBookLongClick = viewModel::onBookLongClick,
   )
 }

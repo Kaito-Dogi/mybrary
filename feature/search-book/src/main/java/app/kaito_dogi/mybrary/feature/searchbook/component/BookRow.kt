@@ -21,26 +21,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.Author
+import app.kaito_dogi.mybrary.core.domain.model.AuthorId
+import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun SearchResultBookRow(
-  searchResultBook: SearchResultBook,
-  onClick: (SearchResultBook) -> Unit,
-  onLongClick: (SearchResultBook) -> Unit,
+internal fun BookRow(
+  book: Book,
+  onClick: (Book) -> Unit,
+  onLongClick: (Book) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Card(
     modifier = modifier
       .fillMaxWidth()
       .combinedClickable(
-        onClick = { onClick(searchResultBook) },
-        onLongClick = { onLongClick(searchResultBook) },
+        onClick = { onClick(book) },
+        onLongClick = { onLongClick(book) },
       ),
     shape = MybraryTheme.shapes.small,
   ) {
@@ -52,7 +54,7 @@ internal fun SearchResultBookRow(
     ) {
       // TODO: 定数にする
       BookImage(
-        imageUrl = searchResultBook.imageUrl,
+        imageUrl = book.imageUrl,
         modifier = Modifier.width(72.dp),
       )
 
@@ -60,7 +62,7 @@ internal fun SearchResultBookRow(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
       ) {
         Text(
-          text = searchResultBook.title,
+          text = book.title,
           modifier = Modifier
             .fillMaxWidth()
             .weight(1f),
@@ -69,9 +71,9 @@ internal fun SearchResultBookRow(
           style = MybraryTheme.typography.titleMedium,
         )
 
-        if (searchResultBook.authors.isNotEmpty()) {
+        if (book.authors.isNotEmpty()) {
           Text(
-            text = searchResultBook.authors.joinToString { it.name },
+            text = book.authors.joinToString { it.name },
             modifier = Modifier.fillMaxWidth(),
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
@@ -80,20 +82,20 @@ internal fun SearchResultBookRow(
         }
 
         val context = LocalContext.current
-        val rowBody = remember(searchResultBook, context) {
+        val rowBody = remember(book, context) {
           when {
-            searchResultBook.pageCount != null && searchResultBook.publisher != null -> context.getString(
+            book.pageCount != null && book.publisher != null -> context.getString(
               R.string.search_books_text_page_count_and_publisher,
-              searchResultBook.pageCount,
-              searchResultBook.publisher,
+              book.pageCount,
+              book.publisher,
             )
 
-            searchResultBook.pageCount != null -> context.getString(
+            book.pageCount != null -> context.getString(
               R.string.search_books_text_page_count,
-              searchResultBook.pageCount,
+              book.pageCount,
             )
 
-            searchResultBook.publisher != null -> "${searchResultBook.publisher}"
+            book.publisher != null -> "${book.publisher}"
 
             else -> ""
           }
@@ -117,8 +119,9 @@ internal fun SearchResultBookRow(
 @Composable
 private fun SearchResultBookRowPreview() {
   MybraryTheme {
-    SearchResultBookRow(
-      searchResultBook = SearchResultBook(
+    BookRow(
+      book = Book(
+        id = BookId(value = 0L),
         externalId = ExternalBookId(value = "externalId"),
         title = "タイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
@@ -126,7 +129,12 @@ private fun SearchResultBookRowPreview() {
         isbn13 = "isbn13",
         pageCount = Int.MAX_VALUE,
         publisher = "出版社",
-        authors = listOf(SearchResultAuthor(name = "著者名")),
+        authors = listOf(
+          Author(
+            id = AuthorId(value = 0L),
+            name = "著者名",
+          ),
+        ),
       ),
       onClick = {},
       onLongClick = {},

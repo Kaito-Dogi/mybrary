@@ -2,7 +2,6 @@ package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.SearchBooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,7 +46,7 @@ internal class SearchBooksViewModel @Inject constructor(
   }
 
   fun onSearchResultBookLongClick(
-    searchResultBook: SearchResultBook,
+    searchResultBook: SearchedBook,
   ) {
     viewModelScope.launch {
       try {

@@ -1,11 +1,10 @@
 package app.kaito_dogi.mybrary.feature.searchbooks
 
 import androidx.compose.runtime.Immutable
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 
 @Immutable
 internal data class SearchBooksUiState(
-  val searchResults: List<SearchResultBook>?,
+  val searchResults: List<SearchedBook>?,
   val searchQuery: String,
   val isSearching: Boolean,
   val shownMessage: String?,

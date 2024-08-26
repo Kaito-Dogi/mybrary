@@ -7,9 +7,9 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.convertor.toMyBook
+import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,7 +30,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean {
+  override suspend fun registerMyBook(book: Book): MyBook {
     TODO("Not yet implemented")
   }
 

@@ -5,11 +5,11 @@ import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatche
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
+import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -41,9 +41,30 @@ internal class MockMyBookRepository @Inject constructor(
     return@withContext mockMyBookList.value.first { it.id == myBookId }
   }
 
-  // TODO: 実装
-  override suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean {
-    return true
+  override suspend fun registerMyBook(book: Book): MyBook = withContext(dispatcher) {
+    delay(1_000)
+
+    val myBook = MyBook(
+      id = MyBookId(value = mockMyBookList.value.size.toLong()),
+      user = mockMyBookList.value[0].user,
+      bookId = book.id,
+      externalId = book.externalId,
+      title = book.title,
+      imageUrl = book.imageUrl,
+      isbn10 = book.isbn10,
+      isbn13 = book.isbn13,
+      pageCount = book.pageCount,
+      publisher = book.publisher,
+      authors = book.authors,
+      isPinned = false,
+      isFavorite = false,
+      isPublic = false,
+      isArchived = false,
+    )
+
+    mockMyBookList.update { it + myBook }
+
+    return@withContext myBook
   }
 
   override suspend fun pinMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {

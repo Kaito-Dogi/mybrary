@@ -2,7 +2,7 @@ package app.kaito_dogi.mybrary.feature.searchbook
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.SearchBooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,7 +24,7 @@ internal class SearchBooksViewModel @Inject constructor(
     viewModelScope.launch {
       _uiState.update {
         it.copy(
-          searchResults = null,
+          bookList = null,
           searchQuery = searchQuery,
           isSearching = true,
         )
@@ -35,7 +35,7 @@ internal class SearchBooksViewModel @Inject constructor(
             query = searchQuery,
             startIndex = 0,
           )
-          _uiState.update { it.copy(searchResults = searchResult) }
+          _uiState.update { it.copy(bookList = searchResult) }
         } catch (e: Exception) {
           // TODO: 共通のエラーハンドリングを表示
           println("あああ: $e")
@@ -46,19 +46,13 @@ internal class SearchBooksViewModel @Inject constructor(
     }
   }
 
-  fun onSearchResultBookLongClick(
-    searchResultBook: SearchResultBook,
+  fun onBookLongClick(
+    book: Book,
   ) {
     viewModelScope.launch {
       try {
-        val isSuccess = myBookRepository.registerMyBook(searchResultBook = searchResultBook)
-        if (isSuccess) {
-          _uiState.update {
-            it.copy(
-              shownMessage = "『${searchResultBook.title}』をMybraryに追加しました",
-            )
-          }
-        }
+        myBookRepository.registerMyBook(book = book)
+        _uiState.update { it.copy(shownMessage = "『${book.title}』をMybraryに追加しました") }
       } catch (e: Exception) {
         // TODO: 共通のエラーハンドリングを表示
         println("あああ: $e")

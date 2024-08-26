@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
+import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.feature.searchbook.component.BookRow
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBooksBottomAppBar
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRow
 import app.kaito_dogi.mybrary.feature.searchbook.component.SearchResultBookRowSkeleton
 
 @Composable
@@ -24,8 +24,8 @@ internal fun SearchBooksScreen(
   snackbarHost: @Composable () -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
-  onSearchResultClick: (SearchResultBook) -> Unit,
-  onSearchResultLongClick: (SearchResultBook) -> Unit,
+  onBookClick: (Book) -> Unit,
+  onBookLongClick: (Book) -> Unit,
 ) {
   Scaffold(
     bottomBar = {
@@ -48,15 +48,15 @@ internal fun SearchBooksScreen(
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
-      uiState.searchResults?.let {
+      uiState.bookList?.let {
         items(
-          items = uiState.searchResults,
+          items = uiState.bookList,
           key = { it.externalId.value },
         ) {
-          SearchResultBookRow(
-            searchResultBook = it,
-            onClick = onSearchResultClick,
-            onLongClick = onSearchResultLongClick,
+          BookRow(
+            book = it,
+            onClick = onBookClick,
+            onLongClick = onBookLongClick,
           )
         }
       }
@@ -82,8 +82,8 @@ private fun SearchBooksScreenPreview() {
       snackbarHost = {},
       onSearchQueryChange = {},
       onBarcodeScannerClick = {},
-      onSearchResultClick = {},
-      onSearchResultLongClick = {},
+      onBookClick = {},
+      onBookLongClick = {},
     )
   }
 }

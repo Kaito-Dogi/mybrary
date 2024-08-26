@@ -22,17 +22,15 @@ import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultAuthor
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun SearchResultBookRow(
-  searchResultBook: SearchResultBook,
-  onClick: (SearchResultBook) -> Unit,
-  onLongClick: (SearchResultBook) -> Unit,
+  searchResultBook: SearchedBook,
+  onClick: (SearchedBook) -> Unit,
+  onLongClick: (SearchedBook) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Card(
@@ -118,7 +116,7 @@ internal fun SearchResultBookRow(
 private fun SearchResultBookRowPreview() {
   MybraryTheme {
     SearchResultBookRow(
-      searchResultBook = SearchResultBook(
+      searchResultBook = SearchedBook(
         externalId = ExternalBookId(value = "externalId"),
         title = "タイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),

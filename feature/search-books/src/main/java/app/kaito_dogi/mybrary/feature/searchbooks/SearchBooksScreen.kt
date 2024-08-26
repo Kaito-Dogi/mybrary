@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchBooksBottomAppBar
 import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchResultBookRow
 import app.kaito_dogi.mybrary.feature.searchbooks.component.SearchResultBookRowSkeleton
@@ -24,8 +23,8 @@ internal fun SearchBooksScreen(
   snackbarHost: @Composable () -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onBarcodeScannerClick: () -> Unit,
-  onSearchResultClick: (SearchResultBook) -> Unit,
-  onSearchResultLongClick: (SearchResultBook) -> Unit,
+  onSearchResultClick: (SearchedBook) -> Unit,
+  onSearchResultLongClick: (SearchedBook) -> Unit,
 ) {
   Scaffold(
     bottomBar = {

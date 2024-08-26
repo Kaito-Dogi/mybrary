@@ -1,15 +1,15 @@
 package app.kaito_dogi.mybrary.core.domain.repository
 
+import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 
 interface MyBookRepository {
   suspend fun getMyBookList(): List<MyBook>
 
   suspend fun getMyBook(myBookId: MyBookId): MyBook
 
-  suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean
+  suspend fun registerMyBook(book: Book): MyBook
 
   suspend fun pinMyBook(myBookId: MyBookId): MyBook
 
