@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,17 +47,21 @@ internal fun BookRow(
     shape = MybraryTheme.shapes.small,
   ) {
     Row(
-      modifier = Modifier
-        .padding(MybraryTheme.spaces.xs)
-        .height(IntrinsicSize.Min),
+      modifier = Modifier.height(IntrinsicSize.Min),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
     ) {
       BookImage(
         imageUrl = book.imageUrl,
         modifier = Modifier.width(MybraryTheme.dimens.bookWidthSm),
+        shape = RectangleShape,
       )
 
       Column(
+        modifier = Modifier.padding(
+          top = MybraryTheme.spaces.xs,
+          end = MybraryTheme.spaces.xs,
+          bottom = MybraryTheme.spaces.xs,
+        ),
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
@@ -123,7 +128,7 @@ private fun SearchResultBookRowPreview() {
       book = Book(
         id = BookId(value = 0L),
         externalId = ExternalBookId(value = "externalId"),
-        title = "タイトル\nタイトル\nタイトル",
+        title = "タイトルタイトルタイトルタイトルタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn10 = "isbn10",
         isbn13 = "isbn13",

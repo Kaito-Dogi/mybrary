@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.dp
 
 
 internal val mybraryDimens = Dimens(
-  bookWidthSm = 72.dp,
+  bookWidthSm = 96.dp,
   bookWidthMd = 120.dp,
 )
 
