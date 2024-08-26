@@ -23,10 +23,10 @@ internal fun MemoRowSkeleton(
   ) {
     Column(
       modifier = modifier.padding(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
+        start = MybraryTheme.space.sm,
+        top = MybraryTheme.space.xs,
+        end = MybraryTheme.space.sm,
+        bottom = MybraryTheme.space.sm,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
     ) {

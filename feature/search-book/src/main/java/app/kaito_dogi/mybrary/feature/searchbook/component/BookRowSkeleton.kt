@@ -30,7 +30,7 @@ fun BookRowSkeleton(
   ) {
     Row(
       modifier = Modifier
-        .padding(MybraryTheme.space.md)
+        .padding(MybraryTheme.space.xs)
         .height(IntrinsicSize.Min),
     ) {
       Box(
@@ -46,21 +46,21 @@ fun BookRowSkeleton(
           textResId = R.string.search_books_text_a_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          style = MybraryTheme.typography.titleMedium,
+          style = MybraryTheme.typography.bodyLarge,
         )
 
         Text(
           textResId = R.string.search_books_text_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          style = MybraryTheme.typography.bodyMedium,
+          style = MybraryTheme.typography.bodySmall,
         )
 
         Text(
           textResId = R.string.search_books_text_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
-          style = MybraryTheme.typography.bodyMedium,
+          style = MybraryTheme.typography.bodySmall,
         )
       }
     }

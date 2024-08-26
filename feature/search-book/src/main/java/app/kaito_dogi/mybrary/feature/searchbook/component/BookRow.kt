@@ -47,7 +47,7 @@ internal fun BookRow(
   ) {
     Row(
       modifier = Modifier
-        .padding(MybraryTheme.space.md)
+        .padding(MybraryTheme.space.xs)
         .height(IntrinsicSize.Min),
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
     ) {
@@ -66,16 +66,17 @@ internal fun BookRow(
             .weight(1f),
           overflow = TextOverflow.Ellipsis,
           maxLines = 2,
-          style = MybraryTheme.typography.titleMedium,
+          style = MybraryTheme.typography.bodyLarge,
         )
 
         if (book.authors.isNotEmpty()) {
           Text(
             text = book.authors.joinToString { it.name },
             modifier = Modifier.fillMaxWidth(),
+            color = MybraryTheme.colorScheme.onSurfaceVariant,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
-            style = MybraryTheme.typography.bodyMedium,
+            style = MybraryTheme.typography.bodySmall,
           )
         }
 
@@ -103,9 +104,10 @@ internal fun BookRow(
           Text(
             text = rowBody,
             modifier = Modifier.fillMaxWidth(),
+            color = MybraryTheme.colorScheme.onSurfaceVariant,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
-            style = MybraryTheme.typography.bodyMedium,
+            style = MybraryTheme.typography.bodySmall,
           )
         }
       }

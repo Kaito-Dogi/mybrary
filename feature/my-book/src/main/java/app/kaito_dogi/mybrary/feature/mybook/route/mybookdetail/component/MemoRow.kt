@@ -9,7 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -39,10 +38,10 @@ internal fun MemoRow(
     // top の padding を小さくすることで、錯視を調整
     Column(
       modifier = Modifier.padding(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
+        start = MybraryTheme.space.sm,
+        top = MybraryTheme.space.xs,
+        end = MybraryTheme.space.sm,
+        bottom = MybraryTheme.space.sm,
       ),
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
     ) {
@@ -83,8 +82,7 @@ internal fun MemoRow(
       Text(
         text = rowBody,
         modifier = Modifier.fillMaxWidth(),
-        // TODO: カラースキーマを整理する
-        color = Color.Gray,
+        color = MybraryTheme.colorScheme.onSurfaceVariant,
         style = MybraryTheme.typography.bodySmall,
       )
     }

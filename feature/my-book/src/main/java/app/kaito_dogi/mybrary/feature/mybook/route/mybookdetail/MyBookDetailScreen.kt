@@ -63,9 +63,7 @@ internal fun MyBookDetailScreen(
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
     ) {
       // ヘッダー
-      item(
-        key = "MyBookDetailTopAppBar",
-      ) {
+      item(key = "MyBookDetailTopAppBar") {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
         )
@@ -80,9 +78,7 @@ internal fun MyBookDetailScreen(
           MemoRow(
             memo = memo,
             onClick = onMemoClick,
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
+            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
           )
         }
       }
@@ -94,9 +90,7 @@ internal fun MyBookDetailScreen(
           key = { "MemoRowSkeleton$it" },
         ) {
           MemoRowSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
+            modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
           )
         }
       }
@@ -111,9 +105,7 @@ internal fun MyBookDetailScreen(
           onEndPageChange = onEndPageChange,
           onContentChange = onContentChange,
           onSaveClick = onSaveClick,
-          modifier = Modifier.padding(
-            horizontal = MybraryTheme.space.md,
-          ),
+          modifier = Modifier.padding(horizontal = MybraryTheme.space.md),
         )
       }
     }
