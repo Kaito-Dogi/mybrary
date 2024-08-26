@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.ui.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,8 +40,9 @@ fun BookImage(
     model = imageUrl?.value,
     contentDescription = stringResource(id = R.string.ui_alt_book_cover),
     modifier = modifier
+      .aspectRatio(BookAspectRatio)
       .clip(shape = shape)
-      .aspectRatio(BookAspectRatio),
+      .background(MybraryTheme.colorScheme.surface),
     placeholder = painterResource(R.drawable.img_book_placeholder),
     error = painterResource(R.drawable.img_book_placeholder),
     onLoading = onLoading,
