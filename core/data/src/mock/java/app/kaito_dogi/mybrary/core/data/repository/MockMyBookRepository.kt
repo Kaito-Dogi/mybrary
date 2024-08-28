@@ -159,7 +159,6 @@ private val MockMyBookList = List(20) { index ->
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
-    // FIXME: 楽天 API から取得される値に置き換える
     imageUrl = Url.Image(
       when (index % 7) {
         0 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6143/9784798046143.jpg?_ex=512x512"
