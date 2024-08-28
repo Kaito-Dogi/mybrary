@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.convertor
 
-import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.IndustryIdentifierType
-import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.google.response.model.IndustryIdentifierType
+import app.kaito_dogi.mybrary.core.api.google.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId

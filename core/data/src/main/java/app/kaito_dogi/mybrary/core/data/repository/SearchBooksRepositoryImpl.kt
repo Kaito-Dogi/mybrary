@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.api.googlebooks.GoogleBooksApi
-import app.kaito_dogi.mybrary.core.api.googlebooks.response.model.ItemResponse
+import app.kaito_dogi.mybrary.core.api.google.GoogleApi
+import app.kaito_dogi.mybrary.core.api.google.response.model.ItemResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toBook
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
@@ -11,14 +11,14 @@ import javax.inject.Singleton
 
 @Singleton
 internal class SearchBooksRepositoryImpl @Inject constructor(
-  private val googleBooksApi: GoogleBooksApi,
+  private val googleApi: GoogleApi,
 ) : SearchBooksRepository {
   override suspend fun searchBooks(
     query: String,
     maxResults: Int,
     startIndex: Int,
   ): List<Book> {
-    val response = googleBooksApi.getVolumes(
+    val response = googleApi.getVolumes(
       query = query,
       maxResults = maxResults,
       startIndex = startIndex,
@@ -27,7 +27,7 @@ internal class SearchBooksRepositoryImpl @Inject constructor(
   }
 
   override suspend fun searchBook(id: ExternalBookId): Book {
-    val response = googleBooksApi.getVolume(volumeId = id.value)
+    val response = googleApi.getVolume(volumeId = id.value)
     return response.toBook()
   }
 }

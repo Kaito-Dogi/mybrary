@@ -1,12 +1,12 @@
-package app.kaito_dogi.mybrary.core.api.googlebooks
+package app.kaito_dogi.mybrary.core.api.google
 
-import app.kaito_dogi.mybrary.core.api.googlebooks.response.GetVolumeResponse
-import app.kaito_dogi.mybrary.core.api.googlebooks.response.GetVolumesResponse
+import app.kaito_dogi.mybrary.core.api.google.response.GetVolumeResponse
+import app.kaito_dogi.mybrary.core.api.google.response.GetVolumesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface GoogleBooksApi {
+interface GoogleApi {
   @GET("/books/v1/volumes")
   suspend fun getVolumes(
     @Query("q") query: String,
