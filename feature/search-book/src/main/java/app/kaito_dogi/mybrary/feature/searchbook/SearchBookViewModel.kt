@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-internal class SearchBooksViewModel @Inject constructor(
+internal class SearchBookViewModel @Inject constructor(
   private val bookRepository: BookRepository,
   private val myBookRepository: MyBookRepository,
 ) : ViewModel() {

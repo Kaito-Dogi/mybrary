@@ -11,7 +11,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 internal fun SearchBookScreenContainer(
-  viewModel: SearchBooksViewModel = hiltViewModel(),
+  viewModel: SearchBookViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
