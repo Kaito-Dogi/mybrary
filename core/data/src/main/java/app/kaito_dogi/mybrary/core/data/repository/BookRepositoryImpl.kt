@@ -23,6 +23,7 @@ internal class BookRepositoryImpl @Inject constructor(
     page: Int,
     sort: String,
   ): List<Book> {
+    // TODO: MybraryConfig から楽天 API を叩くのに必要な ID を引数に渡す
     TODO("Not yet implemented")
   }
 }

@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.domain.repository
 
+// FIXME: LoginRepository, SignUpRepository, OtpRepository に分解して削除する
 interface AuthRepository {
   suspend fun sendOtp(email: String)
 
