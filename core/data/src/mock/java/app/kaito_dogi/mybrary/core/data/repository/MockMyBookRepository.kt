@@ -153,53 +153,48 @@ private val MockMyBookList = List(20) { index ->
     title = when (index % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
-      2 -> "オブジェクト指向UIデザイン使いやすいソフトウェアの原理"
+      2 -> "オブジェクト指向UIデザイン──使いやすいソフトウェアの原理"
       3 -> "ユースケース駆動開発実践ガイド"
-      4 -> "Clean Architecture"
+      4 -> "Clean Architecture 達人に学ぶソフトウェアの構造と設計"
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
     // FIXME: 楽天 API から取得される値に置き換える
     imageUrl = Url.Image(
       when (index % 7) {
-        0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        2 -> "https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        3 -> "https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        4 -> "https://books.google.com/books/content?id=GRjUuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        5 -> "https://books.google.com/books/content?id=E323DwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        0 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6143/9784798046143.jpg?_ex=512x512"
+        1 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2740/27406597.jpg?_ex=512x512"
+        2 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3513/9784297113513.jpg?_ex=512x512"
+        3 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7981/79811445.jpg?_ex=512x512"
+        4 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0659/9784048930659.jpg?_ex=512x512"
+        5 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1749/9784839961749.jpg?_ex=512x512"
         else -> ""
       },
     ),
     isbn = "isbn",
     publisher = when (index % 7) {
       0 -> "秀和システム"
-      1 -> "株式会社 オーム社"
-      2 -> ""
+      1 -> "オーム社"
+      2 -> "技術評論社"
       3 -> "翔泳社"
-      4 -> ""
+      4 -> "ドワンゴ"
       5 -> "マイナビ出版"
       else -> "出版社"
     },
     authors = when (index % 7) {
-      0 -> listOf(Author(name = "上田勲"))
-      1 -> emptyList()
-      2 -> listOf(
-        "ソシオメディア",
-        "上野学",
-        "藤井幸多",
-      ).map { Author(name = it) }
-
+      0 -> listOf(Author(name = "上田　勲"))
+      1 -> listOf("ポール・グレアム", "川合史朗").map { Author(name = it) }
+      2 -> listOf("ソシオメディア株式会社", "上野 学", "藤井 幸多").map { Author(name = it) }
       3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").map { Author(name = it) }
+      4 -> listOf("Robert　C．Martin", "角　征典", "高木　正弘").map { Author(name = it) }
 
-      4 -> listOf(Author(name = "ロバート・C. マーチン"))
       5 -> listOf(
-        "ＤｍｉｔｒｙＪｅｍｅｒｏｖ",
-        "ＳｖｅｔｌａｎａＩｓａｋｏｖａ",
-        "長澤太郎",
-        "藤原聖",
-        "山本純平",
-        "ｙｙ＿ｙａｎｋ",
+        "Dmitry Jemerov",
+        "Svetlana Isakova",
+        "長澤 太郎",
+        "藤原 聖",
+        "山本 純平",
+        "yy_yank",
       ).map { Author(name = it) }
 
       else -> listOf(Author(name = "著者名"))
