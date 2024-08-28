@@ -7,7 +7,6 @@ import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
-import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
@@ -48,12 +47,9 @@ internal class MockMyBookRepository @Inject constructor(
       id = MyBookId(value = mockMyBookList.value.size.toLong()),
       user = mockMyBookList.value[0].user,
       bookId = book.id,
-      externalId = book.externalId,
       title = book.title,
       imageUrl = book.imageUrl,
-      isbn10 = book.isbn10,
-      isbn13 = book.isbn13,
-      pageCount = book.pageCount,
+      isbn = book.isbn,
       publisher = book.publisher,
       authors = book.authors,
       isPinned = false,
@@ -155,7 +151,6 @@ private val MockMyBookList = List(20) {
       name = "ユーザー名",
     ),
     bookId = BookId(value = it.toLong()),
-    externalId = ExternalBookId(value = "externalId$it"),
     title = when (it % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
@@ -165,6 +160,7 @@ private val MockMyBookList = List(20) {
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
+    // FIXME: 楽天 API から取得される値に置き換える
     imageUrl = Url.Image(
       when (it % 7) {
         0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
@@ -176,17 +172,7 @@ private val MockMyBookList = List(20) {
         else -> ""
       },
     ),
-    isbn10 = "isbn10",
-    isbn13 = "isbn13",
-    pageCount = when (it % 7) {
-      0 -> 337
-      1 -> 284
-      2 -> 360
-      3 -> 563
-      4 -> 349
-      5 -> 468
-      else -> Int.MAX_VALUE
-    },
+    isbn = "isbn",
     publisher = when (it % 7) {
       0 -> "秀和システム"
       1 -> "株式会社 オーム社"

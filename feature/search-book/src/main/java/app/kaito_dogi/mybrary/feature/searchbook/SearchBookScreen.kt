@@ -48,7 +48,7 @@ internal fun SearchBookScreen(
       uiState.bookList?.let {
         items(
           items = uiState.bookList,
-          key = { it.externalId.value },
+          key = { it.isbn },
         ) {
           BookRow(
             book = it,

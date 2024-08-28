@@ -13,10 +13,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
@@ -25,8 +23,6 @@ import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
-import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -85,36 +81,14 @@ internal fun BookRow(
           )
         }
 
-        val context = LocalContext.current
-        val rowBody = remember(book, context) {
-          when {
-            book.pageCount != null && book.publisher != null -> context.getString(
-              R.string.search_books_text_page_count_and_publisher,
-              book.pageCount,
-              book.publisher,
-            )
-
-            book.pageCount != null -> context.getString(
-              R.string.search_books_text_page_count,
-              book.pageCount,
-            )
-
-            book.publisher != null -> "${book.publisher}"
-
-            else -> ""
-          }
-        }
-
-        if (rowBody.isNotBlank()) {
-          Text(
-            text = rowBody,
-            modifier = Modifier.fillMaxWidth(),
-            color = MybraryTheme.colorScheme.onSurfaceVariant,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 1,
-            style = MybraryTheme.typography.bodySmall,
-          )
-        }
+        Text(
+          text = book.publisher,
+          modifier = Modifier.fillMaxWidth(),
+          color = MybraryTheme.colorScheme.onSurfaceVariant,
+          overflow = TextOverflow.Ellipsis,
+          maxLines = 1,
+          style = MybraryTheme.typography.bodySmall,
+        )
       }
     }
   }
@@ -127,12 +101,9 @@ private fun SearchResultBookRowPreview() {
     BookRow(
       book = Book(
         id = BookId(value = 0L),
-        externalId = ExternalBookId(value = "externalId"),
         title = "タイトルタイトルタイトルタイトルタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
-        isbn10 = "isbn10",
-        isbn13 = "isbn13",
-        pageCount = Int.MAX_VALUE,
+        isbn = "isbn",
         publisher = "出版社",
         authors = listOf(
           Author(

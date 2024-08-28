@@ -3,8 +3,8 @@ package app.kaito_dogi.mybrary.feature.searchbook
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
-import app.kaito_dogi.mybrary.core.domain.repository.SearchBooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class SearchBooksViewModel @Inject constructor(
-  private val searchBooksRepository: SearchBooksRepository,
+  private val bookRepository: BookRepository,
   private val myBookRepository: MyBookRepository,
 ) : ViewModel() {
   private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
@@ -31,11 +31,10 @@ internal class SearchBooksViewModel @Inject constructor(
       }
       if (searchQuery.isNotBlank()) {
         try {
-          val searchResult = searchBooksRepository.searchBooks(
-            query = searchQuery,
-            startIndex = 0,
-          )
-          _uiState.update { it.copy(bookList = searchResult) }
+//          val searchResult = bookRepository.searchBook(
+//
+//          )
+//          _uiState.update { it.copy(bookList = searchResult) }
         } catch (e: Exception) {
           // TODO: 共通のエラーハンドリングを表示
           println("あああ: $e")

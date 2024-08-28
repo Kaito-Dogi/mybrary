@@ -15,14 +15,12 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,7 +29,6 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
-import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
@@ -58,7 +55,7 @@ internal fun MyBookDetailTopAppBar(
     modifier = modifier.height(IntrinsicSize.Min),
   ) {
     AsyncImage(
-      model = myBook.imageUrl?.value,
+      model = myBook.imageUrl.value,
       modifier = Modifier
         .matchParentSize()
         .background(MybraryTheme.colorScheme.primary)
@@ -99,7 +96,7 @@ internal fun MyBookDetailTopAppBar(
             .weight(1f),
           color = Color.White,
           overflow = TextOverflow.Ellipsis,
-          maxLines = 4,
+          maxLines = 3,
           style = MybraryTheme.typography.titleLarge,
         )
 
@@ -114,35 +111,14 @@ internal fun MyBookDetailTopAppBar(
           )
         }
 
-        val context = LocalContext.current
-        val topAppBarBody = remember(myBook, context) {
-          when {
-            myBook.pageCount != null && myBook.publisher != null -> context.getString(
-              R.string.my_book_detail_text_page_count_and_publisher,
-              myBook.pageCount,
-              myBook.publisher,
-            )
-
-            myBook.pageCount != null -> context.getString(
-              R.string.my_book_detail_text_page_count,
-              myBook.pageCount,
-            )
-
-            myBook.publisher != null -> "${myBook.publisher}"
-
-            else -> ""
-          }
-        }
-        if (topAppBarBody.isNotBlank()) {
-          Text(
-            text = topAppBarBody,
-            modifier = Modifier.fillMaxWidth(),
-            color = Color.White,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 1,
-            style = MybraryTheme.typography.bodyMedium,
-          )
-        }
+        Text(
+          text = myBook.publisher,
+          modifier = Modifier.fillMaxWidth(),
+          color = Color.White,
+          overflow = TextOverflow.Ellipsis,
+          maxLines = 1,
+          style = MybraryTheme.typography.bodyMedium,
+        )
       }
     }
   }
@@ -160,12 +136,9 @@ private fun MyBookDetailTopAppBarPreview() {
           name = "ユーザー名",
         ),
         bookId = BookId(value = 0L),
-        externalId = ExternalBookId(value = "externalId"),
-        title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
+        title = "タイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
-        isbn10 = "isbn10",
-        isbn13 = "isbn13",
-        pageCount = Int.MAX_VALUE,
+        isbn = "isbn",
         publisher = "出版社",
         authors = List(10) {
           Author(

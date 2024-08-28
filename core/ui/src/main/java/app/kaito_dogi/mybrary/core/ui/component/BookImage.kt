@@ -25,7 +25,7 @@ const val BookAspectRatio = 210f / 297f
 
 @Composable
 fun BookImage(
-  imageUrl: Url.Image?,
+  imageUrl: Url.Image,
   modifier: Modifier = Modifier,
   shape: Shape = MybraryTheme.shapes.extraSmall,
   onLoading: ((AsyncImagePainter.State.Loading) -> Unit)? = null,
@@ -37,7 +37,7 @@ fun BookImage(
   filterQuality: FilterQuality = DrawScope.DefaultFilterQuality,
 ) {
   AsyncImage(
-    model = imageUrl?.value,
+    model = imageUrl.value,
     contentDescription = stringResource(id = R.string.ui_alt_book_cover),
     modifier = modifier
       .aspectRatio(BookAspectRatio)
@@ -61,7 +61,7 @@ fun BookImage(
 private fun BookImagePreview() {
   MybraryTheme {
     BookImage(
-      imageUrl = null,
+      imageUrl = Url.Image(value = ""),
     )
   }
 }
