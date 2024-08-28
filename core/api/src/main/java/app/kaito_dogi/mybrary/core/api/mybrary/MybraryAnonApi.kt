@@ -31,7 +31,7 @@ interface MybraryAnonApi {
 
   @GET("/my-book/{myBookId}/memos")
   suspend fun getMemos(
-    @Path("myBookId") myBookId: Long,
+    @Path("myBookId") myBookId: String,
   ): GetMemos
 
   @GET("/user/{user-id}")

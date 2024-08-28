@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MyBookResponse(
-  val id: Long,
+  val id: String,
   @SerialName("user_id")
   val userId: String,
   @SerialName("book_id")
-  val bookId: Long,
+  val bookId: String,
   @SerialName("is_pinned")
   val isPinned: Boolean,
   @SerialName("is_favorite")

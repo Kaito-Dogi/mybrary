@@ -100,7 +100,7 @@ private fun MyBookDetailBottomSheetContentPreview() {
   MybraryTheme {
     MyBookDetailBottomSheetContent(
       draftMemo = DraftMemo.createInitialValue(
-        myBookId = MyBookId(0L),
+        myBookId = MyBookId(value = ""),
       ),
       isContentTextFieldError = false,
       onStartPageChange = {},

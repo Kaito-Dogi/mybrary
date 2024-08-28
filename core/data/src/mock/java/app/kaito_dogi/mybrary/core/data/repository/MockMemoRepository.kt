@@ -39,7 +39,7 @@ internal class MockMemoRepository @Inject constructor(
     delay(1_000)
 
     val createdMemo = Memo(
-      id = MemoId(value = mockMemoList.value.size.toLong()),
+      id = MemoId(value = "${mockMemoList.value.size}"),
       user = User(
         id = UserId(value = "userId"),
         name = "ユーザー名",
@@ -97,7 +97,7 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
   val startPage = if (index % 2 == 0) index * 100 else null
   val endPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
-    id = MemoId(value = index.toLong()),
+    id = MemoId(value = "$index"),
     user = User(
       id = UserId(value = "userId"),
       name = "ユーザー名",

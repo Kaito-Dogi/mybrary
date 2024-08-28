@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MyBookId(
-  val value: Long,
+  val value: String,
 )

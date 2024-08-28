@@ -18,18 +18,18 @@ interface MybraryAuthApi {
 
   @PATCH("/my-book/{id}")
   suspend fun putMyBook(
-    @Path("id") id: Long,
+    @Path("id") id: String,
   )
 
   @PATCH("/my-book/{id}/favorite")
   suspend fun patchMyBookFavorite(
-    @Path("id") id: Long,
+    @Path("id") id: String,
     @Body request: PatchMyBookFavoriteRequest,
   ): PatchMyBookFavoriteResponse
 
   @DELETE("/my-book/{id}")
   suspend fun deleteMyBook(
-    @Path("id") id: Long,
+    @Path("id") id: String,
   )
 
   @POST("/memo")
@@ -39,12 +39,12 @@ interface MybraryAuthApi {
 
   @PATCH("/memo/{id}")
   suspend fun patchMemo(
-    @Path("id") id: Long,
+    @Path("id") id: String,
     @Body request: PatchMemoRequest,
   ): PatchMemoResponse
 
   @DELETE("/memo/{id}")
   suspend fun deleteMemo(
-    @Path("id") id: Long,
+    @Path("id") id: String,
   )
 }

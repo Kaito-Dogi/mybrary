@@ -118,12 +118,12 @@ private fun MyBookDetailScreenPreview() {
     MyBookDetailScreen(
       uiState = MyBookDetailUiState.createInitialValue(
         myBook = MyBook(
-          id = MyBookId(value = 0L),
+          id = MyBookId(value = ""),
           user = User(
             id = UserId(value = "userId"),
             name = "ユーザー名",
           ),
-          bookId = BookId(value = 0L),
+          bookId = BookId(value = ""),
           title = "タイトル",
           imageUrl = Url.Image(value = "imageUrl"),
           isbn = "isbn",

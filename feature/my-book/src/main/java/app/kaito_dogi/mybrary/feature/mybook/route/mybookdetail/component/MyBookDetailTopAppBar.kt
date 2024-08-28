@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
-import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -130,22 +129,17 @@ private fun MyBookDetailTopAppBarPreview() {
   MybraryTheme {
     MyBookDetailTopAppBar(
       myBook = MyBook(
-        id = MyBookId(value = 0L),
+        id = MyBookId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        bookId = BookId(value = 0L),
+        bookId = BookId(value = ""),
         title = "タイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn = "isbn",
         publisher = "出版社",
-        authors = List(10) {
-          Author(
-            id = AuthorId(value = 0L),
-            name = "著者$it",
-          )
-        },
+        authors = List(10) { Author(name = "著者$it") },
         isPinned = false,
         isFavorite = false,
         isPublic = false,

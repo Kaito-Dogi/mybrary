@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
-import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
@@ -100,16 +99,12 @@ private fun SearchResultBookRowPreview() {
   MybraryTheme {
     BookRow(
       book = Book(
-        id = BookId(value = 0L),
+        id = BookId(value = ""),
         title = "タイトルタイトルタイトルタイトルタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn = "isbn",
         publisher = "出版社",
-        authors = listOf(
-          Author(
-            id = AuthorId(value = 0L),
-            name = "著者名",
-          ),
+        authors = listOf(Author(name = "著者名"),
         ),
       ),
       onClick = {},

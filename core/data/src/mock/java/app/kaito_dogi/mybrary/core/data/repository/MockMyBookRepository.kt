@@ -4,7 +4,6 @@ import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
-import app.kaito_dogi.mybrary.core.domain.model.AuthorId
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -44,7 +43,7 @@ internal class MockMyBookRepository @Inject constructor(
     delay(1_000)
 
     val myBook = MyBook(
-      id = MyBookId(value = mockMyBookList.value.size.toLong()),
+      id = MyBookId(value = "${mockMyBookList.value.size}"),
       user = mockMyBookList.value[0].user,
       bookId = book.id,
       title = book.title,
@@ -143,15 +142,15 @@ internal class MockMyBookRepository @Inject constructor(
   }
 }
 
-private val MockMyBookList = List(20) {
+private val MockMyBookList = List(20) { index ->
   MyBook(
-    id = MyBookId(value = it.toLong()),
+    id = MyBookId(value = "$index"),
     user = User(
       id = UserId(value = "userId"),
       name = "ユーザー名",
     ),
-    bookId = BookId(value = it.toLong()),
-    title = when (it % 7) {
+    bookId = BookId(value = "$index"),
+    title = when (index % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
       2 -> "オブジェクト指向UIデザイン使いやすいソフトウェアの原理"
@@ -162,7 +161,7 @@ private val MockMyBookList = List(20) {
     },
     // FIXME: 楽天 API から取得される値に置き換える
     imageUrl = Url.Image(
-      when (it % 7) {
+      when (index % 7) {
         0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         2 -> "https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
@@ -173,7 +172,7 @@ private val MockMyBookList = List(20) {
       },
     ),
     isbn = "isbn",
-    publisher = when (it % 7) {
+    publisher = when (index % 7) {
       0 -> "秀和システム"
       1 -> "株式会社 オーム社"
       2 -> ""
@@ -182,23 +181,18 @@ private val MockMyBookList = List(20) {
       5 -> "マイナビ出版"
       else -> "出版社"
     },
-    authors = when (it % 7) {
-      0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
+    authors = when (index % 7) {
+      0 -> listOf(Author(name = "上田勲"))
       1 -> emptyList()
       2 -> listOf(
         "ソシオメディア",
         "上野学",
         "藤井幸多",
-      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
+      ).map { Author(name = it) }
 
-      3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").mapIndexed { index, name ->
-        Author(
-          id = AuthorId(value = index.toLong()),
-          name = name,
-        )
-      }
+      3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").map { Author(name = it) }
 
-      4 -> listOf(Author(id = AuthorId(value = 0L), name = "ロバート・C. マーチン"))
+      4 -> listOf(Author(name = "ロバート・C. マーチン"))
       5 -> listOf(
         "ＤｍｉｔｒｙＪｅｍｅｒｏｖ",
         "ＳｖｅｔｌａｎａＩｓａｋｏｖａ",
@@ -206,9 +200,9 @@ private val MockMyBookList = List(20) {
         "藤原聖",
         "山本純平",
         "ｙｙ＿ｙａｎｋ",
-      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
+      ).map { Author(name = it) }
 
-      else -> listOf(Author(id = AuthorId(value = 0L), name = "著者名"))
+      else -> listOf(Author(name = "著者名"))
     },
     isPinned = false,
     isFavorite = false,
