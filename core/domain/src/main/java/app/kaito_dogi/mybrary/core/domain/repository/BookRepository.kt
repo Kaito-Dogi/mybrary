@@ -8,8 +8,6 @@ interface BookRepository {
 
   suspend fun searchBook(
     title: String,
-    author: String,
-    publisher: String,
     // FIXME: Enum で指定できるようにする
     size: Int,
     isbn: String,

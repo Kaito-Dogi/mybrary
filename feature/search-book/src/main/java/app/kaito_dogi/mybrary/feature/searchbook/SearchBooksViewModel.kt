@@ -20,21 +20,29 @@ internal class SearchBooksViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
-  fun onSearchQueryChange(searchQuery: String) {
+  fun onSearchQueryChange(searchTitle: String) {
     viewModelScope.launch {
       _uiState.update {
         it.copy(
           bookList = null,
-          searchQuery = searchQuery,
+          searchTitle = searchTitle,
           isSearching = true,
         )
       }
-      if (searchQuery.isNotBlank()) {
+      if (searchTitle.isNotBlank()) {
         try {
-//          val searchResult = bookRepository.searchBook(
-//
-//          )
-//          _uiState.update { it.copy(bookList = searchResult) }
+          // FIXME: isbn を渡せるようにする
+          // FIXME: Paging を実装する
+          // FIXME: sort できるようにする
+          val bookList = bookRepository.searchBook(
+            title = searchTitle,
+            size = 0,
+            isbn = "",
+            hits = 30,
+            page = 0,
+            sort = "",
+          )
+          _uiState.update { it.copy(bookList = bookList) }
         } catch (e: Exception) {
           // TODO: 共通のエラーハンドリングを表示
           println("あああ: $e")

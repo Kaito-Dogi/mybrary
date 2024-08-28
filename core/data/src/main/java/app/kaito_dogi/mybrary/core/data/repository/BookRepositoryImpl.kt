@@ -17,8 +17,6 @@ internal class BookRepositoryImpl @Inject constructor(
 
   override suspend fun searchBook(
     title: String,
-    author: String,
-    publisher: String,
     size: Int,
     isbn: String,
     hits: Int,

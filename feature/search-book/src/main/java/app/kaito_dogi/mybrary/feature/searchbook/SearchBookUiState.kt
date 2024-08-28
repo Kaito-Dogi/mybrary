@@ -6,7 +6,7 @@ import app.kaito_dogi.mybrary.core.domain.model.Book
 @Immutable
 internal data class SearchBookUiState(
   val bookList: List<Book>?,
-  val searchQuery: String,
+  val searchTitle: String,
   val isSearching: Boolean,
   val selectedBook: Book?,
   val isDialogShown: Boolean,
@@ -16,7 +16,7 @@ internal data class SearchBookUiState(
   companion object {
     val InitialValue = SearchBookUiState(
       bookList = null,
-      searchQuery = "",
+      searchTitle = "",
       isSearching = false,
       selectedBook = null,
       isDialogShown = false,

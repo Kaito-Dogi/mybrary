@@ -32,7 +32,7 @@ internal fun SearchBookScreen(
   Scaffold(
     bottomBar = {
       SearchBookBottomAppBar(
-        value = uiState.searchQuery,
+        value = uiState.searchTitle,
         onValueChange = onSearchQueryChange,
         onBarcodeScannerClick = onBarcodeScannerClick,
         modifier = Modifier.imePadding(),
