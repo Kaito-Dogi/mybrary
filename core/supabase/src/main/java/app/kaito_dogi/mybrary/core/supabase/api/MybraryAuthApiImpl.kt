@@ -25,12 +25,12 @@ internal class MybraryAuthApiImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun putMyBook(id: Long) {
+  override suspend fun putMyBook(id: String) {
     TODO("Not yet implemented")
   }
 
   override suspend fun patchMyBookFavorite(
-    id: Long,
+    id: String,
     request: PatchMyBookFavoriteRequest,
   ): PatchMyBookFavoriteResponse {
     val result = supabaseClient.postgrest.update(
@@ -45,7 +45,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
     return result.decodeSingle<PatchMyBookFavoriteResponse>()
   }
 
-  override suspend fun deleteMyBook(id: Long) {
+  override suspend fun deleteMyBook(id: String) {
     TODO("Not yet implemented")
   }
 
@@ -58,7 +58,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
   }
 
   override suspend fun patchMemo(
-    id: Long,
+    id: String,
     request: PatchMemoRequest,
   ): PatchMemoResponse {
     val result = supabaseClient.postgrest.update(
@@ -75,7 +75,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
     return result.decodeSingle<PatchMemoResponse>()
   }
 
-  override suspend fun deleteMemo(id: Long) {
+  override suspend fun deleteMemo(id: String) {
     TODO("Not yet implemented")
   }
 }

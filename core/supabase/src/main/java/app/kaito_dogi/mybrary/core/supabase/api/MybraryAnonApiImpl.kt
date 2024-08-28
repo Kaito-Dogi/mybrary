@@ -41,7 +41,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
     return result.decodeList<MyBookResponse>()
   }
 
-  override suspend fun getMyBook(myBookId: Long): GetMyBookResponse {
+  override suspend fun getMyBook(myBookId: String): GetMyBookResponse {
     val result = supabaseClient.postgrest.select(
       table = Table.MyBook,
       request = {
@@ -53,7 +53,7 @@ internal class MybraryAnonApiImpl @Inject constructor(
     return result.decodeSingle<MyBookResponse>()
   }
 
-  override suspend fun getMemos(myBookId: Long): GetMemos {
+  override suspend fun getMemos(myBookId: String): GetMemos {
     val result = supabaseClient.postgrest.select(
       table = Table.Memo,
       request = {
