@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetBooksBookSearchResponse(
   @SerialName("Items")
-  val items: List<ItemsListItemResponse>,
+  val items: List<ItemResponse>,
   val page: Int,
 )

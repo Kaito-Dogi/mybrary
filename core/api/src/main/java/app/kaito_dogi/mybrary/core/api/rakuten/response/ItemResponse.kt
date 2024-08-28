@@ -7,12 +7,9 @@ data class ItemResponse(
   val affiliateUrl: String,
   val author: String,
   val isbn: String,
-  val largeImageUrl: String,
-  val mediumImageUrl: String,
   val publisherName: String,
   val salesDate: String,
-  val seriesNameKana: String,
-  val size: String,
+  val size: SizeResponse,
   val smallImageUrl: String,
   val title: String,
 )
