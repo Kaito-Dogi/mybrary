@@ -66,7 +66,7 @@ internal class SearchBookViewModel @Inject constructor(
         try {
           _uiState.update { it.copy(isBookRegistering = true) }
 
-          myBookRepository.registerMyBook(book = selectedBook)
+          myBookRepository.addBookToMybrary(book = selectedBook)
 
           _uiState.update {
             // FIXME: String Resources を渡すようにする

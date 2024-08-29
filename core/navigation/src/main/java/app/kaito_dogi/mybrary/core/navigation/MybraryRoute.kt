@@ -23,7 +23,6 @@ sealed interface MybraryRoute {
     enum class Page {
       Login,
       SignUp,
-      ;
     }
   }
 }

@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.core.data.repository
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.data.convertor.toAuthorList
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
@@ -40,7 +41,7 @@ internal class MockMyBookRepository @Inject constructor(
     return@withContext mockMyBookList.value.first { it.id == myBookId }
   }
 
-  override suspend fun registerMyBook(book: Book): MyBook = withContext(dispatcher) {
+  override suspend fun addBookToMybrary(book: Book): MyBook = withContext(dispatcher) {
     delay(1_000)
 
     val myBook = MyBook(
@@ -183,21 +184,12 @@ private val MockMyBookList = List(20) { index ->
       else -> "出版社"
     },
     authorList = when (index % 7) {
-      0 -> listOf(Author(name = "上田　勲"))
-      1 -> listOf("ポール・グレアム", "川合史朗").map { Author(name = it) }
-      2 -> listOf("ソシオメディア株式会社", "上野 学", "藤井 幸多").map { Author(name = it) }
-      3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").map { Author(name = it) }
-      4 -> listOf("Robert　C．Martin", "角　征典", "高木　正弘").map { Author(name = it) }
-
-      5 -> listOf(
-        "Dmitry Jemerov",
-        "Svetlana Isakova",
-        "長澤 太郎",
-        "藤原 聖",
-        "山本 純平",
-        "yy_yank",
-      ).map { Author(name = it) }
-
+      0 -> "上田　勲".toAuthorList()
+      1 -> "ポール・グレアム/川合史朗".toAuthorList()
+      2 -> "ソシオメディア株式会社/上野 学/藤井 幸多".toAuthorList()
+      3 -> "ダグ・ローゼンバーグ/マット・ステファン".toAuthorList()
+      4 -> "Robert　C．Martin/角　征典/高木　正弘".toAuthorList()
+      5 -> "Dmitry Jemerov/Svetlana Isakova/長澤 太郎/藤原 聖/山本 純平/yy_yank".toAuthorList()
       else -> listOf(Author(name = "著者名"))
     },
     genre = when (index % 7) {

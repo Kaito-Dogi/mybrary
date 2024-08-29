@@ -3,10 +3,14 @@ package app.kaito_dogi.mybrary.core.supabase.api
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMyBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PostBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.insert
@@ -21,32 +25,12 @@ import javax.inject.Singleton
 internal class MybraryAuthApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAuthApi {
-  override suspend fun postMyBook() {
-    TODO("Not yet implemented")
-  }
-
-  override suspend fun putMyBook(id: String) {
-    TODO("Not yet implemented")
-  }
-
-  override suspend fun patchMyBookFavorite(
-    id: String,
-    request: PatchMyBookFavoriteRequest,
-  ): PatchMyBookFavoriteResponse {
-    val result = supabaseClient.postgrest.update(
-      table = Table.MyBook,
-      update = {
-        MyBookResponse::isFavorite setTo request.isFavorite
-      },
-      filter = {
-        MyBookResponse::id eq id
-      },
+  override suspend fun postBook(request: PostBookRequest): PostBookResponse {
+    val result = supabaseClient.postgrest.insert(
+      table = Table.Book,
+      value = request,
     )
-    return result.decodeSingle<PatchMyBookFavoriteResponse>()
-  }
-
-  override suspend fun deleteMyBook(id: String) {
-    TODO("Not yet implemented")
+    return result.decodeSingle<PostBookResponse>()
   }
 
   override suspend fun postMemo(request: PostMemoRequest): PostMemoResponse {
@@ -76,6 +60,38 @@ internal class MybraryAuthApiImpl @Inject constructor(
   }
 
   override suspend fun deleteMemo(id: String) {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun postMyBook(request: PostMyBookRequest): PostMyBookResponse {
+    val result = supabaseClient.postgrest.insert(
+      table = Table.Book,
+      value = request,
+    )
+    return result.decodeSingle<PostMyBookResponse>()
+  }
+
+  override suspend fun patchMyBook(id: String) {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun patchMyBookFavorite(
+    id: String,
+    request: PatchMyBookFavoriteRequest,
+  ): PatchMyBookFavoriteResponse {
+    val result = supabaseClient.postgrest.update(
+      table = Table.MyBook,
+      update = {
+        MyBookResponse::isFavorite setTo request.isFavorite
+      },
+      filter = {
+        MyBookResponse::id eq id
+      },
+    )
+    return result.decodeSingle<PatchMyBookFavoriteResponse>()
+  }
+
+  override suspend fun deleteMyBook(id: String) {
     TODO("Not yet implemented")
   }
 }

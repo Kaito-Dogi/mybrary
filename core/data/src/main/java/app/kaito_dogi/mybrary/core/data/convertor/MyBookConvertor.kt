@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.data.convertor
 
-import app.kaito_dogi.mybrary.core.api.mybrary.response.model.AuthorResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.BookId
@@ -15,7 +14,7 @@ internal fun MyBookResponse.toMyBook() = MyBook(
   imageUrl = this.book.imageUrl.let { Url.Image(value = it) },
   isbn = this.book.isbn,
   publisher = this.book.publisher,
-  authorList = this.book.authorList.map(AuthorResponse::toAuthor),
+  authorList = this.book.authors.toAuthorList(),
   genre = this.book.genre.toGenre(),
   isPinned = isPinned,
   isFavorite = isFavorite,

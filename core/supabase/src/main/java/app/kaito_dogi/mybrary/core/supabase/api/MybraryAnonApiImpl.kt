@@ -3,9 +3,11 @@ package app.kaito_dogi.mybrary.core.supabase.api
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostVerifyOtpRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemos
+import app.kaito_dogi.mybrary.core.api.mybrary.response.GetBookByIsbnResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemosResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.BookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.supabase.ext.select
@@ -22,23 +24,28 @@ import javax.inject.Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAnonApi {
-  override suspend fun postSendOtp(request: PostSendOtpRequest) {
-    supabaseClient.auth.signInWith(OTP) {
-      email = request.email
-    }
-  }
-
-  override suspend fun postVerifyOtp(request: PostVerifyOtpRequest) {
-    supabaseClient.auth.verifyEmailOtp(
-      type = OtpType.Email.EMAIL,
-      email = request.email,
-      token = request.otp,
+  override suspend fun getBookByIsbn(isbn: String): GetBookByIsbnResponse {
+    val result = supabaseClient.postgrest.select(
+      table = Table.Book,
+      request = {
+        filter {
+          BookResponse::isbn eq isbn
+        }
+      },
     )
+    return result.decodeSingle<BookResponse>()
   }
 
-  override suspend fun getMyBooks(): GetMyBooksResponse {
-    val result = supabaseClient.postgrest.select(table = Table.MyBook)
-    return result.decodeList<MyBookResponse>()
+  override suspend fun getMemos(myBookId: String): GetMemosResponse {
+    val result = supabaseClient.postgrest.select(
+      table = Table.Memo,
+      request = {
+        filter {
+          MemoResponse::myBookId eq myBookId
+        }
+      },
+    )
+    return result.decodeList<MemoResponse>()
   }
 
   override suspend fun getMyBook(myBookId: String): GetMyBookResponse {
@@ -53,20 +60,27 @@ internal class MybraryAnonApiImpl @Inject constructor(
     return result.decodeSingle<MyBookResponse>()
   }
 
-  override suspend fun getMemos(myBookId: String): GetMemos {
-    val result = supabaseClient.postgrest.select(
-      table = Table.Memo,
-      request = {
-        filter {
-          MemoResponse::myBookId eq myBookId
-        }
-      },
-    )
-    return result.decodeList<MemoResponse>()
+  override suspend fun getMyBooks(): GetMyBooksResponse {
+    val result = supabaseClient.postgrest.select(table = Table.MyBook)
+    return result.decodeList<MyBookResponse>()
   }
 
   override suspend fun getUser() {
     TODO("Not yet implemented")
+  }
+
+  override suspend fun postSendOtp(request: PostSendOtpRequest) {
+    supabaseClient.auth.signInWith(OTP) {
+      email = request.email
+    }
+  }
+
+  override suspend fun postVerifyOtp(request: PostVerifyOtpRequest) {
+    supabaseClient.auth.verifyEmailOtp(
+      type = OtpType.Email.EMAIL,
+      email = request.email,
+      token = request.otp,
+    )
   }
 
   override suspend fun getSession(): Boolean {

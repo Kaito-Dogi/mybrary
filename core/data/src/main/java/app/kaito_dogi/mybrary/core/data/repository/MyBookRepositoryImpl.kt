@@ -3,9 +3,12 @@ package app.kaito_dogi.mybrary.core.data.repository
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostBookRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMyBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.data.convertor.toAuthorsResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toMyBook
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -30,8 +33,27 @@ internal class MyBookRepositoryImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun registerMyBook(book: Book): MyBook {
-    TODO("Not yet implemented")
+  override suspend fun addBookToMybrary(book: Book): MyBook = withContext(dispatcher) {
+    val bookId = mybraryAnonApi.getBookByIsbn(
+      isbn = book.isbn,
+    )?.id ?: mybraryAuthApi.postBook(
+      request = PostBookRequest(
+        title = book.title,
+        imageUrl = book.imageUrl.value,
+        isbn = book.isbn,
+        publisher = book.publisher,
+        authors = book.authorList.toAuthorsResponse(),
+        genre = book.genre.value,
+      ),
+    ).id
+
+    val response = mybraryAuthApi.postMyBook(
+      request = PostMyBookRequest(
+        bookId = bookId,
+      ),
+    )
+
+    return@withContext response.toMyBook()
   }
 
   override suspend fun pinMyBook(myBookId: MyBookId): MyBook {

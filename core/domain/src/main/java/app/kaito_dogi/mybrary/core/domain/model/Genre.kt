@@ -12,5 +12,4 @@ enum class Genre(val value: Int) {
   CassetteCd(value = 8),
   Comics(value = 9),
   MookOthers(value = 10),
-  ;
 }

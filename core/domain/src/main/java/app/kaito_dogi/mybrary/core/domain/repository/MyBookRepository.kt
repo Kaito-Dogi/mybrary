@@ -9,7 +9,7 @@ interface MyBookRepository {
 
   suspend fun getMyBook(myBookId: MyBookId): MyBook
 
-  suspend fun registerMyBook(book: Book): MyBook
+  suspend fun addBookToMybrary(book: Book): MyBook
 
   suspend fun pinMyBook(myBookId: MyBookId): MyBook
 

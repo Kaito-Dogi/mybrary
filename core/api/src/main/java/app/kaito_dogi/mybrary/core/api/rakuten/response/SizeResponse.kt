@@ -21,7 +21,6 @@ enum class SizeResponse(val value: String) {
   CassetteCd(value = "カセット、ＣＤ等"),
   Comics(value = "コミック"),
   MookOthers(value = "ムックその他"),
-  ;
 }
 
 private object SizeResponseSerializer : KSerializer<SizeResponse> {

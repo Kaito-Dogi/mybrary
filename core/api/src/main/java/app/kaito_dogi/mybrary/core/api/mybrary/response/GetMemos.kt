@@ -2,4 +2,4 @@ package app.kaito_dogi.mybrary.core.api.mybrary.response
 
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 
-typealias GetMemos = List<MemoResponse>
+typealias GetMemosResponse = List<MemoResponse>

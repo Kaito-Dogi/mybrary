@@ -5,5 +5,4 @@ enum class Sort(val value: String) {
   Popular(value = "sales"),
   Newest(value = "-releaseDate"),
   Oldest(value = "+releaseDate"),
-  ;
 }
