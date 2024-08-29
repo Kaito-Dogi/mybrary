@@ -15,5 +15,7 @@ internal object MybraryConfigModule {
   fun provideMybraryConfig(): MybraryConfig = object : MybraryConfig {
     override val supabaseUrl: String = BuildConfig.SUPABASE_URL
     override val supabaseKey: String = BuildConfig.SUPABASE_KEY
+    override val rakutenApplicationId: String = BuildConfig.RAKUTEN_APPLICATION_ID
+    override val rakutenAffiliateId: String = BuildConfig.RAKUTEN_AFFILIATE_ID
   }
 }

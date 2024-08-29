@@ -28,13 +28,25 @@ android {
 
     buildConfigField(
       type = "String",
-      name = "SUPABASE_URL",
-      value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
+      name = "RAKUTEN_AFFILIATE_ID",
+      value = properties.getProperty("rakuten.affiliateId.dev")
+        ?: System.getenv("RAKUTEN_AFFILIATE_ID_DEV"),
+    )
+    buildConfigField(
+      type = "String",
+      name = "RAKUTEN_APPLICATION_ID",
+      value = properties.getProperty("rakuten.applicationId.dev")
+        ?: System.getenv("RAKUTEN_APPLICATION_ID_DEV"),
     )
     buildConfigField(
       type = "String",
       name = "SUPABASE_KEY",
       value = properties.getProperty("supabase.key.dev") ?: System.getenv("SUPABASE_KEY_DEV"),
+    )
+    buildConfigField(
+      type = "String",
+      name = "SUPABASE_URL",
+      value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
     )
   }
 
@@ -60,13 +72,25 @@ android {
 
       buildConfigField(
         type = "String",
-        name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.prod") ?: System.getenv("SUPABASE_URL_PROD"),
+        name = "RAKUTEN_AFFILIATE_ID",
+        value = properties.getProperty("rakuten.affiliateId.prod")
+          ?: System.getenv("RAKUTEN_AFFILIATE_ID_PROD"),
+      )
+      buildConfigField(
+        type = "String",
+        name = "RAKUTEN_APPLICATION_ID",
+        value = properties.getProperty("rakuten.applicationId.prod")
+          ?: System.getenv("RAKUTEN_APPLICATION_ID_PROD"),
       )
       buildConfigField(
         type = "String",
         name = "SUPABASE_KEY",
         value = properties.getProperty("supabase.key.prod") ?: System.getenv("SUPABASE_KEY_PROD"),
+      )
+      buildConfigField(
+        type = "String",
+        name = "SUPABASE_URL",
+        value = properties.getProperty("supabase.url.prod") ?: System.getenv("SUPABASE_URL_PROD"),
       )
     }
 

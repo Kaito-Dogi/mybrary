@@ -44,10 +44,14 @@ jobs:
           bundle install
       - name: Run Test
         env:
-          SUPABASE_URL_PROD: ${{ secrets.SUPABASE_URL_PROD }}
+          RAKUTEN_AFFILIATE_ID_DEV: ${{ secrets.RAKUTEN_AFFILIATE_ID_DEV }}
+          RAKUTEN_AFFILIATE_ID_PROD: ${{ secrets.RAKUTEN_AFFILIATE_ID_PROD }}
+          RAKUTEN_APPLICATION_ID_DEV: ${{ secrets.RAKUTEN_APPLICATION_ID_DEV }}
+          RAKUTEN_APPLICATION_ID_PROD: ${{ secrets.RAKUTEN_APPLICATION_ID_PROD }}
+          SUPABASE_KEY_DEV: ${{ secrets.SUPABASE_KEY_DEV }}
           SUPABASE_KEY_PROD: ${{ secrets.SUPABASE_KEY_PROD }}
           SUPABASE_URL_DEV: ${{ secrets.SUPABASE_URL_DEV }}
-          SUPABASE_KEY_DEV: ${{ secrets.SUPABASE_KEY_DEV }}
+          SUPABASE_URL_PROD: ${{ secrets.SUPABASE_URL_PROD }}
         run: ./gradlew test --stacktrace
       - name: Copy Test Result
         if: always()
