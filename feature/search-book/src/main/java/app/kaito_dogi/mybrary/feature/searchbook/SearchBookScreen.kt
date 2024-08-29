@@ -69,14 +69,13 @@ internal fun SearchBookScreen(
     }
 
     if (uiState.isDialogShown && uiState.selectedBook != null) {
-      // FIXME: 文言を差し替える
       AlertDialog(
-        titleResId = R.string.search_books_text_a,
-        contentResId = R.string.search_books_text_a,
+        titleResId = R.string.search_book_text_would_you_like_to_add_to_mybrary,
+        content = uiState.selectedBook.title,
         onConfirmClick = onConfirmClick,
-        confirmTextResId = R.string.search_books_text_a,
+        confirmTextResId = R.string.search_book_text_add,
         onDismissRequest = onDismissRequest,
-        dismissTextResId = R.string.search_books_text_a,
+        dismissTextResId = R.string.search_book_text_cancel,
         onDismissClick = onDismissRequest,
         isConfirmLoading = uiState.isBookRegistering,
       )

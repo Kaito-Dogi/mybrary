@@ -40,21 +40,21 @@ fun BookRowSkeleton(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
-          textResId = R.string.search_books_text_a_a,
+          textResId = R.string.search_book_text_a_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodyLarge,
         )
 
         Text(
-          textResId = R.string.search_books_text_a,
+          textResId = R.string.search_book_text_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodySmall,
         )
 
         Text(
-          textResId = R.string.search_books_text_a,
+          textResId = R.string.search_book_text_a,
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodySmall,

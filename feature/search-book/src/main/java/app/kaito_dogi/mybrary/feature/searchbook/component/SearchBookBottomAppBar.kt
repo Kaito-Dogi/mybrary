@@ -25,9 +25,9 @@ internal fun SearchBookBottomAppBar(
       value = value,
       onValueChange = onValueChange,
       modifier = Modifier.weight(1f),
-      placeholderResId = R.string.search_books_placeholder_enter_search_keywords,
+      placeholderResId = R.string.search_book_placeholder_enter_search_keywords,
       leadingIconResId = R.drawable.icon_search,
-      leadingIconAltResId = R.string.search_books_alt_search_for_books,
+      leadingIconAltResId = R.string.search_book_alt_search_for_books,
       imeAction = ImeAction.Done,
       singleLine = true,
     )

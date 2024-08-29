@@ -47,12 +47,13 @@
   <string name="my_book_list_text_all_my_books">すべて</string>
   <string name="my_book_list_text_favorite_my_books">お気に入り</string>
   <string name="my_book_list_text_other_my_books">その他</string>
-  <string name="search_books_alt_scan_book_barcode">バーコードを読み取る</string>
-  <string name="search_books_alt_search_for_books">本を検索する</string>
-  <string name="search_books_placeholder_enter_search_keywords">検索ワードを入力…</string>
-  <string name="search_books_text_a">あ</string>
-  <string name="search_books_text_a_a">あ\nあ</string>
-  <string name="search_books_text_page_count">%1$dページ</string>
-  <string name="search_books_text_page_count_and_publisher">%1$dページ｜ %2$s</string>
+  <string name="search_book_alt_scan_book_barcode">バーコードを読み取る</string>
+  <string name="search_book_alt_search_for_books">本を検索する</string>
+  <string name="search_book_placeholder_enter_search_keywords">検索ワードを入力…</string>
+  <string name="search_book_text_a">あ</string>
+  <string name="search_book_text_add">追加する</string>
+  <string name="search_book_text_a_a">あ\nあ</string>
+  <string name="search_book_text_cancel">追加しない</string>
+  <string name="search_book_text_would_you_like_to_add_to_mybrary">Mybraryに本を追加しますか？</string>
   <string name="ui_alt_book_cover">本の表紙</string>
 </resources>

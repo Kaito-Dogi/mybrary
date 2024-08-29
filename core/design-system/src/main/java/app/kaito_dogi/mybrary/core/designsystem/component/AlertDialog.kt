@@ -55,7 +55,7 @@ fun AlertDialog(
         ),
       )
     }
-  } else{
+  } else {
     null
   },
   title = {
@@ -67,6 +67,64 @@ fun AlertDialog(
     )
   },
   text = { Text(textResId = contentResId) },
+  shape = MybraryTheme.shapes.small,
+)
+
+@Composable
+fun AlertDialog(
+  @StringRes titleResId: Int,
+  content: String,
+  @StringRes confirmTextResId: Int,
+  onConfirmClick: () -> Unit,
+  onDismissRequest: () -> Unit,
+  modifier: Modifier = Modifier,
+  @StringRes dismissTextResId: Int? = null,
+  onDismissClick: (() -> Unit)? = null,
+  isConfirmLoading: Boolean = false,
+  isDismissLoading: Boolean = false,
+  isDanger: Boolean = false,
+) = androidx.compose.material3.AlertDialog(
+  onDismissRequest = {
+    if (!isConfirmLoading && !isDismissLoading) {
+      onDismissRequest()
+    }
+  },
+  confirmButton = {
+    TertiaryButton(
+      textResId = confirmTextResId,
+      onClick = onConfirmClick,
+      isLoading = isConfirmLoading,
+      isEnabled = !isDismissLoading,
+    )
+  },
+  modifier = modifier,
+  dismissButton = if (dismissTextResId != null && onDismissClick != null) {
+    {
+      TertiaryButton(
+        textResId = dismissTextResId,
+        onClick = onDismissClick,
+        isLoading = isDismissLoading,
+        isEnabled = !isConfirmLoading,
+        colors = ButtonDefaults.textButtonColors().copy(
+          containerColor = if (isDanger) MybraryTheme.colorScheme.errorContainer else Color.Unspecified,
+          contentColor = if (isDanger) MybraryTheme.colorScheme.error else Color.Unspecified,
+          disabledContainerColor = if (isDanger) ButtonDefaults.buttonColors().disabledContainerColor else Color.Unspecified,
+          disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor,
+        ),
+      )
+    }
+  } else {
+    null
+  },
+  title = {
+    Text(
+      textResId = titleResId,
+      modifier = Modifier.fillMaxWidth(),
+      textAlign = TextAlign.Center,
+      style = MybraryTheme.typography.titleMedium,
+    )
+  },
+  text = { androidx.compose.material3.Text(text = content) },
   shape = MybraryTheme.shapes.small,
 )
 
