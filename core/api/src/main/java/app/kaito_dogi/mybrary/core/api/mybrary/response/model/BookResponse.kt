@@ -13,4 +13,8 @@ data class BookResponse(
   val publisher: String,
   val authors: AuthorsResponse,
   val genre: GenreResponse,
+  @SerialName("rakuten_affiliate_url")
+  val rakutenAffiliateUrl: String,
+  @SerialName("amazon_affiliate_url")
+  val amazonAffiliateUrl: String?,
 )

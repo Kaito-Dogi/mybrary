@@ -14,6 +14,8 @@ internal fun BookResponse.toBook() = Book(
   publisher = this.publisher,
   authorList = this.authors.toAuthorList(),
   genre = this.genre.toGenre(),
+  rakutenAffiliateUrl = Url.Affiliate(value = this.rakutenAffiliateUrl),
+  amazonAffiliateUrl = this.amazonAffiliateUrl?.let { Url.Affiliate(value = it) },
 )
 
 internal fun ItemResponse.toBook() = Book(
@@ -29,4 +31,5 @@ internal fun ItemResponse.toBook() = Book(
   publisher = this.publisherName,
   authorList = this.author.toAuthorList(),
   genre = this.size.toGenre(),
+  rakutenAffiliateUrl = Url.Affiliate(value = this.affiliateUrl),
 )

@@ -48,5 +48,7 @@ private val MockMyBookList = List(10) { index ->
     publisher = "publisher$index",
     authorList = listOf(Author(name = "author$index")),
     genre = Genre.All,
+    rakutenAffiliateUrl = Url.Affiliate(value = "rakutenAffiliateUrl$index"),
+    amazonAffiliateUrl = null,
   )
 }

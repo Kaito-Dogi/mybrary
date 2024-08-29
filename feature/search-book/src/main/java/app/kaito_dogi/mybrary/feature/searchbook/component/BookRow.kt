@@ -109,6 +109,8 @@ private fun SearchResultBookRowPreview() {
           Author(name = "著者名"),
         ),
         genre = Genre.All,
+        rakutenAffiliateUrl = Url.Affiliate(value = ""),
+        amazonAffiliateUrl = null,
       ),
       onClick = {},
       onLongClick = {},
