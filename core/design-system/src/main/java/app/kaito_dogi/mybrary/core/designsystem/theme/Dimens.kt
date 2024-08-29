@@ -7,19 +7,19 @@ import androidx.compose.ui.unit.dp
 
 
 internal val mybraryDimens = Dimens(
-  floatingActionButtonSize = 56.dp,
-  topAppBarHeight = 64.dp,
+  bookWidthSm = 96.dp,
+  bookWidthMd = 120.dp,
 )
 
 @Immutable
 data class Dimens(
-  val floatingActionButtonSize: Dp,
-  val topAppBarHeight: Dp,
+  val bookWidthSm: Dp,
+  val bookWidthMd: Dp,
 )
 
 private val defaultDimens = Dimens(
-  floatingActionButtonSize = Dp.Hairline,
-  topAppBarHeight = Dp.Hairline,
+  bookWidthSm = Dp.Hairline,
+  bookWidthMd = Dp.Hairline,
 )
 
 internal val LocalDimens = staticCompositionLocalOf { defaultDimens }

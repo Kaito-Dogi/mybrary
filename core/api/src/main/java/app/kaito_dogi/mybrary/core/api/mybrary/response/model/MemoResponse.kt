@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MemoResponse(
-  val id: Long,
+  val id: String,
   @SerialName("my_book_id")
-  val myBookId: Long,
+  val myBookId: String,
   val content: String,
   @SerialName("start_page")
   val startPage: Int? = null,

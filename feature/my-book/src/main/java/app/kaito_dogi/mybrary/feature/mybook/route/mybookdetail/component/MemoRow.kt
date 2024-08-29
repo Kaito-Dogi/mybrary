@@ -9,7 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -39,12 +38,12 @@ internal fun MemoRow(
     // top の padding を小さくすることで、錯視を調整
     Column(
       modifier = Modifier.padding(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
+        start = MybraryTheme.spaces.sm,
+        top = MybraryTheme.spaces.xs,
+        end = MybraryTheme.spaces.sm,
+        bottom = MybraryTheme.spaces.sm,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
     ) {
       Text(
         text = memo.content,
@@ -83,8 +82,7 @@ internal fun MemoRow(
       Text(
         text = rowBody,
         modifier = Modifier.fillMaxWidth(),
-        // TODO: カラースキーマを整理する
-        color = Color.Gray,
+        color = MybraryTheme.colorScheme.onSurfaceVariant,
         style = MybraryTheme.typography.bodySmall,
       )
     }
@@ -109,12 +107,12 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
     get() = sequenceOf(
       // 開始ページ・終了ページが記録されている場合
       Memo(
-        id = MemoId(value = 0),
+        id = MemoId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        myBookId = MyBookId(value = 0),
+        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = 0,
@@ -127,12 +125,12 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // 片方のページのみが記録されている場合
       Memo(
-        id = MemoId(value = 0),
+        id = MemoId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        myBookId = MyBookId(value = 0),
+        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = Int.MAX_VALUE,
@@ -145,12 +143,12 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // ページが記録されていない場合
       Memo(
-        id = MemoId(value = 0),
+        id = MemoId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        myBookId = MyBookId(value = 0),
+        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = null,
         createdAt = LocalDateTime.now(),
@@ -160,12 +158,12 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // 編集済みの場合
       Memo(
-        id = MemoId(value = 0),
+        id = MemoId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        myBookId = MyBookId(value = 0),
+        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = Int.MAX_VALUE,
@@ -178,12 +176,12 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       ),
       // 複数行の場合
       Memo(
-        id = MemoId(value = 0),
+        id = MemoId(value = ""),
         user = User(
           id = UserId(value = "userId"),
           name = "ユーザー名",
         ),
-        myBookId = MyBookId(value = 0),
+        myBookId = MyBookId(value = ""),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
         pageRange = PageRange(
           start = Int.MAX_VALUE,

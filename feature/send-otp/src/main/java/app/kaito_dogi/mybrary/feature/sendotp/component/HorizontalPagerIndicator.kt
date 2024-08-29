@@ -25,7 +25,7 @@ internal fun HorizontalPagerIndicator(
   Row(
     modifier = modifier,
     horizontalArrangement = Arrangement.spacedBy(
-      space = MybraryTheme.space.xxs,
+      space = MybraryTheme.spaces.xxs,
       alignment = Alignment.CenterHorizontally,
     ),
   ) {

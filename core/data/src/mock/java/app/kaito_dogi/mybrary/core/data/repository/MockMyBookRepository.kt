@@ -3,13 +3,13 @@ package app.kaito_dogi.mybrary.core.data.repository
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.data.convertor.toAuthorList
 import app.kaito_dogi.mybrary.core.domain.model.Author
-import app.kaito_dogi.mybrary.core.domain.model.AuthorId
+import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
-import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.SearchResultBook
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -41,9 +41,28 @@ internal class MockMyBookRepository @Inject constructor(
     return@withContext mockMyBookList.value.first { it.id == myBookId }
   }
 
-  // TODO: 実装
-  override suspend fun registerMyBook(searchResultBook: SearchResultBook): Boolean {
-    return true
+  override suspend fun addBookToMybrary(book: Book): MyBook = withContext(dispatcher) {
+    delay(1_000)
+
+    val myBook = MyBook(
+      id = MyBookId(value = "${mockMyBookList.value.size}"),
+      user = mockMyBookList.value[0].user,
+      bookId = book.id,
+      title = book.title,
+      imageUrl = book.imageUrl,
+      isbn = book.isbn,
+      publisher = book.publisher,
+      authorList = book.authorList,
+      genre = book.genre,
+      isPinned = false,
+      isFavorite = false,
+      isPublic = false,
+      isArchived = false,
+    )
+
+    mockMyBookList.update { it + myBook }
+
+    return@withContext myBook
   }
 
   override suspend fun pinMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
@@ -126,82 +145,61 @@ internal class MockMyBookRepository @Inject constructor(
   }
 }
 
-private val MockMyBookList = List(20) {
+private val MockMyBookList = List(20) { index ->
   MyBook(
-    id = MyBookId(value = it.toLong()),
+    id = MyBookId(value = "$index"),
     user = User(
       id = UserId(value = "userId"),
       name = "ユーザー名",
     ),
-    bookId = BookId(value = it.toLong()),
-    externalId = ExternalBookId(value = "externalId$it"),
-    title = when (it % 7) {
+    bookId = BookId(value = "$index"),
+    title = when (index % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
-      2 -> "オブジェクト指向UIデザイン使いやすいソフトウェアの原理"
+      2 -> "オブジェクト指向UIデザイン──使いやすいソフトウェアの原理"
       3 -> "ユースケース駆動開発実践ガイド"
-      4 -> "Clean Architecture"
+      4 -> "Clean Architecture 達人に学ぶソフトウェアの構造と設計"
       5 -> "Kotlinイン・アクション"
       else -> "タイトル"
     },
     imageUrl = Url.Image(
-      when (it % 7) {
-        0 -> "https://books.google.com/books/content?id=RuKoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        1 -> "https://books.google.com/books/content?id=SinFRfuTH7IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        2 -> "https://books.google.com/books/content?id=1FGpzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        3 -> "https://books.google.com/books/content?id=IUp4CwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        4 -> "https://books.google.com/books/content?id=GRjUuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-        5 -> "https://books.google.com/books/content?id=E323DwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      when (index % 7) {
+        0 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6143/9784798046143.jpg?_ex=512x512"
+        1 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2740/27406597.jpg?_ex=512x512"
+        2 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3513/9784297113513.jpg?_ex=512x512"
+        3 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7981/79811445.jpg?_ex=512x512"
+        4 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0659/9784048930659.jpg?_ex=512x512"
+        5 -> "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1749/9784839961749.jpg?_ex=512x512"
         else -> ""
       },
     ),
-    isbn10 = "isbn10",
-    isbn13 = "isbn13",
-    pageCount = when (it % 7) {
-      0 -> 337
-      1 -> 284
-      2 -> 360
-      3 -> 563
-      4 -> 349
-      5 -> 468
-      else -> Int.MAX_VALUE
-    },
-    publisher = when (it % 7) {
+    isbn = "isbn",
+    publisher = when (index % 7) {
       0 -> "秀和システム"
-      1 -> "株式会社 オーム社"
-      2 -> ""
+      1 -> "オーム社"
+      2 -> "技術評論社"
       3 -> "翔泳社"
-      4 -> ""
+      4 -> "ドワンゴ"
       5 -> "マイナビ出版"
       else -> "出版社"
     },
-    authors = when (it % 7) {
-      0 -> listOf(Author(id = AuthorId(value = 0L), name = "上田勲"))
-      1 -> emptyList()
-      2 -> listOf(
-        "ソシオメディア",
-        "上野学",
-        "藤井幸多",
-      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
-
-      3 -> listOf("ダグ・ローゼンバーグ", "マット・ステファン").mapIndexed { index, name ->
-        Author(
-          id = AuthorId(value = index.toLong()),
-          name = name,
-        )
-      }
-
-      4 -> listOf(Author(id = AuthorId(value = 0L), name = "ロバート・C. マーチン"))
-      5 -> listOf(
-        "ＤｍｉｔｒｙＪｅｍｅｒｏｖ",
-        "ＳｖｅｔｌａｎａＩｓａｋｏｖａ",
-        "長澤太郎",
-        "藤原聖",
-        "山本純平",
-        "ｙｙ＿ｙａｎｋ",
-      ).mapIndexed { index, name -> Author(id = AuthorId(value = index.toLong()), name = name) }
-
-      else -> listOf(Author(id = AuthorId(value = 0L), name = "著者名"))
+    authorList = when (index % 7) {
+      0 -> "上田　勲".toAuthorList()
+      1 -> "ポール・グレアム/川合史朗".toAuthorList()
+      2 -> "ソシオメディア株式会社/上野 学/藤井 幸多".toAuthorList()
+      3 -> "ダグ・ローゼンバーグ/マット・ステファン".toAuthorList()
+      4 -> "Robert　C．Martin/角　征典/高木　正弘".toAuthorList()
+      5 -> "Dmitry Jemerov/Svetlana Isakova/長澤 太郎/藤原 聖/山本 純平/yy_yank".toAuthorList()
+      else -> listOf(Author(name = "著者名"))
+    },
+    genre = when (index % 7) {
+      0 -> Genre.Hardcover
+      1 -> Genre.Hardcover
+      2 -> Genre.Hardcover
+      3 -> Genre.Hardcover
+      4 -> Genre.Hardcover
+      5 -> Genre.Hardcover
+      else -> Genre.All
     },
     isPinned = false,
     isFavorite = false,

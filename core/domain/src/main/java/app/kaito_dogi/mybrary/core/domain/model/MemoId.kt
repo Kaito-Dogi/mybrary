@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MemoId(
-  val value: Long,
+  val value: String,
 )

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class DraftMemoEntity(
   @PrimaryKey
   @ColumnInfo(name = "my_book_id")
-  val myBookId: Long,
+  val myBookId: String,
   val content: String,
   @ColumnInfo(name = "start_page")
   val startPage: Int?,

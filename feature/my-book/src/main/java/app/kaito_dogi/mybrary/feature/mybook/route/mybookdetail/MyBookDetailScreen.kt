@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
-import app.kaito_dogi.mybrary.core.domain.model.ExternalBookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -58,14 +58,12 @@ internal fun MyBookDetailScreen(
       modifier = Modifier.fillMaxSize(),
       // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
       contentPadding = PaddingValues(
-        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.space.md,
+        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.md,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.md),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       // ヘッダー
-      item(
-        key = "MyBookDetailTopAppBar",
-      ) {
+      item(key = "MyBookDetailTopAppBar") {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
         )
@@ -80,9 +78,7 @@ internal fun MyBookDetailScreen(
           MemoRow(
             memo = memo,
             onClick = onMemoClick,
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
+            modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
       }
@@ -94,9 +90,7 @@ internal fun MyBookDetailScreen(
           key = { "MemoRowSkeleton$it" },
         ) {
           MemoRowSkeleton(
-            modifier = Modifier.padding(
-              horizontal = MybraryTheme.space.md,
-            ),
+            modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
       }
@@ -111,9 +105,7 @@ internal fun MyBookDetailScreen(
           onEndPageChange = onEndPageChange,
           onContentChange = onContentChange,
           onSaveClick = onSaveClick,
-          modifier = Modifier.padding(
-            horizontal = MybraryTheme.space.md,
-          ),
+          modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
         )
       }
     }
@@ -127,20 +119,18 @@ private fun MyBookDetailScreenPreview() {
     MyBookDetailScreen(
       uiState = MyBookDetailUiState.createInitialValue(
         myBook = MyBook(
-          id = MyBookId(value = 0L),
+          id = MyBookId(value = ""),
           user = User(
             id = UserId(value = "userId"),
             name = "ユーザー名",
           ),
-          bookId = BookId(value = 0L),
-          externalId = ExternalBookId(value = "externalId"),
+          bookId = BookId(value = ""),
           title = "タイトル",
           imageUrl = Url.Image(value = "imageUrl"),
-          isbn10 = "isbn10",
-          isbn13 = "isbn13",
-          pageCount = Int.MAX_VALUE,
+          isbn = "isbn",
           publisher = "出版社",
-          authors = emptyList(),
+          authorList = emptyList(),
+          genre = Genre.All,
           isPinned = false,
           isFavorite = false,
           isPublic = false,

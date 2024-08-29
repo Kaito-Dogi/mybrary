@@ -10,8 +10,7 @@ import app.kaito_dogi.mybrary.feature.mybook.MyBookRoute
 import app.kaito_dogi.mybrary.feature.mybook.myBookNavigation
 import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.myBookListScreen
-import app.kaito_dogi.mybrary.feature.searchbooks.SearchBooksRoute
-import app.kaito_dogi.mybrary.feature.searchbooks.searchBooksScreen
+import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 
@@ -31,7 +30,7 @@ internal fun MybraryNavHost(
     ) { childNavController ->
       myBookListScreen(
         onAdditionClick = {
-          childNavController.navigate(SearchBooksRoute)
+          navController.navigate(MybraryRoute.SearchBook)
         },
         onMyBookClick = { myBook ->
           val route = MyBookRoute.MyBookDetail(myBook = myBook)
@@ -42,7 +41,7 @@ internal fun MybraryNavHost(
       myBookDetailScreen()
     }
 
-    searchBooksScreen()
+    searchBookScreen()
 
     sendOtpScreen(
       onSendOtpComplete = { email, page ->

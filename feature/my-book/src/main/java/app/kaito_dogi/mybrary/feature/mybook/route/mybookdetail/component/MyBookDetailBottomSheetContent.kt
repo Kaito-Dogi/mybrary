@@ -35,11 +35,11 @@ internal fun MyBookDetailBottomSheetContent(
 ) {
   Column(
     modifier = modifier,
-    verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+    verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
   ) {
     Row(
       modifier = Modifier.fillMaxWidth(),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.space.sm),
+      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
     ) {
       TextField(
         value = draftMemo.pageRange?.start?.toString(radix = Radix) ?: "",
@@ -100,7 +100,7 @@ private fun MyBookDetailBottomSheetContentPreview() {
   MybraryTheme {
     MyBookDetailBottomSheetContent(
       draftMemo = DraftMemo.createInitialValue(
-        myBookId = MyBookId(0L),
+        myBookId = MyBookId(value = ""),
       ),
       isContentTextFieldError = false,
       onStartPageChange = {},

@@ -23,12 +23,12 @@ internal fun MemoRowSkeleton(
   ) {
     Column(
       modifier = modifier.padding(
-        start = MybraryTheme.space.md,
-        top = MybraryTheme.space.sm,
-        end = MybraryTheme.space.md,
-        bottom = MybraryTheme.space.md,
+        start = MybraryTheme.spaces.sm,
+        top = MybraryTheme.spaces.xs,
+        end = MybraryTheme.spaces.sm,
+        bottom = MybraryTheme.spaces.sm,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.space.xxs),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
     ) {
       Text(
         textResId = R.string.my_book_detail_text_a,

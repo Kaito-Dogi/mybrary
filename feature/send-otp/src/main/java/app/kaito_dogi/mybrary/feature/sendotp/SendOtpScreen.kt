@@ -58,33 +58,33 @@ internal fun SendOtpScreen(
     ) {
       LogoSection(
         modifier = Modifier.padding(
-          top = innerPadding.calculateTopPadding() + MybraryTheme.space.xxxl,
+          top = innerPadding.calculateTopPadding() + MybraryTheme.spaces.xxxl,
         ),
       )
 
-      Gap(height = MybraryTheme.space.xxxl)
+      Gap(height = MybraryTheme.spaces.xxxl)
 
       SendOtpSection(
         email = uiState.email,
         isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
-        modifier = Modifier.padding(horizontal = MybraryTheme.space.xl),
+        modifier = Modifier.padding(horizontal = MybraryTheme.spaces.xl),
       )
 
-      Gap(height = MybraryTheme.space.xl)
+      Gap(height = MybraryTheme.spaces.xl)
 
       DividerSection(
-        modifier = Modifier.padding(horizontal = MybraryTheme.space.xl),
+        modifier = Modifier.padding(horizontal = MybraryTheme.spaces.xl),
       )
 
-      Gap(height = MybraryTheme.space.xl)
+      Gap(height = MybraryTheme.spaces.xl)
 
       HorizontalPager(
         modifier = Modifier.weight(1f),
         state = pagerState,
-        contentPadding = PaddingValues(horizontal = MybraryTheme.space.xl),
-        pageSpacing = MybraryTheme.space.xl,
+        contentPadding = PaddingValues(horizontal = MybraryTheme.spaces.xl),
+        pageSpacing = MybraryTheme.spaces.xl,
       ) { page ->
         when (page) {
           MybraryRoute.VerifyOtp.Page.Login.ordinal -> LoginPage(
@@ -101,14 +101,14 @@ internal fun SendOtpScreen(
         }
       }
 
-      Gap(height = MybraryTheme.space.xl)
+      Gap(height = MybraryTheme.spaces.xl)
 
       HorizontalPagerIndicator(
         currentPage = pagerState.currentPage,
         modifier = Modifier
           .fillMaxWidth()
           .padding(
-            bottom = innerPadding.calculateBottomPadding() + MybraryTheme.space.xl,
+            bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.xl,
           ),
       )
     }
