@@ -15,7 +15,7 @@ internal fun MyBookResponse.toMyBook() = MyBook(
   imageUrl = this.book.imageUrl.let { Url.Image(value = it) },
   isbn = this.book.isbn,
   publisher = this.book.publisher,
-  authors = this.book.authors.map(AuthorResponse::toAuthor),
+  authorList = this.book.authorList.map(AuthorResponse::toAuthor),
   isPinned = isPinned,
   isFavorite = isFavorite,
   isPublic = isPublic,

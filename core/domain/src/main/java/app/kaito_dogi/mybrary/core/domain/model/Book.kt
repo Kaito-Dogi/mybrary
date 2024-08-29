@@ -10,5 +10,5 @@ data class Book(
   val imageUrl: Url.Image,
   val isbn: String,
   val publisher: String,
-  val authors: List<Author>,
+  val authorList: List<Author>,
 )

@@ -11,11 +11,11 @@ internal fun ItemResponse.toBook() = Book(
   title = this.title,
   imageUrl = Url.Image(
     value = this.smallImageUrl.replace(
-        oldValue = "64x64",
-        newValue = "512x512",
-      ),
+      oldValue = "64x64",
+      newValue = "512x512",
+    ),
   ),
   isbn = this.isbn,
   publisher = this.publisherName,
-  authors = this.author.split("/").map { Author(name = it) },
+  authorList = this.author.split("/").map { Author(name = it) },
 )

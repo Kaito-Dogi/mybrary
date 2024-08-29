@@ -128,7 +128,7 @@ private fun MyBookDetailScreenPreview() {
           imageUrl = Url.Image(value = "imageUrl"),
           isbn = "isbn",
           publisher = "出版社",
-          authors = emptyList(),
+          authorList = emptyList(),
           isPinned = false,
           isFavorite = false,
           isPublic = false,

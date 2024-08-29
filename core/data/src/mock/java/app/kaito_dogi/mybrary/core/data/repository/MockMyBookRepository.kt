@@ -50,7 +50,7 @@ internal class MockMyBookRepository @Inject constructor(
       imageUrl = book.imageUrl,
       isbn = book.isbn,
       publisher = book.publisher,
-      authors = book.authors,
+      authorList = book.authorList,
       isPinned = false,
       isFavorite = false,
       isPublic = false,
@@ -180,7 +180,7 @@ private val MockMyBookList = List(20) { index ->
       5 -> "マイナビ出版"
       else -> "出版社"
     },
-    authors = when (index % 7) {
+    authorList = when (index % 7) {
       0 -> listOf(Author(name = "上田　勲"))
       1 -> listOf("ポール・グレアム", "川合史朗").map { Author(name = it) }
       2 -> listOf("ソシオメディア株式会社", "上野 学", "藤井 幸多").map { Author(name = it) }

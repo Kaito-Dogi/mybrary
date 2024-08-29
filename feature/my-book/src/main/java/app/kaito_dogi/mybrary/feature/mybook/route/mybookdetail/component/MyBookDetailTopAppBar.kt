@@ -99,9 +99,9 @@ internal fun MyBookDetailTopAppBar(
           style = MybraryTheme.typography.titleLarge,
         )
 
-        if (myBook.authors.isNotEmpty()) {
+        if (myBook.authorList.isNotEmpty()) {
           Text(
-            text = myBook.authors.joinToString { it.name },
+            text = myBook.authorList.joinToString { it.name },
             modifier = Modifier.fillMaxWidth(),
             color = Color.White,
             overflow = TextOverflow.Ellipsis,
@@ -139,7 +139,7 @@ private fun MyBookDetailTopAppBarPreview() {
         imageUrl = Url.Image(value = "imageUrl"),
         isbn = "isbn",
         publisher = "出版社",
-        authors = List(10) { Author(name = "著者$it") },
+        authorList = List(10) { Author(name = "著者$it") },
         isPinned = false,
         isFavorite = false,
         isPublic = false,

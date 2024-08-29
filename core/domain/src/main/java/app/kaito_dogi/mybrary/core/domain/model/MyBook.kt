@@ -12,7 +12,7 @@ data class MyBook(
   val imageUrl: Url.Image,
   val isbn: String,
   val publisher: String,
-  val authors: List<Author>,
+  val authorList: List<Author>,
   val isPinned: Boolean,
   val isFavorite: Boolean,
   val isPublic: Boolean,

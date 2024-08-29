@@ -69,9 +69,9 @@ internal fun BookRow(
           style = MybraryTheme.typography.bodyLarge,
         )
 
-        if (book.authors.isNotEmpty()) {
+        if (book.authorList.isNotEmpty()) {
           Text(
-            text = book.authors.joinToString { it.name },
+            text = book.authorList.joinToString { it.name },
             modifier = Modifier.fillMaxWidth(),
             color = MybraryTheme.colorScheme.onSurfaceVariant,
             overflow = TextOverflow.Ellipsis,
@@ -104,7 +104,8 @@ private fun SearchResultBookRowPreview() {
         imageUrl = Url.Image(value = "imageUrl"),
         isbn = "isbn",
         publisher = "出版社",
-        authors = listOf(Author(name = "著者名"),
+        authorList = listOf(
+          Author(name = "著者名"),
         ),
       ),
       onClick = {},

@@ -12,5 +12,5 @@ data class BookResponse(
   val isbn: String,
   val publisher: String,
   @SerialName("author")
-  val authors: List<AuthorResponse>,
+  val authorList: List<AuthorResponse>,
 )
