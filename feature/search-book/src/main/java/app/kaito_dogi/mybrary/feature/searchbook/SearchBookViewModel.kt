@@ -36,11 +36,7 @@ internal class SearchBookViewModel @Inject constructor(
           // FIXME: sort できるようにする
           val bookList = bookRepository.searchBook(
             title = searchTitle,
-            size = 0,
             isbn = "",
-            hits = 30,
-            page = 0,
-            sort = "",
           )
           _uiState.update { it.copy(bookList = bookList) }
         } catch (e: Exception) {
