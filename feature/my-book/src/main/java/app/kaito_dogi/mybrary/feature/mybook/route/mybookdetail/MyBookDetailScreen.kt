@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -129,6 +130,7 @@ private fun MyBookDetailScreenPreview() {
           isbn = "isbn",
           publisher = "出版社",
           authorList = emptyList(),
+          genre = Genre.All,
           isPinned = false,
           isFavorite = false,
           isPublic = false,

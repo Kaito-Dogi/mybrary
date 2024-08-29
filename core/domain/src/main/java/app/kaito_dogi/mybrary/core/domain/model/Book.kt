@@ -11,4 +11,5 @@ data class Book(
   val isbn: String,
   val publisher: String,
   val authorList: List<Author>,
+  val genre: Genre,
 )

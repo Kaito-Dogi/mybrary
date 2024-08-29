@@ -6,6 +6,7 @@ import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
@@ -51,6 +52,7 @@ internal class MockMyBookRepository @Inject constructor(
       isbn = book.isbn,
       publisher = book.publisher,
       authorList = book.authorList,
+      genre = book.genre,
       isPinned = false,
       isFavorite = false,
       isPublic = false,
@@ -197,6 +199,15 @@ private val MockMyBookList = List(20) { index ->
       ).map { Author(name = it) }
 
       else -> listOf(Author(name = "著者名"))
+    },
+    genre = when (index % 7) {
+      0 -> Genre.Hardcover
+      1 -> Genre.Hardcover
+      2 -> Genre.Hardcover
+      3 -> Genre.Hardcover
+      4 -> Genre.Hardcover
+      5 -> Genre.Hardcover
+      else -> Genre.All
     },
     isPinned = false,
     isFavorite = false,

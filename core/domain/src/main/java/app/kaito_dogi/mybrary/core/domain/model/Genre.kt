@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.domain.model
 
-enum class Category(val value: Int) {
+enum class Genre(val value: Int) {
   All(value = 0),
   Hardcover(value = 1),
   Paperback(value = 2),
@@ -12,4 +12,5 @@ enum class Category(val value: Int) {
   CassetteCd(value = 8),
   Comics(value = 9),
   MookOthers(value = 10),
+  ;
 }

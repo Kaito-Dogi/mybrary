@@ -13,4 +13,5 @@ data class BookResponse(
   val publisher: String,
   @SerialName("author")
   val authorList: List<AuthorResponse>,
+  val genre: GenreResponse,
 )

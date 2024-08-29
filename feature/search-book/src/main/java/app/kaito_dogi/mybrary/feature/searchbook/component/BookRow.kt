@@ -22,6 +22,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -65,7 +66,7 @@ internal fun BookRow(
             .fillMaxWidth()
             .weight(1f),
           overflow = TextOverflow.Ellipsis,
-          maxLines = 2,
+          maxLines = 3,
           style = MybraryTheme.typography.bodyLarge,
         )
 
@@ -107,6 +108,7 @@ private fun SearchResultBookRowPreview() {
         authorList = listOf(
           Author(name = "著者名"),
         ),
+        genre = Genre.All,
       ),
       onClick = {},
       onLongClick = {},

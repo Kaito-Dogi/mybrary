@@ -18,4 +18,5 @@ internal fun ItemResponse.toBook() = Book(
   isbn = this.isbn,
   publisher = this.publisherName,
   authorList = this.author.split("/").map { Author(name = it) },
+  genre = this.size.toGenre(),
 )

@@ -13,6 +13,7 @@ data class MyBook(
   val isbn: String,
   val publisher: String,
   val authorList: List<Author>,
+  val genre: Genre,
   val isPinned: Boolean,
   val isFavorite: Boolean,
   val isPublic: Boolean,

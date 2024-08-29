@@ -33,7 +33,7 @@ inline fun <reified T : Serializable> createTypePair(): Pair<KType, NavType<T>> 
       )
     }
 
-    override val name: String = (T::class.java).name
+    override val name: String = T::class.java.name
   }
 
   return typeOf<T>() to navType

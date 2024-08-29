@@ -16,6 +16,7 @@ internal fun MyBookResponse.toMyBook() = MyBook(
   isbn = this.book.isbn,
   publisher = this.book.publisher,
   authorList = this.book.authorList.map(AuthorResponse::toAuthor),
+  genre = this.book.genre.toGenre(),
   isPinned = isPinned,
   isFavorite = isFavorite,
   isPublic = isPublic,
