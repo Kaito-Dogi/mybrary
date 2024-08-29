@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-private const val RakutenApiBaseUrl = "https://app.rakuten.co.jp/services/api/"
+private const val RakutenApiBaseUrl = "https://app.rakuten.co.jp/"
 
 @Module
 @InstallIn(SingletonComponent::class)

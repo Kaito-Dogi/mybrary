@@ -24,8 +24,10 @@ internal class MockBookRepository @Inject constructor(
   }
 
   override suspend fun searchBook(
-    title: String,
-    isbn: String,
+    title: String?,
+    isbn: String?,
+    author: String?,
+    publisher: String?,
     genre: Genre,
     hits: Int,
     page: Int,

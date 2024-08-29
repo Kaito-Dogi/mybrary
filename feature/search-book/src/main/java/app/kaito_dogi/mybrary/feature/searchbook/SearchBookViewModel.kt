@@ -32,11 +32,13 @@ internal class SearchBookViewModel @Inject constructor(
       if (searchTitle.isNotBlank()) {
         try {
           // FIXME: isbn を渡せるようにする
+          // FIXME: author を渡せるようにする
+          // FIXME: publisher を渡せるようにする
           // FIXME: Paging を実装する
           // FIXME: sort できるようにする
           val bookList = bookRepository.searchBook(
             title = searchTitle,
-            isbn = "",
+            isbn = null,
           )
           _uiState.update { it.copy(bookList = bookList) }
         } catch (e: Exception) {
