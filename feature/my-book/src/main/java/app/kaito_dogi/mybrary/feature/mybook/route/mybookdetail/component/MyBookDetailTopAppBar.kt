@@ -82,6 +82,7 @@ internal fun MyBookDetailTopAppBar(
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
       BookImage(
+        title = myBook.title,
         imageUrl = myBook.imageUrl,
         modifier = Modifier.width(MybraryTheme.dimens.bookWidthMd),
       )
