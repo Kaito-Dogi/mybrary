@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
@@ -40,21 +41,21 @@ fun BookRowSkeleton(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
-          textResId = R.string.search_book_text_a_a,
+          text = stringResource(id = R.string.search_book_text_a_a),
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodyLarge,
         )
 
         Text(
-          textResId = R.string.search_book_text_a,
+          text = stringResource(id = R.string.search_book_text_a),
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodySmall,
         )
 
         Text(
-          textResId = R.string.search_book_text_a,
+          text = stringResource(id = R.string.search_book_text_a),
           modifier = Modifier.fillMaxWidth(),
           color = Color.Transparent,
           style = MybraryTheme.typography.bodySmall,

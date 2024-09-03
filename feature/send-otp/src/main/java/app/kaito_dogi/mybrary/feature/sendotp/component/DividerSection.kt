@@ -7,6 +7,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -27,7 +28,7 @@ internal fun DividerSection(
     )
 
     Text(
-      textResId = R.string.auth_text_or,
+      text = stringResource(id = R.string.auth_text_or),
       color = MybraryTheme.colorScheme.outline,
       style = MybraryTheme.typography.labelMedium,
     )

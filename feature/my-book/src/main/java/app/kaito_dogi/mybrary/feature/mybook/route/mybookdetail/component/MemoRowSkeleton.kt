@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
@@ -31,14 +32,14 @@ internal fun MemoRowSkeleton(
       verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
     ) {
       Text(
-        textResId = R.string.my_book_detail_text_a,
+        text = stringResource(id = R.string.my_book_detail_text_a),
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
         style = MybraryTheme.typography.bodyLarge,
       )
 
       Text(
-        textResId = R.string.my_book_detail_text_a,
+        text = stringResource(id = R.string.my_book_detail_text_a),
         modifier = Modifier.fillMaxWidth(),
         color = Color.Transparent,
         style = MybraryTheme.typography.bodySmall,

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
@@ -25,7 +26,7 @@ internal fun MyBookListHeaderSkeleton(
       .height(Height),
   ) {
     Text(
-      textResId = R.string.my_book_list_text_a,
+      text = stringResource(id = R.string.my_book_list_text_a),
       color = Color.Transparent,
       style = MybraryTheme.typography.titleLarge,
     )

@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,6 +23,7 @@ fun TextField(
   modifier: Modifier = Modifier,
   @DrawableRes leadingIconResId: Int? = null,
   @StringRes leadingIconAltResId: Int? = null,
+  isEnabled: Boolean = true,
   isError: Boolean = false,
   keyboardType: KeyboardType = KeyboardType.Text,
   imeAction: ImeAction = ImeAction.Default,
@@ -32,8 +34,9 @@ fun TextField(
   value = value,
   onValueChange = onValueChange,
   modifier = modifier,
+  enabled = isEnabled,
   placeholder = {
-    Text(textResId = placeholderResId)
+    Text(text = stringResource(id = placeholderResId))
   },
   leadingIcon = leadingIconResId?.let {
     {
@@ -62,7 +65,7 @@ fun TextField(
   ),
 )
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TextFieldPreview(
   @PreviewParameter(TextFieldPreviewParameterProvider::class) parameter: TextFieldPreviewParameter,
@@ -81,11 +84,22 @@ private class TextFieldPreviewParameterProvider :
   PreviewParameterProvider<TextFieldPreviewParameter> {
   override val values: Sequence<TextFieldPreviewParameter>
     get() = sequenceOf(
-      TextFieldPreviewParameter(isError = false),
-      TextFieldPreviewParameter(isError = true),
+      TextFieldPreviewParameter(
+        isEnabled = true,
+        isError = false,
+      ),
+      TextFieldPreviewParameter(
+        isEnabled = true,
+        isError = true,
+      ),
+      TextFieldPreviewParameter(
+        isEnabled = false,
+        isError = false,
+      ),
     )
 }
 
 private data class TextFieldPreviewParameter(
+  val isEnabled: Boolean,
   val isError: Boolean,
 )
