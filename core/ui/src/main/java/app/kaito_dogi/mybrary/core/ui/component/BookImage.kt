@@ -1,59 +1,58 @@
 package app.kaito_dogi.mybrary.core.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.DefaultAlpha
-import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
 
 const val BookAspectRatio = 210f / 297f
 
 @Composable
 fun BookImage(
+  title: String,
   imageUrl: Url.Image,
   modifier: Modifier = Modifier,
   shape: Shape = MybraryTheme.shapes.extraSmall,
-  onLoading: ((AsyncImagePainter.State.Loading) -> Unit)? = null,
-  onSuccess: ((AsyncImagePainter.State.Success) -> Unit)? = null,
-  onError: ((AsyncImagePainter.State.Error) -> Unit)? = null,
-  alignment: Alignment = Alignment.Center,
-  alpha: Float = DefaultAlpha,
-  colorFilter: ColorFilter? = null,
-  filterQuality: FilterQuality = DrawScope.DefaultFilterQuality,
 ) {
-  AsyncImage(
-    model = imageUrl.value,
-    contentDescription = stringResource(id = R.string.ui_alt_book_cover),
+  Box(
     modifier = modifier
       .aspectRatio(BookAspectRatio)
       .clip(shape = shape)
       .background(MybraryTheme.colorScheme.surface),
-    placeholder = painterResource(R.drawable.img_book_placeholder),
-    error = painterResource(R.drawable.img_book_placeholder),
-    onLoading = onLoading,
-    onSuccess = onSuccess,
-    onError = onError,
-    alignment = alignment,
-    contentScale = ContentScale.Crop,
-    alpha = alpha,
-    colorFilter = colorFilter,
-    filterQuality = filterQuality,
-  )
+    contentAlignment = Alignment.Center,
+  ) {
+    Text(
+      text = title,
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(MybraryTheme.spaces.md),
+      color = MybraryTheme.colorScheme.onSurface,
+      textAlign = TextAlign.Center,
+      overflow = TextOverflow.Ellipsis,
+      style = MybraryTheme.typography.bodySmall,
+    )
+    AsyncImage(
+      model = imageUrl.value,
+      contentDescription = title,
+      modifier = Modifier.fillMaxSize(),
+      contentScale = ContentScale.Crop,
+    )
+  }
 }
 
 @Preview
@@ -61,6 +60,7 @@ fun BookImage(
 private fun BookImagePreview() {
   MybraryTheme {
     BookImage(
+      title = "title",
       imageUrl = Url.Image(value = ""),
     )
   }

@@ -47,6 +47,7 @@ internal fun BookRow(
       horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
     ) {
       BookImage(
+        title = book.title,
         imageUrl = book.imageUrl,
         modifier = Modifier.width(MybraryTheme.dimens.bookWidthSm),
         shape = RectangleShape,

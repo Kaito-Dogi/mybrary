@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
@@ -70,7 +71,7 @@ internal fun SearchBookScreen(
 
     if (uiState.isDialogShown && uiState.selectedBook != null) {
       AlertDialog(
-        titleResId = R.string.search_book_text_would_you_like_to_add_to_mybrary,
+        title = stringResource(id = R.string.search_book_text_would_you_like_to_add_to_mybrary),
         content = uiState.selectedBook.title,
         onConfirmClick = onConfirmClick,
         confirmTextResId = R.string.search_book_text_add,
