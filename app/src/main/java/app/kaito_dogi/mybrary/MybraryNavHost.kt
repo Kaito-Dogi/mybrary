@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
-import app.kaito_dogi.mybrary.feature.mybook.route.mybookdetail.myBookDetailScreen
-import app.kaito_dogi.mybrary.feature.mybook.route.mybooklist.myBookListScreen
+import app.kaito_dogi.mybrary.feature.mybooklist.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
