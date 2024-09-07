@@ -88,7 +88,7 @@ internal fun MyBookDetailTopAppBar(
       )
 
       Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
       ) {
         Text(
           text = myBook.title,
@@ -97,8 +97,8 @@ internal fun MyBookDetailTopAppBar(
             .weight(1f),
           color = Color.White,
           overflow = TextOverflow.Ellipsis,
-          maxLines = 3,
-          style = MybraryTheme.typography.titleLarge,
+          maxLines = 4,
+          style = MybraryTheme.typography.titleMedium,
         )
 
         if (myBook.authorList.isNotEmpty()) {
@@ -137,7 +137,7 @@ private fun MyBookDetailTopAppBarPreview() {
           name = "ユーザー名",
         ),
         bookId = BookId(value = ""),
-        title = "タイトル\nタイトル\nタイトル\nタイトル",
+        title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
         isbn = "isbn",
         publisher = "出版社",
