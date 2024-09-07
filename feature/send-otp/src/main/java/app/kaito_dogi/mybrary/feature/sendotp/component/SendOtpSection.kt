@@ -29,9 +29,9 @@ internal fun SendOtpSection(
       value = email,
       onValueChange = onEmailChange,
       modifier = Modifier.fillMaxWidth(),
-      placeholderResId = R.string.auth_placeholder_enter_your_email_address,
+      placeholderResId = R.string.send_otp_placeholder_enter_your_email_address,
       leadingIconResId = R.drawable.icon_mail,
-      leadingIconAltResId = R.string.auth_alt_email_address,
+      leadingIconAltResId = R.string.send_otp_alt_email_address,
       keyboardType = KeyboardType.Email,
       imeAction = ImeAction.Send,
       onSend = onSendOtpClick,
@@ -39,11 +39,11 @@ internal fun SendOtpSection(
     )
 
     PrimaryButton(
-      textResId = R.string.auth_text_send_otp,
+      textResId = R.string.send_otp_text_send_otp,
       onClick = onSendOtpClick,
       modifier = Modifier.fillMaxWidth(),
       iconResId = R.drawable.icon_send,
-      altResId = R.string.auth_alt_send_otp,
+      altResId = R.string.send_otp_alt_send_otp,
       isLoading = isSendingOtp,
     )
   }

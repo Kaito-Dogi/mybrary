@@ -16,8 +16,8 @@ import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.R
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 
 @Composable
 internal fun VerifyOtpScreen(
@@ -26,7 +26,7 @@ internal fun VerifyOtpScreen(
   onVerifyOtpClick: () -> Unit,
 ) {
   Scaffold(
-    topBar = { TopAppBar(textResId = R.string.auth_text_enter_otp) },
+    topBar = { TopAppBar(textResId = R.string.verify_otp_text_enter_otp) },
   ) { innerPadding ->
     Column(
       modifier = Modifier
@@ -37,10 +37,10 @@ internal fun VerifyOtpScreen(
       TextField(
         value = uiState.otp,
         onValueChange = onOtpChange,
-        placeholderResId = R.string.auth_placeholder_enter_otp,
+        placeholderResId = R.string.verify_otp_placeholder_enter_otp,
         modifier = Modifier.fillMaxWidth(),
         leadingIconResId = R.drawable.icon_key,
-        leadingIconAltResId = R.string.auth_alt_otp,
+        leadingIconAltResId = R.string.verify_otp_alt_otp,
         keyboardType = KeyboardType.NumberPassword,
         imeAction = ImeAction.Send,
         onSend = onVerifyOtpClick,
@@ -49,8 +49,8 @@ internal fun VerifyOtpScreen(
 
       PrimaryButton(
         textResId = when (uiState.page) {
-          MybraryRoute.VerifyOtp.Page.Login -> R.string.auth_text_login
-          MybraryRoute.VerifyOtp.Page.SignUp -> R.string.auth_text_sign_up
+          MybraryRoute.VerifyOtp.Page.Login -> R.string.verify_otp_text_login
+          MybraryRoute.VerifyOtp.Page.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
         modifier = Modifier.fillMaxWidth(),

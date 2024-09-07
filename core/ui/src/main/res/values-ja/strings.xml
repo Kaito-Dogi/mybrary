@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="auth_alt_email_address">メールアドレス</string>
-  <string name="auth_alt_login_with_google">Google アカウントでログイン</string>
-  <string name="auth_alt_otp">ワンタイムパスワード</string>
-  <string name="auth_alt_send_otp">ワンタイムパスワードを送信</string>
-  <string name="auth_alt_sign_up_google">Google アカウントで始める</string>
-  <string name="auth_placeholder_enter_otp">123456</string>
-  <string name="auth_placeholder_enter_your_email_address">メールアドレスを入力…</string>
-  <string name="auth_text_already_have_an_account_login">ログインは</string>
-  <string name="auth_text_create_an_account">アカウント作成は</string>
-  <string name="auth_text_enter_otp">ワンタイムパスワードの入力</string>
-  <string name="auth_text_here">こちら</string>
-  <string name="auth_text_login">ログイン</string>
-  <string name="auth_text_login_with_google">Google アカウントでログイン</string>
-  <string name="auth_text_logo">Mybrary</string>
-  <string name="auth_text_or">または</string>
-  <string name="auth_text_send_otp">ワンタイムパスワードを送信</string>
-  <string name="auth_text_sign_up">サインアップ</string>
-  <string name="auth_text_sign_up_with_google">Google アカウントで始める</string>
   <string name="my_book_detail_alt_add_my_book_to_favorites">MyBook をお気に入りに追加する</string>
   <string name="my_book_detail_alt_archive_my_book">MyBook をアーカイブする</string>
   <string name="my_book_detail_alt_background_image">背景画像</string>
@@ -55,5 +37,23 @@
   <string name="search_book_text_a_a">あ\nあ</string>
   <string name="search_book_text_cancel">追加しない</string>
   <string name="search_book_text_would_you_like_to_add_to_mybrary">Mybraryに本を追加しますか？</string>
+  <string name="send_otp_alt_email_address">メールアドレス</string>
+  <string name="send_otp_alt_login_with_google">Google アカウントでログイン</string>
+  <string name="send_otp_alt_send_otp">ワンタイムパスワードを送信</string>
+  <string name="send_otp_alt_sign_up_google">Google アカウントで始める</string>
+  <string name="send_otp_placeholder_enter_your_email_address">メールアドレスを入力…</string>
+  <string name="send_otp_text_already_have_an_account_login">ログインは</string>
+  <string name="send_otp_text_create_an_account">アカウント作成は</string>
+  <string name="send_otp_text_here">こちら</string>
+  <string name="send_otp_text_login_with_google">Google アカウントでログイン</string>
+  <string name="send_otp_text_logo">Mybrary</string>
+  <string name="send_otp_text_or">または</string>
+  <string name="send_otp_text_send_otp">ワンタイムパスワードを送信</string>
+  <string name="send_otp_text_sign_up_with_google">Google アカウントで始める</string>
   <string name="ui_alt_book_cover">本の表紙</string>
+  <string name="verify_otp_alt_otp">ワンタイムパスワード</string>
+  <string name="verify_otp_placeholder_enter_otp">123456</string>
+  <string name="verify_otp_text_enter_otp">ワンタイムパスワードの入力</string>
+  <string name="verify_otp_text_login">ログイン</string>
+  <string name="verify_otp_text_sign_up">サインアップ</string>
 </resources>
