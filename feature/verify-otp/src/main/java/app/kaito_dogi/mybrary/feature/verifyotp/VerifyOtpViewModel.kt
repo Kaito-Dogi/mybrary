@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
+import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class VerifyOtpViewModel @Inject constructor(
-  private val authRepository: AuthRepository,
+  private val otpRepository: OtpRepository,
   savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
   private val navArg: MybraryRoute.VerifyOtp = savedStateHandle.toRoute(typeMap = verifyOtpTypeMap)
@@ -36,7 +36,7 @@ internal class VerifyOtpViewModel @Inject constructor(
       try {
         _uiState.update { it.copy(isOtpVerifying = true) }
 
-        authRepository.verifyOtp(
+        otpRepository.verifyOtp(
           email = navArg.email,
           otp = uiState.value.otp,
         )

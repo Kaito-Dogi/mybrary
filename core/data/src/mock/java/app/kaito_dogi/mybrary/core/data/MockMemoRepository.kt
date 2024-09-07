@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data
 
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -92,6 +92,7 @@ internal class MockMemoRepository @Inject constructor(
     return@withContext publishedMemo
   }
 }
+
 
 private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
   val startPage = if (index % 2 == 0) index * 100 else null

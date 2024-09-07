@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data
 
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 internal class MockBookRepository @Inject constructor(
   @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
-  override suspend fun getBook(id: BookId): Book {
+  override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
@@ -38,6 +38,7 @@ internal class MockBookRepository @Inject constructor(
     return@withContext MockBookList
   }
 }
+
 
 private val MockBookList = List(10) { index ->
   Book(

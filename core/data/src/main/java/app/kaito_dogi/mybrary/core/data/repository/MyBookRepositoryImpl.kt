@@ -29,7 +29,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
     mybraryAnonApi.getMyBooks().map(MyBookResponse::toMyBook)
   }
 
-  override suspend fun getMyBook(myBookId: MyBookId): MyBook {
+  override suspend fun getMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
@@ -56,7 +56,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
     return@withContext response.toMyBook()
   }
 
-  override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
+  override suspend fun pinMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
@@ -77,15 +77,15 @@ internal class MyBookRepositoryImpl @Inject constructor(
       return@withContext response.toMyBook()
     }
 
-  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
+  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
-  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
+  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
-  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
+  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 }

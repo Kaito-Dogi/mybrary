@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.data.repository
+package app.kaito_dogi.mybrary.core.data
 
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
@@ -27,10 +27,10 @@ internal class MockMyBookRepository @Inject constructor(
 ) : MyBookRepository {
   private val mockMyBookList = MutableStateFlow(MockMyBookList)
 
-  override suspend fun getMyBookList(): List<MyBook> {
+  override suspend fun getMyBookList(): List<MyBook> = withContext(dispatcher) {
     delay(1_000)
 
-    return mockMyBookList.value
+    return@withContext mockMyBookList.value
   }
 
   override suspend fun getMyBook(
@@ -144,6 +144,7 @@ internal class MockMyBookRepository @Inject constructor(
     return@withContext archivedMyBook
   }
 }
+
 
 private val MockMyBookList = List(20) { index ->
   MyBook(

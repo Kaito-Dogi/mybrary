@@ -56,7 +56,7 @@ internal class MemoRepositoryImpl @Inject constructor(
     return@withContext response.toMemo()
   }
 
-  override suspend fun publishMemo(memoId: MemoId): Memo {
+  override suspend fun publishMemo(memoId: MemoId): Memo = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 }
