@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.navigation
 
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import kotlinx.serialization.Serializable
 
 sealed interface MybraryRoute {
@@ -7,7 +8,12 @@ sealed interface MybraryRoute {
   data object Auth : MybraryRoute
 
   @Serializable
-  data object MyBook : MybraryRoute
+  data object MyBookList : MybraryRoute
+
+  @Serializable
+  data class MyBookDetail(
+    val myBook: MyBook,
+  ) : MybraryRoute
 
   @Serializable
   data object SearchBook : MybraryRoute

@@ -44,6 +44,8 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:domain"))
+
   implementation(libs.androidxNavigationCompose)
   implementation(libs.serialization)
 }

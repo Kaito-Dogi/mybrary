@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybook.route.mybooklist
+package app.kaito_dogi.mybrary.feature.mybooklist
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
