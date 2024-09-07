@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.navigation
+package app.kaito_dogi.mybrary.core.ui.navigation
 
 import android.net.Uri
 import android.os.Bundle

@@ -49,7 +49,6 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
-  implementation(project(":core:navigation"))
   implementation(project(":core:ui"))
 
   implementation(platform(libs.androidxComposeBom))

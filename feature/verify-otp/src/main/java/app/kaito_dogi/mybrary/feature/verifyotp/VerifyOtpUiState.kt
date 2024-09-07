@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.runtime.Immutable
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 
 @Immutable
 internal data class VerifyOtpUiState(

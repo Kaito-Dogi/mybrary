@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.navigation
+package app.kaito_dogi.mybrary.core.ui.navigation
 
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import kotlinx.serialization.Serializable

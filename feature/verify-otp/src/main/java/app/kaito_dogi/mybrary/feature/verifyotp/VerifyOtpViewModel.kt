@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

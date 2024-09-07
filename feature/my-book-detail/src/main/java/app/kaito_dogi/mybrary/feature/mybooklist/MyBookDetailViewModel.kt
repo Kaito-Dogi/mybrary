@@ -11,8 +11,8 @@ import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
-import app.kaito_dogi.mybrary.core.navigation.createTypePair
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.createTypePair
 import app.kaito_dogi.mybrary.core.ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

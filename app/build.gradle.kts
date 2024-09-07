@@ -130,7 +130,6 @@ dependencies {
   implementation(project(":core:data"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
-  implementation(project(":core:navigation"))
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book-detail"))

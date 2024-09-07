@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.verifyotp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import kotlin.reflect.typeOf
 
 internal val verifyOtpTypeMap = mapOf(
