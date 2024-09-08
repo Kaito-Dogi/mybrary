@@ -25,11 +25,11 @@ internal fun LoginPage(
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     SecondaryButton(
-      textResId = R.string.auth_text_login_with_google,
+      textResId = R.string.send_otp_text_login_with_google,
       onClick = onGoogleLoginClick,
       modifier = Modifier.fillMaxWidth(),
       iconResId = R.drawable.icon_google,
-      altResId = R.string.auth_alt_login_with_google,
+      altResId = R.string.send_otp_alt_login_with_google,
       iconTint = Color.Unspecified,
       isLoading = isLoggingIn,
     )

@@ -25,7 +25,7 @@ internal fun SignUpSection(
         color = MybraryTheme.colorScheme.onBackground,
       ),
     ) {
-      append(context.getString(R.string.auth_text_create_an_account))
+      append(context.getString(R.string.send_otp_text_create_an_account))
     }
 
     withStyle(
@@ -33,7 +33,7 @@ internal fun SignUpSection(
         textDecoration = TextDecoration.Underline,
       ),
     ) {
-      append(context.getString(R.string.auth_text_here))
+      append(context.getString(R.string.send_otp_text_here))
     }
   }
 

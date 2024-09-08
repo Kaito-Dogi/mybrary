@@ -22,7 +22,7 @@ internal class BookRepositoryImpl @Inject constructor(
   private val config: MybraryConfig,
   @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
-  override suspend fun getBook(id: BookId): Book {
+  override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 

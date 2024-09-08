@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.feature.sendotp.component.DividerSection
 import app.kaito_dogi.mybrary.feature.sendotp.component.HorizontalPagerIndicator
 import app.kaito_dogi.mybrary.feature.sendotp.component.LogoSection

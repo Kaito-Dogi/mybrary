@@ -25,7 +25,7 @@ internal fun LoginSection(
         color = MybraryTheme.colorScheme.onBackground,
       ),
     ) {
-      append(context.getString(R.string.auth_text_already_have_an_account_login))
+      append(context.getString(R.string.send_otp_text_already_have_an_account_login))
     }
 
     withStyle(
@@ -33,7 +33,7 @@ internal fun LoginSection(
         textDecoration = TextDecoration.Underline,
       ),
     ) {
-      append(context.getString(R.string.auth_text_here))
+      append(context.getString(R.string.send_otp_text_here))
     }
   }
 

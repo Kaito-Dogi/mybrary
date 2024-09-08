@@ -97,7 +97,7 @@ internal fun BookRow(
 
 @Preview
 @Composable
-private fun SearchResultBookRowPreview() {
+private fun BookRowPreview() {
   MybraryTheme {
     BookRow(
       book = Book(

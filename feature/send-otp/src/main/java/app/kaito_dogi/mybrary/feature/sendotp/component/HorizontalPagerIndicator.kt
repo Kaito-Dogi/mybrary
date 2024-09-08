@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.navigation.MybraryRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 
 private val DotSize = 6.dp
 
