@@ -26,7 +26,7 @@ internal fun MyBookDetailScreenContainer(
   val bottomSheetState = rememberModalBottomSheetState()
 
   LaunchedEffect(Unit) {
-    viewModel.init()
+    viewModel.onInit()
   }
 
   uiState.messageResId?.let {

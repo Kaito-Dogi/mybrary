@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.feature.searchbook
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -10,18 +11,18 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class SearchBookViewModel @Inject constructor(
   private val bookRepository: BookRepository,
   private val myBookRepository: MyBookRepository,
-) : ViewModel() {
+  launchSafe: LaunchSafe,
+) : ViewModel(), LaunchSafe by launchSafe {
   private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun onSearchQueryChange(searchTitle: String) {
-    viewModelScope.launch {
+    viewModelScope.launchSafe {
       _uiState.update {
         it.copy(
           bookList = null,
@@ -30,21 +31,16 @@ internal class SearchBookViewModel @Inject constructor(
         )
       }
       if (searchTitle.isNotBlank()) {
-        try {
-          // FIXME: isbn を渡せるようにする
-          // FIXME: author を渡せるようにする
-          // FIXME: publisher を渡せるようにする
-          // FIXME: Paging を実装する
-          // FIXME: sort できるようにする
-          val bookList = bookRepository.searchBook(
-            title = searchTitle,
-            isbn = null,
-          )
-          _uiState.update { it.copy(bookList = bookList) }
-        } catch (e: Exception) {
-          // TODO: 共通のエラーハンドリングを表示
-          println("あああ: $e")
-        }
+        // FIXME: isbn を渡せるようにする
+        // FIXME: author を渡せるようにする
+        // FIXME: publisher を渡せるようにする
+        // FIXME: Paging を実装する
+        // FIXME: sort できるようにする
+        val bookList = bookRepository.searchBook(
+          title = searchTitle,
+          isbn = null,
+        )
+        _uiState.update { it.copy(bookList = bookList) }
       }
     }.invokeOnCompletion {
       _uiState.update { it.copy(isSearching = false) }
@@ -61,26 +57,21 @@ internal class SearchBookViewModel @Inject constructor(
   }
 
   fun onConfirmClick() {
-    viewModelScope.launch {
-      uiState.value.selectedBook?.let { selectedBook ->
-        try {
-          _uiState.update { it.copy(isBookRegistering = true) }
+    uiState.value.selectedBook?.let { selectedBook ->
+      viewModelScope.launchSafe {
+        _uiState.update { it.copy(isBookRegistering = true) }
 
-          myBookRepository.addBookToMybrary(book = selectedBook)
+        myBookRepository.addBookToMybrary(book = selectedBook)
 
-          _uiState.update {
-            // FIXME: String Resources を渡すようにする
-            it.copy(
-              shownMessage = "『${selectedBook.title}』をMybraryに追加しました",
-              isDialogShown = false,
-            )
-          }
-        } catch (e: Exception) {
-          // TODO: 共通のエラーハンドリングを表示
-          println("あああ: $e")
-        } finally {
-          _uiState.update { it.copy(isBookRegistering = false) }
+        _uiState.update {
+          // FIXME: String Resources を渡すようにする
+          it.copy(
+            shownMessage = "『${selectedBook.title}』をMybraryに追加しました",
+            isDialogShown = false,
+          )
         }
+      }.invokeOnCompletion {
+        _uiState.update { it.copy(isBookRegistering = false) }
       }
     }
   }

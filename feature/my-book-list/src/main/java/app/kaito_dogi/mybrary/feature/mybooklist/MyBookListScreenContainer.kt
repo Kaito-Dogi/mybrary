@@ -16,7 +16,7 @@ internal fun MyBookListScreenContainer(
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
   LaunchedEffect(Unit) {
-    viewModel.init()
+    viewModel.onInit()
   }
 
   MyBookListScreen(
