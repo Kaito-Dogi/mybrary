@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.convertor.toDraftMemo
 import app.kaito_dogi.mybrary.core.data.convertor.toEntity
@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 @Singleton
 internal class DraftMemoRepositoryImpl @Inject constructor(
   private val draftMemoDao: DraftMemoDao,
-  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : DraftMemoRepository {
   override suspend fun saveDraftMemo(draftMemo: DraftMemo) = withContext(dispatcher) {
     draftMemoDao.upsert(entity = draftMemo.toEntity())

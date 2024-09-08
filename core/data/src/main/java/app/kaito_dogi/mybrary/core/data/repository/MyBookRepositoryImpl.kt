@@ -6,7 +6,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteReques
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMyBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.convertor.toAuthorsResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toMyBook
@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 internal class MyBookRepositoryImpl @Inject constructor(
   private val mybraryAnonApi: MybraryAnonApi,
   private val mybraryAuthApi: MybraryAuthApi,
-  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MyBookRepository {
   override suspend fun getMyBookList(): List<MyBook> = withContext(dispatcher) {
     mybraryAnonApi.getMyBooks().map(MyBookResponse::toMyBook)

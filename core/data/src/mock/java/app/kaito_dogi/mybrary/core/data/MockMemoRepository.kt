@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.data
 
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 
 @Singleton
 internal class MockMemoRepository @Inject constructor(
-  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MemoRepository {
   private val mockMemoList = MutableStateFlow<List<Memo>>(emptyList())
 
