@@ -1,8 +1,8 @@
 package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import javax.inject.Inject
 import javax.inject.Singleton

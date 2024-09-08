@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.data
 
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import javax.inject.Inject
 import javax.inject.Singleton

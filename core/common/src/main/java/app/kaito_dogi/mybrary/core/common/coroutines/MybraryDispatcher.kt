@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.common.coroutines.dispatcher
+package app.kaito_dogi.mybrary.core.common.coroutines
 
 import javax.inject.Qualifier
 

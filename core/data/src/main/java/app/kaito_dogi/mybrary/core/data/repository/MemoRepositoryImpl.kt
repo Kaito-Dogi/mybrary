@@ -5,8 +5,8 @@ import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.convertor.toMemo
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo

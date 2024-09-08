@@ -6,8 +6,8 @@ import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteReques
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMyBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.convertor.toAuthorsResponse
 import app.kaito_dogi.mybrary.core.data.convertor.toMyBook
 import app.kaito_dogi.mybrary.core.domain.model.Book

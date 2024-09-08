@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.common.coroutines.dispatcher
+package app.kaito_dogi.mybrary.core.common.coroutines
 
 import dagger.Module
 import dagger.Provides
@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object DefaultDispatcherModule {
-  @MybraryDispatcher(MybraryDispatchers.Default)
+internal object IoDispatcherModule {
+  @MybraryDispatcher(MybraryDispatchers.Io)
   @Provides
-  fun provideDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
+  fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }
