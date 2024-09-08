@@ -4,5 +4,4 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 
 interface ExceptionProducer {
   val coroutineExceptionHandler: CoroutineExceptionHandler
-  fun produceException(throwable: Throwable)
 }
