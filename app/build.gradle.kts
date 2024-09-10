@@ -126,10 +126,14 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:api"))
+  implementation(project(":core:common"))
   implementation(project(":core:config"))
   implementation(project(":core:data"))
+  implementation(project(":core:database"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
+  implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book-detail"))
   implementation(project(":feature:my-book-list"))
