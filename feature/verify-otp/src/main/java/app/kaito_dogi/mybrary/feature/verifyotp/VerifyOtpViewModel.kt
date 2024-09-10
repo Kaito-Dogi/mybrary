@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,13 +12,13 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class VerifyOtpViewModel @Inject constructor(
   private val otpRepository: OtpRepository,
   savedStateHandle: SavedStateHandle,
-) : ViewModel() {
+  launchSafe: LaunchSafe,
+) : ViewModel(), LaunchSafe by launchSafe {
   private val navArg: MybraryRoute.VerifyOtp = savedStateHandle.toRoute(typeMap = verifyOtpTypeMap)
 
   private val _uiState = MutableStateFlow(
@@ -32,22 +33,17 @@ internal class VerifyOtpViewModel @Inject constructor(
   }
 
   fun onVerifyOtpClick() {
-    viewModelScope.launch {
-      try {
-        _uiState.update { it.copy(isOtpVerifying = true) }
+    viewModelScope.launchSafe {
+      _uiState.update { it.copy(isOtpVerifying = true) }
 
-        otpRepository.verifyOtp(
-          email = navArg.email,
-          otp = uiState.value.otp,
-        )
+      otpRepository.verifyOtp(
+        email = navArg.email,
+        otp = uiState.value.otp,
+      )
 
-        _uiState.update { it.copy(isOtpVerified = true) }
-      } catch (e: Exception) {
-        // FIXME: 共通のエラーハンドリングを実装する
-        println("あああ: ${e.message}")
-      } finally {
-        _uiState.update { it.copy(isOtpVerifying = false) }
-      }
+      _uiState.update { it.copy(isOtpVerified = true) }
+    }.invokeOnCompletion {
+      _uiState.update { it.copy(isOtpVerifying = false) }
     }
   }
 

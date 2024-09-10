@@ -2,8 +2,8 @@ package app.kaito_dogi.mybrary.core.data.repository
 
 import app.kaito_dogi.mybrary.core.api.rakuten.RakutenApi
 import app.kaito_dogi.mybrary.core.api.rakuten.response.ItemResponse
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.Dispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.dispatcher.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.config.MybraryConfig
 import app.kaito_dogi.mybrary.core.data.convertor.toBook
 import app.kaito_dogi.mybrary.core.domain.model.Book
@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 internal class BookRepositoryImpl @Inject constructor(
   private val rakutenApi: RakutenApi,
   private val config: MybraryConfig,
-  @Dispatcher(MybraryDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
   override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
     TODO("Not yet implemented")
