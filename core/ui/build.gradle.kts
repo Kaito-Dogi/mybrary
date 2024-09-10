@@ -1,6 +1,8 @@
 plugins {
   alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.hiltAndroid)
   alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.parcelize)
   alias(libs.plugins.serialization)
 }
@@ -46,5 +48,8 @@ dependencies {
   implementation(libs.androidxLifecycleRuntimeCompose)
   implementation(libs.androidxNavigationCompose)
   implementation(libs.coilCompose)
+  implementation(libs.hiltAndroid)
   implementation(libs.serialization)
+
+  ksp(libs.hiltCompiler)
 }
