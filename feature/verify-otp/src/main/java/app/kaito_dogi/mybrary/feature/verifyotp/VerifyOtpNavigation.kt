@@ -12,12 +12,14 @@ internal val verifyOtpTypeMap = mapOf(
 
 fun NavGraphBuilder.verifyOtpScreen(
   onVerifyOtpComplete: () -> Unit,
+  onNavigationIconClick: () -> Unit,
 ) {
   composable<MybraryRoute.VerifyOtp>(
     typeMap = verifyOtpTypeMap,
   ) {
     VerifyOtpScreenContainer(
       onVerifyOtpComplete = onVerifyOtpComplete,
+      onNavigationIconClick = onNavigationIconClick,
     )
   }
 }

@@ -22,11 +22,19 @@ import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 @Composable
 internal fun VerifyOtpScreen(
   uiState: VerifyOtpUiState,
+  onNavigationIconClick: () -> Unit,
   onOtpChange: (String) -> Unit,
   onVerifyOtpClick: () -> Unit,
 ) {
   Scaffold(
-    topBar = { TopAppBar(textResId = R.string.verify_otp_text_enter_otp) },
+    topBar = {
+      TopAppBar(
+        textResId = R.string.verify_otp_text_enter_otp,
+        navigationIconResId = R.drawable.icon_arrow_back,
+        navigationIconAltResId = R.string.verify_otp_back,
+        onNavigationIconClick = onNavigationIconClick,
+      )
+    },
   ) { innerPadding ->
     Column(
       modifier = Modifier
@@ -68,6 +76,7 @@ private fun VerifyOtpScreenPreview() {
       uiState = VerifyOtpUiState.createInitialValue(
         page = MybraryRoute.VerifyOtp.Page.Login,
       ),
+      onNavigationIconClick = {},
       onOtpChange = {},
       onVerifyOtpClick = {},
     )
