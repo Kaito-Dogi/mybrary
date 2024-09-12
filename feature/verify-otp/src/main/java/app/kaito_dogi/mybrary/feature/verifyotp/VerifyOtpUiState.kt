@@ -11,6 +11,8 @@ internal data class VerifyOtpUiState(
   val otp: String,
   val isOtpVerifying: Boolean,
   val isOtpVerified: Boolean,
+  val isOtpResending: Boolean,
+  val isOtpResent: Boolean,
 ) {
   companion object {
     fun createInitialValue(
@@ -22,6 +24,8 @@ internal data class VerifyOtpUiState(
       otp = "",
       isOtpVerifying = false,
       isOtpVerified = false,
+      isOtpResending = false,
+      isOtpResent = false,
     )
   }
 

@@ -95,6 +95,7 @@ internal fun VerifyOtpScreen(
         modifier = Modifier
           .fillMaxWidth()
           .padding(bottom = MybraryTheme.spaces.xl),
+        isLoading = uiState.isOtpResending,
       )
     }
   }

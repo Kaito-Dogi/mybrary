@@ -49,7 +49,15 @@ internal class VerifyOtpViewModel @Inject constructor(
   }
 
   fun onResendOtpClick() {
-    // TODO: 実装する
+    viewModelScope.launchSafe {
+      _uiState.update { it.copy(isOtpResending = true) }
+      otpRepository.sendOtp(
+        email = uiState.value.email,
+      )
+      _uiState.update { it.copy(isOtpResent = true) }
+    }.invokeOnCompletion {
+      _uiState.update { it.copy(isOtpResending = false) }
+    }
   }
 
   fun onUiEventConsume() {
