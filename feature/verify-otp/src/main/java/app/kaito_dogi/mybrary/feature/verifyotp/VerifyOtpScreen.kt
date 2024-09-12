@@ -29,7 +29,7 @@ internal fun VerifyOtpScreen(
   Scaffold(
     topBar = {
       TopAppBar(
-        textResId = R.string.verify_otp_text_otp_verification,
+        textResId = R.string.verify_otp_text_verify_otp,
         navigationIconResId = R.drawable.icon_arrow_back,
         navigationIconAltResId = R.string.verify_otp_back,
         onNavigationIconClick = onNavigationIconClick,

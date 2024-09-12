@@ -57,4 +57,5 @@
   <string name="verify_otp_text_otp_verification">One-Time Password Verification</string>
   <string name="verify_otp_text_login">Login</string>
   <string name="verify_otp_text_sign_up">Sign up</string>
+  <string name="verify_otp_text_verify_otp">Verify One-Time Password</string>
 </resources>

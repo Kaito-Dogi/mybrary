@@ -57,4 +57,5 @@
   <string name="verify_otp_text_otp_verification">ワンタイムパスワードの認証</string>
   <string name="verify_otp_text_login">ログイン</string>
   <string name="verify_otp_text_sign_up">サインアップ</string>
+  <string name="verify_otp_text_verify_otp">ワンタイムパスワードの認証</string>
 </resources>
