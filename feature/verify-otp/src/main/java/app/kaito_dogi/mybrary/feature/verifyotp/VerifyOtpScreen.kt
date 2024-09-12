@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -76,7 +77,9 @@ internal fun VerifyOtpScreen(
           MybraryRoute.VerifyOtp.Page.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+          .fillMaxWidth()
+          .imePadding(),
         isLoading = uiState.isOtpVerifying,
       )
 
