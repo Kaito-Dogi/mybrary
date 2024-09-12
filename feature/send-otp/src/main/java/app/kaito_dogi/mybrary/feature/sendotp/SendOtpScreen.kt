@@ -54,12 +54,10 @@ internal fun SendOtpScreen(
             end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
           ),
         )
-        .imePadding(),
+        .padding(innerPadding),
     ) {
       LogoSection(
-        modifier = Modifier.padding(
-          top = innerPadding.calculateTopPadding() + MybraryTheme.spaces.xxxl,
-        ),
+        modifier = Modifier.padding(top = MybraryTheme.spaces.xxxl),
       )
 
       Gap(height = MybraryTheme.spaces.xxxl)
@@ -69,7 +67,9 @@ internal fun SendOtpScreen(
         isSendingOtp = uiState.isOtpSending,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
-        modifier = Modifier.padding(horizontal = MybraryTheme.spaces.xl),
+        modifier = Modifier
+          .padding(horizontal = MybraryTheme.spaces.xl)
+          .imePadding(),
       )
 
       Gap(height = MybraryTheme.spaces.xl)
@@ -107,9 +107,7 @@ internal fun SendOtpScreen(
         currentPage = pagerState.currentPage,
         modifier = Modifier
           .fillMaxWidth()
-          .padding(
-            bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.xl,
-          ),
+          .padding(bottom = MybraryTheme.spaces.xl),
       )
     }
   }
