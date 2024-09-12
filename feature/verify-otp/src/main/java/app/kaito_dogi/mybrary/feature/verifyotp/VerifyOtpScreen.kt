@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -79,7 +80,7 @@ internal fun VerifyOtpScreen(
         isLoading = uiState.isOtpVerifying,
       )
 
-      Gap(height = MybraryTheme.spaces.xl)
+      Spacer(modifier = Modifier.weight(1f))
 
       Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
 
@@ -88,7 +89,9 @@ internal fun VerifyOtpScreen(
       TertiaryButton(
         textResId = R.string.verify_otp_text_resend_otp,
         onClick = onResendOtpClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(bottom = MybraryTheme.spaces.xl),
       )
     }
   }
