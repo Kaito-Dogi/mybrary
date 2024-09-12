@@ -44,8 +44,16 @@ internal fun VerifyOtpScreen(
       modifier = Modifier
         .fillMaxSize()
         .padding(innerPadding.plus(horizontal = MybraryTheme.spaces.md)),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
+      Text(
+        text = stringResource(
+          id = R.string.verify_otp_text_enter_otp_sent_to,
+          uiState.maskedEmail,
+        ),
+      )
+
+      Gap(height = MybraryTheme.spaces.xl)
+
       TextField(
         value = uiState.otp,
         onValueChange = onOtpChange,
@@ -93,6 +101,7 @@ private fun VerifyOtpScreenPreview() {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
         page = MybraryRoute.VerifyOtp.Page.Login,
+        email = "kendobu0405@gmail.com",
       ),
       onNavigationIconClick = {},
       onOtpChange = {},

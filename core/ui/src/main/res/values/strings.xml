@@ -54,6 +54,7 @@
   <string name="verify_otp_alt_otp">One-Time Password</string>
   <string name="verify_otp_back">Back to send One-Time Password</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
+  <string name="verify_otp_text_enter_otp_sent_to">Enter the One-Time Password sent to %1$s</string>
   <string name="verify_otp_text_it_may_take_a_few_minutes">It may take a few minutes to receive the one-time password.</string>
   <string name="verify_otp_text_login">Login</string>
   <string name="verify_otp_text_resend_otp">Resend One-Time Password</string>
