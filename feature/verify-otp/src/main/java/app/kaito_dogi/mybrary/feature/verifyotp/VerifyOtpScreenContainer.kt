@@ -26,5 +26,6 @@ internal fun VerifyOtpScreenContainer(
     onNavigationIconClick = onNavigationIconClick,
     onOtpChange = viewModel::onOtpChange,
     onVerifyOtpClick = viewModel::onVerifyOtpClick,
+    onResendOtpClick = viewModel::onResendOtpClick,
   )
 }

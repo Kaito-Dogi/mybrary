@@ -47,6 +47,10 @@ internal class VerifyOtpViewModel @Inject constructor(
     }
   }
 
+  fun onResendOtpClick() {
+    // TODO: 実装する
+  }
+
   fun onUiEventConsume() {
     _uiState.update { it.copy(isOtpVerified = false) }
   }

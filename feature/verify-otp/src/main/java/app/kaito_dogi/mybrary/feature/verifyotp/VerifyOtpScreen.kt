@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
+import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
@@ -25,6 +27,7 @@ internal fun VerifyOtpScreen(
   onNavigationIconClick: () -> Unit,
   onOtpChange: (String) -> Unit,
   onVerifyOtpClick: () -> Unit,
+  onResendOtpClick: () -> Unit,
 ) {
   Scaffold(
     topBar = {
@@ -65,6 +68,11 @@ internal fun VerifyOtpScreen(
         isLoading = uiState.isOtpVerifying,
       )
       Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
+      TertiaryButton(
+        textResId = R.string.verify_otp_text_resend_otp,
+        onClick = onResendOtpClick,
+        modifier = Modifier.fillMaxWidth(),
+      )
     }
   }
 }
@@ -80,6 +88,7 @@ private fun VerifyOtpScreenPreview() {
       onNavigationIconClick = {},
       onOtpChange = {},
       onVerifyOtpClick = {},
+      onResendOtpClick = {},
     )
   }
 }
