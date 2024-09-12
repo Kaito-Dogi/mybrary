@@ -64,6 +64,7 @@ internal fun VerifyOtpScreen(
         modifier = Modifier.fillMaxWidth(),
         isLoading = uiState.isOtpVerifying,
       )
+      Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
     }
   }
 }
