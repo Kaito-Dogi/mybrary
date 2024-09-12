@@ -69,6 +69,7 @@ internal fun MybraryNavHost(
           }
         }
       },
+      onNavigationIconClick = navController::popBackStack,
     )
   }
 }

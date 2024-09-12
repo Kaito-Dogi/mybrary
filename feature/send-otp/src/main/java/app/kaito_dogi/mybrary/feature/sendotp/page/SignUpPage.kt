@@ -36,7 +36,10 @@ internal fun SignUpPage(
 
     Spacer(modifier = Modifier.weight(1f))
 
-    LoginSection(onClick = onLoginClick)
+    LoginSection(
+      onClick = onLoginClick,
+      modifier = Modifier.fillMaxWidth(),
+    )
   }
 }
 

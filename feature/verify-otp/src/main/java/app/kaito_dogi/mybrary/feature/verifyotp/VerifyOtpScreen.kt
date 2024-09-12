@@ -1,17 +1,22 @@
 package app.kaito_dogi.mybrary.feature.verifyotp
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
+import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
+import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
@@ -22,18 +27,35 @@ import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 @Composable
 internal fun VerifyOtpScreen(
   uiState: VerifyOtpUiState,
+  onNavigationIconClick: () -> Unit,
   onOtpChange: (String) -> Unit,
   onVerifyOtpClick: () -> Unit,
+  onResendOtpClick: () -> Unit,
 ) {
   Scaffold(
-    topBar = { TopAppBar(textResId = R.string.verify_otp_text_enter_otp) },
+    topBar = {
+      TopAppBar(
+        textResId = R.string.verify_otp_text_verify_otp,
+        navigationIconResId = R.drawable.icon_arrow_back,
+        navigationIconAltResId = R.string.verify_otp_back,
+        onNavigationIconClick = onNavigationIconClick,
+      )
+    },
   ) { innerPadding ->
     Column(
       modifier = Modifier
         .fillMaxSize()
         .padding(innerPadding.plus(horizontal = MybraryTheme.spaces.md)),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
+      Text(
+        text = stringResource(
+          id = R.string.verify_otp_text_enter_otp_sent_to,
+          uiState.maskedEmail,
+        ),
+      )
+
+      Gap(height = MybraryTheme.spaces.xl)
+
       TextField(
         value = uiState.otp,
         onValueChange = onOtpChange,
@@ -47,14 +69,33 @@ internal fun VerifyOtpScreen(
         singleLine = true,
       )
 
+      Gap(height = MybraryTheme.spaces.md)
+
       PrimaryButton(
         textResId = when (uiState.page) {
           MybraryRoute.VerifyOtp.Page.Login -> R.string.verify_otp_text_login
           MybraryRoute.VerifyOtp.Page.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+          .fillMaxWidth()
+          .imePadding(),
         isLoading = uiState.isOtpVerifying,
+      )
+
+      Spacer(modifier = Modifier.weight(1f))
+
+      Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
+
+      Gap(height = MybraryTheme.spaces.md)
+
+      TertiaryButton(
+        textResId = R.string.verify_otp_text_resend_otp,
+        onClick = onResendOtpClick,
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(bottom = MybraryTheme.spaces.xl),
+        isLoading = uiState.isOtpResending,
       )
     }
   }
@@ -67,9 +108,12 @@ private fun VerifyOtpScreenPreview() {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
         page = MybraryRoute.VerifyOtp.Page.Login,
+        email = "kendobu0405@gmail.com",
       ),
+      onNavigationIconClick = {},
       onOtpChange = {},
       onVerifyOtpClick = {},
+      onResendOtpClick = {},
     )
   }
 }

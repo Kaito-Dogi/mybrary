@@ -9,6 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 internal fun VerifyOtpScreenContainer(
   onVerifyOtpComplete: () -> Unit,
+  onNavigationIconClick: () -> Unit,
   viewModel: VerifyOtpViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -22,7 +23,9 @@ internal fun VerifyOtpScreenContainer(
 
   VerifyOtpScreen(
     uiState = uiState,
+    onNavigationIconClick = onNavigationIconClick,
     onOtpChange = viewModel::onOtpChange,
     onVerifyOtpClick = viewModel::onVerifyOtpClick,
+    onResendOtpClick = viewModel::onResendOtpClick,
   )
 }

@@ -23,6 +23,7 @@ internal class VerifyOtpViewModel @Inject constructor(
 
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
+      email = navArg.email,
       page = navArg.page,
     ),
   )
@@ -37,13 +38,25 @@ internal class VerifyOtpViewModel @Inject constructor(
       _uiState.update { it.copy(isOtpVerifying = true) }
 
       otpRepository.verifyOtp(
-        email = navArg.email,
+        email = uiState.value.email,
         otp = uiState.value.otp,
       )
 
       _uiState.update { it.copy(isOtpVerified = true) }
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpVerifying = false) }
+    }
+  }
+
+  fun onResendOtpClick() {
+    viewModelScope.launchSafe {
+      _uiState.update { it.copy(isOtpResending = true) }
+      otpRepository.sendOtp(
+        email = uiState.value.email,
+      )
+      _uiState.update { it.copy(isOtpResent = true) }
+    }.invokeOnCompletion {
+      _uiState.update { it.copy(isOtpResending = false) }
     }
   }
 
