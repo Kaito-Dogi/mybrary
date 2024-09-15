@@ -8,7 +8,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarItem
 
 @Composable
-internal fun NavigationBar(
+internal fun AppNavigationBar(
   currentDestination: NavDestination?,
   onItemClick: (NavigationBarDestination) -> Unit,
   modifier: Modifier = Modifier,
