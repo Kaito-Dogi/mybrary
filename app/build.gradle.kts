@@ -140,6 +140,7 @@ dependencies {
   implementation(project(":feature:my-book-list"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:send-otp"))
+  implementation(project(":feature:setting"))
   implementation(project(":feature:verify-otp"))
 
   implementation(platform(libs.androidxComposeBom))
