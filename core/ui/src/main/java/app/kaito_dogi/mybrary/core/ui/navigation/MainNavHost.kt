@@ -5,20 +5,18 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 
 @Composable
 internal fun MainNavHost(
+  navController: NavHostController,
   startDestination: MainRoute,
-  builder: NavGraphBuilder.(NavHostController) -> Unit,
+  builder: NavGraphBuilder.() -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  val navController = rememberNavController()
-
   NavHost(
     navController = navController,
     startDestination = startDestination,
-    builder = { builder(navController) },
+    builder = builder,
     modifier = modifier,
   )
 }

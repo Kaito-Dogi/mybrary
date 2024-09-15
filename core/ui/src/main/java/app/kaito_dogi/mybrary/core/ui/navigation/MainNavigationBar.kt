@@ -8,7 +8,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarItem
 
 @Composable
-internal fun AppNavigationBar(
+internal fun MainNavigationBar(
   currentDestination: NavDestination?,
   onItemClick: (NavigationBarDestination) -> Unit,
   modifier: Modifier = Modifier,
@@ -16,8 +16,11 @@ internal fun AppNavigationBar(
   modifier = modifier,
 ) {
   NavigationBarDestination.entries.forEach { destination ->
+    // https://developer.android.com/develop/ui/compose/navigation#bottom-nav
+    val isSelected = (currentDestination?.hierarchy?.any { it.route == destination.route } == true)
+
     NavigationBarItem(
-      isSelected = (currentDestination?.hierarchy?.any { it.route == destination.route::class.qualifiedName } == true),
+      isSelected = isSelected,
       onClick = { onItemClick(destination) },
       iconResId = destination.iconResId,
       iconAltResId = destination.iconAltResId,

@@ -5,11 +5,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 
 fun NavGraphBuilder.mainNavGraph(
+  navController: NavHostController,
   startDestination: MainRoute,
-  builder: NavGraphBuilder.(NavHostController) -> Unit,
+  builder: NavGraphBuilder.() -> Unit,
 ) = composable<AppRoute.Main> {
   MainNavHost(
-      startDestination = startDestination,
-      builder = builder,
+    navController = navController,
+    startDestination = startDestination,
+    builder = builder,
   )
 }
