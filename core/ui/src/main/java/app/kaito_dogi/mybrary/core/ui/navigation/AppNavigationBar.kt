@@ -17,7 +17,7 @@ internal fun AppNavigationBar(
 ) {
   NavigationBarDestination.entries.forEach { destination ->
     NavigationBarItem(
-      isSelected = currentDestination?.hierarchy?.any { it.route == destination.route::class.java.name } == true,
+      isSelected = (currentDestination?.hierarchy?.any { it.route == destination.route::class.qualifiedName } == true),
       onClick = { onItemClick(destination) },
       iconResId = destination.iconResId,
       iconAltResId = destination.iconAltResId,
