@@ -1,7 +1,11 @@
 package app.kaito_dogi.mybrary.core.ui.navigation
 
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ScaffoldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -9,7 +13,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import app.kaito_dogi.mybrary.core.designsystem.component.BottomBarScaffold
 
 @Composable
 fun AppScaffold(
@@ -19,7 +22,7 @@ fun AppScaffold(
 ) {
   val currentBackStackEntry by mainNavController.currentBackStackEntryAsState()
 
-  BottomBarScaffold(
+  Scaffold(
     modifier = Modifier.fillMaxSize(),
     bottomBar = {
       MainNavigationBar(
@@ -41,6 +44,7 @@ fun AppScaffold(
         },
       )
     },
+    contentWindowInsets = ScaffoldDefaults.contentWindowInsets.only(WindowInsetsSides.Bottom),
   ) { innerPadding ->
     AppNavHost(
       startDestination = startDestination,
