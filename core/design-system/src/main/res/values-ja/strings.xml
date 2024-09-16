@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ui_alt_my_book">Mybrary に移動する</string>
+  <string name="ui_alt_setting">設定に移動する</string>
+  <string name="ui_text_my_book">Mybrary</string>
+  <string name="ui_text_setting">設定</string>
+</resources>
