@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.setting.route.settinglist
+package app.kaito_dogi.mybrary.feature.setting.destination.settinglist
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
