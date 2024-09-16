@@ -7,5 +7,11 @@ sealed interface MainRoute {
   data object MyBook : MainRoute
 
   @Serializable
+  data object Post : MainRoute
+
+  @Serializable
+  data object Profile : MainRoute
+
+  @Serializable
   data object Setting : MainRoute
 }

@@ -7,5 +7,11 @@ sealed interface AppRoute {
   data object Auth : AppRoute
 
   @Serializable
+  data object BookDetail : AppRoute
+
+  @Serializable
   data object Main : AppRoute
+
+  @Serializable
+  data object SearchBook : AppRoute
 }
