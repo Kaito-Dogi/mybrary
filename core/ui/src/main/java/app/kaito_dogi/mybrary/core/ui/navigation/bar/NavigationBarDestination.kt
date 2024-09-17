@@ -1,9 +1,9 @@
-package app.kaito_dogi.mybrary.core.ui.navigation
+package app.kaito_dogi.mybrary.core.ui.navigation.bar
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import app.kaito_dogi.mybrary.core.designsystem.R
-
+import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 
 internal enum class NavigationBarDestination(
   private val typeSafeRoute: MainRoute,
@@ -24,5 +24,6 @@ internal enum class NavigationBarDestination(
     labelResId = R.string.ui_text_setting,
   ),
   ;
+
   val route = typeSafeRoute::class.qualifiedName
 }
