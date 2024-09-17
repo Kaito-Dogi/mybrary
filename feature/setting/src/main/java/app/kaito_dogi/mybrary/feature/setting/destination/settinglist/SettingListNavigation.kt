@@ -10,4 +10,4 @@ fun NavGraphBuilder.settingListScreen(
   SettingListScreenContainer()
 }
 
-fun NavHostController.navigateToSettingListScreen() = this.navigate(SettingRoute.SettingList)
+fun NavHostController.navigateToSettingListScreen() = this.navigate(route = SettingRoute.SettingList)
