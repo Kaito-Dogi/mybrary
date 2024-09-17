@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.navigation
+package app.kaito_dogi.mybrary.core.ui.navigation.bar
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController

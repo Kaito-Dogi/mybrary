@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="ui_alt_my_book">Go to Mybrary destination</string>
-  <string name="ui_alt_setting">Go to OpenSettings destination</string>
+  <string name="ui_alt_setting">Go to Settings destination</string>
   <string name="ui_text_my_book">Mybrary</string>
   <string name="ui_text_setting">Settings</string>
 </resources>
