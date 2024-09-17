@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,9 +15,9 @@ import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.ui.R
-import app.kaito_dogi.mybrary.feature.searchbook.component.BookRow
-import app.kaito_dogi.mybrary.feature.searchbook.component.BookRowSkeleton
-import app.kaito_dogi.mybrary.feature.searchbook.component.SearchBookBottomAppBar
+import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.BookRow
+import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.BookRowSkeleton
+import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.SearchBookBottomAppBar
 
 @Composable
 internal fun SearchBookScreen(

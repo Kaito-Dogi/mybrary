@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

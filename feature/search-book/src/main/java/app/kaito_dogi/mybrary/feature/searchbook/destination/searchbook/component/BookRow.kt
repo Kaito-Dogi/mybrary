@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook.component
+package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable

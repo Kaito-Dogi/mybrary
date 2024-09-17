@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.searchbook
+package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook
 
 import androidx.compose.runtime.Immutable
 import app.kaito_dogi.mybrary.core.domain.model.Book
