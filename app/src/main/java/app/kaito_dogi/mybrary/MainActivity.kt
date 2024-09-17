@@ -11,9 +11,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumer
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
-import app.kaito_dogi.mybrary.core.ui.navigation.AppNavHost
+import app.kaito_dogi.mybrary.core.ui.navigation.MybraryNavHost
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
-import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
@@ -61,7 +61,7 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         // FIXME: ログイン状態に応じて startDestination を変更する
-        AppNavHost(startDestination = AppRoute.Auth) { navController ->
+        MybraryNavHost(startDestination = MybraryRoute.Auth) { navController ->
           authNavGraph(startDestination = AuthRoute.SendOtp) {
             sendOtpScreen(
               onSendOtpComplete = { email, page ->
