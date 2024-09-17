@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp
 
 import androidx.compose.runtime.Immutable
-import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 
 // FIXME: UiState と ViewModelState を分けてみる

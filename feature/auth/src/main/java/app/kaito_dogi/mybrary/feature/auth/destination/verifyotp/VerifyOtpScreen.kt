@@ -22,7 +22,6 @@ import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
-import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 
 @Composable
