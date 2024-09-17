@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

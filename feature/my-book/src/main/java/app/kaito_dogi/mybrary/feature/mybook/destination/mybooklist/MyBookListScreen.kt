@@ -1,28 +1,32 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
+import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.ui.R
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCell
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookCellSkeleton
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeader
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookListHeaderSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCell
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCellSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeader
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeaderSkeleton
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -31,7 +35,7 @@ internal fun MyBookListScreen(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
 ) {
-  Scaffold(
+  NavigationBarContentScaffold(
     floatingActionButton = {
       FloatingActionButton(
         onClick = onAdditionClick,
@@ -42,6 +46,7 @@ internal fun MyBookListScreen(
         )
       }
     },
+    contentWindowInsets = WindowInsets.systemBars.add(WindowInsets(bottom = 80.dp)),
   ) { innerPadding ->
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),

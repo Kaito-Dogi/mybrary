@@ -1,25 +1,27 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import app.kaito_dogi.mybrary.core.designsystem.component.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 
 @Composable
 internal fun MyBookListScreenContainer(
+  onAdditionClick: () -> Unit,
+  onMyBookClick: (MyBook) -> Unit,
+  viewModel: MyBookListViewModel = hiltViewModel(),
 ) {
-  Box(
-    modifier = Modifier
-      .fillMaxSize()
-      .padding(WindowInsets.navigationBars.asPaddingValues()),
-    contentAlignment = Alignment.Center,
-  ) {
-    Text(text = "MyBookListScreen")
+  val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+  LaunchedEffect(Unit) {
+    viewModel.onInit()
   }
+
+  MyBookListScreen(
+    uiState = uiState,
+    onAdditionClick = onAdditionClick,
+    onMyBookClick = onMyBookClick,
+  )
 }

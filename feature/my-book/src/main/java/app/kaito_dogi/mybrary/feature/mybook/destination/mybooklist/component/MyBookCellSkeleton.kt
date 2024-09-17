@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist.component
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component
 
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable

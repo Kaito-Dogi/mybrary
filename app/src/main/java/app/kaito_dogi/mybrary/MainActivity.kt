@@ -52,7 +52,15 @@ internal class MainActivity : AppCompatActivity() {
         AppNavHost(startDestination = AppRoute.Main) { navController ->
           mainNavGraph(startDestination = MainRoute.MyBook) {
             myBookDestination(startDestination = MyBookRoute.MyBookList) {
-              myBookListScreen()
+              myBookListScreen(
+                onAdditionClick = {
+                  // navController.navigate(MybraryRoute.SearchBook)
+                },
+                onMyBookClick = { myBook ->
+                  // val route = MybraryRoute.MyBookDetail(myBook = myBook)
+                  // navController.navigate(route)
+                },
+              )
             }
 
             settingDestination(startDestination = SettingRoute.SettingList) {

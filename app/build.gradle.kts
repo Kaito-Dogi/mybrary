@@ -137,7 +137,6 @@ dependencies {
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:my-book-detail"))
-  implementation(project(":feature:my-book-list"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:send-otp"))
   implementation(project(":feature:setting"))
