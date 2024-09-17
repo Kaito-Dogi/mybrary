@@ -4,27 +4,28 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarItem
 
 @Composable
 internal fun MainNavigationBar(
-  currentDestination: NavDestination?,
+  hierarchy: Sequence<NavDestination>?,
   onItemClick: (NavigationBarDestination) -> Unit,
   modifier: Modifier = Modifier,
 ) = NavigationBar(
   modifier = modifier,
 ) {
-  NavigationBarDestination.entries.forEach { destination ->
+  NavigationBarDestination.entries.forEach { navigationBarDestination ->
     // https://developer.android.com/develop/ui/compose/navigation#bottom-nav
-    val isSelected = (currentDestination?.hierarchy?.any { it.route == destination.route } == true)
+    val isSelected = hierarchy?.any { navDestination ->
+      navDestination.route == navigationBarDestination.route
+    } == true
 
     NavigationBarItem(
       isSelected = isSelected,
-      onClick = { onItemClick(destination) },
-      iconResId = destination.iconResId,
-      iconAltResId = destination.iconAltResId,
-      labelResId = destination.labelResId,
+      onClick = { onItemClick(navigationBarDestination) },
+      iconResId = navigationBarDestination.iconResId,
+      iconAltResId = navigationBarDestination.iconAltResId,
+      labelResId = navigationBarDestination.labelResId,
     )
   }
 }

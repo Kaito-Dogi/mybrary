@@ -2,16 +2,16 @@ package app.kaito_dogi.mybrary.core.ui.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 
 fun NavGraphBuilder.mainNavGraph(
-  navController: NavHostController,
-  startDestination: MainRoute,
+  startDestination: MainRoute.MyBook,
   builder: NavGraphBuilder.() -> Unit,
-) = composable<AppRoute.Main> {
-  MainNavHost(
-    navController = navController,
-    startDestination = startDestination,
-    builder = builder,
-  )
-}
+) = navigation<AppRoute.Main>(
+  startDestination = startDestination,
+  builder = builder,
+)
+
+fun NavHostController.navigateToMainNavGraph() = this.navigate(AppRoute.Main)

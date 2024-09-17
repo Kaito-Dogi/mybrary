@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.setting
+package app.kaito_dogi.mybrary.core.ui.navigation.route
 
 import kotlinx.serialization.Serializable
 
