@@ -5,12 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
+import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
@@ -30,7 +30,7 @@ internal fun SearchBookScreen(
   onConfirmClick: () -> Unit,
   onDismissRequest: () -> Unit,
 ) {
-  Scaffold(
+  NavigationBarContentScaffold(
     bottomBar = {
       SearchBookBottomAppBar(
         value = uiState.searchTitle,

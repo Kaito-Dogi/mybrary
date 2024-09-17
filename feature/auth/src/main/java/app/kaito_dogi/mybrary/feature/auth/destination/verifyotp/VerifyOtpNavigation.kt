@@ -10,13 +10,11 @@ import kotlin.reflect.typeOf
 fun NavGraphBuilder.verifyOtpScreen(
   onVerifyOtpComplete: () -> Unit,
   onNavigationIconClick: () -> Unit,
-) {
-  composable<AuthRoute.VerifyOtp>(typeMap = VerifyOtpTypeMap) {
-    VerifyOtpScreenContainer(
-      onVerifyOtpComplete = onVerifyOtpComplete,
-      onNavigationIconClick = onNavigationIconClick,
-    )
-  }
+) = composable<AuthRoute.VerifyOtp>(typeMap = VerifyOtpTypeMap) {
+  VerifyOtpScreenContainer(
+    onVerifyOtpComplete = onVerifyOtpComplete,
+    onNavigationIconClick = onNavigationIconClick,
+  )
 }
 
 fun NavHostController.navigateToVerifyOtpScreen(

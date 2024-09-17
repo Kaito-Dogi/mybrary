@@ -8,12 +8,10 @@ fun NavGraphBuilder.sendOtpScreen(
   onSendOtpComplete: (email: String, AuthRoute.VerifyOtp.Page) -> Unit,
   onLoginComplete: () -> Unit,
   onSignUpComplete: () -> Unit,
-) {
-  composable<AuthRoute.SendOtp> {
-    SendOtpScreenContainer(
-      onSendOtpComplete = onSendOtpComplete,
-      onLoginComplete = onLoginComplete,
-      onSignUpComplete = onSignUpComplete,
-    )
-  }
+) = composable<AuthRoute.SendOtp> {
+  SendOtpScreenContainer(
+    onSendOtpComplete = onSendOtpComplete,
+    onLoginComplete = onLoginComplete,
+    onSignUpComplete = onSignUpComplete,
+  )
 }
