@@ -135,11 +135,10 @@ dependencies {
   implementation(project(":core:domain"))
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
+  implementation(project(":feature:auth"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
-  implementation(project(":feature:send-otp"))
   implementation(project(":feature:setting"))
-  implementation(project(":feature:verify-otp"))
 
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxNavigationCompose)

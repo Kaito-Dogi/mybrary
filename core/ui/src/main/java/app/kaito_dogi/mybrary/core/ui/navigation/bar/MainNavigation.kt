@@ -14,4 +14,4 @@ fun NavGraphBuilder.mainNavGraph(
   builder = builder,
 )
 
-fun NavHostController.navigateToMainNavGraph() = this.navigate(AppRoute.Main)
+fun NavHostController.navigateToMainNavGraph() = this.navigate(route = AppRoute.Main)

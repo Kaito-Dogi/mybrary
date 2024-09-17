@@ -14,13 +14,19 @@ import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
 import app.kaito_dogi.mybrary.core.ui.navigation.AppNavHost
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
+import app.kaito_dogi.mybrary.feature.auth.authNavGraph
+import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.sendOtpScreen
+import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
+import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.navigateToMyBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.myBookDestination
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListScreen
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.navigateToMyBookListScreen
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListScreen
 import app.kaito_dogi.mybrary.feature.setting.settingDestination
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +57,25 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         // FIXME: ログイン状態に応じて startDestination を変更する
-        AppNavHost(startDestination = AppRoute.Main) { navController ->
+        AppNavHost(startDestination = AppRoute.Auth) { navController ->
+          authNavGraph(startDestination = AuthRoute.SendOtp) {
+            sendOtpScreen(
+              onSendOtpComplete = { email, page ->
+                navController.navigateToVerifyOtpScreen(
+                  email = email,
+                  page = page,
+                )
+              },
+              onLoginComplete = navController::navigateToMyBookListScreen,
+              onSignUpComplete = navController::navigateToMyBookListScreen,
+            )
+
+            verifyOtpScreen(
+              onVerifyOtpComplete = navController::navigateToMyBookListScreen,
+              onNavigationIconClick = navController::popBackStack,
+            )
+          }
+
           mainNavGraph(startDestination = MainRoute.MyBook) {
             myBookDestination(startDestination = MyBookRoute.MyBookList) {
               myBookListScreen(
@@ -59,9 +83,7 @@ internal class MainActivity : AppCompatActivity() {
                   // navController.navigate(MybraryRoute.SearchBook)
                 },
                 onMyBookClick = { myBook ->
-                  navController.navigateToMyBookDetailScreen(
-                      myBook = myBook,
-                  )
+                  navController.navigateToMyBookDetailScreen(myBook = myBook)
                 },
               )
 
