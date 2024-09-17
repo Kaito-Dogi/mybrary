@@ -18,9 +18,9 @@ import kotlinx.serialization.json.Json
 internal object SupabaseClientModule {
   @Singleton
   @Provides
-  fun provideSupabaseClient(mybraryConfig: MybraryConfig): SupabaseClient = createSupabaseClient(
-    supabaseUrl = mybraryConfig.supabaseUrl,
-    supabaseKey = mybraryConfig.supabaseKey,
+  fun provideSupabaseClient(config: MybraryConfig): SupabaseClient = createSupabaseClient(
+    supabaseUrl = config.supabaseUrl,
+    supabaseKey = config.supabaseKey,
   ) {
     defaultSerializer = KotlinXSerializer(
       json = Json { ignoreUnknownKeys = true },
