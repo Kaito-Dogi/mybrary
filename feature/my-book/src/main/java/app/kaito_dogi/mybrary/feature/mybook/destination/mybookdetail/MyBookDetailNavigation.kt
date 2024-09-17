@@ -12,9 +12,7 @@ import kotlin.reflect.typeOf
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-fun NavGraphBuilder.myBookDetailScreen() = composable<MyBookRoute.MyBookDetail>(
-  typeMap = mapOf(typeOf<MyBook>() to MyBookNavType),
-) {
+fun NavGraphBuilder.myBookDetailScreen() = composable<MyBookRoute.MyBookDetail>(typeMap = MyBookDetailTypeMap) {
   MyBookDetailScreenContainer()
 }
 
@@ -51,3 +49,5 @@ internal val MyBookNavType = object : NavType<MyBook>(isNullableAllowed = false)
 
   override val name: String = MyBook::class.java.name
 }
+
+internal val MyBookDetailTypeMap = mapOf(typeOf<MyBook>() to MyBookNavType)

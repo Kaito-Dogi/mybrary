@@ -29,14 +29,12 @@ internal class MyBookDetailViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
-  private val navArg: MyBookRoute.MyBookDetail = savedStateHandle.toRoute(
-    typeMap = mapOf(typeOf<MyBook>() to MyBookNavType),
-  )
+  private val navArg: MyBookRoute.MyBookDetail = savedStateHandle.toRoute(typeMap = MyBookDetailTypeMap)
 
   private val _uiState = MutableStateFlow(
-      MyBookDetailUiState.createInitialValue(
-          myBook = navArg.myBook,
-      ),
+    MyBookDetailUiState.createInitialValue(
+      myBook = navArg.myBook,
+    ),
   )
   val uiState = _uiState.asStateFlow()
 
