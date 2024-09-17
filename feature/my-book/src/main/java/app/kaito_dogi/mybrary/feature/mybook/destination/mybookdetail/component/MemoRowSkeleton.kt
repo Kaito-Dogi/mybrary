@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist.component
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -16,4 +16,4 @@ fun NavGraphBuilder.myBookListScreen(
   )
 }
 
-fun NavHostController.navigateToMyBookListScreen() = this.navigate(MyBookRoute.MyBookList)
+fun NavHostController.navigateToMyBookListScreen() = this.navigate(route = MyBookRoute.MyBookList)

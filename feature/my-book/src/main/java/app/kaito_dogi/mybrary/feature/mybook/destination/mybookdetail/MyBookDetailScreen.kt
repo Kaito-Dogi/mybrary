@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
@@ -20,11 +20,11 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MemoRow
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MemoRowSkeleton
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookDetailBottomAppBar
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookDetailBottomSheetContent
-import app.kaito_dogi.mybrary.feature.mybooklist.component.MyBookDetailTopAppBar
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRow
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRowSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailBottomAppBar
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailBottomSheetContent
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailTopAppBar
 
 @Composable
 internal fun MyBookDetailScreen(
@@ -41,8 +41,9 @@ internal fun MyBookDetailScreen(
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
-  Scaffold(
+  NavigationBarContentScaffold(
     bottomBar = {
+      // FIXME: bottomBar での操作を TopAppBar, Fab に移動する
       MyBookDetailBottomAppBar(
         isPublic = uiState.myBook.isPublic,
         isFavorite = uiState.myBook.isFavorite,

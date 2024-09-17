@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.mybooklist
+package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable

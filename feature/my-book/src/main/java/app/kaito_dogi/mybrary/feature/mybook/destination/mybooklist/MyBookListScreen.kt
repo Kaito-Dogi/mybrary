@@ -46,7 +46,6 @@ internal fun MyBookListScreen(
         )
       }
     },
-    contentWindowInsets = WindowInsets.systemBars.add(WindowInsets(bottom = 80.dp)),
   ) { innerPadding ->
     LazyVerticalGrid(
       columns = GridCells.Fixed(uiState.numberOfColumns),

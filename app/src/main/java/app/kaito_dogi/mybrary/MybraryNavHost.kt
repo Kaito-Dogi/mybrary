@@ -6,8 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.core.ui.navigation.MybraryRoute
-import app.kaito_dogi.mybrary.feature.mybooklist.myBookDetailScreen
-import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
@@ -23,18 +21,6 @@ internal fun MybraryNavHost(
     startDestination = MybraryRoute.SendOtp,
     modifier = modifier.fillMaxSize(),
   ) {
-    myBookListScreen(
-      onAdditionClick = {
-        navController.navigate(MybraryRoute.SearchBook)
-      },
-      onMyBookClick = { myBook ->
-        val route = MybraryRoute.MyBookDetail(myBook = myBook)
-        navController.navigate(route)
-      },
-    )
-
-    myBookDetailScreen()
-
     searchBookScreen()
 
     sendOtpScreen(

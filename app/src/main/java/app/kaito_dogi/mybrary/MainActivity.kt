@@ -17,6 +17,8 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.navigateToMyBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.myBookDestination
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListScreen
@@ -57,10 +59,13 @@ internal class MainActivity : AppCompatActivity() {
                   // navController.navigate(MybraryRoute.SearchBook)
                 },
                 onMyBookClick = { myBook ->
-                  // val route = MybraryRoute.MyBookDetail(myBook = myBook)
-                  // navController.navigate(route)
+                  navController.navigateToMyBookDetailScreen(
+                      myBook = myBook,
+                  )
                 },
               )
+
+              myBookDetailScreen()
             }
 
             settingDestination(startDestination = SettingRoute.SettingList) {
