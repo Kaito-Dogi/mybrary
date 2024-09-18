@@ -1,17 +1,25 @@
 package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.isImeVisible
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
-import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
-import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.ui.R
@@ -19,6 +27,7 @@ import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.componen
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.BookRowSkeleton
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.SearchBookBottomAppBar
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun SearchBookScreen(
   uiState: SearchBookUiState,
@@ -30,56 +39,79 @@ internal fun SearchBookScreen(
   onConfirmClick: () -> Unit,
   onDismissRequest: () -> Unit,
 ) {
-  NavigationBarContentScaffold(
+  Scaffold(
+    modifier = Modifier.padding(bottom = MybraryTheme.dimens.navigationBarHeight),
     bottomBar = {
+      // IME が表示されるとき、imePadding を使用すると Navigation Bar の余白が生まれてしまうため、手動で計算する
+      val imePaddingBottom = WindowInsets.ime.asPaddingValues().calculateBottomPadding() - minOf(
+        a = WindowInsets.ime.asPaddingValues().calculateBottomPadding(),
+        b = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding() + MybraryTheme.dimens.navigationBarHeight,
+      )
       SearchBookBottomAppBar(
         value = uiState.searchTitle,
         onValueChange = onSearchQueryChange,
         onBarcodeScannerClick = onBarcodeScannerClick,
-        modifier = Modifier.imePadding(),
+        modifier = Modifier.padding(
+          bottom = if (WindowInsets.isImeVisible) imePaddingBottom else 0.dp,
+        ),
       )
     },
     snackbarHost = snackbarHost,
   ) { innerPadding ->
-    LazyColumn(
-      modifier = Modifier.fillMaxSize(),
-      contentPadding = innerPadding.plus(all = MybraryTheme.spaces.md),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+    Box(
+      modifier = Modifier
+        .padding(innerPadding)
+        .fillMaxSize(),
     ) {
-      uiState.bookList?.let {
-        items(
-          items = uiState.bookList,
-          key = { it.isbn },
-        ) {
-          BookRow(
-            book = it,
-            onClick = onBookClick,
-            onLongClick = onBookLongClick,
-          )
+      LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(all = MybraryTheme.spaces.md),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+      ) {
+        uiState.bookList?.let {
+          items(
+            items = uiState.bookList,
+            key = { it.isbn },
+          ) {
+            BookRow(
+              book = it,
+              onClick = onBookClick,
+              onLongClick = onBookLongClick,
+            )
+          }
+        }
+
+        if (uiState.isSearching) {
+          items(
+            count = 4,
+            key = { "SearchResultBookRowSkeleton$it" },
+          ) {
+            BookRowSkeleton()
+          }
         }
       }
 
-      if (uiState.isSearching) {
-        items(
-          count = 4,
-          key = { "SearchResultBookRowSkeleton$it" },
-        ) {
-          BookRowSkeleton()
-        }
-      }
-    }
+      // SearchBookBottomAppBar(
+      //   value = uiState.searchTitle,
+      //   onValueChange = onSearchQueryChange,
+      //   onBarcodeScannerClick = onBarcodeScannerClick,
+      //   modifier = Modifier
+      //     .align(Alignment.BottomCenter)
+      //     .imePadding(),
+      // )
 
-    if (uiState.isDialogShown && uiState.selectedBook != null) {
-      AlertDialog(
-        title = stringResource(id = R.string.search_book_text_would_you_like_to_add_to_mybrary),
-        content = uiState.selectedBook.title,
-        onConfirmClick = onConfirmClick,
-        confirmTextResId = R.string.search_book_text_add,
-        onDismissRequest = onDismissRequest,
-        dismissTextResId = R.string.search_book_text_cancel,
-        onDismissClick = onDismissRequest,
-        isConfirmLoading = uiState.isBookRegistering,
-      )
+      if (uiState.isDialogShown && uiState.selectedBook != null) {
+        AlertDialog(
+          title = stringResource(id = R.string.search_book_text_would_you_like_to_add_to_mybrary),
+          content = uiState.selectedBook.title,
+          onConfirmClick = onConfirmClick,
+          confirmTextResId = R.string.search_book_text_add,
+          onDismissRequest = onDismissRequest,
+          dismissTextResId = R.string.search_book_text_cancel,
+          onDismissClick = onDismissRequest,
+          isConfirmLoading = uiState.isBookRegistering,
+        )
+      }
     }
   }
 }
