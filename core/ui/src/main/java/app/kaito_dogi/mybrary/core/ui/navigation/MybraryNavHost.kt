@@ -41,12 +41,12 @@ fun MybraryNavHost(
       modifier = Modifier.fillMaxSize(),
     )
 
-    val isNavigationBarShown =
-      hierarchy?.any { navDestination ->
-        NavigationBarDestination.entries.any { navigationBarDestination ->
-          navDestination.route == navigationBarDestination.route
-        }
-      } == true
+    // NavDestination が MainRoute かどうかで Navigation Bar の表示・非表示を切り替える
+    val isNavigationBarShown = hierarchy?.any { navDestination ->
+      NavigationBarDestination.entries.any { navigationBarDestination ->
+        navDestination.route == navigationBarDestination.route
+      }
+    } == true
     AnimatedVisibility(
       visible = isNavigationBarShown,
       modifier = Modifier.align(Alignment.BottomCenter),
