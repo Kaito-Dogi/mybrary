@@ -1,14 +1,20 @@
 package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
+
+private val Elevation = 3.0.dp
 
 @Composable
 internal fun SearchBookBottomAppBar(
@@ -19,17 +25,24 @@ internal fun SearchBookBottomAppBar(
 ) {
   BottomAppBar(
     modifier = modifier,
+    containerColor = Color.Transparent,
     contentPadding = PaddingValues(horizontal = MybraryTheme.spaces.md),
   ) {
     TextField(
       value = value,
       onValueChange = onValueChange,
-      modifier = Modifier.weight(1f),
+      modifier = Modifier
+        .shadow(
+          elevation = Elevation,
+          shape = CircleShape,
+        )
+        .weight(1f),
       placeholderResId = R.string.search_book_placeholder_enter_search_keywords,
       leadingIconResId = R.drawable.icon_search,
       leadingIconAltResId = R.string.search_book_alt_search_for_books,
       imeAction = ImeAction.Done,
       singleLine = true,
+      shape = CircleShape,
     )
 
 //    Gap(width = MybraryTheme.space.sm)
