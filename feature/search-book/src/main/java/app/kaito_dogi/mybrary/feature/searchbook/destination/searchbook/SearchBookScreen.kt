@@ -1,9 +1,7 @@
 package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
+import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.ui.R
@@ -58,60 +57,58 @@ internal fun SearchBookScreen(
     },
     snackbarHost = snackbarHost,
   ) { innerPadding ->
-    Box(
-      modifier = Modifier
-        .padding(innerPadding)
-        .fillMaxSize(),
+    LazyColumn(
+      modifier = Modifier.fillMaxSize(),
+      contentPadding = innerPadding.plus(
+        start = MybraryTheme.spaces.md,
+        top = MybraryTheme.spaces.md,
+        end = MybraryTheme.spaces.md,
+      ),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
     ) {
-      LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(all = MybraryTheme.spaces.md),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
-      ) {
-        uiState.bookList?.let {
-          items(
-            items = uiState.bookList,
-            key = { it.isbn },
-          ) {
-            BookRow(
-              book = it,
-              onClick = onBookClick,
-              onLongClick = onBookLongClick,
-            )
-          }
-        }
-
-        if (uiState.isSearching) {
-          items(
-            count = 4,
-            key = { "SearchResultBookRowSkeleton$it" },
-          ) {
-            BookRowSkeleton()
-          }
+      uiState.bookList?.let {
+        items(
+          items = uiState.bookList,
+          key = { it.isbn },
+        ) {
+          BookRow(
+            book = it,
+            onClick = onBookClick,
+            onLongClick = onBookLongClick,
+          )
         }
       }
 
-      // SearchBookBottomAppBar(
-      //   value = uiState.searchTitle,
-      //   onValueChange = onSearchQueryChange,
-      //   onBarcodeScannerClick = onBarcodeScannerClick,
-      //   modifier = Modifier
-      //     .align(Alignment.BottomCenter)
-      //     .imePadding(),
-      // )
-
-      if (uiState.isDialogShown && uiState.selectedBook != null) {
-        AlertDialog(
-          title = stringResource(id = R.string.search_book_text_would_you_like_to_add_to_mybrary),
-          content = uiState.selectedBook.title,
-          onConfirmClick = onConfirmClick,
-          confirmTextResId = R.string.search_book_text_add,
-          onDismissRequest = onDismissRequest,
-          dismissTextResId = R.string.search_book_text_cancel,
-          onDismissClick = onDismissRequest,
-          isConfirmLoading = uiState.isBookRegistering,
-        )
+      if (uiState.isSearching) {
+        items(
+          count = 4,
+          key = { "SearchResultBookRowSkeleton$it" },
+        ) {
+          BookRowSkeleton()
+        }
       }
+    }
+
+    // SearchBookBottomAppBar(
+    //   value = uiState.searchTitle,
+    //   onValueChange = onSearchQueryChange,
+    //   onBarcodeScannerClick = onBarcodeScannerClick,
+    //   modifier = Modifier
+    //     .align(Alignment.BottomCenter)
+    //     .imePadding(),
+    // )
+
+    if (uiState.isDialogShown && uiState.selectedBook != null) {
+      AlertDialog(
+        title = stringResource(id = R.string.search_book_text_would_you_like_to_add_to_mybrary),
+        content = uiState.selectedBook.title,
+        onConfirmClick = onConfirmClick,
+        confirmTextResId = R.string.search_book_text_add,
+        onDismissRequest = onDismissRequest,
+        dismissTextResId = R.string.search_book_text_cancel,
+        onDismissClick = onDismissRequest,
+        isConfirmLoading = uiState.isBookRegistering,
+      )
     }
   }
 }
