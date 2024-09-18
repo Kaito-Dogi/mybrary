@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -30,6 +31,7 @@ fun TextField(
   onSend: (() -> Unit)? = null,
   singleLine: Boolean = false,
   minLines: Int = 1,
+  shape: Shape = MybraryTheme.shapes.small,
 ) = androidx.compose.material3.OutlinedTextField(
   value = value,
   onValueChange = onValueChange,
@@ -56,7 +58,7 @@ fun TextField(
   ),
   singleLine = singleLine,
   minLines = minLines,
-  shape = MybraryTheme.shapes.small,
+  shape = shape,
   colors = OutlinedTextFieldDefaults.colors().copy(
     focusedContainerColor = MybraryTheme.colorScheme.surface,
     unfocusedContainerColor = MybraryTheme.colorScheme.surface,

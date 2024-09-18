@@ -54,8 +54,8 @@
   <string name="verify_otp_alt_otp">ワンタイムパスワード</string>
   <string name="verify_otp_back">ワンタイムパスワードの送信に戻る</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
-  <string name="verify_otp_text_enter_otp_sent_to">%1$sに送信されたワンタイムパスワードを入力してください</string>
-  <string name="verify_otp_text_it_may_take_a_few_minutes">ワンタイムパスワードが届くまで数分かかる場合があります</string>
+  <string name="verify_otp_text_enter_otp_sent_to">%1$sに送信されたワンタイムパスワードを入力してください。</string>
+  <string name="verify_otp_text_it_may_take_a_few_minutes">ワンタイムパスワードが届くまで数分かかる場合があります。</string>
   <string name="verify_otp_text_login">ログイン</string>
   <string name="verify_otp_text_resend_otp">もう一度ワンタイムパスワードを送信</string>
   <string name="verify_otp_text_sign_up">サインアップ</string>

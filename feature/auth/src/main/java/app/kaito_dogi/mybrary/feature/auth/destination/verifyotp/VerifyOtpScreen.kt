@@ -87,14 +87,14 @@ internal fun VerifyOtpScreen(
 
       Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
 
-      Gap(height = MybraryTheme.spaces.md)
+      Gap(height = MybraryTheme.spaces.xxs)
 
       TertiaryButton(
         textResId = R.string.verify_otp_text_resend_otp,
         onClick = onResendOtpClick,
         modifier = Modifier
           .fillMaxWidth()
-          .padding(bottom = MybraryTheme.spaces.xl),
+          .padding(bottom = MybraryTheme.spaces.sm),
         isLoading = uiState.isOtpResending,
       )
     }

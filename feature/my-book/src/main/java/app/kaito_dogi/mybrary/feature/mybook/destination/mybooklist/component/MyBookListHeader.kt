@@ -9,12 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
-
-private val Height = 40.dp
 
 @Composable
 internal fun MyBookListHeader(
@@ -24,7 +21,7 @@ internal fun MyBookListHeader(
   Column(
     modifier = modifier
       .fillMaxWidth()
-      .height(Height),
+      .height(MybraryTheme.dimens.topAppBarHeight - MybraryTheme.spaces.sm * 2),
     verticalArrangement = Arrangement.Center,
   ) {
     Text(

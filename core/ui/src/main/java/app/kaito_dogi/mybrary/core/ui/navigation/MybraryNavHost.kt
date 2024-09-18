@@ -18,8 +18,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.MainNavigationBar
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.NavigationBarDestination
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 
 @Composable
 fun MybraryNavHost(
@@ -41,14 +41,14 @@ fun MybraryNavHost(
       modifier = Modifier.fillMaxSize(),
     )
 
-    val isNavigationBarShown =
-      hierarchy?.any { navDestination ->
-        NavigationBarDestination.entries.any { navigationBarDestination ->
-          navDestination.route == navigationBarDestination.route
-        }
-      } == true
+    // NavDestination が MainRoute かどうかで Navigation Bar の表示・非表示を切り替える
+    val isNavigationBarVisible = hierarchy?.any { navDestination ->
+      NavigationBarDestination.entries.any { navigationBarDestination ->
+        navDestination.route == navigationBarDestination.route
+      }
+    } == true
     AnimatedVisibility(
-      visible = isNavigationBarShown,
+      visible = isNavigationBarVisible,
       modifier = Modifier.align(Alignment.BottomCenter),
       enter = slideInVertically(
         initialOffsetY = { fullHeight -> fullHeight },

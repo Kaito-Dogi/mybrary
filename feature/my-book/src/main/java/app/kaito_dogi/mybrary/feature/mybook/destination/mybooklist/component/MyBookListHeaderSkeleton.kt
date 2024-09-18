@@ -7,13 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
-
-private val Height = 40.dp
 
 @Composable
 internal fun MyBookListHeaderSkeleton(
@@ -23,7 +20,7 @@ internal fun MyBookListHeaderSkeleton(
     shape = MybraryTheme.shapes.extraSmall,
     modifier = modifier
       .fillMaxWidth()
-      .height(Height),
+      .height(MybraryTheme.dimens.topAppBarHeight - MybraryTheme.spaces.sm * 2),
   ) {
     Text(
       text = stringResource(id = R.string.my_book_list_text_a),
