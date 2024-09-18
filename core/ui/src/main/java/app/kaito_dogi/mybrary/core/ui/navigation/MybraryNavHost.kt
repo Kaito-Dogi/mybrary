@@ -42,13 +42,13 @@ fun MybraryNavHost(
     )
 
     // NavDestination が MainRoute かどうかで Navigation Bar の表示・非表示を切り替える
-    val isNavigationBarShown = hierarchy?.any { navDestination ->
+    val isNavigationBarVisible = hierarchy?.any { navDestination ->
       NavigationBarDestination.entries.any { navigationBarDestination ->
         navDestination.route == navigationBarDestination.route
       }
     } == true
     AnimatedVisibility(
-      visible = isNavigationBarShown,
+      visible = isNavigationBarVisible,
       modifier = Modifier.align(Alignment.BottomCenter),
       enter = slideInVertically(
         initialOffsetY = { fullHeight -> fullHeight },
