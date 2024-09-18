@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
@@ -41,7 +41,8 @@ internal fun MyBookDetailScreen(
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
-  NavigationBarContentScaffold(
+  Scaffold(
+    modifier = Modifier.padding(bottom = MybraryTheme.dimens.navigationBarHeight),
     bottomBar = {
       // FIXME: bottomBar での操作を TopAppBar, Fab に移動する
       MyBookDetailBottomAppBar(
