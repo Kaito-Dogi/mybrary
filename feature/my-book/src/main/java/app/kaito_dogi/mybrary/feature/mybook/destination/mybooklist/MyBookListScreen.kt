@@ -5,17 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
+import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
@@ -32,8 +31,7 @@ internal fun MyBookListScreen(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
 ) {
-  Scaffold(
-    modifier = Modifier.padding(bottom = MybraryTheme.dimens.navigationBarHeight),
+  NavigationBarContentScaffold(
     floatingActionButton = {
       FloatingActionButton(
         onClick = onAdditionClick,

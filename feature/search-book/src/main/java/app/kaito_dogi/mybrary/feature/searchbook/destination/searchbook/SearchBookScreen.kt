@@ -11,13 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
+import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
@@ -38,8 +38,7 @@ internal fun SearchBookScreen(
   onConfirmClick: () -> Unit,
   onDismissRequest: () -> Unit,
 ) {
-  Scaffold(
-    modifier = Modifier.padding(bottom = MybraryTheme.dimens.navigationBarHeight),
+  NavigationBarContentScaffold(
     bottomBar = {
       // IME が表示されるとき、imePadding を使用すると Navigation Bar の余白が生まれてしまうため、手動で計算する
       val imePaddingBottom = WindowInsets.ime.asPaddingValues().calculateBottomPadding() - minOf(
