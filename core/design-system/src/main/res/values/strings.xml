@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="setting_list_text_about">About</string>
+  <string name="setting_list_text_account">Account</string>
+  <string name="setting_list_text_license">License</string>
+  <string name="setting_list_text_make_notes_public_by_default">Make notes public by default</string>
+  <string name="setting_list_text_privacy_policy">Privacy Policy</string>
+  <string name="setting_list_text_terms_of_use">Terms of Use</string>
   <string name="ui_alt_my_book">Go to Mybrary destination</string>
   <string name="ui_alt_setting">Go to Settings destination</string>
   <string name="ui_text_my_book">Mybrary</string>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="setting_list_text_about">このアプリについて</string>
+  <string name="setting_list_text_account">アカウント</string>
+  <string name="setting_list_text_license">ライセンス</string>
+  <string name="setting_list_text_make_notes_public_by_default">メモをデフォルトで公開する</string>
+  <string name="setting_list_text_privacy_policy">プライバシーポリシー</string>
+  <string name="setting_list_text_terms_of_use">利用規約</string>
   <string name="ui_alt_my_book">Mybrary に移動する</string>
   <string name="ui_alt_setting">設定に移動する</string>
   <string name="ui_text_my_book">Mybrary</string>
