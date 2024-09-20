@@ -28,7 +28,10 @@ internal fun SettingRowScaffold(
       .clip(MybraryTheme.shapes.small)
       .clickable(enabled = onClick != null) { onClick?.invoke() }
       .fillMaxWidth()
-      .padding(MybraryTheme.spaces.xs),
+      .padding(
+        horizontal = MybraryTheme.spaces.xs,
+        vertical = MybraryTheme.spaces.sm,
+      ),
     horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
     verticalAlignment = Alignment.CenterVertically,
   ) {

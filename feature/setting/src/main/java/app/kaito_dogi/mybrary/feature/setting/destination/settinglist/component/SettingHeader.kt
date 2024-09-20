@@ -21,13 +21,17 @@ internal fun SettingHeader(
   Box(
     modifier = modifier
       .fillMaxWidth()
-      .padding(horizontal = MybraryTheme.spaces.xs),
+      .padding(
+        start = MybraryTheme.spaces.xs,
+        end = MybraryTheme.spaces.xs,
+        bottom = MybraryTheme.spaces.xs,
+      ),
     contentAlignment = Alignment.CenterStart,
   ) {
     Text(
       text = stringResource(titleResId),
       color = MybraryTheme.colorScheme.onSurfaceVariant,
-      style = MybraryTheme.typography.titleLarge,
+      style = MybraryTheme.typography.titleMedium,
     )
   }
 }
