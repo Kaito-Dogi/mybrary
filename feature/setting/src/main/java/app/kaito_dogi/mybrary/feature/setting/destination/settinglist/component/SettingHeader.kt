@@ -22,9 +22,8 @@ internal fun SettingHeader(
     modifier = modifier
       .fillMaxWidth()
       .padding(
-        start = MybraryTheme.spaces.xs,
-        end = MybraryTheme.spaces.xs,
-        bottom = MybraryTheme.spaces.xs,
+        horizontal = MybraryTheme.spaces.xs,
+        vertical = MybraryTheme.spaces.sm,
       ),
     contentAlignment = Alignment.CenterStart,
   ) {

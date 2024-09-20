@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,11 +25,13 @@ internal fun SettingRow(
     onClick = onClick,
     trailingContent = {
       onClick?.let {
-        Icon(
-          iconResId = R.drawable.icon_arrow_forward,
-          altResId = titleResId,
-          tint = MybraryTheme.colorScheme.onSurface,
-        )
+        IconButton(it) {
+          Icon(
+            iconResId = R.drawable.icon_arrow_forward,
+            altResId = titleResId,
+            tint = MybraryTheme.colorScheme.onSurface,
+          )
+        }
       }
     },
   )
