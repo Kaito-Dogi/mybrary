@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,8 +19,9 @@ internal fun SettingRow(
 ) {
   SettingRowScaffold(
     titleResId = titleResId,
-    modifier = modifier.clickable(enabled = onClick != null) { onClick?.invoke() },
+    modifier = modifier,
     supportingTextResId = supportingTextResId,
+    onClick = onClick,
     trailingContent = {
       onClick?.let {
         Icon(

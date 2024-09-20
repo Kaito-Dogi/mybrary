@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.clickable
 import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,8 +20,9 @@ internal fun SettingSwitchRow(
 ) {
   SettingRowScaffold(
     titleResId = titleResId,
-    modifier = modifier.clickable { onClick(!isChecked) },
+    modifier = modifier,
     supportingTextResId = supportingTextResId,
+    onClick = { onClick(!isChecked) },
     trailingContent = {
       Switch(
         checked = isChecked,

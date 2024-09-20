@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,13 +20,15 @@ internal fun SettingRowScaffold(
   @StringRes titleResId: Int,
   modifier: Modifier = Modifier,
   @StringRes supportingTextResId: Int? = null,
+  onClick: (() -> Unit)? = null,
   trailingContent: @Composable () -> Unit,
 ) {
   Row(
     modifier = modifier
       .clip(MybraryTheme.shapes.small)
+      .clickable(enabled = onClick != null) { onClick?.invoke() }
       .fillMaxWidth()
-      .padding(MybraryTheme.spaces.sm),
+      .padding(MybraryTheme.spaces.xs),
     horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
     verticalAlignment = Alignment.CenterVertically,
   ) {
