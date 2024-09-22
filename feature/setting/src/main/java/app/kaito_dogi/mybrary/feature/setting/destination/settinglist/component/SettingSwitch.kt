@@ -11,7 +11,7 @@ import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
-internal fun SettingSwitchRow(
+internal fun SettingSwitch(
   @StringRes titleResId: Int,
   isChecked: Boolean,
   onClick: (Boolean) -> Unit,
@@ -24,9 +24,10 @@ internal fun SettingSwitchRow(
     supportingTextResId = supportingTextResId,
     onClick = { onClick(!isChecked) },
     trailingContent = {
+      // Composable 全体をクリック領域とするため、Switch 自体には onClick を渡さず、リップルを無効にする
       Switch(
         checked = isChecked,
-        onCheckedChange = onClick,
+        onCheckedChange = null,
       )
     },
   )
@@ -34,11 +35,11 @@ internal fun SettingSwitchRow(
 
 @Preview
 @Composable
-private fun SettingSwitchRowPreview(
+private fun SettingSwitchPreview(
   @PreviewParameter(SettingSwitchRowPreviewParameterProvider::class) parameter: SettingSwitchRowPreviewParameter,
 ) {
   MybraryTheme {
-    SettingSwitchRow(
+    SettingSwitch(
       titleResId = R.string.setting_list_text_make_notes_public_by_default,
       isChecked = parameter.isChecked,
       onClick = {},

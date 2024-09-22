@@ -21,7 +21,10 @@ internal fun SettingHeader(
   Box(
     modifier = modifier
       .fillMaxWidth()
-      .padding(MybraryTheme.spaces.md),
+      .padding(
+        horizontal = MybraryTheme.spaces.md,
+        vertical = MybraryTheme.spaces.sm,
+      ),
     contentAlignment = Alignment.CenterStart,
   ) {
     Text(

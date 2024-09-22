@@ -1,15 +1,20 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
-import androidx.compose.material3.IconButton
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+
+private val IconContainerSize = 48.dp
 
 @Composable
 internal fun SettingRow(
@@ -25,7 +30,10 @@ internal fun SettingRow(
     onClick = onClick,
     trailingContent = {
       onClick?.let {
-        IconButton(it) {
+        Box(
+          modifier = Modifier.size(IconContainerSize),
+          contentAlignment = Alignment.Center,
+        ) {
           Icon(
             iconResId = R.drawable.icon_arrow_forward,
             altResId = titleResId,
