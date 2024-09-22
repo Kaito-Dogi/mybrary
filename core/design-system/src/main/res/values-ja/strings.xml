@@ -10,6 +10,7 @@
   <string name="setting_list_text_privacy_policy">プライバシーポリシー</string>
   <string name="setting_list_text_setting">設定</string>
   <string name="setting_list_text_terms_of_use">利用規約</string>
+  <string name="setting_list_text_version">バージョン</string>
   <string name="ui_alt_my_book">Mybrary に移動する</string>
   <string name="ui_alt_setting">設定に移動する</string>
   <string name="ui_text_my_book">Mybrary</string>
