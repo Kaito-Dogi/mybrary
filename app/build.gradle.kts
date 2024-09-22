@@ -1,10 +1,23 @@
+import com.android.build.api.dsl.VariantDimension
 import java.util.Properties
 
-val properties = Properties()
-val secretsProperties = rootProject.file("./secrets.properties")
+private val properties = Properties()
+private val secretsProperties = rootProject.file("./secrets.properties")
 if (secretsProperties.exists()) {
   properties.load(secretsProperties.inputStream())
 }
+
+private fun VariantDimension.buildConfigStringField(
+  name: String,
+  value: String?,
+  initialValue: String,
+) = this.buildConfigField(
+  type = "String",
+  name = name,
+  value = value?.let { "\"$it\"" } ?: initialValue,
+)
+
+private fun getEnvOrEmpty(name: String) = System.getenv(name) ?: ""
 
 plugins {
   alias(libs.plugins.androidApplication)
@@ -26,27 +39,30 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    buildConfigField(
-      type = "String",
+    buildConfigStringField(
       name = "RAKUTEN_AFFILIATE_ID",
-      value = properties.getProperty("rakuten.affiliateId.dev")
-        ?: System.getenv("RAKUTEN_AFFILIATE_ID_DEV"),
+      value = properties.getProperty("rakuten.affiliateId.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_DEV"),
     )
-    buildConfigField(
-      type = "String",
+    buildConfigStringField(
       name = "RAKUTEN_APPLICATION_ID",
-      value = properties.getProperty("rakuten.applicationId.dev")
-        ?: System.getenv("RAKUTEN_APPLICATION_ID_DEV"),
+      value = properties.getProperty("rakuten.applicationId.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_DEV"),
     )
-    buildConfigField(
-      type = "String",
+    buildConfigStringField(
       name = "SUPABASE_KEY",
-      value = properties.getProperty("supabase.key.dev") ?: System.getenv("SUPABASE_KEY_DEV"),
+      value = properties.getProperty("supabase.key.dev"),
+      initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_DEV"),
     )
-    buildConfigField(
-      type = "String",
+    buildConfigStringField(
       name = "SUPABASE_URL",
-      value = properties.getProperty("supabase.url.dev") ?: System.getenv("SUPABASE_URL_DEV"),
+      value = properties.getProperty("supabase.url.dev"),
+      initialValue = getEnvOrEmpty(name = "SUPABASE_URL_DEV"),
+    )
+    buildConfigStringField(
+      name = "VERSION_NAME",
+      value = versionName,
+      initialValue = "",
     )
   }
 
@@ -70,27 +86,25 @@ android {
     create("prod") {
       dimension = "env"
 
-      buildConfigField(
-        type = "String",
+      buildConfigStringField(
         name = "RAKUTEN_AFFILIATE_ID",
-        value = properties.getProperty("rakuten.affiliateId.prod")
-          ?: System.getenv("RAKUTEN_AFFILIATE_ID_PROD"),
+        value = properties.getProperty("rakuten.affiliateId.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_PROD"),
       )
-      buildConfigField(
-        type = "String",
+      buildConfigStringField(
         name = "RAKUTEN_APPLICATION_ID",
-        value = properties.getProperty("rakuten.applicationId.prod")
-          ?: System.getenv("RAKUTEN_APPLICATION_ID_PROD"),
+        value = properties.getProperty("rakuten.applicationId.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_PROD"),
       )
-      buildConfigField(
-        type = "String",
+      buildConfigStringField(
         name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.prod") ?: System.getenv("SUPABASE_KEY_PROD"),
+        value = properties.getProperty("supabase.key.prod"),
+        initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_PROD"),
       )
-      buildConfigField(
-        type = "String",
+      buildConfigStringField(
         name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.prod") ?: System.getenv("SUPABASE_URL_PROD"),
+        value = properties.getProperty("supabase.url.prod"),
+        initialValue = getEnvOrEmpty(name = "SUPABASE_URL_PROD"),
       )
     }
 
