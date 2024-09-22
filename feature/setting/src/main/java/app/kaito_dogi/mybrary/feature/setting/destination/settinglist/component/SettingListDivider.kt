@@ -1,7 +1,5 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
@@ -16,8 +14,8 @@ internal fun SettingListDivider(
 ) {
   HorizontalDivider(
     modifier = modifier
-        .padding(vertical = MybraryTheme.spaces.md)
-        .fillMaxWidth(),
+      .padding(vertical = MybraryTheme.spaces.md)
+      .fillMaxWidth(),
     color = MybraryTheme.colorScheme.surfaceVariant,
   )
 }
