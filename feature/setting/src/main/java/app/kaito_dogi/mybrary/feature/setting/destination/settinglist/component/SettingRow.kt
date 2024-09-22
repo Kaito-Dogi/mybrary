@@ -20,13 +20,13 @@ private val IconContainerSize = 48.dp
 internal fun SettingRow(
   @StringRes titleResId: Int,
   modifier: Modifier = Modifier,
-  @StringRes supportingTextResId: Int? = null,
+  supportingText: String? = null,
   onClick: (() -> Unit)? = null,
 ) {
   SettingRowScaffold(
     titleResId = titleResId,
     modifier = modifier,
-    supportingTextResId = supportingTextResId,
+    supportingText = supportingText,
     onClick = onClick,
     trailingContent = {
       onClick?.let {

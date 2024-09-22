@@ -12,13 +12,13 @@ internal fun SettingDanger(
   @StringRes titleResId: Int,
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
-  @StringRes supportingTextResId: Int? = null,
+  supportingText: String? = null,
 ) {
   SettingRowScaffold(
     titleResId = titleResId,
     modifier = modifier,
     isDanger = true,
-    supportingTextResId = supportingTextResId,
+    supportingText = supportingText,
     onClick = onClick,
   )
 }

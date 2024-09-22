@@ -16,12 +16,12 @@ internal fun SettingSwitch(
   isChecked: Boolean,
   onClick: (Boolean) -> Unit,
   modifier: Modifier = Modifier,
-  @StringRes supportingTextResId: Int? = null,
+  supportingText: String? = null,
 ) {
   SettingRowScaffold(
     titleResId = titleResId,
     modifier = modifier,
-    supportingTextResId = supportingTextResId,
+    supportingText = supportingText,
     onClick = { onClick(!isChecked) },
     trailingContent = {
       // Composable 全体をクリック領域とするため、Switch 自体には onClick を渡さず、リップルを無効にする

@@ -21,10 +21,10 @@ private val MinHeight = 56.dp
 
 @Composable
 internal fun SettingRowScaffold(
-  @StringRes titleResId: Int,
+  @StringRes titleResId: Int, // FIXME: String 型にする
   modifier: Modifier = Modifier,
   isDanger: Boolean = false,
-  @StringRes supportingTextResId: Int? = null,
+  supportingText: String? = null,
   onClick: (() -> Unit)? = null,
   trailingContent: (@Composable () -> Unit)? = null,
 ) {
@@ -48,9 +48,9 @@ internal fun SettingRowScaffold(
         maxLines = 1,
         style = MybraryTheme.typography.bodyLarge,
       )
-      supportingTextResId?.let {
+      supportingText?.let {
         Text(
-          text = stringResource(it),
+          text = it,
           color = MybraryTheme.colorScheme.onSurfaceVariant,
           maxLines = 1,
           style = MybraryTheme.typography.bodySmall,
