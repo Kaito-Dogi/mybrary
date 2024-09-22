@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ internal fun SettingHeader(
 ) {
   Box(
     modifier = modifier
+      .background(MybraryTheme.colorScheme.background)
       .fillMaxWidth()
       .padding(
         horizontal = MybraryTheme.spaces.md,
