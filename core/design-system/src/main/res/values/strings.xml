@@ -5,6 +5,7 @@
   <string name="setting_list_text_license">License</string>
   <string name="setting_list_text_make_notes_public_by_default">Make notes public by default</string>
   <string name="setting_list_text_privacy_policy">Privacy Policy</string>
+  <string name="setting_list_text_setting">Settings</string>
   <string name="setting_list_text_terms_of_use">Terms of Use</string>
   <string name="ui_alt_my_book">Go to Mybrary destination</string>
   <string name="ui_alt_setting">Go to Settings destination</string>
