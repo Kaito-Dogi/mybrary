@@ -14,4 +14,9 @@ sealed interface Url {
   data class Image(
     override val value: String,
   ) : Url
+
+  @Serializable
+  data class Web(
+    override val value: String,
+  ) : Url
 }
