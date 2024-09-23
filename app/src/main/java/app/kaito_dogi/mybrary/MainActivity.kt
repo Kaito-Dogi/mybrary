@@ -100,8 +100,10 @@ internal class MainActivity : AppCompatActivity() {
 
             settingDestination(startDestination = SettingRoute.SettingList) {
               settingListScreen(
+                onTermsOfUseClick = internalBrowserLauncher::launch,
+                onPrivacyPolicyClick = internalBrowserLauncher::launch,
                 onLicenceClick = {},
-                onRakutenClick = internalBrowserLauncher::launch,
+                onRakutenDevelopersClick = internalBrowserLauncher::launch,
               )
             }
           }
