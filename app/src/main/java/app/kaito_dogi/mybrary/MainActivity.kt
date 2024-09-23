@@ -8,15 +8,17 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumer
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
 import app.kaito_dogi.mybrary.core.ui.navigation.MybraryNavHost
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
+import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavGraph
@@ -25,9 +27,9 @@ import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerif
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.navigateToMyBookDetailScreen
-import app.kaito_dogi.mybrary.feature.mybook.myBookDestination
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.navigateToMyBookListScreen
+import app.kaito_dogi.mybrary.feature.mybook.myBookDestination
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.navigateToSearchBookScreen
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.searchBookScreen
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookNavGraph
@@ -61,7 +63,7 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         // FIXME: ログイン状態に応じて startDestination を変更する
-        MybraryNavHost(startDestination = MybraryRoute.Auth) { navController ->
+        MybraryNavHost(startDestination = MybraryRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
           authNavGraph(startDestination = AuthRoute.SendOtp) {
             sendOtpScreen(
               onSendOtpComplete = { email, page ->
@@ -97,7 +99,10 @@ internal class MainActivity : AppCompatActivity() {
             }
 
             settingDestination(startDestination = SettingRoute.SettingList) {
-              settingListScreen()
+              settingListScreen(
+                onLicenceClick = {},
+                onRakutenClick = internalBrowserLauncher::launch,
+              )
             }
           }
         }
