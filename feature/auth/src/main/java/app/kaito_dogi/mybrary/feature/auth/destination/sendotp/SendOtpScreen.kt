@@ -46,7 +46,7 @@ internal fun SendOtpScreen(
         .background(
           brush = Brush.linearGradient(
             colors = listOf(
-              MybraryTheme.colorScheme.background,
+              MybraryTheme.colorScheme.surface,
               MybraryTheme.colorScheme.secondaryContainer,
               MybraryTheme.colorScheme.errorContainer,
             ),
