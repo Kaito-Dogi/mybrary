@@ -40,6 +40,11 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     buildConfigStringField(
+      name = "PRIVACY_POLICY_URL",
+      value = properties.getProperty("privacyPolicyUrl"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_DEV"),
+    )
+    buildConfigStringField(
       name = "RAKUTEN_AFFILIATE_ID",
       value = properties.getProperty("rakuten.affiliateId.dev"),
       initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_DEV"),
@@ -50,6 +55,11 @@ android {
       initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_DEV"),
     )
     buildConfigStringField(
+      name = "RAKUTEN_DEVELOPERS_URL",
+      value = properties.getProperty("rakuten.developersUrl"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_DEVELOPERS_URL"),
+    )
+    buildConfigStringField(
       name = "SUPABASE_KEY",
       value = properties.getProperty("supabase.key.dev"),
       initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_DEV"),
@@ -58,6 +68,11 @@ android {
       name = "SUPABASE_URL",
       value = properties.getProperty("supabase.url.dev"),
       initialValue = getEnvOrEmpty(name = "SUPABASE_URL_DEV"),
+    )
+    buildConfigStringField(
+      name = "TERMS_OF_USE",
+      value = properties.getProperty("termsOfUseUrl"),
+      initialValue = getEnvOrEmpty(name = "TERMS_OF_USE"),
     )
     buildConfigStringField(
       name = "VERSION_NAME",
