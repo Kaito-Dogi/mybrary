@@ -17,7 +17,7 @@ private fun VariantDimension.buildConfigStringField(
   value = value?.let { "\"$it\"" } ?: initialValue,
 )
 
-private fun getEnvOrEmpty(name: String) = System.getenv(name) ?: ""
+private fun getEnvOrEmpty(name: String) = "\"${System.getenv(name)}\""
 
 plugins {
   alias(libs.plugins.androidApplication)
