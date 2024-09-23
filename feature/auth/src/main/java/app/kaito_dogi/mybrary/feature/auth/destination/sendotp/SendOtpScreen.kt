@@ -68,14 +68,14 @@ internal fun SendOtpScreen(
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
         modifier = Modifier
-          .padding(horizontal = MybraryTheme.spaces.xl)
+          .padding(horizontal = MybraryTheme.spaces.md)
           .imePadding(),
       )
 
       Gap(height = MybraryTheme.spaces.xl)
 
       DividerSection(
-        modifier = Modifier.padding(horizontal = MybraryTheme.spaces.xl),
+        modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
       )
 
       Gap(height = MybraryTheme.spaces.xl)
@@ -83,7 +83,7 @@ internal fun SendOtpScreen(
       HorizontalPager(
         modifier = Modifier.weight(1f),
         state = pagerState,
-        contentPadding = PaddingValues(horizontal = MybraryTheme.spaces.xl),
+        contentPadding = PaddingValues(horizontal = MybraryTheme.spaces.md),
         pageSpacing = MybraryTheme.spaces.xl,
       ) { page ->
         when (page) {
