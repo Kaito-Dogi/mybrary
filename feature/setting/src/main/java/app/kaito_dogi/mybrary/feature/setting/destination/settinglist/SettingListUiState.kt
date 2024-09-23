@@ -18,7 +18,7 @@ internal data class SettingListUiState(
       rakutenDevelopersUrl: Url.Web,
       versionName: String,
     ) = SettingListUiState(
-      isMemoMadePublicByDefault = false,
+      isMemoMadePublicByDefault = true,
       termsOfUseUrl = termsOfUseUrl,
       privacyPolicyUrl = privacyPolicyUrl,
       rakutenDevelopersUrl = rakutenDevelopersUrl,
