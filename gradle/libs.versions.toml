@@ -1,5 +1,9 @@
+# FIXME: ケバブケースに置き換える
+# FIXME: module を使用する
+
 [versions]
 androidGradlePlugin = "8.5.0"
+androidx-browser = "1.8.0"
 androidxComposeBom = "2024.06.00"
 androidxComposeCompiler = "1.5.14"
 androidxEspresso = "3.6.0"
@@ -29,6 +33,7 @@ versionCode = "1"
 versionName = "0.0.1"
 
 [libraries]
+androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
 androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
 androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
