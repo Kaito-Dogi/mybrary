@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,14 +17,12 @@ internal fun MyBookListHeaderSkeleton(
 ) {
   SkeletonBox(
     shape = MybraryTheme.shapes.extraSmall,
-    modifier = modifier
-      .fillMaxWidth()
-      .height(MybraryTheme.dimens.topAppBarHeight - MybraryTheme.spaces.sm * 2),
+    modifier = modifier.fillMaxWidth(),
   ) {
     Text(
       text = stringResource(id = R.string.my_book_list_text_a),
       color = Color.Transparent,
-      style = MybraryTheme.typography.titleLarge,
+      style = MybraryTheme.typography.headlineSmall,
     )
   }
 }
