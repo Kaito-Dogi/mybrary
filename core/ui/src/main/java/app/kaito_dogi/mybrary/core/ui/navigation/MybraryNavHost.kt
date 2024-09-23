@@ -16,6 +16,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
+import app.kaito_dogi.mybrary.core.ui.browser.rememberInternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.MainNavigationBar
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.NavigationBarDestination
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
@@ -25,9 +27,11 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 fun MybraryNavHost(
   startDestination: MybraryRoute,
   modifier: Modifier = Modifier,
-  builder: NavGraphBuilder.(NavHostController) -> Unit,
+  builder: NavGraphBuilder.(NavHostController, InternalBrowserLauncher) -> Unit,
 ) {
   val navController = rememberNavController()
+  val internalBrowserLauncher = rememberInternalBrowserLauncher()
+
   val currentBackStackEntry by navController.currentBackStackEntryAsState()
   val hierarchy = currentBackStackEntry?.destination?.hierarchy
 
@@ -37,7 +41,7 @@ fun MybraryNavHost(
     NavHost(
       navController = navController,
       startDestination = startDestination,
-      builder = { builder(navController) },
+      builder = { builder(navController, internalBrowserLauncher) },
       modifier = Modifier.fillMaxSize(),
     )
 

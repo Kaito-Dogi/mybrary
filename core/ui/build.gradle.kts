@@ -40,6 +40,7 @@ dependencies {
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
 
+  implementation(libs.androidx.browser)
   implementation(platform(libs.androidxComposeBom))
   implementation(libs.androidxComposeMaterial3)
   implementation(libs.androidxComposeUiTooling)
