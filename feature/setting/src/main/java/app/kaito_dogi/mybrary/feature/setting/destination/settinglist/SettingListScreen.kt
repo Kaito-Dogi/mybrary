@@ -37,8 +37,10 @@ internal fun SettingListScreen(
       item {
         SettingSwitch(
           titleResId = R.string.setting_list_text_make_notes_public_by_default,
-          isChecked = true,
-          onClick = {},
+          isChecked = uiState.isMemoMadePublicByDefault,
+          onClick = {
+            // TODO: 実装する
+          },
         )
       }
 
@@ -96,13 +98,17 @@ internal fun SettingListScreen(
       item {
         SettingDanger(
           titleResId = R.string.setting_list_text_logout,
-          onClick = {},
+          onClick = {
+            // TODO: 実装する
+          },
         )
       }
       item {
         SettingDanger(
           titleResId = R.string.setting_list_text_delete_account,
-          onClick = {},
+          onClick = {
+            // TODO: 実装する
+          },
         )
       }
     }
