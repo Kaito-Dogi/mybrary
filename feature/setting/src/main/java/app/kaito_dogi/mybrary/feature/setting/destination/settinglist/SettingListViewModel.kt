@@ -20,4 +20,16 @@ internal class SettingListViewModel @Inject constructor(
     ),
   )
   val uiState = _uiState.asStateFlow()
+
+  fun onSwitchClick(value: Boolean) {
+    // TODO: 実装する
+  }
+
+  fun onLogoutClick() {
+    // TODO: 実装する
+  }
+
+  fun onDeleteAccountClick() {
+    // TODO: 実装する
+  }
 }

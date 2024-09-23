@@ -19,10 +19,13 @@ import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component.
 @Composable
 internal fun SettingListScreen(
   uiState: SettingListUiState,
+  onSwitchClick: (Boolean) -> Unit,
   onTermsOfUseClick: () -> Unit,
   onPrivacyPolicyClick: () -> Unit,
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: () -> Unit,
+  onLogoutClick: () -> Unit,
+  onDeleteAccountClick: () -> Unit,
 ) {
   NavigationBarContentScaffold { innerPadding ->
     LazyColumn(contentPadding = innerPadding) {
@@ -38,9 +41,7 @@ internal fun SettingListScreen(
         SettingSwitch(
           titleResId = R.string.setting_list_text_make_notes_public_by_default,
           isChecked = uiState.isMemoMadePublicByDefault,
-          onClick = {
-            // TODO: 実装する
-          },
+          onClick = onSwitchClick,
         )
       }
 
@@ -98,17 +99,13 @@ internal fun SettingListScreen(
       item {
         SettingDanger(
           titleResId = R.string.setting_list_text_logout,
-          onClick = {
-            // TODO: 実装する
-          },
+          onClick = onLogoutClick,
         )
       }
       item {
         SettingDanger(
           titleResId = R.string.setting_list_text_delete_account,
-          onClick = {
-            // TODO: 実装する
-          },
+          onClick = onDeleteAccountClick,
         )
       }
     }
@@ -127,10 +124,13 @@ private fun SettingListScreenPreview() {
         rakutenDevelopersUrl = Url.Web(value = ""),
         versionName = "0.0.1",
       ),
+      onSwitchClick = {},
       onTermsOfUseClick = {},
       onPrivacyPolicyClick = {},
       onLicenceClick = {},
       onRakutenDevelopersClick = {},
+      onLogoutClick = {},
+      onDeleteAccountClick = {},
     )
   }
 }

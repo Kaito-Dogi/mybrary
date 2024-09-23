@@ -18,9 +18,12 @@ internal fun SettingListScreenContainer(
 
   SettingListScreen(
     uiState = uiState,
+    onSwitchClick = viewModel::onSwitchClick,
     onTermsOfUseClick = { onTermsOfUseClick(uiState.termsOfUseUrl) },
     onPrivacyPolicyClick = { onPrivacyPolicyClick(uiState.privacyPolicyUrl) },
     onLicenceClick = onLicenceClick,
     onRakutenDevelopersClick = { onRakutenDevelopersClick(uiState.rakutenDevelopersUrl) },
+    onLogoutClick = viewModel::onLogoutClick,
+    onDeleteAccountClick = viewModel::onDeleteAccountClick,
   )
 }
