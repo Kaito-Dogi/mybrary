@@ -18,11 +18,11 @@ import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.Text
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
-import app.kaito_dogi.mybrary.core.designsystem.component.TopAppBar
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
+import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.component.VerifyOtpTopAppBar
 
 @Composable
 internal fun VerifyOtpScreen(
@@ -34,12 +34,7 @@ internal fun VerifyOtpScreen(
 ) {
   Scaffold(
     topBar = {
-      TopAppBar(
-        textResId = R.string.verify_otp_text_verify_otp,
-        navigationIconResId = R.drawable.icon_arrow_back,
-        navigationIconAltResId = R.string.verify_otp_back,
-        onNavigationIconClick = onNavigationIconClick,
-      )
+      VerifyOtpTopAppBar(onNavigationIconClick = onNavigationIconClick)
     },
   ) { innerPadding ->
     Column(
