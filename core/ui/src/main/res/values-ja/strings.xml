@@ -2,6 +2,7 @@
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">本をお気に入りに追加する</string>
   <string name="my_book_detail_alt_archive_my_book">本をアーカイブする</string>
+  <string name="my_book_detail_alt_back">Mybrary に戻る</string>
   <string name="my_book_detail_alt_background_image">背景画像</string>
   <string name="my_book_detail_alt_create_a_memo">メモを作成する</string>
   <string name="my_book_detail_alt_make_my_book_private">本を非公開にする</string>

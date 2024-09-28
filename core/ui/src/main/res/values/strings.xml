@@ -2,6 +2,7 @@
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">Add your book to favorites</string>
   <string name="my_book_detail_alt_archive_my_book">Archive your book</string>
+  <string name="my_book_detail_alt_back">Back to Mybrary</string>
   <string name="my_book_detail_alt_background_image">Background image</string>
   <string name="my_book_detail_alt_create_a_memo">Create a note</string>
   <string name="my_book_detail_alt_make_my_book_private">Make your book private</string>
