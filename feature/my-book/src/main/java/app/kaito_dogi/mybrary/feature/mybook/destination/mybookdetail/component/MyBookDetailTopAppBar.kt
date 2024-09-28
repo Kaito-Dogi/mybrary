@@ -6,13 +6,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,6 +53,12 @@ private val ColorMatrix = floatArrayOf(
 @Composable
 internal fun MyBookDetailTopAppBar(
   myBook: MyBook,
+  isPublic: Boolean,
+  isFavorite: Boolean,
+  onNavigationIconClick: () -> Unit,
+  onFavoriteClick: () -> Unit,
+  onPublicClick: () -> Unit,
+  onArchiveClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Box(
@@ -68,58 +78,125 @@ internal fun MyBookDetailTopAppBar(
       colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
     )
 
-    Row(
+    Column(
       modifier = Modifier
-        .height(IntrinsicSize.Min)
+        .windowInsetsPadding(WindowInsets.statusBars)
         .padding(
-          start = MybraryTheme.spaces.md,
-          top = MybraryTheme.spaces.md + WindowInsets.systemBars
-            .asPaddingValues()
-            .calculateTopPadding(),
-          end = MybraryTheme.spaces.md,
+          top = MybraryTheme.spaces.xs,
           bottom = MybraryTheme.spaces.md,
         ),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
     ) {
-      BookImage(
-        title = myBook.title,
-        imageUrl = myBook.imageUrl,
-        modifier = Modifier.width(MybraryTheme.dimens.bookWidthMd),
-      )
-
-      Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+      Row(
+        modifier = Modifier.fillMaxWidth(),
       ) {
-        Text(
-          text = myBook.title,
-          modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f),
-          color = Color.White,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 4,
-          style = MybraryTheme.typography.titleMedium,
-        )
-
-        if (myBook.authorList.isNotEmpty()) {
-          Text(
-            text = myBook.authorList.joinToString { it.name },
-            modifier = Modifier.fillMaxWidth(),
-            color = Color.White,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 2,
-            style = MybraryTheme.typography.bodyMedium,
+        IconButton(
+          onClick = onNavigationIconClick,
+        ) {
+          Icon(
+            painter = painterResource(R.drawable.icon_arrow_back),
+            contentDescription = stringResource(R.string.my_book_detail_alt_back),
+            tint = Color.White,
           )
         }
 
-        Text(
-          text = myBook.publisher,
-          modifier = Modifier.fillMaxWidth(),
-          color = Color.White,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 1,
-          style = MybraryTheme.typography.bodyMedium,
+        Spacer(modifier = Modifier.weight(1f))
+
+        IconButton(onClick = onFavoriteClick) {
+          Icon(
+            painter = if (isFavorite) {
+              painterResource(R.drawable.icon_heart_filled)
+            } else {
+              painterResource(R.drawable.icon_heart_outlined)
+            },
+            contentDescription = if (isFavorite) {
+              stringResource(R.string.my_book_detail_alt_remove_my_book_from_favorites)
+            } else {
+              stringResource(R.string.my_book_detail_alt_add_my_book_to_favorites)
+            },
+            tint = Color.White,
+          )
+        }
+
+        // TODO: v2 以降で実装を復活させる
+        IconButton(
+          onClick = onPublicClick,
+          enabled = false,
+        ) {
+          Icon(
+            painter = if (isPublic) {
+              painterResource(R.drawable.icon_visibility)
+            } else {
+              painterResource(R.drawable.icon_visibility_off)
+            },
+            contentDescription = if (isPublic) {
+              stringResource(R.string.my_book_detail_alt_make_my_book_private)
+            } else {
+              stringResource(R.string.my_book_detail_alt_make_my_book_public)
+            },
+            tint = Color.White,
+          )
+        }
+
+        // TODO: v2 以降で実装を復活させる
+        IconButton(
+          onClick = onArchiveClick,
+          enabled = false,
+        ) {
+          Icon(
+            painter = painterResource(R.drawable.icon_archive),
+            contentDescription = stringResource(R.string.my_book_detail_alt_archive_my_book),
+            tint = Color.White,
+          )
+        }
+      }
+
+      Row(
+        modifier = Modifier
+          .height(IntrinsicSize.Min)
+          .padding(horizontal = MybraryTheme.spaces.md),
+        horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+      ) {
+        BookImage(
+          title = myBook.title,
+          imageUrl = myBook.imageUrl,
+          modifier = Modifier.width(MybraryTheme.dimens.bookWidthMd),
         )
+
+        Column(
+          verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+        ) {
+          Text(
+            text = myBook.title,
+            modifier = Modifier
+              .fillMaxWidth()
+              .weight(1f),
+            color = Color.White,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 4,
+            style = MybraryTheme.typography.titleMedium,
+          )
+
+          if (myBook.authorList.isNotEmpty()) {
+            Text(
+              text = myBook.authorList.joinToString { it.name },
+              modifier = Modifier.fillMaxWidth(),
+              color = Color.White,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 2,
+              style = MybraryTheme.typography.bodyMedium,
+            )
+          }
+
+          Text(
+            text = myBook.publisher,
+            modifier = Modifier.fillMaxWidth(),
+            color = Color.White,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+            style = MybraryTheme.typography.bodyMedium,
+          )
+        }
       }
     }
   }
@@ -148,6 +225,12 @@ private fun MyBookDetailTopAppBarPreview() {
         isPublic = false,
         isArchived = false,
       ),
+      isPublic = false,
+      isFavorite = false,
+      onNavigationIconClick = {},
+      onFavoriteClick = {},
+      onPublicClick = {},
+      onArchiveClick = {},
     )
   }
 }

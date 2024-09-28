@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailScreenContainer(
+  onNavigationIconClick: () -> Unit,
   viewModel: MyBookDetailViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -60,9 +61,10 @@ internal fun MyBookDetailScreenContainer(
         content = it,
       )
     },
-    onArchiveClick = viewModel::onArchiveClick,
-    onPublicClick = viewModel::onPublicClick,
+    onNavigationIconClick = onNavigationIconClick,
     onFavoriteClick = viewModel::onFavoriteClick,
+    onPublicClick = viewModel::onPublicClick,
+    onArchiveClick = viewModel::onArchiveClick,
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
     onStartPageChange = viewModel::onStartPageChange,

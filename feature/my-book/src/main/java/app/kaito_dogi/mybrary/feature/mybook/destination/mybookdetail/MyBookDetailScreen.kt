@@ -38,9 +38,10 @@ internal fun MyBookDetailScreen(
   uiState: MyBookDetailUiState,
   snackbarHost: @Composable () -> Unit,
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
-  onArchiveClick: () -> Unit,
-  onPublicClick: () -> Unit,
+  onNavigationIconClick: () -> Unit,
   onFavoriteClick: () -> Unit,
+  onPublicClick: () -> Unit,
+  onArchiveClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
   onStartPageChange: (String) -> Unit,
@@ -54,9 +55,9 @@ internal fun MyBookDetailScreen(
       MyBookDetailBottomAppBar(
         isPublic = uiState.myBook.isPublic,
         isFavorite = uiState.myBook.isFavorite,
-        onArchiveClick = onArchiveClick,
-        onPublicClick = onPublicClick,
         onFavoriteClick = onFavoriteClick,
+        onPublicClick = onPublicClick,
+        onArchiveClick = onArchiveClick,
         onAdditionClick = onAdditionClick,
       )
     },
@@ -71,7 +72,7 @@ internal fun MyBookDetailScreen(
           contentDescription = stringResource(R.string.my_book_detail_alt_create_a_memo),
         )
       }
-    }
+    },
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
@@ -85,6 +86,12 @@ internal fun MyBookDetailScreen(
       item(key = "MyBookDetailTopAppBar") {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
+          isPublic = uiState.myBook.isPublic,
+          isFavorite = uiState.myBook.isFavorite,
+          onNavigationIconClick = onNavigationIconClick,
+          onFavoriteClick = onFavoriteClick,
+          onPublicClick = onPublicClick,
+          onArchiveClick = onArchiveClick,
         )
       }
 
@@ -158,9 +165,10 @@ private fun MyBookDetailScreenPreview() {
       ),
       snackbarHost = {},
       bottomSheet = {},
-      onArchiveClick = {},
-      onPublicClick = {},
+      onNavigationIconClick = {},
       onFavoriteClick = {},
+      onPublicClick = {},
+      onArchiveClick = {},
       onAdditionClick = {},
       onMemoClick = {},
       onStartPageChange = {},

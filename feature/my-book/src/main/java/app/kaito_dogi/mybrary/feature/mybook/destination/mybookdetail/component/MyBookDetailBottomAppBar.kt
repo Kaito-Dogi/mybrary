@@ -17,9 +17,9 @@ import app.kaito_dogi.mybrary.core.ui.R
 internal fun MyBookDetailBottomAppBar(
   isPublic: Boolean,
   isFavorite: Boolean,
-  onArchiveClick: () -> Unit,
-  onPublicClick: () -> Unit,
   onFavoriteClick: () -> Unit,
+  onPublicClick: () -> Unit,
+  onArchiveClick: () -> Unit,
   onAdditionClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {

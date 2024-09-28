@@ -12,8 +12,12 @@ import kotlin.reflect.typeOf
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-fun NavGraphBuilder.myBookDetailScreen() = composable<MyBookRoute.MyBookDetail>(typeMap = MyBookDetailTypeMap) {
-  MyBookDetailScreenContainer()
+fun NavGraphBuilder.myBookDetailScreen(
+  onNavigationIconClick: () -> Unit,
+) = composable<MyBookRoute.MyBookDetail>(typeMap = MyBookDetailTypeMap) {
+  MyBookDetailScreenContainer(
+    onNavigationIconClick = onNavigationIconClick,
+  )
 }
 
 fun NavHostController.navigateToMyBookDetailScreen(
