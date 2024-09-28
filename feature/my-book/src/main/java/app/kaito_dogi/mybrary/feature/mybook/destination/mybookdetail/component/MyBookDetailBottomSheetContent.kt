@@ -4,14 +4,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
@@ -77,8 +79,8 @@ internal fun MyBookDetailBottomSheetContent(
 
       IconButton(onClick = onSaveClick) {
         Icon(
-          iconResId = R.drawable.icon_send,
-          altResId = R.string.my_book_detail_alt_save_a_memo,
+          painter = painterResource(R.drawable.icon_send),
+          contentDescription = stringResource(R.string.my_book_detail_alt_save_a_memo),
         )
       }
     }
