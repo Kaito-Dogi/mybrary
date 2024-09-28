@@ -7,11 +7,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
+import app.kaito_dogi.mybrary.core.designsystem.ext.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
@@ -20,6 +26,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.User
 import app.kaito_dogi.mybrary.core.domain.model.UserId
+import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRow
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRowSkeleton
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailBottomAppBar
@@ -54,6 +61,17 @@ internal fun MyBookDetailScreen(
       )
     },
     snackbarHost = snackbarHost,
+    floatingActionButton = {
+      FloatingActionButton(
+        onClick = onAdditionClick,
+        elevation = FloatingActionButtonDefaults.elevationZero(),
+      ) {
+        Icon(
+          painter = painterResource(R.drawable.icon_add),
+          contentDescription = stringResource(R.string.my_book_detail_alt_create_a_memo),
+        )
+      }
+    }
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),

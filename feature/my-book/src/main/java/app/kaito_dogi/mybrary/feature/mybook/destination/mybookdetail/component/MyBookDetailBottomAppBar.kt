@@ -3,8 +3,6 @@ package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -12,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.ext.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 
@@ -64,16 +61,6 @@ internal fun MyBookDetailBottomAppBar(
     }
 
     Spacer(modifier = Modifier.weight(1f))
-
-    FloatingActionButton(
-      onClick = onAdditionClick,
-      elevation = FloatingActionButtonDefaults.elevationZero(),
-    ) {
-      Icon(
-        painter = painterResource(R.drawable.icon_add),
-        contentDescription = stringResource(R.string.my_book_detail_alt_create_a_memo),
-      )
-    }
   }
 }
 
