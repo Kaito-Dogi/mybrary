@@ -1,9 +1,9 @@
 package app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component
 
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,7 +18,7 @@ internal fun SettingListTopAppBar(
   modifier: Modifier = Modifier,
 ) {
   // FIXME: NavigationBarItem で表示できる NavHost の Root の TopAppBar として共通化する
-  CenterAlignedTopAppBar(
+  TopAppBar(
     title = {
       Text(
         text = stringResource(R.string.setting_list_text_setting),
