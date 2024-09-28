@@ -52,7 +52,7 @@
   <string name="send_otp_text_sign_up_with_google">Google アカウントで始める</string>
   <string name="ui_alt_book_cover">本の表紙</string>
   <string name="verify_otp_alt_otp">ワンタイムパスワード</string>
-  <string name="verify_otp_back">ワンタイムパスワードの送信に戻る</string>
+  <string name="verify_otp_alt_back">ワンタイムパスワードの送信に戻る</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
   <string name="verify_otp_text_enter_otp_sent_to">%1$sに送信されたワンタイムパスワードを入力してください。</string>
   <string name="verify_otp_text_it_may_take_a_few_minutes">ワンタイムパスワードが届くまで数分かかる場合があります。</string>
