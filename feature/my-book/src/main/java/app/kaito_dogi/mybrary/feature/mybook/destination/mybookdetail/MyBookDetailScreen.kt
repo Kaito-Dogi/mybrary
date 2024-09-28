@@ -29,7 +29,6 @@ import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRow
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MemoRowSkeleton
-import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailBottomAppBar
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailBottomSheetContent
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component.MyBookDetailTopAppBar
 
@@ -50,17 +49,6 @@ internal fun MyBookDetailScreen(
   onSaveClick: () -> Unit,
 ) {
   NavigationBarContentScaffold(
-    bottomBar = {
-      // FIXME: bottomBar での操作を TopAppBar, Fab に移動する
-      MyBookDetailBottomAppBar(
-        isPublic = uiState.myBook.isPublic,
-        isFavorite = uiState.myBook.isFavorite,
-        onFavoriteClick = onFavoriteClick,
-        onPublicClick = onPublicClick,
-        onArchiveClick = onArchiveClick,
-        onAdditionClick = onAdditionClick,
-      )
-    },
     snackbarHost = snackbarHost,
     floatingActionButton = {
       FloatingActionButton(
