@@ -10,10 +10,12 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -37,8 +39,8 @@ internal fun MyBookListScreen(
         onClick = onAdditionClick,
       ) {
         Icon(
-          iconResId = R.drawable.icon_add,
-          altResId = R.string.my_book_list_alt_search_for_books,
+          painter = painterResource(R.drawable.icon_add),
+          contentDescription = stringResource(R.string.my_book_list_alt_search_for_books),
         )
       }
     },

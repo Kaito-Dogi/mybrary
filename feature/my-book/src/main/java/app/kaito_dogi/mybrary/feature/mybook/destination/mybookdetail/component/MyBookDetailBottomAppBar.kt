@@ -5,11 +5,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.designsystem.component.Icon
 import app.kaito_dogi.mybrary.core.designsystem.ext.elevationZero
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
@@ -48,8 +50,16 @@ internal fun MyBookDetailBottomAppBar(
 
     IconButton(onClick = onFavoriteClick) {
       Icon(
-        iconResId = if (isFavorite) R.drawable.icon_heart_filled else R.drawable.icon_heart_outlined,
-        altResId = if (isFavorite) R.string.my_book_detail_alt_remove_my_book_from_favorites else R.string.my_book_detail_alt_add_my_book_to_favorites,
+        painter = if (isFavorite) {
+          painterResource(R.drawable.icon_heart_filled)
+        } else {
+          painterResource(R.drawable.icon_heart_outlined)
+        },
+        contentDescription = if (isFavorite) {
+          stringResource(R.string.my_book_detail_alt_remove_my_book_from_favorites)
+        } else {
+          stringResource(R.string.my_book_detail_alt_add_my_book_to_favorites)
+        },
       )
     }
 
@@ -60,8 +70,8 @@ internal fun MyBookDetailBottomAppBar(
       elevation = FloatingActionButtonDefaults.elevationZero(),
     ) {
       Icon(
-        iconResId = R.drawable.icon_add,
-        altResId = R.string.my_book_detail_alt_create_a_memo,
+        painter = painterResource(R.drawable.icon_add),
+        contentDescription = stringResource(R.string.my_book_detail_alt_create_a_memo),
       )
     }
   }
