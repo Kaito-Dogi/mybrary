@@ -27,7 +27,7 @@ internal fun VerifyOtpTopAppBar(
       ) {
         Icon(
           painter = painterResource(R.drawable.icon_arrow_back),
-          contentDescription = stringResource(R.string.verify_otp_back),
+          contentDescription = stringResource(R.string.verify_otp_alt_back),
         )
       }
     },

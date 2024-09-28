@@ -91,7 +91,9 @@ internal class MainActivity : AppCompatActivity() {
                 },
               )
 
-              myBookDetailScreen()
+              myBookDetailScreen(
+                onNavigationIconClick = navController::popBackStack,
+              )
 
               searchBookNavGraph(startDestination = SearchBookRoute.SearchBook) {
                 searchBookScreen()

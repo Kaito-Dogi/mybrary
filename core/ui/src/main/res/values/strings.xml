@@ -2,6 +2,7 @@
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">Add your book to favorites</string>
   <string name="my_book_detail_alt_archive_my_book">Archive your book</string>
+  <string name="my_book_detail_alt_back">Back to Mybrary</string>
   <string name="my_book_detail_alt_background_image">Background image</string>
   <string name="my_book_detail_alt_create_a_memo">Create a note</string>
   <string name="my_book_detail_alt_make_my_book_private">Make your book private</string>
@@ -52,7 +53,7 @@
   <string name="send_otp_text_sign_up_with_google">Sign up with Google</string>
   <string name="ui_alt_book_cover">Book cover</string>
   <string name="verify_otp_alt_otp">One-Time Password</string>
-  <string name="verify_otp_back">Back to send One-Time Password</string>
+  <string name="verify_otp_alt_back">Back to send One-Time Password</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
   <string name="verify_otp_text_enter_otp_sent_to">Enter the One-Time Password sent to %1$s.</string>
   <string name="verify_otp_text_it_may_take_a_few_minutes">It may take a few minutes to receive the one-time password.</string>

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
@@ -25,6 +26,9 @@ import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.My
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCellSkeleton
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeader
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeaderSkeleton
+
+// Navigation bar の他の Destination の Top app bar の title と高さを揃える
+private val contentPaddingTop = 14.dp
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -50,7 +54,7 @@ internal fun MyBookListScreen(
       modifier = Modifier.fillMaxSize(),
       contentPadding = innerPadding.plus(
         start = MybraryTheme.spaces.md,
-        top = MybraryTheme.spaces.sm,
+        top = contentPaddingTop,
         end = MybraryTheme.spaces.md,
         bottom = MybraryTheme.spaces.md,
       ),

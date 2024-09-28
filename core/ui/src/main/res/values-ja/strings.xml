@@ -2,6 +2,7 @@
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">本をお気に入りに追加する</string>
   <string name="my_book_detail_alt_archive_my_book">本をアーカイブする</string>
+  <string name="my_book_detail_alt_back">Mybrary に戻る</string>
   <string name="my_book_detail_alt_background_image">背景画像</string>
   <string name="my_book_detail_alt_create_a_memo">メモを作成する</string>
   <string name="my_book_detail_alt_make_my_book_private">本を非公開にする</string>
@@ -52,7 +53,7 @@
   <string name="send_otp_text_sign_up_with_google">Google アカウントで始める</string>
   <string name="ui_alt_book_cover">本の表紙</string>
   <string name="verify_otp_alt_otp">ワンタイムパスワード</string>
-  <string name="verify_otp_back">ワンタイムパスワードの送信に戻る</string>
+  <string name="verify_otp_alt_back">ワンタイムパスワードの送信に戻る</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
   <string name="verify_otp_text_enter_otp_sent_to">%1$sに送信されたワンタイムパスワードを入力してください。</string>
   <string name="verify_otp_text_it_may_take_a_few_minutes">ワンタイムパスワードが届くまで数分かかる場合があります。</string>
