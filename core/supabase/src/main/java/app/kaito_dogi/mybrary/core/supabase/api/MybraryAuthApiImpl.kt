@@ -17,7 +17,9 @@ import app.kaito_dogi.mybrary.core.supabase.ext.insert
 import app.kaito_dogi.mybrary.core.supabase.ext.update
 import app.kaito_dogi.mybrary.core.supabase.table.Table
 import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Columns
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -63,11 +65,22 @@ internal class MybraryAuthApiImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
+  // FIXME: user_id をリクエストの段階で渡せるようにする
   override suspend fun postMyBook(request: PostMyBookRequest): PostMyBookResponse {
-    val result = supabaseClient.postgrest.insert(
-      table = Table.MyBook,
-      value = request,
+    val id = supabaseClient.auth.currentUserOrNull()?.id
+    val requestContainUserId = mapOf(
+      "user_id" to id,
+      "book_id" to request.bookId,
     )
+    val result = supabaseClient.postgrest
+      .from(table = Table.MyBook.value)
+      .insert(requestContainUserId) {
+        select(
+          columns = Columns.raw(
+            value = Table.MyBook.columnsAll,
+          ),
+        )
+      }
     return result.decodeSingle<PostMyBookResponse>()
   }
 
