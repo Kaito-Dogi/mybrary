@@ -23,6 +23,7 @@ internal class SettingListViewModel @Inject constructor(
       privacyPolicyUrl = config.privacyPolicyUrl,
       rakutenDevelopersUrl = config.rakutenDevelopersUrl,
       versionName = config.versionName,
+      deleteAccountUrl = config.deleteAccountUrl,
     ),
   )
   val uiState = _uiState.asStateFlow()
