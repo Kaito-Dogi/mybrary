@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.R
+import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component.SettingDanger
@@ -25,6 +27,8 @@ internal fun SettingListScreen(
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: () -> Unit,
   onLogoutClick: () -> Unit,
+  onLogoutDialogConfirmClick: () -> Unit,
+  onLogoutDialogDismissClick: () -> Unit,
   onDeleteAccountClick: () -> Unit,
 ) {
   NavigationBarContentScaffold { innerPadding ->
@@ -109,6 +113,18 @@ internal fun SettingListScreen(
         )
       }
     }
+
+    if (uiState.isLogoutDialogVisible) {
+      AlertDialog(
+        content = stringResource(id = R.string.setting_list_text_would_you_like_to_logout),
+        onConfirmClick = onLogoutDialogConfirmClick,
+        confirmTextResId = R.string.setting_list_text_ok,
+        onDismissRequest = onLogoutDialogDismissClick,
+        dismissTextResId = R.string.setting_list_text_cancel,
+        onDismissClick = onLogoutDialogDismissClick,
+        isConfirmLoading = uiState.isLoggingOut,
+      )
+    }
   }
 }
 
@@ -123,6 +139,9 @@ private fun SettingListScreenPreview() {
         privacyPolicyUrl = Url.Web(value = ""),
         rakutenDevelopersUrl = Url.Web(value = ""),
         versionName = "0.0.1",
+        isLogoutDialogVisible = false,
+        isLoggingOut = false,
+        isLoggedOut = false,
       ),
       onSwitchClick = {},
       onTermsOfUseClick = {},
@@ -130,6 +149,8 @@ private fun SettingListScreenPreview() {
       onLicenceClick = {},
       onRakutenDevelopersClick = {},
       onLogoutClick = {},
+      onLogoutDialogConfirmClick = {},
+      onLogoutDialogDismissClick = {},
       onDeleteAccountClick = {},
     )
   }

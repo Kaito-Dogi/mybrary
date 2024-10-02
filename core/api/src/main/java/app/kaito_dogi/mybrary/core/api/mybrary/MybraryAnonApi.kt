@@ -7,6 +7,7 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMemosResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -42,6 +43,9 @@ interface MybraryAnonApi {
   suspend fun postVerifyOtp(
     @Body request: PostVerifyOtpRequest,
   )
+
+  @DELETE("/logout")
+  suspend fun logout()
 
   // FIXME: 適切な定義箇所に移動する
   suspend fun getSession(): Boolean

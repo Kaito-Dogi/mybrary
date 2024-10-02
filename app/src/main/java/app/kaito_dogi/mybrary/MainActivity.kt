@@ -22,6 +22,7 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavGraph
+import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.navigateToSendOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
@@ -102,6 +103,7 @@ internal class MainActivity : AppCompatActivity() {
 
             settingDestination(startDestination = SettingRoute.SettingList) {
               settingListScreen(
+                onLogoutComplete = navController::navigateToSendOtpScreen,
                 onTermsOfUseClick = internalBrowserLauncher::launch,
                 onPrivacyPolicyClick = internalBrowserLauncher::launch,
                 onLicenceClick = {},

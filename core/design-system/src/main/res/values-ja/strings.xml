@@ -2,16 +2,19 @@
 <resources>
   <string name="setting_list_text_about">このアプリについて</string>
   <string name="setting_list_text_account">アカウント</string>
+  <string name="setting_list_text_cancel">キャンセル</string>
   <string name="setting_list_text_delete_account">アカウントを削除する</string>
   <string name="setting_list_text_license">ライセンス</string>
   <string name="setting_list_text_logout">ログアウト</string>
   <string name="setting_list_text_make_notes_public_by_default">メモをデフォルトで公開する</string>
+  <string name="setting_list_text_ok">ログアウトする</string>
   <string name="setting_list_text_others">その他</string>
   <string name="setting_list_text_privacy_policy">プライバシーポリシー</string>
   <string name="setting_list_text_setting">設定</string>
   <string name="setting_list_text_supported_by_rakuten_developers">Supported by Rakuten Developers</string>
   <string name="setting_list_text_terms_of_use">利用規約</string>
   <string name="setting_list_text_version">バージョン</string>
+  <string name="setting_list_text_would_you_like_to_logout">ログアウトしますか？</string>
   <string name="ui_alt_my_book">Mybrary に移動する</string>
   <string name="ui_alt_setting">設定に移動する</string>
   <string name="ui_text_my_book">Mybrary</string>

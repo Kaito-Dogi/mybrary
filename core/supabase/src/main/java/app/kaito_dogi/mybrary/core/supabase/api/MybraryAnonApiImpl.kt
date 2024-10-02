@@ -83,6 +83,10 @@ internal class MybraryAnonApiImpl @Inject constructor(
     )
   }
 
+  override suspend fun logout() {
+    supabaseClient.auth.signOut()
+  }
+
   override suspend fun getSession(): Boolean {
     return supabaseClient.auth.currentSessionOrNull()?.let { true } ?: false
   }

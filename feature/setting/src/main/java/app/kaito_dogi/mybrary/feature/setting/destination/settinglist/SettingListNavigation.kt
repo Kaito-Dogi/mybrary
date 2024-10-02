@@ -7,12 +7,14 @@ import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
 
 fun NavGraphBuilder.settingListScreen(
+  onLogoutComplete: () -> Unit,
   onTermsOfUseClick: (Url) -> Unit,
   onPrivacyPolicyClick: (Url) -> Unit,
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: (Url) -> Unit,
 ) = composable<SettingRoute.SettingList> {
   SettingListScreenContainer(
+    onLogoutComplete = onLogoutComplete,
     onTermsOfUseClick = onTermsOfUseClick,
     onPrivacyPolicyClick = onPrivacyPolicyClick,
     onLicenceClick = onLicenceClick,
