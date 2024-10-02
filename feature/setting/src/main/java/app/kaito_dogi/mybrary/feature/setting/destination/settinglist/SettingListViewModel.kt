@@ -32,13 +32,26 @@ internal class SettingListViewModel @Inject constructor(
   }
 
   fun onLogoutClick() {
+    _uiState.update { it.copy(isLogoutDialogVisible = true) }
+  }
+
+  fun onLogoutDialogConfirmClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isLoggingOut = true) }
       logoutRepository.logout()
-      _uiState.update { it.copy(isLoggedOut = true) }
+      _uiState.update {
+        it.copy(
+          isLogoutDialogVisible = false,
+          isLoggedOut = true,
+        )
+      }
     }.invokeOnCompletion {
       _uiState.update { it.copy(isLoggingOut = false) }
     }
+  }
+
+  fun onLogoutDialogDismissClick() {
+    _uiState.update { it.copy(isLogoutDialogVisible = false) }
   }
 
   fun onDeleteAccountClick() {
