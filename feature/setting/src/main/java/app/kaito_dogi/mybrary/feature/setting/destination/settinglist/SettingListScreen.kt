@@ -116,7 +116,7 @@ internal fun SettingListScreen(
 
     if (uiState.isLogoutDialogVisible) {
       AlertDialog(
-        title = stringResource(id = R.string.setting_list_text_would_you_like_to_logout),
+        content = stringResource(id = R.string.setting_list_text_would_you_like_to_logout),
         onConfirmClick = onLogoutDialogConfirmClick,
         confirmTextResId = R.string.setting_list_text_ok,
         onDismissRequest = onLogoutDialogDismissClick,

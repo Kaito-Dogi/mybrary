@@ -15,12 +15,12 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
 fun AlertDialog(
-  title: String,
+  content: String,
   @StringRes confirmTextResId: Int,
   onConfirmClick: () -> Unit,
   onDismissRequest: () -> Unit,
   modifier: Modifier = Modifier,
-  content: String? = null,
+  title: String? = null,
   @StringRes dismissTextResId: Int? = null,
   onDismissClick: (() -> Unit)? = null,
   isConfirmLoading: Boolean = false,
@@ -59,15 +59,23 @@ fun AlertDialog(
   } else {
     null
   },
-  title = {
+  title = title?.let {
+    {
+      Text(
+        text = it,
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center,
+        style = MybraryTheme.typography.titleMedium,
+      )
+    }
+  },
+  text = {
     Text(
-      text = title,
+      text = content,
       modifier = Modifier.fillMaxWidth(),
-      textAlign = TextAlign.Center,
-      style = MybraryTheme.typography.titleMedium,
+      style = MybraryTheme.typography.bodyMedium,
     )
   },
-  text = content?.let{ {Text(text = content)} },
   shape = MybraryTheme.shapes.small,
 )
 
