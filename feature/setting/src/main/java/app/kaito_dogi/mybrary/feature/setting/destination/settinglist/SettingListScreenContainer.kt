@@ -14,6 +14,7 @@ internal fun SettingListScreenContainer(
   onPrivacyPolicyClick: (Url) -> Unit,
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: (Url) -> Unit,
+  onDeleteAccountClick: (Url) -> Unit,
   viewModel: SettingListViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -35,6 +36,6 @@ internal fun SettingListScreenContainer(
     onLogoutClick = viewModel::onLogoutClick,
     onLogoutDialogConfirmClick = viewModel::onLogoutDialogConfirmClick,
     onLogoutDialogDismissClick = viewModel::onLogoutDialogDismissClick,
-    onDeleteAccountClick = viewModel::onDeleteAccountClick,
+    onDeleteAccountClick = { onDeleteAccountClick(uiState.deleteAccountUrl) },
   )
 }
