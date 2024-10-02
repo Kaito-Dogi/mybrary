@@ -123,6 +123,8 @@ private fun SettingListScreenPreview() {
         privacyPolicyUrl = Url.Web(value = ""),
         rakutenDevelopersUrl = Url.Web(value = ""),
         versionName = "0.0.1",
+        isLoggingOut = false,
+        isLoggedOut = false,
       ),
       onSwitchClick = {},
       onTermsOfUseClick = {},
