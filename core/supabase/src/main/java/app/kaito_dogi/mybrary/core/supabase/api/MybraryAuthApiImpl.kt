@@ -65,7 +65,7 @@ internal class MybraryAuthApiImpl @Inject constructor(
 
   override suspend fun postMyBook(request: PostMyBookRequest): PostMyBookResponse {
     val result = supabaseClient.postgrest.insert(
-      table = Table.Book,
+      table = Table.MyBook,
       value = request,
     )
     return result.decodeSingle<PostMyBookResponse>()
