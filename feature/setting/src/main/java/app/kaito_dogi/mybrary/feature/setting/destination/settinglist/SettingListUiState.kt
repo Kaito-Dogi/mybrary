@@ -10,6 +10,8 @@ internal data class SettingListUiState(
   val privacyPolicyUrl: Url.Web,
   val rakutenDevelopersUrl: Url.Web,
   val versionName: String,
+  val isLoggingOut: Boolean,
+  val isLoggedOut: Boolean,
 ) {
   companion object {
     fun createInitialValue(
@@ -23,6 +25,8 @@ internal data class SettingListUiState(
       privacyPolicyUrl = privacyPolicyUrl,
       rakutenDevelopersUrl = rakutenDevelopersUrl,
       versionName = versionName,
+      isLoggingOut = false,
+      isLoggedOut = false,
     )
   }
 }
