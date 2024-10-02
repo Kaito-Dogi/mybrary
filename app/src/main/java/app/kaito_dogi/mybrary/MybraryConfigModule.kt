@@ -14,6 +14,7 @@ internal object MybraryConfigModule {
   @Singleton
   @Provides
   fun provideMybraryConfig(): MybraryConfig = object : MybraryConfig {
+    override val deleteAccountUrl: Url.Web = Url.Web(value = BuildConfig.DELETE_ACCOUNT_URL)
     override val privacyPolicyUrl: Url.Web = Url.Web(value = BuildConfig.PRIVACY_POLICY_URL)
     override val rakutenApplicationId: String = BuildConfig.RAKUTEN_APPLICATION_ID
     override val rakutenAffiliateId: String = BuildConfig.RAKUTEN_AFFILIATE_ID
