@@ -33,6 +33,8 @@ internal fun SettingListScreenContainer(
     onLicenceClick = onLicenceClick,
     onRakutenDevelopersClick = { onRakutenDevelopersClick(uiState.rakutenDevelopersUrl) },
     onLogoutClick = viewModel::onLogoutClick,
+    onLogoutDialogConfirmClick = viewModel::onLogoutDialogConfirmClick,
+    onLogoutDialogDismissClick = viewModel::onLogoutDialogDismissClick,
     onDeleteAccountClick = viewModel::onDeleteAccountClick,
   )
 }
