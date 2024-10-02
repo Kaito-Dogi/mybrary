@@ -108,6 +108,7 @@ internal class MainActivity : AppCompatActivity() {
                 onPrivacyPolicyClick = internalBrowserLauncher::launch,
                 onLicenceClick = {},
                 onRakutenDevelopersClick = internalBrowserLauncher::launch,
+                onDeleteAccountClick = internalBrowserLauncher::launch,
               )
             }
           }

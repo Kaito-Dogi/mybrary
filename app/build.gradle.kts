@@ -40,9 +40,14 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     buildConfigStringField(
+      name = "DELETE_ACCOUNT_URL",
+      value = properties.getProperty("deleteAccountUrl"),
+      initialValue = getEnvOrEmpty(name = "DELETE_ACCOUNT_URL"),
+    )
+    buildConfigStringField(
       name = "PRIVACY_POLICY_URL",
       value = properties.getProperty("privacyPolicyUrl"),
-      initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_DEV"),
+      initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
     )
     buildConfigStringField(
       name = "RAKUTEN_AFFILIATE_ID",

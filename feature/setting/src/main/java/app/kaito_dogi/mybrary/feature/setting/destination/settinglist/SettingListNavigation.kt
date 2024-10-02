@@ -12,6 +12,7 @@ fun NavGraphBuilder.settingListScreen(
   onPrivacyPolicyClick: (Url) -> Unit,
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: (Url) -> Unit,
+  onDeleteAccountClick: (Url) -> Unit,
 ) = composable<SettingRoute.SettingList> {
   SettingListScreenContainer(
     onLogoutComplete = onLogoutComplete,
@@ -19,6 +20,7 @@ fun NavGraphBuilder.settingListScreen(
     onPrivacyPolicyClick = onPrivacyPolicyClick,
     onLicenceClick = onLicenceClick,
     onRakutenDevelopersClick = onRakutenDevelopersClick,
+    onDeleteAccountClick = onDeleteAccountClick,
   )
 }
 

@@ -139,6 +139,7 @@ private fun SettingListScreenPreview() {
         privacyPolicyUrl = Url.Web(value = ""),
         rakutenDevelopersUrl = Url.Web(value = ""),
         versionName = "0.0.1",
+        deleteAccountUrl = Url.Web(value = ""),
         isLogoutDialogVisible = false,
         isLoggingOut = false,
         isLoggedOut = false,

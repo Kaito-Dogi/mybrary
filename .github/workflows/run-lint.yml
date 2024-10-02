@@ -44,6 +44,7 @@ jobs:
           bundle install
       - name: Run Lint
         env:
+          DELETE_ACCOUNT_URL: ${{ vars.DELETE_ACCOUNT_URL }}
           PRIVACY_POLICY_URL: ${{ vars.PRIVACY_POLICY_URL }}
           RAKUTEN_AFFILIATE_ID_DEV: ${{ secrets.RAKUTEN_AFFILIATE_ID_DEV }}
           RAKUTEN_AFFILIATE_ID_PROD: ${{ secrets.RAKUTEN_AFFILIATE_ID_PROD }}
