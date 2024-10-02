@@ -33,7 +33,11 @@ internal class MybraryAnonApiImpl @Inject constructor(
         }
       },
     )
-    return result.decodeSingle<BookResponse>()
+    return try {
+      result.decodeSingle<BookResponse>()
+    } catch (e: NoSuchElementException) {
+      null
+    }
   }
 
   override suspend fun getMemos(myBookId: String): GetMemosResponse {
