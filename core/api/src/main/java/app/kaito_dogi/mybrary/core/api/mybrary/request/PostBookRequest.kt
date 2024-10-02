@@ -12,4 +12,6 @@ data class PostBookRequest(
   val publisher: String,
   val authors: String,
   val genre: Int,
+  @SerialName("rakuten_affiliate_url")
+  val rakutenAffiliateUrl: String,
 )

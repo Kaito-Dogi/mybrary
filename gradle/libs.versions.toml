@@ -30,7 +30,7 @@ serialization = "1.6.3"
 supabase = "2.5.1"
 targetSdk = "34"
 versionCode = "1"
-versionName = "0.0.1"
+versionName = "1.0.0"
 
 [libraries]
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }

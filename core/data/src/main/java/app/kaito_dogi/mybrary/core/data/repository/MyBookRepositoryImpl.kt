@@ -44,6 +44,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
         publisher = book.publisher,
         authors = book.authorList.toAuthorsResponse(),
         genre = book.genre.value,
+        rakutenAffiliateUrl = book.rakutenAffiliateUrl.value,
       ),
     ).id
 

@@ -6,7 +6,7 @@ internal enum class Table(
 ) {
   Book(
     value = "book",
-    columnsAll = "+",
+    columnsAll = "*",
   ),
   Memo(
     value = "memo",
@@ -14,6 +14,6 @@ internal enum class Table(
   ),
   MyBook(
     value = "my_book",
-    columnsAll = "*,profile:user_id(*),book:book_id(*,author(*))",
+    columnsAll = "*,profile:user_id(*),book:book_id(*)",
   ),
 }
