@@ -1,18 +1,17 @@
-## :thought_balloon: 背景
+## 背景
 
+## 対応したこと
 
-## :sparkles: 実装内容
+## 対応していないこと
 
+## UI 差分
 
-## :white_check_mark: 動作確認
+|            Before            |            After             |
+|:----------------------------:|:----------------------------:|
+| <img src="" width="300px" /> | <img src="" width="300px" /> |
+
+## 動作確認手順
 
 - [ ] `記入する`
 
-## :art: UI 差分
-
-| Before | After |
-|:--:|:--:|
-| <img src="" width="300px" /> | <img src="" width="300px" /> |
-
-## :link: 関連リンク
-
+## 関連リンク
