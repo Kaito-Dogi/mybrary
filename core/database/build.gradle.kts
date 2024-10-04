@@ -32,10 +32,10 @@ android {
 }
 
 dependencies {
-  implementation(libs.hiltAndroid)
-  implementation(libs.roomKtx)
-  implementation(libs.roomRuntime)
+  implementation(libs.hilt.android)
+  implementation(libs.androidx.room)
+  implementation(libs.androidx.room.runtime)
 
-  ksp(libs.hiltCompiler)
-  ksp(libs.roomCompiler)
+  ksp(libs.hilt.android.compiler)
+  ksp(libs.androidx.room.compiler)
 }

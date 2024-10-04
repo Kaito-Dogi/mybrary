@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-  implementation(platform(libs.androidxComposeBom))
-  implementation(libs.androidxComposeMaterial3)
-  implementation(libs.androidxComposeUiTooling)
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling)
 }

@@ -11,9 +11,9 @@ java {
 }
 
 dependencies {
-  implementation(libs.hiltCore)
-  implementation(libs.kotlinxCoroutinesCore)
-  implementation(libs.serialization)
+  implementation(libs.hilt.core)
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.serialization)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

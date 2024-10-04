@@ -174,10 +174,10 @@ dependencies {
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
 
-  implementation(platform(libs.androidxComposeBom))
-  implementation(libs.androidxNavigationCompose)
-  implementation(libs.hiltAndroid)
-  implementation(libs.material)
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.navigation.compose)
+  implementation(libs.hilt.android)
+  implementation(libs.android.material)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

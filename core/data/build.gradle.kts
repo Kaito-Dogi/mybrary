@@ -47,9 +47,9 @@ dependencies {
   implementation(project(":core:database"))
   implementation(project(":core:domain"))
 
-  implementation(libs.hiltAndroid)
+  implementation(libs.hilt.android)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 
   testImplementation(libs.junit)
 }

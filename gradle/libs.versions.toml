@@ -2,6 +2,7 @@
 
 [versions]
 android-gradle-plugin = "8.5.0"
+android-material = "1.12.0"
 androidx-browser = "1.8.0"
 androidx-compose-bom = "2024.06.00"
 androidx-compose-compiler = "1.5.14"
@@ -9,6 +10,7 @@ androidx-espresso = "3.6.0"
 androidx-hilt = "1.2.0"
 androidx-lifecycle = "2.8.2"
 androidx-navigation = "2.8.0-beta06"
+androidx-room = "2.6.1"
 androidx-test-ext = "1.2.0"
 coil = "2.6.0"
 hilt = "2.51.1"
@@ -16,13 +18,11 @@ jetbrains-kotlin-jvm = "1.9.24"
 junit = "4.13.2"
 kotlin = "1.9.24"
 kotlinx-coroutines = "1.8.1"
+kotlinx-serialization = "1.6.3"
 ksp = "1.9.24-1.0.20"
 ktor = "2.3.12"
-material = "1.12.0"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
-room = "2.6.1"
-serialization = "1.6.3"
 supabase = "2.5.1"
 
 # FIXME: Convention Plugin を実装後に削除
@@ -34,34 +34,34 @@ versionCode = "2"
 versionName = "1.0.0"
 
 [libraries]
+android-material = { group = "com.google.android.material", name = "material", version.ref = "android-material" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
-androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
-androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
-androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidxHiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt" }
-androidxLifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
-androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
-androidxTestEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
-androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidx-test-ext" }
-coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-hiltCore = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
+androidx-room = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidx-test-ext" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinxCoroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ktor = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-okhttpLogging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofitConverterSerialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
-roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
-supabaseBom = { group = "io.github.jan-tennert.supabase", name = "bom", version.ref = "supabase" }
-supabasePostgrestKt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "supabase" }
+retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+supabase-bom = { group = "io.github.jan-tennert.supabase", name = "bom", version.ref = "supabase" }
+supabase-postgrest-kt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "supabase" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }

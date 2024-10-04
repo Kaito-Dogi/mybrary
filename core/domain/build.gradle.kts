@@ -12,5 +12,5 @@ java {
 dependencies {
   implementation(project(":core:common"))
 
-  implementation(libs.serialization)
+  implementation(libs.kotlinx.serialization)
 }
