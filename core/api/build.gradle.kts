@@ -1,7 +1,7 @@
 plugins {
-  alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.hiltAndroid)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.hilt.android)
+  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
 }
@@ -33,12 +33,12 @@ android {
 dependencies {
   implementation(project(":core:common"))
 
-  implementation(libs.hiltAndroid)
+  implementation(libs.hilt.android)
   implementation(libs.okhttp)
-  implementation(libs.okhttpLogging)
+  implementation(libs.okhttp.logging.interceptor)
   implementation(libs.retrofit)
-  implementation(libs.retrofitConverterSerialization)
-  implementation(libs.serialization)
+  implementation(libs.retrofit.converter.kotlinx.serialization)
+  implementation(libs.kotlinx.serialization)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

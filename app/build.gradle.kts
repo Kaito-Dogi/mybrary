@@ -20,9 +20,10 @@ private fun VariantDimension.buildConfigStringField(
 private fun getEnvOrEmpty(name: String) = "\"${System.getenv(name)}\""
 
 plugins {
-  alias(libs.plugins.androidApplication)
-  alias(libs.plugins.hiltAndroid)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.compose)
+  alias(libs.plugins.hilt.android)
+  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
 }
 
@@ -153,10 +154,6 @@ android {
     buildConfig = true
     compose = true
   }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-  }
 }
 
 dependencies {
@@ -174,10 +171,10 @@ dependencies {
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
 
-  implementation(platform(libs.androidxComposeBom))
-  implementation(libs.androidxNavigationCompose)
-  implementation(libs.hiltAndroid)
-  implementation(libs.material)
+  implementation(libs.android.material)
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.navigation.compose)
+  implementation(libs.hilt.android)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

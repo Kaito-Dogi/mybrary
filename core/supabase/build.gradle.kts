@@ -1,7 +1,7 @@
 plugins {
-  alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.hiltAndroid)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.hilt.android)
+  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
 }
@@ -30,10 +30,10 @@ dependencies {
   implementation(project(":core:api"))
   implementation(project(":core:config"))
 
-  implementation(libs.hiltAndroid)
+  implementation(libs.hilt.android)
   implementation(libs.ktor)
-  implementation(platform(libs.supabaseBom))
-  implementation(libs.supabasePostgrestKt)
+  implementation(platform(libs.supabase.bom))
+  implementation(libs.supabase.postgrest.kt)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

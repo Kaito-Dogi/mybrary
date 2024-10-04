@@ -1,6 +1,6 @@
 plugins {
-  alias(libs.plugins.javaLibrary)
-  alias(libs.plugins.jetbrainsKotlinJvm)
+  alias(libs.plugins.java.library)
+  alias(libs.plugins.jetbrains.kotlin.jvm)
   alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
 }
@@ -11,9 +11,9 @@ java {
 }
 
 dependencies {
-  implementation(libs.hiltCore)
-  implementation(libs.kotlinxCoroutinesCore)
-  implementation(libs.serialization)
+  implementation(libs.hilt.core)
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.serialization)
 
-  ksp(libs.hiltCompiler)
+  ksp(libs.hilt.android.compiler)
 }

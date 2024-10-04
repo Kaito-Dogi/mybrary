@@ -1,6 +1,7 @@
 plugins {
-  alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.compose)
+  alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -25,14 +26,10 @@ android {
   buildFeatures {
     compose = true
   }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-  }
 }
 
 dependencies {
-  implementation(platform(libs.androidxComposeBom))
-  implementation(libs.androidxComposeMaterial3)
-  implementation(libs.androidxComposeUiTooling)
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling)
 }

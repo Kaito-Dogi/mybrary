@@ -1,6 +1,6 @@
 plugins {
-  alias(libs.plugins.javaLibrary)
-  alias(libs.plugins.jetbrainsKotlinJvm)
+  alias(libs.plugins.java.library)
+  alias(libs.plugins.jetbrains.kotlin.jvm)
   alias(libs.plugins.serialization)
 }
 
@@ -12,5 +12,5 @@ java {
 dependencies {
   implementation(project(":core:common"))
 
-  implementation(libs.serialization)
+  implementation(libs.kotlinx.serialization)
 }
