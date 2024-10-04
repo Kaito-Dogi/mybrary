@@ -15,7 +15,8 @@ import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.component.SignUpS
 
 @Composable
 internal fun LoginPage(
-  isLoggingIn: Boolean,
+  isLoggingInWithGoogle: Boolean,
+  isLoggingInAsGuest: Boolean,
   onGoogleLoginClick: () -> Unit,
   onAnonymousLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
@@ -32,7 +33,7 @@ internal fun LoginPage(
       iconResId = R.drawable.icon_google,
       altResId = R.string.send_otp_alt_login_with_google,
       iconTint = Color.Unspecified,
-      isLoading = isLoggingIn,
+      isLoading = isLoggingInWithGoogle,
     )
 
     SecondaryButton(
@@ -41,7 +42,7 @@ internal fun LoginPage(
       modifier = Modifier.fillMaxWidth(),
       iconResId = R.drawable.icon_person,
       altResId = R.string.send_otp_alt_login_with_google,
-      isLoading = isLoggingIn,
+      isLoading = isLoggingInAsGuest,
     )
 
     Spacer(modifier = Modifier.weight(1f))
@@ -58,7 +59,8 @@ internal fun LoginPage(
 private fun LoginPagePreview() {
   MybraryTheme {
     LoginPage(
-      isLoggingIn = false,
+      isLoggingInWithGoogle = false,
+      isLoggingInAsGuest = false,
       onGoogleLoginClick = {},
       onAnonymousLoginClick = {},
       onSignUpClick = {},
