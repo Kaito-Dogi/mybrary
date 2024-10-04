@@ -1,54 +1,55 @@
-# FIXME: ケバブケースに置き換える
 # FIXME: module を使用する
 
 [versions]
-androidGradlePlugin = "8.5.0"
+android-gradle-plugin = "8.5.0"
 androidx-browser = "1.8.0"
-androidxComposeBom = "2024.06.00"
-androidxComposeCompiler = "1.5.14"
-androidxEspresso = "3.6.0"
-androidxHilt = "1.2.0"
-androidxLifecycle = "2.8.2"
-androidxNavigation = "2.8.0-beta06"
-androidxTestExt = "1.2.0"
+androidx-compose-bom = "2024.06.00"
+androidx-compose-compiler = "1.5.14"
+androidx-espresso = "3.6.0"
+androidx-hilt = "1.2.0"
+androidx-lifecycle = "2.8.2"
+androidx-navigation = "2.8.0-beta06"
+androidx-test-ext = "1.2.0"
 coil = "2.6.0"
-compileSdk = "34"
 hilt = "2.51.1"
-jetbrainsKotlinJvm = "1.9.24"
+jetbrains-kotlin-jvm = "1.9.24"
 junit = "4.13.2"
-jvmTarget = "17"
 kotlin = "1.9.24"
-kotlinxCoroutines = "1.8.1"
+kotlinx-coroutines = "1.8.1"
 ksp = "1.9.24-1.0.20"
 ktor = "2.3.12"
 material = "1.12.0"
-minSdk = "26"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 room = "2.6.1"
 serialization = "1.6.3"
 supabase = "2.5.1"
+
+# FIXME: Convention Plugin を実装後に削除
+compileSdk = "34"
+jvmTarget = "17"
+minSdk = "26"
 targetSdk = "34"
 versionCode = "2"
 versionName = "1.0.0"
 
 [libraries]
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
-androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
 androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidxHiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
-androidxLifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
-androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
-androidxTestEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
-androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+androidxHiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt" }
+androidxLifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
+androidxTestEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
+androidxTestExtJunitKtx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidx-test-ext" }
 coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hiltCore = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinxCoroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinxCoroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 ktor = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
@@ -63,11 +64,11 @@ supabaseBom = { group = "io.github.jan-tennert.supabase", name = "bom", version.
 supabasePostgrestKt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "supabase" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+androidLibrary = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 javaLibrary = { id = "java-library" }
-jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
