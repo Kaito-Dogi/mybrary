@@ -24,6 +24,14 @@ import javax.inject.Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAnonApi {
+  override suspend fun anonymousLogin() {
+    supabaseClient.auth.signInAnonymously()
+  }
+
+  override suspend fun anonymousSignUp() {
+    supabaseClient.auth.signInAnonymously()
+  }
+
   override suspend fun getBookByIsbn(isbn: String): GetBookByIsbnResponse {
     val result = supabaseClient.postgrest.select(
       table = Table.Book,
