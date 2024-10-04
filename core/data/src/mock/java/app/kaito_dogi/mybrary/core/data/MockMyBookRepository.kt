@@ -10,8 +10,6 @@ import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.User
-import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -46,7 +44,7 @@ internal class MockMyBookRepository @Inject constructor(
 
     val myBook = MyBook(
       id = MyBookId(value = "${mockMyBookList.value.size}"),
-      user = mockMyBookList.value[0].user,
+      // user = mockMyBookList.value[0].user,
       bookId = book.id,
       title = book.title,
       imageUrl = book.imageUrl,
@@ -145,14 +143,13 @@ internal class MockMyBookRepository @Inject constructor(
   }
 }
 
-
 private val MockMyBookList = List(20) { index ->
   MyBook(
     id = MyBookId(value = "$index"),
-    user = User(
-      id = UserId(value = "userId"),
-      name = "ユーザー名",
-    ),
+    // user = User(
+    //   id = UserId(value = "userId"),
+    //   name = "ユーザー名",
+    // ),
     bookId = BookId(value = "$index"),
     title = when (index % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
