@@ -20,9 +20,9 @@ private fun VariantDimension.buildConfigStringField(
 private fun getEnvOrEmpty(name: String) = "\"${System.getenv(name)}\""
 
 plugins {
-  alias(libs.plugins.androidApplication)
-  alias(libs.plugins.hiltAndroid)
-  alias(libs.plugins.kotlinAndroid)
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.hilt.android)
+  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
 }
 
@@ -155,7 +155,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
+    kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
   }
 }
 

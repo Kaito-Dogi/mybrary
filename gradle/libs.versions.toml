@@ -5,7 +5,6 @@ android-gradle-plugin = "8.5.0"
 android-material = "1.12.0"
 androidx-browser = "1.8.0"
 androidx-compose-bom = "2024.06.00"
-androidx-compose-compiler = "1.5.14"
 androidx-espresso = "3.6.0"
 androidx-hilt = "1.2.0"
 androidx-lifecycle = "2.8.2"
@@ -26,6 +25,7 @@ retrofit = "2.11.0"
 supabase = "2.5.1"
 
 # FIXME: Convention Plugin を実装後に削除
+androidx-compose-compiler = "1.5.14"
 compileSdk = "34"
 jvmTarget = "17"
 minSdk = "26"
@@ -64,12 +64,12 @@ supabase-bom = { group = "io.github.jan-tennert.supabase", name = "bom", version
 supabase-postgrest-kt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "supabase" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-androidLibrary = { id = "com.android.library", version.ref = "android-gradle-plugin" }
-hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-javaLibrary = { id = "java-library" }
-jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+java-library = { id = "java-library" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
