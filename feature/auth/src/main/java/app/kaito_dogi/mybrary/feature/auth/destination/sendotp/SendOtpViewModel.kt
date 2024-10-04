@@ -4,10 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
+import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
+import app.kaito_dogi.mybrary.core.domain.repository.SignUpRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -17,6 +18,8 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 internal class SendOtpViewModel @Inject constructor(
   private val otpRepository: OtpRepository,
+  private val loginRepository: LoginRepository,
+  private val signUpRepository: SignUpRepository,
   private val authRepository: AuthRepository,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
@@ -49,7 +52,7 @@ internal class SendOtpViewModel @Inject constructor(
   fun onAnonymousLoginClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isLoggingInAsGuest = true) }
-      delay(1_000L)
+      loginRepository.anonymousLogin()
       _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isLoggingInWithGoogle = false) }
@@ -63,7 +66,7 @@ internal class SendOtpViewModel @Inject constructor(
   fun onAnonymousSignUpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isSigningUpAsGuest = true) }
-      delay(1_000L)
+      signUpRepository.anonymousSignUp()
       _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isSigningUpAsGuest = false) }
