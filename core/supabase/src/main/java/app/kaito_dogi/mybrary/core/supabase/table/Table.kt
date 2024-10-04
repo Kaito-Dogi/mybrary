@@ -10,10 +10,10 @@ internal enum class Table(
   ),
   Memo(
     value = "memo",
-    columnsAll = "*,my_book(profile:user_id(*))",
+    columnsAll = "*",
   ),
   MyBook(
     value = "my_book",
-    columnsAll = "*,profile:user_id(*),book:book_id(*)",
+    columnsAll = "*,book:book_id(*)",
   ),
 }

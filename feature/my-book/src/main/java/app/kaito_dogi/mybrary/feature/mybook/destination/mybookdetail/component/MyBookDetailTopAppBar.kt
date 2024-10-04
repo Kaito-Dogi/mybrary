@@ -209,10 +209,10 @@ private fun MyBookDetailTopAppBarPreview() {
     MyBookDetailTopAppBar(
       myBook = MyBook(
         id = MyBookId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         bookId = BookId(value = ""),
         title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),

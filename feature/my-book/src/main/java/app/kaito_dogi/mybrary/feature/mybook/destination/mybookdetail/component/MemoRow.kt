@@ -108,10 +108,10 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 開始ページ・終了ページが記録されている場合
       Memo(
         id = MemoId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
@@ -126,10 +126,10 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 片方のページのみが記録されている場合
       Memo(
         id = MemoId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
@@ -144,10 +144,10 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // ページが記録されていない場合
       Memo(
         id = MemoId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = null,
@@ -159,10 +159,10 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 編集済みの場合
       Memo(
         id = MemoId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
@@ -177,10 +177,10 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 複数行の場合
       Memo(
         id = MemoId(value = ""),
-        user = User(
-          id = UserId(value = "userId"),
-          name = "ユーザー名",
-        ),
+        // user = User(
+        //   id = UserId(value = "userId"),
+        //   name = "ユーザー名",
+        // ),
         myBookId = MyBookId(value = ""),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
         pageRange = PageRange(

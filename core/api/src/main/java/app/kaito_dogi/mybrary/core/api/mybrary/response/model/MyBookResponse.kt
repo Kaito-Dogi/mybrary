@@ -18,8 +18,8 @@ data class MyBookResponse(
   val isPublic: Boolean,
   @SerialName("is_archived")
   val isArchived: Boolean,
-  @SerialName("profile")
-  val user: UserResponse,
+  // @SerialName("profile")
+  // val user: UserResponse,
   @SerialName("book")
   val book: BookResponse,
 )

@@ -21,6 +21,6 @@ data class MemoResponse(
   val likeCount: Int,
   @SerialName("created_at")
   val createdAt: TimeStampResponse,
-  @SerialName("my_book")
-  val myBook: MyBookUserResponse,
+  // @SerialName("my_book")
+  // val myBook: MyBookUserResponse,
 )
