@@ -45,7 +45,6 @@ internal fun SendOtpScreenContainer(
     viewModel.uiEvent
       .flowWithLifecycle(lifecycleOwner.lifecycle)
       .onEach { uiEvent ->
-        println("あああ: $uiEvent")
         when (uiEvent) {
           SendOtpUiEvent.IsOtpSent -> AuthRoute.VerifyOtp.Page.entries
             .find { it.ordinal == pagerState.currentPage }?.let { page ->
