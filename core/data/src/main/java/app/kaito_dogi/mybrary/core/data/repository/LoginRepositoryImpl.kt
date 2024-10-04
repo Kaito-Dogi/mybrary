@@ -17,4 +17,8 @@ internal class LoginRepositoryImpl @Inject constructor(
   override suspend fun googleLogin() = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
+
+  override suspend fun anonymousLogin() = withContext(dispatcher) {
+    mybraryAnonApi.anonymousLogin()
+  }
 }
