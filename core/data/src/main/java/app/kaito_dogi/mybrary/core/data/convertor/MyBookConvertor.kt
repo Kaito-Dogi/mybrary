@@ -8,7 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 internal fun MyBookResponse.toMyBook() = MyBook(
   id = MyBookId(value = this.id),
-  user = this.user.toUser(),
+  // user = this.user.toUser(),
   bookId = BookId(value = this.bookId),
   title = this.book.title,
   imageUrl = this.book.imageUrl.let { Url.Image(value = it) },

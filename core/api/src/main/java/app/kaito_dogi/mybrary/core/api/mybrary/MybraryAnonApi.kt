@@ -13,6 +13,12 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MybraryAnonApi {
+  @POST("/anonymous-login")
+  suspend fun anonymousLogin()
+
+  @POST("/anonymous-sign-up")
+  suspend fun anonymousSignUp()
+
   @GET("/book/{isbn}")
   suspend fun getBookByIsbn(
     @Path("isbn") isbn: String,

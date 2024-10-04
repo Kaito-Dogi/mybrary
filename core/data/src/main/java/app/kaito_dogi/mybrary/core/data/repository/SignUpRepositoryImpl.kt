@@ -17,4 +17,8 @@ internal class SignUpRepositoryImpl @Inject constructor(
   override suspend fun googleSignUp() = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
+
+  override suspend fun anonymousSignUp() {
+    mybraryAnonApi.anonymousSignUp()
+  }
 }

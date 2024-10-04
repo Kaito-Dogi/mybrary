@@ -33,8 +33,10 @@ internal fun SendOtpScreen(
   onEmailChange: (String) -> Unit,
   onSendOtpClick: () -> Unit,
   onGoogleLoginClick: () -> Unit,
+  onAnonymousLoginClick: () -> Unit,
   onSignUpClick: () -> Unit,
   onGoogleSignUpClick: () -> Unit,
+  onAnonymousSignUpClick: () -> Unit,
   onLoginClick: () -> Unit,
 ) {
   Scaffold(
@@ -88,13 +90,17 @@ internal fun SendOtpScreen(
       ) { page ->
         when (page) {
           AuthRoute.VerifyOtp.Page.Login.ordinal -> LoginPage(
-            isLoggingIn = uiState.isLoggingIn,
+            isLoggingInWithGoogle = uiState.isLoggingInWithGoogle,
+            isLoggingInAsGuest = uiState.isLoggingInAsGuest,
+            onAnonymousLoginClick = onAnonymousLoginClick,
             onGoogleLoginClick = onGoogleLoginClick,
             onSignUpClick = onSignUpClick,
           )
 
           AuthRoute.VerifyOtp.Page.SignUp.ordinal -> SignUpPage(
-            isSigningUp = uiState.isSigningUp,
+            isSigningUpWithGoogle = uiState.isSigningUpWithGoogle,
+            isSigningUpAsGuest = uiState.isSigningUpAsGuest,
+            onAnonymousSignUpClick = onAnonymousSignUpClick,
             onGoogleSignUpClick = onGoogleSignUpClick,
             onLoginClick = onLoginClick,
           )
@@ -123,8 +129,10 @@ private fun SendOtpScreenPreview() {
       onEmailChange = {},
       onSendOtpClick = {},
       onGoogleLoginClick = {},
+      onAnonymousLoginClick = {},
       onSignUpClick = {},
       onGoogleSignUpClick = {},
+      onAnonymousSignUpClick = {},
       onLoginClick = {},
     )
   }

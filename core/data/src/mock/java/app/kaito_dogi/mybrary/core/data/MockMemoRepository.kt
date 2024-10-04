@@ -7,8 +7,6 @@ import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
-import app.kaito_dogi.mybrary.core.domain.model.User
-import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import java.time.LocalDateTime
 import javax.inject.Inject
@@ -40,10 +38,10 @@ internal class MockMemoRepository @Inject constructor(
 
     val createdMemo = Memo(
       id = MemoId(value = "${mockMemoList.value.size}"),
-      user = User(
-        id = UserId(value = "userId"),
-        name = "ユーザー名",
-      ),
+      // user = User(
+      //   id = UserId(value = "userId"),
+      //   name = "ユーザー名",
+      // ),
       myBookId = draftMemo.myBookId,
       content = draftMemo.content,
       pageRange = draftMemo.pageRange,
@@ -93,16 +91,15 @@ internal class MockMemoRepository @Inject constructor(
   }
 }
 
-
 private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
   val startPage = if (index % 2 == 0) index * 100 else null
   val endPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
     id = MemoId(value = "$index"),
-    user = User(
-      id = UserId(value = "userId"),
-      name = "ユーザー名",
-    ),
+    // user = User(
+    //   id = UserId(value = "userId"),
+    //   name = "ユーザー名",
+    // ),
     myBookId = myBookId,
     content = "メモ$index",
     pageRange = startPage?.let {

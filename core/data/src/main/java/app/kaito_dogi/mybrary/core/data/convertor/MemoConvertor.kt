@@ -8,7 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.PageRange
 
 internal fun MemoResponse.toMemo() = Memo(
   id = MemoId(value = this.id),
-  user = this.myBook.user.toUser(),
+  // user = this.myBook.user.toUser(),
   myBookId = MyBookId(value = this.myBookId),
   content = this.content,
   pageRange = this.startPage?.let {
