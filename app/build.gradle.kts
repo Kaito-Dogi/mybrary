@@ -21,6 +21,7 @@ private fun getEnvOrEmpty(name: String) = "\"${System.getenv(name)}\""
 
 plugins {
   alias(libs.plugins.android.application)
+  alias(libs.plugins.compose)
   alias(libs.plugins.hilt.android)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
@@ -153,10 +154,6 @@ android {
     buildConfig = true
     compose = true
   }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
-  }
 }
 
 dependencies {
@@ -174,10 +171,10 @@ dependencies {
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
 
+  implementation(libs.android.material)
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.navigation.compose)
   implementation(libs.hilt.android)
-  implementation(libs.android.material)
 
   ksp(libs.hilt.android.compiler)
 }

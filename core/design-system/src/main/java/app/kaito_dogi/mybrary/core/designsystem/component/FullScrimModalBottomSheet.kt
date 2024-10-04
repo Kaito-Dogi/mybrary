@@ -54,7 +54,7 @@ fun FullScrimModalBottomSheet(
     tonalElevation = tonalElevation,
     scrimColor = scrimColor,
     dragHandle = dragHandle,
-    windowInsets = customWindowInsets,
+    contentWindowInsets = { customWindowInsets },
     content = content,
   )
 }
