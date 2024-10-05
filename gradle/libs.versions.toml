@@ -10,6 +10,7 @@ androidx-navigation = "2.8.2"
 androidx-room = "2.6.1"
 androidx-test-ext = "1.2.1"
 coil = "2.6.0"
+hcaptcha-android-sdk = "4.0.2"
 hilt = "2.52"
 jetbrains-kotlin-jvm = "2.0.20"
 junit = "4.13.2"
@@ -46,6 +47,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-ext" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+hcaptcha-android-sdk = { module = "com.github.hCaptcha.hcaptcha-android-sdk:compose-sdk", version.ref = "hcaptcha-android-sdk" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
