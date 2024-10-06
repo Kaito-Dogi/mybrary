@@ -45,6 +45,8 @@ jobs:
       - name: Run Test
         env:
           DELETE_ACCOUNT_URL: ${{ vars.DELETE_ACCOUNT_URL }}
+          HCAPTCHA_SITE_KEY_DEV: ${{ secrets.HCAPTCHA_SITE_KEY_DEV }}
+          HCAPTCHA_SITE_KEY_PROD: ${{ secrets.HCAPTCHA_SITE_KEY_PROD }}
           PRIVACY_POLICY_URL: ${{ vars.PRIVACY_POLICY_URL }}
           RAKUTEN_AFFILIATE_ID_DEV: ${{ secrets.RAKUTEN_AFFILIATE_ID_DEV }}
           RAKUTEN_AFFILIATE_ID_PROD: ${{ secrets.RAKUTEN_AFFILIATE_ID_PROD }}
