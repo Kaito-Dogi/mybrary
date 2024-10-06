@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.core.data.repository
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.SignUpRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,7 +19,7 @@ internal class SignUpRepositoryImpl @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun anonymousSignUp() {
-    mybraryAnonApi.anonymousSignUp()
+  override suspend fun anonymousSignUp(hCaptchaToken: HCaptchaToken) {
+    mybraryAnonApi.anonymousSignUp(hCaptchaToken = hCaptchaToken.value)
   }
 }
