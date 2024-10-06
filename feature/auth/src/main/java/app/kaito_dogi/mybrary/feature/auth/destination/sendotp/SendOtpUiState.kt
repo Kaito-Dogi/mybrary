@@ -10,6 +10,7 @@ data class SendOtpUiState(
   val isLoggingInWithGoogle: Boolean,
   val isSigningUpAsGuest: Boolean,
   val isSigningUpWithGoogle: Boolean,
+  val isHCaptchaVisible: Boolean,
 ) {
   companion object {
     val InitialValue = SendOtpUiState(
@@ -19,6 +20,7 @@ data class SendOtpUiState(
       isLoggingInWithGoogle = false,
       isSigningUpAsGuest = false,
       isSigningUpWithGoogle = false,
+      isHCaptchaVisible = false,
     )
   }
 }
