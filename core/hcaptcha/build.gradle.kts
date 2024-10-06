@@ -33,7 +33,8 @@ android {
 dependencies {
   implementation(project(":core:config"))
 
-  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.compose.runtime)
+  implementation(libs.androidx.compose.ui)
   implementation(libs.hcaptcha.android.sdk)
   implementation(libs.hilt.android)
 
