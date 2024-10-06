@@ -35,6 +35,7 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
+  implementation(project(":core:hcaptcha"))
   implementation(project(":core:ui"))
 
   implementation(platform(libs.androidx.compose.bom))

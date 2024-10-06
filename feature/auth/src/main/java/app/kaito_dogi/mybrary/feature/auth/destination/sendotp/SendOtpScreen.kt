@@ -16,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.core.hcaptcha.HCaptchaDialog
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.component.DividerSection
 import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.component.HorizontalPagerIndicator
@@ -38,6 +40,8 @@ internal fun SendOtpScreen(
   onGoogleSignUpClick: () -> Unit,
   onAnonymousSignUpClick: () -> Unit,
   onLoginClick: () -> Unit,
+  onHCaptchaSuccess: (HCaptchaToken) -> Unit,
+  onHCaptchaFailure: () -> Unit,
 ) {
   Scaffold(
     modifier = Modifier.fillMaxSize(),
@@ -116,6 +120,13 @@ internal fun SendOtpScreen(
           .padding(bottom = MybraryTheme.spaces.xl),
       )
     }
+
+    if (uiState.isHCaptchaVisible) {
+      HCaptchaDialog(
+        onSuccess = onHCaptchaSuccess,
+        onFailure = onHCaptchaFailure,
+      )
+    }
   }
 }
 
@@ -134,6 +145,8 @@ private fun SendOtpScreenPreview() {
       onGoogleSignUpClick = {},
       onAnonymousSignUpClick = {},
       onLoginClick = {},
+      onHCaptchaSuccess = {},
+      onHCaptchaFailure = {},
     )
   }
 }
