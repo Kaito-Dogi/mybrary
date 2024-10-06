@@ -46,6 +46,11 @@ android {
       initialValue = getEnvOrEmpty(name = "DELETE_ACCOUNT_URL"),
     )
     buildConfigStringField(
+      name = "HCAPTCHA_SITE_KEY",
+      value = properties.getProperty("hCaptcha.siteKey.dev"),
+      initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_DEV"),
+    )
+    buildConfigStringField(
       name = "PRIVACY_POLICY_URL",
       value = properties.getProperty("privacyPolicyUrl"),
       initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
@@ -107,6 +112,11 @@ android {
     create("prod") {
       dimension = "env"
 
+      buildConfigStringField(
+        name = "HCAPTCHA_SITE_KEY",
+        value = properties.getProperty("hCaptcha.siteKey.prod"),
+        initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_PROD"),
+      )
       buildConfigStringField(
         name = "RAKUTEN_AFFILIATE_ID",
         value = properties.getProperty("rakuten.affiliateId.prod"),
