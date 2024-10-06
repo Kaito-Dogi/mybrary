@@ -174,6 +174,7 @@ dependencies {
   implementation(project(":core:database"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
+  implementation(project(":core:hcaptcha"))
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:auth"))
