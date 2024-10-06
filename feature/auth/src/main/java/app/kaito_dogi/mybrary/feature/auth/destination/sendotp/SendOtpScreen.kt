@@ -94,16 +94,16 @@ internal fun SendOtpScreen(
       ) { page ->
         when (page) {
           AuthRoute.VerifyOtp.Page.Login.ordinal -> LoginPage(
-            isLoggingInWithGoogle = uiState.isLoggingInWithGoogle,
-            isLoggingInAsGuest = uiState.isLoggingInAsGuest,
+            isLoggingInWithGoogle = uiState.isGoogleLoggingIn,
+            isLoggingInAsGuest = uiState.isAnonymousLoggingIn,
             onAnonymousLoginClick = onAnonymousLoginClick,
             onGoogleLoginClick = onGoogleLoginClick,
             onSignUpClick = onSignUpClick,
           )
 
           AuthRoute.VerifyOtp.Page.SignUp.ordinal -> SignUpPage(
-            isSigningUpWithGoogle = uiState.isSigningUpWithGoogle,
-            isSigningUpAsGuest = uiState.isSigningUpAsGuest,
+            isSigningUpWithGoogle = uiState.isGoogleSigningUp,
+            isSigningUpAsGuest = uiState.isAnonymousSigningUp,
             onAnonymousSignUpClick = onAnonymousSignUpClick,
             onGoogleSignUpClick = onGoogleSignUpClick,
             onLoginClick = onLoginClick,

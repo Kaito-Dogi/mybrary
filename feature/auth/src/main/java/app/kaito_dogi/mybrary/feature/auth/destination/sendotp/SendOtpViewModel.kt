@@ -54,7 +54,7 @@ internal class SendOtpViewModel @Inject constructor(
   fun onAnonymousLoginClick() {
     _uiState.update {
       it.copy(
-        isLoggingInAsGuest = true,
+        isAnonymousLoggingIn = true,
         isHCaptchaVisible = true,
       )
     }
@@ -68,7 +68,7 @@ internal class SendOtpViewModel @Inject constructor(
   fun onAnonymousSignUpClick() {
     _uiState.update {
       it.copy(
-        isSigningUpAsGuest = true,
+        isAnonymousSigningUp = true,
         isHCaptchaVisible = true,
       )
     }
@@ -79,12 +79,12 @@ internal class SendOtpViewModel @Inject constructor(
       _uiState.update { it.copy(isHCaptchaVisible = false) }
       // FIXME: 匿名ログインを共通化する
       when {
-        uiState.value.isLoggingInAsGuest -> {
+        uiState.value.isAnonymousLoggingIn -> {
           loginRepository.anonymousLogin(hCaptchaToken = hCaptchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
         }
 
-        uiState.value.isSigningUpAsGuest -> {
+        uiState.value.isAnonymousSigningUp -> {
           signUpRepository.anonymousSignUp(hCaptchaToken = hCaptchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
         }
@@ -92,8 +92,8 @@ internal class SendOtpViewModel @Inject constructor(
     }.invokeOnCompletion {
       _uiState.update {
         it.copy(
-          isLoggingInAsGuest = false,
-          isSigningUpAsGuest = false,
+          isAnonymousLoggingIn = false,
+          isAnonymousSigningUp = false,
         )
       }
     }
@@ -102,8 +102,8 @@ internal class SendOtpViewModel @Inject constructor(
   fun onHCaptchaFailure() {
     _uiState.update {
       it.copy(
-        isLoggingInAsGuest = false,
-        isSigningUpAsGuest = false,
+        isAnonymousLoggingIn = false,
+        isAnonymousSigningUp = false,
         isHCaptchaVisible = false,
       )
     }

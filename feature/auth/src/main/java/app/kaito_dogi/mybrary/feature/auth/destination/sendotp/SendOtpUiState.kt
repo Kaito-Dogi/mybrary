@@ -6,20 +6,20 @@ import androidx.compose.runtime.Immutable
 data class SendOtpUiState(
   val email: String,
   val isOtpSending: Boolean,
-  val isLoggingInAsGuest: Boolean,
-  val isLoggingInWithGoogle: Boolean,
-  val isSigningUpAsGuest: Boolean,
-  val isSigningUpWithGoogle: Boolean,
+  val isAnonymousLoggingIn: Boolean,
+  val isAnonymousSigningUp: Boolean,
+  val isGoogleLoggingIn: Boolean,
+  val isGoogleSigningUp: Boolean,
   val isHCaptchaVisible: Boolean,
 ) {
   companion object {
     val InitialValue = SendOtpUiState(
       email = "",
       isOtpSending = false,
-      isLoggingInAsGuest = false,
-      isLoggingInWithGoogle = false,
-      isSigningUpAsGuest = false,
-      isSigningUpWithGoogle = false,
+      isAnonymousLoggingIn = false,
+      isAnonymousSigningUp = false,
+      isGoogleLoggingIn = false,
+      isGoogleSigningUp = false,
       isHCaptchaVisible = false,
     )
   }
