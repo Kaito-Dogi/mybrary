@@ -12,12 +12,13 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
+// FIXME: 必要か再検討する
 interface MybraryAnonApi {
   @POST("/anonymous-login")
-  suspend fun anonymousLogin()
+  suspend fun anonymousLogin(hCaptchaToken: String)
 
   @POST("/anonymous-sign-up")
-  suspend fun anonymousSignUp()
+  suspend fun anonymousSignUp(hCaptchaToken: String)
 
   @GET("/book/{isbn}")
   suspend fun getBookByIsbn(

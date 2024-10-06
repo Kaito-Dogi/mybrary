@@ -24,12 +24,12 @@ import javax.inject.Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAnonApi {
-  override suspend fun anonymousLogin() {
-    supabaseClient.auth.signInAnonymously()
+  override suspend fun anonymousLogin(hCaptchaToken: String) {
+    supabaseClient.auth.signInAnonymously(captchaToken = hCaptchaToken)
   }
 
-  override suspend fun anonymousSignUp() {
-    supabaseClient.auth.signInAnonymously()
+  override suspend fun anonymousSignUp(hCaptchaToken: String) {
+    supabaseClient.auth.signInAnonymously(captchaToken = hCaptchaToken)
   }
 
   override suspend fun getBookByIsbn(isbn: String): GetBookByIsbnResponse {

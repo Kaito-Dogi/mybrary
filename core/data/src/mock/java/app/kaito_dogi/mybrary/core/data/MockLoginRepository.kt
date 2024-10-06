@@ -2,6 +2,7 @@ package app.kaito_dogi.mybrary.core.data
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,7 +18,7 @@ internal class MockLoginRepository @Inject constructor(
     delay(1_000L)
   }
 
-  override suspend fun anonymousLogin() = withContext(dispatcher) {
+  override suspend fun anonymousLogin(hCaptchaToken: HCaptchaToken) = withContext(dispatcher) {
     delay(1_000L)
   }
 }

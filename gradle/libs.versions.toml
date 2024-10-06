@@ -3,6 +3,8 @@ android-gradle-plugin = "8.5.2"
 android-material = "1.12.0"
 androidx-browser = "1.8.0"
 androidx-compose-bom = "2024.09.03"
+androidx-compose-runtime = "1.7.3"
+androidx-compose-ui = "1.7.3"
 androidx-espresso = "3.6.1"
 androidx-hilt = "1.2.0"
 androidx-lifecycle = "2.8.6"
@@ -10,6 +12,7 @@ androidx-navigation = "2.8.2"
 androidx-room = "2.6.1"
 androidx-test-ext = "1.2.1"
 coil = "2.6.0"
+hcaptcha-android-sdk = "4.0.2"
 hilt = "2.52"
 jetbrains-kotlin-jvm = "2.0.20"
 junit = "4.13.2"
@@ -33,7 +36,10 @@ versionName = "1.0.0"
 [libraries]
 android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", name = "compose-bom", version.ref = "androidx-compose-bom" }
+# FIXME: bom を削除する
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose-bom" }
+androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "androidx-compose-runtime" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androidx-compose-ui" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
@@ -46,6 +52,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-ext" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+hcaptcha-android-sdk = { module = "com.github.hCaptcha.hcaptcha-android-sdk:compose-sdk", version.ref = "hcaptcha-android-sdk" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }

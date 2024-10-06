@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.feature.auth.destination.sendotp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
 import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
@@ -49,13 +50,13 @@ internal class SendOtpViewModel @Inject constructor(
     println("あああ: onGoogleLoginClick")
   }
 
+  // FIXME: 匿名ログインを共通化する
   fun onAnonymousLoginClick() {
-    viewModelScope.launchSafe {
-      _uiState.update { it.copy(isLoggingInAsGuest = true) }
-      loginRepository.anonymousLogin()
-      _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
-    }.invokeOnCompletion {
-      _uiState.update { it.copy(isLoggingInWithGoogle = false) }
+    _uiState.update {
+      it.copy(
+        isAnonymousLoggingIn = true,
+        isHCaptchaVisible = true,
+      )
     }
   }
 
@@ -63,13 +64,48 @@ internal class SendOtpViewModel @Inject constructor(
     println("あああ: onGoogleSignUpClick")
   }
 
+  // FIXME: 匿名ログインを共通化する
   fun onAnonymousSignUpClick() {
+    _uiState.update {
+      it.copy(
+        isAnonymousSigningUp = true,
+        isHCaptchaVisible = true,
+      )
+    }
+  }
+
+  fun onHCaptchaSuccess(hCaptchaToken: HCaptchaToken) {
     viewModelScope.launchSafe {
-      _uiState.update { it.copy(isSigningUpAsGuest = true) }
-      signUpRepository.anonymousSignUp()
-      _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
+      _uiState.update { it.copy(isHCaptchaVisible = false) }
+      // FIXME: 匿名ログインを共通化する
+      when {
+        uiState.value.isAnonymousLoggingIn -> {
+          loginRepository.anonymousLogin(hCaptchaToken = hCaptchaToken)
+          _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
+        }
+
+        uiState.value.isAnonymousSigningUp -> {
+          signUpRepository.anonymousSignUp(hCaptchaToken = hCaptchaToken)
+          _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
+        }
+      }
     }.invokeOnCompletion {
-      _uiState.update { it.copy(isSigningUpAsGuest = false) }
+      _uiState.update {
+        it.copy(
+          isAnonymousLoggingIn = false,
+          isAnonymousSigningUp = false,
+        )
+      }
+    }
+  }
+
+  fun onHCaptchaFailure() {
+    _uiState.update {
+      it.copy(
+        isAnonymousLoggingIn = false,
+        isAnonymousSigningUp = false,
+        isHCaptchaVisible = false,
+      )
     }
   }
 

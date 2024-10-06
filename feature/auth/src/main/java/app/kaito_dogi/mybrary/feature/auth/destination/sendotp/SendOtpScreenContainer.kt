@@ -86,5 +86,7 @@ internal fun SendOtpScreenContainer(
         )
       }
     },
+    onHCaptchaSuccess = viewModel::onHCaptchaSuccess,
+    onHCaptchaFailure = viewModel::onHCaptchaFailure,
   )
 }

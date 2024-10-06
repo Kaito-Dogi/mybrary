@@ -4,11 +4,10 @@ plugins {
   alias(libs.plugins.hilt.android)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
-  alias(libs.plugins.serialization)
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.auth"
+  namespace = "app.kaito_dogi.core.hcaptcha"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -32,22 +31,13 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:common"))
-  implementation(project(":core:design-system"))
+  implementation(project(":core:config"))
   implementation(project(":core:domain"))
-  implementation(project(":core:hcaptcha"))
-  implementation(project(":core:ui"))
 
-  implementation(platform(libs.androidx.compose.bom))
-  implementation(libs.androidx.compose.material3)
-  implementation(libs.androidx.compose.ui.tooling)
-  implementation(libs.androidx.compose.ui.tooling.preview)
-  implementation(libs.androidx.hilt.navigation.compose)
-  implementation(libs.androidx.lifecycle.runtime.compose)
-  implementation(libs.androidx.navigation.compose)
-  implementation(libs.coil.compose)
+  implementation(libs.androidx.compose.runtime)
+  implementation(libs.androidx.compose.ui)
+  implementation(libs.hcaptcha.android.sdk)
   implementation(libs.hilt.android)
-  implementation(libs.kotlinx.serialization)
 
   ksp(libs.hilt.android.compiler)
 }

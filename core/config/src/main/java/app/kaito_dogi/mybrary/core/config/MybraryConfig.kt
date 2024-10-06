@@ -4,6 +4,7 @@ import app.kaito_dogi.mybrary.core.common.model.Url
 
 interface MybraryConfig {
   val deleteAccountUrl: Url.Web
+  val hCaptchaSiteKey: String
   val privacyPolicyUrl: Url.Web
   val rakutenApplicationId: String
   val rakutenAffiliateId: String
