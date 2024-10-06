@@ -32,6 +32,7 @@ android {
 
 dependencies {
   implementation(project(":core:config"))
+  implementation(project(":core:domain"))
 
   implementation(libs.androidx.compose.runtime)
   implementation(libs.androidx.compose.ui)
