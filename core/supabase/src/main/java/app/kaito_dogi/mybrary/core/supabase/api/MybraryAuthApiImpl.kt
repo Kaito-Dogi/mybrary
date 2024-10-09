@@ -11,11 +11,10 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.PatchMyBookFavoriteRespo
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostBookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.PostMyBookResponse
-import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
-import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.supabase.ext.insert
-import app.kaito_dogi.mybrary.core.supabase.ext.update
-import app.kaito_dogi.mybrary.core.supabase.table.Table
+import app.kaito_dogi.mybrary.core.supabase.Table
+import app.kaito_dogi.mybrary.core.supabase.from
+import app.kaito_dogi.mybrary.core.supabase.model.Memo
+import app.kaito_dogi.mybrary.core.supabase.model.MyBook
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.postgrest.postgrest
@@ -28,18 +27,31 @@ internal class MybraryAuthApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
 ) : MybraryAuthApi {
   override suspend fun postBook(request: PostBookRequest): PostBookResponse {
-    val result = supabaseClient.postgrest.insert(
-      table = Table.Book,
-      value = request,
-    )
+    val result = supabaseClient.postgrest
+      .from(table = Table.Book)
+      .insert(
+        value = request,
+        request = {
+          select(
+            columns = Columns.ALL,
+          )
+        },
+      )
     return result.decodeSingle<PostBookResponse>()
   }
 
   override suspend fun postMemo(request: PostMemoRequest): PostMemoResponse {
-    val result = supabaseClient.postgrest.insert(
-      table = Table.Memo,
-      value = request,
-    )
+    val result = supabaseClient.postgrest
+      .from(table = Table.Memo)
+      .insert(
+        value = request,
+        request = {
+          select(
+            // FIXME: ユーザー情報をクエリできるようにする
+            columns = Columns.raw(value = "*"),
+          )
+        },
+      )
     return result.decodeSingle<PostMemoResponse>()
   }
 
@@ -47,17 +59,19 @@ internal class MybraryAuthApiImpl @Inject constructor(
     id: String,
     request: PatchMemoRequest,
   ): PatchMemoResponse {
-    val result = supabaseClient.postgrest.update(
-      table = Table.Memo,
-      update = {
-        MemoResponse::content setTo request.content
-        MemoResponse::startPage setTo request.startPage
-        MemoResponse::endPage setTo request.endPage
-      },
-      filter = {
-        MemoResponse::id eq id
-      },
-    )
+    val result = supabaseClient.postgrest
+      .from(table = Table.Memo)
+      .update(
+        update = {
+          Memo::content setTo request.content
+        },
+        request = {
+          select(
+            // FIXME: ユーザー情報をクエリできるようにする
+            columns = Columns.raw(value = "*"),
+          )
+        },
+      )
     return result.decodeSingle<PatchMemoResponse>()
   }
 
@@ -73,11 +87,11 @@ internal class MybraryAuthApiImpl @Inject constructor(
       "book_id" to request.bookId,
     )
     val result = supabaseClient.postgrest
-      .from(table = Table.MyBook.value)
+      .from(table = Table.MyBook)
       .insert(requestContainUserId) {
         select(
           columns = Columns.raw(
-            value = Table.MyBook.columnsAll,
+            value = "*,book(*)",
           ),
         )
       }
@@ -92,15 +106,23 @@ internal class MybraryAuthApiImpl @Inject constructor(
     id: String,
     request: PatchMyBookFavoriteRequest,
   ): PatchMyBookFavoriteResponse {
-    val result = supabaseClient.postgrest.update(
-      table = Table.MyBook,
-      update = {
-        MyBookResponse::isFavorite setTo request.isFavorite
-      },
-      filter = {
-        MyBookResponse::id eq id
-      },
-    )
+    val result = supabaseClient.postgrest
+      .from(table = Table.MyBook)
+      .update(
+        update = {
+          MyBook::isFavorite setTo request.isFavorite
+        },
+        request = {
+          filter {
+            MyBook::id eq id
+          }
+          select(
+            columns = Columns.raw(
+              value = "*,book(*)",
+            ),
+          )
+        },
+      )
     return result.decodeSingle<PatchMyBookFavoriteResponse>()
   }
 

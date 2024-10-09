@@ -10,16 +10,21 @@ import app.kaito_dogi.mybrary.core.api.mybrary.response.GetMyBooksResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.BookResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.supabase.ext.select
-import app.kaito_dogi.mybrary.core.supabase.table.Table
+import app.kaito_dogi.mybrary.core.supabase.Table
+import app.kaito_dogi.mybrary.core.supabase.from
+import app.kaito_dogi.mybrary.core.supabase.model.Book
+import app.kaito_dogi.mybrary.core.supabase.model.Memo
+import app.kaito_dogi.mybrary.core.supabase.model.MyBook
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.OtpType
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Columns
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// FIXME: 投げる例外をカスタマイズする
 @Singleton
 internal class MybraryAnonApiImpl @Inject constructor(
   private val supabaseClient: SupabaseClient,
@@ -33,47 +38,61 @@ internal class MybraryAnonApiImpl @Inject constructor(
   }
 
   override suspend fun getBookByIsbn(isbn: String): GetBookByIsbnResponse {
-    val result = supabaseClient.postgrest.select(
-      table = Table.Book,
-      request = {
-        filter {
-          BookResponse::isbn eq isbn
-        }
-      },
-    )
-    return try {
-      result.decodeSingle<BookResponse>()
-    } catch (e: NoSuchElementException) {
-      null
-    }
+    val result = supabaseClient.postgrest
+      .from(table = Table.Book)
+      .select(
+        columns = Columns.ALL,
+        request = {
+          filter {
+            Book::isbn eq isbn
+          }
+        },
+      )
+    return result.decodeList<BookResponse>().firstOrNull()
   }
 
   override suspend fun getMemos(myBookId: String): GetMemosResponse {
-    val result = supabaseClient.postgrest.select(
-      table = Table.Memo,
-      request = {
-        filter {
-          MemoResponse::myBookId eq myBookId
-        }
-      },
-    )
+    // FIXME: ユーザー情報をクエリできるようにする
+    val result = supabaseClient.postgrest
+      .from(table = Table.Memo)
+      .select(
+        columns = Columns.raw(value = "*"),
+        request = {
+          filter {
+            Memo::myBookId eq myBookId
+          }
+        },
+      )
+    println("あああ: ${result.data}")
     return result.decodeList<MemoResponse>()
   }
 
   override suspend fun getMyBook(myBookId: String): GetMyBookResponse {
-    val result = supabaseClient.postgrest.select(
-      table = Table.MyBook,
-      request = {
-        filter {
-          MyBookResponse::id eq myBookId
-        }
-      },
-    )
+    val result = supabaseClient.postgrest
+      .from(table = Table.MyBook)
+      .select(
+        columns = Columns.raw(value = "*,book(*)"),
+        request = {
+          filter {
+            MyBook::id eq myBookId
+          }
+        },
+      )
     return result.decodeSingle<MyBookResponse>()
   }
 
   override suspend fun getMyBooks(): GetMyBooksResponse {
-    val result = supabaseClient.postgrest.select(table = Table.MyBook)
+    val userId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
+    val result = supabaseClient.postgrest
+      .from(table = Table.MyBook)
+      .select(
+        columns = Columns.raw(value = "*,book(*)"),
+        request = {
+          filter {
+            MyBook::userId eq userId
+          }
+        },
+      )
     return result.decodeList<MyBookResponse>()
   }
 
