@@ -40,7 +40,7 @@ internal class SendOtpViewModel @Inject constructor(
       otpRepository.sendOtp(
         email = uiState.value.email,
       )
-      _uiEvent.tryEmit(SendOtpUiEvent.IsOtpSent)
+      _uiEvent.emit(SendOtpUiEvent.IsOtpSent)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpSending = false) }
     }
