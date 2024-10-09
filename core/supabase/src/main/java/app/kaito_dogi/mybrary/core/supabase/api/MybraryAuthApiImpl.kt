@@ -64,8 +64,13 @@ internal class MybraryAuthApiImpl @Inject constructor(
       .update(
         update = {
           Memo::content setTo request.content
+          Memo::startPage setTo request.startPage
+          Memo::endPage setTo request.endPage
         },
         request = {
+          filter {
+            Memo::id eq id
+          }
           select(
             // FIXME: ユーザー情報をクエリできるようにする
             columns = Columns.raw(value = "*"),
