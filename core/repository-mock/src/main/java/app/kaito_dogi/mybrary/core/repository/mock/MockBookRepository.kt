@@ -1,14 +1,14 @@
-package app.kaito_dogi.mybrary.core.data
+package app.kaito_dogi.mybrary.core.repository.mock
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.data.convertor.toAuthorList
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.Sort
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
+import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
@@ -38,7 +38,6 @@ internal class MockBookRepository @Inject constructor(
     return@withContext MockBookList
   }
 }
-
 
 private val MockBookList = List(10) { index ->
   Book(

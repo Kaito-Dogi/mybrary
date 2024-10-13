@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.data
+package app.kaito_dogi.mybrary.core.repository.mock
 
 import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
 import dagger.Binds
