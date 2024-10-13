@@ -1,10 +1,10 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.data.command
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class MyBookInput(
+data class PostMyBookCommand(
   @SerialName("book_id")
   val bookId: String,
   @SerialName("user_id")

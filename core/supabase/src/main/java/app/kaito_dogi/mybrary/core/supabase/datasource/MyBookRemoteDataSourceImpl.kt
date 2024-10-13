@@ -2,9 +2,9 @@ package app.kaito_dogi.mybrary.core.supabase.datasource
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.data.command.PostMyBookCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MyBookRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
-import app.kaito_dogi.mybrary.core.supabase.model.MyBookInput
 import app.kaito_dogi.mybrary.core.supabase.model.MyBookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
@@ -55,20 +55,14 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
     return@withContext responseList.map(MyBookResponse::toDto)
   }
 
-  override suspend fun postMyBook(
-    userId: String,
-    bookId: String,
-  ): MyBookDto = withContext(dispatcher) {
+  override suspend fun postMyBook(command: PostMyBookCommand): MyBookDto = withContext(dispatcher) {
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
-    val input = MyBookInput(
-      bookId = bookId,
-      userId = tempUserId,
-    )
+    val tempCommand = command.copy(userId = tempUserId)
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)
       .insert(
-        value = input,
+        value = tempCommand,
         request = {
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),

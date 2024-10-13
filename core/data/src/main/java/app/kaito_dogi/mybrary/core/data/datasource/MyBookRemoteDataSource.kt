@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.datasource
 
+import app.kaito_dogi.mybrary.core.data.command.PostMyBookCommand
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
 
 interface MyBookRemoteDataSource {
@@ -9,10 +10,7 @@ interface MyBookRemoteDataSource {
     userId: String,
   ): List<MyBookDto>
 
-  suspend fun postMyBook(
-    userId: String,
-    bookId: String,
-  ): MyBookDto
+  suspend fun postMyBook(command: PostMyBookCommand): MyBookDto
 
   suspend fun patchMyBookIsPinned(
     myBookId: String,
