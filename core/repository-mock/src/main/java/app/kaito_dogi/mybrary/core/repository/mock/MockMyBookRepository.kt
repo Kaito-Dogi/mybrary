@@ -45,9 +45,9 @@ internal class MockMyBookRepository @Inject constructor(
       id = MyBookId(value = "${mockMyBookList.value.size}"),
       title = book.title,
       imageUrl = book.imageUrl,
-      isbn = book.isbn,
-      publisher = book.publisher,
       authorList = book.authorList,
+      publisher = book.publisher,
+      isbn = book.isbn,
       genre = book.genre,
       isPinned = false,
       isFavorite = false,
@@ -163,16 +163,6 @@ private val MockMyBookList = List(20) { index ->
         else -> ""
       },
     ),
-    isbn = "isbn",
-    publisher = when (index % 7) {
-      0 -> "秀和システム"
-      1 -> "オーム社"
-      2 -> "技術評論社"
-      3 -> "翔泳社"
-      4 -> "ドワンゴ"
-      5 -> "マイナビ出版"
-      else -> "出版社"
-    },
     authorList = when (index % 7) {
       0 -> "上田　勲".toAuthorList()
       1 -> "ポール・グレアム/川合史朗".toAuthorList()
@@ -182,6 +172,16 @@ private val MockMyBookList = List(20) { index ->
       5 -> "Dmitry Jemerov/Svetlana Isakova/長澤 太郎/藤原 聖/山本 純平/yy_yank".toAuthorList()
       else -> listOf(Author(name = "著者名"))
     },
+    publisher = when (index % 7) {
+      0 -> "秀和システム"
+      1 -> "オーム社"
+      2 -> "技術評論社"
+      3 -> "翔泳社"
+      4 -> "ドワンゴ"
+      5 -> "マイナビ出版"
+      else -> "出版社"
+    },
+    isbn = "isbn",
     genre = when (index % 7) {
       0 -> Genre.Hardcover
       1 -> Genre.Hardcover

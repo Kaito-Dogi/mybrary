@@ -104,11 +104,9 @@ private fun BookRowPreview() {
         id = BookId(value = ""),
         title = "タイトルタイトルタイトルタイトルタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
-        isbn = "isbn",
+        authorList = listOf(Author(name = "著者名")),
         publisher = "出版社",
-        authorList = listOf(
-          Author(name = "著者名"),
-        ),
+        isbn = "isbn",
         genre = Genre.All,
         rakutenUrl = Url.Affiliate(value = ""),
         amazonUrl = null,

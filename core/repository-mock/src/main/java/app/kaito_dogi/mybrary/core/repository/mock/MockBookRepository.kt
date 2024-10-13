@@ -52,9 +52,9 @@ private val MockBookList = List(10) { index ->
       1 -> Url.Image(value = "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2423/9784091962423.jpg?_ex=512x512")
       else -> Url.Image(value = "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2430/9784091962430.jpg?_ex=512x512")
     },
-    isbn = "isbn$index",
-    publisher = "小学館",
     authorList = "松本 大洋".toAuthorList(),
+    publisher = "小学館",
+    isbn = "isbn$index",
     genre = Genre.Paperback,
     rakutenUrl = Url.Affiliate(value = "rakutenAffiliateUrl$index"),
     amazonUrl = null,

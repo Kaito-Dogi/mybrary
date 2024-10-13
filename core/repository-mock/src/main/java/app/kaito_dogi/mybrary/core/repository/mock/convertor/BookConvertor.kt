@@ -14,9 +14,9 @@ internal fun ItemResponse.toBook() = Book(
       newValue = "512x512",
     ),
   ),
-  isbn = this.isbn,
-  publisher = this.publisherName,
   authorList = this.author.toAuthorList(),
+  publisher = this.publisherName,
+  isbn = this.isbn,
   genre = this.size.toGenre(),
   rakutenUrl = Url.Affiliate(value = this.affiliateUrl),
 )
