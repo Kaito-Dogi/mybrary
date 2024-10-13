@@ -1,6 +1,5 @@
 package app.kaito_dogi.mybrary.core.supabase.model
 
-import app.kaito_dogi.mybrary.core.data.command.PostMemoCommand
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -13,11 +12,4 @@ internal data class MemoInput(
   val startPage: Int?,
   @SerialName("end_page")
   val endPage: Int?,
-)
-
-internal fun PostMemoCommand.toInput() = MemoInput(
-  myBookId = this.myBookId,
-  content = this.content,
-  startPage = this.startPage,
-  endPage = this.endPage,
 )
