@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:api"))
+  implementation(project(":core:common"))
   implementation(project(":core:config"))
   implementation(project(":core:data"))
 
