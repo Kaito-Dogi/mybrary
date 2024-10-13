@@ -15,20 +15,22 @@ internal class OtpRepositoryImpl @Inject constructor(
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : OtpRepository {
   override suspend fun sendOtp(email: String) = withContext(dispatcher) {
-    mybraryAnonApi.postSendOtp(
-      request = PostSendOtpRequest(email = email),
-    )
+    // mybraryAnonApi.postSendOtp(
+    //   request = PostSendOtpRequest(email = email),
+    // )
+    TODO()
   }
 
   override suspend fun verifyOtp(
     email: String,
     otp: String,
   ) = withContext(dispatcher) {
-    mybraryAnonApi.postVerifyOtp(
-      request = PostVerifyOtpRequest(
-        email = email,
-        otp = otp,
-      ),
-    )
+    // mybraryAnonApi.postVerifyOtp(
+    //   request = PostVerifyOtpRequest(
+    //     email = email,
+    //     otp = otp,
+    //   ),
+    // )
+    TODO()
   }
 }

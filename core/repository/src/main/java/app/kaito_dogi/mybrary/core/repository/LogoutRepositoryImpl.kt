@@ -15,6 +15,7 @@ internal class LogoutRepositoryImpl @Inject constructor(
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : LogoutRepository {
   override suspend fun logout() = withContext(dispatcher) {
-    mybraryAnonApi.logout()
+    // mybraryAnonApi.logout()
+    TODO()
   }
 }

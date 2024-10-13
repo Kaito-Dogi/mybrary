@@ -15,6 +15,7 @@ internal class AuthRepositoryImpl @Inject constructor(
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : AuthRepository {
   override suspend fun hasSession(): Boolean = withContext(dispatcher) {
-    return@withContext mybraryAnonApi.getSession()
+    // return@withContext mybraryAnonApi.getSession()
+    TODO()
   }
 }

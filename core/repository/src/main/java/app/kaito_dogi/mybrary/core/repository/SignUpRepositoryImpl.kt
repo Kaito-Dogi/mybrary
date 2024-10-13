@@ -20,6 +20,7 @@ internal class SignUpRepositoryImpl @Inject constructor(
   }
 
   override suspend fun anonymousSignUp(hCaptchaToken: HCaptchaToken) {
-    mybraryAnonApi.anonymousSignUp(hCaptchaToken = hCaptchaToken.value)
+    // mybraryAnonApi.anonymousSignUp(hCaptchaToken = hCaptchaToken.value)
+    TODO()
   }
 }
