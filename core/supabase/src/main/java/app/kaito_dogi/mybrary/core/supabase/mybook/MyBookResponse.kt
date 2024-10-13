@@ -1,12 +1,13 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.mybook
 
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
+import app.kaito_dogi.mybrary.core.supabase.model.BookResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class MyBookResponse(
-  @SerialName("my_book_id")
+  @SerialName("id")
   val myBookId: String,
   @SerialName("user_id")
   val userId: String,

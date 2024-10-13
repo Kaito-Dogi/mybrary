@@ -1,11 +1,10 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.mybook
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.command.PostMyBookCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MyBookRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
-import app.kaito_dogi.mybrary.core.supabase.model.MyBookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.postgrest.postgrest
@@ -17,7 +16,7 @@ import kotlinx.coroutines.withContext
 private const val MY_BOOK_TABLE = "my_book"
 private val MY_BOOK_COLUMN_LIST = listOf("*", "book(*)")
 
-internal class MyBookRemoteDataSourceImpl @Inject constructor(
+internal class DefaultMyBookRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MyBookRemoteDataSource {
