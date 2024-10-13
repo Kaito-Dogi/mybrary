@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.book
+package app.kaito_dogi.mybrary.core.supabase.datasource
 
 import app.kaito_dogi.mybrary.core.data.datasource.BookRemoteDataSource
 import dagger.Binds

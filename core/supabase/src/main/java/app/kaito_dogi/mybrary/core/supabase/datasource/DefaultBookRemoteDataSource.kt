@@ -1,10 +1,12 @@
-package app.kaito_dogi.mybrary.core.supabase.book
+package app.kaito_dogi.mybrary.core.supabase.datasource
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.command.PostBookCommand
 import app.kaito_dogi.mybrary.core.data.datasource.BookRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.BookDto
+import app.kaito_dogi.mybrary.core.supabase.input.toBookInput
+import app.kaito_dogi.mybrary.core.supabase.response.BookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns

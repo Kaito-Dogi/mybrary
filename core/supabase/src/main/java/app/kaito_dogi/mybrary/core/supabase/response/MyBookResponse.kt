@@ -1,7 +1,6 @@
-package app.kaito_dogi.mybrary.core.supabase.mybook
+package app.kaito_dogi.mybrary.core.supabase.response
 
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
-import app.kaito_dogi.mybrary.core.supabase.book.BookResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

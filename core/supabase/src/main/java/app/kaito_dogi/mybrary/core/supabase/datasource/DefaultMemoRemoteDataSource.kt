@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.memo
+package app.kaito_dogi.mybrary.core.supabase.datasource
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
@@ -6,6 +6,8 @@ import app.kaito_dogi.mybrary.core.data.command.PatchMemoCommand
 import app.kaito_dogi.mybrary.core.data.command.PostMemoCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MemoRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.MemoDto
+import app.kaito_dogi.mybrary.core.supabase.input.toMemoInput
+import app.kaito_dogi.mybrary.core.supabase.response.MemoResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
