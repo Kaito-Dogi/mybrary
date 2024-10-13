@@ -29,7 +29,7 @@ internal data class MyBookResponse(
     imageUrl = this.bookResponse.imageUrl,
     isbn = this.bookResponse.isbn,
     publisher = this.bookResponse.publisher,
-    authors = this.bookResponse.authors,
+    authors = this.bookResponse.authors.toAuthorsDto(),
     genre = this.bookResponse.genre.toGenreDto(),
     isPinned = isPinned,
     isFavorite = isFavorite,

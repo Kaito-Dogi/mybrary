@@ -8,7 +8,7 @@ data class BookDto(
   val bookId: String,
   val title: String,
   val imageUrl: String,
-  val authors: String,
+  val authors: AuthorsDto,
   val publisher: String,
   val isbn: String,
   val genre: GenreDto,
