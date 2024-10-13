@@ -38,7 +38,7 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
 
   override suspend fun getMyBooks(
     userId: String,
-  ): List<MyBookDto> {
+  ): List<MyBookDto> = withContext(dispatcher) {
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val result = supabaseClient.postgrest
@@ -52,13 +52,13 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val responseList = result.decodeList<MyBookResponse>()
-    return responseList.map(MyBookResponse::toDto)
+    return@withContext responseList.map(MyBookResponse::toDto)
   }
 
   override suspend fun postMyBook(
     userId: String,
     bookId: String,
-  ): MyBookDto {
+  ): MyBookDto = withContext(dispatcher) {
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val input = MyBookInput(
@@ -76,13 +76,13 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return response.toDto()
+    return@withContext response.toDto()
   }
 
   override suspend fun patchMyBookIsPinned(
     myBookId: String,
     isPinned: Boolean,
-  ): MyBookDto {
+  ): MyBookDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(MY_BOOK_TABLE)
       .update(
@@ -99,13 +99,13 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return response.toDto()
+    return@withContext response.toDto()
   }
 
   override suspend fun patchMyBookIsFavorite(
     myBookId: String,
     isFavorite: Boolean,
-  ): MyBookDto {
+  ): MyBookDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(MY_BOOK_TABLE)
       .update(
@@ -122,13 +122,13 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return response.toDto()
+    return@withContext response.toDto()
   }
 
   override suspend fun patchMyBookIsPublic(
     myBookId: String,
     isPublic: Boolean,
-  ): MyBookDto {
+  ): MyBookDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(MY_BOOK_TABLE)
       .update(
@@ -145,13 +145,13 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return response.toDto()
+    return@withContext response.toDto()
   }
 
   override suspend fun patchMyBookIsArchived(
     myBookId: String,
     isArchived: Boolean,
-  ): MyBookDto {
+  ): MyBookDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(MY_BOOK_TABLE)
       .update(
@@ -168,10 +168,10 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return response.toDto()
+    return@withContext response.toDto()
   }
 
-  override suspend fun deleteMyBook(myBookId: String) {
+  override suspend fun deleteMyBook(myBookId: String) = withContext(dispatcher) {
     supabaseClient.postgrest
       .from(MY_BOOK_TABLE)
       .delete(
@@ -181,5 +181,6 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
           }
         },
       )
+    return@withContext
   }
 }
