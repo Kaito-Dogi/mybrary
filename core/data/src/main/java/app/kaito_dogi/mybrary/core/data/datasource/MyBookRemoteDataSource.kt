@@ -5,9 +5,14 @@ import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
 interface MyBookRemoteDataSource {
   suspend fun getMyBook(myBookId: String): MyBookDto
 
-  suspend fun getMyBooks(): List<MyBookDto>
+  suspend fun getMyBooks(
+    userId: String,
+  ): List<MyBookDto>
 
-  suspend fun postMyBook(bookId: String): MyBookDto
+  suspend fun postMyBook(
+    userId: String,
+    bookId: String,
+  ): MyBookDto
 
   suspend fun patchMyBookIsPinned(
     myBookId: String,

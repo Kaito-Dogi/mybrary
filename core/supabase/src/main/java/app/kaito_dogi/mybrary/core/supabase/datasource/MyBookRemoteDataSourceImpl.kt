@@ -36,15 +36,18 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
     return@withContext response.toDto()
   }
 
-  override suspend fun getMyBooks(): List<MyBookDto> {
-    val userId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
+  override suspend fun getMyBooks(
+    userId: String,
+  ): List<MyBookDto> {
+    // FIXME: 外から渡されたユーザー ID を使用するようにする
+    val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)
       .select(
         columns = Columns.list(MY_BOOK_COLUMN_LIST),
         request = {
           filter {
-            MyBookResponse::userId eq userId
+            MyBookResponse::userId eq tempUserId
           }
         },
       )
@@ -52,11 +55,15 @@ internal class MyBookRemoteDataSourceImpl @Inject constructor(
     return responseList.map(MyBookResponse::toDto)
   }
 
-  override suspend fun postMyBook(bookId: String): MyBookDto {
-    val userId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
+  override suspend fun postMyBook(
+    userId: String,
+    bookId: String,
+  ): MyBookDto {
+    // FIXME: 外から渡されたユーザー ID を使用するようにする
+    val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val input = MyBookInput(
       bookId = bookId,
-      userId = userId,
+      userId = tempUserId,
     )
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)
