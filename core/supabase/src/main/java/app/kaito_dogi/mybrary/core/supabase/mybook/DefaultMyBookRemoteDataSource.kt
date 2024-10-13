@@ -58,10 +58,11 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val tempCommand = command.copy(userId = tempUserId)
+    val input = tempCommand.toInput()
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)
       .insert(
-        value = tempCommand,
+        value = input,
         request = {
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),
