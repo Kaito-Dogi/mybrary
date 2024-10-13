@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.memo
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
@@ -6,8 +6,6 @@ import app.kaito_dogi.mybrary.core.data.command.PatchMemoCommand
 import app.kaito_dogi.mybrary.core.data.command.PostMemoCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MemoRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.MemoDto
-import app.kaito_dogi.mybrary.core.supabase.model.MemoResponse
-import app.kaito_dogi.mybrary.core.supabase.model.toInput
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
@@ -20,7 +18,7 @@ private const val MEMO_TABLE = "memo"
 // FIXME: ユーザー情報のクエリを追加する
 private val MEMO_COLUMN_LIST = listOf("*")
 
-internal class MemoRemoteDataSourceImpl @Inject constructor(
+internal class DefaultMemoRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MemoRemoteDataSource {

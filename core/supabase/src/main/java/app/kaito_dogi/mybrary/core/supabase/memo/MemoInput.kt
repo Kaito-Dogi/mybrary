@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.memo
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

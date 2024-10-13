@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.memo
 
 import app.kaito_dogi.mybrary.core.data.command.PostMemoCommand
 

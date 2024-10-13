@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.memo
 
 import app.kaito_dogi.mybrary.core.data.datasource.MemoRemoteDataSource
 import dagger.Binds
@@ -12,5 +12,5 @@ import javax.inject.Singleton
 internal interface MemoRemoteDataSourceModule {
   @Singleton
   @Binds
-  fun bindMemoRemoteDataSource(impl: MemoRemoteDataSourceImpl): MemoRemoteDataSource
+  fun bindMemoRemoteDataSource(impl: DefaultMemoRemoteDataSource): MemoRemoteDataSource
 }
