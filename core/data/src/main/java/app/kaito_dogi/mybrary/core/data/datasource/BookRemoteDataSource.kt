@@ -1,3 +1,10 @@
 package app.kaito_dogi.mybrary.core.data.datasource
 
-interface BookRemoteDataSource
+import app.kaito_dogi.mybrary.core.data.command.PostBookCommand
+import app.kaito_dogi.mybrary.core.data.dto.BookDto
+
+interface BookRemoteDataSource {
+  suspend fun getBookByIsbn(isbn: String): BookDto
+
+  suspend fun postBook(command: PostBookCommand): BookDto
+}
