@@ -1,10 +1,6 @@
 package app.kaito_dogi.mybrary.core.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMyBookFavoriteRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostBookRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMyBookRequest
 import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers

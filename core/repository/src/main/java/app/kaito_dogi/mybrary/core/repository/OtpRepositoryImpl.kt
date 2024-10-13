@@ -1,8 +1,6 @@
 package app.kaito_dogi.mybrary.core.repository
 
 import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostSendOtpRequest
-import app.kaito_dogi.mybrary.core.api.mybrary.request.PostVerifyOtpRequest
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
