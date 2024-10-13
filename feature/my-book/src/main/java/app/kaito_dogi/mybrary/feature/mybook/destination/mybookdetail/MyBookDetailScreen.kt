@@ -134,16 +134,11 @@ private fun MyBookDetailScreenPreview() {
       uiState = MyBookDetailUiState.createInitialValue(
         myBook = MyBook(
           id = MyBookId(value = ""),
-          // user = User(
-          //   id = UserId(value = "userId"),
-          //   name = "ユーザー名",
-          // ),
-          bookId = BookId(value = ""),
           title = "タイトル",
           imageUrl = Url.Image(value = "imageUrl"),
-          isbn = "isbn",
-          publisher = "出版社",
           authorList = emptyList(),
+          publisher = "出版社",
+          isbn = "isbn",
           genre = Genre.All,
           isPinned = false,
           isFavorite = false,
