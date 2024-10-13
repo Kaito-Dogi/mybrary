@@ -21,26 +21,26 @@ internal class MyBookRepositoryImpl @Inject constructor(
 ) : MyBookRepository {
   override suspend fun getMyBookList(): List<MyBook> {
     // FIXME: ここでユーザー ID を取得して getMyBooks に渡す
-    val dtoList = myBookRemoteDataSource.getMyBooks(userId = "")
-    return dtoList.map(MyBookDto::toMyBook)
+    val myBookDtoList = myBookRemoteDataSource.getMyBooks(userId = "")
+    return myBookDtoList.map(MyBookDto::toMyBook)
   }
 
   override suspend fun getMyBook(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.getMyBook(myBookId = myBookId.value)
-    return dto.toMyBook()
+    val myBookDto = myBookRemoteDataSource.getMyBook(myBookId = myBookId.value)
+    return myBookDto.toMyBook()
   }
 
   override suspend fun addBookToMybrary(book: Book): MyBook {
     val bookId = getBookIdOrCreate(book = book)
 
     // FIXME: ここでユーザー ID を取得して postMyBook に渡す
-    val dto = myBookRemoteDataSource.postMyBook(
+    val myBookDto = myBookRemoteDataSource.postMyBook(
       command = PostMyBookCommand(
         bookId = bookId.value,
         userId = "",
       ),
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   private suspend fun getBookIdOrCreate(book: Book): BookId {
@@ -65,50 +65,50 @@ internal class MyBookRepositoryImpl @Inject constructor(
   }
 
   override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsPinned(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsPinned(
       myBookId = myBookId.value,
       isPinned = true,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsFavorite(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsFavorite(
       myBookId = myBookId.value,
       isFavorite = true,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsFavorite(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsFavorite(
       myBookId = myBookId.value,
       isFavorite = false,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsPublic(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsPublic(
       myBookId = myBookId.value,
       isPublic = true,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsPublic(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsPublic(
       myBookId = myBookId.value,
       isPublic = false,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 
   override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
-    val dto = myBookRemoteDataSource.patchMyBookIsArchived(
+    val myBookDto = myBookRemoteDataSource.patchMyBookIsArchived(
       myBookId = myBookId.value,
       isArchived = true,
     )
-    return dto.toMyBook()
+    return myBookDto.toMyBook()
   }
 }

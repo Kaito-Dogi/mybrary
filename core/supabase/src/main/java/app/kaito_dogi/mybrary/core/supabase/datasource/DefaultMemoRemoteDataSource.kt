@@ -36,23 +36,23 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
           }
         },
       )
-    val responseList = result.decodeList<MemoResponse>()
-    return@withContext responseList.map(MemoResponse::toMemoDto)
+    val memoResponseList = result.decodeList<MemoResponse>()
+    return@withContext memoResponseList.map(MemoResponse::toMemoDto)
   }
 
   // FIXME: ユーザー情報をクエリできるようにする
   override suspend fun postMemo(command: PostMemoCommand): MemoDto = withContext(dispatcher) {
-    val input = command.toMemoInput()
+    val memoInput = command.toMemoInput()
     val result = supabaseClient.postgrest
       .from(MEMO_TABLE)
       .insert(
-        value = input,
+        value = memoInput,
         request = {
           select(columns = Columns.list(MEMO_COLUMN_LIST))
         },
       )
-    val response = result.decodeSingle<MemoResponse>()
-    return@withContext response.toMemoDto()
+    val memoResponse = result.decodeSingle<MemoResponse>()
+    return@withContext memoResponse.toMemoDto()
   }
 
   // FIXME: ユーザー情報をクエリできるようにする
@@ -72,8 +72,8 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
           select(columns = Columns.list(MEMO_COLUMN_LIST))
         },
       )
-    val response = result.decodeSingle<MemoResponse>()
-    return@withContext response.toMemoDto()
+    val memoResponse = result.decodeSingle<MemoResponse>()
+    return@withContext memoResponse.toMemoDto()
   }
 
   override suspend fun deleteMemo(memoId: String) = withContext(dispatcher) {

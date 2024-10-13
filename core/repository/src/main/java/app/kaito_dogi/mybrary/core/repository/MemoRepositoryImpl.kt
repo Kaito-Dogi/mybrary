@@ -17,12 +17,12 @@ internal class MemoRepositoryImpl @Inject constructor(
   private val memoRemoteDataSource: MemoRemoteDataSource,
 ) : MemoRepository {
   override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {
-    val dto = memoRemoteDataSource.getMemos(myBookId = myBookId.value)
-    return dto.map(MemoDto::toMemo)
+    val memoDtoList = memoRemoteDataSource.getMemos(myBookId = myBookId.value)
+    return memoDtoList.map(MemoDto::toMemo)
   }
 
   override suspend fun createMemo(draftMemo: DraftMemo): Memo {
-    val dto = memoRemoteDataSource.postMemo(
+    val memoDto = memoRemoteDataSource.postMemo(
       command = PostMemoCommand(
         myBookId = draftMemo.myBookId.value,
         content = draftMemo.content,
@@ -30,14 +30,14 @@ internal class MemoRepositoryImpl @Inject constructor(
         endPage = draftMemo.pageRange?.end,
       ),
     )
-    return dto.toMemo()
+    return memoDto.toMemo()
   }
 
   override suspend fun editMemo(
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo {
-    val dto = memoRemoteDataSource.patchMemo(
+    val memoDto = memoRemoteDataSource.patchMemo(
       command = PatchMemoCommand(
         memoId = memoId.value,
         content = draftMemo.content,
@@ -45,7 +45,7 @@ internal class MemoRepositoryImpl @Inject constructor(
         endPage = draftMemo.pageRange?.end,
       ),
     )
-    return dto.toMemo()
+    return memoDto.toMemo()
   }
 
   override suspend fun publishMemo(memoId: MemoId): Memo {

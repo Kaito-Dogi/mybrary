@@ -31,21 +31,21 @@ internal class DefaultBookRemoteDataSource @Inject constructor(
           }
         },
       )
-    val response = result.decodeSingleOrNull<BookResponse>()
-    return@withContext response?.toBookDto()
+    val bookResponse = result.decodeSingleOrNull<BookResponse>()
+    return@withContext bookResponse?.toBookDto()
   }
 
   override suspend fun postBook(command: PostBookCommand): BookDto = withContext(dispatcher) {
-    val input = command.toBookInput()
+    val bookInput = command.toBookInput()
     val result = supabaseClient.postgrest
       .from(BOOK_TABLE)
       .insert(
-        value = input,
+        value = bookInput,
         request = {
           select(columns = Columns.ALL)
         },
       )
-    val response = result.decodeSingle<BookResponse>()
-    return@withContext response.toBookDto()
+    val bookResponse = result.decodeSingle<BookResponse>()
+    return@withContext bookResponse.toBookDto()
   }
 }
