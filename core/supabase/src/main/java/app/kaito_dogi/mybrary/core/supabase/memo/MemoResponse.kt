@@ -24,7 +24,7 @@ internal data class MemoResponse(
   @SerialName("like_count")
   val likeCount: Int,
 ) {
-  fun toDto() = MemoDto(
+  fun toMemoDto() = MemoDto(
     memoId = memoId,
     content = content,
     startPage = startPage,

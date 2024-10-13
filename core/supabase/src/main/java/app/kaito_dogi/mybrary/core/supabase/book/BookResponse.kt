@@ -21,14 +21,14 @@ internal data class BookResponse(
   @SerialName("amazon_url")
   val amazonUrl: String? = null,
 ) {
-  fun toDto() = BookDto(
+  fun toBookDto() = BookDto(
     bookId = this.bookId,
     title = this.title,
     imageUrl = this.imageUrl,
     authors = this.authors,
     publisher = this.publisher,
     isbn = this.isbn,
-    genre = this.genre.toDto(),
+    genre = this.genre.toGenreDto(),
     rakutenUrl = this.rakutenUrl,
     amazonUrl = this.amazonUrl,
   )

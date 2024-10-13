@@ -24,14 +24,14 @@ internal data class MyBookResponse(
   @SerialName("book")
   val bookResponse: BookResponse,
 ) {
-  fun toDto() = MyBookDto(
+  fun toMyBookDto() = MyBookDto(
     myBookId = this.myBookId,
     title = this.bookResponse.title,
     imageUrl = this.bookResponse.imageUrl,
     isbn = this.bookResponse.isbn,
     publisher = this.bookResponse.publisher,
     authors = this.bookResponse.authors,
-    genre = this.bookResponse.genre,
+    genre = this.bookResponse.genre.toGenreDto(),
     isPinned = isPinned,
     isFavorite = isFavorite,
     isPublic = isPublic,

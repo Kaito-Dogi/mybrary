@@ -11,7 +11,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(with = GenreResponseSerializer::class)
-enum class GenreResponse(val value: Int) {
+internal enum class GenreResponse(val value: Int) {
   All(value = 0),
   Hardcover(value = 1),
   Paperback(value = 2),
@@ -25,7 +25,7 @@ enum class GenreResponse(val value: Int) {
   MookOthers(value = 10),
   ;
 
-  fun toDto(): GenreDto = when (this) {
+  fun toGenreDto() = when (this) {
     All -> GenreDto.All
     Hardcover -> GenreDto.Hardcover
     Paperback -> GenreDto.Paperback

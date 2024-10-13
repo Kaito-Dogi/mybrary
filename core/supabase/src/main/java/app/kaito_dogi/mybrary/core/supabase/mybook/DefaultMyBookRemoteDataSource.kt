@@ -32,7 +32,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun getMyBooks(
@@ -51,14 +51,14 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val responseList = result.decodeList<MyBookResponse>()
-    return@withContext responseList.map(MyBookResponse::toDto)
+    return@withContext responseList.map(MyBookResponse::toMyBookDto)
   }
 
   override suspend fun postMyBook(command: PostMyBookCommand): MyBookDto = withContext(dispatcher) {
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val tempCommand = command.copy(userId = tempUserId)
-    val input = tempCommand.toInput()
+    val input = tempCommand.toMyBookInput()
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)
       .insert(
@@ -70,7 +70,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun patchMyBookIsPinned(
@@ -93,7 +93,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun patchMyBookIsFavorite(
@@ -116,7 +116,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun patchMyBookIsPublic(
@@ -139,7 +139,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun patchMyBookIsArchived(
@@ -162,7 +162,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
       )
     val response = result.decodeSingle<MyBookResponse>()
-    return@withContext response.toDto()
+    return@withContext response.toMyBookDto()
   }
 
   override suspend fun deleteMyBook(myBookId: String) = withContext(dispatcher) {
