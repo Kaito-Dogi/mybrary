@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ItemResponse(
   val affiliateUrl: String,
-  val author: String,
+  val author: AuthorResponse,
   val isbn: String,
   val publisherName: String,
   val salesDate: String,
