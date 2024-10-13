@@ -20,16 +20,17 @@ internal data class MyBookResponse(
   val isPublic: Boolean,
   @SerialName("is_archived")
   val isArchived: Boolean,
-  val book: Book,
+  @SerialName("book")
+  val bookResponse: BookResponse,
 ) {
   fun toDto() = MyBookDto(
     myBookId = this.myBookId,
-    title = this.book.title,
-    imageUrl = this.book.imageUrl,
-    isbn = this.book.isbn,
-    publisher = this.book.publisher,
-    authors = this.book.authors,
-    genre = this.book.genre,
+    title = this.bookResponse.title,
+    imageUrl = this.bookResponse.imageUrl,
+    isbn = this.bookResponse.isbn,
+    publisher = this.bookResponse.publisher,
+    authors = this.bookResponse.authors,
+    genre = this.bookResponse.genre,
     isPinned = isPinned,
     isFavorite = isFavorite,
     isPublic = isPublic,

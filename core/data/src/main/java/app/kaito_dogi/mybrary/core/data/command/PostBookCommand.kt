@@ -8,9 +8,9 @@ data class PostBookCommand(
   val title: String,
   @SerialName("image_url")
   val imageUrl: String,
-  val isbn: String,
-  val publisher: String,
   val authors: String,
+  val publisher: String,
+  val isbn: String,
   val genre: Int,
   @SerialName("rakuten_url")
   val rakutenUrl: String,
