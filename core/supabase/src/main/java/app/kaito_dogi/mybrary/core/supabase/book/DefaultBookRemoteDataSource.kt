@@ -18,7 +18,7 @@ internal class DefaultBookRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRemoteDataSource {
-  override suspend fun getBookByIsbn(isbn: String): BookDto = withContext(dispatcher) {
+  override suspend fun getBookByIsbn(isbn: String): BookDto? = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(BOOK_TABLE)
       .select(
@@ -29,8 +29,8 @@ internal class DefaultBookRemoteDataSource @Inject constructor(
           }
         },
       )
-    val response = result.decodeSingle<BookResponse>()
-    return@withContext response.toDto()
+    val response = result.decodeSingleOrNull<BookResponse>()
+    return@withContext response?.toDto()
   }
 
   override suspend fun postBook(command: PostBookCommand): BookDto = withContext(dispatcher) {
