@@ -45,6 +45,7 @@ dependencies {
   implementation(project(":core:api"))
   implementation(project(":core:common"))
   implementation(project(":core:config"))
+  implementation(project(":core:data"))
   implementation(project(":core:database"))
   implementation(project(":core:domain"))
 
