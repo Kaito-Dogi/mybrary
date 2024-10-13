@@ -5,7 +5,6 @@ import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Book
-import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -44,8 +43,6 @@ internal class MockMyBookRepository @Inject constructor(
 
     val myBook = MyBook(
       id = MyBookId(value = "${mockMyBookList.value.size}"),
-      // user = mockMyBookList.value[0].user,
-      bookId = book.id,
       title = book.title,
       imageUrl = book.imageUrl,
       isbn = book.isbn,
@@ -146,11 +143,6 @@ internal class MockMyBookRepository @Inject constructor(
 private val MockMyBookList = List(20) { index ->
   MyBook(
     id = MyBookId(value = "$index"),
-    // user = User(
-    //   id = UserId(value = "userId"),
-    //   name = "ユーザー名",
-    // ),
-    bookId = BookId(value = "$index"),
     title = when (index % 7) {
       0 -> "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則"
       1 -> "ハッカーと画家"
