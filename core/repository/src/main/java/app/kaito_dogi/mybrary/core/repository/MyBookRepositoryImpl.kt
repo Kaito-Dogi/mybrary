@@ -35,7 +35,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
 
     // FIXME: ここでユーザー ID を取得して postMyBook に渡す
     val myBookDto = myBookRemoteDataSource.postMyBook(
-      command = PostMyBookCommand(
+      postMyBookCommand = PostMyBookCommand(
         bookId = bookId.value,
         userId = "",
       ),
@@ -50,7 +50,7 @@ internal class MyBookRepositoryImpl @Inject constructor(
       book.id
     } else {
       val newBook = bookRemoteDataSource.postBook(
-        command = PostBookCommand(
+        postBookCommand = PostBookCommand(
           title = book.title,
           imageUrl = book.imageUrl.value,
           isbn = book.isbn,

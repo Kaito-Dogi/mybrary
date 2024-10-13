@@ -35,8 +35,8 @@ internal class DefaultBookRemoteDataSource @Inject constructor(
     return@withContext bookResponse?.toBookDto()
   }
 
-  override suspend fun postBook(command: PostBookCommand): BookDto = withContext(dispatcher) {
-    val bookInput = command.toBookInput()
+  override suspend fun postBook(postBookCommand: PostBookCommand): BookDto = withContext(dispatcher) {
+    val bookInput = postBookCommand.toBookInput()
     val result = supabaseClient.postgrest
       .from(BOOK_TABLE)
       .insert(

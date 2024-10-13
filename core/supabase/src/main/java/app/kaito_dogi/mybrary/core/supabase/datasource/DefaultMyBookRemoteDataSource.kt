@@ -56,10 +56,10 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
     return@withContext myBookResponseList.map(MyBookResponse::toMyBookDto)
   }
 
-  override suspend fun postMyBook(command: PostMyBookCommand): MyBookDto = withContext(dispatcher) {
+  override suspend fun postMyBook(postMyBookCommand: PostMyBookCommand): MyBookDto = withContext(dispatcher) {
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
-    val tempPostMyBookCommand = command.copy(userId = tempUserId)
+    val tempPostMyBookCommand = postMyBookCommand.copy(userId = tempUserId)
     val myBookInput = tempPostMyBookCommand.toMyBookInput()
     val result = supabaseClient.postgrest
       .from(table = MY_BOOK_TABLE)

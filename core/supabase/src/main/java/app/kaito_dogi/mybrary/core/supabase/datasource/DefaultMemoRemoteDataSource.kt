@@ -41,8 +41,8 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
   }
 
   // FIXME: ユーザー情報をクエリできるようにする
-  override suspend fun postMemo(command: PostMemoCommand): MemoDto = withContext(dispatcher) {
-    val memoInput = command.toMemoInput()
+  override suspend fun postMemo(postMemoCommand: PostMemoCommand): MemoDto = withContext(dispatcher) {
+    val memoInput = postMemoCommand.toMemoInput()
     val result = supabaseClient.postgrest
       .from(MEMO_TABLE)
       .insert(
@@ -56,18 +56,18 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
   }
 
   // FIXME: ユーザー情報をクエリできるようにする
-  override suspend fun patchMemo(command: PatchMemoCommand): MemoDto = withContext(dispatcher) {
+  override suspend fun patchMemo(patchMemoCommand: PatchMemoCommand): MemoDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest
       .from(MEMO_TABLE)
       .update(
         update = {
-          MemoResponse::content setTo command.content
-          MemoResponse::startPage setTo command.startPage
-          MemoResponse::endPage setTo command.endPage
+          MemoResponse::content setTo patchMemoCommand.content
+          MemoResponse::startPage setTo patchMemoCommand.startPage
+          MemoResponse::endPage setTo patchMemoCommand.endPage
         },
         request = {
           filter {
-            MemoResponse::id eq command.memoId
+            MemoResponse::id eq patchMemoCommand.memoId
           }
           select(columns = Columns.list(MEMO_COLUMN_LIST))
         },

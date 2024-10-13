@@ -6,5 +6,5 @@ import app.kaito_dogi.mybrary.core.data.dto.BookDto
 interface BookRemoteDataSource {
   suspend fun getBookByIsbn(isbn: String): BookDto?
 
-  suspend fun postBook(command: PostBookCommand): BookDto
+  suspend fun postBook(postBookCommand: PostBookCommand): BookDto
 }

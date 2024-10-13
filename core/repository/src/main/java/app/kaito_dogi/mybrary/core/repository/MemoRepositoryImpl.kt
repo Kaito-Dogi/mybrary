@@ -23,7 +23,7 @@ internal class MemoRepositoryImpl @Inject constructor(
 
   override suspend fun createMemo(draftMemo: DraftMemo): Memo {
     val memoDto = memoRemoteDataSource.postMemo(
-      command = PostMemoCommand(
+      postMemoCommand = PostMemoCommand(
         myBookId = draftMemo.myBookId.value,
         content = draftMemo.content,
         startPage = draftMemo.pageRange?.start,
@@ -38,7 +38,7 @@ internal class MemoRepositoryImpl @Inject constructor(
     draftMemo: DraftMemo,
   ): Memo {
     val memoDto = memoRemoteDataSource.patchMemo(
-      command = PatchMemoCommand(
+      patchMemoCommand = PatchMemoCommand(
         memoId = memoId.value,
         content = draftMemo.content,
         startPage = draftMemo.pageRange?.start,

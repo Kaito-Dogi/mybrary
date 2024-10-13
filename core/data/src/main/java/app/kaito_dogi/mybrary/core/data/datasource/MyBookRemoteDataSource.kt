@@ -10,7 +10,7 @@ interface MyBookRemoteDataSource {
     userId: String,
   ): List<MyBookDto>
 
-  suspend fun postMyBook(command: PostMyBookCommand): MyBookDto
+  suspend fun postMyBook(postMyBookCommand: PostMyBookCommand): MyBookDto
 
   suspend fun patchMyBookIsPinned(
     myBookId: String,
