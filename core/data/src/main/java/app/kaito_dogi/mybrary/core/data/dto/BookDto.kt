@@ -5,7 +5,7 @@ import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 
 data class BookDto(
-  val bookId: String,
+  val id: String,
   val title: String,
   val imageUrl: String,
   val authors: AuthorsDto,
@@ -16,7 +16,7 @@ data class BookDto(
   val amazonUrl: String?,
 ) {
   fun toBook() = Book(
-    id = BookId(value = bookId),
+    id = BookId(value = this.id),
     title = this.title,
     imageUrl = Url.Image(value = this.imageUrl),
     isbn = this.isbn,

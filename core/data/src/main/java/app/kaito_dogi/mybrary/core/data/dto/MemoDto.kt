@@ -7,7 +7,7 @@ import app.kaito_dogi.mybrary.core.domain.model.PageRange
 
 // FIXME: ユーザー情報を含めるようにする
 data class MemoDto(
-  val memoId: String,
+  val id: String,
   val content: String,
   val startPage: Int?,
   val endPage: Int?,
@@ -17,12 +17,12 @@ data class MemoDto(
   val likeCount: Int,
 ) {
   fun toMemo() = Memo(
-    id = MemoId(value = this.memoId),
+    id = MemoId(value = this.id),
     content = this.content,
     pageRange = this.startPage?.let {
       PageRange(
         start = it,
-        end = endPage,
+        end = this.endPage,
       )
     },
     createdAt = this.createdAt.toLocalDateTime(),

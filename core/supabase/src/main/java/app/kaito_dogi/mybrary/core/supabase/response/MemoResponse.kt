@@ -6,8 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class MemoResponse(
-  @SerialName("id")
-  val memoId: String,
+  val id: String,
   @SerialName("my_book_id")
   val myBookId: String,
   val content: String,
@@ -25,13 +24,13 @@ internal data class MemoResponse(
   val likeCount: Int,
 ) {
   fun toMemoDto() = MemoDto(
-    memoId = memoId,
-    content = content,
-    startPage = startPage,
-    endPage = endPage,
-    createdAt = createdAt,
-    editedAt = editedAt,
-    publishedAt = publishedAt,
-    likeCount = likeCount,
+    id = this.id,
+    content = this.content,
+    startPage = this.startPage,
+    endPage = this.endPage,
+    createdAt = this.createdAt,
+    editedAt = this.editedAt,
+    publishedAt = this.publishedAt,
+    likeCount = this.likeCount,
   )
 }

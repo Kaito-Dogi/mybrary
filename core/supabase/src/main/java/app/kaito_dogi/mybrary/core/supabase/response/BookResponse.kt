@@ -6,8 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class BookResponse(
-  @SerialName("id")
-  val bookId: String,
+  val id: String,
   val title: String,
   @SerialName("image_url")
   val imageUrl: String,
@@ -21,7 +20,7 @@ internal data class BookResponse(
   val amazonUrl: String? = null,
 ) {
   fun toBookDto() = BookDto(
-    bookId = this.bookId,
+    id = this.id,
     title = this.title,
     imageUrl = this.imageUrl,
     authors = this.authors.toAuthorsDto(),

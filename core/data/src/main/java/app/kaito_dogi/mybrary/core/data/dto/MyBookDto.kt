@@ -5,7 +5,7 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 
 data class MyBookDto(
-  val myBookId: String,
+  val id: String,
   val title: String,
   val imageUrl: String,
   val authors: AuthorsDto,
@@ -18,16 +18,16 @@ data class MyBookDto(
   val isArchived: Boolean,
 ) {
   fun toMyBook() = MyBook(
-    id = MyBookId(value = this.myBookId),
+    id = MyBookId(value = this.id),
     title = this.title,
     imageUrl = this.imageUrl.let { Url.Image(value = it) },
     authorList = this.authors.toAuthorList(),
     publisher = this.publisher,
     isbn = this.isbn,
     genre = this.genre.toGenre(),
-    isPinned = isPinned,
-    isFavorite = isFavorite,
-    isPublic = isPublic,
-    isArchived = isArchived,
+    isPinned = this.isPinned,
+    isFavorite = this.isFavorite,
+    isPublic = this.isPublic,
+    isArchived = this.isArchived,
   )
 }

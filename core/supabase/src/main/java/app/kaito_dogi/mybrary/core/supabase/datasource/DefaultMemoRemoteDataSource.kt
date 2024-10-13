@@ -67,7 +67,7 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
         },
         request = {
           filter {
-            MemoResponse::memoId eq command.memoId
+            MemoResponse::id eq command.memoId
           }
           select(columns = Columns.list(MEMO_COLUMN_LIST))
         },
@@ -82,7 +82,7 @@ internal class DefaultMemoRemoteDataSource @Inject constructor(
       .delete(
         request = {
           filter {
-            MemoResponse::memoId eq memoId
+            MemoResponse::id eq memoId
           }
         },
       )

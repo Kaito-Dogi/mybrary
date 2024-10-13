@@ -29,7 +29,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         columns = Columns.list(MY_BOOK_COLUMN_LIST),
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
         },
       )
@@ -87,7 +87,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),
@@ -110,7 +110,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),
@@ -133,7 +133,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),
@@ -156,7 +156,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
         },
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
           select(
             columns = Columns.list(MY_BOOK_COLUMN_LIST),
@@ -173,7 +173,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
       .delete(
         request = {
           filter {
-            MyBookResponse::myBookId eq myBookId
+            MyBookResponse::id eq myBookId
           }
         },
       )
