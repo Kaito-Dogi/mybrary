@@ -15,7 +15,7 @@ internal data class BookResponse(
   val publisher: String,
   val isbn: String,
   @SerialName("is_archived")
-  val genre: Int,
+  val genre: GenreResponse,
   @SerialName("rakuten_url")
   val rakutenUrl: String,
   @SerialName("amazon_url")
@@ -28,7 +28,7 @@ internal data class BookResponse(
     authors = this.authors,
     publisher = this.publisher,
     isbn = this.isbn,
-    genre = this.genre,
+    genre = this.genre.toDto(),
     rakutenUrl = this.rakutenUrl,
     amazonUrl = this.amazonUrl,
   )

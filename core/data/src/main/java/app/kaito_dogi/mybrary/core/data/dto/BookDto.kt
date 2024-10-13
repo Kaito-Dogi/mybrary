@@ -1,8 +1,6 @@
 package app.kaito_dogi.mybrary.core.data.dto
 
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.data.convertor.toAuthorList
-import app.kaito_dogi.mybrary.core.data.convertor.toGenre
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 
@@ -13,7 +11,7 @@ data class BookDto(
   val authors: String,
   val publisher: String,
   val isbn: String,
-  val genre: Int,
+  val genre: GenreDto,
   val rakutenUrl: String,
   val amazonUrl: String?,
 ) {

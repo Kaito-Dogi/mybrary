@@ -1,22 +1,7 @@
 package app.kaito_dogi.mybrary.core.repository.convertor
 
-import app.kaito_dogi.mybrary.core.api.mybrary.response.model.GenreResponse
 import app.kaito_dogi.mybrary.core.api.rakuten.response.SizeResponse
 import app.kaito_dogi.mybrary.core.domain.model.Genre
-
-internal fun GenreResponse.toGenre() = when (this) {
-  GenreResponse.All -> Genre.All
-  GenreResponse.Hardcover -> Genre.Hardcover
-  GenreResponse.Paperback -> Genre.Paperback
-  GenreResponse.NewBook -> Genre.NewBook
-  GenreResponse.CompleteWorks -> Genre.CompleteWorks
-  GenreResponse.Dictionary -> Genre.Dictionary
-  GenreResponse.IllustratedBook -> Genre.IllustratedBook
-  GenreResponse.PictureBook -> Genre.Paperback
-  GenreResponse.CassetteCd -> Genre.CassetteCd
-  GenreResponse.Comics -> Genre.Comics
-  GenreResponse.MookOthers -> Genre.MookOthers
-}
 
 internal fun SizeResponse.toGenre() = when (this) {
   SizeResponse.All -> Genre.All
