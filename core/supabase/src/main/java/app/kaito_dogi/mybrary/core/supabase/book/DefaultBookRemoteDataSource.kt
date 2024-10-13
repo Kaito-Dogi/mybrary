@@ -34,10 +34,11 @@ internal class DefaultBookRemoteDataSource @Inject constructor(
   }
 
   override suspend fun postBook(command: PostBookCommand): BookDto = withContext(dispatcher) {
+    val input = command.toInput()
     val result = supabaseClient.postgrest
       .from(BOOK_TABLE)
       .insert(
-        value = command,
+        value = input,
         request = {
           select(columns = Columns.ALL)
         },
