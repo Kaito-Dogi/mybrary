@@ -9,8 +9,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface MockMemoRepositoryModule {
+internal interface MemoRepositoryModule {
   @Singleton
   @Binds
-  fun bindMemoRepository(mock: MockMemoRepository): MemoRepository
+  fun bindMemoRepository(impl: MockMemoRepository): MemoRepository
 }

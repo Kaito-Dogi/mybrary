@@ -38,11 +38,6 @@ internal class MockMemoRepository @Inject constructor(
 
     val createdMemo = Memo(
       id = MemoId(value = "${mockMemoList.value.size}"),
-      // user = User(
-      //   id = UserId(value = "userId"),
-      //   name = "ユーザー名",
-      // ),
-      myBookId = draftMemo.myBookId,
       content = draftMemo.content,
       pageRange = draftMemo.pageRange,
       createdAt = LocalDateTime.now(),
@@ -96,11 +91,6 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
   val endPage = if (index % 4 == 0) (index + 1) * 100 else null
   Memo(
     id = MemoId(value = "$index"),
-    // user = User(
-    //   id = UserId(value = "userId"),
-    //   name = "ユーザー名",
-    // ),
-    myBookId = myBookId,
     content = "メモ$index",
     pageRange = startPage?.let {
       PageRange(
