@@ -6,8 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MyBook(
   val id: MyBookId,
-  // val user: User,
-  val bookId: BookId,
   val title: String,
   val imageUrl: Url.Image,
   val isbn: String,

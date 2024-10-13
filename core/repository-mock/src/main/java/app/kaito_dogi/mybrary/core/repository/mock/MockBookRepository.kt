@@ -56,7 +56,7 @@ private val MockBookList = List(10) { index ->
     publisher = "小学館",
     authorList = "松本 大洋".toAuthorList(),
     genre = Genre.Paperback,
-    rakutenAffiliateUrl = Url.Affiliate(value = "rakutenAffiliateUrl$index"),
-    amazonAffiliateUrl = null,
+    rakutenUrl = Url.Affiliate(value = "rakutenAffiliateUrl$index"),
+    amazonUrl = null,
   )
 }

@@ -1,88 +1,114 @@
 package app.kaito_dogi.mybrary.core.repository
 
-import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
-import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MyBookResponse
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.data.command.PostBookCommand
+import app.kaito_dogi.mybrary.core.data.command.PostMyBookCommand
+import app.kaito_dogi.mybrary.core.data.datasource.BookRemoteDataSource
+import app.kaito_dogi.mybrary.core.data.datasource.MyBookRemoteDataSource
+import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
 import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.repository.convertor.toAuthorsResponse
-import app.kaito_dogi.mybrary.core.repository.convertor.toMyBook
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 @Singleton
 internal class MyBookRepositoryImpl @Inject constructor(
-  private val mybraryAnonApi: MybraryAnonApi,
-  private val mybraryAuthApi: MybraryAuthApi,
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  private val bookRemoteDataSource: BookRemoteDataSource,
+  private val myBookRemoteDataSource: MyBookRemoteDataSource,
 ) : MyBookRepository {
-  override suspend fun getMyBookList(): List<MyBook> = withContext(dispatcher) {
-    mybraryAnonApi.getMyBooks().map(MyBookResponse::toMyBook)
+  override suspend fun getMyBookList(): List<MyBook> {
+    // FIXME: ここでユーザー ID を取得して getMyBooks に渡す
+    val dtoList = myBookRemoteDataSource.getMyBooks(userId = "")
+    return dtoList.map(MyBookDto::toMyBook)
   }
 
-  override suspend fun getMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    TODO("Not yet implemented")
+  override suspend fun getMyBook(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.getMyBook(myBookId = myBookId.value)
+    return dto.toMyBook()
   }
 
-  override suspend fun addBookToMybrary(book: Book): MyBook = withContext(dispatcher) {
-    val bookId = mybraryAnonApi.getBookByIsbn(
-      isbn = book.isbn,
-    )?.id ?: mybraryAuthApi.postBook(
-      request = PostBookRequest(
-        title = book.title,
-        imageUrl = book.imageUrl.value,
-        isbn = book.isbn,
-        publisher = book.publisher,
-        authors = book.authorList.toAuthorsResponse(),
-        genre = book.genre.value,
-        rakutenAffiliateUrl = book.rakutenAffiliateUrl.value,
-      ),
-    ).id
+  override suspend fun addBookToMybrary(book: Book): MyBook {
+    val bookId = getBookIdOrCreate(book = book)
 
-    val response = mybraryAuthApi.postMyBook(
-      request = PostMyBookRequest(
-        bookId = bookId,
+    // FIXME: ここでユーザー ID を取得して postMyBook に渡す
+    val dto = myBookRemoteDataSource.postMyBook(
+      command = PostMyBookCommand(
+        bookId = bookId.value,
+        userId = "",
       ),
     )
-
-    return@withContext response.toMyBook()
+    return dto.toMyBook()
   }
 
-  override suspend fun pinMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    TODO("Not yet implemented")
-  }
+  private suspend fun getBookIdOrCreate(book: Book): BookId {
+    val recordedBook = bookRemoteDataSource.getBookByIsbn(isbn = book.isbn)?.toBook()
 
-  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    val response = mybraryAuthApi.patchMyBookFavorite(
-      id = myBookId.value,
-      request = PatchMyBookFavoriteRequest(isFavorite = true),
-    )
-    return@withContext response.toMyBook()
-  }
-
-  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook =
-    withContext(dispatcher) {
-      val response = mybraryAuthApi.patchMyBookFavorite(
-        id = myBookId.value,
-        request = PatchMyBookFavoriteRequest(isFavorite = false),
-      )
-      return@withContext response.toMyBook()
+    return if (recordedBook != null) {
+      book.id
+    } else {
+      val newBook = bookRemoteDataSource.postBook(
+        command = PostBookCommand(
+          title = book.title,
+          imageUrl = book.imageUrl.value,
+          isbn = book.isbn,
+          publisher = book.publisher,
+          authors = book.authorList.toAuthorsResponse(),
+          genre = book.genre.value,
+          rakutenUrl = book.rakutenUrl.value,
+        ),
+      ).toBook()
+      newBook.id
     }
-
-  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    TODO("Not yet implemented")
   }
 
-  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    TODO("Not yet implemented")
+  override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsPinned(
+      myBookId = myBookId.value,
+      isPinned = true,
+    )
+    return dto.toMyBook()
   }
 
-  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook = withContext(dispatcher) {
-    TODO("Not yet implemented")
+  override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsFavorite(
+      myBookId = myBookId.value,
+      isFavorite = true,
+    )
+    return dto.toMyBook()
+  }
+
+  override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsFavorite(
+      myBookId = myBookId.value,
+      isFavorite = false,
+    )
+    return dto.toMyBook()
+  }
+
+  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsPublic(
+      myBookId = myBookId.value,
+      isPublic = true,
+    )
+    return dto.toMyBook()
+  }
+
+  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsPublic(
+      myBookId = myBookId.value,
+      isPublic = false,
+    )
+    return dto.toMyBook()
+  }
+
+  override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
+    val dto = myBookRemoteDataSource.patchMyBookIsArchived(
+      myBookId = myBookId.value,
+      isArchived = true,
+    )
+    return dto.toMyBook()
   }
 }
