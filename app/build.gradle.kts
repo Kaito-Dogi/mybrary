@@ -170,7 +170,6 @@ dependencies {
   implementation(project(":core:api"))
   implementation(project(":core:common"))
   implementation(project(":core:config"))
-  implementation(project(":core:data"))
   implementation(project(":core:database"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
@@ -181,6 +180,10 @@ dependencies {
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
+
+  "prodImplementation"((project(":core:repository")))
+  "devImplementation"((project(":core:repository")))
+  "mockImplementation"((project(":core:repository-mock")))
 
   implementation(libs.android.material)
   implementation(platform(libs.androidx.compose.bom))

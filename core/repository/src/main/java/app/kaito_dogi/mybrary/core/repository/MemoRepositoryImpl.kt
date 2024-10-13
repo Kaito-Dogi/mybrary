@@ -1,0 +1,62 @@
+package app.kaito_dogi.mybrary.core.repository
+
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAnonApi
+import app.kaito_dogi.mybrary.core.api.mybrary.MybraryAuthApi
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PatchMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.request.PostMemoRequest
+import app.kaito_dogi.mybrary.core.api.mybrary.response.model.MemoResponse
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
+import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.MemoId
+import app.kaito_dogi.mybrary.core.domain.model.MyBookId
+import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
+import app.kaito_dogi.mybrary.core.repository.convertor.toMemo
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
+
+@Singleton
+internal class MemoRepositoryImpl @Inject constructor(
+  private val mybraryAnonApi: MybraryAnonApi,
+  private val mybraryAuthApi: MybraryAuthApi,
+  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+) : MemoRepository {
+  override suspend fun getMemoList(myBookId: MyBookId): List<Memo> = withContext(dispatcher) {
+    val response = mybraryAnonApi.getMemos(myBookId = myBookId.value)
+    return@withContext response.map(MemoResponse::toMemo)
+  }
+
+  override suspend fun createMemo(draftMemo: DraftMemo): Memo = withContext(dispatcher) {
+    val response = mybraryAuthApi.postMemo(
+      request = PostMemoRequest(
+        myBookId = draftMemo.myBookId.value,
+        content = draftMemo.content,
+        startPage = draftMemo.pageRange?.start,
+        endPage = draftMemo.pageRange?.end,
+      ),
+    )
+    return@withContext response.toMemo()
+  }
+
+  override suspend fun editMemo(
+    memoId: MemoId,
+    draftMemo: DraftMemo,
+  ): Memo = withContext(dispatcher) {
+    val response = mybraryAuthApi.patchMemo(
+      id = memoId.value,
+      request = PatchMemoRequest(
+        content = draftMemo.content,
+        startPage = draftMemo.pageRange?.start,
+        endPage = draftMemo.pageRange?.end,
+      ),
+    )
+    return@withContext response.toMemo()
+  }
+
+  override suspend fun publishMemo(memoId: MemoId): Memo = withContext(dispatcher) {
+    TODO("Not yet implemented")
+  }
+}
