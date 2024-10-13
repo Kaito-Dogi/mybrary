@@ -12,6 +12,6 @@ data class Book(
   val publisher: String,
   val isbn: String,
   val genre: Genre,
-  val rakutenAffiliateUrl: Url.Affiliate,
-  val amazonAffiliateUrl: Url.Affiliate? = null,
+  val rakutenUrl: Url.Affiliate,
+  val amazonUrl: Url.Affiliate? = null,
 )
