@@ -1,11 +1,10 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.book
 
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.data.command.PostBookCommand
 import app.kaito_dogi.mybrary.core.data.datasource.BookRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.BookDto
-import app.kaito_dogi.mybrary.core.supabase.model.BookResponse
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
@@ -15,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 private const val BOOK_TABLE = "book"
 
-internal class BookRemoteDataSourceImpl @Inject constructor(
+internal class DefaultBookRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRemoteDataSource {

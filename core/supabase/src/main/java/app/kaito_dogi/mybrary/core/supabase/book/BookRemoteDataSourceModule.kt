@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.book
 
 import app.kaito_dogi.mybrary.core.data.datasource.BookRemoteDataSource
 import dagger.Binds
@@ -12,5 +12,5 @@ import javax.inject.Singleton
 internal interface BookRemoteDataSourceModule {
   @Singleton
   @Binds
-  fun bindBookRemoteDataSource(impl: BookRemoteDataSourceImpl): BookRemoteDataSource
+  fun bindBookRemoteDataSource(impl: DefaultBookRemoteDataSource): BookRemoteDataSource
 }

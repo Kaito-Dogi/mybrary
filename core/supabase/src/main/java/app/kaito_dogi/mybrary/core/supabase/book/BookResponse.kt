@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.supabase.model
+package app.kaito_dogi.mybrary.core.supabase.book
 
 import app.kaito_dogi.mybrary.core.data.dto.BookDto
 import kotlinx.serialization.SerialName
@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class BookResponse(
+  @SerialName("id")
   val bookId: String,
   val title: String,
   @SerialName("image_url")
