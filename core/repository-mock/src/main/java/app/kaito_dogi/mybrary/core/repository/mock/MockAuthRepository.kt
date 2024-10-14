@@ -32,4 +32,10 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   override suspend fun logout() {
     delay(1_000)
   }
+
+  override suspend fun hasCurrentSession(): Boolean {
+    delay(1_000)
+
+    return true
+  }
 }

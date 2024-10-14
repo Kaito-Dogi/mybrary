@@ -41,4 +41,8 @@ internal class DefaultAuthRepository @Inject constructor(
   override suspend fun logout() {
     authRemoteDataSource.logout()
   }
+
+  override suspend fun hasCurrentSession(): Boolean {
+    return authRemoteDataSource.hasCurrentSession()
+  }
 }

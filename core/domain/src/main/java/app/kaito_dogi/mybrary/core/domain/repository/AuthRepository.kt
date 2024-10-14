@@ -19,4 +19,6 @@ interface AuthRepository {
   suspend fun anonymousSignIn(captchaToken: HCaptchaToken)
 
   suspend fun logout()
+
+  suspend fun hasCurrentSession(): Boolean
 }
