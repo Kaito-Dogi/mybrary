@@ -9,12 +9,10 @@ import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.repository.convertor.toDraftMemo
 import app.kaito_dogi.mybrary.core.repository.convertor.toEntity
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-@Singleton
-internal class DraftMemoRepositoryImpl @Inject constructor(
+internal class DefaultDraftMemoRepositoryImpl @Inject constructor(
   private val draftMemoDao: DraftMemoDao,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : DraftMemoRepository {

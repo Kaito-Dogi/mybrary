@@ -12,5 +12,5 @@ import javax.inject.Singleton
 internal interface MyBookRepositoryModule {
   @Singleton
   @Binds
-  fun bindMyBookRepository(impl: MyBookRepositoryImpl): MyBookRepository
+  fun bindMyBookRepository(impl: DefaultMyBookRepository): MyBookRepository
 }

@@ -12,10 +12,8 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.repository.convertor.toAuthorsResponse
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-internal class MyBookRepositoryImpl @Inject constructor(
+internal class DefaultMyBookRepository @Inject constructor(
   private val bookRemoteDataSource: BookRemoteDataSource,
   private val myBookRemoteDataSource: MyBookRemoteDataSource,
 ) : MyBookRepository {

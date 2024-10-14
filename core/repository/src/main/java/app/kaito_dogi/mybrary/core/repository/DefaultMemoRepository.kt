@@ -10,10 +10,8 @@ import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-internal class MemoRepositoryImpl @Inject constructor(
+internal class DefaultMemoRepository @Inject constructor(
   private val memoRemoteDataSource: MemoRemoteDataSource,
 ) : MemoRepository {
   override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {

@@ -12,12 +12,10 @@ import app.kaito_dogi.mybrary.core.domain.model.Sort
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.repository.convertor.toBook
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-@Singleton
-internal class BookRepositoryImpl @Inject constructor(
+internal class DefaultBookRepository @Inject constructor(
   private val rakutenApi: RakutenApi,
   private val config: MybraryConfig,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
