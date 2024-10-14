@@ -10,12 +10,10 @@ import app.kaito_dogi.mybrary.core.domain.model.Sort
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-@Singleton
 internal class MockBookRepository @Inject constructor(
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
