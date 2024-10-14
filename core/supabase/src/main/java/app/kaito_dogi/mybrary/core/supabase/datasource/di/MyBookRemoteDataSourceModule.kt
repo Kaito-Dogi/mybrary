@@ -1,6 +1,7 @@
-package app.kaito_dogi.mybrary.core.supabase.datasource
+package app.kaito_dogi.mybrary.core.supabase.datasource.di
 
 import app.kaito_dogi.mybrary.core.data.datasource.MyBookRemoteDataSource
+import app.kaito_dogi.mybrary.core.supabase.datasource.DefaultMyBookRemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
