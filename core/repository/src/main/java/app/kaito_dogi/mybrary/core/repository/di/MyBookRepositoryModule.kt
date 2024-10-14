@@ -1,6 +1,7 @@
-package app.kaito_dogi.mybrary.core.repository.mock
+package app.kaito_dogi.mybrary.core.repository.di
 
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
+import app.kaito_dogi.mybrary.core.repository.DefaultMyBookRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,5 +13,5 @@ import javax.inject.Singleton
 internal interface MyBookRepositoryModule {
   @Singleton
   @Binds
-  fun bindMyBookRepository(impl: MockMyBookRepository): MyBookRepository
+  fun bindMyBookRepository(impl: DefaultMyBookRepository): MyBookRepository
 }

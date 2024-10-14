@@ -1,6 +1,7 @@
-package app.kaito_dogi.mybrary.core.repository
+package app.kaito_dogi.mybrary.core.repository.di
 
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
+import app.kaito_dogi.mybrary.core.repository.DefaultDraftMemoRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

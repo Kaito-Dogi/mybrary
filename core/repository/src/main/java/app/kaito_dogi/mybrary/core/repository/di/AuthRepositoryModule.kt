@@ -1,6 +1,7 @@
-package app.kaito_dogi.mybrary.core.repository.mock
+package app.kaito_dogi.mybrary.core.repository.di
 
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
+import app.kaito_dogi.mybrary.core.repository.DefaultAuthRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,5 +13,5 @@ import javax.inject.Singleton
 internal interface AuthRepositoryModule {
   @Singleton
   @Binds
-  fun bindAuthRepository(impl: MockAuthRepository): AuthRepository
+  fun bindAuthRepository(impl: DefaultAuthRepository): AuthRepository
 }
