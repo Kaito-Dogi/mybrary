@@ -17,4 +17,6 @@ interface AuthRemoteDataSource {
   suspend fun anonymousSignIn(captchaToken: String)
 
   suspend fun logout()
+
+  suspend fun hasCurrentSession(): Boolean
 }

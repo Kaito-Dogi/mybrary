@@ -41,7 +41,7 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
     )
   }
 
-  override suspend fun googleSignIn() {
+  override suspend fun googleSignIn() = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
@@ -51,5 +51,10 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
 
   override suspend fun logout() = withContext(dispatcher) {
     supabaseClient.auth.signOut()
+  }
+
+  override suspend fun hasCurrentSession(): Boolean = withContext(dispatcher) {
+    val currentSession = supabaseClient.auth.currentSessionOrNull()
+    return@withContext currentSession != null
   }
 }
