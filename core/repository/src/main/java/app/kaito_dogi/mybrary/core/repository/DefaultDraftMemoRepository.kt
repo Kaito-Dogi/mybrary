@@ -12,7 +12,8 @@ import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-internal class DefaultDraftMemoRepositoryImpl @Inject constructor(
+// FIXME: CoroutineDispatcher の注入をやめる
+internal class DefaultDraftMemoRepository @Inject constructor(
   private val draftMemoDao: DraftMemoDao,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : DraftMemoRepository {

@@ -1,7 +1,7 @@
-package app.kaito_dogi.mybrary.core.repository.di
+package app.kaito_dogi.mybrary.core.repository.mock.di
 
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
-import app.kaito_dogi.mybrary.core.repository.DefaultDraftMemoRepository
+import app.kaito_dogi.mybrary.core.repository.mock.MockDraftMemoRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ import javax.inject.Singleton
 internal interface DraftMemoRepositoryModule {
   @Singleton
   @Binds
-  fun bindDraftMemoRepository(impl: DefaultDraftMemoRepository): DraftMemoRepository
+  fun bindDraftMemoRepository(impl: MockDraftMemoRepository): DraftMemoRepository
 }
