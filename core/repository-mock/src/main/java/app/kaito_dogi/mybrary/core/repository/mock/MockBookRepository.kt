@@ -1,7 +1,5 @@
 package app.kaito_dogi.mybrary.core.repository.mock
 
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
@@ -10,14 +8,10 @@ import app.kaito_dogi.mybrary.core.domain.model.Sort
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 
-internal class MockBookRepository @Inject constructor(
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
-) : BookRepository {
-  override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
+internal class MockBookRepository @Inject constructor() : BookRepository {
+  override suspend fun getBook(id: BookId): Book {
     TODO("Not yet implemented")
   }
 
@@ -30,10 +24,10 @@ internal class MockBookRepository @Inject constructor(
     hits: Int,
     page: Int,
     sort: Sort,
-  ): List<Book> = withContext(dispatcher) {
+  ): List<Book> {
     delay(1_000)
 
-    return@withContext MockBookList
+    return MockBookList
   }
 }
 
