@@ -5,9 +5,6 @@ import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
-import app.kaito_dogi.mybrary.core.domain.repository.LoginRepository
-import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
-import app.kaito_dogi.mybrary.core.domain.repository.SignUpRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -18,9 +15,6 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 internal class SendOtpViewModel @Inject constructor(
-  private val otpRepository: OtpRepository,
-  private val loginRepository: LoginRepository,
-  private val signUpRepository: SignUpRepository,
   private val authRepository: AuthRepository,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
@@ -34,11 +28,13 @@ internal class SendOtpViewModel @Inject constructor(
     _uiState.update { it.copy(email = email) }
   }
 
+  // FIXME: HCaptchaToken を受け取る
   fun onSendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpSending = true) }
-      otpRepository.sendOtp(
+      authRepository.sendOtp(
         email = uiState.value.email,
+        captchaToken = HCaptchaToken(value = ""),
       )
       _uiEvent.emit(SendOtpUiEvent.IsOtpSent)
     }.invokeOnCompletion {
@@ -80,12 +76,12 @@ internal class SendOtpViewModel @Inject constructor(
       // FIXME: 匿名ログインを共通化する
       when {
         uiState.value.isAnonymousLoggingIn -> {
-          loginRepository.anonymousLogin(hCaptchaToken = hCaptchaToken)
+          authRepository.anonymousSignIn(captchaToken = hCaptchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
         }
 
         uiState.value.isAnonymousSigningUp -> {
-          signUpRepository.anonymousSignUp(hCaptchaToken = hCaptchaToken)
+          authRepository.anonymousSignIn(captchaToken = hCaptchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
         }
       }
@@ -113,7 +109,7 @@ internal class SendOtpViewModel @Inject constructor(
   val hasSessionFlow = MutableStateFlow(value = false)
   fun onInit() {
     viewModelScope.launchSafe {
-      val session = authRepository.hasSession()
+      val session = authRepository.hasCurrentSession()
       hasSessionFlow.update { session }
     }
   }
