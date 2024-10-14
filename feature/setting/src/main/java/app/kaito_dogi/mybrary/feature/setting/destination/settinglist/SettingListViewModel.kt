@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.config.MybraryConfig
-import app.kaito_dogi.mybrary.core.domain.repository.LogoutRepository
+import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 internal class SettingListViewModel @Inject constructor(
-  private val logoutRepository: LogoutRepository,
+  private val authRepository: AuthRepository,
   launchSafe: LaunchSafe,
   config: MybraryConfig,
 ) : ViewModel(), LaunchSafe by launchSafe {
@@ -39,7 +39,7 @@ internal class SettingListViewModel @Inject constructor(
   fun onLogoutDialogConfirmClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isLoggingOut = true) }
-      logoutRepository.logout()
+      authRepository.logout()
       _uiState.update {
         it.copy(
           isLogoutDialogVisible = false,

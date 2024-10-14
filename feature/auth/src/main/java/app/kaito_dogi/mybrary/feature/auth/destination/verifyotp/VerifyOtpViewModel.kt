@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.domain.repository.OtpRepository
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
+import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 internal class VerifyOtpViewModel @Inject constructor(
-  private val otpRepository: OtpRepository,
+  private val authRepository: AuthRepository,
   savedStateHandle: SavedStateHandle,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
@@ -33,13 +34,15 @@ internal class VerifyOtpViewModel @Inject constructor(
     _uiState.update { it.copy(otp = otp) }
   }
 
+  // FIXME: HCaptchaToken を受け取る
   fun onVerifyOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpVerifying = true) }
 
-      otpRepository.verifyOtp(
+      authRepository.verifyOtp(
         email = uiState.value.email,
         otp = uiState.value.otp,
+        captchaToken = HCaptchaToken(value = ""),
       )
 
       _uiState.update { it.copy(isOtpVerified = true) }
@@ -48,11 +51,14 @@ internal class VerifyOtpViewModel @Inject constructor(
     }
   }
 
+  // FIXME: HCaptchaToken を受け取る
+  // FIXME: auth.sendOtp ではなく auth.resendOtp にする
   fun onResendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpResending = true) }
-      otpRepository.sendOtp(
+      authRepository.sendOtp(
         email = uiState.value.email,
+        captchaToken = HCaptchaToken(value = ""),
       )
       _uiState.update { it.copy(isOtpResent = true) }
     }.invokeOnCompletion {

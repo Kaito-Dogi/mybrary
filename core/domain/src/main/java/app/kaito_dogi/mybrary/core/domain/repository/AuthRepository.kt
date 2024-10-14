@@ -1,7 +1,24 @@
 package app.kaito_dogi.mybrary.core.domain.repository
 
-// FIXME: 後ほど削除する
+import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
+
 interface AuthRepository {
-  // FIXME: 適切な定義箇所に移動する
-  suspend fun hasSession(): Boolean
+  suspend fun sendOtp(
+    email: String,
+    captchaToken: HCaptchaToken,
+  )
+
+  suspend fun verifyOtp(
+    email: String,
+    otp: String,
+    captchaToken: HCaptchaToken,
+  )
+
+  suspend fun googleSignIn()
+
+  suspend fun anonymousSignIn(captchaToken: HCaptchaToken)
+
+  suspend fun logout()
+
+  suspend fun hasCurrentSession(): Boolean
 }

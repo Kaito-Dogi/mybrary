@@ -182,6 +182,10 @@ dependencies {
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
 
+  "prodImplementation"((project(":core:repository")))
+  "devImplementation"((project(":core:repository")))
+  "mockImplementation"((project(":core:repository-mock")))
+
   implementation(libs.android.material)
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.navigation.compose)

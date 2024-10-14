@@ -1,0 +1,54 @@
+package app.kaito_dogi.mybrary.core.repository.mock
+
+import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.domain.model.Book
+import app.kaito_dogi.mybrary.core.domain.model.BookId
+import app.kaito_dogi.mybrary.core.domain.model.Genre
+import app.kaito_dogi.mybrary.core.domain.model.Sort
+import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
+import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
+import javax.inject.Inject
+import kotlinx.coroutines.delay
+
+internal class MockBookRepository @Inject constructor() : BookRepository {
+  override suspend fun getBook(id: BookId): Book {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun searchBook(
+    title: String?,
+    isbn: String?,
+    author: String?,
+    publisher: String?,
+    genre: Genre,
+    hits: Int,
+    page: Int,
+    sort: Sort,
+  ): List<Book> {
+    delay(1_000)
+
+    return MockBookList
+  }
+}
+
+private val MockBookList = List(10) { index ->
+  Book(
+    id = BookId(value = "$index"),
+    title = when (index % 3) {
+      0 -> "ピンポン（1）"
+      1 -> "ピンポン（2）"
+      else -> "ピンポン（3）"
+    },
+    imageUrl = when (index % 3) {
+      0 -> Url.Image(value = "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2416/9784091962416.jpg?_ex=512x512")
+      1 -> Url.Image(value = "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2423/9784091962423.jpg?_ex=512x512")
+      else -> Url.Image(value = "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2430/9784091962430.jpg?_ex=512x512")
+    },
+    authorList = "松本 大洋".toAuthorList(),
+    publisher = "小学館",
+    isbn = "isbn$index",
+    genre = Genre.Paperback,
+    rakutenUrl = Url.Affiliate(value = "rakutenAffiliateUrl$index"),
+    amazonUrl = null,
+  )
+}

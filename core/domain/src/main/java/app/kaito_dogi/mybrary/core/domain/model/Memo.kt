@@ -4,11 +4,10 @@ import app.kaito_dogi.mybrary.core.domain.serializer.LocalDateTimeSerializer
 import java.time.LocalDateTime
 import kotlinx.serialization.Serializable
 
+// FIXME: ユーザー情報を含めるようにする
 @Serializable
 data class Memo(
   val id: MemoId,
-  // val user: User,
-  val myBookId: MyBookId,
   val content: String,
   val pageRange: PageRange? = null,
   @Serializable(with = LocalDateTimeSerializer::class)

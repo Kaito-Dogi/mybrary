@@ -16,10 +16,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
-import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
-import app.kaito_dogi.mybrary.core.domain.model.User
-import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
@@ -108,11 +105,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 開始ページ・終了ページが記録されている場合
       Memo(
         id = MemoId(value = ""),
-        // user = User(
-        //   id = UserId(value = "userId"),
-        //   name = "ユーザー名",
-        // ),
-        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = 0,
@@ -126,11 +118,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 片方のページのみが記録されている場合
       Memo(
         id = MemoId(value = ""),
-        // user = User(
-        //   id = UserId(value = "userId"),
-        //   name = "ユーザー名",
-        // ),
-        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = Int.MAX_VALUE,
@@ -144,11 +131,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // ページが記録されていない場合
       Memo(
         id = MemoId(value = ""),
-        // user = User(
-        //   id = UserId(value = "userId"),
-        //   name = "ユーザー名",
-        // ),
-        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = null,
         createdAt = LocalDateTime.now(),
@@ -159,11 +141,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 編集済みの場合
       Memo(
         id = MemoId(value = ""),
-        // user = User(
-        //   id = UserId(value = "userId"),
-        //   name = "ユーザー名",
-        // ),
-        myBookId = MyBookId(value = ""),
         content = "メモ",
         pageRange = PageRange(
           start = Int.MAX_VALUE,
@@ -177,11 +154,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
       // 複数行の場合
       Memo(
         id = MemoId(value = ""),
-        // user = User(
-        //   id = UserId(value = "userId"),
-        //   name = "ユーザー名",
-        // ),
-        myBookId = MyBookId(value = ""),
         content = "日本人はものをうまく作ることに取り憑かれている米国人はとにかく仕事を終えることを考える。",
         pageRange = PageRange(
           start = Int.MAX_VALUE,
