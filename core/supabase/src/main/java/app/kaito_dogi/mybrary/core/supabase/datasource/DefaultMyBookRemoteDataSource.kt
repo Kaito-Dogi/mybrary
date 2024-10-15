@@ -43,7 +43,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
     // FIXME: 外から渡されたユーザー ID を使用するようにする
     val tempUserId = supabaseClient.auth.currentUserOrNull()?.id ?: throw IllegalStateException("userId is null")
     val result = supabaseClient.postgrest
-      .from(table = MY_BOOK_TABLE)
+      .from(MY_BOOK_TABLE)
       .select(
         columns = Columns.list(MY_BOOK_COLUMN_LIST),
         request = {
@@ -62,13 +62,11 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
     val tempPostMyBookCommand = postMyBookCommand.copy(userId = tempUserId)
     val myBookInput = tempPostMyBookCommand.toMyBookInput()
     val result = supabaseClient.postgrest
-      .from(table = MY_BOOK_TABLE)
+      .from(MY_BOOK_TABLE)
       .insert(
         value = myBookInput,
         request = {
-          select(
-            columns = Columns.list(MY_BOOK_COLUMN_LIST),
-          )
+          select(columns = Columns.list(MY_BOOK_COLUMN_LIST))
         },
       )
     val myBookResponse = result.decodeSingle<MyBookResponse>()
@@ -89,9 +87,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
           filter {
             MyBookResponse::id eq myBookId
           }
-          select(
-            columns = Columns.list(MY_BOOK_COLUMN_LIST),
-          )
+          select(columns = Columns.list(MY_BOOK_COLUMN_LIST))
         },
       )
     val myBookResponse = result.decodeSingle<MyBookResponse>()
@@ -112,9 +108,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
           filter {
             MyBookResponse::id eq myBookId
           }
-          select(
-            columns = Columns.list(MY_BOOK_COLUMN_LIST),
-          )
+          select(columns = Columns.list(MY_BOOK_COLUMN_LIST))
         },
       )
     val myBookResponse = result.decodeSingle<MyBookResponse>()
@@ -135,9 +129,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
           filter {
             MyBookResponse::id eq myBookId
           }
-          select(
-            columns = Columns.list(MY_BOOK_COLUMN_LIST),
-          )
+          select(columns = Columns.list(MY_BOOK_COLUMN_LIST))
         },
       )
     val myBookResponse = result.decodeSingle<MyBookResponse>()
@@ -158,9 +150,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
           filter {
             MyBookResponse::id eq myBookId
           }
-          select(
-            columns = Columns.list(MY_BOOK_COLUMN_LIST),
-          )
+          select(columns = Columns.list(MY_BOOK_COLUMN_LIST))
         },
       )
     val myBookResponse = result.decodeSingle<MyBookResponse>()
