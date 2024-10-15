@@ -81,7 +81,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
       .from(MY_BOOK_TABLE)
       .update(
         update = {
-          MyBookResponse::isFavorite setTo isPinned
+          MyBookResponse::isPinned setTo isPinned
         },
         request = {
           filter {
@@ -123,7 +123,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
       .from(MY_BOOK_TABLE)
       .update(
         update = {
-          MyBookResponse::isFavorite setTo isPublic
+          MyBookResponse::isPublic setTo isPublic
         },
         request = {
           filter {
@@ -144,7 +144,7 @@ internal class DefaultMyBookRemoteDataSource @Inject constructor(
       .from(MY_BOOK_TABLE)
       .update(
         update = {
-          MyBookResponse::isFavorite setTo isArchived
+          MyBookResponse::isArchived setTo isArchived
         },
         request = {
           filter {
