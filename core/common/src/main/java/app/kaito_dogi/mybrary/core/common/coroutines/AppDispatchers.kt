@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.common.coroutines
 
-enum class MybraryDispatchers {
+enum class AppDispatchers {
   Default,
   Io,
 }

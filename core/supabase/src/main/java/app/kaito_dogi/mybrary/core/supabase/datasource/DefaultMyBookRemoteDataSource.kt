@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.supabase.datasource
 
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatchers
 import app.kaito_dogi.mybrary.core.data.command.PostMyBookCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MyBookRemoteDataSource
 import app.kaito_dogi.mybrary.core.data.dto.MyBookDto
@@ -20,7 +20,7 @@ private val MY_BOOK_COLUMN_LIST = listOf("*", "book(*)")
 
 internal class DefaultMyBookRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MyBookRemoteDataSource {
   override suspend fun getMyBook(myBookId: String): MyBookDto = withContext(dispatcher) {
     val result = supabaseClient.postgrest

@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.supabase.datasource
 
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatchers
 import app.kaito_dogi.mybrary.core.data.datasource.AuthRemoteDataSource
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.OtpType
@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 
 internal class DefaultAuthRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : AuthRemoteDataSource {
   override suspend fun sendOtp(
     email: String,
