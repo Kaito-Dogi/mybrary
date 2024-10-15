@@ -19,12 +19,12 @@ import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.browser.rememberInternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.MainNavigationBar
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.NavigationBarDestination
+import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 
 @Composable
 fun MybraryNavHost(
-  startDestination: MybraryRoute,
+  startDestination: AppRoute,
   modifier: Modifier = Modifier,
   builder: NavGraphBuilder.(NavHostController, InternalBrowserLauncher) -> Unit,
 ) {
@@ -70,7 +70,7 @@ fun MybraryNavHost(
 
           // https://developer.android.com/develop/ui/compose/navigation#bottom-nav
           navController.navigate(route = route) {
-            popUpTo<MybraryRoute.Main> {
+            popUpTo<AppRoute.Main> {
               saveState = true
             }
             launchSingleTop = true

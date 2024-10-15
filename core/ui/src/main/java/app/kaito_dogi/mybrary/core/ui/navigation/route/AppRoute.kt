@@ -2,10 +2,10 @@ package app.kaito_dogi.mybrary.core.ui.navigation.route
 
 import kotlinx.serialization.Serializable
 
-sealed interface MybraryRoute {
+sealed interface AppRoute {
   @Serializable
-  data object Auth : MybraryRoute
+  data object Auth : AppRoute
 
   @Serializable
-  data object Main : MybraryRoute
+  data object Main : AppRoute
 }
