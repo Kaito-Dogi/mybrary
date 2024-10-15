@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary
 
 import app.kaito_dogi.mybrary.core.common.model.Url
-import app.kaito_dogi.mybrary.core.config.MybraryConfig
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,10 +10,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object MybraryConfigModule {
+internal object AppConfigModule {
   @Singleton
   @Provides
-  fun provideMybraryConfig(): MybraryConfig = object : MybraryConfig {
+  fun provideAppConfig(): AppConfig = object : AppConfig {
     override val deleteAccountUrl: Url.Web = Url.Web(value = BuildConfig.DELETE_ACCOUNT_URL)
     override val hCaptchaSiteKey: String = BuildConfig.HCAPTCHA_SITE_KEY
     override val privacyPolicyUrl: Url.Web = Url.Web(value = BuildConfig.PRIVACY_POLICY_URL)

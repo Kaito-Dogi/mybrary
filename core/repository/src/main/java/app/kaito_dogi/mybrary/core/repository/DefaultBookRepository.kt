@@ -4,7 +4,7 @@ import app.kaito_dogi.mybrary.core.api.rakuten.RakutenApi
 import app.kaito_dogi.mybrary.core.api.rakuten.response.ItemResponse
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
 import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
-import app.kaito_dogi.mybrary.core.config.MybraryConfig
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import app.kaito_dogi.mybrary.core.domain.model.Book
 import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 
 internal class DefaultBookRepository @Inject constructor(
   private val rakutenApi: RakutenApi,
-  private val config: MybraryConfig,
+  private val appConfig: AppConfig,
   @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
   override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
@@ -35,8 +35,8 @@ internal class DefaultBookRepository @Inject constructor(
     sort: Sort,
   ): List<Book> = withContext(dispatcher) {
     val response = rakutenApi.getBooksBookSearch(
-      applicationId = config.rakutenApplicationId,
-      affiliateId = config.rakutenAffiliateId,
+      applicationId = appConfig.rakutenApplicationId,
+      affiliateId = appConfig.rakutenAffiliateId,
       title = title,
       author = author,
       publisherName = publisher,

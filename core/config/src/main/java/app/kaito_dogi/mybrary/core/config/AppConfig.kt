@@ -2,7 +2,7 @@ package app.kaito_dogi.mybrary.core.config
 
 import app.kaito_dogi.mybrary.core.common.model.Url
 
-interface MybraryConfig {
+interface AppConfig {
   val deleteAccountUrl: Url.Web
   val hCaptchaSiteKey: String
   val privacyPolicyUrl: Url.Web
