@@ -16,21 +16,6 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
-  flavorDimensions += "env"
-  productFlavors {
-    create("prod") {
-      dimension = "env"
-    }
-
-    create("dev") {
-      dimension = "env"
-    }
-
-    create("mock") {
-      dimension = "env"
-    }
-  }
-
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
