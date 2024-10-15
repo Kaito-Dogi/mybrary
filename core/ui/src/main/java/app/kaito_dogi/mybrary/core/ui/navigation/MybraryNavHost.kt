@@ -10,7 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -71,7 +70,7 @@ fun MybraryNavHost(
 
           // https://developer.android.com/develop/ui/compose/navigation#bottom-nav
           navController.navigate(route = route) {
-            popUpTo(navController.graph.findStartDestination().id) {
+            popUpTo<MybraryRoute.Main> {
               saveState = true
             }
             launchSingleTop = true
