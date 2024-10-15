@@ -13,7 +13,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumer
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
-import app.kaito_dogi.mybrary.core.ui.navigation.MybraryNavHost
+import app.kaito_dogi.mybrary.core.ui.navigation.AppNavHost
 import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
@@ -64,7 +64,7 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         // FIXME: ログイン状態に応じて startDestination を変更する
-        MybraryNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
+        AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
           authNavGraph(startDestination = AuthRoute.SendOtp) {
             sendOtpScreen(
               onSendOtpComplete = { email, page ->

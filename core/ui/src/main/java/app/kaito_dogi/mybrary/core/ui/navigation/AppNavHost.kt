@@ -23,7 +23,7 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 
 @Composable
-fun MybraryNavHost(
+fun AppNavHost(
   startDestination: AppRoute,
   modifier: Modifier = Modifier,
   builder: NavGraphBuilder.(NavHostController, InternalBrowserLauncher) -> Unit,
