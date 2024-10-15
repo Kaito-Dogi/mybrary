@@ -36,6 +36,6 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   override suspend fun hasCurrentSession(): Boolean {
     delay(1_000)
 
-    return true
+    return false
   }
 }
