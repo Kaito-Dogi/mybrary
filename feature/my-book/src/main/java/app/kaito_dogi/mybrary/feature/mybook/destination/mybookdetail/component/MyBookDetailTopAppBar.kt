@@ -119,35 +119,36 @@ internal fun MyBookDetailTopAppBar(
         }
 
         // TODO: v2 以降で実装を復活させる
-        IconButton(
-          onClick = onPublicClick,
-          enabled = false,
-        ) {
-          Icon(
-            painter = if (isPublic) {
-              painterResource(R.drawable.icon_visibility)
-            } else {
-              painterResource(R.drawable.icon_visibility_off)
-            },
-            contentDescription = if (isPublic) {
-              stringResource(R.string.my_book_detail_alt_make_my_book_private)
-            } else {
-              stringResource(R.string.my_book_detail_alt_make_my_book_public)
-            },
-            tint = Color.White,
-          )
-        }
+        if (false) {
+          IconButton(
+            onClick = onPublicClick,
+            enabled = false,
+          ) {
+            Icon(
+              painter = if (isPublic) {
+                painterResource(R.drawable.icon_visibility)
+              } else {
+                painterResource(R.drawable.icon_visibility_off)
+              },
+              contentDescription = if (isPublic) {
+                stringResource(R.string.my_book_detail_alt_make_my_book_private)
+              } else {
+                stringResource(R.string.my_book_detail_alt_make_my_book_public)
+              },
+              tint = Color.White,
+            )
+          }
 
-        // TODO: v2 以降で実装を復活させる
-        IconButton(
-          onClick = onArchiveClick,
-          enabled = false,
-        ) {
-          Icon(
-            painter = painterResource(R.drawable.icon_archive),
-            contentDescription = stringResource(R.string.my_book_detail_alt_archive_my_book),
-            tint = Color.White,
-          )
+          IconButton(
+            onClick = onArchiveClick,
+            enabled = false,
+          ) {
+            Icon(
+              painter = painterResource(R.drawable.icon_archive),
+              contentDescription = stringResource(R.string.my_book_detail_alt_archive_my_book),
+              tint = Color.White,
+            )
+          }
         }
       }
 
