@@ -1,6 +1,7 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,12 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
-import app.kaito_dogi.mybrary.core.domain.model.BookId
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.domain.model.User
-import app.kaito_dogi.mybrary.core.domain.model.UserId
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 import coil.compose.AsyncImage
@@ -64,11 +62,13 @@ internal fun MyBookDetailTopAppBar(
   Box(
     modifier = modifier.height(IntrinsicSize.Min),
   ) {
+    val backgroundColor =
+      if (isSystemInDarkTheme()) MybraryTheme.colorScheme.surfaceContainer else MybraryTheme.colorScheme.inverseSurface
     AsyncImage(
       model = myBook.imageUrl.value,
       modifier = Modifier
         .matchParentSize()
-        .background(MybraryTheme.colorScheme.primary)
+        .background(backgroundColor)
         .blur(
           radiusX = MybraryTheme.spaces.md,
           radiusY = MybraryTheme.spaces.md,
