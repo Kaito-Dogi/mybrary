@@ -21,7 +21,7 @@ fun MybraryTheme(
 
   CompositionLocalProvider(
     LocalDimens provides mybraryDimens,
-    LocalShapes provides mybraryShapes,
+    LocalShapes provides MybraryTheme.shapes,
     LocalSpaces provides mybrarySpaces,
   ) {
     MaterialTheme(

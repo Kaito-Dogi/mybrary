@@ -8,13 +8,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
-internal val mybraryShapes = Shapes(
-  rectangle = RectangleShape,
-  circle = CircleShape,
-  cornerSm = RoundedCornerShape(4.0.dp),
-  cornerMd = RoundedCornerShape(8.0.dp),
-)
-
 @Immutable
 data class Shapes(
   val rectangle: Shape,
