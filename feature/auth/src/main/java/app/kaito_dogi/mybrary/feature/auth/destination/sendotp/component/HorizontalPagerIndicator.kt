@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,12 +31,12 @@ internal fun HorizontalPagerIndicator(
     AuthRoute.VerifyOtp.Page.entries.forEach {
       Box(
         modifier = Modifier
-          .size(DotSize)
-          .clip(CircleShape)
-          .background(
-            if (it.ordinal == currentPage) MybraryTheme.colorScheme.primary
-            else MybraryTheme.colorScheme.outlineVariant,
-          ),
+            .size(DotSize)
+            .clip(MybraryTheme.shapes.circle)
+            .background(
+                if (it.ordinal == currentPage) MybraryTheme.colorScheme.primary
+                else MybraryTheme.colorScheme.outlineVariant,
+            ),
       )
     }
   }
