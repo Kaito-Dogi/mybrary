@@ -16,4 +16,7 @@ sealed interface AuthRoute {
       SignUp,
     }
   }
+
+  @Serializable
+  data object SignUp : AuthRoute
 }
