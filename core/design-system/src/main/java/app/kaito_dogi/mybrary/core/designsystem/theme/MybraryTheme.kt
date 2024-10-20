@@ -20,9 +20,9 @@ fun MybraryTheme(
   }
 
   CompositionLocalProvider(
-    LocalDimens provides mybraryDimens,
+    LocalDimens provides MybraryTheme.dimens,
     LocalShapes provides MybraryTheme.shapes,
-    LocalSpaces provides mybrarySpaces,
+    LocalSpaces provides MybraryTheme.spaces,
   ) {
     MaterialTheme(
       // FIXME: カラースキーマをカスタムで定義する
