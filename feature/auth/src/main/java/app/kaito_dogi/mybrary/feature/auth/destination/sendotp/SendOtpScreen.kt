@@ -13,8 +13,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.core.hcaptcha.HCaptchaDialog
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
@@ -49,17 +47,7 @@ internal fun SendOtpScreen(
     Column(
       modifier = Modifier
         .fillMaxSize()
-        .background(
-          brush = Brush.linearGradient(
-            colors = listOf(
-              MybraryTheme.colorScheme.surface,
-              MybraryTheme.colorScheme.secondaryContainer,
-              MybraryTheme.colorScheme.errorContainer,
-            ),
-            start = Offset(0f, 0f),
-            end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
-          ),
-        )
+        .background(MybraryTheme.backgroundBrush)
         .padding(innerPadding),
     ) {
       LogoSection(

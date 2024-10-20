@@ -7,6 +7,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.graphics.Brush
 
 @Composable
 fun MybraryTheme(
@@ -58,4 +59,9 @@ object MybraryTheme {
     @Composable
     @ReadOnlyComposable
     get() = MaterialTheme.typography
+
+  val backgroundBrush: Brush
+    @Composable
+    @ReadOnlyComposable
+    get() = backgroundBrush()
 }
