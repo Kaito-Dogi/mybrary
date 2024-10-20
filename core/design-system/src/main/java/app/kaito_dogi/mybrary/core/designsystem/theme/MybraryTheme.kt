@@ -3,7 +3,6 @@ package app.kaito_dogi.mybrary.core.designsystem.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -22,6 +21,7 @@ fun MybraryTheme(
 
   CompositionLocalProvider(
     LocalDimens provides mybraryDimens,
+    LocalShapes provides mybraryShapes,
     LocalSpaces provides mybrarySpaces,
   ) {
     MaterialTheme(
@@ -47,7 +47,7 @@ object MybraryTheme {
   val shapes: Shapes
     @Composable
     @ReadOnlyComposable
-    get() = MaterialTheme.shapes
+    get() = LocalShapes.current
 
   val spaces
     @Composable
