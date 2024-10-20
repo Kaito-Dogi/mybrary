@@ -56,6 +56,10 @@
   <string name="send_otp_text_sign_up_as_a_guest">ゲストとして始めてみる</string>
   <string name="send_otp_text_sign_up_with_google">Google アカウントで始める</string>
   <string name="ui_alt_book_cover">本の表紙</string>
+  <string name="ui_text_and">と</string>
+  <string name="ui_text_apply">が適用されます。</string>
+  <string name="ui_text_privacy_policy">プライバシーポリシー</string>
+  <string name="ui_text_terms_of_use">利用規約</string>
   <string name="verify_otp_alt_otp">ワンタイムパスワード</string>
   <string name="verify_otp_alt_back">ワンタイムパスワードの送信に戻る</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>

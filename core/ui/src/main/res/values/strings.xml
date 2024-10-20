@@ -56,6 +56,10 @@
   <string name="send_otp_text_sign_up_as_a_guest">Sign up as a guest</string>
   <string name="send_otp_text_sign_up_with_google">Sign up with Google</string>
   <string name="ui_alt_book_cover">Book cover</string>
+  <string name="ui_text_and">" and "</string>
+  <string name="ui_text_apply">" apply."</string>
+  <string name="ui_text_privacy_policy">Privacy Policy</string>
+  <string name="ui_text_terms_of_use">Terms of Use</string>
   <string name="verify_otp_alt_otp">One-Time Password</string>
   <string name="verify_otp_alt_back">Back to send One-Time Password</string>
   <string name="verify_otp_placeholder_enter_otp">123456</string>
