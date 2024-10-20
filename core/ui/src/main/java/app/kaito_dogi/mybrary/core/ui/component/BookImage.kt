@@ -27,7 +27,7 @@ fun BookImage(
   title: String,
   imageUrl: Url.Image,
   modifier: Modifier = Modifier,
-  shape: Shape = MybraryTheme.shapes.extraSmall,
+  shape: Shape = MybraryTheme.shapes.cornerSm,
 ) {
   Box(
     modifier = modifier

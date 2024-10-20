@@ -19,7 +19,7 @@ internal fun MemoRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    shape = MybraryTheme.shapes.small,
+    shape = MybraryTheme.shapes.cornerMd,
     modifier = modifier,
   ) {
     Column(

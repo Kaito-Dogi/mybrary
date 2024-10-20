@@ -30,7 +30,7 @@ internal fun MemoRow(
   Card(
     onClick = { onClick(memo) },
     modifier = modifier,
-    shape = MybraryTheme.shapes.small,
+    shape = MybraryTheme.shapes.cornerMd,
   ) {
     // top の padding を小さくすることで、錯視を調整
     Column(

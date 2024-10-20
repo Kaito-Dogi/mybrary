@@ -40,7 +40,7 @@ internal fun BookRow(
         onClick = { onClick(book) },
         onLongClick = { onLongClick(book) },
       ),
-    shape = MybraryTheme.shapes.small,
+    shape = MybraryTheme.shapes.cornerMd,
   ) {
     Row(
       modifier = Modifier.height(IntrinsicSize.Min),

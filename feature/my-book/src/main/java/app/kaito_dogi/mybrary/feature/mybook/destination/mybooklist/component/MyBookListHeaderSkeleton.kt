@@ -16,7 +16,7 @@ internal fun MyBookListHeaderSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    shape = MybraryTheme.shapes.extraSmall,
+    shape = MybraryTheme.shapes.cornerSm,
     modifier = modifier.fillMaxWidth(),
   ) {
     Text(

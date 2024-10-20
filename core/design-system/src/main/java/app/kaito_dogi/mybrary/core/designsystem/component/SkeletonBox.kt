@@ -47,7 +47,7 @@ fun SkeletonBox(
 private fun SkeletonBoxPreview() {
   MybraryTheme {
     SkeletonBox(
-      shape = MybraryTheme.shapes.small,
+      shape = MybraryTheme.shapes.cornerMd,
     ) {
       Box(modifier = Modifier.size(MybraryTheme.spaces.xxxl))
     }

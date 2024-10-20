@@ -25,7 +25,7 @@ fun BookRowSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    shape = MybraryTheme.shapes.small,
+    shape = MybraryTheme.shapes.cornerMd,
     modifier = modifier,
   ) {
     Row(

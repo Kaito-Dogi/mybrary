@@ -76,7 +76,7 @@ fun AlertDialog(
       style = MybraryTheme.typography.bodyMedium,
     )
   },
-  shape = MybraryTheme.shapes.small,
+  shape = MybraryTheme.shapes.cornerMd,
 )
 
 @Preview
