@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
+// FIXME: 引数をより変更に開くよう修正
 @Composable
 fun TextField(
   value: String,
@@ -36,7 +37,7 @@ fun TextField(
   onSend: (() -> Unit)? = null,
   singleLine: Boolean = false,
   minLines: Int = 1,
-  shape: Shape = MybraryTheme.shapes.small,
+  shape: Shape = MybraryTheme.shapes.cornerMd,
 ) = androidx.compose.material3.OutlinedTextField(
   value = value,
   onValueChange = onValueChange,
