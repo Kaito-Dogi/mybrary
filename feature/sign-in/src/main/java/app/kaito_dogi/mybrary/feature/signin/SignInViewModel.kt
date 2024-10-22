@@ -7,7 +7,6 @@ import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -22,10 +21,7 @@ internal class SignInViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(SignInUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
-  private val _uiEvent = MutableSharedFlow<SignInUiEvent>(
-    replay = 1,
-    onBufferOverflow = BufferOverflow.DROP_OLDEST,
-  )
+  private val _uiEvent = MutableSharedFlow<SignInUiEvent>(extraBufferCapacity = 1)
   val uiEvent = _uiEvent.asSharedFlow()
 
   fun onEmailChange(email: String) {
