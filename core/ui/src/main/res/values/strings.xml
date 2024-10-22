@@ -55,6 +55,10 @@
   <string name="send_otp_text_send_otp">Send One-Time Password</string>
   <string name="send_otp_text_sign_up_as_a_guest">Sign up as a guest</string>
   <string name="send_otp_text_sign_up_with_google">Sign up with Google</string>
+  <string name="sign_up_alt_send_otp">Send One-Time Password</string>
+  <string name="sign_up_alt_your_email">Your Email</string>
+  <string name="sign_up_placeholder_enter_your_email">Your Email</string>
+  <string name="sign_up_text_send_otp">Send One-Time Password</string>
   <string name="ui_alt_book_cover">Book cover</string>
   <string name="ui_text_and">" and "</string>
   <string name="ui_text_apply">" apply."</string>
