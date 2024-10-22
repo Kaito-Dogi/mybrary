@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.component.auth
+package app.kaito_dogi.mybrary.core.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

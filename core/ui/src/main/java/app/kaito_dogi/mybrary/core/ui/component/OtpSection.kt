@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.component.auth
+package app.kaito_dogi.mybrary.core.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import app.kaito_dogi.mybrary.core.ui.R
 fun OtpSection(
   email: String,
   onEmailChange: (String) -> Unit,
-  onButtonClick: () -> Unit,
+  onSendOtpClick: () -> Unit,
   isLoading: Boolean,
   modifier: Modifier = Modifier,
 ) {
@@ -34,13 +34,13 @@ fun OtpSection(
       leadingIconAltResId = R.string.sign_up_alt_your_email,
       keyboardType = KeyboardType.Email,
       imeAction = ImeAction.Send,
-      onSend = onButtonClick,
+      onSend = onSendOtpClick,
       singleLine = true,
     )
 
     PrimaryButton(
       textResId = R.string.sign_up_text_send_otp,
-      onClick = onButtonClick,
+      onClick = onSendOtpClick,
       modifier = Modifier.fillMaxWidth(),
       iconResId = R.drawable.icon_send,
       altResId = R.string.sign_up_alt_send_otp,
@@ -56,7 +56,7 @@ private fun OtpSectionPreview() {
     OtpSection(
       email = "",
       onEmailChange = {},
-      onButtonClick = {},
+      onSendOtpClick = {},
       isLoading = false,
     )
   }
