@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.onEach
 internal fun SignInScreenContainer(
   onSendOtp: (email: String) -> Unit,
   onSignIn: () -> Unit,
+  onNavigateToSignUpClick: () -> Unit,
   viewModel: SignInViewModel = hiltViewModel(),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -37,7 +38,7 @@ internal fun SignInScreenContainer(
     onEmailChange = viewModel::onEmailChange,
     onSendOtpClick = viewModel::onSendOtpClick,
     onGoogleSignInClick = viewModel::onGoogleSignInClick,
-    onNavigateToSignInClick = {},
+    onNavigateToSignUpClick = onNavigateToSignUpClick,
     onHCaptchaSuccess = viewModel::onHCaptchaSuccess,
     onHCaptchaFailure = viewModel::onHCaptchaFailure,
   )

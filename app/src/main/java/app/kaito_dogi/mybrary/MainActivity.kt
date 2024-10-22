@@ -36,6 +36,7 @@ import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingLis
 import app.kaito_dogi.mybrary.feature.setting.settingDestination
 import app.kaito_dogi.mybrary.feature.signin.navigateToSignInScreen
 import app.kaito_dogi.mybrary.feature.signin.signInScreen
+import app.kaito_dogi.mybrary.feature.signup.navigateToSignUpScreen
 import app.kaito_dogi.mybrary.feature.signup.signUpScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
@@ -75,7 +76,7 @@ internal class MainActivity : AppCompatActivity() {
                 )
               },
               onSignIn = navController::navigateToMyBookListScreen,
-              // FIXME: navController::navigateToSignUpScreen,
+              onNavigateToSignUpClick = navController::navigateToSignUpScreen,
             )
 
             signUpScreen(
@@ -86,7 +87,7 @@ internal class MainActivity : AppCompatActivity() {
                 )
               },
               onSignUp = navController::navigateToMyBookListScreen,
-              // FIXME: navController::navigateToSignInScreen,
+              onNavigateToSignInClick = navController::navigateToSignInScreen,
             )
 
             verifyOtpScreen(

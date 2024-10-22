@@ -31,7 +31,7 @@ internal fun SignInScreen(
   onEmailChange: (String) -> Unit,
   onSendOtpClick: () -> Unit,
   onGoogleSignInClick: () -> Unit,
-  onNavigateToSignInClick: () -> Unit,
+  onNavigateToSignUpClick: () -> Unit,
   onHCaptchaSuccess: (CaptchaToken) -> Unit,
   onHCaptchaFailure: () -> Unit,
 ) {
@@ -85,7 +85,7 @@ internal fun SignInScreen(
         )
 
         NavigateToSignUpSection(
-          onClick = onNavigateToSignInClick,
+          onClick = onNavigateToSignUpClick,
           modifier = Modifier
             .padding(vertical = MybraryTheme.spaces.xxs)
             .fillMaxWidth(),
@@ -117,7 +117,7 @@ private fun SignInScreenPreview() {
       onEmailChange = {},
       onSendOtpClick = {},
       onGoogleSignInClick = {},
-      onNavigateToSignInClick = {},
+      onNavigateToSignUpClick = {},
       onHCaptchaSuccess = {},
       onHCaptchaFailure = {},
     )
