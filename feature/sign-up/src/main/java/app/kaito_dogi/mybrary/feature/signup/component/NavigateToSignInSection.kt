@@ -29,12 +29,12 @@ internal fun NavigateToSignInSection(
         color = MybraryTheme.colorScheme.outline,
       ),
     ) {
-      append(context.getString(R.string.send_otp_text_already_have_an_account_login))
+      append(context.getString(R.string.sign_up_text_already_have_an_account_login))
     }
 
     withLink(
       LinkAnnotation.Clickable(
-        tag = context.getString(R.string.send_otp_text_here),
+        tag = context.getString(R.string.sign_up_text_here),
         styles = TextLinkStyles(
           style = SpanStyle(
             color = MybraryTheme.colorScheme.primary,
@@ -44,7 +44,7 @@ internal fun NavigateToSignInSection(
         linkInteractionListener = { onClick() },
       ),
     ) {
-      append(context.getString(R.string.send_otp_text_here))
+      append(context.getString(R.string.sign_up_text_here))
     }
   }
 

@@ -58,6 +58,8 @@
   <string name="sign_up_alt_send_otp">ワンタイムパスワードを送信する</string>
   <string name="sign_up_alt_your_email">メールアドレス</string>
   <string name="sign_up_placeholder_enter_your_email">メールアドレス</string>
+  <string name="sign_up_text_already_have_an_account_login">ログインは</string>
+  <string name="sign_up_text_here">こちら</string>
   <string name="sign_up_text_send_otp">ワンタイムパスワードを送信する</string>
   <string name="ui_alt_book_cover">本の表紙</string>
   <string name="ui_text_and">と</string>

@@ -58,6 +58,8 @@
   <string name="sign_up_alt_send_otp">Send One-Time Password</string>
   <string name="sign_up_alt_your_email">Your Email</string>
   <string name="sign_up_placeholder_enter_your_email">Your Email</string>
+  <string name="sign_up_text_already_have_an_account_login">"Already have an account? Login "</string>
+  <string name="sign_up_text_here">here</string>
   <string name="sign_up_text_send_otp">Send One-Time Password</string>
   <string name="ui_alt_book_cover">Book cover</string>
   <string name="ui_text_and">" and "</string>
