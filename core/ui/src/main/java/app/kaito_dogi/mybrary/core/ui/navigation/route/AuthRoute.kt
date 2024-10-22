@@ -4,16 +4,19 @@ import kotlinx.serialization.Serializable
 
 sealed interface AuthRoute {
   @Serializable
-  data object SendOtp : AuthRoute
-
-  @Serializable
   data class VerifyOtp(
     val email: String,
     val page: Page,
   ) : AuthRoute {
     enum class Page {
-      Login,
+      SignIn,
       SignUp,
     }
   }
+
+  @Serializable
+  data object SignIn : AuthRoute
+
+  @Serializable
+  data object SignUp : AuthRoute
 }

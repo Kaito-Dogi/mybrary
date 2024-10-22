@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 
 fun NavGraphBuilder.myBookListScreen(
   onAdditionClick: () -> Unit,
@@ -18,7 +18,7 @@ fun NavGraphBuilder.myBookListScreen(
 }
 
 fun NavHostController.navigateToMyBookListScreen() = this.navigate(route = MyBookRoute.MyBookList) {
-  popUpTo<MybraryRoute.Auth> {
+  popUpTo<AppRoute.Auth> {
     inclusive = true
   }
 }

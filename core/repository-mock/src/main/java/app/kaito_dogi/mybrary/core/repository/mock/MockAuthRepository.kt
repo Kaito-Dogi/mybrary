@@ -1,14 +1,21 @@
 package app.kaito_dogi.mybrary.core.repository.mock
 
-import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import javax.inject.Inject
 import kotlinx.coroutines.delay
 
 internal class MockAuthRepository @Inject constructor() : AuthRepository {
-  override suspend fun sendOtp(
+  override suspend fun otpSignIn(
     email: String,
-    captchaToken: HCaptchaToken,
+    captchaToken: CaptchaToken,
+  ) {
+    delay(1_000)
+  }
+
+  override suspend fun otpSignUp(
+    email: String,
+    captchaToken: CaptchaToken,
   ) {
     delay(1_000)
   }
@@ -16,7 +23,7 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   override suspend fun verifyOtp(
     email: String,
     otp: String,
-    captchaToken: HCaptchaToken,
+    captchaToken: CaptchaToken,
   ) {
     delay(1_000)
   }
@@ -25,7 +32,11 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
     delay(1_000L)
   }
 
-  override suspend fun anonymousSignIn(captchaToken: HCaptchaToken) {
+  override suspend fun googleSignUp() {
+    delay(1_000L)
+  }
+
+  override suspend fun anonymousSignIn(captchaToken: CaptchaToken) {
     delay(1_000L)
   }
 
@@ -36,6 +47,6 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   override suspend fun hasCurrentSession(): Boolean {
     delay(1_000)
 
-    return true
+    return false
   }
 }

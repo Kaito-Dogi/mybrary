@@ -23,7 +23,7 @@ internal fun MyBookCell(
   ElevatedCard(
     onClick = { onClick(myBook) },
     modifier = modifier,
-    shape = MybraryTheme.shapes.extraSmall,
+    shape = MybraryTheme.shapes.cornerSm,
   ) {
     BookImage(
       title = myBook.title,

@@ -181,6 +181,8 @@ dependencies {
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
+  implementation(project(":feature:sign-in"))
+  implementation(project(":feature:sign-up"))
 
   "prodImplementation"((project(":core:repository")))
   "devImplementation"((project(":core:repository")))

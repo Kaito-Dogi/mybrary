@@ -14,7 +14,7 @@ internal fun MyBookCellSkeleton(
   modifier: Modifier = Modifier,
 ) {
   SkeletonBox(
-    shape = MybraryTheme.shapes.extraSmall,
+    shape = MybraryTheme.shapes.cornerSm,
     modifier = modifier.aspectRatio(BookAspectRatio),
   ) {
     // 何も表示しない

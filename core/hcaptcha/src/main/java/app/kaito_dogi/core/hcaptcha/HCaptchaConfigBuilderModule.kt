@@ -1,6 +1,6 @@
 package app.kaito_dogi.core.hcaptcha
 
-import app.kaito_dogi.mybrary.core.config.MybraryConfig
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import com.hcaptcha.sdk.HCaptchaConfig
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ internal object HCaptchaConfigBuilderModule {
   @Singleton
   @Provides
   fun provideHCaptchaConfigBuilder(
-    config: MybraryConfig,
+    appConfig: AppConfig,
   ): HCaptchaConfig.HCaptchaConfigBuilder = HCaptchaConfig.builder()
-    .siteKey(config.hCaptchaSiteKey)
+    .siteKey(appConfig.hCaptchaSiteKey)
 }

@@ -8,7 +8,7 @@
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
   <application
-    android:name="app.kaito_dogi.mybrary.MybraryApplication"
+    android:name="app.kaito_dogi.mybrary.MainApplication"
     android:allowBackup="true"
     android:hardwareAccelerated="true"
     android:icon="@mipmap/ic_launcher"

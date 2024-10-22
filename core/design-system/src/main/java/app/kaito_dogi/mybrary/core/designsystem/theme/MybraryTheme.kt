@@ -3,11 +3,11 @@ package app.kaito_dogi.mybrary.core.designsystem.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.graphics.Brush
 
 @Composable
 fun MybraryTheme(
@@ -21,8 +21,9 @@ fun MybraryTheme(
   }
 
   CompositionLocalProvider(
-    LocalDimens provides mybraryDimens,
-    LocalSpaces provides mybrarySpaces,
+    LocalDimens provides MybraryTheme.dimens,
+    LocalShapes provides MybraryTheme.shapes,
+    LocalSpaces provides MybraryTheme.spaces,
   ) {
     MaterialTheme(
       // FIXME: カラースキーマをカスタムで定義する
@@ -47,7 +48,7 @@ object MybraryTheme {
   val shapes: Shapes
     @Composable
     @ReadOnlyComposable
-    get() = MaterialTheme.shapes
+    get() = LocalShapes.current
 
   val spaces
     @Composable
@@ -58,4 +59,9 @@ object MybraryTheme {
     @Composable
     @ReadOnlyComposable
     get() = MaterialTheme.typography
+
+  val backgroundBrush: Brush
+    @Composable
+    @ReadOnlyComposable
+    get() = backgroundBrush()
 }

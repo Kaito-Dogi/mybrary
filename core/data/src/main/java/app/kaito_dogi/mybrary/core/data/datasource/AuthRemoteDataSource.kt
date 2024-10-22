@@ -1,7 +1,12 @@
 package app.kaito_dogi.mybrary.core.data.datasource
 
 interface AuthRemoteDataSource {
-  suspend fun sendOtp(
+  suspend fun otpSignIn(
+    email: String,
+    captchaToken: String,
+  )
+
+  suspend fun otpSignUp(
     email: String,
     captchaToken: String,
   )
@@ -13,6 +18,8 @@ interface AuthRemoteDataSource {
   )
 
   suspend fun googleSignIn()
+
+  suspend fun googleSignUp()
 
   suspend fun anonymousSignIn(captchaToken: String)
 

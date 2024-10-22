@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.setting.destination.settinglist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.config.MybraryConfig
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,15 +15,15 @@ import kotlinx.coroutines.flow.update
 internal class SettingListViewModel @Inject constructor(
   private val authRepository: AuthRepository,
   launchSafe: LaunchSafe,
-  config: MybraryConfig,
+  appConfig: AppConfig,
 ) : ViewModel(), LaunchSafe by launchSafe {
   private val _uiState = MutableStateFlow(
     SettingListUiState.createInitialValue(
-      termsOfUseUrl = config.termsOfUseUrl,
-      privacyPolicyUrl = config.privacyPolicyUrl,
-      rakutenDevelopersUrl = config.rakutenDevelopersUrl,
-      versionName = config.versionName,
-      deleteAccountUrl = config.deleteAccountUrl,
+      termsOfUseUrl = appConfig.termsOfUseUrl,
+      privacyPolicyUrl = appConfig.privacyPolicyUrl,
+      rakutenDevelopersUrl = appConfig.rakutenDevelopersUrl,
+      versionName = appConfig.versionName,
+      deleteAccountUrl = appConfig.deleteAccountUrl,
     ),
   )
   val uiState = _uiState.asStateFlow()

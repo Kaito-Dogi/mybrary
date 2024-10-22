@@ -1,7 +1,6 @@
 package app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -34,7 +33,7 @@ internal fun SearchBookBottomAppBar(
       modifier = Modifier
         .shadow(
           elevation = Elevation,
-          shape = CircleShape,
+          shape = MybraryTheme.shapes.circle,
         )
         .weight(1f),
       placeholderResId = R.string.search_book_placeholder_enter_search_keywords,
@@ -42,7 +41,7 @@ internal fun SearchBookBottomAppBar(
       leadingIconAltResId = R.string.search_book_alt_search_for_books,
       imeAction = ImeAction.Done,
       singleLine = true,
-      shape = CircleShape,
+      shape = MybraryTheme.shapes.circle,
     )
 
 //    Gap(width = MybraryTheme.space.sm)

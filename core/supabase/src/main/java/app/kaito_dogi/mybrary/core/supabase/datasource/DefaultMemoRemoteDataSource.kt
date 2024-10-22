@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.supabase.datasource
 
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatchers
 import app.kaito_dogi.mybrary.core.data.command.PatchMemoCommand
 import app.kaito_dogi.mybrary.core.data.command.PostMemoCommand
 import app.kaito_dogi.mybrary.core.data.datasource.MemoRemoteDataSource
@@ -22,7 +22,7 @@ private val MEMO_COLUMN_LIST = listOf("*")
 
 internal class DefaultMemoRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : MemoRemoteDataSource {
   // FIXME: ユーザー情報をクエリできるようにする
   override suspend fun getMemos(myBookId: String): List<MemoDto> = withContext(dispatcher) {

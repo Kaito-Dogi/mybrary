@@ -13,17 +13,15 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumer
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
-import app.kaito_dogi.mybrary.core.ui.navigation.MybraryNavHost
-import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
+import app.kaito_dogi.mybrary.core.ui.navigation.AppNavHost
+import app.kaito_dogi.mybrary.core.ui.navigation.authNavGraph
+import app.kaito_dogi.mybrary.core.ui.navigation.mainNavGraph
+import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MybraryRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
-import app.kaito_dogi.mybrary.feature.auth.authNavGraph
-import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.navigateToSendOtpScreen
-import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
@@ -36,6 +34,10 @@ import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.searchBo
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookNavGraph
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListScreen
 import app.kaito_dogi.mybrary.feature.setting.settingDestination
+import app.kaito_dogi.mybrary.feature.signin.navigateToSignInScreen
+import app.kaito_dogi.mybrary.feature.signin.signInScreen
+import app.kaito_dogi.mybrary.feature.signup.navigateToSignUpScreen
+import app.kaito_dogi.mybrary.feature.signup.signUpScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -64,17 +66,28 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         // FIXME: ログイン状態に応じて startDestination を変更する
-        MybraryNavHost(startDestination = MybraryRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
-          authNavGraph(startDestination = AuthRoute.SendOtp) {
-            sendOtpScreen(
-              onSendOtpComplete = { email, page ->
+        AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
+          authNavGraph(startDestination = AuthRoute.SignUp) {
+            signInScreen(
+              onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
-                  page = page,
+                  page = AuthRoute.VerifyOtp.Page.SignIn,
                 )
               },
-              onLoginComplete = navController::navigateToMyBookListScreen,
-              onSignUpComplete = navController::navigateToMyBookListScreen,
+              onSignIn = navController::navigateToMyBookListScreen,
+              onNavigateToSignUpClick = navController::navigateToSignUpScreen,
+            )
+
+            signUpScreen(
+              onSendOtp = { email ->
+                navController.navigateToVerifyOtpScreen(
+                  email = email,
+                  page = AuthRoute.VerifyOtp.Page.SignUp,
+                )
+              },
+              onSignUp = navController::navigateToMyBookListScreen,
+              onNavigateToSignInClick = navController::navigateToSignInScreen,
             )
 
             verifyOtpScreen(
@@ -103,7 +116,7 @@ internal class MainActivity : AppCompatActivity() {
 
             settingDestination(startDestination = SettingRoute.SettingList) {
               settingListScreen(
-                onLogoutComplete = navController::navigateToSendOtpScreen,
+                onLogoutComplete = navController::navigateToSignInScreen,
                 onTermsOfUseClick = internalBrowserLauncher::launch,
                 onPrivacyPolicyClick = internalBrowserLauncher::launch,
                 onLicenceClick = {},

@@ -1,6 +1,6 @@
 package app.kaito_dogi.mybrary.core.supabase
 
-import app.kaito_dogi.mybrary.core.config.MybraryConfig
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,9 +18,9 @@ import kotlinx.serialization.json.Json
 internal object SupabaseClientModule {
   @Singleton
   @Provides
-  fun provideSupabaseClient(config: MybraryConfig): SupabaseClient = createSupabaseClient(
-    supabaseUrl = config.supabaseUrl,
-    supabaseKey = config.supabaseKey,
+  fun provideSupabaseClient(appConfig: AppConfig): SupabaseClient = createSupabaseClient(
+    supabaseUrl = appConfig.supabaseUrl,
+    supabaseKey = appConfig.supabaseKey,
   ) {
     defaultSerializer = KotlinXSerializer(
       json = Json { ignoreUnknownKeys = true },

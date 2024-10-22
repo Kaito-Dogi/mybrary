@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.repository.mock
 
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatcher
-import app.kaito_dogi.mybrary.core.common.coroutines.MybraryDispatchers
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatcher
+import app.kaito_dogi.mybrary.core.common.coroutines.AppDispatchers
 import app.kaito_dogi.mybrary.core.database.DraftMemoDao
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 // FIXME: CoroutineDispatcher の注入をやめる
 internal class MockDraftMemoRepository @Inject constructor(
   private val draftMemoDao: DraftMemoDao,
-  @MybraryDispatcher(MybraryDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : DraftMemoRepository {
   override suspend fun saveDraftMemo(draftMemo: DraftMemo) = withContext(dispatcher) {
     draftMemoDao.upsert(entity = draftMemo.toEntity())
