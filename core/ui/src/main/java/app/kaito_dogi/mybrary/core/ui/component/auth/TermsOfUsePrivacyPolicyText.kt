@@ -14,18 +14,20 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
+import app.kaito_dogi.mybrary.core.ui.browser.rememberInternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.config.rememberAppConfig
 
 @Composable
 fun TermsOfUsePrivacyPolicyText(
-  launchInternalBrowser: (Url.Web) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val context = LocalContext.current
   val appConfig = rememberAppConfig()
+
+  // FIXME: 内部ブラウザの設計を考える
+  val internalBrowserLauncher = rememberInternalBrowserLauncher()
 
   val textStyle = SpanStyle(
     color = MaterialTheme.colorScheme.outline,
@@ -42,7 +44,9 @@ fun TermsOfUsePrivacyPolicyText(
       LinkAnnotation.Clickable(
         tag = context.getString(R.string.ui_text_terms_of_use),
         styles = linkStyle,
-        linkInteractionListener = { launchInternalBrowser(appConfig.termsOfUseUrl) },
+        linkInteractionListener = {
+          internalBrowserLauncher.launch(appConfig.termsOfUseUrl)
+        },
       ),
     ) {
       append(context.getString(R.string.ui_text_terms_of_use))
@@ -56,7 +60,9 @@ fun TermsOfUsePrivacyPolicyText(
       LinkAnnotation.Clickable(
         tag = context.getString(R.string.ui_text_privacy_policy),
         styles = linkStyle,
-        linkInteractionListener = { launchInternalBrowser(appConfig.privacyPolicyUrl) },
+        linkInteractionListener = {
+          internalBrowserLauncher.launch(appConfig.privacyPolicyUrl)
+        },
       ),
     ) {
       append(context.getString(R.string.ui_text_privacy_policy))
@@ -79,8 +85,6 @@ fun TermsOfUsePrivacyPolicyText(
 @Composable
 private fun TermsOfUsePrivacyPolicyTextPreview() {
   MybraryTheme {
-    TermsOfUsePrivacyPolicyText(
-      launchInternalBrowser = {},
-    )
+    TermsOfUsePrivacyPolicyText()
   }
 }
