@@ -1,7 +1,7 @@
 package app.kaito_dogi.mybrary.core.repository
 
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.data.datasource.AuthRemoteDataSource
-import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import javax.inject.Inject
 
@@ -10,7 +10,7 @@ internal class DefaultAuthRepository @Inject constructor(
 ) : AuthRepository {
   override suspend fun sendOtp(
     email: String,
-    captchaToken: HCaptchaToken,
+    captchaToken: CaptchaToken,
   ) {
     authRemoteDataSource.sendOtp(
       email = email,
@@ -21,7 +21,7 @@ internal class DefaultAuthRepository @Inject constructor(
   override suspend fun verifyOtp(
     email: String,
     otp: String,
-    captchaToken: HCaptchaToken,
+    captchaToken: CaptchaToken,
   ) {
     authRemoteDataSource.verifyOtp(
       email = email,
@@ -34,7 +34,7 @@ internal class DefaultAuthRepository @Inject constructor(
     TODO("Not yet implemented")
   }
 
-  override suspend fun anonymousSignIn(captchaToken: HCaptchaToken) {
+  override suspend fun anonymousSignIn(captchaToken: CaptchaToken) {
     authRemoteDataSource.anonymousSignIn(captchaToken = captchaToken.value)
   }
 

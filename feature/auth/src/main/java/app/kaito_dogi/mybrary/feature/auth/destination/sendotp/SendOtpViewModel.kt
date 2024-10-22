@@ -3,7 +3,7 @@ package app.kaito_dogi.mybrary.feature.auth.destination.sendotp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -34,7 +34,7 @@ internal class SendOtpViewModel @Inject constructor(
       _uiState.update { it.copy(isOtpSending = true) }
       authRepository.sendOtp(
         email = uiState.value.email,
-        captchaToken = HCaptchaToken(value = ""),
+        captchaToken = CaptchaToken(value = ""),
       )
       _uiEvent.emit(SendOtpUiEvent.IsOtpSent)
     }.invokeOnCompletion {
@@ -70,18 +70,18 @@ internal class SendOtpViewModel @Inject constructor(
     }
   }
 
-  fun onHCaptchaSuccess(hCaptchaToken: HCaptchaToken) {
+  fun onHCaptchaSuccess(captchaToken: CaptchaToken) {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isHCaptchaVisible = false) }
       // FIXME: 匿名ログインを共通化する
       when {
         uiState.value.isAnonymousLoggingIn -> {
-          authRepository.anonymousSignIn(captchaToken = hCaptchaToken)
+          authRepository.anonymousSignIn(captchaToken = captchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsLoggedInAsGuest)
         }
 
         uiState.value.isAnonymousSigningUp -> {
-          authRepository.anonymousSignIn(captchaToken = hCaptchaToken)
+          authRepository.anonymousSignIn(captchaToken = captchaToken)
           _uiEvent.emit(SendOtpUiEvent.IsSignedUpAsGuest)
         }
       }

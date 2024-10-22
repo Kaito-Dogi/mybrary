@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.domain.model.HCaptchaToken
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -42,7 +42,7 @@ internal class VerifyOtpViewModel @Inject constructor(
       authRepository.verifyOtp(
         email = uiState.value.email,
         otp = uiState.value.otp,
-        captchaToken = HCaptchaToken(value = ""),
+        captchaToken = CaptchaToken(value = ""),
       )
 
       _uiState.update { it.copy(isOtpVerified = true) }
@@ -58,7 +58,7 @@ internal class VerifyOtpViewModel @Inject constructor(
       _uiState.update { it.copy(isOtpResending = true) }
       authRepository.sendOtp(
         email = uiState.value.email,
-        captchaToken = HCaptchaToken(value = ""),
+        captchaToken = CaptchaToken(value = ""),
       )
       _uiState.update { it.copy(isOtpResent = true) }
     }.invokeOnCompletion {
