@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.core.hcaptcha.HCaptchaDialog
@@ -52,7 +51,7 @@ internal fun SignInScreen(
         ),
     ) {
       Text(
-        text = stringResource(id = R.string.send_otp_text_logo),
+        text = "Mybrary",
         modifier = Modifier
           .padding(vertical = MybraryTheme.spaces.xxxl)
           .fillMaxWidth(),
@@ -76,11 +75,11 @@ internal fun SignInScreen(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
       ) {
         SecondaryButton(
-          textResId = R.string.send_otp_text_sign_up_with_google,
+          textResId = R.string.sign_in_text_sign_in_with_google,
           onClick = onGoogleSignInClick,
           modifier = Modifier.fillMaxWidth(),
           iconResId = R.drawable.icon_google,
-          altResId = R.string.send_otp_alt_sign_up_google,
+          altResId = R.string.sign_in_alt_sign_in_with_google,
           iconTint = Color.Unspecified,
           isLoading = uiState.isGoogleSigningIn,
         )

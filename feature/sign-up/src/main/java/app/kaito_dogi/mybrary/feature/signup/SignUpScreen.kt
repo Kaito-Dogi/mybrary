@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.core.hcaptcha.HCaptchaDialog
@@ -54,7 +53,7 @@ internal fun SignUpScreen(
         ),
     ) {
       Text(
-        text = stringResource(id = R.string.send_otp_text_logo),
+        text = "Mybrary",
         modifier = Modifier
           .padding(vertical = MybraryTheme.spaces.xxxl)
           .fillMaxWidth(),
@@ -78,21 +77,21 @@ internal fun SignUpScreen(
         verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
       ) {
         SecondaryButton(
-          textResId = R.string.send_otp_text_sign_up_with_google,
+          textResId = R.string.sign_up_text_sign_up_with_google,
           onClick = onGoogleSignUpClick,
           modifier = Modifier.fillMaxWidth(),
           iconResId = R.drawable.icon_google,
-          altResId = R.string.send_otp_alt_sign_up_google,
+          altResId = R.string.sign_up_alt_sign_up_with_google,
           iconTint = Color.Unspecified,
           isLoading = uiState.isGoogleSigningUp,
         )
 
         PrimaryButton(
-          textResId = R.string.send_otp_text_sign_up_as_a_guest,
+          textResId = R.string.sign_up_text_continue_as_anonymous,
           onClick = onAnonymousSignUpClick,
           modifier = Modifier.fillMaxWidth(),
           iconResId = R.drawable.icon_person,
-          altResId = R.string.send_otp_alt_sign_up_as_a_guest,
+          altResId = R.string.sign_up_alt_continue_as_anonymous,
           isLoading = uiState.isAnonymousSigningUp,
         )
 

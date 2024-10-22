@@ -22,8 +22,6 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
 import app.kaito_dogi.mybrary.feature.auth.authNavGraph
-import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.navigateToSendOtpScreen
-import app.kaito_dogi.mybrary.feature.auth.destination.sendotp.sendOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
@@ -36,6 +34,8 @@ import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.searchBo
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookNavGraph
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListScreen
 import app.kaito_dogi.mybrary.feature.setting.settingDestination
+import app.kaito_dogi.mybrary.feature.signin.navigateToSignInScreen
+import app.kaito_dogi.mybrary.feature.signin.signInScreen
 import app.kaito_dogi.mybrary.feature.signup.signUpScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
@@ -67,6 +67,17 @@ internal class MainActivity : AppCompatActivity() {
         // FIXME: ログイン状態に応じて startDestination を変更する
         AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
           authNavGraph(startDestination = AuthRoute.SignUp) {
+            signInScreen(
+              onSendOtp = { email ->
+                navController.navigateToVerifyOtpScreen(
+                  email = email,
+                  page = AuthRoute.VerifyOtp.Page.SignIn,
+                )
+              },
+              onSignIn = navController::navigateToMyBookListScreen,
+              // FIXME: navController::navigateToSignUpScreen,
+            )
+
             signUpScreen(
               onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
@@ -74,18 +85,8 @@ internal class MainActivity : AppCompatActivity() {
                   page = AuthRoute.VerifyOtp.Page.SignUp,
                 )
               },
-              onSignUp = {},
-            )
-
-            sendOtpScreen(
-              onSendOtpComplete = { email, page ->
-                navController.navigateToVerifyOtpScreen(
-                  email = email,
-                  page = page,
-                )
-              },
-              onLoginComplete = navController::navigateToMyBookListScreen,
-              onSignUpComplete = navController::navigateToMyBookListScreen,
+              onSignUp = navController::navigateToMyBookListScreen,
+              // FIXME: navController::navigateToSignInScreen,
             )
 
             verifyOtpScreen(
@@ -114,7 +115,7 @@ internal class MainActivity : AppCompatActivity() {
 
             settingDestination(startDestination = SettingRoute.SettingList) {
               settingListScreen(
-                onLogoutComplete = navController::navigateToSendOtpScreen,
+                onLogoutComplete = navController::navigateToSignInScreen,
                 onTermsOfUseClick = internalBrowserLauncher::launch,
                 onPrivacyPolicyClick = internalBrowserLauncher::launch,
                 onLicenceClick = {},

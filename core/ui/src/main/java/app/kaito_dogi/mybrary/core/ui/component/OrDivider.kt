@@ -28,7 +28,7 @@ fun OrDivider(
     )
 
     Text(
-      text = stringResource(id = R.string.send_otp_text_or),
+      text = stringResource(id = R.string.ui_text_or),
       color = MybraryTheme.colorScheme.outline,
       style = MybraryTheme.typography.labelMedium,
     )
