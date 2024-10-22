@@ -32,7 +32,7 @@ internal class SendOtpViewModel @Inject constructor(
   fun onSendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpSending = true) }
-      authRepository.sendOtp(
+      authRepository.otpSignUp(
         email = uiState.value.email,
         captchaToken = CaptchaToken(value = ""),
       )

@@ -3,7 +3,12 @@ package app.kaito_dogi.mybrary.core.domain.repository
 import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 
 interface AuthRepository {
-  suspend fun sendOtp(
+  suspend fun otpSignIn(
+    email: String,
+    captchaToken: CaptchaToken,
+  )
+
+  suspend fun otpSignUp(
     email: String,
     captchaToken: CaptchaToken,
   )
@@ -15,6 +20,8 @@ interface AuthRepository {
   )
 
   suspend fun googleSignIn()
+
+  suspend fun googleSignUp()
 
   suspend fun anonymousSignIn(captchaToken: CaptchaToken)
 

@@ -6,7 +6,14 @@ import javax.inject.Inject
 import kotlinx.coroutines.delay
 
 internal class MockAuthRepository @Inject constructor() : AuthRepository {
-  override suspend fun sendOtp(
+  override suspend fun otpSignIn(
+    email: String,
+    captchaToken: CaptchaToken,
+  ) {
+    delay(1_000)
+  }
+
+  override suspend fun otpSignUp(
     email: String,
     captchaToken: CaptchaToken,
   ) {
@@ -22,6 +29,10 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
   }
 
   override suspend fun googleSignIn() {
+    delay(1_000L)
+  }
+
+  override suspend fun googleSignUp() {
     delay(1_000L)
   }
 

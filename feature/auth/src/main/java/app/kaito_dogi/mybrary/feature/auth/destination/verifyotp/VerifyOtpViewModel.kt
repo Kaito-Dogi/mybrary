@@ -56,7 +56,7 @@ internal class VerifyOtpViewModel @Inject constructor(
   fun onResendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpResending = true) }
-      authRepository.sendOtp(
+      authRepository.otpSignUp(
         email = uiState.value.email,
         captchaToken = CaptchaToken(value = ""),
       )

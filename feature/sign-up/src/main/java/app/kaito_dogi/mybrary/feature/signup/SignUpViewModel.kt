@@ -52,7 +52,7 @@ internal class SignUpViewModel @Inject constructor(
     viewModelScope.launchSafe {
       when {
         uiState.value.isOtpSending -> {
-          authRepository.sendOtp(
+          authRepository.otpSignUp(
             email = uiState.value.email,
             captchaToken = captchaToken,
           )

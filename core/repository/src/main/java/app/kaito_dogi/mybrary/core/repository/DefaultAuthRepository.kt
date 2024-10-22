@@ -8,11 +8,21 @@ import javax.inject.Inject
 internal class DefaultAuthRepository @Inject constructor(
   private val authRemoteDataSource: AuthRemoteDataSource,
 ) : AuthRepository {
-  override suspend fun sendOtp(
+  override suspend fun otpSignIn(
     email: String,
     captchaToken: CaptchaToken,
   ) {
-    authRemoteDataSource.sendOtp(
+    authRemoteDataSource.otpSignIn(
+      email = email,
+      captchaToken = captchaToken.value,
+    )
+  }
+
+  override suspend fun otpSignUp(
+    email: String,
+    captchaToken: CaptchaToken,
+  ) {
+    authRemoteDataSource.otpSignUp(
       email = email,
       captchaToken = captchaToken.value,
     )
@@ -31,7 +41,11 @@ internal class DefaultAuthRepository @Inject constructor(
   }
 
   override suspend fun googleSignIn() {
-    TODO("Not yet implemented")
+    authRemoteDataSource.googleSignIn()
+  }
+
+  override suspend fun googleSignUp() {
+    authRemoteDataSource.googleSignUp()
   }
 
   override suspend fun anonymousSignIn(captchaToken: CaptchaToken) {

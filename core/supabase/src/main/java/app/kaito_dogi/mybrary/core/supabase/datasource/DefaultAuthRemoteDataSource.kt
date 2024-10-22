@@ -15,11 +15,24 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
   private val supabaseClient: SupabaseClient,
   @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : AuthRemoteDataSource {
-  override suspend fun sendOtp(
+  override suspend fun otpSignIn(
     email: String,
     captchaToken: String,
   ) = withContext(dispatcher) {
     supabaseClient.auth.signInWith(
+      provider = OTP,
+      config = {
+        this.email = email
+        this.captchaToken = captchaToken
+      },
+    )
+  }
+
+  override suspend fun otpSignUp(
+    email: String,
+    captchaToken: String,
+  ) = withContext(dispatcher) {
+    supabaseClient.auth.signUpWith(
       provider = OTP,
       config = {
         this.email = email
@@ -42,6 +55,10 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
   }
 
   override suspend fun googleSignIn() = withContext(dispatcher) {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun googleSignUp() = withContext(dispatcher) {
     TODO("Not yet implemented")
   }
 
