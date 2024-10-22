@@ -31,7 +31,7 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
   override suspend fun otpSignUp(
     email: String,
     captchaToken: String,
-  ) = withContext(dispatcher) {
+  ): Unit = withContext(dispatcher) {
     supabaseClient.auth.signUpWith(
       provider = OTP,
       config = {
