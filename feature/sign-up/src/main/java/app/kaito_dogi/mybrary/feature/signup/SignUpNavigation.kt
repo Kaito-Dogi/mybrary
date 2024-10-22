@@ -6,8 +6,14 @@ import androidx.navigation.compose.composable
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 
-fun NavGraphBuilder.signUpScreen() = composable<AuthRoute.SignUp> {
-  SignUpScreenContainer()
+fun NavGraphBuilder.signUpScreen(
+  onSendOtp: (email: String) -> Unit,
+  onSignUp: () -> Unit,
+) = composable<AuthRoute.SignUp> {
+  SignUpScreenContainer(
+    onSendOtp = onSendOtp,
+    onSignUp = onSignUp,
+  )
 }
 
 fun NavHostController.navigateToSignUpScreen() = this.navigate(route = AuthRoute.SignUp) {

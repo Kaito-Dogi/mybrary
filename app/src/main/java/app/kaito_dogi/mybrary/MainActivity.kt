@@ -36,6 +36,7 @@ import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.searchBo
 import app.kaito_dogi.mybrary.feature.searchbook.searchBookNavGraph
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListScreen
 import app.kaito_dogi.mybrary.feature.setting.settingDestination
+import app.kaito_dogi.mybrary.feature.signup.signUpScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -65,7 +66,17 @@ internal class MainActivity : AppCompatActivity() {
 
         // FIXME: ログイン状態に応じて startDestination を変更する
         AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
-          authNavGraph(startDestination = AuthRoute.SendOtp) {
+          authNavGraph(startDestination = AuthRoute.SignUp) {
+            signUpScreen(
+              onSendOtp = { email ->
+                navController.navigateToVerifyOtpScreen(
+                  email = email,
+                  page = AuthRoute.VerifyOtp.Page.SignUp,
+                )
+              },
+              onSignUp = {},
+            )
+
             sendOtpScreen(
               onSendOtpComplete = { email, page ->
                 navController.navigateToVerifyOtpScreen(
