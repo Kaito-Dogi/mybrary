@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth
+package app.kaito_dogi.mybrary.core.ui.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation

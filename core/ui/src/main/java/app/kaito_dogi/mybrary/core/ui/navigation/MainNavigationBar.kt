@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.navigation.bar
+package app.kaito_dogi.mybrary.core.ui.navigation
 
 import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.Composable

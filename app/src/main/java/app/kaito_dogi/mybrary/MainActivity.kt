@@ -14,14 +14,14 @@ import app.kaito_dogi.mybrary.core.ui.browser.InternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumer
 import app.kaito_dogi.mybrary.core.ui.exception.ExceptionConsumerEntryPoint
 import app.kaito_dogi.mybrary.core.ui.navigation.AppNavHost
-import app.kaito_dogi.mybrary.core.ui.navigation.bar.mainNavGraph
+import app.kaito_dogi.mybrary.core.ui.navigation.authNavGraph
+import app.kaito_dogi.mybrary.core.ui.navigation.mainNavGraph
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
-import app.kaito_dogi.mybrary.feature.auth.authNavGraph
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
 import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen

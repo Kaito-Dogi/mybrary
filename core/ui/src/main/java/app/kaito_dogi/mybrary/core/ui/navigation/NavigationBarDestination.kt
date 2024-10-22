@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.core.ui.navigation.bar
+package app.kaito_dogi.mybrary.core.ui.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
