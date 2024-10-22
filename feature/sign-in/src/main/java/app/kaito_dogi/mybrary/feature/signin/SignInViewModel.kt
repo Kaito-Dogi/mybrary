@@ -42,44 +42,23 @@ internal class SignInViewModel @Inject constructor(
     println("あああ: onGoogleSignInClick")
   }
 
-  fun onAnonymousSignInClick() {
-    _uiState.update {
-      it.copy(isAnonymousSigningIn = true)
-    }
-  }
-
   fun onHCaptchaSuccess(captchaToken: CaptchaToken) {
     viewModelScope.launchSafe {
-      when {
-        uiState.value.isOtpSending -> {
-          authRepository.otpSignIn(
-            email = uiState.value.email,
-            captchaToken = captchaToken,
-          )
-          _uiEvent.tryEmit(SignInUiEvent.OnSendOtp)
-        }
-
-        uiState.value.isAnonymousSigningIn -> {
-          authRepository.anonymousSignIn(captchaToken = captchaToken)
-          _uiEvent.tryEmit(SignInUiEvent.OnAnonymousSignIn)
-        }
-      }
+      authRepository.otpSignIn(
+        email = uiState.value.email,
+        captchaToken = captchaToken,
+      )
+      _uiEvent.tryEmit(SignInUiEvent.OnSendOtp)
     }.invokeOnCompletion {
       _uiState.update {
-        it.copy(
-          isOtpSending = false,
-          isAnonymousSigningIn = false,
-        )
+        it.copy(isOtpSending = false)
       }
     }
   }
 
   fun onHCaptchaFailure() {
     _uiState.update {
-      it.copy(
-        isOtpSending = false,
-        isAnonymousSigningIn = false,
-      )
+      it.copy(isOtpSending = false)
     }
   }
 }
