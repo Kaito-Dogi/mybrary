@@ -55,6 +55,8 @@
   <string name="send_otp_text_send_otp">ワンタイムパスワードを送信</string>
   <string name="send_otp_text_sign_up_as_a_guest">ゲストとして始めてみる</string>
   <string name="send_otp_text_sign_up_with_google">Google アカウントで始める</string>
+  <string name="sign_in_text_create_an_account">アカウント作成は</string>
+  <string name="sign_in_text_here">こちら</string>
   <string name="sign_up_alt_send_otp">ワンタイムパスワードを送信する</string>
   <string name="sign_up_alt_your_email">メールアドレス</string>
   <string name="sign_up_placeholder_enter_your_email">メールアドレス</string>

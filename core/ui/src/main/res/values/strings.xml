@@ -55,6 +55,8 @@
   <string name="send_otp_text_send_otp">Send One-Time Password</string>
   <string name="send_otp_text_sign_up_as_a_guest">Sign up as a guest</string>
   <string name="send_otp_text_sign_up_with_google">Sign up with Google</string>
+  <string name="sign_in_text_create_an_account">"Create an account "</string>
+  <string name="sign_in_text_here">here</string>
   <string name="sign_up_alt_send_otp">Send One-Time Password</string>
   <string name="sign_up_alt_your_email">Your Email</string>
   <string name="sign_up_placeholder_enter_your_email">Your Email</string>
