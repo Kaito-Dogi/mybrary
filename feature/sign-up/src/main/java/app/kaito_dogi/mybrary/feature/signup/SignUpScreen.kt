@@ -65,7 +65,7 @@ internal fun SignUpScreen(
         email = uiState.email,
         onEmailChange = onEmailChange,
         onSendOtpClick = onSendOtpClick,
-        isLoading = false,
+        isLoading = uiState.isOtpSending,
       )
 
       OrDivider(
