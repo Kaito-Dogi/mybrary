@@ -29,7 +29,7 @@ internal fun NavigateToSignInSection(
         color = MybraryTheme.colorScheme.outline,
       ),
     ) {
-      append(context.getString(R.string.sign_up_text_already_have_an_account_login))
+      append(context.getString(R.string.sign_up_text_already_have_an_account_sign_in))
     }
 
     withLink(

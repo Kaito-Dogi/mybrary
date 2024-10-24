@@ -75,7 +75,7 @@ internal fun VerifyOtpScreen(
 
       PrimaryButton(
         textResId = when (uiState.source) {
-          AuthRoute.VerifyOtp.Source.SignIn -> R.string.verify_otp_text_login
+          AuthRoute.VerifyOtp.Source.SignIn -> R.string.verify_otp_text_sign_in
           AuthRoute.VerifyOtp.Source.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
