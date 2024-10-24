@@ -23,7 +23,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 
 @Composable
 fun TertiaryButton(
-  @StringRes textResId: Int,
+  text: String,
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
   @DrawableRes iconResId: Int? = null,
@@ -60,7 +60,7 @@ fun TertiaryButton(
     Gap(width = ButtonDefaults.IconSpacing)
   }
 
-  Text(text = stringResource(id = textResId))
+  Text(text = text)
 }
 
 @Preview(showBackground = true)
@@ -70,7 +70,7 @@ private fun TertiaryButtonPreview(
 ) {
   MybraryTheme {
     TertiaryButton(
-      textResId = android.R.string.unknownName,
+      text = "TertiaryButton",
       onClick = {},
       modifier = Modifier.fillMaxWidth(),
       isLoading = parameter.isLoading,
