@@ -30,8 +30,8 @@ compileSdk = "34"
 jvmTarget = "17"
 minSdk = "26"
 targetSdk = "34"
-versionCode = "3"
-versionName = "1.0.1"
+versionCode = "4"
+versionName = "1.0.2"
 
 [libraries]
 android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
