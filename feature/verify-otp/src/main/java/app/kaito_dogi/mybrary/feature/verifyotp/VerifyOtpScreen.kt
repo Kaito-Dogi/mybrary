@@ -87,7 +87,11 @@ internal fun VerifyOtpScreen(
 
       Spacer(modifier = Modifier.weight(1f))
 
-      Text(text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes))
+      Text(
+        text = stringResource(id = R.string.verify_otp_text_it_may_take_a_few_minutes),
+        color = MybraryTheme.colorScheme.outline,
+        style = MybraryTheme.typography.labelLarge,
+      )
 
       Gap(height = MybraryTheme.spaces.xxs)
 
