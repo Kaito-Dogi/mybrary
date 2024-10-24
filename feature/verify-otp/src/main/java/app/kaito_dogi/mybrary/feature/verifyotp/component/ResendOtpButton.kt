@@ -6,8 +6,10 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
+import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import kotlinx.coroutines.delay
 
 private const val INITIAL_COUNTDOWN_SECOND = 60
@@ -43,4 +45,15 @@ fun ResendOtpButton(
     isLoading = isLoading,
     isEnabled = countdownSecond == 0,
   )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ResendOtpButtonPreview() {
+  MybraryTheme {
+    ResendOtpButton(
+      onClick = {},
+      isLoading = false,
+    )
+  }
 }
