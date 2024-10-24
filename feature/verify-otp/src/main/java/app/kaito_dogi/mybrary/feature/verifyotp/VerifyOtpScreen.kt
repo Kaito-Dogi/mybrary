@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
@@ -22,7 +23,7 @@ import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
-import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.component.VerifyOtpTopAppBar
+import app.kaito_dogi.mybrary.feature.verifyotp.component.VerifyOtpTopAppBar
 
 @Composable
 internal fun VerifyOtpScreen(
@@ -67,9 +68,9 @@ internal fun VerifyOtpScreen(
       Gap(height = MybraryTheme.spaces.md)
 
       PrimaryButton(
-        textResId = when (uiState.page) {
-          AuthRoute.VerifyOtp.Page.SignIn -> R.string.verify_otp_text_login
-          AuthRoute.VerifyOtp.Page.SignUp -> R.string.verify_otp_text_sign_up
+        textResId = when (uiState.source) {
+          AuthRoute.VerifyOtp.Source.SignIn -> R.string.verify_otp_text_login
+          AuthRoute.VerifyOtp.Source.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
         modifier = Modifier
@@ -102,8 +103,9 @@ private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
-        page = AuthRoute.VerifyOtp.Page.SignIn,
         email = "kendobu0405@gmail.com",
+        captchaToken = CaptchaToken(value = ""),
+        source = AuthRoute.VerifyOtp.Source.SignIn,
       ),
       onNavigationIconClick = {},
       onOtpChange = {},

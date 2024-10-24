@@ -7,12 +7,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @Composable
 internal fun SignUpScreenContainer(
-  onSendOtp: (email: String) -> Unit,
+  onSendOtp: (email: String, CaptchaToken) -> Unit,
   onSignUp: () -> Unit,
   onNavigateToSignInClick: () -> Unit,
   viewModel: SignUpViewModel = hiltViewModel(),
@@ -25,7 +26,10 @@ internal fun SignUpScreenContainer(
       .flowWithLifecycle(lifecycleOwner.lifecycle)
       .onEach { uiEvent ->
         when (uiEvent) {
-          SignUpUiEvent.OnSendOtp -> onSendOtp(uiState.email)
+          SignUpUiEvent.OnSendOtp -> uiState.captchaToken?.let { captchaToken ->
+            onSendOtp(uiState.email, captchaToken)
+          }
+
           SignUpUiEvent.OnGoogleSignUp -> onSignUp()
           SignUpUiEvent.OnAnonymousSignUp -> onSignUp()
         }

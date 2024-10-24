@@ -177,12 +177,12 @@ dependencies {
   implementation(project(":core:hcaptcha"))
   implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
-  implementation(project(":feature:auth"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
   implementation(project(":feature:sign-in"))
   implementation(project(":feature:sign-up"))
+  implementation(project(":feature:verify-otp"))
 
   "prodImplementation"((project(":core:repository")))
   "devImplementation"((project(":core:repository")))

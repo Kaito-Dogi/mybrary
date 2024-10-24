@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.component
+package app.kaito_dogi.mybrary.feature.verifyotp.component
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon

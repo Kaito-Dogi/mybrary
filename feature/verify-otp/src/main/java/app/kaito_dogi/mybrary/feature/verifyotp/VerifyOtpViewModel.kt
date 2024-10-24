@@ -1,16 +1,17 @@
-package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -25,10 +26,14 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
       email = navArg.email,
-      page = navArg.page,
+      captchaToken = navArg.captchaToken,
+      source = navArg.source,
     ),
   )
   val uiState = _uiState.asStateFlow()
+
+  private val _uiEvent = MutableSharedFlow<VerifyOtpUiEvent>(extraBufferCapacity = 1)
+  val uiEvent = _uiEvent.asSharedFlow()
 
   fun onOtpChange(otp: String) {
     _uiState.update { it.copy(otp = otp) }
@@ -42,10 +47,10 @@ internal class VerifyOtpViewModel @Inject constructor(
       authRepository.verifyOtp(
         email = uiState.value.email,
         otp = uiState.value.otp,
-        captchaToken = CaptchaToken(value = ""),
+        captchaToken = uiState.value.captchaToken,
       )
 
-      _uiState.update { it.copy(isOtpVerified = true) }
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnVerifyOtp)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpVerifying = false) }
     }
@@ -56,17 +61,15 @@ internal class VerifyOtpViewModel @Inject constructor(
   fun onResendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpResending = true) }
+
       authRepository.otpSignUp(
         email = uiState.value.email,
-        captchaToken = CaptchaToken(value = ""),
+        captchaToken = uiState.value.captchaToken,
       )
-      _uiState.update { it.copy(isOtpResent = true) }
+
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnResendOtp)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpResending = false) }
     }
-  }
-
-  fun onUiEventConsume() {
-    _uiState.update { it.copy(isOtpVerified = false) }
   }
 }

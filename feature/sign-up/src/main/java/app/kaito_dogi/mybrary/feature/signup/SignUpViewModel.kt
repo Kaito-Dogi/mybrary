@@ -46,17 +46,21 @@ internal class SignUpViewModel @Inject constructor(
 
   fun onHCaptchaSuccess(captchaToken: CaptchaToken) {
     viewModelScope.launchSafe {
+      _uiState.update { it.copy(captchaToken = captchaToken) }
+
       when {
         uiState.value.isOtpSending -> {
           authRepository.otpSignUp(
             email = uiState.value.email,
             captchaToken = captchaToken,
           )
+
           _uiEvent.tryEmit(SignUpUiEvent.OnSendOtp)
         }
 
         uiState.value.isAnonymousSigningUp -> {
           authRepository.anonymousSignIn(captchaToken = captchaToken)
+
           _uiEvent.tryEmit(SignUpUiEvent.OnAnonymousSignUp)
         }
       }

@@ -40,10 +40,13 @@ internal class SignInViewModel @Inject constructor(
 
   fun onHCaptchaSuccess(captchaToken: CaptchaToken) {
     viewModelScope.launchSafe {
+      _uiState.update { it.copy(captchaToken = captchaToken) }
+
       authRepository.otpSignIn(
         email = uiState.value.email,
         captchaToken = captchaToken,
       )
+
       _uiEvent.tryEmit(SignInUiEvent.OnSendOtp)
     }.invokeOnCompletion {
       _uiState.update {

@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-  namespace = "app.kaito_dogi.mybrary.feature.auth"
+  namespace = "app.kaito_dogi.mybrary.feature.verifyotp"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -35,7 +35,6 @@ dependencies {
   implementation(project(":core:common"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
-  implementation(project(":core:hcaptcha"))
   implementation(project(":core:ui"))
 
   implementation(platform(libs.androidx.compose.bom))
