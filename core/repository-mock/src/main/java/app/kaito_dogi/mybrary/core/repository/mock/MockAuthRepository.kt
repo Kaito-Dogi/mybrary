@@ -28,6 +28,13 @@ internal class MockAuthRepository @Inject constructor() : AuthRepository {
     delay(1_000)
   }
 
+  override suspend fun resendOtp(
+    email: String,
+    captchaToken: CaptchaToken,
+  ) {
+    delay(1_000)
+  }
+
   override suspend fun googleSignIn() {
     delay(1_000L)
   }

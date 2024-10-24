@@ -17,6 +17,11 @@ interface AuthRemoteDataSource {
     captchaToken: String,
   )
 
+  suspend fun resendOtp(
+    email: String,
+    captchaToken: String,
+  )
+
   suspend fun googleSignIn()
 
   suspend fun googleSignUp()
