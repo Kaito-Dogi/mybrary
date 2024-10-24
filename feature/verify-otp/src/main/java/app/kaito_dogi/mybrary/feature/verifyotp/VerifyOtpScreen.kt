@@ -18,11 +18,11 @@ import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
-import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
+import app.kaito_dogi.mybrary.feature.verifyotp.component.ResendOtpButton
 import app.kaito_dogi.mybrary.feature.verifyotp.component.VerifyOtpTopAppBar
 
 @Composable
@@ -85,12 +85,11 @@ internal fun VerifyOtpScreen(
 
       Gap(height = MybraryTheme.spaces.xxs)
 
-      TertiaryButton(
-        textResId = R.string.verify_otp_text_resend_otp,
+      ResendOtpButton(
         onClick = onResendOtpClick,
         modifier = Modifier
-          .fillMaxWidth()
-          .padding(bottom = MybraryTheme.spaces.sm),
+          .padding(bottom = MybraryTheme.spaces.sm)
+          .fillMaxWidth(),
         isLoading = uiState.isOtpResending,
       )
     }
