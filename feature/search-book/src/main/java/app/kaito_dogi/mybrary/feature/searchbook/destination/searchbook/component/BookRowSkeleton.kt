@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.SkeletonBox
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookAspectRatio
 
 @Composable
@@ -33,8 +33,8 @@ fun BookRowSkeleton(
     ) {
       Box(
         modifier = Modifier
-          .aspectRatio(BookAspectRatio)
-          .width(MybraryTheme.dimens.bookWidthSm),
+            .aspectRatio(BookAspectRatio)
+            .width(MybraryTheme.dimens.bookWidthSm),
       )
 
       Column(

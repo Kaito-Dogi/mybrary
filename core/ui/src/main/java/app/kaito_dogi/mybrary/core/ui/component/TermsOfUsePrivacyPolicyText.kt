@@ -14,8 +14,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.browser.rememberInternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.config.rememberAppConfig
 

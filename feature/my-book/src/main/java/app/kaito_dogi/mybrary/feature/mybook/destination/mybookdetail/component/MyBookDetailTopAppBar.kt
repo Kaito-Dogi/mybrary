@@ -30,12 +30,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.MyBookId
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.BookImage
 import coil.compose.AsyncImage
 

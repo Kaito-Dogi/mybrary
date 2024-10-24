@@ -13,11 +13,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.datetime.toFormattedString
 import java.time.LocalDateTime
 

@@ -9,9 +9,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.TextField
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 
 private val Elevation = 3.0.dp
 
@@ -31,11 +31,11 @@ internal fun SearchBookBottomAppBar(
       value = value,
       onValueChange = onValueChange,
       modifier = Modifier
-        .shadow(
-          elevation = Elevation,
-          shape = MybraryTheme.shapes.circle,
-        )
-        .weight(1f),
+          .shadow(
+              elevation = Elevation,
+              shape = MybraryTheme.shapes.circle,
+          )
+          .weight(1f),
       placeholderResId = R.string.search_book_placeholder_enter_search_keywords,
       leadingIconResId = R.drawable.icon_search,
       leadingIconAltResId = R.string.search_book_alt_search_for_books,

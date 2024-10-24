@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.net.toUri
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 
 interface InternalBrowserLauncher {
   fun launch(url: Url)

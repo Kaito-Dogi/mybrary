@@ -17,11 +17,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCell
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCellSkeleton
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeader

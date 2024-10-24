@@ -16,11 +16,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.core.hcaptcha.HCaptchaDialog
 import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.SecondaryButton
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.component.OrDivider
 import app.kaito_dogi.mybrary.core.ui.component.OtpSection
 import app.kaito_dogi.mybrary.core.ui.component.TermsOfUsePrivacyPolicyText
