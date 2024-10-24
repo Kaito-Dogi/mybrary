@@ -72,7 +72,7 @@ internal fun SignInScreen(
 
       Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
       ) {
         SecondaryButton(
           textResId = R.string.sign_in_text_sign_in_with_google,

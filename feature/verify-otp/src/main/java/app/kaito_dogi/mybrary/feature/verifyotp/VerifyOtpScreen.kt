@@ -41,7 +41,13 @@ internal fun VerifyOtpScreen(
     Column(
       modifier = Modifier
         .fillMaxSize()
-        .padding(innerPadding.plus(horizontal = MybraryTheme.spaces.md)),
+        .padding(
+          innerPadding.plus(
+            start = MybraryTheme.spaces.md,
+            end = MybraryTheme.spaces.md,
+            bottom = MybraryTheme.spaces.xs,
+          ),
+        ),
     ) {
       Text(
         text = stringResource(
@@ -87,9 +93,7 @@ internal fun VerifyOtpScreen(
 
       ResendOtpButton(
         onClick = onResendOtpClick,
-        modifier = Modifier
-          .padding(bottom = MybraryTheme.spaces.sm)
-          .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         isLoading = uiState.isOtpResending,
       )
     }
