@@ -52,7 +52,7 @@ internal class SignUpViewModel @Inject constructor(
             email = uiState.value.email,
             captchaToken = captchaToken,
           )
-          _uiEvent.tryEmit(SignUpUiEvent.OnSendOtp)
+          _uiEvent.tryEmit(SignUpUiEvent.OnOtpSend)
         }
 
         uiState.value.isAnonymousSigningUp -> {
