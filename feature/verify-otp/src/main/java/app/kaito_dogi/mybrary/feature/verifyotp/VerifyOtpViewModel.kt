@@ -25,7 +25,7 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
       email = navArg.email,
-      page = navArg.page,
+      source = navArg.source,
     ),
   )
   val uiState = _uiState.asStateFlow()

@@ -67,9 +67,9 @@ internal fun VerifyOtpScreen(
       Gap(height = MybraryTheme.spaces.md)
 
       PrimaryButton(
-        textResId = when (uiState.page) {
-          AuthRoute.VerifyOtp.Page.SignIn -> R.string.verify_otp_text_login
-          AuthRoute.VerifyOtp.Page.SignUp -> R.string.verify_otp_text_sign_up
+        textResId = when (uiState.source) {
+          AuthRoute.VerifyOtp.Source.SignIn -> R.string.verify_otp_text_login
+          AuthRoute.VerifyOtp.Source.SignUp -> R.string.verify_otp_text_sign_up
         },
         onClick = onVerifyOtpClick,
         modifier = Modifier
@@ -102,8 +102,8 @@ private fun VerifyOtpScreenPreview() {
   MybraryTheme {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
-        page = AuthRoute.VerifyOtp.Page.SignIn,
         email = "kendobu0405@gmail.com",
+        source = AuthRoute.VerifyOtp.Source.SignIn,
       ),
       onNavigationIconClick = {},
       onOtpChange = {},

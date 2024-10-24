@@ -19,13 +19,13 @@ fun NavGraphBuilder.verifyOtpScreen(
 
 fun NavHostController.navigateToVerifyOtpScreen(
   email: String,
-  page: AuthRoute.VerifyOtp.Page,
+  source: AuthRoute.VerifyOtp.Source,
 ) = this.navigate(
   route = AuthRoute.VerifyOtp(
     email = email,
-    page = page,
+    source = source,
   ),
 )
 
 internal val VerifyOtpTypeMap =
-  mapOf(typeOf<AuthRoute.VerifyOtp.Page>() to NavType.EnumType(AuthRoute.VerifyOtp.Page::class.java))
+  mapOf(typeOf<AuthRoute.VerifyOtp.Source>() to NavType.EnumType(AuthRoute.VerifyOtp.Source::class.java))

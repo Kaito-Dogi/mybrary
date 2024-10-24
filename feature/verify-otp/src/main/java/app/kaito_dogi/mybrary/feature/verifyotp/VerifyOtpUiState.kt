@@ -7,7 +7,7 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 @Immutable
 internal data class VerifyOtpUiState(
   val email: String,
-  val page: AuthRoute.VerifyOtp.Page,
+  val source: AuthRoute.VerifyOtp.Source,
   val otp: String,
   val isOtpVerifying: Boolean,
   val isOtpVerified: Boolean,
@@ -17,10 +17,10 @@ internal data class VerifyOtpUiState(
   companion object {
     fun createInitialValue(
       email: String,
-      page: AuthRoute.VerifyOtp.Page,
+      source: AuthRoute.VerifyOtp.Source,
     ) = VerifyOtpUiState(
       email = email,
-      page = page,
+      source = source,
       otp = "",
       isOtpVerifying = false,
       isOtpVerified = false,

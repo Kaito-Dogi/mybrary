@@ -72,7 +72,7 @@ internal class MainActivity : AppCompatActivity() {
               onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
-                  page = AuthRoute.VerifyOtp.Page.SignIn,
+                  source = AuthRoute.VerifyOtp.Source.SignIn,
                 )
               },
               onSignIn = navController::navigateToMyBookListScreen,
@@ -83,7 +83,7 @@ internal class MainActivity : AppCompatActivity() {
               onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
-                  page = AuthRoute.VerifyOtp.Page.SignUp,
+                  source = AuthRoute.VerifyOtp.Source.SignUp,
                 )
               },
               onSignUp = navController::navigateToMyBookListScreen,
