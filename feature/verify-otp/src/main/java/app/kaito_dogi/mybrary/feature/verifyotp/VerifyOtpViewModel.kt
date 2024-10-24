@@ -10,7 +10,9 @@ import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -30,6 +32,9 @@ internal class VerifyOtpViewModel @Inject constructor(
   )
   val uiState = _uiState.asStateFlow()
 
+  private val _uiEvent = MutableSharedFlow<VerifyOtpUiEvent>(extraBufferCapacity = 1)
+  val uiEvent = _uiEvent.asSharedFlow()
+
   fun onOtpChange(otp: String) {
     _uiState.update { it.copy(otp = otp) }
   }
@@ -45,7 +50,7 @@ internal class VerifyOtpViewModel @Inject constructor(
         captchaToken = CaptchaToken(value = ""),
       )
 
-      _uiState.update { it.copy(isOtpVerified = true) }
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnOtpVerify)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpVerifying = false) }
     }
@@ -56,17 +61,15 @@ internal class VerifyOtpViewModel @Inject constructor(
   fun onResendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpResending = true) }
+
       authRepository.otpSignUp(
         email = uiState.value.email,
         captchaToken = CaptchaToken(value = ""),
       )
-      _uiState.update { it.copy(isOtpResent = true) }
+
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnOtpResend)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpResending = false) }
     }
-  }
-
-  fun onUiEventConsume() {
-    _uiState.update { it.copy(isOtpVerified = false) }
   }
 }

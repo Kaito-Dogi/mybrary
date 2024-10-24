@@ -4,7 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.flowWithLifecycle
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 internal fun VerifyOtpScreenContainer(
@@ -14,11 +18,17 @@ internal fun VerifyOtpScreenContainer(
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-  if (uiState.isOtpVerified) {
-    LaunchedEffect(Unit) {
-      onVerifyOtpComplete()
-      viewModel.onUiEventConsume()
-    }
+  val lifecycleOwner = LocalLifecycleOwner.current
+  LaunchedEffect(viewModel, lifecycleOwner) {
+    viewModel.uiEvent
+      .flowWithLifecycle(lifecycleOwner.lifecycle)
+      .onEach { uiEvent ->
+        when (uiEvent) {
+          VerifyOtpUiEvent.OnOtpVerify -> onVerifyOtpComplete()
+          VerifyOtpUiEvent.OnOtpResend -> Unit // FIXME: 実装する
+        }
+      }
+      .launchIn(scope = this)
   }
 
   VerifyOtpScreen(

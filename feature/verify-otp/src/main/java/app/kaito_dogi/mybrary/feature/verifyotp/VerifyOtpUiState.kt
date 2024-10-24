@@ -10,9 +10,7 @@ internal data class VerifyOtpUiState(
   val source: AuthRoute.VerifyOtp.Source,
   val otp: String,
   val isOtpVerifying: Boolean,
-  val isOtpVerified: Boolean,
   val isOtpResending: Boolean,
-  val isOtpResent: Boolean,
 ) {
   companion object {
     fun createInitialValue(
@@ -23,9 +21,7 @@ internal data class VerifyOtpUiState(
       source = source,
       otp = "",
       isOtpVerifying = false,
-      isOtpVerified = false,
       isOtpResending = false,
-      isOtpResent = false,
     )
   }
 
