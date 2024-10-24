@@ -16,12 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.AlertDialog
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Book
-import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.BookRow
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.BookRowSkeleton
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.component.SearchBookBottomAppBar
