@@ -22,8 +22,6 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.MainRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SearchBookRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.SettingRoute
-import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.navigateToVerifyOtpScreen
-import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.verifyOtpScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.navigateToMyBookDetailScreen
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListScreen
@@ -38,6 +36,8 @@ import app.kaito_dogi.mybrary.feature.signin.navigateToSignInScreen
 import app.kaito_dogi.mybrary.feature.signin.signInScreen
 import app.kaito_dogi.mybrary.feature.signup.navigateToSignUpScreen
 import app.kaito_dogi.mybrary.feature.signup.signUpScreen
+import app.kaito_dogi.mybrary.feature.verifyotp.navigateToVerifyOtpScreen
+import app.kaito_dogi.mybrary.feature.verifyotp.verifyOtpScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 

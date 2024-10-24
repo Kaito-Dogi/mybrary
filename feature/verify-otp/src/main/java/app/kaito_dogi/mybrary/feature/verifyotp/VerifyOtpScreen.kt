@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,7 +22,7 @@ import app.kaito_dogi.mybrary.core.designsystem.ext.plus
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.ui.R
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
-import app.kaito_dogi.mybrary.feature.auth.destination.verifyotp.component.VerifyOtpTopAppBar
+import app.kaito_dogi.mybrary.feature.verifyotp.component.VerifyOtpTopAppBar
 
 @Composable
 internal fun VerifyOtpScreen(

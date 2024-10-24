@@ -1,4 +1,4 @@
-package app.kaito_dogi.mybrary.feature.auth.destination.verifyotp
+package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
