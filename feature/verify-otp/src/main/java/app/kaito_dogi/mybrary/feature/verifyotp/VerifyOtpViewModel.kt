@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
-import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.domain.repository.AuthRepository
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +26,7 @@ internal class VerifyOtpViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(
     VerifyOtpUiState.createInitialValue(
       email = navArg.email,
+      captchaToken = navArg.captchaToken,
       source = navArg.source,
     ),
   )
@@ -47,7 +47,7 @@ internal class VerifyOtpViewModel @Inject constructor(
       authRepository.verifyOtp(
         email = uiState.value.email,
         otp = uiState.value.otp,
-        captchaToken = CaptchaToken(value = ""),
+        captchaToken = uiState.value.captchaToken,
       )
 
       _uiEvent.tryEmit(VerifyOtpUiEvent.OnVerifyOtp)
@@ -64,7 +64,7 @@ internal class VerifyOtpViewModel @Inject constructor(
 
       authRepository.otpSignUp(
         email = uiState.value.email,
-        captchaToken = CaptchaToken(value = ""),
+        captchaToken = uiState.value.captchaToken,
       )
 
       _uiEvent.tryEmit(VerifyOtpUiEvent.OnResendOtp)

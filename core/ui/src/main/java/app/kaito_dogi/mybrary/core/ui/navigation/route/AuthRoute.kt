@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary.core.ui.navigation.route
 
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import kotlinx.serialization.Serializable
 
 sealed interface AuthRoute {
@@ -12,6 +13,7 @@ sealed interface AuthRoute {
   @Serializable
   data class VerifyOtp(
     val email: String,
+    val captchaToken: CaptchaToken,
     val source: Source,
   ) : AuthRoute {
     enum class Source {

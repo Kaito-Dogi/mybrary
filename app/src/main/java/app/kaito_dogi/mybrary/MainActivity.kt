@@ -69,9 +69,10 @@ internal class MainActivity : AppCompatActivity() {
         AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
           authNavGraph(startDestination = AuthRoute.SignUp) {
             signInScreen(
-              onSendOtp = { email ->
+              onSendOtp = { email, captchaToken ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
+                  captchaToken = captchaToken,
                   source = AuthRoute.VerifyOtp.Source.SignIn,
                 )
               },
@@ -80,9 +81,10 @@ internal class MainActivity : AppCompatActivity() {
             )
 
             signUpScreen(
-              onSendOtp = { email ->
+              onSendOtp = { email, captchaToken, ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
+                  captchaToken = captchaToken,
                   source = AuthRoute.VerifyOtp.Source.SignUp,
                 )
               },

@@ -1,12 +1,14 @@
 package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.compose.runtime.Immutable
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 
 // FIXME: UiState と ViewModelState を分けてみる
 @Immutable
 internal data class VerifyOtpUiState(
   val email: String,
+  val captchaToken: CaptchaToken,
   val source: AuthRoute.VerifyOtp.Source,
   val otp: String,
   val isOtpVerifying: Boolean,
@@ -15,9 +17,11 @@ internal data class VerifyOtpUiState(
   companion object {
     fun createInitialValue(
       email: String,
+      captchaToken: CaptchaToken,
       source: AuthRoute.VerifyOtp.Source,
     ) = VerifyOtpUiState(
       email = email,
+      captchaToken = captchaToken,
       source = source,
       otp = "",
       isOtpVerifying = false,

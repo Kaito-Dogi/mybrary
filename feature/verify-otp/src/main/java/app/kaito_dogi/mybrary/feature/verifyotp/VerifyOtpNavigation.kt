@@ -2,10 +2,9 @@ package app.kaito_dogi.mybrary.feature.verifyotp
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
-import kotlin.reflect.typeOf
 
 fun NavGraphBuilder.verifyOtpScreen(
   onVerifyOtp: () -> Unit,
@@ -19,13 +18,12 @@ fun NavGraphBuilder.verifyOtpScreen(
 
 fun NavHostController.navigateToVerifyOtpScreen(
   email: String,
+  captchaToken: CaptchaToken,
   source: AuthRoute.VerifyOtp.Source,
 ) = this.navigate(
   route = AuthRoute.VerifyOtp(
     email = email,
+    captchaToken = captchaToken,
     source = source,
   ),
 )
-
-internal val VerifyOtpTypeMap =
-  mapOf(typeOf<AuthRoute.VerifyOtp.Source>() to NavType.EnumType(AuthRoute.VerifyOtp.Source::class.java))

@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import app.kaito_dogi.mybrary.core.common.model.CaptchaToken
 import app.kaito_dogi.mybrary.core.designsystem.component.Gap
 import app.kaito_dogi.mybrary.core.designsystem.component.PrimaryButton
 import app.kaito_dogi.mybrary.core.designsystem.component.TertiaryButton
@@ -103,6 +104,7 @@ private fun VerifyOtpScreenPreview() {
     VerifyOtpScreen(
       uiState = VerifyOtpUiState.createInitialValue(
         email = "kendobu0405@gmail.com",
+        captchaToken = CaptchaToken(value = ""),
         source = AuthRoute.VerifyOtp.Source.SignIn,
       ),
       onNavigationIconClick = {},
