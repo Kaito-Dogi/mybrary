@@ -84,6 +84,7 @@
   <string name="verify_otp_text_it_may_take_a_few_minutes">ワンタイムパスワードが届くまで数分かかる場合があります。</string>
   <string name="verify_otp_text_login">ログイン</string>
   <string name="verify_otp_text_resend_otp">もう一度ワンタイムパスワードを送信する</string>
+  <string name="verify_otp_text_resend_otp_in_seconds">もう一度ワンタイムパスワードを送信する（あと%1$d秒）</string>
   <string name="verify_otp_text_sign_up">サインアップ</string>
   <string name="verify_otp_text_verify_otp">ワンタイムパスワードの認証</string>
 </resources>
