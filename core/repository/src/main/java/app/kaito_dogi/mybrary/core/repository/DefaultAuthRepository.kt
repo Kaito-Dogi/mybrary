@@ -40,6 +40,16 @@ internal class DefaultAuthRepository @Inject constructor(
     )
   }
 
+  override suspend fun resendOtp(
+    email: String,
+    captchaToken: CaptchaToken,
+  ) {
+    authRemoteDataSource.resendOtp(
+      email = email,
+      captchaToken = captchaToken.value,
+    )
+  }
+
   override suspend fun googleSignIn() {
     authRemoteDataSource.googleSignIn()
   }

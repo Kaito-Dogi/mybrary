@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -34,7 +35,7 @@ fun AlertDialog(
   },
   confirmButton = {
     TertiaryButton(
-      textResId = confirmTextResId,
+      text = stringResource(id = confirmTextResId),
       onClick = onConfirmClick,
       isLoading = isConfirmLoading,
       isEnabled = !isDismissLoading,
@@ -44,7 +45,7 @@ fun AlertDialog(
   dismissButton = if (dismissTextResId != null && onDismissClick != null) {
     {
       TertiaryButton(
-        textResId = dismissTextResId,
+        text = stringResource(id = dismissTextResId),
         onClick = onDismissClick,
         isLoading = isDismissLoading,
         isEnabled = !isConfirmLoading,

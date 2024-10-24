@@ -39,7 +39,6 @@ internal class VerifyOtpViewModel @Inject constructor(
     _uiState.update { it.copy(otp = otp) }
   }
 
-  // FIXME: HCaptchaToken を受け取る
   fun onVerifyOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpVerifying = true) }
@@ -56,13 +55,11 @@ internal class VerifyOtpViewModel @Inject constructor(
     }
   }
 
-  // FIXME: HCaptchaToken を受け取る
-  // FIXME: auth.sendOtp ではなく auth.resendOtp にする
   fun onResendOtpClick() {
     viewModelScope.launchSafe {
       _uiState.update { it.copy(isOtpResending = true) }
 
-      authRepository.otpSignUp(
+      authRepository.resendOtp(
         email = uiState.value.email,
         captchaToken = uiState.value.captchaToken,
       )

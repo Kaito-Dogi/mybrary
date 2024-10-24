@@ -74,7 +74,7 @@ internal fun SignUpScreen(
 
       Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
+        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
       ) {
         SecondaryButton(
           textResId = R.string.sign_up_text_sign_up_with_google,

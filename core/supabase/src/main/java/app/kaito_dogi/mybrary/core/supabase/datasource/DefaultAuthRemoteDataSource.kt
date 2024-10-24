@@ -54,6 +54,17 @@ internal class DefaultAuthRemoteDataSource @Inject constructor(
     )
   }
 
+  override suspend fun resendOtp(
+    email: String,
+    captchaToken: String,
+  ) = withContext(dispatcher) {
+    supabaseClient.auth.resendEmail(
+      type = OtpType.Email.SIGNUP,
+      email = email,
+      captchaToken = captchaToken,
+    )
+  }
+
   override suspend fun googleSignIn() = withContext(dispatcher) {
     TODO("Not yet implemented")
   }

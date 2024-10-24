@@ -19,6 +19,11 @@ interface AuthRepository {
     captchaToken: CaptchaToken,
   )
 
+  suspend fun resendOtp(
+    email: String,
+    captchaToken: CaptchaToken,
+  )
+
   suspend fun googleSignIn()
 
   suspend fun googleSignUp()
