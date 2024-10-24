@@ -50,7 +50,7 @@ internal class VerifyOtpViewModel @Inject constructor(
         captchaToken = CaptchaToken(value = ""),
       )
 
-      _uiEvent.tryEmit(VerifyOtpUiEvent.OnOtpVerify)
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnVerifyOtp)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpVerifying = false) }
     }
@@ -67,7 +67,7 @@ internal class VerifyOtpViewModel @Inject constructor(
         captchaToken = CaptchaToken(value = ""),
       )
 
-      _uiEvent.tryEmit(VerifyOtpUiEvent.OnOtpResend)
+      _uiEvent.tryEmit(VerifyOtpUiEvent.OnResendOtp)
     }.invokeOnCompletion {
       _uiState.update { it.copy(isOtpResending = false) }
     }

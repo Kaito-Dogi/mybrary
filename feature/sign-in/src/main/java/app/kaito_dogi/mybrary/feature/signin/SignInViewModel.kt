@@ -44,7 +44,7 @@ internal class SignInViewModel @Inject constructor(
         email = uiState.value.email,
         captchaToken = captchaToken,
       )
-      _uiEvent.tryEmit(SignInUiEvent.OnOtpSend)
+      _uiEvent.tryEmit(SignInUiEvent.OnSendOtp)
     }.invokeOnCompletion {
       _uiState.update {
         it.copy(isOtpSending = false)

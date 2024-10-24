@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onEach
 
 @Composable
 internal fun SignUpScreenContainer(
-  onOtpSend: (email: String) -> Unit,
+  onSendOtp: (email: String) -> Unit,
   onSignUp: () -> Unit,
   onNavigateToSignInClick: () -> Unit,
   viewModel: SignUpViewModel = hiltViewModel(),
@@ -25,7 +25,7 @@ internal fun SignUpScreenContainer(
       .flowWithLifecycle(lifecycleOwner.lifecycle)
       .onEach { uiEvent ->
         when (uiEvent) {
-          SignUpUiEvent.OnOtpSend -> onOtpSend(uiState.email)
+          SignUpUiEvent.OnSendOtp -> onSendOtp(uiState.email)
           SignUpUiEvent.OnGoogleSignUp -> onSignUp()
           SignUpUiEvent.OnAnonymousSignUp -> onSignUp()
         }

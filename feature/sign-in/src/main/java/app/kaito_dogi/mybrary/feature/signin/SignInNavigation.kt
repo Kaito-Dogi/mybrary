@@ -7,12 +7,12 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.AppRoute
 import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 
 fun NavGraphBuilder.signInScreen(
-  onOtpSend: (email: String) -> Unit,
+  onSendOtp: (email: String) -> Unit,
   onSignIn: () -> Unit,
   onNavigateToSignUpClick: () -> Unit,
 ) = composable<AuthRoute.SignIn> {
   SignInScreenContainer(
-    onOtpSend = onOtpSend,
+    onSendOtp = onSendOtp,
     onSignIn = onSignIn,
     onNavigateToSignUpClick = onNavigateToSignUpClick,
   )

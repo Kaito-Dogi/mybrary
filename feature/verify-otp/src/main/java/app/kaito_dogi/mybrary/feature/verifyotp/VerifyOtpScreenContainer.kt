@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onEach
 
 @Composable
 internal fun VerifyOtpScreenContainer(
-  onVerifyOtpComplete: () -> Unit,
+  onVerifyOtp: () -> Unit,
   onNavigationIconClick: () -> Unit,
   viewModel: VerifyOtpViewModel = hiltViewModel(),
 ) {
@@ -24,8 +24,8 @@ internal fun VerifyOtpScreenContainer(
       .flowWithLifecycle(lifecycleOwner.lifecycle)
       .onEach { uiEvent ->
         when (uiEvent) {
-          VerifyOtpUiEvent.OnOtpVerify -> onVerifyOtpComplete()
-          VerifyOtpUiEvent.OnOtpResend -> Unit // FIXME: 実装する
+          VerifyOtpUiEvent.OnVerifyOtp -> onVerifyOtp()
+          VerifyOtpUiEvent.OnResendOtp -> Unit // FIXME: 実装する
         }
       }
       .launchIn(scope = this)

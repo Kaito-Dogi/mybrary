@@ -8,11 +8,11 @@ import app.kaito_dogi.mybrary.core.ui.navigation.route.AuthRoute
 import kotlin.reflect.typeOf
 
 fun NavGraphBuilder.verifyOtpScreen(
-  onVerifyOtpComplete: () -> Unit,
+  onVerifyOtp: () -> Unit,
   onNavigationIconClick: () -> Unit,
 ) = composable<AuthRoute.VerifyOtp>(typeMap = VerifyOtpTypeMap) {
   VerifyOtpScreenContainer(
-    onVerifyOtpComplete = onVerifyOtpComplete,
+    onVerifyOtp = onVerifyOtp,
     onNavigationIconClick = onNavigationIconClick,
   )
 }

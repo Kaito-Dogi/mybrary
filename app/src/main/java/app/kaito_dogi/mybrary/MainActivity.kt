@@ -69,7 +69,7 @@ internal class MainActivity : AppCompatActivity() {
         AppNavHost(startDestination = AppRoute.Auth) { navController: NavHostController, internalBrowserLauncher: InternalBrowserLauncher ->
           authNavGraph(startDestination = AuthRoute.SignUp) {
             signInScreen(
-              onOtpSend = { email ->
+              onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
                   source = AuthRoute.VerifyOtp.Source.SignIn,
@@ -80,7 +80,7 @@ internal class MainActivity : AppCompatActivity() {
             )
 
             signUpScreen(
-              onOtpSend = { email ->
+              onSendOtp = { email ->
                 navController.navigateToVerifyOtpScreen(
                   email = email,
                   source = AuthRoute.VerifyOtp.Source.SignUp,
@@ -91,7 +91,7 @@ internal class MainActivity : AppCompatActivity() {
             )
 
             verifyOtpScreen(
-              onVerifyOtpComplete = navController::navigateToMyBookListScreen,
+              onVerifyOtp = navController::navigateToMyBookListScreen,
               onNavigationIconClick = navController::popBackStack,
             )
           }
