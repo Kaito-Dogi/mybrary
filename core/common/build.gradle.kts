@@ -10,6 +10,10 @@ java {
   targetCompatibility = JavaVersion.VERSION_17
 }
 
+kotlin {
+  jvmToolchain(libs.versions.jvmTarget.get().toInt())
+}
+
 dependencies {
   implementation(libs.hilt.core)
   implementation(libs.kotlinx.coroutines.core)
