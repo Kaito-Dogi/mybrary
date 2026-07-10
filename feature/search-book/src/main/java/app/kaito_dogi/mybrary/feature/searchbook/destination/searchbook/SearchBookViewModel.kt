@@ -18,7 +18,7 @@ internal class SearchBookViewModel @Inject constructor(
   private val myBookRepository: MyBookRepository,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
-  private val _uiState = MutableStateFlow(SearchBookUiState.InitialValue)
+  private val _uiState = MutableStateFlow(value = SearchBookUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun onSearchQueryChange(searchTitle: String) {
