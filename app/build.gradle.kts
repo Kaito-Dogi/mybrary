@@ -25,6 +25,7 @@ plugins {
   alias(libs.plugins.compose)
   alias(libs.plugins.hilt.android)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.oss.licenses)
 }
 
 android {
@@ -176,6 +177,7 @@ dependencies {
   implementation(libs.androidx.navigation3.runtime)
   implementation(libs.androidx.navigation3.ui)
   implementation(libs.hilt.android)
+  implementation(libs.play.services.oss.licenses)
 
   ksp(libs.hilt.android.compiler)
 }

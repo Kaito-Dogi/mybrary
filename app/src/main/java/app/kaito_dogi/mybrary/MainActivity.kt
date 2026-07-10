@@ -1,5 +1,6 @@
 package app.kaito_dogi.mybrary
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -25,6 +26,7 @@ import app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail.myBookDeta
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.myBookListEntry
 import app.kaito_dogi.mybrary.feature.searchbook.destination.searchbook.searchBookEntry
 import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.settingListEntry
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -78,7 +80,7 @@ internal class MainActivity : AppCompatActivity() {
               onNavigationIconClick = { backStack.removeLastOrNull() },
               onTermsOfUseClick = internalBrowserLauncher::launch,
               onPrivacyPolicyClick = internalBrowserLauncher::launch,
-              onLicenceClick = {},
+              onLicenceClick = { context.startActivity(Intent(context, OssLicensesMenuActivity::class.java)) },
               onRakutenDevelopersClick = internalBrowserLauncher::launch,
             )
           },
