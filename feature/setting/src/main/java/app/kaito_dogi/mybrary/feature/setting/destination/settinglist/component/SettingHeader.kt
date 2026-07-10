@@ -21,7 +21,7 @@ internal fun SettingHeader(
 ) {
   Box(
     modifier = modifier
-      .background(MybraryTheme.colorScheme.background)
+      .background(color = MybraryTheme.colorScheme.background)
       .fillMaxWidth()
       .padding(
         horizontal = MybraryTheme.spaces.md,
@@ -30,7 +30,7 @@ internal fun SettingHeader(
     contentAlignment = Alignment.CenterStart,
   ) {
     Text(
-      text = stringResource(titleResId),
+      text = stringResource(id = titleResId),
       color = MybraryTheme.colorScheme.onSurfaceVariant,
       style = MybraryTheme.typography.titleMedium,
     )
@@ -42,7 +42,7 @@ internal fun SettingHeader(
 private fun SettingHeaderPreview() {
   MybraryTheme {
     SettingHeader(
-      titleResId = R.string.setting_list_text_account,
+      titleResId = R.string.setting_list_text_about,
     )
   }
 }

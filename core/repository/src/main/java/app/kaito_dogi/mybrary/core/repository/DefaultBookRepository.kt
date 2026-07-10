@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 internal class DefaultBookRepository @Inject constructor(
   private val rakutenApi: RakutenApi,
   private val appConfig: AppConfig,
-  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @param:AppDispatcher(appDispatchers = AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
   override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
     TODO("Not yet implemented")

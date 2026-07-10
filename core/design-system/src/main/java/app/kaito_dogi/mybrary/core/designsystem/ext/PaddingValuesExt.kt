@@ -14,9 +14,9 @@ fun PaddingValues.plus(
 ): PaddingValues {
   val layoutDirection = LocalLayoutDirection.current
   return PaddingValues(
-    start = this.calculateStartPadding(layoutDirection) + all,
+    start = this.calculateStartPadding(layoutDirection = layoutDirection) + all,
     top = this.calculateTopPadding() + all,
-    end = this.calculateEndPadding(layoutDirection) + all,
+    end = this.calculateEndPadding(layoutDirection = layoutDirection) + all,
     bottom = this.calculateBottomPadding() + all,
   )
 }
@@ -28,9 +28,9 @@ fun PaddingValues.plus(
 ): PaddingValues {
   val layoutDirection = LocalLayoutDirection.current
   return PaddingValues(
-    start = this.calculateStartPadding(layoutDirection) + horizontal,
+    start = this.calculateStartPadding(layoutDirection = layoutDirection) + horizontal,
     top = this.calculateTopPadding() + vertical,
-    end = this.calculateEndPadding(layoutDirection) + horizontal,
+    end = this.calculateEndPadding(layoutDirection = layoutDirection) + horizontal,
     bottom = this.calculateBottomPadding() + vertical,
   )
 }
@@ -44,9 +44,9 @@ fun PaddingValues.plus(
 ): PaddingValues {
   val layoutDirection = LocalLayoutDirection.current
   return PaddingValues(
-    start = this.calculateStartPadding(layoutDirection) + start,
+    start = this.calculateStartPadding(layoutDirection = layoutDirection) + start,
     top = this.calculateTopPadding() + top,
-    end = this.calculateEndPadding(layoutDirection) + end,
+    end = this.calculateEndPadding(layoutDirection = layoutDirection) + end,
     bottom = this.calculateBottomPadding() + bottom,
   )
 }

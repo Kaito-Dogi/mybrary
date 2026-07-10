@@ -51,16 +51,14 @@ private val ColorMatrix = floatArrayOf(
 @Composable
 internal fun MyBookDetailTopAppBar(
   myBook: MyBook,
-  isPublic: Boolean,
   isFavorite: Boolean,
   onNavigationIconClick: () -> Unit,
   onFavoriteClick: () -> Unit,
-  onPublicClick: () -> Unit,
-  onArchiveClick: () -> Unit,
+  onRakutenClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Box(
-    modifier = modifier.height(IntrinsicSize.Min),
+    modifier = modifier.height(intrinsicSize = IntrinsicSize.Min),
   ) {
     val backgroundColor =
       if (isSystemInDarkTheme()) MybraryTheme.colorScheme.surfaceContainer else MybraryTheme.colorScheme.inverseSurface
@@ -68,24 +66,24 @@ internal fun MyBookDetailTopAppBar(
       model = myBook.imageUrl.value,
       modifier = Modifier
         .matchParentSize()
-        .background(backgroundColor)
+        .background(color = backgroundColor)
         .blur(
           radiusX = MybraryTheme.spaces.md,
           radiusY = MybraryTheme.spaces.md,
         ),
       contentDescription = stringResource(id = R.string.my_book_detail_alt_background_image),
       contentScale = ContentScale.FillWidth,
-      colorFilter = ColorFilter.colorMatrix(ColorMatrix(ColorMatrix)),
+      colorFilter = ColorFilter.colorMatrix(colorMatrix = ColorMatrix(values = ColorMatrix)),
     )
 
     Column(
       modifier = Modifier
-        .windowInsetsPadding(WindowInsets.statusBars)
+        .windowInsetsPadding(insets = WindowInsets.statusBars)
         .padding(
           top = MybraryTheme.spaces.xs,
           bottom = MybraryTheme.spaces.md,
         ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
+      verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xs),
     ) {
       Row(
         modifier = Modifier.fillMaxWidth(),
@@ -94,84 +92,59 @@ internal fun MyBookDetailTopAppBar(
           onClick = onNavigationIconClick,
         ) {
           Icon(
-            painter = painterResource(R.drawable.icon_arrow_back),
-            contentDescription = stringResource(R.string.my_book_detail_alt_back),
+            painter = painterResource(id = R.drawable.icon_arrow_back),
+            contentDescription = stringResource(id = R.string.my_book_detail_alt_back),
             tint = Color.White,
           )
         }
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(weight = 1f))
+
+        IconButton(onClick = onRakutenClick) {
+          Icon(
+            painter = painterResource(id = R.drawable.icon_shopping_cart),
+            contentDescription = stringResource(id = R.string.my_book_detail_alt_view_in_rakuten_books),
+            tint = Color.White,
+          )
+        }
 
         IconButton(onClick = onFavoriteClick) {
           Icon(
             painter = if (isFavorite) {
-              painterResource(R.drawable.icon_heart_filled)
+              painterResource(id = R.drawable.icon_heart_filled)
             } else {
-              painterResource(R.drawable.icon_heart_outlined)
+              painterResource(id = R.drawable.icon_heart_outlined)
             },
             contentDescription = if (isFavorite) {
-              stringResource(R.string.my_book_detail_alt_remove_my_book_from_favorites)
+              stringResource(id = R.string.my_book_detail_alt_remove_my_book_from_favorites)
             } else {
-              stringResource(R.string.my_book_detail_alt_add_my_book_to_favorites)
+              stringResource(id = R.string.my_book_detail_alt_add_my_book_to_favorites)
             },
             tint = Color.White,
           )
-        }
-
-        // TODO: v2 以降で実装を復活させる
-        if (false) {
-          IconButton(
-            onClick = onPublicClick,
-            enabled = false,
-          ) {
-            Icon(
-              painter = if (isPublic) {
-                painterResource(R.drawable.icon_visibility)
-              } else {
-                painterResource(R.drawable.icon_visibility_off)
-              },
-              contentDescription = if (isPublic) {
-                stringResource(R.string.my_book_detail_alt_make_my_book_private)
-              } else {
-                stringResource(R.string.my_book_detail_alt_make_my_book_public)
-              },
-              tint = Color.White,
-            )
-          }
-
-          IconButton(
-            onClick = onArchiveClick,
-            enabled = false,
-          ) {
-            Icon(
-              painter = painterResource(R.drawable.icon_archive),
-              contentDescription = stringResource(R.string.my_book_detail_alt_archive_my_book),
-              tint = Color.White,
-            )
-          }
         }
       }
 
       Row(
         modifier = Modifier
-          .height(IntrinsicSize.Min)
+          .height(intrinsicSize = IntrinsicSize.Min)
           .padding(horizontal = MybraryTheme.spaces.md),
-        horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+        horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.md),
       ) {
         BookImage(
           title = myBook.title,
           imageUrl = myBook.imageUrl,
-          modifier = Modifier.width(MybraryTheme.dimens.bookWidthMd),
+          modifier = Modifier.width(width = MybraryTheme.dimens.bookWidthMd),
         )
 
         Column(
-          verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+          verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
         ) {
           Text(
             text = myBook.title,
             modifier = Modifier
               .fillMaxWidth()
-              .weight(1f),
+              .weight(weight = 1f),
             color = Color.White,
             overflow = TextOverflow.Ellipsis,
             maxLines = 4,
@@ -216,17 +189,15 @@ private fun MyBookDetailTopAppBarPreview() {
         publisher = "出版社",
         isbn = "isbn",
         genre = Genre.All,
+        rakutenUrl = Url.Affiliate(value = ""),
         isPinned = false,
         isFavorite = false,
-        isPublic = false,
         isArchived = false,
       ),
-      isPublic = false,
       isFavorite = false,
       onNavigationIconClick = {},
       onFavoriteClick = {},
-      onPublicClick = {},
-      onArchiveClick = {},
+      onRakutenClick = {},
     )
   }
 }

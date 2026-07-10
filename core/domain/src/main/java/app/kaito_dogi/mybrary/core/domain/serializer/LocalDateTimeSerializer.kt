@@ -21,6 +21,6 @@ object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
     encoder: Encoder,
     value: LocalDateTime,
   ) {
-    encoder.encodeString(value.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME))
+    encoder.encodeString(value = value.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME))
   }
 }

@@ -6,6 +6,7 @@ import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MemoId
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import app.kaito_dogi.mybrary.core.domain.model.Sns
 
 @Immutable
 internal data class MyBookDetailUiState(
@@ -16,7 +17,8 @@ internal data class MyBookDetailUiState(
   val isMemoSaved: Boolean,
   val isContentEmptyError: Boolean,
   val isBottomSheetVisible: Boolean,
-  @StringRes val messageResId: Int?,
+  val shareTextToSns: Pair<String, Sns>?,
+  @param:StringRes val messageResId: Int?,
 ) {
   companion object {
     fun createInitialValue(myBook: MyBook) = MyBookDetailUiState(
@@ -31,6 +33,7 @@ internal data class MyBookDetailUiState(
       isMemoSaved = false,
       isContentEmptyError = false,
       isBottomSheetVisible = false,
+      shareTextToSns = null,
       messageResId = null,
     )
   }

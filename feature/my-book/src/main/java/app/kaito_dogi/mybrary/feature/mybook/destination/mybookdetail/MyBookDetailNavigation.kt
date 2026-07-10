@@ -1,23 +1,14 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
-import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavKey
 import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
 
-fun NavGraphBuilder.myBookDetailScreen(
+fun EntryProviderScope<NavKey>.myBookDetailEntry(
   onNavigationIconClick: () -> Unit,
-) = composable<MyBookRoute.MyBookDetail>(typeMap = MyBookDetailTypeMap) {
+) = entry<MyBookRoute.MyBookDetail> { key ->
   MyBookDetailScreenContainer(
+    myBook = key.myBook,
     onNavigationIconClick = onNavigationIconClick,
   )
 }
-
-fun NavHostController.navigateToMyBookDetailScreen(
-  myBook: MyBook,
-) = this.navigate(
-  route = MyBookRoute.MyBookDetail(
-    myBook = myBook,
-  ),
-)

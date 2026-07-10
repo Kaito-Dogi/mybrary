@@ -9,7 +9,7 @@ import dagger.hilt.android.EntryPointAccessors
 @Composable
 fun rememberAppConfig(): AppConfig {
   val context = LocalContext.current
-  val appConfigEntryPoint: AppConfigEntryPoint = remember(context) {
+  val appConfigEntryPoint: AppConfigEntryPoint = remember(key1 = context) {
     EntryPointAccessors.fromApplication(context)
   }
   return appConfigEntryPoint.appConfig

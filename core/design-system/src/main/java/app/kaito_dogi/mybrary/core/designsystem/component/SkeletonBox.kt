@@ -37,7 +37,7 @@ fun SkeletonBox(
   Box(
     modifier = modifier
       .clip(shape = shape)
-      .background(MybraryTheme.colorScheme.surfaceVariant.copy(alpha = alpha)),
+      .background(color = MybraryTheme.colorScheme.surfaceVariant.copy(alpha = alpha)),
     content = content,
   )
 }
@@ -49,7 +49,7 @@ private fun SkeletonBoxPreview() {
     SkeletonBox(
       shape = MybraryTheme.shapes.cornerMd,
     ) {
-      Box(modifier = Modifier.size(MybraryTheme.spaces.xxxl))
+      Box(modifier = Modifier.size(size = MybraryTheme.spaces.xxxl))
     }
   }
 }

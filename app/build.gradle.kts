@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.VariantDimension
 import java.util.Properties
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 private val properties = Properties()
 private val secretsProperties = rootProject.file("./secrets.properties")
@@ -23,8 +24,8 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.compose)
   alias(libs.plugins.hilt.android)
-  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.oss.licenses)
 }
 
 android {
@@ -41,19 +42,14 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     buildConfigStringField(
-      name = "DELETE_ACCOUNT_URL",
-      value = properties.getProperty("deleteAccountUrl"),
-      initialValue = getEnvOrEmpty(name = "DELETE_ACCOUNT_URL"),
-    )
-    buildConfigStringField(
-      name = "HCAPTCHA_SITE_KEY",
-      value = properties.getProperty("hCaptcha.siteKey.dev"),
-      initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_DEV"),
-    )
-    buildConfigStringField(
       name = "PRIVACY_POLICY_URL",
       value = properties.getProperty("privacyPolicyUrl"),
       initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
+    )
+    buildConfigStringField(
+      name = "RAKUTEN_ACCESS_KEY",
+      value = properties.getProperty("rakuten.accessKey.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_ACCESS_KEY_DEV"),
     )
     buildConfigStringField(
       name = "RAKUTEN_AFFILIATE_ID",
@@ -71,14 +67,9 @@ android {
       initialValue = getEnvOrEmpty(name = "RAKUTEN_DEVELOPERS_URL"),
     )
     buildConfigStringField(
-      name = "SUPABASE_KEY",
-      value = properties.getProperty("supabase.key.dev"),
-      initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_DEV"),
-    )
-    buildConfigStringField(
-      name = "SUPABASE_URL",
-      value = properties.getProperty("supabase.url.dev"),
-      initialValue = getEnvOrEmpty(name = "SUPABASE_URL_DEV"),
+      name = "RAKUTEN_REFERER",
+      value = properties.getProperty("rakuten.referer.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_REFERER_DEV"),
     )
     buildConfigStringField(
       name = "TERMS_OF_USE",
@@ -113,9 +104,9 @@ android {
       dimension = "env"
 
       buildConfigStringField(
-        name = "HCAPTCHA_SITE_KEY",
-        value = properties.getProperty("hCaptcha.siteKey.prod"),
-        initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_PROD"),
+        name = "RAKUTEN_ACCESS_KEY",
+        value = properties.getProperty("rakuten.accessKey.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_ACCESS_KEY_PROD"),
       )
       buildConfigStringField(
         name = "RAKUTEN_AFFILIATE_ID",
@@ -128,14 +119,9 @@ android {
         initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_PROD"),
       )
       buildConfigStringField(
-        name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.prod"),
-        initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_PROD"),
-      )
-      buildConfigStringField(
-        name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.prod"),
-        initialValue = getEnvOrEmpty(name = "SUPABASE_URL_PROD"),
+        name = "RAKUTEN_REFERER",
+        value = properties.getProperty("rakuten.referer.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_REFERER_PROD"),
       )
     }
 
@@ -156,13 +142,15 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  kotlinOptions {
-    jvmTarget = libs.versions.jvmTarget.get()
-  }
-
   buildFeatures {
     buildConfig = true
     compose = true
+  }
+}
+
+kotlin {
+  compilerOptions {
+    jvmTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
   }
 }
 
@@ -170,28 +158,26 @@ dependencies {
   implementation(project(":core:api"))
   implementation(project(":core:common"))
   implementation(project(":core:config"))
-  implementation(project(":core:data"))
   implementation(project(":core:database"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
-  implementation(project(":core:hcaptcha"))
-  implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
-  implementation(project(":feature:sign-in"))
-  implementation(project(":feature:sign-up"))
-  implementation(project(":feature:verify-otp"))
 
   "prodImplementation"((project(":core:repository")))
   "devImplementation"((project(":core:repository")))
   "mockImplementation"((project(":core:repository-mock")))
 
   implementation(libs.android.material)
+  implementation(libs.androidx.core.splashscreen)
   implementation(platform(libs.androidx.compose.bom))
-  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+  implementation(libs.androidx.navigation3.runtime)
+  implementation(libs.androidx.navigation3.ui)
   implementation(libs.hilt.android)
+  implementation(libs.play.services.oss.licenses)
 
   ksp(libs.hilt.android.compiler)
 }

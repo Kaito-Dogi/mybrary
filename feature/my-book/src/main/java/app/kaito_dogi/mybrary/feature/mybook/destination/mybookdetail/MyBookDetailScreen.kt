@@ -34,10 +34,10 @@ internal fun MyBookDetailScreen(
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
   onNavigationIconClick: () -> Unit,
   onFavoriteClick: () -> Unit,
-  onPublicClick: () -> Unit,
-  onArchiveClick: () -> Unit,
+  onRakutenClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
+  onShareTextToXClick: (Memo) -> Unit,
   onStartPageChange: (String) -> Unit,
   onEndPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
@@ -50,8 +50,8 @@ internal fun MyBookDetailScreen(
         onClick = onAdditionClick,
       ) {
         Icon(
-          painter = painterResource(R.drawable.icon_add),
-          contentDescription = stringResource(R.string.my_book_detail_alt_create_a_memo),
+          painter = painterResource(id = R.drawable.icon_add),
+          contentDescription = stringResource(id = R.string.my_book_detail_alt_create_a_memo),
         )
       }
     },
@@ -59,21 +59,17 @@ internal fun MyBookDetailScreen(
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
       // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
-      contentPadding = PaddingValues(
-        bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.md,
-      ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.md),
+      contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.md),
+      verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.md),
     ) {
       // ヘッダー
       item(key = "MyBookDetailTopAppBar") {
         MyBookDetailTopAppBar(
           myBook = uiState.myBook,
-          isPublic = uiState.myBook.isPublic,
           isFavorite = uiState.myBook.isFavorite,
           onNavigationIconClick = onNavigationIconClick,
           onFavoriteClick = onFavoriteClick,
-          onPublicClick = onPublicClick,
-          onArchiveClick = onArchiveClick,
+          onRakutenClick = onRakutenClick,
         )
       }
 
@@ -86,6 +82,7 @@ internal fun MyBookDetailScreen(
           MemoRow(
             memo = memo,
             onClick = onMemoClick,
+            onShareTextToXClick = onShareTextToXClick,
             modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
@@ -134,9 +131,9 @@ private fun MyBookDetailScreenPreview() {
           publisher = "出版社",
           isbn = "isbn",
           genre = Genre.All,
+          rakutenUrl = Url.Affiliate(value = ""),
           isPinned = false,
           isFavorite = false,
-          isPublic = false,
           isArchived = false,
         ),
       ),
@@ -144,10 +141,10 @@ private fun MyBookDetailScreenPreview() {
       bottomSheet = {},
       onNavigationIconClick = {},
       onFavoriteClick = {},
-      onPublicClick = {},
-      onArchiveClick = {},
+      onRakutenClick = {},
       onAdditionClick = {},
       onMemoClick = {},
+      onShareTextToXClick = {},
       onStartPageChange = {},
       onEndPageChange = {},
       onContentChange = {},

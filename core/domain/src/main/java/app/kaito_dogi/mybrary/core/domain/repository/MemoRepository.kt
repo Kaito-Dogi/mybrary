@@ -14,6 +14,4 @@ interface MemoRepository {
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo
-
-  suspend fun publishMemo(memoId: MemoId): Memo
 }

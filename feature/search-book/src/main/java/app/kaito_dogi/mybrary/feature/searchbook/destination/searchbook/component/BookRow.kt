@@ -11,12 +11,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
+import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Author
 import app.kaito_dogi.mybrary.core.domain.model.Book
@@ -30,6 +35,7 @@ internal fun BookRow(
   book: Book,
   onClick: (Book) -> Unit,
   onLongClick: (Book) -> Unit,
+  onRakutenClick: (Book) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Card(
@@ -42,13 +48,13 @@ internal fun BookRow(
     shape = MybraryTheme.shapes.cornerMd,
   ) {
     Row(
-      modifier = Modifier.height(IntrinsicSize.Min),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
+      modifier = Modifier.height(intrinsicSize = IntrinsicSize.Min),
+      horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.sm),
     ) {
       BookImage(
         title = book.title,
         imageUrl = book.imageUrl,
-        modifier = Modifier.width(MybraryTheme.dimens.bookWidthSm),
+        modifier = Modifier.width(width = MybraryTheme.dimens.bookWidthSm),
         shape = MybraryTheme.shapes.rectangle,
       )
 
@@ -58,37 +64,53 @@ internal fun BookRow(
           end = MybraryTheme.spaces.xs,
           bottom = MybraryTheme.spaces.xs,
         ),
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+        verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
       ) {
         Text(
           text = book.title,
           modifier = Modifier
             .fillMaxWidth()
-            .weight(1f),
+            .weight(weight = 1f),
           overflow = TextOverflow.Ellipsis,
           maxLines = 3,
           style = MybraryTheme.typography.bodyLarge,
         )
 
-        if (book.authorList.isNotEmpty()) {
-          Text(
-            text = book.authorList.joinToString { it.name },
-            modifier = Modifier.fillMaxWidth(),
-            color = MybraryTheme.colorScheme.onSurfaceVariant,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 1,
-            style = MybraryTheme.typography.bodySmall,
-          )
-        }
+        Row(
+          horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
+        ) {
+          Column(
+            modifier = Modifier.weight(weight = 1f),
+            verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
+          ) {
+            if (book.authorList.isNotEmpty()) {
+              Text(
+                text = book.authorList.joinToString { it.name },
+                modifier = Modifier.fillMaxWidth(),
+                color = MybraryTheme.colorScheme.onSurfaceVariant,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+                style = MybraryTheme.typography.bodySmall,
+              )
+            }
 
-        Text(
-          text = book.publisher,
-          modifier = Modifier.fillMaxWidth(),
-          color = MybraryTheme.colorScheme.onSurfaceVariant,
-          overflow = TextOverflow.Ellipsis,
-          maxLines = 1,
-          style = MybraryTheme.typography.bodySmall,
-        )
+            Text(
+              text = book.publisher,
+              modifier = Modifier.fillMaxWidth(),
+              color = MybraryTheme.colorScheme.onSurfaceVariant,
+              overflow = TextOverflow.Ellipsis,
+              maxLines = 1,
+              style = MybraryTheme.typography.bodySmall,
+            )
+          }
+
+          IconButton(onClick = { onRakutenClick(book) }) {
+            Icon(
+              painter = painterResource(id = R.drawable.icon_shopping_cart),
+              contentDescription = stringResource(id = R.string.search_book_alt_view_in_rakuten_books),
+            )
+          }
+        }
       }
     }
   }
@@ -112,6 +134,7 @@ private fun BookRowPreview() {
       ),
       onClick = {},
       onLongClick = {},
+      onRakutenClick = {},
     )
   }
 }

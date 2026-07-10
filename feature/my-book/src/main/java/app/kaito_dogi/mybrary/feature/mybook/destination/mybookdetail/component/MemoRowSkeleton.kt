@@ -29,7 +29,7 @@ internal fun MemoRowSkeleton(
         end = MybraryTheme.spaces.sm,
         bottom = MybraryTheme.spaces.sm,
       ),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+      verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
     ) {
       Text(
         text = stringResource(id = R.string.my_book_detail_text_a),

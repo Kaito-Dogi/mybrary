@@ -13,6 +13,6 @@ internal fun backgroundBrush() = Brush.linearGradient(
     MybraryTheme.colorScheme.secondaryContainer,
     MybraryTheme.colorScheme.errorContainer,
   ),
-  start = Offset(0f, 0f),
-  end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
+  start = Offset(x = 0f, y = 0f),
+  end = Offset(x = Float.POSITIVE_INFINITY, y = Float.POSITIVE_INFINITY),
 )

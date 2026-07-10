@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 @Module
 @InstallIn(SingletonComponent::class)
 internal object IoDispatcherModule {
-  @AppDispatcher(AppDispatchers.Io)
+  @AppDispatcher(appDispatchers = AppDispatchers.Io)
   @Provides
   fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }

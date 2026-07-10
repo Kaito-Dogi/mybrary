@@ -20,8 +20,8 @@ internal object OkHttpClientModule {
   fun provideOkHttpClient(
     @OkHttpInterceptor interceptorSet: MutableSet<Interceptor>,
   ): OkHttpClient = OkHttpClient.Builder()
-    .connectTimeout(ConnectTimeOut, TimeUnit.SECONDS)
-    .readTimeout(ReadTimeOut, TimeUnit.SECONDS)
+    .connectTimeout(timeout = ConnectTimeOut, unit = TimeUnit.SECONDS)
+    .readTimeout(timeout = ReadTimeOut, unit = TimeUnit.SECONDS)
     .apply {
       for (interceptor in interceptorSet) {
         addInterceptor(interceptor)

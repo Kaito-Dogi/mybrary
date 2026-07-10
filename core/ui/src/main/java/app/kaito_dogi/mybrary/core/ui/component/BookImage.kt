@@ -31,16 +31,16 @@ fun BookImage(
 ) {
   Box(
     modifier = modifier
-      .aspectRatio(BookAspectRatio)
+      .aspectRatio(ratio = BookAspectRatio)
       .clip(shape = shape)
-      .background(MybraryTheme.colorScheme.surface),
+      .background(color = MybraryTheme.colorScheme.surface),
     contentAlignment = Alignment.Center,
   ) {
     Text(
       text = title,
       modifier = Modifier
         .fillMaxWidth()
-        .padding(MybraryTheme.spaces.md),
+        .padding(all = MybraryTheme.spaces.md),
       color = MybraryTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center,
       overflow = TextOverflow.Ellipsis,
