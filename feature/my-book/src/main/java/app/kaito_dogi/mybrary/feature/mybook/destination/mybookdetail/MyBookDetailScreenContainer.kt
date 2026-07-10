@@ -14,6 +14,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
+import app.kaito_dogi.mybrary.core.domain.model.Sns
+import app.kaito_dogi.mybrary.core.ui.sns.shareTextToX
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,6 +41,17 @@ internal fun MyBookDetailScreenContainer(
     LaunchedEffect(key1 = it) {
       snackbarHostState.showSnackbar(message = context.getString(it))
       viewModel.onMessageShow()
+    }
+  }
+
+  uiState.shareTextToSns?.let { shareTextToSns ->
+    val (shareText, sns) = shareTextToSns
+    val context = LocalContext.current
+    LaunchedEffect(key1 = shareTextToSns) {
+      when (sns) {
+        Sns.X ->  context.shareTextToX(text = shareText)
+      }
+      viewModel.onTextShared()
     }
   }
 
@@ -69,6 +82,7 @@ internal fun MyBookDetailScreenContainer(
     onFavoriteClick = viewModel::onFavoriteClick,
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
+    onShareTextToXClick = viewModel::onShareTextToXClick,
     onStartPageChange = viewModel::onStartPageChange,
     onEndPageChange = viewModel::onEndPageChange,
     onContentChange = viewModel::onContentChange,

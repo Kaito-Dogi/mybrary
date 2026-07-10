@@ -6,6 +6,7 @@
   <string name="my_book_detail_alt_create_a_memo">Create a note</string>
   <string name="my_book_detail_alt_remove_my_book_from_favorites">Remove your book from favorites</string>
   <string name="my_book_detail_alt_save_a_memo">Save a note</string>
+  <string name="my_book_detail_alt_share_memo_to_x">Share the note to X</string>
   <string name="my_book_detail_message_my_book_added_to_your_favorites">Your book added to favorites</string>
   <string name="my_book_detail_message_my_book_removed_from_your_favorites">Your book removed from favorites</string>
   <string name="my_book_detail_message_memo_created">Note created</string>

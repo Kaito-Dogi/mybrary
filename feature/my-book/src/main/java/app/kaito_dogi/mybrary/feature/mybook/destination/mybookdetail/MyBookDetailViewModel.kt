@@ -8,6 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
+import app.kaito_dogi.mybrary.core.domain.model.Sns
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -113,6 +114,28 @@ internal class MyBookDetailViewModel @AssistedInject constructor(
       )
     }
   }
+
+  fun onShareTextToXClick(memo: Memo) {
+    _uiState.update {
+      it.copy(shareTextToSns = generateShareText(memo = memo) to Sns.X)
+    }
+  }
+
+  fun onTextShared() {
+    _uiState.update { it.copy(shareTextToSns = null) }
+  }
+
+  private fun generateShareText(memo: Memo): String = buildString {
+      appendLine(value = memo.content)
+      appendLine()
+      append("📖『${uiState.value.myBook.title}』")
+      memo.pageRange?.let { pageRange ->
+        val page = pageRange.end?.let { "pp.${pageRange.start}~$it" } ?: "p.${pageRange.start}"
+        append(" $page")
+      }
+      appendLine()
+      append("#Mybrary #読書メモ")
+    }
 
   fun onBottomSheetDismissRequest() {
     viewModelScope.launchSafe {
