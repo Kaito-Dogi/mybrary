@@ -20,6 +20,7 @@
   <string name="my_book_detail_text_page_count">%1$dページ</string>
   <string name="my_book_detail_text_page_count_and_publisher">%1$dページ｜ %2$s</string>
   <string name="my_book_detail_text_pp">pp.%1$d~%2$d</string>
+  <string name="my_book_detail_alt_view_in_rakuten_books">楽天ブックスで見る</string>
   <string name="my_book_list_alt_search_for_books">本を検索する</string>
   <string name="my_book_list_text_a">あ</string>
   <string name="my_book_list_text_all_my_books">すべての本</string>
@@ -32,6 +33,7 @@
   <string name="search_book_text_add">追加する</string>
   <string name="search_book_text_a_a">あ\nあ</string>
   <string name="search_book_text_cancel">追加しない</string>
+  <string name="search_book_alt_view_in_rakuten_books">楽天ブックスで見る</string>
   <string name="search_book_text_would_you_like_to_add_to_mybrary">Mybrary に本を追加しますか？</string>
   <string name="setting_list_alt_back">戻る</string>
   <string name="setting_list_text_about">このアプリについて</string>

@@ -15,6 +15,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.Sns
+import app.kaito_dogi.mybrary.core.ui.browser.rememberExternalBrowserLauncher
 import app.kaito_dogi.mybrary.core.ui.sns.shareTextToX
 import kotlinx.coroutines.launch
 
@@ -31,6 +32,7 @@ internal fun MyBookDetailScreenContainer(
 
   val snackbarHostState = remember { SnackbarHostState() }
   val bottomSheetState = rememberModalBottomSheetState()
+  val externalBrowserLauncher = rememberExternalBrowserLauncher()
 
   LaunchedEffect(key1 = Unit) {
     viewModel.onInit()
@@ -80,6 +82,7 @@ internal fun MyBookDetailScreenContainer(
     },
     onNavigationIconClick = onNavigationIconClick,
     onFavoriteClick = viewModel::onFavoriteClick,
+    onRakutenClick = { externalBrowserLauncher.launch(url = uiState.myBook.rakutenUrl) },
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
     onShareTextToXClick = viewModel::onShareTextToXClick,

@@ -34,6 +34,7 @@ internal fun MyBookDetailScreen(
   bottomSheet: @Composable (@Composable ColumnScope.() -> Unit) -> Unit,
   onNavigationIconClick: () -> Unit,
   onFavoriteClick: () -> Unit,
+  onRakutenClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
   onShareTextToXClick: (Memo) -> Unit,
@@ -68,6 +69,7 @@ internal fun MyBookDetailScreen(
           isFavorite = uiState.myBook.isFavorite,
           onNavigationIconClick = onNavigationIconClick,
           onFavoriteClick = onFavoriteClick,
+          onRakutenClick = onRakutenClick,
         )
       }
 
@@ -129,6 +131,7 @@ private fun MyBookDetailScreenPreview() {
           publisher = "出版社",
           isbn = "isbn",
           genre = Genre.All,
+          rakutenUrl = Url.Affiliate(value = ""),
           isPinned = false,
           isFavorite = false,
           isArchived = false,
@@ -138,6 +141,7 @@ private fun MyBookDetailScreenPreview() {
       bottomSheet = {},
       onNavigationIconClick = {},
       onFavoriteClick = {},
+      onRakutenClick = {},
       onAdditionClick = {},
       onMemoClick = {},
       onShareTextToXClick = {},

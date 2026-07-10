@@ -54,6 +54,7 @@ internal fun MyBookDetailTopAppBar(
   isFavorite: Boolean,
   onNavigationIconClick: () -> Unit,
   onFavoriteClick: () -> Unit,
+  onRakutenClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Box(
@@ -98,6 +99,14 @@ internal fun MyBookDetailTopAppBar(
         }
 
         Spacer(modifier = Modifier.weight(weight = 1f))
+
+        IconButton(onClick = onRakutenClick) {
+          Icon(
+            painter = painterResource(id = R.drawable.icon_shopping_cart),
+            contentDescription = stringResource(id = R.string.my_book_detail_alt_view_in_rakuten_books),
+            tint = Color.White,
+          )
+        }
 
         IconButton(onClick = onFavoriteClick) {
           Icon(
@@ -180,6 +189,7 @@ private fun MyBookDetailTopAppBarPreview() {
         publisher = "出版社",
         isbn = "isbn",
         genre = Genre.All,
+        rakutenUrl = Url.Affiliate(value = ""),
         isPinned = false,
         isFavorite = false,
         isArchived = false,
@@ -187,6 +197,7 @@ private fun MyBookDetailTopAppBarPreview() {
       isFavorite = false,
       onNavigationIconClick = {},
       onFavoriteClick = {},
+      onRakutenClick = {},
     )
   }
 }

@@ -12,6 +12,7 @@ data class MyBook(
   val publisher: String,
   val isbn: String,
   val genre: Genre,
+  val rakutenUrl: Url.Affiliate,
   val isPinned: Boolean,
   val isFavorite: Boolean,
   val isArchived: Boolean,
