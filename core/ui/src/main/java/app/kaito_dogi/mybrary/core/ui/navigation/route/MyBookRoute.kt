@@ -1,9 +1,10 @@
 package app.kaito_dogi.mybrary.core.ui.navigation.route
 
+import androidx.navigation3.runtime.NavKey
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import kotlinx.serialization.Serializable
 
-sealed interface MyBookRoute {
+sealed interface MyBookRoute : NavKey {
   @Serializable
   data object MyBookList : MyBookRoute
 
@@ -11,7 +12,4 @@ sealed interface MyBookRoute {
   data class MyBookDetail(
     val myBook: MyBook,
   ) : MyBookRoute
-
-  @Serializable
-  data object SearchBook : MyBookRoute
 }

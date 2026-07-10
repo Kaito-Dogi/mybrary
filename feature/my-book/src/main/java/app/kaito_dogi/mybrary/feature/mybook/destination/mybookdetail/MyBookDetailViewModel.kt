@@ -1,44 +1,43 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
-import app.kaito_dogi.mybrary.core.ui.navigation.route.MyBookRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-@HiltViewModel
-internal class MyBookDetailViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = MyBookDetailViewModel.Factory::class)
+internal class MyBookDetailViewModel @AssistedInject constructor(
   private val myBookRepository: MyBookRepository,
   private val memoRepository: MemoRepository,
   private val draftMemoRepository: DraftMemoRepository,
-  savedStateHandle: SavedStateHandle,
+  @Assisted private val initialMyBook: MyBook,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
-  private val navArg: MyBookRoute.MyBookDetail = savedStateHandle.toRoute(typeMap = MyBookDetailTypeMap)
+  @AssistedFactory
+  interface Factory {
+    fun create(initialMyBook: MyBook): MyBookDetailViewModel
+  }
 
-  private val _uiState = MutableStateFlow(
-    MyBookDetailUiState.createInitialValue(
-      myBook = navArg.myBook,
-    ),
-  )
+  private val _uiState = MutableStateFlow(value = MyBookDetailUiState.createInitialValue(myBook = initialMyBook))
   val uiState = _uiState.asStateFlow()
 
   fun onInit() {
     viewModelScope.launchSafe {
-      val myBookId = navArg.myBook.id
+      val myBookId = initialMyBook.id
       val memoList = memoRepository.getMemoList(myBookId = myBookId)
       val draftMemo = draftMemoRepository.getDraftMemo(
         myBookId = myBookId,
@@ -62,7 +61,7 @@ internal class MyBookDetailViewModel @Inject constructor(
     viewModelScope.launchSafe {
       if (uiState.value.myBook.isFavorite) {
         val removedMyBook = myBookRepository.removeMyBookFromFavorites(
-          myBookId = navArg.myBook.id,
+          myBookId = initialMyBook.id,
         )
         _uiState.update {
           it.copy(
@@ -72,7 +71,7 @@ internal class MyBookDetailViewModel @Inject constructor(
         }
       } else {
         val addedMyBook = myBookRepository.addMyBookToFavorites(
-          myBookId = navArg.myBook.id,
+          myBookId = initialMyBook.id,
         )
         _uiState.update {
           it.copy(
@@ -86,7 +85,7 @@ internal class MyBookDetailViewModel @Inject constructor(
 
   fun onAdditionClick() {
     viewModelScope.launchSafe {
-      val myBookId = navArg.myBook.id
+      val myBookId = initialMyBook.id
       val draftMemo = draftMemoRepository.getDraftMemo(
         myBookId = myBookId,
       ) ?: DraftMemo.createInitialValue(
@@ -126,7 +125,7 @@ internal class MyBookDetailViewModel @Inject constructor(
         }
 
         uiState.value.editingMemoId == null && draftMemo.content.isBlank() -> {
-          draftMemoRepository.deleteDraftMemo(myBookId = navArg.myBook.id)
+          draftMemoRepository.deleteDraftMemo(myBookId = initialMyBook.id)
         }
 
         uiState.value.editingMemoId != null -> {
@@ -198,12 +197,12 @@ internal class MyBookDetailViewModel @Inject constructor(
       val memoId = uiState.value.editingMemoId
       if (memoId == null) {
         val createdMemo = memoRepository.createMemo(draftMemo = uiState.value.draftMemo)
-        draftMemoRepository.deleteDraftMemo(myBookId = navArg.myBook.id)
+        draftMemoRepository.deleteDraftMemo(myBookId = initialMyBook.id)
         _uiState.update {
           it.copy(
             memoList = it.memoList?.plus(createdMemo),
             draftMemo = DraftMemo.createInitialValue(
-              myBookId = navArg.myBook.id,
+              myBookId = initialMyBook.id,
             ),
             editingMemoId = null,
             isMemoSaved = true,
@@ -222,7 +221,7 @@ internal class MyBookDetailViewModel @Inject constructor(
           it.copy(
             memoList = newMemoList,
             draftMemo = DraftMemo.createInitialValue(
-              myBookId = navArg.myBook.id,
+              myBookId = initialMyBook.id,
             ),
             editingMemoId = null,
             isMemoSaved = true,

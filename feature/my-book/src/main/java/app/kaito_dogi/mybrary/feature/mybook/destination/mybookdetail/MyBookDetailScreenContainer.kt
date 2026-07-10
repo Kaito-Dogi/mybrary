@@ -10,37 +10,41 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
+import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyBookDetailScreenContainer(
+  myBook: MyBook,
   onNavigationIconClick: () -> Unit,
-  viewModel: MyBookDetailViewModel = hiltViewModel(),
+  viewModel: MyBookDetailViewModel = hiltViewModel<MyBookDetailViewModel, MyBookDetailViewModel.Factory>(
+    creationCallback = { factory -> factory.create(initialMyBook = myBook) },
+  ),
 ) {
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
   val snackbarHostState = remember { SnackbarHostState() }
   val bottomSheetState = rememberModalBottomSheetState()
 
-  LaunchedEffect(Unit) {
+  LaunchedEffect(key1 = Unit) {
     viewModel.onInit()
   }
 
   uiState.messageResId?.let {
     val context = LocalContext.current
-    LaunchedEffect(it) {
-      snackbarHostState.showSnackbar(context.getString(it))
+    LaunchedEffect(key1 = it) {
+      snackbarHostState.showSnackbar(message = context.getString(it))
       viewModel.onMessageShow()
     }
   }
 
   if (uiState.isMemoSaved) {
     val coroutineScope = rememberCoroutineScope()
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = Unit) {
       coroutineScope.launch {
         bottomSheetState.hide()
       }.invokeOnCompletion {
