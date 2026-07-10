@@ -170,6 +170,7 @@ dependencies {
   "mockImplementation"((project(":core:repository-mock")))
 
   implementation(libs.android.material)
+  implementation(libs.androidx.core.splashscreen)
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.lifecycle.viewmodel.navigation3)
   implementation(libs.androidx.navigation3.runtime)

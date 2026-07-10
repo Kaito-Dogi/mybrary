@@ -19,6 +19,7 @@
     <activity
       android:name="app.kaito_dogi.mybrary.MainActivity"
       android:exported="true"
+      android:theme="@style/Theme.Mybrary.Starting"
       android:windowSoftInputMode="adjustResize"
       >
       <intent-filter>
