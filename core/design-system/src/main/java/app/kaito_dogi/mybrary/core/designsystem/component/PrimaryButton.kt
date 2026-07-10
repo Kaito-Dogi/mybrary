@@ -38,7 +38,7 @@ fun PrimaryButton(
     Icon(
       painter = painterResource(id = iconResId),
       contentDescription = altResId?.let { stringResource(id = it) },
-      modifier = Modifier.size(ButtonDefaults.IconSize),
+      modifier = Modifier.size(size = ButtonDefaults.IconSize),
     )
 
     Gap(width = ButtonDefaults.IconSpacing)
@@ -46,7 +46,7 @@ fun PrimaryButton(
 
   if (isLoading) {
     CircularProgressIndicator(
-      modifier = Modifier.size(ButtonDefaults.IconSize),
+      modifier = Modifier.size(size = ButtonDefaults.IconSize),
       color = ButtonDefaults.buttonColors().disabledContentColor,
       strokeWidth = 2.dp,
       strokeCap = StrokeCap.Round,

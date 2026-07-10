@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 // FIXME: CoroutineDispatcher の注入をやめる
 internal class MockDraftMemoRepository @Inject constructor(
   private val draftMemoDao: DraftMemoDao,
-  @AppDispatcher(AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
+  @param:AppDispatcher(appDispatchers = AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : DraftMemoRepository {
   override suspend fun saveDraftMemo(draftMemo: DraftMemo) = withContext(dispatcher) {
     draftMemoDao.upsert(entity = draftMemo.toEntity())

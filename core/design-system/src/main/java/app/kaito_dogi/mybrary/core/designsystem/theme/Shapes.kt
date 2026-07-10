@@ -19,8 +19,8 @@ data class Shapes(
 private val defaultShapes = Shapes(
   rectangle = RectangleShape,
   circle = CircleShape,
-  cornerSm = RoundedCornerShape(4.0.dp),
-  cornerMd = RoundedCornerShape(8.0.dp),
+  cornerSm = RoundedCornerShape(size = 4.0.dp),
+  cornerMd = RoundedCornerShape(size = 8.0.dp),
 )
 
 internal val LocalShapes = staticCompositionLocalOf { defaultShapes }

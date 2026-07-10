@@ -51,7 +51,7 @@ fun TextField(
       Icon(
         painter = painterResource(id = it),
         contentDescription = leadingIconAltResId?.let { stringResource(id = it) },
-        modifier = Modifier.size(ButtonDefaults.IconSize),
+        modifier = Modifier.size(size = ButtonDefaults.IconSize),
       )
     }
   },

@@ -33,12 +33,12 @@ internal fun SettingRow(
     trailingContent = {
       onClick?.let {
         Box(
-          modifier = Modifier.size(IconContainerSize),
+          modifier = Modifier.size(size = IconContainerSize),
           contentAlignment = Alignment.Center,
         ) {
           Icon(
-            painter = painterResource(R.drawable.icon_arrow_forward),
-            contentDescription = stringResource(titleResId),
+            painter = painterResource(id = R.drawable.icon_arrow_forward),
+            contentDescription = stringResource(id = titleResId),
             tint = MybraryTheme.colorScheme.onSurface,
           )
         }

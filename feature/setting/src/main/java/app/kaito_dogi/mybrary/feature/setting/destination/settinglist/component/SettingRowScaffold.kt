@@ -31,19 +31,19 @@ internal fun SettingRowScaffold(
   Row(
     modifier = modifier
       .clickable(enabled = onClick != null) { onClick?.invoke() }
-      .background(MybraryTheme.colorScheme.background)
+      .background(color = MybraryTheme.colorScheme.background)
       .fillMaxWidth()
       .defaultMinSize(minHeight = MinHeight)
       .padding(horizontal = MybraryTheme.spaces.md),
-    horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xs),
+    horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xs),
     verticalAlignment = Alignment.CenterVertically,
   ) {
     Column(
-      modifier = Modifier.weight(1f),
-      verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+      modifier = Modifier.weight(weight = 1f),
+      verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
     ) {
       Text(
-        text = stringResource(titleResId),
+        text = stringResource(id = titleResId),
         color = if (isDanger) MybraryTheme.colorScheme.error else MybraryTheme.colorScheme.onSurface,
         maxLines = 1,
         style = MybraryTheme.typography.bodyLarge,

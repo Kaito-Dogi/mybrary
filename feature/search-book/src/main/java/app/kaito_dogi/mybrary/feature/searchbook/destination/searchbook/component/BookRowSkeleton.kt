@@ -29,16 +29,16 @@ fun BookRowSkeleton(
     modifier = modifier,
   ) {
     Row(
-      modifier = Modifier.height(IntrinsicSize.Min),
+      modifier = Modifier.height(intrinsicSize = IntrinsicSize.Min),
     ) {
       Box(
         modifier = Modifier
-            .aspectRatio(BookAspectRatio)
-            .width(MybraryTheme.dimens.bookWidthSm),
+            .aspectRatio(ratio = BookAspectRatio)
+            .width(width = MybraryTheme.dimens.bookWidthSm),
       )
 
       Column(
-        verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.xxs),
+        verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),
       ) {
         Text(
           text = stringResource(id = R.string.search_book_text_a_a),

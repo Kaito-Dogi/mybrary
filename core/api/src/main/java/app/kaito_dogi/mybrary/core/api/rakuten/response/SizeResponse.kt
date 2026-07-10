@@ -49,6 +49,6 @@ private object SizeResponseSerializer : KSerializer<SizeResponse> {
     encoder: Encoder,
     value: SizeResponse,
   ) {
-    encoder.encodeString(value.value)
+    encoder.encodeString(value = value.value)
   }
 }

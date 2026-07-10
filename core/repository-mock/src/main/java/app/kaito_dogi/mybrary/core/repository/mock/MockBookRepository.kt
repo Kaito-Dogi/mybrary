@@ -8,6 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.Sort
 import app.kaito_dogi.mybrary.core.domain.repository.BookRepository
 import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
 
 internal class MockBookRepository @Inject constructor() : BookRepository {
@@ -25,7 +26,7 @@ internal class MockBookRepository @Inject constructor() : BookRepository {
     page: Int,
     sort: Sort,
   ): List<Book> {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     return MockBookList
   }

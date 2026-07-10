@@ -34,16 +34,16 @@ internal fun MyBookDetailBottomSheetContent(
 ) {
   Column(
     modifier = modifier,
-    verticalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
+    verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.sm),
   ) {
     Row(
       modifier = Modifier.fillMaxWidth(),
-      horizontalArrangement = Arrangement.spacedBy(MybraryTheme.spaces.sm),
+      horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.sm),
     ) {
       TextField(
         value = draftMemo.pageRange?.start?.toString(radix = Radix) ?: "",
         onValueChange = onStartPageChange,
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.weight(weight = 1f),
         placeholderResId = R.string.my_book_detail_placeholder_start_page,
         keyboardType = KeyboardType.NumberPassword,
         imeAction = ImeAction.Next,
@@ -53,7 +53,7 @@ internal fun MyBookDetailBottomSheetContent(
       TextField(
         value = draftMemo.pageRange?.end?.toString(radix = Radix) ?: "",
         onValueChange = onEndPageChange,
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.weight(weight = 1f),
         isEnabled = draftMemo.pageRange?.start != null,
         placeholderResId = R.string.my_book_detail_placeholder_end_page,
         keyboardType = KeyboardType.NumberPassword,
@@ -69,7 +69,7 @@ internal fun MyBookDetailBottomSheetContent(
       TextField(
         value = draftMemo.content,
         onValueChange = onContentChange,
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.weight(weight = 1f),
         placeholderResId = R.string.my_book_detail_placeholder_enter_memo,
         isError = isContentTextFieldError,
         keyboardType = KeyboardType.Text,
@@ -79,8 +79,8 @@ internal fun MyBookDetailBottomSheetContent(
 
       IconButton(onClick = onSaveClick) {
         Icon(
-          painter = painterResource(R.drawable.icon_send),
-          contentDescription = stringResource(R.string.my_book_detail_alt_save_a_memo),
+          painter = painterResource(id = R.drawable.icon_send),
+          contentDescription = stringResource(id = R.string.my_book_detail_alt_save_a_memo),
         )
       }
     }

@@ -15,7 +15,7 @@ internal class MyBookListViewModel @Inject constructor(
   private val myBookRepository: MyBookRepository,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
-  private val _uiState = MutableStateFlow(MyBookListUiState.InitialValue)
+  private val _uiState = MutableStateFlow(value = MyBookListUiState.InitialValue)
   val uiState = _uiState.asStateFlow()
 
   fun onInit() {

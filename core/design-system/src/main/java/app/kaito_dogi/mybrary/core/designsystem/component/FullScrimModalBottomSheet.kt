@@ -24,7 +24,7 @@ fun FullScrimModalBottomSheet(
   sheetState: SheetState = rememberModalBottomSheetState(),
   shape: Shape = BottomSheetDefaults.ExpandedShape,
   containerColor: Color = BottomSheetDefaults.ContainerColor,
-  contentColor: Color = contentColorFor(containerColor),
+  contentColor: Color = contentColorFor(backgroundColor = containerColor),
   tonalElevation: Dp = BottomSheetDefaults.Elevation,
   scrimColor: Color = BottomSheetDefaults.ScrimColor,
   dragHandle: @Composable (() -> Unit)? = { BottomSheetDefaults.DragHandle() },
@@ -33,9 +33,9 @@ fun FullScrimModalBottomSheet(
   val density = LocalDensity.current
   val layoutDirection = LocalLayoutDirection.current
 
-  val left = BottomSheetDefaults.windowInsets.getLeft(density, layoutDirection)
-  val right = BottomSheetDefaults.windowInsets.getRight(density, layoutDirection)
-  val bottom = BottomSheetDefaults.windowInsets.getBottom(density)
+  val left = BottomSheetDefaults.windowInsets.getLeft(density = density, layoutDirection = layoutDirection)
+  val right = BottomSheetDefaults.windowInsets.getRight(density = density, layoutDirection = layoutDirection)
+  val bottom = BottomSheetDefaults.windowInsets.getBottom(density = density)
 
   // status bar まで scrim を表示するため、WindowInsets の top を0にする
   val customWindowInsets = WindowInsets(
