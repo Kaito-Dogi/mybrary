@@ -41,16 +41,6 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     buildConfigStringField(
-      name = "DELETE_ACCOUNT_URL",
-      value = properties.getProperty("deleteAccountUrl"),
-      initialValue = getEnvOrEmpty(name = "DELETE_ACCOUNT_URL"),
-    )
-    buildConfigStringField(
-      name = "HCAPTCHA_SITE_KEY",
-      value = properties.getProperty("hCaptcha.siteKey.dev"),
-      initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_DEV"),
-    )
-    buildConfigStringField(
       name = "PRIVACY_POLICY_URL",
       value = properties.getProperty("privacyPolicyUrl"),
       initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
@@ -69,16 +59,6 @@ android {
       name = "RAKUTEN_DEVELOPERS_URL",
       value = properties.getProperty("rakuten.developersUrl"),
       initialValue = getEnvOrEmpty(name = "RAKUTEN_DEVELOPERS_URL"),
-    )
-    buildConfigStringField(
-      name = "SUPABASE_KEY",
-      value = properties.getProperty("supabase.key.dev"),
-      initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_DEV"),
-    )
-    buildConfigStringField(
-      name = "SUPABASE_URL",
-      value = properties.getProperty("supabase.url.dev"),
-      initialValue = getEnvOrEmpty(name = "SUPABASE_URL_DEV"),
     )
     buildConfigStringField(
       name = "TERMS_OF_USE",
@@ -113,11 +93,6 @@ android {
       dimension = "env"
 
       buildConfigStringField(
-        name = "HCAPTCHA_SITE_KEY",
-        value = properties.getProperty("hCaptcha.siteKey.prod"),
-        initialValue = getEnvOrEmpty(name = "HCAPTCHA_SITE_KEY_PROD"),
-      )
-      buildConfigStringField(
         name = "RAKUTEN_AFFILIATE_ID",
         value = properties.getProperty("rakuten.affiliateId.prod"),
         initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_PROD"),
@@ -126,16 +101,6 @@ android {
         name = "RAKUTEN_APPLICATION_ID",
         value = properties.getProperty("rakuten.applicationId.prod"),
         initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_PROD"),
-      )
-      buildConfigStringField(
-        name = "SUPABASE_KEY",
-        value = properties.getProperty("supabase.key.prod"),
-        initialValue = getEnvOrEmpty(name = "SUPABASE_KEY_PROD"),
-      )
-      buildConfigStringField(
-        name = "SUPABASE_URL",
-        value = properties.getProperty("supabase.url.prod"),
-        initialValue = getEnvOrEmpty(name = "SUPABASE_URL_PROD"),
       )
     }
 
@@ -172,19 +137,13 @@ dependencies {
   implementation(project(":core:api"))
   implementation(project(":core:common"))
   implementation(project(":core:config"))
-  implementation(project(":core:data"))
   implementation(project(":core:database"))
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
-  implementation(project(":core:hcaptcha"))
-  implementation(project(":core:supabase"))
   implementation(project(":core:ui"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
-  implementation(project(":feature:sign-in"))
-  implementation(project(":feature:sign-up"))
-  implementation(project(":feature:verify-otp"))
 
   "prodImplementation"((project(":core:repository")))
   "devImplementation"((project(":core:repository")))

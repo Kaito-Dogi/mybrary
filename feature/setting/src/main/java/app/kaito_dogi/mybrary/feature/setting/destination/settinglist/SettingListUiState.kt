@@ -10,10 +10,6 @@ internal data class SettingListUiState(
   val privacyPolicyUrl: Url.Web,
   val rakutenDevelopersUrl: Url.Web,
   val versionName: String,
-  val deleteAccountUrl: Url.Web,
-  val isLogoutDialogVisible: Boolean,
-  val isLoggingOut: Boolean,
-  val isLoggedOut: Boolean,
 ) {
   companion object {
     fun createInitialValue(
@@ -21,17 +17,12 @@ internal data class SettingListUiState(
       privacyPolicyUrl: Url.Web,
       rakutenDevelopersUrl: Url.Web,
       versionName: String,
-      deleteAccountUrl: Url.Web,
     ) = SettingListUiState(
       isMemoMadePublicByDefault = true,
       termsOfUseUrl = termsOfUseUrl,
       privacyPolicyUrl = privacyPolicyUrl,
       rakutenDevelopersUrl = rakutenDevelopersUrl,
       versionName = versionName,
-      deleteAccountUrl = deleteAccountUrl,
-      isLogoutDialogVisible = false,
-      isLoggingOut = false,
-      isLoggedOut = false,
     )
   }
 }
