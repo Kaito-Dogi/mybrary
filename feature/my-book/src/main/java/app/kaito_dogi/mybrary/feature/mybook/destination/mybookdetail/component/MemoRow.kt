@@ -11,10 +11,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,34 +58,31 @@ internal fun MemoRow(
         style = MybraryTheme.typography.bodyLarge,
       )
 
-      val context = LocalContext.current
-      val rowBody = remember(key1 = memo, key2 = context) {
-        val page = when {
-          memo.pageRange?.end != null -> context.getString(
-            R.string.my_book_detail_text_pp,
-            memo.pageRange?.start,
-            memo.pageRange?.end,
-          )
+      val pageStart = memo.pageRange?.start
+      val pageEnd = memo.pageRange?.end
+      val page = when {
+        pageStart != null && pageEnd != null -> stringResource(
+          id = R.string.my_book_detail_text_pp,
+          pageStart,
+          pageEnd,
+        )
 
-          memo.pageRange?.start != null -> context.getString(
-            R.string.my_book_detail_text_p,
-            memo.pageRange?.start,
-          )
+        pageStart != null -> stringResource(
+          id = R.string.my_book_detail_text_p,
+          pageStart,
+        )
 
-          else -> ""
-        }
-
-        val datetimeText = when {
-          memo.editedAt != null -> context.getString(
-            R.string.my_book_detail_text_edited,
-            memo.editedAt?.toFormattedString(),
-          )
-
-          else -> memo.createdAt.toFormattedString()
-        }
-
-        if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
+        else -> ""
       }
+
+      val datetimeText = memo.editedAt?.let { editedAt ->
+        stringResource(
+          id = R.string.my_book_detail_text_edited,
+          editedAt.toFormattedString(),
+        )
+      } ?: memo.createdAt.toFormattedString()
+
+      val rowBody = if (page.isNotBlank()) "$page｜$datetimeText" else datetimeText
       Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.xxs),

@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
@@ -39,9 +40,9 @@ internal fun MyBookDetailScreenContainer(
   }
 
   uiState.messageResId?.let {
-    val context = LocalContext.current
+    val message = stringResource(id = it)
     LaunchedEffect(key1 = it) {
-      snackbarHostState.showSnackbar(message = context.getString(it))
+      snackbarHostState.showSnackbar(message = message)
       viewModel.onMessageShow()
     }
   }
