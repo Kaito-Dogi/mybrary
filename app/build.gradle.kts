@@ -46,6 +46,11 @@ android {
       initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
     )
     buildConfigStringField(
+      name = "RAKUTEN_ACCESS_KEY",
+      value = properties.getProperty("rakuten.accessKey.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_ACCESS_KEY_DEV"),
+    )
+    buildConfigStringField(
       name = "RAKUTEN_AFFILIATE_ID",
       value = properties.getProperty("rakuten.affiliateId.dev"),
       initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_DEV"),
@@ -59,6 +64,11 @@ android {
       name = "RAKUTEN_DEVELOPERS_URL",
       value = properties.getProperty("rakuten.developersUrl"),
       initialValue = getEnvOrEmpty(name = "RAKUTEN_DEVELOPERS_URL"),
+    )
+    buildConfigStringField(
+      name = "RAKUTEN_REFERER",
+      value = properties.getProperty("rakuten.referer.dev"),
+      initialValue = getEnvOrEmpty(name = "RAKUTEN_REFERER_DEV"),
     )
     buildConfigStringField(
       name = "TERMS_OF_USE",
@@ -93,6 +103,11 @@ android {
       dimension = "env"
 
       buildConfigStringField(
+        name = "RAKUTEN_ACCESS_KEY",
+        value = properties.getProperty("rakuten.accessKey.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_ACCESS_KEY_PROD"),
+      )
+      buildConfigStringField(
         name = "RAKUTEN_AFFILIATE_ID",
         value = properties.getProperty("rakuten.affiliateId.prod"),
         initialValue = getEnvOrEmpty(name = "RAKUTEN_AFFILIATE_ID_PROD"),
@@ -101,6 +116,11 @@ android {
         name = "RAKUTEN_APPLICATION_ID",
         value = properties.getProperty("rakuten.applicationId.prod"),
         initialValue = getEnvOrEmpty(name = "RAKUTEN_APPLICATION_ID_PROD"),
+      )
+      buildConfigStringField(
+        name = "RAKUTEN_REFERER",
+        value = properties.getProperty("rakuten.referer.prod"),
+        initialValue = getEnvOrEmpty(name = "RAKUTEN_REFERER_PROD"),
       )
     }
 

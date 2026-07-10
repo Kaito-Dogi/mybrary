@@ -15,9 +15,11 @@ internal object AppConfigModule {
   @Provides
   fun provideAppConfig(): AppConfig = object : AppConfig {
     override val privacyPolicyUrl: Url.Web = Url.Web(value = BuildConfig.PRIVACY_POLICY_URL)
+    override val rakutenAccessKey: String = BuildConfig.RAKUTEN_ACCESS_KEY
     override val rakutenApplicationId: String = BuildConfig.RAKUTEN_APPLICATION_ID
     override val rakutenAffiliateId: String = BuildConfig.RAKUTEN_AFFILIATE_ID
     override val rakutenDevelopersUrl: Url.Web = Url.Web(value = BuildConfig.RAKUTEN_DEVELOPERS_URL)
+    override val rakutenReferer: String = BuildConfig.RAKUTEN_REFERER
     override val termsOfUseUrl: Url.Web = Url.Web(value = BuildConfig.TERMS_OF_USE)
     override val versionName: String = BuildConfig.VERSION_NAME
   }
