@@ -14,17 +14,20 @@ import app.kaito_dogi.mybrary.feature.setting.destination.settinglist.component.
 @Composable
 internal fun SettingListScreen(
   uiState: SettingListUiState,
+  onNavigationIconClick: () -> Unit,
   onTermsOfUseClick: () -> Unit,
   onPrivacyPolicyClick: () -> Unit,
   onLicenceClick: () -> Unit,
   onRakutenDevelopersClick: () -> Unit,
 ) {
-  NavigationBarContentScaffold { innerPadding ->
+  NavigationBarContentScaffold(
+    topBar = {
+      SettingListTopAppBar(
+        onNavigationIconClick = onNavigationIconClick,
+      )
+    },
+  ) { innerPadding ->
     LazyColumn(contentPadding = innerPadding) {
-      item {
-        SettingListTopAppBar()
-      }
-
       // アプリについて
       item {
         SettingHeader(titleResId = R.string.setting_list_text_about)
@@ -74,6 +77,7 @@ private fun SettingListScreenPreview() {
         rakutenDevelopersUrl = Url.Web(value = ""),
         versionName = "0.0.1",
       ),
+      onNavigationIconClick = {},
       onTermsOfUseClick = {},
       onPrivacyPolicyClick = {},
       onLicenceClick = {},

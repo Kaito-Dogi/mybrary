@@ -32,6 +32,7 @@
   <string name="search_book_text_a_a">A\nA</string>
   <string name="search_book_text_cancel">Cancel</string>
   <string name="search_book_text_would_you_like_to_add_to_mybrary">Would you like to add to Mybrary?</string>
+  <string name="setting_list_alt_back">Back</string>
   <string name="setting_list_text_about">About</string>
   <string name="setting_list_text_license">License</string>
   <string name="setting_list_text_privacy_policy">Privacy Policy</string>

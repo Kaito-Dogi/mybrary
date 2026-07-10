@@ -14,7 +14,7 @@ internal class SettingListViewModel @Inject constructor(
   appConfig: AppConfig,
 ) : ViewModel(), LaunchSafe by launchSafe {
   private val _uiState = MutableStateFlow(
-    SettingListUiState.createInitialValue(
+    value = SettingListUiState.createInitialValue(
       termsOfUseUrl = appConfig.termsOfUseUrl,
       privacyPolicyUrl = appConfig.privacyPolicyUrl,
       rakutenDevelopersUrl = appConfig.rakutenDevelopersUrl,

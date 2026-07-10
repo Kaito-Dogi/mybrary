@@ -9,13 +9,11 @@ import androidx.compose.ui.unit.dp
 data class Dimens(
   val bookWidthSm: Dp,
   val bookWidthMd: Dp,
-  val navigationBarHeight: Dp,
 )
 
 private val defaultDimens = Dimens(
   bookWidthSm = 96.dp,
   bookWidthMd = 120.dp,
-  navigationBarHeight = 80.dp,
 )
 
 internal val LocalDimens = staticCompositionLocalOf { defaultDimens }
