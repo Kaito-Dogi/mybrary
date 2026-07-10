@@ -9,15 +9,16 @@ import app.kaito_dogi.mybrary.core.domain.model.MyBookId
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
 import app.kaito_dogi.mybrary.core.repository.mock.convertor.toAuthorList
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
-  private val mockMyBookList = MutableStateFlow(MockMyBookList)
+  private val mockMyBookList = MutableStateFlow(value = MockMyBookList)
 
   override suspend fun getMyBookList(): List<MyBook> {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     return mockMyBookList.value
   }
@@ -25,13 +26,13 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   override suspend fun getMyBook(
     myBookId: MyBookId,
   ): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     return mockMyBookList.value.first { it.id == myBookId }
   }
 
   override suspend fun addBookToMybrary(book: Book): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val myBook = MyBook(
       id = MyBookId(value = "${mockMyBookList.value.size}"),
@@ -41,9 +42,9 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
       publisher = book.publisher,
       isbn = book.isbn,
       genre = book.genre,
+      rakutenUrl = book.rakutenUrl,
       isPinned = false,
       isFavorite = false,
-      isPublic = false,
       isArchived = false,
     )
 
@@ -53,7 +54,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   override suspend fun pinMyBook(myBookId: MyBookId): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
     val pinedMyBook = myBook.copy(isPinned = true)
@@ -66,7 +67,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   override suspend fun addMyBookToFavorites(myBookId: MyBookId): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
     val addedMyBook = myBook.copy(isFavorite = true)
@@ -79,7 +80,7 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
   }
 
   override suspend fun removeMyBookFromFavorites(myBookId: MyBookId): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
     val removedMyBook = myBook.copy(isFavorite = false)
@@ -91,34 +92,8 @@ internal class MockMyBookRepository @Inject constructor() : MyBookRepository {
     return removedMyBook
   }
 
-  override suspend fun makeMyBookPublic(myBookId: MyBookId): MyBook {
-    delay(1_000)
-
-    val myBook = mockMyBookList.value.first { it.id == myBookId }
-    val publicMyBook = myBook.copy(isPublic = true)
-    val newMyBookList = mockMyBookList.value.map {
-      if (it.id == myBookId) publicMyBook else it
-    }
-    mockMyBookList.update { newMyBookList }
-
-    return publicMyBook
-  }
-
-  override suspend fun makeMyBookPrivate(myBookId: MyBookId): MyBook {
-    delay(1_000)
-
-    val myBook = mockMyBookList.value.first { it.id == myBookId }
-    val privateMyBook = myBook.copy(isPublic = false)
-    val newMyBookList = mockMyBookList.value.map {
-      if (it.id == myBookId) privateMyBook else it
-    }
-    mockMyBookList.update { newMyBookList }
-
-    return privateMyBook
-  }
-
   override suspend fun archiveMyBook(myBookId: MyBookId): MyBook {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val myBook = mockMyBookList.value.first { it.id == myBookId }
     val archivedMyBook = myBook.copy(isArchived = true)
@@ -173,6 +148,7 @@ private val MockMyBookList = List(20) { index ->
       else -> "出版社"
     },
     isbn = "isbn",
+    rakutenUrl = Url.Affiliate(value = "https://books.rakuten.co.jp/"),
     genre = when (index % 7) {
       0 -> Genre.Hardcover
       1 -> Genre.Hardcover
@@ -184,7 +160,6 @@ private val MockMyBookList = List(20) { index ->
     },
     isPinned = false,
     isFavorite = false,
-    isPublic = false,
     isArchived = false,
   )
 }

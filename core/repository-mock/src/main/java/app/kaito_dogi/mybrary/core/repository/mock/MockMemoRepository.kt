@@ -8,6 +8,7 @@ import app.kaito_dogi.mybrary.core.domain.model.PageRange
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import java.time.LocalDateTime
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -16,7 +17,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
   private val mockMemoList = MutableStateFlow<List<Memo>>(emptyList())
 
   override suspend fun getMemoList(myBookId: MyBookId): List<Memo> {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     mockMemoList.update {
       createMockMemoList(myBookId = myBookId)
@@ -26,7 +27,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
   }
 
   override suspend fun createMemo(draftMemo: DraftMemo): Memo {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val createdMemo = Memo(
       id = MemoId(value = "${mockMemoList.value.size}"),
@@ -34,8 +35,6 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
       pageRange = draftMemo.pageRange,
       createdAt = LocalDateTime.now(),
       editedAt = null,
-      publishedAt = null,
-      likeCount = 0,
     )
     mockMemoList.update { it + createdMemo }
 
@@ -46,7 +45,7 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     memoId: MemoId,
     draftMemo: DraftMemo,
   ): Memo {
-    delay(1_000)
+    delay(duration = 1.seconds)
 
     val memo = mockMemoList.value.first { it.id == memoId }
     val editedMemo = memo.copy(
@@ -60,21 +59,6 @@ internal class MockMemoRepository @Inject constructor() : MemoRepository {
     mockMemoList.update { newMemoList }
 
     return editedMemo
-  }
-
-  override suspend fun publishMemo(memoId: MemoId): Memo {
-    delay(1_000)
-
-    val memo = mockMemoList.value.first { it.id == memoId }
-    val publishedMemo = memo.copy(
-      publishedAt = LocalDateTime.now(),
-    )
-    val newMemoList = mockMemoList.value.map {
-      if (it.id == memoId) publishedMemo else it
-    }
-    mockMemoList.update { newMemoList }
-
-    return publishedMemo
   }
 }
 
@@ -92,7 +76,5 @@ private fun createMockMemoList(myBookId: MyBookId) = List(10) { index ->
     },
     createdAt = LocalDateTime.now(),
     editedAt = null,
-    publishedAt = null,
-    likeCount = 0,
   )
 }
