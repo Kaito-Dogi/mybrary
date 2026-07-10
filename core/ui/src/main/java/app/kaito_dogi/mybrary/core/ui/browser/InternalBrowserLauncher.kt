@@ -20,7 +20,7 @@ interface InternalBrowserLauncher {
 fun rememberInternalBrowserLauncher(): InternalBrowserLauncher {
   val context = LocalContext.current
 
-  val closeButtonIcon = remember(context) {
+  val closeButtonIcon = remember(key1 = context) {
     BitmapFactory.decodeResource(
       context.resources,
       R.drawable.icon_arrow_back,
@@ -28,15 +28,15 @@ fun rememberInternalBrowserLauncher(): InternalBrowserLauncher {
   }
 
   val toolbarColor = MybraryTheme.colorScheme.surface.toArgb()
-  val customTabColorSchemeParams = remember(toolbarColor) {
+  val customTabColorSchemeParams = remember(key1 = toolbarColor) {
     CustomTabColorSchemeParams.Builder()
       .setToolbarColor(toolbarColor)
       .build()
   }
 
   val customTabsIntent = remember(
-    closeButtonIcon,
-    customTabColorSchemeParams,
+    key1 = closeButtonIcon,
+    key2 = customTabColorSchemeParams,
   ) {
     CustomTabsIntent.Builder()
       .setShowTitle(true)
