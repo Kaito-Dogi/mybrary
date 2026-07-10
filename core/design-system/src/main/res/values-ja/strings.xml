@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">本をお気に入りに追加する</string>
-  <string name="my_book_detail_alt_archive_my_book">本をアーカイブする</string>
   <string name="my_book_detail_alt_back">Mybrary に戻る</string>
   <string name="my_book_detail_alt_background_image">背景画像</string>
   <string name="my_book_detail_alt_create_a_memo">メモを作成する</string>
-  <string name="my_book_detail_alt_make_my_book_private">本を非公開にする</string>
-  <string name="my_book_detail_alt_make_my_book_public">本を公開する</string>
   <string name="my_book_detail_alt_remove_my_book_from_favorites">本をお気に入りから削除する</string>
   <string name="my_book_detail_alt_save_a_memo">メモを保存する</string>
   <string name="my_book_detail_message_my_book_added_to_your_favorites">お気に入りに追加しました</string>
-  <string name="my_book_detail_message_my_book_archived">アーカイブしました</string>
-  <string name="my_book_detail_message_my_book_is_now_private">公開しました</string>
-  <string name="my_book_detail_message_my_book_is_now_public">非公開にしました</string>
   <string name="my_book_detail_message_my_book_removed_from_your_favorites">お気に入りから削除しました</string>
   <string name="my_book_detail_message_memo_created">メモを作成しました</string>
   <string name="my_book_detail_message_memo_edited">メモを編集しました</string>
@@ -40,7 +34,6 @@
   <string name="search_book_text_would_you_like_to_add_to_mybrary">Mybrary に本を追加しますか？</string>
   <string name="setting_list_text_about">このアプリについて</string>
   <string name="setting_list_text_license">ライセンス</string>
-  <string name="setting_list_text_make_notes_public_by_default">メモをデフォルトで公開する</string>
   <string name="setting_list_text_privacy_policy">プライバシーポリシー</string>
   <string name="setting_list_text_setting">設定</string>
   <string name="setting_list_text_supported_by_rakuten_developers">Supported by Rakuten Developers</string>

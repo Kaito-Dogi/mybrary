@@ -22,8 +22,4 @@ internal class SettingListViewModel @Inject constructor(
     ),
   )
   val uiState = _uiState.asStateFlow()
-
-  fun onSwitchClick(value: Boolean) {
-    // TODO: 実装する
-  }
 }

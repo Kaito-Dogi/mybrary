@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="my_book_detail_alt_add_my_book_to_favorites">Add your book to favorites</string>
-  <string name="my_book_detail_alt_archive_my_book">Archive your book</string>
   <string name="my_book_detail_alt_back">Back to Mybrary</string>
   <string name="my_book_detail_alt_background_image">Background image</string>
   <string name="my_book_detail_alt_create_a_memo">Create a note</string>
-  <string name="my_book_detail_alt_make_my_book_private">Make your book private</string>
-  <string name="my_book_detail_alt_make_my_book_public">Make your book public</string>
   <string name="my_book_detail_alt_remove_my_book_from_favorites">Remove your book from favorites</string>
   <string name="my_book_detail_alt_save_a_memo">Save a note</string>
   <string name="my_book_detail_message_my_book_added_to_your_favorites">Your book added to favorites</string>
-  <string name="my_book_detail_message_my_book_archived">Your book archived</string>
-  <string name="my_book_detail_message_my_book_is_now_private">Your book is now private</string>
-  <string name="my_book_detail_message_my_book_is_now_public">Your book is now public</string>
   <string name="my_book_detail_message_my_book_removed_from_your_favorites">Your book removed from favorites</string>
   <string name="my_book_detail_message_memo_created">Note created</string>
   <string name="my_book_detail_message_memo_edited">Note edited</string>
@@ -40,7 +34,6 @@
   <string name="search_book_text_would_you_like_to_add_to_mybrary">Would you like to add to Mybrary?</string>
   <string name="setting_list_text_about">About</string>
   <string name="setting_list_text_license">License</string>
-  <string name="setting_list_text_make_notes_public_by_default">Make notes public by default</string>
   <string name="setting_list_text_privacy_policy">Privacy Policy</string>
   <string name="setting_list_text_setting">Settings</string>
   <string name="setting_list_text_supported_by_rakuten_developers">Supported by Rakuten Developers</string>

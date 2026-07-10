@@ -14,6 +14,5 @@ data class MyBook(
   val genre: Genre,
   val isPinned: Boolean,
   val isFavorite: Boolean,
-  val isPublic: Boolean,
   val isArchived: Boolean,
 )

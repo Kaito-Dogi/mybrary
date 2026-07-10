@@ -58,50 +58,6 @@ internal class MyBookDetailViewModel @Inject constructor(
     _uiState.update { it.copy(messageResId = null) }
   }
 
-  fun onArchiveClick() {
-    viewModelScope.launchSafe {
-      val archivedMyBook = myBookRepository.archiveMyBook(
-        myBookId = navArg.myBook.id,
-      )
-      _uiState.update {
-        it.copy(
-          myBook = archivedMyBook,
-          draftMemo = DraftMemo.createInitialValue(
-            myBookId = navArg.myBook.id,
-          ),
-          editingMemoId = null,
-          messageResId = R.string.my_book_detail_message_my_book_archived,
-        )
-      }
-    }
-  }
-
-  fun onPublicClick() {
-    viewModelScope.launchSafe {
-      if (uiState.value.myBook.isPublic) {
-        val privateMyBook = myBookRepository.makeMyBookPrivate(
-          myBookId = navArg.myBook.id,
-        )
-        _uiState.update {
-          it.copy(
-            myBook = privateMyBook,
-            messageResId = R.string.my_book_detail_message_my_book_is_now_private,
-          )
-        }
-      } else {
-        val publicMyBook = myBookRepository.makeMyBookPublic(
-          myBookId = navArg.myBook.id,
-        )
-        _uiState.update {
-          it.copy(
-            myBook = publicMyBook,
-            messageResId = R.string.my_book_detail_message_my_book_is_now_public,
-          )
-        }
-      }
-    }
-  }
-
   fun onFavoriteClick() {
     viewModelScope.launchSafe {
       if (uiState.value.myBook.isFavorite) {

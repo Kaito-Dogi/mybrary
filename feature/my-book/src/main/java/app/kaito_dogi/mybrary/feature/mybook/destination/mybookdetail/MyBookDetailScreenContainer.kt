@@ -63,8 +63,6 @@ internal fun MyBookDetailScreenContainer(
     },
     onNavigationIconClick = onNavigationIconClick,
     onFavoriteClick = viewModel::onFavoriteClick,
-    onPublicClick = viewModel::onPublicClick,
-    onArchiveClick = viewModel::onArchiveClick,
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
     onStartPageChange = viewModel::onStartPageChange,

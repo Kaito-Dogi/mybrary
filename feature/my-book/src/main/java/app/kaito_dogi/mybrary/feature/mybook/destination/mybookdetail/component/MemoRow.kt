@@ -112,8 +112,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         createdAt = LocalDateTime.now(),
         editedAt = null,
-        publishedAt = null,
-        likeCount = 0,
       ),
       // 片方のページのみが記録されている場合
       Memo(
@@ -125,8 +123,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         createdAt = LocalDateTime.now(),
         editedAt = null,
-        publishedAt = null,
-        likeCount = 0,
       ),
       // ページが記録されていない場合
       Memo(
@@ -135,8 +131,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         pageRange = null,
         createdAt = LocalDateTime.now(),
         editedAt = null,
-        publishedAt = null,
-        likeCount = 0,
       ),
       // 編集済みの場合
       Memo(
@@ -148,8 +142,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         createdAt = LocalDateTime.now(),
         editedAt = LocalDateTime.now(),
-        publishedAt = null,
-        likeCount = 0,
       ),
       // 複数行の場合
       Memo(
@@ -161,8 +153,6 @@ private class PreviewMemoProvider : PreviewParameterProvider<Memo> {
         ),
         createdAt = LocalDateTime.now(),
         editedAt = null,
-        publishedAt = null,
-        likeCount = 0,
       ),
     )
 }
