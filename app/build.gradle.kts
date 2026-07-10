@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.VariantDimension
 import java.util.Properties
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 private val properties = Properties()
 private val secretsProperties = rootProject.file("./secrets.properties")
@@ -23,7 +24,6 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.compose)
   alias(libs.plugins.hilt.android)
-  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
 }
 
@@ -156,13 +156,15 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  kotlinOptions {
-    jvmTarget = libs.versions.jvmTarget.get()
-  }
-
   buildFeatures {
     buildConfig = true
     compose = true
+  }
+}
+
+kotlin {
+  compilerOptions {
+    jvmTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
   }
 }
 

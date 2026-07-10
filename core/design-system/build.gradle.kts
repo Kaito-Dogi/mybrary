@@ -1,7 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.compose)
-  alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -19,12 +20,14 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  kotlinOptions {
-    jvmTarget = libs.versions.jvmTarget.get()
-  }
-
   buildFeatures {
     compose = true
+  }
+}
+
+kotlin {
+  compilerOptions {
+    jvmTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
   }
 }
 

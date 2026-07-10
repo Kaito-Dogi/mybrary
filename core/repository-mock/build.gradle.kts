@@ -1,7 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.hilt.android)
-  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
   alias(libs.plugins.serialization)
 }
@@ -20,17 +21,17 @@ android {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
+}
 
-  kotlinOptions {
-    jvmTarget = libs.versions.jvmTarget.get()
+kotlin {
+  compilerOptions {
+    jvmTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
   }
 }
 
 dependencies {
-  implementation(project(":core:api"))
   implementation(project(":core:common"))
   implementation(project(":core:config"))
-  implementation(project(":core:data"))
   implementation(project(":core:database"))
   implementation(project(":core:domain"))
 
