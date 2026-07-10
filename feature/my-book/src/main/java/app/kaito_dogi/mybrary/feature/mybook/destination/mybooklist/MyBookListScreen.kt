@@ -33,6 +33,7 @@ import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCell
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCellSkeleton
+import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookEmptyCell
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeader
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookListHeaderSkeleton
 
@@ -142,6 +143,15 @@ internal fun MyBookListScreen(
             myBook = otherMyBook,
             onClick = onMyBookClick,
             modifier = Modifier.animateItem(),
+          )
+        }
+      }
+
+      // MyBook が0件の場合
+      if (uiState.myBookList?.isEmpty() == true) {
+        item(key = "MyBookEmptyCell") {
+          MyBookEmptyCell(
+            onClick = onAdditionClick,
           )
         }
       }
