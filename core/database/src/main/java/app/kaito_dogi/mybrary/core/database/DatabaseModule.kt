@@ -11,9 +11,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-private val Migration2To3 = object : Migration(2, 3) {
+private val Migration2To3 = object : Migration(startVersion = 2, endVersion = 3) {
   override fun migrate(db: SupportSQLiteDatabase) {
-    db.execSQL("ALTER TABLE my_book ADD COLUMN rakuten_url TEXT NOT NULL DEFAULT ''")
+    db.execSQL(sql = "ALTER TABLE my_book ADD COLUMN rakuten_url TEXT NOT NULL DEFAULT ''")
   }
 }
 

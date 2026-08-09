@@ -11,5 +11,5 @@ import javax.inject.Singleton
 internal interface LaunchSafeModule {
   @Singleton
   @Binds
-  fun bindLaunchSafe(impl: LaunchSafeImpl): LaunchSafe
+  fun bindLaunchSafe(impl: DefaultLaunchSafe): LaunchSafe
 }
