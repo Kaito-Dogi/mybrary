@@ -3,6 +3,7 @@ package app.kaito_dogi.mybrary.core.config
 import app.kaito_dogi.mybrary.core.common.model.Url
 
 interface AppConfig {
+  val playStoreUrl: Url.Web
   val privacyPolicyUrl: Url.Web
   val rakutenAccessKey: String
   val rakutenApplicationId: String
