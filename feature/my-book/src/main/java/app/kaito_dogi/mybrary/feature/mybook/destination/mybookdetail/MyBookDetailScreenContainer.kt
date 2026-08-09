@@ -15,9 +15,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.kaito_dogi.mybrary.core.designsystem.component.FullScrimModalBottomSheet
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
-import app.kaito_dogi.mybrary.core.domain.model.Sns
 import app.kaito_dogi.mybrary.core.ui.browser.rememberExternalBrowserLauncher
-import app.kaito_dogi.mybrary.core.ui.sns.shareTextToX
+import app.kaito_dogi.mybrary.core.ui.share.shareText
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,14 +46,11 @@ internal fun MyBookDetailScreenContainer(
     }
   }
 
-  uiState.shareTextToSns?.let { shareTextToSns ->
-    val (shareText, sns) = shareTextToSns
+  uiState.shareText?.let { shareText ->
     val context = LocalContext.current
-    LaunchedEffect(key1 = shareTextToSns) {
-      when (sns) {
-        Sns.X ->  context.shareTextToX(text = shareText)
-      }
-      viewModel.onTextShared()
+    LaunchedEffect(key1 = shareText) {
+      context.shareText(text = shareText)
+      viewModel.onMemoShared()
     }
   }
 
@@ -86,7 +82,7 @@ internal fun MyBookDetailScreenContainer(
     onRakutenClick = { externalBrowserLauncher.launch(url = uiState.myBook.rakutenUrl) },
     onAdditionClick = viewModel::onAdditionClick,
     onMemoClick = viewModel::onMemoClick,
-    onShareTextToXClick = viewModel::onShareTextToXClick,
+    onShareMemoClick = viewModel::onShareMemoClick,
     onStartPageChange = viewModel::onStartPageChange,
     onEndPageChange = viewModel::onEndPageChange,
     onContentChange = viewModel::onContentChange,

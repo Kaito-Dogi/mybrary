@@ -34,7 +34,7 @@ private val ShareIconSize = 16.dp
 internal fun MemoRow(
   memo: Memo,
   onClick: (Memo) -> Unit,
-  onShareTextToXClick: (Memo) -> Unit,
+  onShareMemoClick: (Memo) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Card(
@@ -96,12 +96,12 @@ internal fun MemoRow(
         )
 
         IconButton(
-          onClick = { onShareTextToXClick(memo) },
+          onClick = { onShareMemoClick(memo) },
           modifier = Modifier.size(size = ShareButtonSize),
         ) {
           Icon(
-            painter = painterResource(id = R.drawable.icon_x),
-            contentDescription = stringResource(id = R.string.my_book_detail_alt_share_memo_to_x),
+            painter = painterResource(id = R.drawable.icon_share),
+            contentDescription = stringResource(id = R.string.my_book_detail_alt_share_memo),
             modifier = Modifier.size(size = ShareIconSize),
             tint = MybraryTheme.colorScheme.onSurfaceVariant,
           )
@@ -120,7 +120,7 @@ private fun MemoRowPreview(
     MemoRow(
       memo = memo,
       onClick = {},
-      onShareTextToXClick = {},
+      onShareMemoClick = {},
     )
   }
 }

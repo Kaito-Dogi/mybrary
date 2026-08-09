@@ -14,6 +14,7 @@ internal object AppConfigModule {
   @Singleton
   @Provides
   fun provideAppConfig(): AppConfig = object : AppConfig {
+    override val playStoreUrl: Url.Web = Url.Web(value = BuildConfig.PLAY_STORE_URL)
     override val privacyPolicyUrl: Url.Web = Url.Web(value = BuildConfig.PRIVACY_POLICY_URL)
     override val rakutenAccessKey: String = BuildConfig.RAKUTEN_ACCESS_KEY
     override val rakutenApplicationId: String = BuildConfig.RAKUTEN_APPLICATION_ID
