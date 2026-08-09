@@ -42,6 +42,11 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     buildConfigStringField(
+      name = "PLAY_STORE_URL",
+      value = properties.getProperty("playStoreUrl"),
+      initialValue = getEnvOrEmpty(name = "PLAY_STORE_URL"),
+    )
+    buildConfigStringField(
       name = "PRIVACY_POLICY_URL",
       value = properties.getProperty("privacyPolicyUrl"),
       initialValue = getEnvOrEmpty(name = "PRIVACY_POLICY_URL"),
