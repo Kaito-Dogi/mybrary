@@ -10,7 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 @Singleton
-internal class LaunchSafeImpl @Inject constructor(
+internal class DefaultLaunchSafe @Inject constructor(
   private val exceptionProducer: ExceptionProducer,
 ) : LaunchSafe {
   override fun CoroutineScope.launchSafe(
