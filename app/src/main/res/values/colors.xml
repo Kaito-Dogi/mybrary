@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="splash_screen_background">#F0F0F0</color>
+  <!-- core:design-system の ColorScheme.kt の backgroundLight と同期させる -->
+  <color name="splash_screen_background">#F6FBF4</color>
 </resources>
