@@ -167,6 +167,7 @@ dependencies {
   implementation(project(":core:design-system"))
   implementation(project(":core:domain"))
   implementation(project(":core:ui"))
+  implementation(project(":feature:licence"))
   implementation(project(":feature:my-book"))
   implementation(project(":feature:search-book"))
   implementation(project(":feature:setting"))
@@ -182,7 +183,6 @@ dependencies {
   implementation(libs.androidx.navigation3.runtime)
   implementation(libs.androidx.navigation3.ui)
   implementation(libs.hilt.android)
-  implementation(libs.play.services.oss.licenses)
 
   ksp(libs.hilt.android.compiler)
 }
