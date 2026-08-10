@@ -37,7 +37,7 @@ internal fun MyBookDetailScreen(
   onRakutenClick: () -> Unit,
   onAdditionClick: () -> Unit,
   onMemoClick: (Memo) -> Unit,
-  onShareTextToXClick: (Memo) -> Unit,
+  onShareMemoClick: (Memo) -> Unit,
   onStartPageChange: (String) -> Unit,
   onEndPageChange: (String) -> Unit,
   onContentChange: (String) -> Unit,
@@ -82,7 +82,7 @@ internal fun MyBookDetailScreen(
           MemoRow(
             memo = memo,
             onClick = onMemoClick,
-            onShareTextToXClick = onShareTextToXClick,
+            onShareMemoClick = onShareMemoClick,
             modifier = Modifier.padding(horizontal = MybraryTheme.spaces.md),
           )
         }
@@ -144,7 +144,7 @@ private fun MyBookDetailScreenPreview() {
       onRakutenClick = {},
       onAdditionClick = {},
       onMemoClick = {},
-      onShareTextToXClick = {},
+      onShareMemoClick = {},
       onStartPageChange = {},
       onEndPageChange = {},
       onContentChange = {},

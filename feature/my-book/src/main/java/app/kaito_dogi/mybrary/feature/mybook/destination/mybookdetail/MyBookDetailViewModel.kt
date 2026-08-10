@@ -3,12 +3,12 @@ package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.kaito_dogi.mybrary.core.common.coroutines.LaunchSafe
+import app.kaito_dogi.mybrary.core.config.AppConfig
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.domain.model.DraftMemo
 import app.kaito_dogi.mybrary.core.domain.model.Memo
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.core.domain.model.PageRange
-import app.kaito_dogi.mybrary.core.domain.model.Sns
 import app.kaito_dogi.mybrary.core.domain.repository.DraftMemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MemoRepository
 import app.kaito_dogi.mybrary.core.domain.repository.MyBookRepository
@@ -25,6 +25,7 @@ internal class MyBookDetailViewModel @AssistedInject constructor(
   private val myBookRepository: MyBookRepository,
   private val memoRepository: MemoRepository,
   private val draftMemoRepository: DraftMemoRepository,
+  private val appConfig: AppConfig,
   @Assisted private val initialMyBook: MyBook,
   launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
@@ -115,27 +116,23 @@ internal class MyBookDetailViewModel @AssistedInject constructor(
     }
   }
 
-  fun onShareTextToXClick(memo: Memo) {
+  fun onShareMemoClick(memo: Memo) {
     _uiState.update {
-      it.copy(shareTextToSns = generateShareText(memo = memo) to Sns.X)
+      it.copy(shareText = generateShareText(memo = memo))
     }
   }
 
-  fun onTextShared() {
-    _uiState.update { it.copy(shareTextToSns = null) }
+  fun onMemoShared() {
+    _uiState.update { it.copy(shareText = null) }
   }
 
   private fun generateShareText(memo: Memo): String = buildString {
-      appendLine(value = memo.content)
-      appendLine()
-      append("📖『${uiState.value.myBook.title}』")
-      memo.pageRange?.let { pageRange ->
-        val page = pageRange.end?.let { "pp.${pageRange.start}~$it" } ?: "p.${pageRange.start}"
-        append(" $page")
-      }
-      appendLine()
-      append("#Mybrary #読書メモ")
-    }
+    appendLine(value = memo.content)
+    appendLine()
+    appendLine(value = "#読書メモ #Mybrary")
+    appendLine()
+    append(appConfig.playStoreUrl.value)
+  }
 
   fun onBottomSheetDismissRequest() {
     viewModelScope.launchSafe {
