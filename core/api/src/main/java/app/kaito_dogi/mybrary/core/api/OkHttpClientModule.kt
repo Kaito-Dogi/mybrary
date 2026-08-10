@@ -24,7 +24,7 @@ internal object OkHttpClientModule {
     .readTimeout(timeout = ReadTimeOut, unit = TimeUnit.SECONDS)
     .apply {
       for (interceptor in interceptorSet) {
-        addInterceptor(interceptor)
+        addInterceptor(interceptor = interceptor)
       }
     }.build()
 }

@@ -185,7 +185,7 @@ private fun MyBookDetailTopAppBarPreview() {
         id = MyBookId(value = ""),
         title = "タイトル\nタイトル\nタイトル\nタイトル\nタイトル",
         imageUrl = Url.Image(value = "imageUrl"),
-        authorList = List(10) { Author(name = "著者$it") },
+        authorList = List(size = 10) { Author(name = "著者$it") },
         publisher = "出版社",
         isbn = "isbn",
         genre = Genre.All,
