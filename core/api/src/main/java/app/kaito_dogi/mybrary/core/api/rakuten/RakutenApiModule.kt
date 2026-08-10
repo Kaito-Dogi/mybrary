@@ -26,7 +26,7 @@ internal object RakutenApiModule {
     return Retrofit.Builder()
       .client(okHttpClient)
       .baseUrl(RakutenApiBaseUrl)
-      .addConverterFactory(format.asConverterFactory(contentType))
+      .addConverterFactory(format.asConverterFactory(contentType = contentType))
       .build()
       .create(RakutenApi::class.java)
   }
