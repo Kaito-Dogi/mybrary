@@ -1,5 +1,10 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybookdetail
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -7,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -17,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import app.kaito_dogi.mybrary.core.common.model.Url
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
+import app.kaito_dogi.mybrary.core.designsystem.ext.isScrolledToBottom
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.Genre
 import app.kaito_dogi.mybrary.core.domain.model.Memo
@@ -43,21 +50,31 @@ internal fun MyBookDetailScreen(
   onContentChange: (String) -> Unit,
   onSaveClick: () -> Unit,
 ) {
+  val lazyListState = rememberLazyListState()
+  val isScrolledToBottom = lazyListState.isScrolledToBottom
+
   NavigationBarContentScaffold(
     snackbarHost = snackbarHost,
     floatingActionButton = {
-      FloatingActionButton(
-        onClick = onAdditionClick,
+      AnimatedVisibility(
+        visible = !isScrolledToBottom,
+        enter = scaleIn() + fadeIn(),
+        exit = scaleOut() + fadeOut(),
       ) {
-        Icon(
-          painter = painterResource(id = R.drawable.icon_add),
-          contentDescription = stringResource(id = R.string.my_book_detail_alt_create_a_memo),
-        )
+        FloatingActionButton(
+          onClick = onAdditionClick,
+        ) {
+          Icon(
+            painter = painterResource(id = R.drawable.icon_add),
+            contentDescription = stringResource(id = R.string.my_book_detail_alt_create_a_memo),
+          )
+        }
       }
     },
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.fillMaxSize(),
+      state = lazyListState,
       // ヘッダーを edge to edge で表示したいため、top は innerPadding の値を使用しない
       contentPadding = PaddingValues(bottom = innerPadding.calculateBottomPadding() + MybraryTheme.spaces.md),
       verticalArrangement = Arrangement.spacedBy(space = MybraryTheme.spaces.md),

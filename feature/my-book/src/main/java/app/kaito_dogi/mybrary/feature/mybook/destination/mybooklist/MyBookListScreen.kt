@@ -1,5 +1,10 @@
 package app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +16,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -29,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import app.kaito_dogi.mybrary.core.designsystem.R
 import app.kaito_dogi.mybrary.core.designsystem.component.NavigationBarContentScaffold
 import app.kaito_dogi.mybrary.core.designsystem.ext.plus
+import app.kaito_dogi.mybrary.core.designsystem.ext.isScrolledToBottom
 import app.kaito_dogi.mybrary.core.designsystem.theme.MybraryTheme
 import app.kaito_dogi.mybrary.core.domain.model.MyBook
 import app.kaito_dogi.mybrary.feature.mybook.destination.mybooklist.component.MyBookCell
@@ -45,6 +52,9 @@ internal fun MyBookListScreen(
   onAdditionClick: () -> Unit,
   onMyBookClick: (MyBook) -> Unit,
 ) {
+  val lazyGridState = rememberLazyGridState()
+  val isScrolledToBottom = lazyGridState.isScrolledToBottom
+
   NavigationBarContentScaffold(
     topBar = {
       TopAppBar(
@@ -69,19 +79,27 @@ internal fun MyBookListScreen(
       )
     },
     floatingActionButton = {
-      FloatingActionButton(
-        onClick = onAdditionClick,
+      // 最後の本が FAB と重ならないよう、最下部までスクロールされたら FAB を非表示にする
+      AnimatedVisibility(
+        visible = !isScrolledToBottom,
+        enter = scaleIn() + fadeIn(),
+        exit = scaleOut() + fadeOut(),
       ) {
-        Icon(
-          painter = painterResource(id = R.drawable.icon_add),
-          contentDescription = stringResource(id = R.string.my_book_list_alt_search_for_books),
-        )
+        FloatingActionButton(
+          onClick = onAdditionClick,
+        ) {
+          Icon(
+            painter = painterResource(id = R.drawable.icon_add),
+            contentDescription = stringResource(id = R.string.my_book_list_alt_search_for_books),
+          )
+        }
       }
     },
   ) { innerPadding ->
     LazyVerticalGrid(
       columns = GridCells.Fixed(count = uiState.numberOfColumns),
       modifier = Modifier.fillMaxSize(),
+      state = lazyGridState,
       contentPadding = innerPadding.plus(
         start = MybraryTheme.spaces.md,
         end = MybraryTheme.spaces.md,
@@ -117,7 +135,7 @@ internal fun MyBookListScreen(
             span = { GridItemSpan(currentLineSpan = uiState.numberOfColumns) },
             key = "Spacer:favorite",
           ) {
-            Spacer(modifier = Modifier.height(MybraryTheme.spaces.sm))
+            Spacer(modifier = Modifier.height(height = MybraryTheme.spaces.sm))
           }
         }
       }
