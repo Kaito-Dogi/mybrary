@@ -20,8 +20,8 @@ internal class DefaultBookRepository @Inject constructor(
   private val appConfig: AppConfig,
   @param:AppDispatcher(appDispatchers = AppDispatchers.Io) private val dispatcher: CoroutineDispatcher,
 ) : BookRepository {
-  override suspend fun getBook(id: BookId): Book = withContext(dispatcher) {
-    TODO("Not yet implemented")
+  override suspend fun getBook(id: BookId): Book = withContext(context = dispatcher) {
+    TODO(reason = "Not yet implemented")
   }
 
   override suspend fun searchBook(
@@ -33,7 +33,7 @@ internal class DefaultBookRepository @Inject constructor(
     hits: Int,
     page: Int,
     sort: Sort,
-  ): List<Book> = withContext(dispatcher) {
+  ): List<Book> = withContext(context = dispatcher) {
     val response = rakutenApi.getBooksBookSearch(
       applicationId = appConfig.rakutenApplicationId,
       affiliateId = appConfig.rakutenAffiliateId,
@@ -46,6 +46,6 @@ internal class DefaultBookRepository @Inject constructor(
       page = page,
       sort = sort.value,
     )
-    return@withContext response.items.map(ItemResponse::toBook)
+    return@withContext response.items.map(transform = ItemResponse::toBook)
   }
 }
