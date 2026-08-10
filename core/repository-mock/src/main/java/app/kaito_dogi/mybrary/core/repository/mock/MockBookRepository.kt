@@ -13,7 +13,7 @@ import kotlinx.coroutines.delay
 
 internal class MockBookRepository @Inject constructor() : BookRepository {
   override suspend fun getBook(id: BookId): Book {
-    TODO("Not yet implemented")
+    TODO(reason = "Not yet implemented")
   }
 
   override suspend fun searchBook(
@@ -32,7 +32,7 @@ internal class MockBookRepository @Inject constructor() : BookRepository {
   }
 }
 
-private val MockBookList = List(10) { index ->
+private val MockBookList = List(size = 10) { index ->
   Book(
     id = BookId(value = "$index"),
     title = when (index % 3) {
