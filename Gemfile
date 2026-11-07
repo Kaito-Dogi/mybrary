@@ -6,3 +6,6 @@ source "https://rubygems.org"
 gem 'danger'
 gem 'danger-android_lint'
 gem 'danger-junit'
+gem 'faraday-retry'
+# Danger 9.6.1 still references Git::Base, which was removed in git 6.0.
+gem 'git', '< 6'

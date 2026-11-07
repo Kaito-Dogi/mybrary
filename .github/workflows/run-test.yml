@@ -53,4 +53,4 @@ jobs:
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: danger --danger_id=test
+        run: bundle exec danger --danger_id=test
